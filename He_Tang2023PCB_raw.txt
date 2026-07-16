@@ -1,0 +1,1784 @@
+RESEARCH ARTICLE
+Combining the dynamic model and deep
+neural networks to identify the intensity of
+interventions during COVID-19 pandemic
+Mengqi He1
+, Sanyi Tang1
+, Yanni XiaoID
+2
+*
+1 School of Mathematics and Statistics, Shaanxi Normal University, Xi’an, China, 2 School of Mathematics
+and Statistics, Xi’an Jiaotong University, Xi’an, China
+* yxiao@mail.xjtu.edu.cn
+Abstract
+During the COVID-19 pandemic, control measures, especially massive contact tracing fol-
+lowing prompt quarantine and isolation, play an important role in mitigating the disease
+spread, and quantifying the dynamic contact rate and quarantine rate and estimate their
+impacts remain challenging. To precisely quantify the intensity of interventions, we develop
+the mechanism of physics-informed neural network (PINN) to propose the extended trans-
+mission-dynamics-informed neural network (TDINN) algorithm by combining scattered
+observational data with deep learning and epidemic models. The TDINN algorithm can not
+only avoid assuming the specific rate functions in advance but also make neural networks
+follow the rules of epidemic systems in the process of learning. We show that the proposed
+algorithm can fit the multi-source epidemic data in Xi’an, Guangzhou and Yangzhou cities
+well, and moreover reconstruct the epidemic development trend in Hainan and Xinjiang with
+incomplete reported data. We inferred the temporal evolution patterns of contact/quarantine
+rates, selected the best combination from the family of functions to accurately simulate the
+contact/quarantine time series learned by TDINN algorithm, and consequently recon-
+structed the epidemic process. The selected rate functions based on the time series inferred
+by deep learning have epidemiologically reasonable meanings. In addition, the proposed
+TDINN algorithm has also been verified by COVID-19 epidemic data with multiple waves in
+Liaoning province and shows good performance. We find the significant fluctuations in esti-
+mated contact/quarantine rates, and a feedback loop between the strengthening/relaxation
+of intervention strategies and the recurrence of the outbreaks. Moreover, the findings show
+that there is diversity in the shape of the temporal evolution curves of the inferred contact/
+quarantine rates in the considered regions, which indicates variation in the intensity of con-
+trol strategies adopted in various regions.
+Author summary
+When applying the compartment model to simulate the disease transmission dynamics,
+some parameters or particular functions are assumed to describe the intensity of the
+PLOS COMPUTATIONAL BIOLOGY
+PLOS Computational Biology | https://doi.org/10.1371/journal.pcbi.1011535 October 18, 2023 1 / 23
+a1111111111
+a1111111111
+a1111111111
+a1111111111
+a1111111111
+OPEN ACCESS
+Citation: He M, Tang S, Xiao Y (2023) Combining
+the dynamic model and deep neural networks to
+identify the intensity of interventions during COVID-
+19 pandemic. PLoS Comput Biol 19(10):
+e1011535. https://doi.org/10.1371/journal.
+pcbi.1011535
+Editor: Benjamin Althouse, University of
+Washington, UNITED STATES
+Received: April 6, 2023
+Accepted: September 20, 2023
+Published: October 18, 2023
+Copyright: © 2023 He et al. This is an open access
+article distributed under the terms of the Creative
+Commons Attribution License, which permits
+unrestricted use, distribution, and reproduction in
+any medium, provided the original author and
+source are credited.
+Data Availability Statement: The code and data
+used are available at https://github.com/
+lebesguehmq/TDINN_rate_functions.
+Funding: YX was funded by National Key R&D
+Program of China (2022YFA1003704) and Major
+International (Regional) Joint Research Project of
+National Natural Science Foundation of China
+(12220101001). ST was funded by National
+Natural Science Foundation of China (12031010).
+MH was supported by Excellent Graduate Training
+Program of Shaanxi Normal University
+control interventions. However, these preset specific functions may not accurately quan-
+tify the intervention strategies, which brings great challenges to accurately make predic-
+tion and evaluation. In this study, we developed an extended transmission-dynamics-
+informed neural network algorithm by integrating deep neural network with epidemic
+model. Even for insufficient case data, the proposed algorithm can still help us reconstruct
+the temporal evolution trend of the epidemic and infer unknown parameters. We inferred
+the time series on contract rate and quarantine rate for six regions based on the case data,
+on which the reasonable and interpretable functions, describing the dynamic variation in
+the intensity of control strategies, can be successfully selected and determined. The
+inferred contact/quarantine rates in various regions show the diverse shapes and regional
+dependent, and hence the variation in the intensity of control measures. This suggests the
+dynamic zero-case policy exhibits the different efficacy in reducing contacts and increas-
+ing the quarantine and isolation.
+Introduction
+The COVID-19 pandemic has lasted for three years since the end of 2019. Due to the continu-
+ous variation of the virus strain and the dynamic adjustment of prevention and control mea-
+sures, it is a great challenge to propose a dynamic model of infectious diseases to evaluate the
+effectiveness of non-pharmaceutical interventions (NPIs) [1]. In particular, before October
+2022, due to China’s implementation of the dynamic zero-case policy, strong close contact
+tracing and isolation measures or even static management mode make almost all outbreaks be
+cleared in about 40 days. From the point view of mathematical modelling, increased quaran-
+tine/isolation rate and decreased contact rate have played an essential role in reducing new
+infections. However accurately quantifying the rate functions and examining their effects on
+infections remain unclear and fall within the scope of this study.
+Modelling the dynamics of infectious diseases is an essential tool to provide the quantitative
+basis for decision making during the COVID-19 pandemic. Traditionally, the intrinsic trans-
+mission mechanism of infectious diseases and the flow among individuals in various compart-
+ments are mainly described by ordinary/partial differential equations [2, 3], delay differential
+equations [4] and fractional differential equations [5]. In traditional mechanism-based models,
+researchers usually incorporated constant contact rate and quarantine/isolation rate for sim-
+plicity to analyze the transmission risk [6], model the impact of contact tracing and quarantine
+on the development of COVID-19 [7, 8] and evaluate the independent effectiveness of vaccines
+[9]. There are also a large number of literatures in which the specific functions were supposed
+to represent the dynamic changes in intensity of interventions for comparing the effectiveness
+of various control strategies [10], understanding the drivers of multiple waves of outbreaks
+[11] and exploring the transmission mechanism of COVID-19 with different intervention pat-
+terns [12]. Moreover, Wang et al. [13] considered a dynamic epidemiological model with a
+piecewise contact rate and quarantine rate to simulate the dynamics of the Omicron variant in
+Shanghai, and explored the feasibility of different control patterns in avoiding subsequent
+waves. Li et al. [14] developed a model with pulse population-wide nucleic acid screening, and
+simulated the changes of contact/quarantine rates over time by using exponential decline/
+increase functions, respectively, focusing on the impact of large-scale screening on the trans-
+mission dynamics of COVID-19 infection and the operation of medical resources. Note that
+the preset specific functions may not accurately capture the dynamic adjustment of interven-
+tion strategies. And the assumed rate functions may inevitably involve more parameters in the
+PLOS COMPUTATIONAL BIOLOGY Combining the dynamic model and deep neural networks
+PLOS Computational Biology | https://doi.org/10.1371/journal.pcbi.1011535 October 18, 2023 2 / 23
+(LHRCTS23055). The funder had no role in study
+design, data collection and analysis, decision to
+publish, or preparation of the manuscript.
+Competing interests: The authors have declared
+that no competing interests exist.
+model, which brings significant challenges to data fitting and parameter estimation. This
+mechanism of preset rate functions inevitably causes that the outcomes are usually dependent
+on the particular types of rate functions due to various assumptions. Hence the data-driven
+inference of rate function is of great significance to quantify and assess the intensity of control
+interventions.
+Data-driven statistical models are widely used in biological, medicine, social science and
+other fields due to the flexibility and feasibility of the method [15, 16]. Especially in recent
+years, it has played an important role in simulating COVID-19 pandemic [17, 18]. For exam-
+ple, Sindhu et al. [19] proposed a three parametric model named as Exponentiated transforma-
+tion of Gumbel Type-II (ETGT-II) for analyzing the number of deaths due to COVID-19 for
+Europe and China. In addition, there are several studies have developed different types of sta-
+tistical models based on COVID-19 mortality data and evaluated the performance of the mod-
+els [20, 21]. Rahman et al. [22] developed a seasonal Autoregressive Integrated Moving
+Average (ARIMA) model and eXtreme Gradient Boosting (XGBoost) model to simulate the
+overall trend of confirmed cases and deaths of COVID-19 infection in Bangladesh, and com-
+pared the accuracy of predictions of two methods. Külah et al. [23] considered Shifted Gauss-
+ian Mixture Model with Similarity-based Estimation (SGSE) to predict the development trend
+of COVID-19 pandemic for a specific country by examining similar behaviors in other coun-
+tries. Note that these data-driven statistical methods do not incorporate prior transmission
+mechanisms, resulting in poor interpretability of simulation results, making it difficult to pro-
+vide decision-making basis for optimizing control strategies.
+Data-driven deep learning is another powerful tool for analyzing the dynamics of COVID-
+19 pandemic. It is a nonlinear mathematical tool with powerful learning ability, and is widely
+used in natural language processing [24], fault detections [25], image recognitions [26] and
+reliability analysis [27–29]. During COVID-19 pandemic, neural networks are used to con-
+struct various simulation frameworks to predict the development trend of the epidemic [30,
+31]. For example, Jin et al. [32] predicted COVID-19 infection based on multiple neural net-
+works and reinforcement learning. Shafiq et al. [33] estimated the COVID-19 mortality rates
+in Italy by using maximum likelihood estimation and artificial neural network (ANN). Xu
+et al. [34] employed three different deep learning models, including the convolutional neural
+network (CNN), long short-term memory (LSTM) and convolutional neural network-long
+short-term memory (CNN-LSTM), to predict the number of new cases and forecast the spread
+of COVID-19 infection. Utku [35] developed a convolutional neural network-gated recurrent
+unit (CNN-GRU), based on hybrid deep learning model, to predict COVID-19 cross-country
+spread. Gautam [36] applied transfer learning to the LSTM network to learn the trends of new
+cases and new death of COVID-19 infection from case data in Italy and the United States and
+to make projections for other countries. However, the black box attribute of the algorithms
+makes it face uninterpretable risks, especially the end-to-end learning method cannot reveal
+the underlying transmission mechanism of epidemics or the impact of intervention measures
+on mitigating the disease spread.
+The main purpose of this study is to combine scattered observational data with deep learn-
+ing and epidemic models, in order to avoid assuming the specific rate functions in advance
+and make neural networks follow the rules of epidemic systems in the process of learning. This
+mechanism of physics-informed neural network (PINN) may provide a flexible computational
+framework for scientific problems [37, 38]. By applying a data-driven module to extend an
+epidemiological model with control interventions derived from first principles, we implement
+the time-dependent parameters that quantify the intensity of prevention and control measures
+as different neural networks, and then embed the epidemiological model into the neural net-
+work through adding the residuals of the equations to the loss function, and develop an
+PLOS COMPUTATIONAL BIOLOGY Combining the dynamic model and deep neural networks
+PLOS Computational Biology | https://doi.org/10.1371/journal.pcbi.1011535 October 18, 2023 3 / 23
+extended transmission-dynamics-informed neural network algorithm framework. We simu-
+late the COVID-19 epidemic evolution trend in Xi’an, Guangzhou, Yangzhou, Hainan and
+Xinjiang with TDINN, and discover the temporal evolution pattern of time-dependent param-
+eters reflecting the dynamic adjustment of the control strategies based on the epidemic curves
+in these regions. Furthermore, we reconstruct the dynamic evolution trend of time-dependent
+parameters through specific functions and provide interpretability analysis for the output of
+deep learning. Finally, We also test the fitting performance of the TDINN algorithm on the
+COVID-19 infection with multiple waves in Liaoning province.
+In this study, we will develop a TDINN algorithm that integrates epidemic data, deep learn-
+ing, and epidemiological models to identify the intensity of interventions during COVID-19
+pandemic. It is worth noting that the TDINN algorithm guides neural networks to adhere to
+epidemic system rules during the learning process and meanwhile avoids the pre-assumption
+of modeling contact/quarantine rates with specific functions. The proposed algorithm can not
+only fit the multi-source epidemic data well, but also reconstruct the epidemic development
+trend with incomplete reported data. Further, we successfully trace the temporal evolution pat-
+terns of the contact rate and quarantine rate, and perform the interpretability analysis of the
+time-dependent rate functions inferred by TDINN algorithm.
+Methods
+Data
+We obtained the daily reported number of confirmed cases for Xi’an outbreak from December
+9th, 2021 to January 20th, 2022, Guangzhou outbreak from May 21st, 2021 to June 18th, 2021,
+and for Yangzhou outbreak from July 28th, 2021 to August 26th, 2021 from Health Commis-
+sions of Shaanxi [39], Guangdong [40] and Jiangsu provinces [41], respectively. In addition,
+we collected the daily reported number of confirmed cases from August 1st, 2022 to September
+23rd, 2022 in Hainan province [42] and form August 4th, 2022 to September 26th, 2022 in
+Xinjiang Uygur Autonomous Region [43], respectively. Data information includes the number
+of daily reported cases in the community(Ic
+data
+new ðtÞ) and in the quarantined zone(Iq
+data
+new
+ðtÞ). It is
+important to note that the numbers of daily reported case in the community or quarantined
+zone are incomplete for Hainan and Xinjiang, but we have complete daily reported case num-
+bers (Ir
+data
+new ðtÞ) in these two regions. Moreover, we also obtained the daily reported number of
+confirmed cases for Liaoning outbreak from 6th March 2022 to 21st May 2022 from Health
+Commissions of Liaoning provinces [44], where the data information only contains a column
+of daily reported case numbers (Ir
+data
+new ðtÞ) and shows multi-wave outbreaks. Detailed data are
+shown in Fig 1a–1d.
+For Xi’an, Guangzhou, and Yangzhou, we can calculate the cumulative reported cases in
+the community(Ic
+data
+cumðtÞ)(or quarantined zone (Iq
+data
+cum
+ðtÞ)) based on the daily reported cases in
+the community (or quarantined zone), while for Hainan, Xinjiang and Liaoning, we only
+obtain the cumulative reported cases(Ir
+data
+cumðtÞ). Therefore, in this study, we have access to three
+categories of reported data sets, which are as the follows:
+• Set 1: Ic
+data
+new ðtÞ, Iq
+data
+new
+ðtÞ, Ic
+data
+cumðtÞ, Iq
+data
+cum
+ðtÞ, for Xi’an, Guangzhou, Yangzhou;
+• Set 2: Ic
+data
+new ðtÞ, Iq
+data
+new
+ðtÞ, Ir
+data
+new ðtÞ, Ir
+data
+cumðtÞ, for Hainan, Xinjiang;
+• Set 3: Ir
+data
+new ðtÞ, Ir
+data
+cumðtÞ, for Liaoning.
+PLOS COMPUTATIONAL BIOLOGY Combining the dynamic model and deep neural networks
+PLOS Computational Biology | https://doi.org/10.1371/journal.pcbi.1011535 October 18, 2023 4 / 23
+Fig 1. Multi-source epidemic data and the framework of transmission dynamic model. (a) Epidemic data of COVID-19 infection in
+Liaoning province from 6th March 2022 to 21st May 2022; (b) Epidemic data of COVID-19 infection in Xi’an from 9th December 2021
+to 20th January 2022, in Guangzhou from 21st May to 18th June 2021, and in Yangzhou from 28th July to 26th August 2021; (c)
+Epidemic data of COVID-19 infection in Hainan from August 1st to September 23rd, 2022; (d) Epidemic data of COVID-19 infection
+in Xinjiang from August 4th to September 26th, 2022; (e) Flow diagram among epidemiological classes.
+https://doi.org/10.1371/journal.pcbi.1011535.g001
+PLOS COMPUTATIONAL BIOLOGY Combining the dynamic model and deep neural networks
+PLOS Computational Biology | https://doi.org/10.1371/journal.pcbi.1011535 October 18, 2023 5 / 23
+The model
+During COVID-19 pandemic, China’s government has mainly adopted the dynamic zero-
+case policy, i.e., strict close contact tracking and isolation, high-frequency and large-scale
+nucleic acid screening, closed management and etc, to quickly respond to the outbreak.
+These powerful NPIs effectively make most infected people not go through the complete
+process from infection to incubation period, and then to asymptomatic or symptomatic,
+that is, patients may be detected at every stage after infection. Therefore, this study simu-
+lates the transmission mode and evolution dynamics of COVID-19 infection based on the
+classic deterministic Susceptible-Infected-Removed (SIR) type epidemiological model [2].
+Then we extend the simplest SIR-type dynamic model by including contact tracing and iso-
+lation, and the flow diagram is shown in Fig 1e. Given an outbreak taking off in a city, the
+city can usually be divided into two regions according to different intensity of control mea-
+sures: free region (or community) and quarantined region. Consequently, we stratify the
+population in the free (quarantined) region into the susceptible class S (Sq) and the infected
+class Ic (Iq), and the removed class (denoted by R). Note that here we do not distinguish the
+individuals in the removed class in free or quarantined region since they can not be re-
+infected within a relatively short duration, and then consider a single compartment. Here
+we use the subscripts ‘q’ to represent quarantined population, i.e. Sq and Iq represent quar-
+antined susceptible class and quarantined infected class, respectively. To model the contin-
+uously adjusted intervention measures, we assume the time-dependent contact rate and
+quarantine rate, denoted by c(t) and q(t), respectively. The transmission probability of per
+contact is supposed to be β. Then, the quarantined individuals, if infected (or uninfected),
+move to the compartment Iq (or Sq) at a rate of βc(t)q(t) (or (1 − β)c(t)q(t)). Those who are
+not quarantined, if infected, will move to the compartment Ic at a rate of βc(t)(1 − q(t)).
+According to the fact that the quarantined individuals do not return to the susceptible pop-
+ulation before the end of outbreak, then we ignore the rate of transition from Sq to S class.
+Hence we have the following ordinary differential equations:
+dS
+dt
+¼
+bcðtÞ þ cðtÞqðtÞð1 bÞ
+N
+SIc;
+dIc
+dt
+¼
+bcðtÞð1 qðtÞÞ
+N
+SIc gIc;
+dSq
+dt
+¼
+ð1 bÞcðtÞqðtÞ
+N
+SIc;
+dIq
+dt
+¼
+bcðtÞqðtÞ
+N
+SIc dqIq;
+dR
+dt
+¼ gIc þ dqIq;
+8
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+<
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+:
+ð1Þ
+where N represents the total population of the region, the recovery rate of infected individ-
+uals in community (quarantined region) denoted by γ(δq), and the definitions and values of
+all parameters used in the model are given in Table 1. Here we consider three additional
+auxiliary compartments to record cumulative reported cases (Ircum
+), the cumulative reported
+cases in the community (Iccum
+) (or the quarantined region (Iqcum
+)). The dynamics of these
+PLOS COMPUTATIONAL BIOLOGY Combining the dynamic model and deep neural networks
+PLOS Computational Biology | https://doi.org/10.1371/journal.pcbi.1011535 October 18, 2023 6 / 23
+three compartments are driven by the following equations:
+dIccum
+dt
+¼
+bcðtÞð1 qðtÞÞ
+N
+SIc;
+dIqcum
+dt
+¼
+bcðtÞqðtÞ
+N
+SIc;
+dIrcum
+dt
+¼
+bcðtÞ
+N
+SIc:
+8
+>
+>
+>
+>
+>
+>
+>
+<
+>
+>
+>
+>
+>
+>
+>
+:
+ð2Þ
+Parameter estimation
+It is known that fully connected deep neural networks with arbitrary nonlinear activation
+functions are universal approximators [45], we then use three independent neural networks
+with time t as input to represent the time-dependent contact rate c(t), quarantined rate q(t)
+and each state variable in model (1) respectively. So we have
+cðtÞ ¼ cNN
+ðt; YcÞ; qðtÞ ¼ qNN
+ðt; YqÞ; UðtÞ ¼ UNN
+ðt; YUÞ;
+where U is a vector of all epidemiological categories considered in model (1), i.e.,
+U = (S, Ic, Sq, Iq, R). Here cNN
+, qNN
+, UNN
+represent neural network operators and
+(Θc, Θq, ΘU) is a parameter set composed of network weights and biases.
+Based on the method of physics-informed neural networks proposed in [37], we integrate
+three different neural networks to obtain an extended transmission-dynamics-informed neural
+network(TDINN), shown in Fig 2. The neural networks in the purple shaded area are used to
+infer the time-dependent contact rate c(t) and quarantine rate q(t). The neural network in the
+green shaded area is used to fit the available data and approximately solve model (1). The
+approximated network solution of model (1) can be defined as
+UNN
+ðtÞ ¼ ðSNN
+ðtÞ; Ic
+NN
+ðtÞ; Sq
+NN
+ðtÞ; Iq
+NN
+ðtÞ; RNN
+ðtÞÞ:
+The next critical step is to embed the information of transmission dynamics into the neural
+network to constrain the output(solutions) to satisfy the observational data and the ODE sys-
+tem, which is achieved by constructing a loss function corresponding to reported data and epi-
+demiological models. Specifically, the output of the neural network at the temporal nodes
+fti
+dg
+T d
+i¼1 should be as close as possible to the observed data. In addition, we enforce the neural
+network to satisfy the ODE system at the temporal nodes fti
+eg
+T e
+i¼1. This can be achieved by
+Table 1. Parameter definitions and estimation for model (1).
+Parameter Definitions Estimated values Sources
+Xi’an Guangzhou Yangzhou Hainan Xinjiang Liaoning
+c(t) Time-dependent contact rate See text and
+Fig 3c
+See text and Fig
+3g
+See text and Fig
+3k
+See text and
+Fig 4d
+See text and
+Fig 4i
+See text and Fig
+7b
+TDINN
+q(t) Time-dependent quarantine rate See text and
+Fig 3d
+See text and Fig
+3h
+See text and Fig
+3m
+See text and
+Fig 4e
+See text and
+Fig 4j
+See text and Fig
+7c
+TDINN
+β Probability of transmission per
+contact
+0.1498 0.1893 0.1493 0.1281 0.1977 0.2544 TDINN
+γ Recovery rate of community infected
+individuals
+0.2953 0.2337 0.2994 0.2830 0.1773 0.3691 TDINN
+δq Recovery rate of quarantined infected
+individuals
+0.3531 0.2507 0.1950 0.2737 0.3519 0.2155 TDINN
+https://doi.org/10.1371/journal.pcbi.1011535.t001
+PLOS COMPUTATIONAL BIOLOGY Combining the dynamic model and deep neural networks
+PLOS Computational Biology | https://doi.org/10.1371/journal.pcbi.1011535 October 18, 2023 7 / 23
+using automatic differentiation to calculate the residual error of the ODE system at fti
+eg
+T e
+i¼1, so
+fti
+eg
+T e
+i¼1 is also called “residual points”. Here, let T d represent the number of observed data and
+T e represent the number of residual points. It is worth noting that residual points can be arbi-
+trarily sampled in the entire computational domain. To measure the mismatch between the
+outputs from neural network/ODE systems and the observed data, we define the loss function
+as follows [37]:
+Loss ¼ MSEdata þ MSEode; ð3Þ
+where MSE stands for mean square error, MSEdata is used to measure the degree of matching
+between the output of the neural network and the observed data, and MSEode, as a penalty
+term, describes whether the solution learned by the neural network satisfies the ODE system.
+The first term MSEdata in the loss function (3) has different expressions based on the three
+categories of available datasets. For the data in Set 1,
+MSEdata ¼
+1
+T d
+X
+T d
+i¼1
+�
+�
+�Ic
+NN
+newðti
+dÞ Ic
+data
+new ðti
+dÞ
+�
+�
+�
+2
+þ
+1
+T d
+X
+T d
+i¼1
+�
+�
+�Iq
+NN
+new
+ðti
+dÞ Iq
+data
+new
+ðti
+dÞ
+�
+�
+�
+2
+þ
+1
+T d
+X
+T d
+i¼1
+�
+�
+�Ic
+NN
+cumðti
+dÞ Ic
+data
+cumðti
+dÞ
+�
+�
+�
+2
+þ
+1
+T d
+X
+T d
+i¼1
+�
+�
+�Iq
+NN
+cum
+ðti
+dÞ Iq
+data
+cum
+ðti
+dÞ
+�
+�
+�
+2
+:
+Fig 2. Schematic diagram of transmission-dynamics-informed neural network. Different neural networks are used to represent the state variables
+(green shaded area) and time-dependent parameters (purple shaded area) of model (1). The symbols “σ” and “d
+dt
+” represent the activation function and
+the automatic differentiation operator, respectively.
+https://doi.org/10.1371/journal.pcbi.1011535.g002
+PLOS COMPUTATIONAL BIOLOGY Combining the dynamic model and deep neural networks
+PLOS Computational Biology | https://doi.org/10.1371/journal.pcbi.1011535 October 18, 2023 8 / 23
+For the data in Set 2, the MSEdata becomes
+MSEdata ¼
+1
+T d
+X
+T d
+i¼1
+�
+�
+�Ic
+NN
+newðti
+dÞ Ic
+data
+new ðti
+dÞ
+�
+�
+�
+2
+þ
+1
+T d
+X
+T d
+i¼1
+�
+�
+�Iq
+NN
+new
+ðti
+dÞ Iq
+data
+new
+ðti
+dÞ
+�
+�
+�
+2
+þ
+1
+T d
+X
+T d
+i¼1
+�
+�
+�Ir
+NN
+newðti
+dÞ Ir
+data
+new ðti
+dÞ
+�
+�
+�
+2
+þ
+1
+T d
+X
+T d
+i¼1
+�
+�
+�Ir
+NN
+cumðti
+dÞ Ir
+data
+cumðti
+dÞ
+�
+�
+�
+2
+:
+For the data in Set 3, the MSEdata becomes
+MSEdata ¼
+1
+T d
+X
+T d
+i¼1
+�
+�
+�Ir
+NN
+newðti
+dÞ Ir
+data
+new ðti
+dÞ
+�
+�
+�
+2
+þ
+1
+T d
+X
+T d
+i¼1
+�
+�
+�Ir
+NN
+cumðti
+dÞ Ir
+data
+cumðti
+dÞ
+�
+�
+�
+2
+:
+Where Ic
+NN
+new, Iq
+NN
+new
+, Ir
+NN
+new, Ic
+NN
+cum, Iq
+NN
+cum
+and Ir
+NN
+cum represent the approximate solution of the neural
+network.
+Combining ordinary differential Eqs (1) and (2), we give the residual form of each compo-
+nent as follows:
+L1ðti
+eÞ ¼
+d
+dt
+SNN
+ðti
+eÞ þ
+bcNN
+ðti
+eÞ þ cNN
+ðti
+eÞqNN
+ðti
+eÞð1 bÞ
+N
+SNN
+ðti
+eÞIc
+NN
+ðti
+eÞ;
+L2ðti
+eÞ ¼
+d
+dt
+Ic
+NN
+ðti
+eÞ
+bcNN
+ðti
+eÞð1 qNN
+ðti
+eÞÞ
+N
+SNN
+ðti
+eÞIc
+NN
+ðti
+eÞ þ gIc
+NN
+ðti
+eÞ;
+L3ðti
+eÞ ¼
+d
+dt
+Sq
+NN
+ðti
+eÞ
+ð1 bÞcNN
+ðti
+eÞqNN
+ðti
+eÞ
+N
+SNN
+ðti
+eÞIc
+NN
+ðti
+eÞ;
+L4ðti
+eÞ ¼
+d
+dt
+Iq
+NN
+ðti
+eÞ
+bcNN
+ðti
+eÞqNN
+ðti
+eÞ
+N
+SNN
+ðti
+eÞIc
+NN
+ðti
+eÞ þ dqIq
+NN
+ðti
+eÞ;
+L5ðti
+eÞ ¼
+d
+dt
+RNN
+ðti
+eÞ gIc
+NN
+ðti
+eÞ dqIq
+NN
+ðti
+eÞ;
+L6ðti
+eÞ ¼
+d
+dt
+Ic
+NN
+cumðti
+eÞ
+bcNN
+ðti
+eÞð1 qNN
+ðti
+eÞÞ
+N
+SNN
+ðti
+eÞIc
+NN
+ðti
+eÞ;
+L7ðti
+eÞ ¼
+d
+dt
+Iq
+NN
+cum
+ðti
+eÞ
+bcNN
+ðti
+eÞqNN
+ðti
+eÞ
+N
+SNN
+ðti
+eÞIc
+NN
+ðti
+eÞ;
+L8ðti
+eÞ ¼
+d
+dt
+Ir
+NN
+cumðti
+eÞ
+bcNN
+ðti
+eÞ
+N
+SNN
+ðti
+eÞIc
+NN
+ðti
+eÞ;
+therefore, we have
+MSEode ¼
+1
+T e
+X
+M
+j¼1
+X
+T e
+i¼1
+jLjðti
+eÞj
+2
+:
+Finally, we simultaneously learn the network parameters and infer the unknown parame-
+ters of the model (1) by training the neural network to minimize the loss function (3). We use
+TDINN algorithm for fitting and parameter inferring based on the data available in different
+regions. The algorithm is implemented in Python using Tensorflow [46], an open source
+library for deep learning computations. We found empirically that the neural network struc-
+tures used to solve model (1) and inferred time-dependent parameters c(t) and q(t) may be dif-
+ferent due to the different sample sizes of observed data in various regions. The corresponding
+PLOS COMPUTATIONAL BIOLOGY Combining the dynamic model and deep neural networks
+PLOS Computational Biology | https://doi.org/10.1371/journal.pcbi.1011535 October 18, 2023 9 / 23
+depth and width of neural networks are given in Table 2. We use the hyperbolic tangent func-
+tion tanh(x) as the activation function σ shown in Fig 2. For the optimization of the loss func-
+tion (3), we use a gradient-based optimizer such as the Adam optimizer [47], whose learning
+rate is set to be 0.001 by default, and the number of training iterations for each region is listed
+in Table 2.
+Results
+Model calibration
+For Xi’an, Guangzhou and Yangzhou, we fitted the daily reported cases from communities
+and from quarantined zone through the TDINN algorithm, while for Hainan and Xinjiang, we
+further fitted daily reported cases. We present the best fitting results in Figs 3a, 3b, 3e, 3f, 3i, 3j,
+4a–4c and 4f–4h (green solid lines), and the inferred time-dependent parameters c(t) and q(t)
+for each region in Figs 3c, 3d, 3g, 3h, 3k, 3m, 4d, 4e, 4i and 4j (magenta pentagrams), respec-
+tively. In addition, the estimated parameter values are listed in Table 1.
+As we can see from Figs 3 and 4, the TDINN algorithm can fit the daily reported cases from
+communities and from quarantined zones very well, and can also automatically capture the
+temporal variations of contact rate and quarantine rate under different epidemic patterns for
+different regions. It is worth noting that although part of data on the daily confirmed cases
+from communities and from quarantined zone in Hainan and Xinjiang are available, our algo-
+rithm can still accurately simulate the complete epidemic evolution trend for two regions.
+These numerical simulation results indicate that the proposed TDINN algorithm can not only
+adapt well to multi-source epidemic data in different regions, but also extract relevant infor-
+mation that can quantify the intensity of control interventions. Moreover, the TDINN algo-
+rithm can infer the unobserved dynamics of epidemic based on sparse and noisy observation
+data, thereby reconstructing the complete epidemic development process.
+It is worth noting here that although we do not have any prior information on the contact
+rate c(t) and quarantine rate q(t), that is, we do not assume the specific function expressions
+for c(t) and q(t) in advance, the variations in the contact rate and quarantine rate over time in
+different regions can completely be extracted from the multi-source epidemic data. From Figs
+3c, 3d, 3g, 3h, 3k, 3m, 4d, 4e, 4i and 4j (magenta pentagrams), we can find that c(t) and q(t)
+inferred by TDINN algorithm show regional dependent, that is, the temporal evolution curves
+of c(t) and q(t) corresponding to different regions show significantly different behaviors in
+terms of shape, indicating differences in strength of implementation and execution of control
+intervention strategies to alleviate the COVID-19 infection in each region. This difference
+makes the epidemic curves in various regions exhibit diversity in terms of peak values and
+peak times, which further demonstrating the importance of capturing the underlying efficacy
+of intervention to quickly realize dynamic zero-case policy at that time.
+Table 2. Hyperparameters for the problems in this study.
+Hyperparameters
+Regions Xi’an Guangzhou Yangzhou Hainan Xinjiang Liaoning
+NN depth and width for U(t) (5, 64) (5, 50) (10, 64) (3, 32) (7, 32) (7, 32)
+NN depth and width for c(t) (1, 10) (1, 10) (1, 20) (1, 16) (1, 16) (3, 16)
+NN depth and width for q(t) (1, 10) (1, 10) (1, 20) (1, 16) (1, 16) (3, 16)
+Learning rate 0.001 0.001 0.001 0.001 0.001 0.001
+Iterations 2 × 104
+3 × 104
+3 × 104
+1 × 104
+1 × 104
+3 × 104
+https://doi.org/10.1371/journal.pcbi.1011535.t002
+PLOS COMPUTATIONAL BIOLOGY Combining the dynamic model and deep neural networks
+PLOS Computational Biology | https://doi.org/10.1371/journal.pcbi.1011535 October 18, 2023 10 / 23
+Fig 3. Data fitting and inference of the time-dependent parameters by TDINN algorithm for the local outbreaks in Xi’an, Guangzhou, and
+Yangzhou. (a)-(b), (e)-(f) and (i)-(j) show the fitting results in Xi’an, Guangzhou and Yangzhou, respectively, where the cyan and purple solid dots
+represent the daily reported data from communities and quarantined population respectively, green solid curves represent the best fitting results by
+TDINN, the dashed curves represent the corresponding solution curves after substituting various combinations of the family of functions (4) and (5)
+into model (1). (c)-(d), (g)-(h) and (k)-(m) show the inference and fitting results of the time-dependent contact rate c(t) and quarantined rate q(t) in
+Xi’an, Guangzhou and Yangzhou, respectively, where the magenta pentagrams represent the inference results of c(t) and q(t) by TDINN and the solid
+curves represent the fitting results of c(t) and q(t) based on different functions in (4) and (5).
+https://doi.org/10.1371/journal.pcbi.1011535.g003
+PLOS COMPUTATIONAL BIOLOGY Combining the dynamic model and deep neural networks
+PLOS Computational Biology | https://doi.org/10.1371/journal.pcbi.1011535 October 18, 2023 11 / 23
+Fig 4. Data fitting and inference of the time-dependent parameters by TDINN algorithm for the local outbreaks in Hainan and Xinjiang. (a)-
+(c) and (f)-(h) show the fitting results in Hainan and Xinjiang, respectively, where the cyan solid dots represent the daily reported data from
+communities, the purple solid dots represent the daily reported data from quarantined population and the red solid dots represent the daily
+reported data, green solid curves represent the best fitting results by TDINN, the dashed curves represent the corresponding solution curves after
+substituting various combinations of the family of functions (4) and (5) into model (1). (d)-(e) and (i)-(j) show the inference and fitting results of
+the time-dependent contact rate c(t) and quarantined rate q(t) in Hainan and Xinjiang, respectively, where the magenta pentagrams represent the
+inference results of c(t) and q(t) by TDINN and the solid curves represent the fitting results of c(t) and q(t) based on different functions in (4) and
+(5).
+https://doi.org/10.1371/journal.pcbi.1011535.g004
+PLOS COMPUTATIONAL BIOLOGY Combining the dynamic model and deep neural networks
+PLOS Computational Biology | https://doi.org/10.1371/journal.pcbi.1011535 October 18, 2023 12 / 23
+In addition, based on the inferred c(t) and q(t), we find that contact rate c(t) shows a down-
+ward trend (shown in Figs 3c, 3g, 3k, 4d and 4i, while quarantine rate q(t) shows an upward
+trend (shown in Figs 3d, 3h, 3m, 4e and 4j. This is associated with the fact that once an out-
+break taking off, China’s dynamic zero-case policy leads to an increase in the quarantine rate
+and the contact rate decline due to local lockdown and the enhanced close contact tracing and
+quarantine measure. Then, an interesting question raised from this observation is whether we
+can describe the temporal evolution patterns of c(t) and q(t) with specific functions to better
+quantify the evolution of the interventions, and consequently enhance the interpretability of
+deep learning.
+Interpretability analysis of time-dependent parameters
+Note that the contact rate and quarantine rate resulting from TDINN inference are two
+abstract time series without particular expressions. Therefore, it is worth formulating the
+appropriate functions for contact rate and quarantine rate, which can describe deep learning’s
+inference results and reveal the temporal evolution process of interventions. These functions
+not only aid in better understanding the behavior of deep learning during the inference pro-
+cess, but also improve the prediction accuracy and interpretability of model, providing guid-
+ance for designing more effective prevention and control strategies.
+Note that the increasing/decreasing pattern of time series may be associated with various
+formulas of rate functions. Here, we consider the contact rate c(t) and quarantine rate q(t) as a
+family of functions, with each family comprising three distinct forms denoted as c1(t), c2(t),
+c3(t) and q1(t), q2(t), q3(t), respectively. The explicit expressions for these functions are
+assumed as follows:
+c1ðtÞ ¼ ðc01 cb1Þe r11t
+þ cb1;
+c2ðtÞ ¼ ðc02 cb2Þe ðr12tÞ2
+þ cb2;
+c3ðtÞ ¼ cb3
+"
+1 þ
+�
+cb3
+c03
+� � m
+1
+�
+e r13mt
+#1
+m
+;
+8
+>
+>
+>
+>
+>
+<
+>
+>
+>
+>
+>
+:
+ð4Þ
+and
+q1ðtÞ ¼ ðq01 qm1Þe r21t
+þ qm1;
+q2ðtÞ ¼ ðq02 qm2Þe ðr22tÞ2
+þ qm2;
+q3ðtÞ ¼ qm3
+"
+1 þ
+�
+q03
+qm3
+� � n
+1
+�
+e r23nt
+# 1
+n
+:
+8
+>
+>
+>
+>
+>
+<
+>
+>
+>
+>
+>
+:
+ð5Þ
+Here, the functions c1(t) and q1(t) are derived from existing literatures [48–50]. Parameter c0i
+is the initial contact rate, parameter cbi represents the minimum contact rate, and parameter
+r1i denotes the exponential decreasing rate of the contact rate, i = 1, 2, 3. Parameter q0i is the
+initial quarantine rate, parameter qmi denotes the maximum quarantine rate with the interven-
+tion being implemented, and parameter r2i represents the exponential increasing rate of quar-
+antine rate, i = 1, 2, 3. In contrast to the exponential decay/increasing functions of c1(t) and
+q1(t), the sustained strengthening control strategies is described by the Gaussian decay func-
+tions [51] of c2(t) and q2(t). Additionally, the construction of c3(t) and q3(t) is based on the
+analytical solution of the Rosenzweig model [52], where m and n are interference constants.
+Then, an interesting question is which function in the family of functions (4) and (5) can accu-
+rately describe the temporal evolution trends of c(t) and q(t) inferred by TDINN.
+PLOS COMPUTATIONAL BIOLOGY Combining the dynamic model and deep neural networks
+PLOS Computational Biology | https://doi.org/10.1371/journal.pcbi.1011535 October 18, 2023 13 / 23
+To address this question, we initially begin by considering the time series corresponding to
+c(t) and q(t) learned from the TDINN algorithm as observed data, denoting them as ^
+cðtÞ and
+^
+qðtÞ, respectively, where t ¼ 1; 2; � � � ; T d. Next, we fit the functions in (4) and (5) to the
+observed data ^
+cðtÞ and ^
+qðtÞ, estimate the corresponding unknown parameters, and select the
+appropriate function formula based on the statistical criterion. This is equivalent to solving the
+optimization problem:
+arg min
+y
+LciðyÞ; arg min
+W
+Lqi
+ðWÞ; i ¼ 1; 2; 3; ð6Þ
+with
+LciðyÞ ¼
+X
+T d
+t¼1
+jciðt; yÞ ^
+cðtÞj
+2
+; Lqi
+ðWÞ ¼
+X
+T d
+t¼1
+jqiðt; WÞ ^
+qðtÞj
+2
+:
+Parameters θ and ϑ represent the unknown parameter vectors in (4) and (5), respectively.
+Then, we utilize the least squares(LS) method to solve the optimization problem (6), and con-
+sequently obtain the estimated values of the unknown parameters in the family of functions
+(4) and (5), as listed in Table 3. The fitting results for each region are shown in Figs 3c, 3d, 3g,
+3h, 3k, 3m, 4d, 4e, 4i and 4j (solid lines), respectively. Finally, we determine the optimal func-
+tion form to accurately capture the temporal evolution of contact rate c(t) and quarantine rate
+q(t) inferred by the TDINN algorithm based on the criterion of minimizing the root mean
+squared error (RMSE). We computed the root mean square errors (RMSEci
+and RMSEqi
+)
+which are generated by different functions in (4) and (5) when fitting the observed data ^
+cðtÞ
+Table 3. Parameter definitions and estimation for functions ci(t) and qi(t) (i = 1,2,3).
+Parameter Definitions Estimated values Sources
+Xi’an Guangzhou Yangzhou Hainan Xinjiang
+c0i c01 Contact rate at the initial time 14.6054 12.7988 14.2205 10.3253 14.5078 Estimated
+c02 12.8872 10.0039 11.7293 9.0234 13.0733 Estimated
+c03 15.2903 10.8316 13.2506 10.0992 14.5899 Estimated
+cbi cb1 Minimum contact rate under the current control strategies 2.6624 2.9691 2.5979 2.8232 2.0714 Estimated
+cb2 3.4625 3.1812 3.2593 3.5705 2.0515 Estimated
+cb3 2.5073 3.3792 3.1596 3.0476 2.1241 Estimated
+r1i r11 Exponential decreasing rate of contact rate 0.0483 0.1703 0.1342 0.0313 0.1328 Estimated
+r12 0.0463 0.1213 0.1176 0.0306 0.1038 Estimated
+r13 0.0404 0.0802 0.0836 0.0189 0.0929 Estimated
+m Interference constant 2 12 8 4 8 Assumed
+q0i q01 Quarantined rate at the initial time 0.2299 0.2912 0.3383 0.2020 0.7210 Estimated
+q02 0.3230 0.4199 0.4416 0.2854 0.7219 Estimated
+q03 0.3070 0.3870 0.3972 0.2483 0.7149 Estimated
+qmi qm1 Maximum quarantined rate under the current control strategies 0.9633 0.9847 0.9555 0.9744 0.8969 Estimated
+qm2 0.9844 0.9039 0.8642 0.9775 0.8100 Estimated
+qm3 0.9405 0.9695 0.8789 0.9899 0.8233 Estimated
+r2i r21 Exponential increasing rate of quarantined rate 0.0541 0.0571 0.0481 0.0840 0.0126 Estimated
+r22 0.0452 0.0566 0.0519 0.0665 0.0332 Estimated
+r23 0.0388 0.0392 0.0364 0.0911 0.0171 Estimated
+n Interference constant 12 4 4 2 2 Assumed
+https://doi.org/10.1371/journal.pcbi.1011535.t003
+PLOS COMPUTATIONAL BIOLOGY Combining the dynamic model and deep neural networks
+PLOS Computational Biology | https://doi.org/10.1371/journal.pcbi.1011535 October 18, 2023 14 / 23
+and ^
+qðtÞ, where
+RMSEci
+¼
+ffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffi
+1
+T d
+X
+T d
+t¼1
+½ciðtÞ ^
+cðtÞ�
+2
+s
+; RMSEqi
+¼
+ffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffi
+1
+T d
+X
+T d
+t¼1
+½qiðtÞ ^
+qðtÞ�
+2
+s
+; i ¼ 1; 2; 3:
+Note that, the functions with the smallest RMSEci and RMSEqi were selected as the best
+candidates. According to Figs 5a, 5b, 5d, 5e, 5g, 5h, 6a, 6b, 6d and 6e, we can draw the follow-
+ing conclusions:
+• for Xi’an: RMSEc1
+> RMSEc3
+> RMSEc2
+, RMSEq1
+> RMSEq3
+> RMSEq2
+;
+• for Guangzhou: RMSEc1
+> RMSEc2
+> RMSEc3
+, RMSEq1
+> RMSEq3
+> RMSEq2
+;
+Fig 5. The optimal contact/quarantine rates from the family of functions (4) and (5) for Xi’an, Guangzhou and Yangzhou. (a, d,
+g) Root mean square error(RMSEci
+), corresponding to fitting the time-dependent contact rate learned by TDINN algorithm using
+c1(t), c2(t) and c3(t) in Xi’an, Guangzhou and Yangzhou. (b, e, h) Root mean square error(RMSEqi
+), corresponding to fitting the time-
+dependent quarantine rate learned by TDINN algorithm using q1(t), q2(t) and q3(t) in Xi’an, Guangzhou and Yangzhou. (c, f, i)
+Average root mean square error (ARMSEqj
+ci
+i; j ¼ 1; 2; 3), corresponding to fitting epidemic data using model (1) based on various
+combinations of the family of functions (4) and (5) in Xi’an, Guangzhou and Yangzhou.
+https://doi.org/10.1371/journal.pcbi.1011535.g005
+PLOS COMPUTATIONAL BIOLOGY Combining the dynamic model and deep neural networks
+PLOS Computational Biology | https://doi.org/10.1371/journal.pcbi.1011535 October 18, 2023 15 / 23
+• for Yangzhou: RMSEc1
+> RMSEc2
+> RMSEc3
+, RMSEq1
+> RMSEq3
+> RMSEq2
+;
+• for Hainan: RMSEc2
+> RMSEc1
+> RMSEc3
+, RMSEq1
+> RMSEq2
+> RMSEq3
+;
+• for Xinjiang: RMSEc1
+> RMSEc3
+> RMSEc2
+, RMSEq3
+> RMSEq2
+> RMSEq1
+.
+Based on the above results, we can select the optimal functions to quantify the evolution of
+the interventions in each region, that is, for Xi’an, Guangzhou, Yangzhou, Hainan and Xin-
+jiang, the optimal rate functions are c2(t) and q2(t), c3(t) and q2(t), c3(t) and q2(t), c3(t) and
+q3(t), c2(t) and q1(t) respectively.
+To further validate our conclusions, we substituted various functions into the model (1)
+and re-fitted the multi-source data for each region by using the estimated parameters in Tables
+1 and 3. The fitting results are presented in Figs 3a, 3b, 3e, 3f, 3i, 3j, 4a–4c and 4f–4h (dotted
+lines). Note that here we consider the average root mean square error (ARMSEqj
+ci
+, i, j = 1, 2, 3)
+as a metric to evaluate the fitting performance of model (1) with different function combina-
+tions in the family of functions (4) and (5) for multi-source data in each region.
+For Xi’an, Guangzhou and Yangzhou,
+ARMSEqj
+ci
+¼
+1
+2
+ffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffi
+1
+T d
+X
+T d
+t¼1
+h
+~
+Icnew
+ðtÞ Ic
+data
+new ðtÞ
+i2
+v
+u
+u
+t þ
+ffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffi
+1
+T d
+X
+T d
+t¼1
+h
+~
+Iqnew
+ðtÞ Idata
+qnew
+ðtÞ
+i2
+v
+u
+u
+t
+0
+@
+1
+A;
+Fig 6. The optimal contact/quarantine rates from the family of functions (4) and (5) for Hainan and Xinjiang. (a, d) Root mean square
+error(RMSEci
+), corresponding to fitting the time-dependent contact rate learned by TDINN algorithm using c1(t), c2(t) and c3(t) in Hainan
+and Xinjiang. (b, e) Root mean square error(RMSEqi
+), corresponding to fitting the time-dependent quarantine rate learned by TDINN
+algorithm using q1(t), q2(t) and q3(t) in Hainan and Xinjiang. (c, f) Average root mean square error (ARMSEqj
+ci
+; i; j ¼ 1; 2; 3), corresponding
+to fitting epidemic data using model (1) based on various combinations of the family of functions (4) and (5) in Hainan and Xinjiang.
+https://doi.org/10.1371/journal.pcbi.1011535.g006
+PLOS COMPUTATIONAL BIOLOGY Combining the dynamic model and deep neural networks
+PLOS Computational Biology | https://doi.org/10.1371/journal.pcbi.1011535 October 18, 2023 16 / 23
+for Hainan and Xinjiang,
+ARMSEqj
+ci
+¼
+1
+3
+ffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffi
+1
+T d
+X
+T d
+t¼1
+h
+~
+Icnew
+ðtÞ Ic
+data
+new ðtÞ
+i2
+v
+u
+u
+t þ
+ffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffi
+1
+T d
+X
+T d
+t¼1
+h
+~
+Iqnew
+ðtÞ Idata
+qnew
+ðtÞ
+i2
+v
+u
+u
+t þ
+ffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffiffi
+1
+T d
+X
+T d
+t¼1
+h
+~
+Irnew
+ðtÞ Idata
+rnew
+ðtÞ
+i2
+v
+u
+u
+t
+0
+@
+1
+A;
+where ~
+Icnew
+, ~
+Iqnew
+~
+Irnew
+are the predicted values by solving model (1).
+Considering all possible combinations of rate functions, the smaller ARMSEqj
+ci
+value indi-
+cates the better fitting effect of model (1) on multi-source data. In the following, we summa-
+rized how the ARMSEqj
+ci
+varied with respect to different choices of contact rate and quarantine
+rate for each region in Figs 5c, 5f, 5i, 6c and 6f. According to Figs 5c, 5f, 5i, 6c and 6f, the corre-
+sponding ARMSEqj
+ci
+values for each region exhibit the following relationship:
+• for Xi’an: ARMSEq1
+c1
+> ARMSEq1
+c3
+> ARMSEq1
+c2
+> ARMSEq3
+c1
+> ARMSEq2
+c1
+> ARMSEq3
+c3
+>
+ARMSEq2
+c3
+> ARMSEq3
+c2
+> ARMSEq2
+c2
+;
+• for Guangzhou: ARMSEq1
+c2
+> ARMSEq2
+c2
+> ARMSEq3
+c2
+> ARMSEq1
+c1
+> ARMSEq1
+c3
+>
+ARMSEq2
+c1
+> ARMSEq3
+c3
+> ARMSEq3
+c1
+> ARMSEq2
+c3
+;
+• for Yangzhou: ARMSEq1
+c2
+> ARMSEq1
+c3
+> ARMSEq3
+c2
+> ARMSEq1
+c1
+> ARMSEq2
+c2
+> ARMSEq3
+c1
+>
+ARMSEq3
+c3
+> ARMSEq2
+c1
+> ARMSEq2
+c3
+;
+• for Hainan: ARMSEq1
+c2
+> ARMSEq1
+c3
+> ARMSEq1
+c1
+> ARMSEq3
+c2
+> ARMSEq2
+c2
+> ARMSEq2
+c1
+>
+ARMSEq2
+c3
+> ARMSEq3
+c1
+> ARMSEq3
+c3
+;
+• for Xinjiang: ARMSEq1
+c1
+> ARMSEq3
+c1
+> ARMSEq2
+c1
+> ARMSEq2
+c2
+> ARMSEq1
+c3
+> ARMSEq3
+c2
+>
+ARMSEq3
+c3
+> ARMSEq2
+c3
+> ARMSEq1
+c2
+.
+The above results show that selecting c2(t) and q2(t) (or c3(t) and q2(t), c3(t) and q2(t), c3(t)
+and q3(t), c2(t) and q1(t)) as the contact rate and quarantine rate leads to the smallest ARMSE
+value for Xi’an (or Guangzhou, Yangzhou, Hainan, Xinjiang). This indicates that model (1)
+can accurately replicate the development process of the COVID-19 epidemic in Xi’an(or
+Guangzhou, Yangzhou, Hainan, Xinjiang) under this combination, which further validates
+our previous conclusion that c2(t) and q2(t) (or c3(t) and q2(t), c3(t) and q2(t), c3(t) and q3(t),
+c2(t) and q1(t)) are the optimal functions for quantifying the evolution of control interventions
+in Xi’an(or Guangzhou, Yangzhou, Hainan, Xinjiang). Based on the optimal rate functions for
+each region (see Figs 5 and 6 for detail), we can find that it is difficult to construct a universal
+function combination to quantify the control intervention strategies implemented in different
+regions. That is to say, in order to response the outbreak, the pattern of epidemic prevention
+and control in one region cannot be directly applied to another region. Ideally, we should flexi-
+bly adjust and develop appropriate prevention and control measures according to the actual
+situation of different regions.
+According to the above analysis, we utilized the time series inferred by the TDINN algo-
+rithm to get the optimal contact rate and quarantine rate from the family of functions (4) and
+(5), which enabled us to accurately quantify the strength of control measures in each region.
+Further, it is worth noting all parameters in the rate functions have realistic meanings, then
+the selected rate functions help to enhance the interpretability of the time series inferred by
+deep learning. In addition, we can achieve the best fitting effect after substituting the optimal
+contact rate and quarantine rate into the model (1), which further validates that this method of
+quantifying the dynamic evolution of interventions is feasible. This method can also aid in
+PLOS COMPUTATIONAL BIOLOGY Combining the dynamic model and deep neural networks
+PLOS Computational Biology | https://doi.org/10.1371/journal.pcbi.1011535 October 18, 2023 17 / 23
+improving our understanding of how control strategies are dynamically adjusted when fight-
+ing against epidemics.
+Simulation of the multiple epidemic waves
+To further illustrate the effectiveness of our proposed method, we also apply the proposed
+TDINN algorithm to the simulation of multiple waves of COVID-19 infection. To do this, we
+simulated the dynamics of the epidemic based on daily reported cases in Liaoning province
+and visualize the simulation results in Fig 7. The simulation results show that the TDINN algo-
+rithm can not only fit the epidemic data containing multiple waves well (see Fig 7a), but also
+capture the information on strengthening and relaxation of intervention measures, that is, the
+inferred contact rate and quarantine rate exhibit fluctuations as shown in Fig 7b and 7c.
+In fact, as the epidemic initially took off, we observed an increase in quarantine rate and a
+decrease in contact rate due to enhanced intervention measures to mitigate epidemic. While
+the outbreak was subsiding, the gradual relaxation of control interventions led to the quaran-
+tine rate decline and the contact rate increase, and thereby possibly inducing a resurgence of
+epidemic. As a consequence, comparing the inferred contact rate and quarantine rate with the
+time series of daily reported cases containing multiple epidemic waves (Fig 7a–7c), we can
+observe a feedback loop: epidemic taking off ! quarantine rate increasing and contact rate
+Fig 7. Data fitting and inference of the time-dependent parameters by TDINN algorithm for multiple waves of COVID-
+19 infection in Liaoning province. (a) shows the fitting results for the available data in Liaoning, where the purple solid dots
+represent the daily reported data, green solid curves represent the best fitting results by TDINN. (b) and (c) show the inferred
+time-dependent contact rate c(t) and quarantine rate q(t) by TDINN, respectively.
+https://doi.org/10.1371/journal.pcbi.1011535.g007
+PLOS COMPUTATIONAL BIOLOGY Combining the dynamic model and deep neural networks
+PLOS Computational Biology | https://doi.org/10.1371/journal.pcbi.1011535 October 18, 2023 18 / 23
+decreasing ! epidemic subsiding ! quarantine rate decreasing and contact rate increasing
+! epidemic resurging, which drives multiple COVID-19 epidemic waves as observed in Liao-
+ning province. It is worth noting that the inferred time series on contact rate and quarantine
+rate in Fig 7b and 7c exhibit complicated behaviors, which are difficult to simulate accurately
+through the family of functions (4) and (5).
+Discussion and conclusion
+During the COVID-19 pandemic, control measures played an important role in mitigating the
+disease spread. In particular, massive contact tracing following prompt quarantine and isola-
+tion showed decisive effect in dynamic clearing of the COVID-19 epidemic in China. Hence
+quantifying the dynamic contact rate and quarantine rate and estimate their impacts remain
+challenging. In this study, we integrated data-driven deep learning and dynamics-driven first
+principle modeling, and proposed an extended transmission-dynamics-informed neural net-
+work (TDINN) algorithm by encoding SIR-type compartment model into the neural net-
+works, in order to obtain the time-dependent rate functions of mechanistic models. With the
+developed TDINN algorithm, we simulated the dynamics of COVID-19 infection in Xi’an,
+Guangzhou, Yangzhou, Hainan, Xinjiang and Liaoning province, by simultaneously inferring
+the unknown time-independent and time-dependent parameters.
+The TDINN algorithm enables us to successfully encode the contact rate and quarantine
+rate derived from deep neural networks into the compartment model, as well as integrating
+the transmission dynamic model into the deep neural networks. It is important to note that
+the TDINN algorithm overcomes some disadvantages of traditional transmission dynamic
+models for simulating the development process of the COVID-19 epidemic. For example, in
+the classic compartment model, the contact rate and quarantine rate are usually assumed to be
+constant or particular time-dependent functions, respectively, to describe the intensities of
+control interventions [10, 12]. That is, to simulate outbreaks in different regions, we need to
+pre-set various particular parameter values and/or time-dependent functions to quantify the
+continuously adjusted control measures in different regions, which significantly limits the per-
+formance of the transmission dynamic models. In contrast, our proposed TDINN algorithm
+can effectively overcome this disadvantage as it associates the transmission dynamic model
+with deep neural networks through the universal approximation property of neural networks
+[45] and can capture information on contact rate and quarantine rate from the epidemic data
+without assuming the particular formula for the rate functions in advance.
+Despite the structure of the considered transmission dynamic model (1) in the TDINN
+algorithm is quite simple, the model (1) incorporates time-dependent contact rate and quaran-
+tine rate inferred by neural networks, allowing us to well fit multi-source data for different
+regions that included daily reported cases in the community and in the quarantined zone (see
+Fig 3a, 3b, 3e, 3f, 3i and 3j), as well as daily reported cases with multiple epidemic waves (Fig
+7). In addition, by using TDINN algorithm we can also reconstruct the epidemic process even
+if the data are insufficient (Fig 4a–4c and 4f–4h) and obtain the temporal evolution patterns of
+contact rate c(t) and quarantine rate q(t). The estimations of contact/quarantine rates show the
+regional-dependent (see Figs 3c, 3d, 3g, 3h, 3k, 3m, 4d, 4e, 4i, 4j, 7b and 7c), which indicates
+that there are differences in efficacy of control intervention strategies adopted in various
+regions. It further reveals why it is difficult to accurately quantify the strength of control mea-
+sures through a specific function, that is, pre-setting the particular type of functions may not
+describe the actual contact rate and quarantine rate.
+It is interesting to observe the high consistency in the evolutionary trend of the contact rate
+and quarantine rate extracted by the TDINN algorithm from a single wave of epidemic (such
+PLOS COMPUTATIONAL BIOLOGY Combining the dynamic model and deep neural networks
+PLOS Computational Biology | https://doi.org/10.1371/journal.pcbi.1011535 October 18, 2023 19 / 23
+as Xi’an, Guangzhou, Yangzhou, Hainan and Xinjiang), where the contact rate gradually
+decreases and the quarantine rate gradually increases (shown in Figs 3c, 3d, 3g, 3h, 3k, 3m, 4d,
+4e, 4i and 4j). This suggests that reducing the contact rate and/or increasing the quarantine
+rate can significantly be associated with decrease in the daily reported cases, which agrees well
+with previous studies [53, 54]. In addition, Liaoning outbreak experienced two epidemic
+waves, which is related with the continuous strengthening and relaxation of control interven-
+tions, corresponding to the oscillations of the contact and quarantine rates (shown in Fig 7). In
+return, the shifting of the contact and quarantine rates can also affect the transmission dynam-
+ics of COVID-19 pandemic. This generates a feedback loop between the changes in the inten-
+sity of control measures and the epidemic shifting, which is the key to drive the fluctuations of
+the epidemics and is in line with observations of the existing study [11].
+A key highlight of this study is that we can select the best combination from a family of
+functions (4) and (5) to accurately simulate the time series for contact and quarantine rate (c(t)
+and q(t)) learned by TDINN algorithm (Figs 5 and 6). The selection enables us to comprehen-
+sively explore the evolution trend of COVID-19 epidemic outbreak in different regions, and
+study the impact of various intervention strategies on the spread of infectious diseases. In addi-
+tion, the selected rate functions based on the time series inferred by deep learning have reason-
+able meanings.
+In this study, we proposed the TDINN algorithm, which not only extends the traditional
+transmission dynamic model by embedding the time-dependent functions learned from the
+deep neural network, but also extends the neural network by embedding the information of
+the transmission dynamic model. The novel approach enables us to well integrate the advan-
+tages of the transmission mechanism model and the deep neural network. Compared with tra-
+ditional dynamic models, the TDINN algorithm has better data learning ability and inference
+ability of unknown rate functions. Compared with end-to-end deep learning, our main results
+are more interpretable due to the incorporation of known propagation mechanisms. Further-
+more, this method can be easily extended to more complex compartment models to study
+other aspects of emerging infectious diseases.
+Our study has some limitations. The transmission dynamic model (1) we considered is
+fairly simple and may overlook the impact of important factors such as the capacity of health-
+care infrastructure, behavioral responses to epidemics, and vaccination on the development of
+the COVID-19 infection, but we hope the approaches, integrating transmission dynamics with
+deep learning, are able to be applied more generally. In addition, for the contact rate and quar-
+antine rate inferred from the multiple epidemic waves, it is difficult to accurately simulate
+their temporal evolution patterns through smooth functions. We leave this for future work.
+Author Contributions
+Conceptualization: Mengqi He, Sanyi Tang, Yanni Xiao.
+Data curation: Mengqi He, Sanyi Tang.
+Formal analysis: Mengqi He.
+Funding acquisition: Mengqi He, Sanyi Tang, Yanni Xiao.
+Investigation: Mengqi He, Sanyi Tang, Yanni Xiao.
+Methodology: Mengqi He, Sanyi Tang, Yanni Xiao.
+Project administration: Mengqi He, Yanni Xiao.
+Resources: Mengqi He, Sanyi Tang.
+PLOS COMPUTATIONAL BIOLOGY Combining the dynamic model and deep neural networks
+PLOS Computational Biology | https://doi.org/10.1371/journal.pcbi.1011535 October 18, 2023 20 / 23
+Software: Mengqi He.
+Supervision: Sanyi Tang, Yanni Xiao.
+Validation: Mengqi He, Sanyi Tang, Yanni Xiao.
+Visualization: Mengqi He.
+Writing – original draft: Mengqi He, Sanyi Tang, Yanni Xiao.
+Writing – review & editing: Mengqi He, Sanyi Tang, Yanni Xiao.
+References
+1. Perra N. Non-pharmaceutical interventions during the COVID-19 pandemic: A review. Physics Reports.
+2021; 913:1–52. https://doi.org/10.1016/j.physrep.2021.02.001 PMID: 33612922
+2. Kermack WO, McKendrick AG. A contribution to the mathematical theory of epidemics. Proceedings of
+the Royal Society of London. Series A. 1927; 115(772):700–721.
+3. Viguerie A, Lorenzo G, Auricchio F, Baroli D, Hughes TJ, Patton A, et al. Simulating the spread of
+COVID-19 via a spatially-resolved susceptible–exposed–infected–recovered–deceased (SEIRD)
+model with heterogeneous diffusion. Applied Mathematics Letters. 2021; 111:106617. https://doi.org/
+10.1016/j.aml.2020.106617 PMID: 32834475
+4. Shayak B, Sharma MM, Gaur M, Mishra AK. Impact of reproduction number on the multiwave spreading
+dynamics of COVID-19 with temporary immunity: A mathematical model. International Journal of Infec-
+tious Diseases. 2021; 104:649–654. https://doi.org/10.1016/j.ijid.2021.01.018 PMID: 33444746
+5. Atangana A, Araz Sİ. Fractional stochastic differential equations: Applications to Covid-19 modeling.
+Springer Nature; 2022.
+6. Tang B, Wang X, Li Q, Bragazzi NL, Tang S, Xiao Y, et al. Estimation of the transmission risk of the
+2019-nCoV and its implication for public health interventions. Journal of Clinical Medicine. 2020; 9
+(2):462. https://doi.org/10.3390/jcm9020462 PMID: 32046137
+7. Ngonghala CN, Iboi E, Eikenberry S, Scotch M, MacIntyre CR, Bonds MH, et al. Mathematical assess-
+ment of the impact of non-pharmaceutical interventions on curtailing the 2019 novel Coronavirus. Math-
+ematical Biosciences. 2020; 325:108364. https://doi.org/10.1016/j.mbs.2020.108364 PMID: 32360770
+8. Aleta A, Martin-Corral D, Pastore y Piontti A, Ajelli M, Litvinova M, Chinazzi M, et al. Modelling the
+impact of testing, contact tracing and household quarantine on second waves of COVID-19. Nature
+Human Behaviour. 2020; 4(9):964–971. https://doi.org/10.1038/s41562-020-0931-9 PMID: 32759985
+9. Tang S, Wang X, Tang B, He S, Yan D, Huang C, et al. Threshold conditions for curbing COVID-19 with
+a dynamic zero-case policy derived from 101 outbreaks in China. BMC Public Health. 2023; 23(1):1–
+12. https://doi.org/10.1186/s12889-023-16009-8 PMID: 37280554
+10. Zhou W, Bai Y, Tang S. The effectiveness of various control strategies: An insight from a comparison
+modelling study. Journal of Theoretical Biology. 2022; 549:111205. https://doi.org/10.1016/j.jtbi.2022.
+111205 PMID: 35753357
+11. Tang B, Zhou W, Wang X, Wu H, Xiao Y. Controlling multiple COVID-19 epidemic waves: an insight
+from a multi-scale model linking the behaviour change dynamics to the disease transmission dynamics.
+Bulletin of Mathematical Biology. 2022; 84(10):106. https://doi.org/10.1007/s11538-022-01061-z
+PMID: 36008498
+12. Cui Q, Shi Z, Yimamaidi D, Hu B, Zhang Z, Saqib M, et al. Dynamic variations in COVID-19 with the
+SARS-CoV-2 Omicron variant in Kazakhstan and Pakistan. Infectious Diseases of Poverty. 2023; 12
+(1):18. https://doi.org/10.1186/s40249-023-01072-5 PMID: 36918974
+13. Wang H, Li T, Gao H, Huang C, Tang B, Tang S, et al. Lessons drawn from Shanghai for controlling
+highly transmissible SARS-CoV-2 variants: insights from a modelling study. BMC Infectious Diseases.
+2023; 23(1):1–16. https://doi.org/10.1186/s12879-023-08316-7 PMID: 37194011
+14. Li Q, Bai Y, Tang B. Modelling the pulse population-wide nucleic acid screening in mitigating and stop-
+ping COVID-19 outbreaks in China. BMC Infectious Diseases. 2023; 23(1):1–13. https://doi.org/10.
+1186/s12879-023-08265-1 PMID: 37138230
+15. van de Schoot R, Depaoli S, King R, Kramer B, Märtens K, Tadesse MG, et al. Bayesian statistics
+and modelling. Nature Reviews Methods Primers. 2021; 1(1):1. https://doi.org/10.1038/s43586-020-
+00001-2
+16. Lone SA, Anwar S, Sindhu TN, Jarad F. Some estimation methods for mixture of extreme value distribu-
+tions with simulation and application in medicine. Results in Physics. 2022; 37:105496. https://doi.org/
+10.1016/j.rinp.2022.105496
+PLOS COMPUTATIONAL BIOLOGY Combining the dynamic model and deep neural networks
+PLOS Computational Biology | https://doi.org/10.1371/journal.pcbi.1011535 October 18, 2023 21 / 23
+17. Sindhu TN, Shafiq A, Al-Mdallal QM. On the analysis of number of deaths due to Covid-19 outbreak
+data using a new class of distributions. Results in Physics. 2021; 21:103747. https://doi.org/10.1016/j.
+rinp.2020.103747 PMID: 33520628
+18. Sindhu TN, Hussain Z, Alotaibi N, Muhammad T. Estimation method of mixture distribution and model-
+ing of COVID-19 pandemic. AIMS Mathematics. 2022; 7(6):9926–9956. https://doi.org/10.3934/math.
+2022554
+19. Sindhu TN, Shafiq A, Al-Mdallal QM. Exponentiated transformation of Gumbel Type-II distribution for
+modeling COVID-19 data. Alexandria Engineering Journal. 2021; 60(1):671–689. https://doi.org/10.
+1016/j.aej.2020.09.060
+20. Lone SA, Sindhu TN, Shafiq A, Jarad F. A novel extended Gumbel Type II model with statistical infer-
+ence and Covid-19 applications. Results in Physics. 2022; 35:105377. https://doi.org/10.1016/j.rinp.
+2022.105377
+21. Shafiq A, Sindhu TN, Alotaibi N. A novel extended model with versatile shaped failure rate: Statistical
+inference with COVID-19 applications. Results in Physics. 2022; 36:105398. https://doi.org/10.1016/j.
+rinp.2022.105398 PMID: 35313535
+22. Rahman MS, Chowdhury AH, Amrin M. Accuracy comparison of ARIMA and XGBoost forecasting mod-
+els in predicting the incidence of COVID-19 in Bangladesh. PLoS Global Public Health. 2022; 2(5):
+e0000495. https://doi.org/10.1371/journal.pgph.0000495 PMID: 36962227
+23. Külah E, Cetinkaya YM, Özer AG, Alemdar H. COVID-19 forecasting using shifted Gaussian Mixture
+Model with similarity-based estimation. Expert Systems with Applications. 2023; 214:119034. https://
+doi.org/10.1016/j.eswa.2022.119034 PMID: 36277990
+24. Devlin J, Chang MW, Lee K, Toutanova K. Bert: Pre-training of deep bidirectional transformers for lan-
+guage understanding. arXiv preprint arXiv:1810.04805. 2018.
+25. Zhao M, Zhong S, Fu X, Tang M. Deep residual shrinkage networks for fault diagnosis. IEEE Transac-
+tions on Industrial Informatics. 2019; 16(7):4681–4690. https://doi.org/10.1109/TII.2019.2943898
+26. He K, Zhang X, Ren S, Sun J. Deep residual learning for image recognition. Proceedings of the IEEE
+Conference on Computer Vision and Pattern Recognition. 2016:770-778.
+27. Shafiq A, Colak AB, Sindhu TN. Reliability investigation of exponentiated Weibull distribution using IPL
+through numerical and artificial neural network modeling. Quality and Reliability Engineering Interna-
+tional. 2022; 38(7):3616–3631. https://doi.org/10.1002/qre.3155
+28. Shafiq A, Colak AB, Swarup C, Sindhu TN, Lone SA. Reliability analysis based on mixture of lindley dis-
+tributions with artificial neural network. Advanced Theory and Simulations. 2022; 5(8):2200100. https://
+doi.org/10.1002/adts.202200100
+29. Colak AB, Sindhu TN, Lone SA, Akhtar MT, Shafiq A. A comparative analysis of maximum likelihood
+estimation and artificial neural network modeling to assess electrical component reliability. Quality and
+Reliability Engineering International. 2022.
+30. Kamalov F, Rajab K, Cherukuri AK, Elnagar A, Safaraliev M. Deep Learning for Covid-19 Forecasting:
+state-of-the-art review. Neurocomputing. 2022; 511:142–154. https://doi.org/10.1016/j.neucom.2022.
+09.005 PMID: 36097509
+31. Zhou L, Zhao C, Liu N, Yao X, Cheng Z. Improved LSTM-based deep learning model for COVID-19 pre-
+diction using optimized approach. Engineering Applications of Artificial Intelligence. 2023; 122:106157.
+https://doi.org/10.1016/j.engappai.2023.106157 PMID: 36968247
+32. Jin W, Dong S, Yu C, Luo Q. A data-driven hybrid ensemble AI model for COVID-19 infection forecast
+using multiple neural networks and reinforced learning. Computers in Biology and Medicine. 2022;
+146:105560. https://doi.org/10.1016/j.compbiomed.2022.105560 PMID: 35551008
+33. Shafiq A, Colak AB, Sindhu TN, Lone SA, Alsubie A, Jarad F. Comparative study of artificial neural net-
+work versus parametric method in COVID-19 data analysis. Results in Physics. 2022; 38:105613.
+https://doi.org/10.1016/j.rinp.2022.105613 PMID: 35600673
+34. Xu L, Magar R, Farimani AB. Forecasting COVID-19 new cases using deep learning methods. Comput-
+ers in Biology and Medicine. 2022; 144:105342. https://doi.org/10.1016/j.compbiomed.2022.105342
+PMID: 35247764
+35. Utku A. Deep learning based hybrid prediction model for predicting the spread of COVID-19 in the
+world’s most populous countries. Expert Systems with Applications. 2023; 231:120769. https://doi.org/
+10.1016/j.eswa.2023.120769 PMID: 37334273
+36. Gautam Y. Transfer Learning for COVID-19 cases and deaths forecast using LSTM network. ISA
+Transactions. 2022; 124:41–56. https://doi.org/10.1016/j.isatra.2020.12.057 PMID: 33422330
+37. Raissi M, Perdikaris P, Karniadakis GE. Physics-informed neural networks: A deep learning framework
+for solving forward and inverse problems involving nonlinear partial differential equations. Journal of
+Computational Physics. 2019; 378:686–707. https://doi.org/10.1016/j.jcp.2018.10.045
+PLOS COMPUTATIONAL BIOLOGY Combining the dynamic model and deep neural networks
+PLOS Computational Biology | https://doi.org/10.1371/journal.pcbi.1011535 October 18, 2023 22 / 23
+38. Lu L, Meng X, Mao Z, Karniadakis GE. DeepXDE: A deep learning library for solving differential equa-
+tions. SIAM Review. 2021; 63(1):208–228. https://doi.org/10.1137/19M1274067
+39. Shaanxi Municipal Health Commission. [cited 8 Dec 2022]. Available from: http://sxwjw.shaanxi.gov.
+cn/.
+40. Health Commission of Guangdong Province. [cited 8 Dec 2022]. Available from: http://wsjkw.gd.gov.
+cn/.
+41. Jiangsu Commission of Health. [cited 8 Dec 2022]. Available from: http://wjw.jiangsu.gov.cn/.
+42. Hainan Health Committee. [cited 8 Dec 2022]. Available from: https://wst.hainan.gov.cn/.
+43. Health Commission of Xinjiang Uygur Autonomous Region. [cited 8 Dec 2022]. Available from: http://
+wjw.xinjiang.gov.cn/.
+44. Health Commission of Liaoning Province. [cited 20 July 2023]. Available from: https://wsjk.ln.gov.cn/.
+45. Pinkus A. Approximation theory of the MLP model in neural networks. Acta Numerica. 1999; 8:143–
+195. https://doi.org/10.1017/S0962492900002919
+46. Abadi M, Agarwal A, Barham P, Brevdo E, Chen Z, Citro C, et al. Tensorflow: Large-scale machine
+learning on heterogeneous distributed systems. arXiv preprint arXiv:1603.04467. 2016.
+47. Kingma DP, Ba J. Adam: A method for stochastic optimization. arXiv preprint arXiv:1412.6980. 2014.
+48. Tang B, Bragazzi NL, Li Q, Tang S, Xiao Y, Wu J. An updated estimation of the risk of transmission of
+the novel coronavirus (2019-nCov). Infectious Disease Modelling. 2020; 5:248–255. https://doi.org/10.
+1016/j.idm.2020.02.001 PMID: 32099934
+49. Tang B, Xia F, Tang S, Bragazzi NL, Li Q, Sun X, et al. The effectiveness of quarantine and isolation
+determine the trend of the COVID-19 epidemic in the final phase of the current outbreak in China. Inter-
+national Journal of Infectious Diseases. 2020; 95:288–293. https://doi.org/10.1016/j.ijid.2020.03.018
+PMID: 32171948
+50. Tang B, Xia F, Bragazzi NL, McCarthy Z, Wang X, He S, et al. Lessons drawn from China and South
+Korea for managing COVID-19 epidemic: insights from a comparative modeling study. ISA Transac-
+tions. 2022; 124:164–175. https://doi.org/10.1016/j.isatra.2021.12.004 PMID: 35164963
+51. Zhao Z, Wu J, Cai F, Zhang S, Wang Y. A hybrid deep learning framework for air quality prediction with
+spatial autocorrelation during the COVID-19 pandemic. Scientific Reports. 2023; 13(1):1015. https://
+doi.org/10.1038/s41598-023-28287-8 PMID: 36653488
+52. Rosenzweig ML. Paradox of enrichment: destabilization of exploitation ecosystems in ecological time.
+Science. 1971; 171(3969):385–387. https://doi.org/10.1126/science.171.3969.385 PMID: 5538935
+53. Flaxman S, Mishra S, Gandy A, Unwin HJT, Mellan TA, Coupland H, et al. Estimating the effects of
+non-pharmaceutical interventions on COVID-19 in Europe. Nature. 2020; 584(7820):257–261. https://
+doi.org/10.1038/s41586-020-2405-7 PMID: 32512579
+54. Lai S, Ruktanonchai NW, Zhou L, Prosper O, Luo W, Floyd JR, et al. Effect of non-pharmaceutical inter-
+ventions to contain COVID-19 in China. Nature. 2020; 585(7825):410–413. https://doi.org/10.1038/
+s41586-020-2293-x PMID: 32365354
+PLOS COMPUTATIONAL BIOLOGY Combining the dynamic model and deep neural networks
+PLOS Computational Biology | https://doi.org/10.1371/journal.pcbi.1011535 October 18, 2023 23 / 23
+
