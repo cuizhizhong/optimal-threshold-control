@@ -31,7 +31,7 @@ scenario1_threshold_landscape/
 从任意位置运行：
 
 ```powershell
-matlab -batch "run('C:\Me\Works\thesis\draft\3\scenario1_threshold_landscape\run_all.m')"
+matlab -batch "run('E:\work\draft\scenario1_threshold_landscape\run_all.m')"
 ```
 
 运行 `run_all.m` 时，如果已经存在 `current_run/`，脚本会先将其移动到：
@@ -47,7 +47,7 @@ archive_runs/run_YYYYMMDD_HHMMSS/
 已有 `current_run/output_csv/landscape_summary.csv` 后，可以单独重画某一类图，例如：
 
 ```powershell
-matlab -batch "run('C:\Me\Works\thesis\draft\3\scenario1_threshold_landscape\scripts\plot_heatmaps.m')"
+matlab -batch "run('E:\work\draft\scenario1_threshold_landscape\scripts\plot_heatmaps.m')"
 ```
 
 常用脚本：

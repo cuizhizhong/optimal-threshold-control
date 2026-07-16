@@ -64,7 +64,7 @@ scenario1_threshold_landscape/
 推荐入口：
 
 ```powershell
-matlab -batch "run('C:\Me\Works\thesis\draft\3\scenario1_threshold_landscape\run_all.m')"
+matlab -batch "run('E:\work\draft\scenario1_threshold_landscape\run_all.m')"
 ```
 
 `run_all.m` 会先运行 `scripts/generate_landscape_data.m`，再顺序运行各绘图和表格脚本。若已有 `current_run/`，`common/scenario1_params.m` 会先尝试归档到 `archive_runs/run_YYYYMMDD_HHMMSS/`。由于 Windows 权限可能拒绝移动已生成的 PDF/CSV，当前代码含复制归档回退：移动失败时复制旧 `current_run/` 到归档目录，并在原 `current_run/` 内覆盖本轮固定输出。
