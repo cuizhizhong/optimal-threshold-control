@@ -19,11 +19,19 @@
 - `code/`：情景一、情景二等 MATLAB 数值模拟；
 - `xian_control_comparison/`：西安 TDINN 控制、情景一阈值控制和常规控制的比较实验；
 - `hainan_control_comparison/`：海南疫情控制比较实验，结构类似西安模块，但当前重点仍以西安阈值控制分析为主；
-- `真实数据/`：原始数据文件目录，处理数据时优先从这里读取，不要直接修改原始数据文件。
+- `真实数据/`：原始数据文件目录，处理数据时优先从这里读取，不要直接修改原始数据文件；
+- `scenario1_inflection/`：情景一 $q_c(t)$ 拐点分析的计算与配图模块（Python），产出主论文 §4.3/§4.4/§6 的三张拐点图；含修改记录 `README.md`；
+- `xian_dom/`：§8 有效人口占优分析的绘图与求解脚本（Python），产出主论文 §8.7 的三张占优图（图 20–22）；含 `README.md`。
 
 其中，西安比较的具体执行细则由 `xian_control_comparison/AGENTS.md` 管理；根目录只保留总原则和论文草稿层面的上下文。
 
 若根目录规范与子目录 `AGENTS.md` 对同一问题给出不同细节，以子目录 `AGENTS.md` 为准；根目录只提供总研究口径、术语和编辑原则。
+
+## 近期进展与修改记录
+
+- **2026-07-24 §8「尺度不变性与有效人口占优」两轮修订（已完成并编译通过，39 页，无未定义引用）**：（一）**归一化记号统一**：§8 全节改为大写=人数、小写=分数（$\sigma_c\to s_c$、$\bar\sigma\to\bar s$、$\iota\to i_{\max}^{no}$、写全的 $S^\ast/N\to s^*$），并修复 `elegantpaper.cls` 将 `corollary`/`remark` 定义为 `\newtheorem*`（无编号）导致 `\label`/`\ref` 捕获杂散计数器、两条推论撞号的问题——在导言区新增带编号的 `corollaryn`/`remarkn` 环境（与定理共用 `theorem` 计数器）。（二）**占优分析重构**：TDINN 基准口径由旧稿"逐 $N$ 只重拟合 $I_0$ 时绝对轨迹近似不变"（数值上不成立，$N\sim10^3$–$10^4$ 漂移 50–114%）改为"固定的现实参照"——$I_{\rm peak}^{\rm T}=151.90$、$J^{\rm T}=49.35$、$I_{t\rm cum}^{\rm T}=2096.76$、$t_{\rm end}^{\rm T}=45.27$ d，发生过的事用固定数、反事实随 $N$ 变；§8.4 新增清零占优推论（**推论 8.6** `cor:clr`）与强度量/广延量二分注记（**注记 8.7** `rem:dom:dichotomy`）；§8.5/§8.6 数值更新与局限重写；§8.7 换成三张零缩放新图（图 20 `fig_dom_combined` + 图 21/22 Panel A/B，均按 `\textwidth`=451.28 bp 渲染）；**§9 讨论与局限**起草。占优分析的绘图/求解脚本置于新建 `xian_dom/`（见其 `README.md`）。
+
+- **2026-07-21 情景一 $q_c(t)$ 拐点分析完整化（已完成并编译通过）**：在原拐点定理（现 **定理 4.3**）基础上补齐三块——拐点位置与两端消失（新 **§4.3**）、曲率幅度与"偏离首尾直线"非单调性（新 **§4.4**）、诊断图（**§6** 图 4）；记号统一新增 $\qinf:=q_c(2\bar S)=1-\frac{1}{2(1-\beta)}$，把 §8.2 原未定义的 $q^\star$ 全部改为 $\qinf$。新增两小节使原 §4.3–§4.5（Ṡ与t₂、清零时间、总累计）顺移为 **§4.5–§4.7**（正文全用 `\ref`，无硬编码节号）。计算与配图代码、数值锚点、逐条改动、遗留项详见 `scenario1_inflection/README.md`。
 
 ## 论文草稿总体思路
 
@@ -212,15 +220,17 @@ xelatex -interaction=nonstopmode xian_control_comparison.tex
 xelatex -interaction=nonstopmode xian_control_comparison.tex
 ```
 
-从项目根目录编译主论文：
+从项目根目录编译主论文（使用 biblatex/biber 管理参考文献，需跑 biber）：
 
 ```powershell
 cd paper_elegantpaper_relayout
 xelatex -interaction=nonstopmode flatten_curve_analysis_cn.tex
+biber flatten_curve_analysis_cn
+xelatex -interaction=nonstopmode flatten_curve_analysis_cn.tex
 xelatex -interaction=nonstopmode flatten_curve_analysis_cn.tex
 ```
 
-修改图、表、引用、标签或公式编号后，LaTeX 应编译两遍。
+主论文有 live citations（`references.bib` + `\printbibliography`），只跑两遍 xelatex 会使 `\cite` 无法解析（显示 `[?]`）。改图、表、引用、标签或公式编号后按上述四步（xelatex→biber→xelatex→xelatex）重编；仅微调正文且未动引用时，两遍 xelatex 即可。（西安比较文档 `xian_control_comparison.tex` 用内嵌 `thebibliography`，不需要 biber，仍是两遍。用 PowerShell 跑 xelatex，不要用 Git Bash——后者会触发 `fwrite: Invalid argument`。）
 
 ## 编辑规则
 

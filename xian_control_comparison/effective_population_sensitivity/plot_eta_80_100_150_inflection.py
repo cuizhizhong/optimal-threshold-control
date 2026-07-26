@@ -82,6 +82,34 @@ def compute_inflection(
     q_second_left = q_second(t_inflection - side_offset)
     q_second_right = q_second(t_inflection + side_offset)
 
+    numeric_time = np.linspace(t1, t2, 20001)
+    numeric_s = s_bar + (s_star - s_bar) * np.exp(-k * (numeric_time - t1))
+    numeric_q = 1.0 - params.gamma * params.N / (
+        params.beta * params.c0 * numeric_s
+    )
+    numeric_q_first = np.gradient(numeric_q, numeric_time, edge_order=2)
+    numeric_q_second = np.gradient(numeric_q_first, numeric_time, edge_order=2)
+    interior = np.arange(10, len(numeric_time) - 11)
+    sign_change = interior[
+        (numeric_q_second[interior] < 0.0)
+        & (numeric_q_second[interior + 1] >= 0.0)
+    ]
+    if len(sign_change) != 1:
+        raise RuntimeError(
+            f"eta={eta:g}: 二阶差分得到 {len(sign_change)} 个内部负到正变号点。"
+        )
+    left_index = int(sign_change[0])
+    y_left = float(numeric_q_second[left_index])
+    y_right = float(numeric_q_second[left_index + 1])
+    zero_fraction = -y_left / (y_right - y_left)
+    t_inflection_numeric = float(
+        numeric_time[left_index]
+        + zero_fraction * (numeric_time[left_index + 1] - numeric_time[left_index])
+    )
+    q_inflection_numeric = float(np.interp(t_inflection_numeric, numeric_time, numeric_q))
+    q_inflection_theory = float(1.0 - 1.0 / (2.0 * (1.0 - params.beta)))
+    beta_recovered = float(1.0 - 1.0 / (2.0 * (1.0 - q_inflection_numeric)))
+
     state_error = abs(s_at_inflection - 2.0 * s_bar)
     state_tolerance = 1.0e-9 * max(1.0, 2.0 * s_bar)
     if state_error > state_tolerance:
@@ -103,6 +131,14 @@ def compute_inflection(
         "S_target_2Sbar": float(2.0 * s_bar),
         "S_inflection_error": float(state_error),
         "q_at_inflection": float(q_at_inflection),
+        "q_inflection_theory": q_inflection_theory,
+        "q_inflection_theory_residual": float(q_at_inflection - q_inflection_theory),
+        "t_inflection_numeric": t_inflection_numeric,
+        "t_inflection_numeric_error": float(t_inflection_numeric - t_inflection),
+        "q_inflection_numeric": q_inflection_numeric,
+        "q_inflection_numeric_error": float(q_inflection_numeric - q_inflection_theory),
+        "beta_recovered_numeric": beta_recovered,
+        "beta_recovery_error": float(beta_recovered - params.beta),
         "q_second_left": float(q_second_left),
         "q_second_right": float(q_second_right),
     }
@@ -211,6 +247,15 @@ def plot_trajectories(
         label=rf"$q_0={params.q0:g}$",
         zorder=1,
     )
+    q_star = 1.0 - 1.0 / (2.0 * (1.0 - params.beta))
+    ax_q.axhline(
+        q_star,
+        color="#222222",
+        lw=1.0,
+        linestyle="--",
+        label=rf"$q^\star={q_star:.4f}$",
+        zorder=1,
+    )
 
     annotation_offsets = {80.0: (5, 12), 100.0: (5, -22), 150.0: (5, 12)}
     for eta in ETA_VALUES:
@@ -243,7 +288,7 @@ def plot_trajectories(
     ax_q.set_ylabel(r"$q(t)$")
     ax_q.set_title(r"(b) Quarantine control and inflection times", loc="left", fontsize=10)
     ax_q.set_ylim(0.29, 0.90)
-    ax_q.legend(loc="upper right", ncol=2, columnspacing=1.2, handlelength=2.4)
+    ax_q.legend(loc="upper right", ncol=3, columnspacing=1.0, handlelength=2.2)
 
     max_time = float(all_series["t"].max())
     ax_q.set_xlim(0.0, max_time)
@@ -326,7 +371,18 @@ def main() -> None:
     print(f"Generated: {OUTPUT_DIR / (FIGURE_STEM + '.png')}")
     print(f"Generated: {OUTPUT_DIR / TIMESERIES_NAME}")
     print(f"Generated: {OUTPUT_DIR / SUMMARY_NAME}")
-    print(summary[["eta", "t1", "t_inflection", "t2", "clear_time", "plateau_max_error"]].to_string(index=False))
+    print(
+        summary[
+            [
+                "eta",
+                "t_inflection",
+                "t_inflection_numeric",
+                "q_inflection_numeric_error",
+                "beta_recovered_numeric",
+                "beta_recovery_error",
+            ]
+        ].to_string(index=False)
+    )
 
 
 if __name__ == "__main__":

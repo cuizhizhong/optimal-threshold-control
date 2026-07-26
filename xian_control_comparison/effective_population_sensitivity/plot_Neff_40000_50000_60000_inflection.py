@@ -45,7 +45,12 @@ COLORS = {40_000.0: "#0072B2", 50_000.0: "#D55E00", 60_000.0: "#009E73"}
 LINESTYLES = {40_000.0: "-", 50_000.0: "--", 60_000.0: "-."}
 
 
-def plot_trajectories(all_series: pd.DataFrame, summary: pd.DataFrame, q0: float) -> None:
+def plot_trajectories(
+    all_series: pd.DataFrame,
+    summary: pd.DataFrame,
+    q0: float,
+    beta: float,
+) -> None:
     """绘制固定 eta、改变 N_eff 的 I(t) 与 q(t) 双面板图。"""
 
     plt.rcParams.update(
@@ -102,6 +107,15 @@ def plot_trajectories(all_series: pd.DataFrame, summary: pd.DataFrame, q0: float
         label=rf"$q_0={q0:g}$",
         zorder=1,
     )
+    q_star = 1.0 - 1.0 / (2.0 * (1.0 - beta))
+    ax_q.axhline(
+        q_star,
+        color="#222222",
+        lw=1.0,
+        linestyle="--",
+        label=rf"$q^\star={q_star:.4f}$",
+        zorder=1,
+    )
 
     annotation_offsets = {
         40_000.0: (5, 12),
@@ -138,7 +152,7 @@ def plot_trajectories(all_series: pd.DataFrame, summary: pd.DataFrame, q0: float
     ax_q.set_ylabel(r"$q(t)$")
     ax_q.set_title(r"(b) Quarantine control and inflection times", loc="left", fontsize=10)
     ax_q.set_ylim(0.29, 0.90)
-    ax_q.legend(loc="upper right", ncol=2, columnspacing=1.2, handlelength=2.4)
+    ax_q.legend(loc="upper right", ncol=3, columnspacing=1.0, handlelength=2.2)
 
     max_time = float(all_series["t"].max())
     ax_q.set_xlim(0.0, max_time)
@@ -227,7 +241,12 @@ def main() -> None:
 
     all_series.to_csv(OUTPUT_DIR / TIMESERIES_NAME, index=False, encoding="utf-8-sig")
     summary.to_csv(OUTPUT_DIR / SUMMARY_NAME, index=False, encoding="utf-8-sig")
-    plot_trajectories(all_series, summary, float(solutions[0][1].q0))
+    plot_trajectories(
+        all_series,
+        summary,
+        float(solutions[0][1].q0),
+        float(solutions[0][1].beta),
+    )
 
     print(f"Generated: {OUTPUT_DIR / (FIGURE_STEM + '.pdf')}")
     print(f"Generated: {OUTPUT_DIR / (FIGURE_STEM + '.png')}")
@@ -238,11 +257,11 @@ def main() -> None:
             [
                 "N_eff",
                 "I0_fit",
-                "t1",
                 "t_inflection",
-                "t2",
-                "clear_time",
-                "plateau_max_error",
+                "t_inflection_numeric",
+                "q_inflection_numeric_error",
+                "beta_recovered_numeric",
+                "beta_recovery_error",
             ]
         ].to_string(index=False)
     )

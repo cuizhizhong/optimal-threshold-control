@@ -1,5 +1,7 @@
 # AGENTS.md - 西安控制比较下一阶段协作规范
 
+> 目录变更（2026-07，论文整合）：`fit_method_comparison/`、`tdinn_q_only_comparison/`、`low_eta_analysis/` 已归档至仓库根目录 `archive_unused/`；参考资料（He\_Tang PDF/txt、pptx 等）移至根目录 `refs/`。本文件中出现的这些名称应理解为其归档后位置。当前 `xian_control_comparison/` 下仅保留 `effective_population_sensitivity/` 与 `threshold_landscape_analysis/` 两个有效子模块。
+
 ## 用途
 
 本文件夹用于西安疫情控制策略的理论与数值分析，主要比较三类策略：
@@ -29,9 +31,9 @@
 - `xian_control_comparison_results_table.tex`
 - `xian_eta_sensitivity_table.tex`
 
-低阈值探索目录：
+低阈值探索目录（已归档）：
 
-- `low_eta_analysis/`
+- `archive_unused/low_eta_analysis/`
 
 除非用户明确要求，不要修改历史备份文件夹，例如 `eta002_outputs`。
 

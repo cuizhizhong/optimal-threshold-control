@@ -1,2 +1,30 @@
 # 临时文件,不需要存档
 tmp/
+
+# LaTeX 编译中间产物（可由源文件重新生成，不纳入版本控制）
+*.aux
+*.log
+*.out
+*.bcf
+*.run.xml
+*.fls
+*.fdb_latexmk
+*.xdv
+*.synctex.gz
+*.synctex.gz.sum.synctex
+*.synctex
+
+# LaTeX biber 书目产物（由 biber 重新生成）
+*.bbl
+*.blg
+
+# Python 字节码缓存
+__pycache__/
+*.pyc
+
+# 绘图脚本的本地产物与缓存（成品图另行复制到 figures/）
+dominance_panels/
+panelB.pkl
+
+# 编辑器本地配置
+.vscode/
