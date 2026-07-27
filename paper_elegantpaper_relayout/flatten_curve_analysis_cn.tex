@@ -59,6 +59,7 @@
 \dfrac{dI_q(t)}{dt} = \dfrac{\beta c(t) q(t)}{N} S(t)I(t) - \delta_q I_q(t), \\[.8em]
 \dfrac{dR(t)}{dt} = \gamma I(t) + \delta_q I_q(t).
 \end{cases}
+\label{eq:model:full}
 \end{equation}
 
 \begin{figure}[h]
@@ -124,7 +125,7 @@ S(t_2)=S_c\doteq \frac{ \gamma N}{\beta c_0(1-q_0)}.
 
 
 \section{常规阶段首次积分与触发条件}
-由于恢复者 $R$、隔离易感者 $S_q$ 和隔离感染者 $I_q$ 仓室与(1)中的前两个方程是解耦的，因此我们只需要考虑以下的二维系统
+由于恢复者 $R$、隔离易感者 $S_q$ 和隔离感染者 $I_q$ 仓室与式~\eqref{eq:model:full} 中的前两个方程是解耦的，因此我们只需要考虑以下的二维系统
 \begin{equation}
 \begin{cases}
 \dot{S}(t) = - \beta_1(t) S(t) I(t) \\
@@ -387,7 +388,7 @@ q'_c(t)=\frac{\gamma N}{\beta c_0} \frac{\dot{S}(t)}{S^{2}(t)}=- \frac{\frac{\ga
 \begin{theorem}[阈值隔离控制的拐点]\label{thm:s1:inflection}
     假设$S_0>S_c$,$I_0<\eta<I_{\max}^{no}$,则阈值控制期内$q_c(t)$存在唯一拐点$t_{\mathrm{inf}}$,当且仅当$S_c<2\bar S<S^*$，等价地
     \[\frac{1}{2}<(1-\beta)(1-q_0)<\frac{-W_{-1}\left(-\frac{1}{S_c}\exp\left[-\frac{C_0-\eta}{\rho_1}\right]\right)}{2}\]
-    当内部拐点存在时,其对于的易感人数和发生时间分别为:
+    当内部拐点存在时,其对应的易感人数和发生时间分别为:
     \[
     S(t_{inf})=2\bar S,\quad
     t_{\mathrm{inf}}
@@ -499,7 +500,7 @@ $\lambda\to0$ 表示拐点靠近 $t_1$，$\lambda\to1$ 表示靠近 $t_2$。时�
   \item $\eta$（即 $\theta=\eta/N$）只经前段因子：由命题~\ref{prop:s1:sensitivity} 的 $S^*_\eta<0$ 及 $\bar S$ 不含 $\eta$，$\eta$ 增大使 $S^*/\bar S$ 下降，故 $\lambda$ 单调减小，拐点向 $t_1$ 端移动。
   \item $c_0$ 只经前段因子（$\bar S/S_c=(1-\beta)(1-q_0)$ 不含 $c_0$）：由命题~\ref{prop:s1:sensitivity} 的 $S^*_{c_0}>0$ 及 $\bar S\propto1/c_0$，$c_0$ 增大使 $S^*/\bar S$ 上升，故 $\lambda$ 单调增大，拐点向 $t_2$ 端移动。
   \item $\beta$ 同时经前、后两段，且两通道同向：$\beta$ 增大使后段因子减小（推 $\lambda$ 增），又使 $\bar S\propto(1-\beta)/\beta$ 减小、从而 $S^*/\bar S$ 上升（推 $\lambda$ 增）。数值上 $\lambda$ 随 $\beta$ 单调增大，拐点向 $t_2$ 端移动。
-  \item $q_0$ 同时经前、后两段，但两通道反向：$q_0$ 增大使后段因子减小（推 $\lambda$ 增），却使 $S^*$ 及前段因子下降（推 $\lambda$ 减；$\bar S$ 不含 $q_0$），故净方向一般不单调。数值上，第~\ref{sec:num}节参数下 $\lambda$ 在 $q_0\lesssim0.3$ 上随 $q_0$ 增大（净向 $t_2$），但在整个可行区间上非单调；在较低 $\beta$（如 $\beta=0.10$）背景下则先增后减。
+  \item $q_0$ 同时经前、后两段，但两通道反向：$q_0$ 增大使后段因子减小（推 $\lambda$ 增），却使 $S^*$ 及前段因子下降（推 $\lambda$ 减；$\bar S$ 不含 $q_0$），故净方向依 $\beta$ 而异。数值上，第~\ref{sec:num}节参数（$\beta=0.155$）下 $\lambda$ 在拐点存在区内几乎全程随 $q_0$ 递增（直到 $q_0\approx0.389$，占存在区约 $98\%$）；仅在 $2\bar S\to S^\ast$ 的邻近（约占存在区 $2\%$）$\lambda$ 转降，但那里 $\lambda\to0$ 是拐点经 $t_1$ 端掉出的定义结果，而非后段通道反转所致。两通道反向竞争的实质效应只在较低 $\beta$ 显现：$\beta=0.12$ 时递减段约占存在区 $32\%$，$\beta=0.10$ 时约占 $63\%$，此时 $\lambda$ 明显先增后减。
 \end{itemize}
 其中 $S^*$ 的方向可由同一直觉读出：提高阈值 $\eta$、降低接触率 $c_0$、减小传播概率 $\beta$ 或提高基线隔离率 $q_0$，都使系统在触及阈值前消耗更多易感者，故启动点 $S^*$ 下降。但该直觉只固定 $S^*$（进而前段因子）的方向；$q_0$ 因另有后段通道与之反向，其对 $\lambda$ 的净移动不能据此判断。
 
@@ -1370,7 +1371,7 @@ N=763,\quad S_0=762,\quad I_0=1,\quad
 \]
 常规控制下的再生数为:
 \[
-R_0=\frac{\beta c_0(1-q_0) S_0}{\gamma N}\approx 4.3560.
+R_0=\frac{\beta c_0(1-q_0)}{\gamma}\approx 4.3560.
 \]
 
 医疗容量阈值仍设为总人数的 $5\%$，即
@@ -1789,6 +1790,12 @@ $(\Delta t)_\eta<0$（及 $S^\ast_\eta<0$）。对 $J$：由式~\eqref{eq:dom:Jt
 当 $N>I_{\rm peak}^{\rm T}/i_{\max}^{no}$ 时右端取 $I_{\rm peak}^{\rm T}/N$，化简即~\eqref{eq:dom:Nstar}。
 \end{proof}
 
+\begin{remark}
+条件 (i) 中 $I_{\rm peak}^{\rm thr}=\eta$ 是策略定义使然（平台把峰值精确压到 $\eta$），
+故 (i) 实为设计约束 $\eta<I_{\rm peak}^{\rm T}$，而非控制效果的比较；占优的实质内容在 (ii)(iii)
+（成本、时长）及后续推论的广延量约束，不应将峰值一项读作方法优势。
+\end{remark}
+
 \begin{corollaryn}[成本上限与耐心无关]\label{cor:ceiling}
 $\theta_{\rm dur}(T_{\max})\to0$（$T_{\max}\to\infty$），故 $N^\ast(T_{\max})$ 单调不减且
 $N^\ast\le N^\ast_\infty:=I_{\rm peak}^{\rm T}/\theta_{\rm cost}$。即使允许任意长平台期，占优区域的有效
@@ -1799,7 +1806,7 @@ $N^\ast\le N^\ast_\infty:=I_{\rm peak}^{\rm T}/\theta_{\rm cost}$。即使允许
 情景一到清零的总累计感染由定理~\ref{thm:s1:Itcum} 的三段公式给出，记
 $I_{t\rm cum}^{\rm thr}=N\,h(\theta)$。其中 $h(\theta)$ 主要依赖 $\theta$（进入段与平台段），退出段经由
 $S_{\rm end}$（式~\eqref{eq:s1:Send}，清零判据 $I=1$ 即 $i=1/N$）带一个弱 $1/N$ 依赖，故严格地
-$h=h(\theta,N)$。$h$ 关于 $\theta$ 单调递增（数值上 $h\approx0.18$）。若再要求
+$h=h(\theta,N)$。数值上 $h$ 关于 $\theta$ 单调递增（本文参数下 $h\approx0.18$）。若再要求
 \emph{(iv)} $I_{t\rm cum}^{\rm thr}\le I_{t\rm cum}^{\rm T}$，即 $N\,h(\theta,N)\le I_{t\rm cum}^{\rm T}$，
 则由 $h$ 随 $\theta$ 递增，占优带内累计在下端 $\theta=\max(\theta_{\rm cost},\theta_{\rm dur})$ 处最小，故临界
 \begin{equation}
@@ -1823,7 +1830,7 @@ $h=h(\theta,N)$。$h$ 关于 $\theta$ 单调递增（数值上 $h\approx0.18$）
 情景一到动态清零的时刻 $t_{\rm end}$ 由定理~\ref{thm:s1:tend} 给出。与累计不同，
 $t_{\rm end}$ 不是 $\theta$ 的函数：平台段贴边维持使 $S$ 的消耗速率正比于 $\eta$，
 而退出段经 $S_{\rm end}$（式~\eqref{eq:s1:Send}，清零判据 $I=1$ 即 $i=1/N$）带绝对尺度，
-故 $t_{\rm end}=t_{\rm end}(\theta,N)$，在固定 $\theta$ 下随 $N$ 递增。若再要求
+故 $t_{\rm end}=t_{\rm end}(\theta,N)$，数值上在固定 $\theta$ 下随 $N$ 递增。若再要求
 \emph{(v)} $t_{\rm end}^{\rm thr}\le t_{\rm end}^{\rm T}$，
 则在占优带内该约束给出一条 $(N,\eta)$ 平面上的曲线边界
 \begin{equation}
@@ -1831,8 +1838,8 @@ $t_{\rm end}$ 不是 $\theta$ 的函数：平台段贴边维持使 $S$ 的消耗
   \label{eq:dom:clrarc}
 \end{equation}
 其占优侧为小 $N$ 一侧；记其与给定 $\eta$ 的交点为 $N_{\rm clr}(\eta)$。由式~\eqref{eq:dom:Nfloor}，
-有信息量的区间为 $N\in[\,I_{t\rm cum}^{\rm T},\,N_{\rm clr}(\eta)\,]$。数值上该区间远小于
-$\mathcal{W}_{\rm pcd}$，也小于累计约束给出的区间（第~\ref{sec:dom:xian}~节）。
+有信息量的区间为 $N\in[\,I_{t\rm cum}^{\rm T},\,N_{\rm clr}(\eta)\,]$。数值上该区间远小于占优带
+在同一 $\eta$ 上的 $N$ 跨度，也小于累计约束给出的区间（第~\ref{sec:dom:xian}~节）。
 \end{corollaryn}
 
 \begin{remarkn}[强度量与广延量的二分]\label{rem:dom:dichotomy}
@@ -1847,8 +1854,8 @@ $\mathcal{W}_{\rm pcd}$，也小于累计约束给出的区间（第~\ref{sec:do
 \label{sec:dom:xian}
 
 取 $\beta=0.1498,\gamma=0.2953,c_0=12.8872,q_0=0.3230$，$S_0/N\approx1$。TDINN 基准取到清零口径下
-的西安全市重拟合值 $\bar I_{\rm peak}^{\rm T}=151.90$、$\bar J^{\rm T}=49.35$、$\bar I_{t\rm cum}^{\rm T}=2096.76$
-（近似锚定，见局限）。由式~\eqref{eq:s1:Imax-no} 得 $i_{\max}^{no}\approx0.1047$。数值求解~\eqref{eq:dom:thetadefs}：
+的西安全市重拟合值 $I_{\rm peak}^{\rm T}=151.90$、$J^{\rm T}=49.35$、$I_{t\rm cum}^{\rm T}=2096.76$
+（固定的现实参照，口径见第~\ref{sec:dominance}~节开头）。由式~\eqref{eq:s1:Imax-no} 得 $i_{\max}^{no}\approx0.1047$。数值求解~\eqref{eq:dom:thetadefs}：
 \[
   \theta_{\rm int}\approx5.612\times10^{-3},\quad
   \theta_{\rm dur}(45\text{d})\approx3.762\times10^{-3},\quad
@@ -1862,7 +1869,7 @@ $\mathcal{W}_{\rm pcd}$，也小于累计约束给出的区间（第~\ref{sec:do
 （$N^\ast=I_{\rm peak}^{\rm T}/\max(\theta_{\rm cost},\theta_{\rm dur})$）为
 \[
   N^\ast(45\text{d})\approx4.04\times10^{4},\quad
-  N^\ast(60\text{d})\approx5.4\times10^{4},\quad
+  N^\ast(60\text{d})\approx5.37\times10^{4},\quad
   N^\ast(90\text{d})\approx8.03\times10^{4},\quad
   N^\ast_\infty\approx9.17\times10^{4}.
 \]
@@ -1873,7 +1880,7 @@ $T_{\max}\approx103$ d：$T_{\max}$ 大于该值时成本约束绑定（$N^\ast=
 两条广延量边界（推论~\ref{cor:cum}、\ref{cor:clr}）由求解器逐点求根得到，均为微弯弧线而非竖直线：
 \begin{itemize}
   \item \textbf{累计边界} $N\,h(\theta,N)=I_{t\rm cum}^{\rm T}$：自 $(N,\eta)=(9471,\,151.90)$ 延伸到
-  $(12177,\,10)$，$\eta=100$ 处 $N_{\rm cum}\approx1.011\times10^{4}$。沿弧 $h$ 由 $0.172$ 变到 $0.221$，
+  $(12177,\,10)$，$\eta=100$ 处 $N_{\rm cum}\approx1.011\times10^{4}$。沿弧 $h$ 由 $0.221$（$\eta=151.90$ 端）降到 $0.172$（$\eta=10$ 端），
   故 $h\approx\text{const}$ 的竖直近似 $N\lesssim N^\ast_{\rm cum}\approx1.17\times10^{4}$ 只是其粗化。
   该弧在 $(N,\eta)\approx(11764,\,19.48)$ 穿出成本线；穿出后等值线继续存在，但 $\mathcal{W}_{\rm cum}$
   的实际边界在该处已改由成本线给出。
@@ -1884,7 +1891,7 @@ $T_{\max}\approx103$ d：$T_{\max}$ 大于该值时成本约束绑定（$N^\ast=
 其中 $N^\ast_{\rm cum}$ 取占优带下端 $\theta_{\rm bind}=\max(\theta_{\rm cost},\theta_{\rm dur})$、到清零口径
 （$s_{\rm end}\approx0.172$，$h\approx0.180$）。（口径区分：第~\ref{sec:scaling}节折叠用到 $t_2$ 的累计分数（$\theta$-only），此处与局限的 $h$ 是到清零的三段量，退出段经 $s_{\rm end}$ 带弱 $1/N$ 依赖。）作为定位，$N=5\times10^{4}$、$\eta=100$（$\theta=0.002$）落在
 命题~\ref{prop:dom:region} 的占优带内（取 $T_{\max}=150$ d）：峰值 $100<151.90$、
-$J=40.25<49.35$、$\Delta t=85.07$ 天；但其到清零累计 $Nh\approx9.03\times10^{3}>\bar I_{t\rm cum}^{\rm T}$
+$J=40.25<49.35$、$\Delta t=85.07$ 天；但其到清零累计 $Nh\approx9.03\times10^{3}>I_{t\rm cum}^{\rm T}$
 且清零 $t_{\rm end}\approx176$ d $>45.27$ d，(iv)(v) 均不满足，与推论~\ref{cor:cum}、\ref{cor:clr} 一致。
 （第~\ref{sec:xian}~节报的 $J\approx40.77$ 是全市口径同 $\theta$ 的值；二者约 $1.3\%$ 的差异
 来自逐 $N$ 重拟合 $I_0$，见第~\ref{sec:dom:limits}~节 (5)。）
@@ -1936,8 +1943,12 @@ $N=5.8\times10^3$ 时 $39.4$、$N\approx2.1\times10^3$ 时 $44.3$，即全市的
 而非标定过的预测；而两条弧线给出的占优区恰好落在该区间，结论的可信度相应打折。
 若后续对每个 $N_{\rm eff}$ 重新拟合全部控制参数（而非只拟合 $I_0$），该退化可望消除。
 
-(4) \textbf{有效池下界与触发域墙。} 由式~\eqref{eq:dom:Nfloor}，$N<I_{t\rm cum}^{\rm T}=2096.76$ 时
-广延量比较平凡成立，不具信息量；故清零边界的有信息区间为 $N\in[2.10\times10^{3},\,N_{\rm clr}]$。
+(4) \textbf{有效池下界与触发域墙。} 由式~\eqref{eq:dom:Nfloor}，当 $N<I_{t\rm cum}^{\rm T}=2096.76$ 时，
+累计约束因 $h<1$ 而算术必然成立（$Nh<N<I_{t\rm cum}^{\rm T}$），不具信息量；清零约束则未必自动满足
+（数值上 $\eta=10$ 处 $N_{\rm clr}\approx1.1\times10^{3}$，故 $N\in(1.1\times10^{3},2.10\times10^{3})$ 上仍有
+$t_{\rm end}>t_{\rm end}^{\rm T}$）。但两条广延量约束的下界均取同一 $N\ge I_{t\rm cum}^{\rm T}$：其依据是
+有效混合池若装不下真实疫情的总累计感染，$N_{\rm eff}$ 的重解释本身在物理上失效，而非比较“平凡”。
+故清零边界的有信息区间为 $N\in[2.10\times10^{3},\,N_{\rm clr}]$。
 另有一重更弱的限制：逐 $N$ 拟合的 $I_0$ 随 $N$ 减小而增大，在 $N\approx1.12\times10^{3}$ 处越过 $1$，
 此时“首例触发控制”的前提失效。当前参数下前者先绑定，域墙不起作用。
 
@@ -1945,6 +1956,12 @@ $N=5.8\times10^3$ 时 $39.4$、$N\approx2.1\times10^3$ 时 $44.3$，即全市的
 $t_1$ 轻微漂移，“$\Delta t,J$ 只依赖 $\theta$”降为数值近似（见第~\ref{sec:scaling}~节）。
 量级上，$\theta=0.002$ 处 $J$ 由全市的 $40.77$ 变为 $N=5\times10^{4}$ 的 $40.25$（约 $1.3\%$）；
 $\theta_{\rm cost}$ 本身也带同量级的 $N$ 依赖（在 $N=2\times10^{4}$ 上反查得 $J=49.12$ 而非 $49.35$）。
+除此 $N$ 依赖外，$I_0$ 的标定口径还带来一层单独的差异，且它在图~\ref{fig:dom} 上并非一致地无害：
+直线族与累计弧对 $I_0$ 口径几乎不敏感（$\theta_{\rm cost}$、$I_{t\rm cum}$ 随口径切换的变化 $\lesssim0.1\%$，
+因二者只经 $\theta$ 及弱 $1/N$ 进入），但清零弧经 $t_1$ 对 $I_0$ 敏感，其端点取逐 $N$ 重拟合口径
+（隐含 $I_0$ 由 $\sim10^{-3}$ 升到 $\sim10^{-2}$）；若改用归一化初值口径，清零弧将整体左移约一倍
+（$\eta=100$ 处 $N_{\rm clr}$ 由约 $4602$ 移到约 $2000$）。故清零边界的绝对位置比其余边界更依赖 $I_0$
+的标定口径，这与 (3) 所述小 $N$ 端拟合退化是同一根源。
 
 (6) 小 $N$ 的物理实现分两类（自然有界单元 vs 封控造池），后者靠空间分区/封控实现，该分区本身
 即一种接触控制、成本未计入 $J$；第~\ref{sec:dom:xian}~节的“指标依赖性与物理口径”注记已分层讨论。
@@ -1972,9 +1989,9 @@ $\mathcal{W}_{\rm pcd}=\{(N,\eta):\max(\theta_{\rm cost},\theta_{\rm dur})N<\eta
 按注记~\ref{rem:dom:dichotomy} 的二分，图~\ref{fig:dom} 分两个面板：面板 (a) 画\emph{直线族}，
 即上述四条强度量边界；面板 (b) 在同一坐标下画\emph{弧线族}，即推论~\ref{cor:cum} 的累计边界与
 推论~\ref{cor:clr} 的清零边界，二者围出的区域满足
-$\mathcal{W}_{\rm cum}=\mathcal{W}_{\rm pcd}\cap\{N h\le I_{t\rm cum}^{\rm T}\}$、
-$\mathcal{W}_{\rm clr}=\mathcal{W}_{\rm pcd}\cap\{t_{\rm end}\le t_{\rm end}^{\rm T}\}$，
-且 $\mathcal{W}_{\rm clr}\subset\mathcal{W}_{\rm cum}\subset\mathcal{W}_{\rm pcd}$。
+$\mathcal{W}_{\rm cum}=\mathcal{W}_{\rm pcd}\cap\{N h\le I_{t\rm cum}^{\rm T}\}\cap\{N\ge I_{t\rm cum}^{\rm T}\}$、
+$\mathcal{W}_{\rm clr}=\mathcal{W}_{\rm pcd}\cap\{t_{\rm end}\le t_{\rm end}^{\rm T}\}\cap\{N\ge I_{t\rm cum}^{\rm T}\}$，
+本文参数下 $\mathcal{W}_{\rm clr}\subset\mathcal{W}_{\rm cum}\subset\mathcal{W}_{\rm pcd}$。
 两个面板上以同色标记点与图~\ref{fig:panel_eta_lever}、\ref{fig:panel_N_lever} 的采样角色联动：
 圆点为 $\eta$ 杠杆（固定 $N_{\rm eff}=2\times10^{4}$）的四个取样，方点为 $N$ 杠杆（固定 $\eta=100$）
 的六个取样。
@@ -2000,7 +2017,7 @@ $\mathcal{W}_{\rm clr}=\mathcal{W}_{\rm pcd}\cap\{t_{\rm end}\le t_{\rm end}^{\r
   $(5914.3,151.90)$）；红色内区与蓝色外环互斥填充，故红区即两约束同时满足的区域。
   累计弧在 $(11764,19.48)$ 穿出楔形，其后一段以淡虚线示意等值线延续但不再构成
   $\mathcal{W}_{\rm cum}$ 的边界；清零弧在有效池下界 $N<I_{t\rm cum}^{\rm T}=2096.76$ 的一段
-  同样以虚线示意（该区间内广延量比较平凡成立，见第~\ref{sec:dom:limits}~节 (4)）。
+  同样以虚线示意（该区间内 $N_{\rm eff}$ 重解释在物理上失效，见第~\ref{sec:dom:limits}~节 (4)）。
   骨架线（峰值·成本·时长·触发）以中性灰重绘以突出弧线。两面板的圆点与方点分别对应
   图~\ref{fig:panel_eta_lever} 与图~\ref{fig:panel_N_lever} 的采样角色，同色联动。
   $\eta=100$ 处 $N_{\rm cum}\approx1.011\times10^{4}$、$N_{\rm clr}\approx4.60\times10^{3}$。}
@@ -2095,7 +2112,7 @@ TDINN 的现实结局作为固定参照。这与“同一池上两种策略对�
 \paragraph{未来工作。}
 （i）对每个 $N_{\rm eff}$ 全参数重拟合 TDINN，给出同池口径下的比较；
 （ii）在情景二、情景三（同时调节 $c$ 与 $q$）下重做同一套尺度分析，检验二分结构是否保持；
-（iii）多城多病验证：海南模块已有平行结构，可检验 $\theta$ 阈值与 $\qinf$ 等结构不变量的可移植性；
+（iii）多城多病验证：在另一城市／病种的平行数据上重做本套分析，可检验 $\theta$ 阈值与 $\qinf$ 等结构不变量的可移植性；
 （iv）引入观测噪声与参数不确定性，评估开环控制律的稳健边界。
 
 % ===== 参考文献（Step 6 补全文献综述引用；当前仅含正文已直接引用的条目） =====
