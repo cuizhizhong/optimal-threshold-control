@@ -18,33 +18,34 @@ TDINN 是**固定的现实参照**：已发生的现实结局，用固定的四�
 | 文件 | 作用 |
 |---|---|
 | `dom_pretty.py` | 图 20 合成图（自包含，只需 numpy/matplotlib） |
-| `panels.py` | Panel A（`panels.py A`）；含求解器封装 `solve_threshold`/`solve_tdinn` |
+| `panels.py` | Panel A（直接 `python panels.py`）；含求解器封装 `solve_threshold`/`solve_tdinn` 与共享量 `N_OF`/`_envelope`（供 `compute_B` 导入） |
 | `compute_B.py` | Panel B 重算，产出 `panelB.pkl`（约 25 s） |
 | `plot_B.py` | 从 `panelB.pkl` 快速绘 Panel B |
 | `resolve_clr.py` | 清零弧（$t_{\rm end}^{\rm T}=45.27$ d 口径）逐点求根 |
 | `arc_clr_45.27.csv` | 清零弧 28 点数据 |
 
-## 运行环境
+## 运行环境与运行方法
 
-- conda env `thesis`（numpy / scipy / matplotlib）。
-- `PYTHONPATH` 需含三个求解器目录：`xian_control_comparison/`、
-  `.../threshold_landscape_analysis/`、`.../effective_population_sensitivity/`。
-- 真实数据 `真实数据/Xianguankong.xlsx` 在仓库根，`xian_control_comparison.py` 按相对路径自动解析，无需额外配置。
+- conda env `thesis`（numpy / scipy / matplotlib / openpyxl）。
+- 三个求解器模块目录（`xian_control_comparison/` 及其下 `threshold_landscape_analysis/`、
+  `effective_population_sensitivity/`）由每个脚本头部自动加入 `sys.path`，**无需手动设 `PYTHONPATH`**。
+- 真实数据 `真实数据/Xianguankong.xlsx` 在仓库根，`xian_control_comparison.py` 按相对路径自动解析，无需配置。
 - numpy 2.x：`panels.py` / `compute_B.py` 顶部已内置 `np.trapz = np.trapezoid` shim。
 
-用 PowerShell 跑（Git Bash 会破坏 `;` 分隔的 `PYTHONPATH`）：
+因为不再依赖环境变量，**任何终端（PowerShell / Git Bash / cmd）或 VS Code 的“运行”按钮都能直接跑**
+（VS Code 里把解释器选成 `thesis` 环境即可）。依次运行四个脚本重出三张图：
 
-```powershell
-Set-Location xian_dom
-$R = "..\xian_control_comparison"
-$env:PYTHONPATH = "$R;$R\threshold_landscape_analysis;$R\effective_population_sensitivity"
-conda run --no-capture-output -n thesis python dom_pretty.py
-conda run --no-capture-output -n thesis python panels.py A
-conda run --no-capture-output -n thesis python compute_B.py
-conda run --no-capture-output -n thesis python plot_B.py
+```bash
+python dom_pretty.py     # 图 20（自包含，只需 numpy/matplotlib）
+python panels.py         # 图 21 Panel A（不再需要 A 参数）
+python compute_B.py      # 图 22 的重算 → panelB.pkl（约 25 s）
+python plot_B.py         # 图 22 Panel B（读缓存，秒出）
 ```
 
-**注意 `panels.py` 必须带参数 `A`。** 无参运行会连带执行一个遗留的 `panel_B()`，覆盖 `plot_B.py` 产出的真 Panel B。
+用 conda 环境时在每行前加 `conda run -n thesis`。顺序上 `compute_B.py` 要在 `plot_B.py` 之前；
+`dom_pretty.py`、`panels.py` 各自独立。也可一键运行本目录的 **`run_all.ps1`**（PowerShell：设好环境后自动跑完四步并把图复制到 `../figures/`）。
+
+`resolve_clr.py` 是一次性求解器（把清零弧重算到 $t_{\rm end}^{\rm T}=45.27$ d，输出 `clr_4527.json`），平时不用跑；其结果即 `arc_clr_45.27.csv`、也已写入 `dom_pretty.py` 的弧线数组。
 
 ## 图去向与尺寸约束
 

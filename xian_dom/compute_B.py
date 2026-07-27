@@ -2,9 +2,11 @@
 import sys, pickle, time, numpy as np
 from pathlib import Path
 CACHE = Path(__file__).resolve().parent / "panelB.pkl"
-# 求解器模块 (threshold_landscape_analysis / xian_control_comparison /
-# effective_population_sensitivity / plot_eta_80_100_150_inflection) 需在 PYTHONPATH 上；
-# 目录结构见 README（pkg/ 平铺 + 真实数据/ 放在 pkg 的父目录）。
+# 自动把三个求解器模块目录加入 sys.path（免手动设 PYTHONPATH）。
+_XCC = Path(__file__).resolve().parent.parent / "xian_control_comparison"
+for _p in (_XCC, _XCC / "threshold_landscape_analysis", _XCC / "effective_population_sensitivity"):
+    if str(_p) not in sys.path:
+        sys.path.insert(0, str(_p))
 if not hasattr(np, "trapz"):
     np.trapz = np.trapezoid
 from panels import (TH, N_OF, N_FULL, solve_threshold, solve_tdinn, prep, _envelope,

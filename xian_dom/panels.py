@@ -1,16 +1,18 @@
-"""Panel A (eta-lever, N=2e4) and Panel B (N-lever, eta=100) trajectory figures.
+"""Panel A (eta-lever, N=2e4) 轨迹图。Panel B 已移到 compute_B.py + plot_B.py。
 Style matched to the dominance panels (serif, blank background, no grid).
 Colours are locked to the dom-figure sampling roles for cross-figure linkage."""
 import sys, numpy as np
-# 求解器模块 (threshold_landscape_analysis / xian_control_comparison /
-# effective_population_sensitivity / plot_eta_80_100_150_inflection) 需在 PYTHONPATH 上；
-# 目录结构见 README（pkg/ 平铺 + 真实数据/ 放在 pkg 的父目录）。
+from pathlib import Path
+# 自动把三个求解器模块目录加入 sys.path（免手动设 PYTHONPATH，任何终端/IDE 均可直接运行）。
+_XCC = Path(__file__).resolve().parent.parent / "xian_control_comparison"
+for _p in (_XCC, _XCC / "threshold_landscape_analysis", _XCC / "effective_population_sensitivity"):
+    if str(_p) not in sys.path:
+        sys.path.insert(0, str(_p))
 if not hasattr(np, "trapz"):
     np.trapz = np.trapezoid
 import matplotlib; matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
-from pathlib import Path
 import xian_control_comparison as xcc
 import threshold_landscape_analysis as tla
 import effective_population_sensitivity as eps
@@ -160,7 +162,8 @@ def panel_A():
     print("saved Panel A ; t_end=%.0f" % tend)
 
 
-# ============================ Panel B (N-lever, eta=100) ============================
+# ===== Panel B 的共享量（N_OF、_envelope，供 compute_B.py 导入）=====
+#       Panel B 本体已移到 compute_B.py + plot_B.py。
 N_OF = {"clear": 4601.9, "cum": 10105.5, "interior": 100 / TH["interior"],
         "dur45": 100 / TH["dur45"], "cost": 100 / TH["cost"], "dur150": 100 / TH["dur150"]}
 
@@ -178,63 +181,5 @@ def _envelope(solver, N_list, tg):
     lo = np.nanmin(M, axis=0); hi = np.nanmax(M, axis=0)
     return lo, hi, reps
 
-def panel_B():
-    ETA = 100.0
-    roles = ["clear", "cum", "interior", "dur45", "cost", "dur150"]
-    data = []
-    for r in roles:
-        N = N_OF[r]
-        p, df, d = solve_threshold(N, ETA)
-        try:
-            infl = compute_inflection(ETA, p, d)
-        except Exception:
-            infl = None
-        data.append((r, N, p, df, d, infl))
-        print(f"  B {r:8s} N={N:7.0f} clear={float(d['clear_time']):7.2f} status={d['status']}")
-    tend = 1.05 * max(float(d["clear_time"]) for _, _, _, _, d, _ in data)
-    tg = np.linspace(0, tend, 1400)
-    Nrib = np.geomspace(5800, 88000, 8)
-    rlo, rhi, _ = _envelope(lambda N: prep(N)[2], Nrib, tg)       # routine ribbon
-    td_full = solve_tdinn(N_FULL)                                  # TDINN 单曲线(全市)
-    rep_r = {N: prep(N)[2] for N in (Nrib[0], Nrib[-1])}
-
-    fig, ax = plt.subplots(figsize=(7.0, 4.4), constrained_layout=True)
-    # routine ribbon (grey) + TDINN ribbon (ink)
-    m = np.isfinite(rlo) & np.isfinite(rhi)
-    ax.fill_between(tg[m], rlo[m], rhi[m], color="#8a8a8a", alpha=0.15, lw=0, zorder=1)
-    ax.plot(tg[m], rlo[m], color="#8a8a8a", lw=0.6, alpha=0.6, zorder=1)
-    ax.plot(tg[m], rhi[m], color="#8a8a8a", lw=0.6, alpha=0.6, zorder=1)
-    for N, df in rep_r.items():
-        ax.plot(df["t"], df["I"], color="#8a8a8a", lw=1.0, ls=":", alpha=0.9, zorder=2)
-    ax.plot(td_full["t"], td_full["I"], color="#222222", lw=1.4, ls="-", alpha=0.95, zorder=4)
-    # 6 threshold trajectories (all plateau at eta=100)
-    for r, N, p, df, d, infl in data:
-        ti = float(infl["t_inflection"]) if infl else float(d["t2"])
-        s = build_plot_series(ETA, p, df, d, ti, tend)
-        ax.plot(s["t"], s["I"], color=COL[r], ls=LS[r], lw=1.6, label=LAB[r], zorder=5)
-    ax.axhline(IPEAK_T, color="#b2182b", lw=0.9, ls=":", alpha=0.75, zorder=1)
-    ax.axhline(ETA, color="#999", lw=0.7, ls="--", alpha=0.6, zorder=1)
-    ax.set_yscale("log"); ax.set_ylabel(r"$I(t)$"); ax.set_ylim(1, 1.5e4)
-    ax.set_xlabel(r"time $t$ (days)"); ax.set_xlim(0, tend)
-    ax.text(-0.01, 1.02, "(b)", transform=ax.transAxes, fontsize=11, fontweight="bold",
-            ha="left", va="bottom", color="#222")
-    # legend: roles + ribbon proxies
-    from matplotlib.patches import Patch
-    handles = [Line2D([], [], color=COL[r], ls=LS[r], lw=1.6, label=LAB[r]) for r in roles]
-    handles += [Line2D([], [], color="#222222", lw=1.4, label="TDINN (city-fit)"),
-                Patch(fc="#8a8a8a", alpha=0.3, label="routine band")]
-    ax.legend(handles=handles, loc="upper right", ncol=2, fontsize=7.2,
-              columnspacing=1.2, borderaxespad=0.4)
-    ax.tick_params(length=3.5, width=0.8)
-    fig.savefig(OUT / "fig_panel_B.pdf", bbox_inches="tight")
-    fig.savefig(OUT / "fig_panel_B.png", dpi=300, bbox_inches="tight")
-    plt.close(fig)
-    print("saved Panel B ; t_end=%.0f" % tend)
-
-
 if __name__ == "__main__":
-    which = sys.argv[1] if len(sys.argv) > 1 else "both"
-    if which in ("A", "both"):
-        panel_A()
-    if which in ("B", "both"):
-        panel_B()
+    panel_A()   # Panel B 已移到 compute_B.py + plot_B.py

@@ -1,6 +1,13 @@
 """重算 clr 弧到精确口径 t_end^T = 45.27 d（原为圆整 45.0 d）。
-输出 /tmp/clr_4527.json：弧线全部点、有效池下界端点、峰值顶端点、N_clr(100)。"""
+输出 clr_4527.json（与本文件同目录）：弧线全部点、有效池下界端点、峰值顶端点、N_clr(100)。"""
 import sys, json, time, numpy as np
+from pathlib import Path
+# 自动把三个求解器模块目录加入 sys.path（免手动设 PYTHONPATH）。
+_XCC = Path(__file__).resolve().parent.parent / "xian_control_comparison"
+for _p in (_XCC, _XCC / "threshold_landscape_analysis", _XCC / "effective_population_sensitivity"):
+    if str(_p) not in sys.path:
+        sys.path.insert(0, str(_p))
+_OUTJSON = Path(__file__).resolve().parent / "clr_4527.json"
 if not hasattr(np, "trapz"):
     np.trapz = np.trapezoid
 from scipy.optimize import brentq
@@ -76,5 +83,5 @@ else:
 json.dump(dict(target=TARGET, N=out_N, eta=out_E, N_top=float(N_top),
                N_floor=NFLOOR, eta_floor=float(eta_floor),
                N_clr100=float(N_clr100), tail_N=(float(tail) if tail else None)),
-          open("/tmp/clr_4527.json", "w"), indent=1)
-print(f"\nSAVED /tmp/clr_4527.json   总耗时 {time.time()-t0:.0f}s")
+          open(_OUTJSON, "w"), indent=1)
+print(f"\nSAVED {_OUTJSON}   总耗时 {time.time()-t0:.0f}s")
