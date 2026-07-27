@@ -4,7 +4,7 @@ script_dir = fileparts(mfilename('fullpath'));
 base_dir = fileparts(script_dir);
 addpath(fullfile(base_dir, 'common'));
 
-cfg = scenario1_params('new');
+cfg = scenario1_params();
 ensure_output_dirs(cfg);
 
 log_file = fullfile(cfg.paths.logs, 'generate_landscape_data.log');
@@ -63,7 +63,6 @@ end
 representative = sortrows(representative, {'eta_frac', 'c0'});
 writetable(representative, fullfile(cfg.paths.output_csv, 'representative_cases.csv'));
 
-diagnostics = append_global_checks(diagnostics, landscape);
 diagnostic_table = diagnostics_to_table(diagnostics);
 writetable(diagnostic_table, fullfile(cfg.paths.output_csv, 'diagnostics.csv'));
 
@@ -71,14 +70,6 @@ valid_count = sum(logical(landscape.valid));
 log_line(logfid, sprintf('valid rows: %d / %d', valid_count, height(landscape)));
 log_line(logfid, sprintf('diagnostic rows: %d', height(diagnostic_table)));
 log_line(logfid, 'data generation finished');
-
-function rows = append_row(rows, row, row_id)
-if row_id == 1
-    rows = row;
-else
-    rows(row_id) = row;
-end
-end
 
 function diagnostics = empty_diagnostic()
 diagnostics = struct('eta_frac', {}, 'eta_percent', {}, 'eta', {}, ...
@@ -92,52 +83,6 @@ end
 diagnostics = [diagnostics; new_diagnostics(:)];
 end
 
-function diagnostics = add_diagnostic(diagnostics, row, code, message)
-item.eta_frac = row.eta_frac;
-item.eta_percent = row.eta_percent;
-item.eta = row.eta;
-item.c0 = row.c0;
-item.code = string(code);
-item.message = string(message);
-diagnostics = [diagnostics; item]; %#ok<AGROW>
-end
-
-function diagnostics = append_global_checks(diagnostics, T)
-tol = 1e-7;
-for k = 1:height(T)
-    row = table_row_to_struct(T(k, :));
-    if ~logical(row.valid)
-        diagnostics = add_diagnostic(diagnostics, row, 'invalid_row', ...
-            'Row is not valid in landscape summary.');
-        continue;
-    end
-    if ~(row.I0 < row.eta && row.eta < row.Imax_pre)
-        diagnostics = add_diagnostic(diagnostics, row, 'threshold_inequality_failed', ...
-            'Expected I0 < eta < Imax_pre.');
-    end
-    if ~(row.S0 > row.S_star && row.S_star > row.S_c && row.S_c > row.S_bar)
-        diagnostics = add_diagnostic(diagnostics, row, 'ordering_check_failed', ...
-            'Expected S0 > S_star > S_c > S_bar.');
-    end
-    if row.Delta_t <= 0 || row.t_end <= row.t2
-        diagnostics = add_diagnostic(diagnostics, row, 'time_ordering_failed', ...
-            'Expected Delta_t > 0 and t_end > t2.');
-    end
-    if row.q_max > 1 + tol
-        diagnostics = add_diagnostic(diagnostics, row, 'q_out_of_bounds', ...
-            'q_max exceeds 1.');
-    end
-    if row.q_t2_error > tol
-        diagnostics = add_diagnostic(diagnostics, row, 'q_t2_mismatch', ...
-            'q_c(t2) is not close to q0.');
-    end
-    if row.cum_decomp_error > tol
-        diagnostics = add_diagnostic(diagnostics, row, 'cumulative_mismatch', ...
-            'Cumulative infection decomposition mismatch.');
-    end
-end
-end
-
 function T = diagnostics_to_table(diagnostics)
 if isempty(diagnostics)
     T = table([], [], [], [], strings(0, 1), strings(0, 1), ...
@@ -145,10 +90,4 @@ if isempty(diagnostics)
 else
     T = struct2table(diagnostics);
 end
-end
-
-function log_line(logfid, message)
-line = sprintf('[%s] %s\n', datestr(now, 'yyyy-mm-dd HH:MM:SS'), message);
-fprintf('%s', line);
-fprintf(logfid, '%s', line);
 end

@@ -52,21 +52,7 @@ style_axes(ax);
 save_figure_safe(fig, filename, logfid);
 end
 
-function set_graphics_defaults()
-set(groot, 'defaultTextInterpreter', 'latex');
-set(groot, 'defaultAxesTickLabelInterpreter', 'latex');
-set(groot, 'defaultLegendInterpreter', 'latex');
-set(groot, 'defaultFigureVisible', 'on');
-end
-
 function style_axes(ax)
 set(ax, 'LineWidth', 0.8, 'FontSize', 10.5, ...
     'TickDir', 'out', 'Layer', 'top');
-end
-
-function logfid = open_log(cfg, name)
-logfid = fopen(fullfile(cfg.paths.logs, name), 'w');
-if logfid < 0
-    error('Cannot open log file.');
-end
 end

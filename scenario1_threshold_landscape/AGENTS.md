@@ -67,7 +67,7 @@ scenario1_threshold_landscape/
 matlab -batch "run('E:\work\draft\scenario1_threshold_landscape\run_all.m')"
 ```
 
-`run_all.m` 会先运行 `scripts/generate_landscape_data.m`，再顺序运行各绘图和表格脚本。若已有 `current_run/`，`common/scenario1_params.m` 会先尝试归档到 `archive_runs/run_YYYYMMDD_HHMMSS/`。由于 Windows 权限可能拒绝移动已生成的 PDF/CSV，当前代码含复制归档回退：移动失败时复制旧 `current_run/` 到归档目录，并在原 `current_run/` 内覆盖本轮固定输出。
+`run_all.m` 会先运行 `scripts/generate_landscape_data.m`，再顺序运行各绘图和表格脚本，结果直接覆盖写入 `current_run/`。`common/scenario1_params.m` 现在只负责返回参数和固定输出路径，不再做运行状态记录（`current_run.mat`/`current_run.txt`）或自动归档；`mode` 参数保留只为向后兼容，会被忽略。如需保留某一轮结果，请在重跑前手动复制 `current_run/`。`archive_runs/` 中的历史结果保留，但不再由脚本自动写入。
 
 ## 脚本职责
 
@@ -85,8 +85,17 @@ matlab -batch "run('E:\work\draft\scenario1_threshold_landscape\run_all.m')"
 - `compute_metrics.m`：理论指标和诊断的核心函数；
 - `compute_trajectory.m`：三阶段轨迹重构；
 - `q_control_tau.m`：平台期时间开环控制；
-- `save_figure_safe.m`：通用 PDF 保存与 PNG fallback；
-- `scenario1_params.m`：参数、路径和归档策略。
+- `save_figure_safe.m`：矢量 PDF 保存与 PNG fallback；
+- `scenario1_params.m`：参数与固定输出路径（不再做归档/状态记录）。
+
+各绘图脚本共用的小工具也放在 `common/`，避免逐脚本复制：
+
+- `set_graphics_defaults.m`：设置 LaTeX 解释器等图形默认值；
+- `open_log.m`：在 `logs/` 下打开单脚本日志；
+- `log_line.m`：带时间戳、同时写控制台和日志的输出；
+- `append_row.m`：按下标把标量 struct 追加进 struct 数组。
+
+注意：各图的 `style_axes` 保留在各自脚本内，因为每张图的字号/刻度方向是单独调过的，不做统一。
 
 ## 当前图形输出与格式
 
@@ -130,17 +139,18 @@ trajectories_eta_selected_c0_10.pdf
 - 清零时间：`t_end`；
 - 成本：`J_q`、二次型成本 `J`；
 - 累计感染：`I_pre`、`I_wall`、`I_post`、`I_t_cum`；
-- 诊断量：`Imax_pre`、`platform_error`、`q_t2_error`、`cum_decomp_error`。
+- 诊断量：`Imax_pre`、`q_t2_error`。
 
-诊断检查至少包括：
+（`platform_error` 只在 `compute_trajectory.m` 重构轨迹时计算，用于基准验证图/表，不再作为图谱汇总列；早先恒为 0 的 `cum_decomp_error` 已删除。）
+
+可行性检查在 `compute_metrics.m` 内逐点强制：不满足时该点标记为 invalid 并写入一条 `diagnostics.csv` 记录，不再在 `generate_landscape_data.m` 里对整表重复检查一遍。逐点检查至少包括：
 
 - `I0 < eta < Imax_pre`；
 - `S0 > S_star > S_c > S_bar`；
 - `Delta_t > 0`；
 - `t_end > t2`；
 - `q_max <= 1`；
-- `q_c(t2) ≈ q0`；
-- 三段累计感染加和与 `I_t_cum` 一致。
+- `q_c(t2) ≈ q0`。
 
 本实验不把 `q_max=0.8` 或 `q_max=0.9` 当作可行性边界；这些值只作为热图读数或执行压力参考。理论不可行边界仍以 `q_max > 1` 等诊断为准。
 

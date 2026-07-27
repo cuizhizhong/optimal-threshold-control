@@ -34,13 +34,7 @@ scenario1_threshold_landscape/
 matlab -batch "run('E:\work\draft\scenario1_threshold_landscape\run_all.m')"
 ```
 
-运行 `run_all.m` 时，如果已经存在 `current_run/`，脚本会先将其移动到：
-
-```text
-archive_runs/run_YYYYMMDD_HHMMSS/
-```
-
-然后重新生成新的 `current_run/`。如果 Windows 权限拒绝移动 PDF/CSV 文件，脚本会复制 `current_run/` 到归档目录，并在原 `current_run/` 中覆盖生成本轮固定输出。
+运行 `run_all.m` 会直接把结果覆盖写入 `current_run/`（不再自动归档）。如需保留某一轮结果，请在重跑前手动把 `current_run/` 复制到别处。`archive_runs/` 保留了早期的历史结果，但不再由脚本自动写入。
 
 ## 单独运行模块
 

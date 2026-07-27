@@ -193,7 +193,6 @@ I_wall = beta * (S_star - S_c + ...
     S_bar * log((S_star - S_bar) / (S_c - S_bar)));
 I_post = infection_fraction * (S_c - S_end);
 I_t_cum = I_pre + I_wall + I_post;
-cum_decomp_error = abs((I_pre + I_wall + I_post) - I_t_cum);
 
 row.valid = true;
 row.status_code = "ok";
@@ -206,7 +205,6 @@ row.I_pre = I_pre;
 row.I_wall = I_wall;
 row.I_post = I_post;
 row.I_t_cum = I_t_cum;
-row.cum_decomp_error = cum_decomp_error;
 end
 
 function row = empty_metrics()
@@ -243,9 +241,7 @@ row = struct( ...
     'I_post', NaN, ...
     'I_t_cum', NaN, ...
     'Imax_pre', NaN, ...
-    'platform_error', NaN, ...
-    'q_t2_error', NaN, ...
-    'cum_decomp_error', NaN);
+    'q_t2_error', NaN);
 end
 
 function diagnostic = empty_diagnostic()

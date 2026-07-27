@@ -1,5 +1,8 @@
 function ok = save_figure_safe(fig, filename, logfid)
-%SAVE_FIGURE_SAFE Save a figure with PDF fallback to PNG.
+%SAVE_FIGURE_SAFE Save a figure as PDF, with fallbacks for older MATLAB.
+%   Tries exportgraphics (R2020a+) first; on older releases (e.g. R2018b,
+%   which has no exportgraphics) it falls back to print -dpdf, and only
+%   drops to PNG if every PDF path fails.
 
 if nargin < 3
     logfid = [];
@@ -20,7 +23,7 @@ try
     log_line(logfid, ['saved ', filename]);
     ok = true;
 catch err0
-    log_line(logfid, ['exportgraphics failed: ', err0.message]);
+    log_line(logfid, ['exportgraphics unavailable: ', err0.message]);
 end
 
 if ok
@@ -50,15 +53,5 @@ catch err1
             log_line(logfid, ['PNG fallback failed: ', err3.message]);
         end
     end
-end
-
-end
-
-function log_line(logfid, message)
-stamp = datestr(now, 'yyyy-mm-dd HH:MM:SS');
-line = sprintf('[%s] %s\n', stamp, message);
-fprintf('%s', line);
-if ~isempty(logfid) && logfid > 0
-    fprintf(logfid, '%s', line);
 end
 end

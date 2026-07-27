@@ -31,14 +31,6 @@ plot_c0_trajectories(c0_rows, ...
 
 fprintf(logfid, 'representative trajectories finished\n');
 
-function rows = append_row(rows, row, k)
-if k == 1
-    rows = row;
-else
-    rows(k) = row;
-end
-end
-
 function plot_eta_trajectories(rows, filename, logfid)
 fig = figure('Position', [90, 80, 980, 820], 'Color', 'w', 'Visible', 'on');
 tl = tiledlayout(fig, 3, 1, 'Padding', 'compact', 'TileSpacing', 'compact');
@@ -105,21 +97,7 @@ style_axes(ax2);
 save_figure_safe(fig, filename, logfid);
 end
 
-function set_graphics_defaults()
-set(groot, 'defaultTextInterpreter', 'latex');
-set(groot, 'defaultAxesTickLabelInterpreter', 'latex');
-set(groot, 'defaultLegendInterpreter', 'latex');
-set(groot, 'defaultFigureVisible', 'on');
-end
-
 function style_axes(ax)
 set(ax, 'LineWidth', 0.8, 'FontSize', 10.5, ...
     'TickDir', 'in', 'TickLength', [0.005 0.025], 'Layer', 'top');
-end
-
-function logfid = open_log(cfg, name)
-logfid = fopen(fullfile(cfg.paths.logs, name), 'w');
-if logfid < 0
-    error('Cannot open log file.');
-end
 end

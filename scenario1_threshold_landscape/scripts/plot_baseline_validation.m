@@ -33,14 +33,6 @@ write_latex_tables('baseline', baseline_rows, ...
     fullfile(cfg.paths.tables, 'baseline_validation_table.tex'));
 fprintf(logfid, 'baseline validation finished\n');
 
-function rows = append_row(rows, row, k)
-if k == 1
-    rows = row;
-else
-    rows(k) = row;
-end
-end
-
 function plot_one_baseline(row, traj, filename, logfid)
 [t_base, S_base, I_base] = compute_background_baseline(row, max(traj.t));
 
@@ -113,21 +105,7 @@ xline(ax, row.t1, 'k:', 'LineWidth', 1.2, 'HandleVisibility', 'off');
 xline(ax, row.t2, 'k:', 'LineWidth', 1.2, 'HandleVisibility', 'off');
 end
 
-function set_graphics_defaults()
-set(groot, 'defaultTextInterpreter', 'latex');
-set(groot, 'defaultAxesTickLabelInterpreter', 'latex');
-set(groot, 'defaultLegendInterpreter', 'latex');
-set(groot, 'defaultFigureVisible', 'on');
-end
-
 function style_axes(ax)
 set(ax, 'LineWidth', 0.9, 'FontSize', 11, ...
     'TickDir', 'in', 'Layer', 'top');
-end
-
-function logfid = open_log(cfg, name)
-logfid = fopen(fullfile(cfg.paths.logs, name), 'w');
-if logfid < 0
-    error('Cannot open log file.');
-end
 end

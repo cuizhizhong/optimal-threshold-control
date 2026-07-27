@@ -108,28 +108,8 @@ end
 
 end
 
-function set_graphics_defaults()
-set(groot, 'defaultTextInterpreter', 'latex');
-set(groot, 'defaultAxesTickLabelInterpreter', 'latex');
-set(groot, 'defaultLegendInterpreter', 'latex');
-set(groot, 'defaultFigureVisible', 'on');
-end
-
 function style_axes(ax)
 set(ax, 'LineWidth', 0.8, 'FontName', 'Times New Roman', ...
     'FontSize', 14, 'TickDir', 'out', 'TickLength', [0 0], ...
     'Layer', 'top');
-end
-
-function logfid = open_log(cfg, name)
-logfid = fopen(fullfile(cfg.paths.logs, name), 'w');
-if logfid < 0
-    error('Cannot open log file.');
-end
-end
-
-function log_line(logfid, message)
-line = sprintf('[%s] %s\n', datestr(now, 'yyyy-mm-dd HH:MM:SS'), message);
-fprintf('%s', line);
-fprintf(logfid, '%s', line);
 end
