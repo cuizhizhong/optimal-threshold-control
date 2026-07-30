@@ -218,24 +218,70 @@ c(t)=c_0,\qquad t\ge 0,
 \end{equation}
 
 \subsection{干预启动点 $S^*$ 与时间 $t_1$ }
-\begin{theorem}
-    对于系统 \eqref{eq:s1:dynamics}，在常规防控阶段 $t<t_1$，首次触碰医疗阈值的易感人数 $S^*$为：
-    \begin{equation}
-        S^*=-S_cW_{-1}\left(-\frac{1}{S_c}\exp\left[-\frac{C_0-\eta}{\rho_1}\right]\right)
-        \label{eq:s1:Sstar-lambert}
-    \end{equation}
-    开始控制的时间$t_1$为:
-    \begin{equation}
-    t_1
-    =
-    \int_{S_0}^{S^*}
-    \frac{1}{
-    -\beta_1^0S\left[
-    C_0-\frac{\beta_2^0}{\beta_1^0}S+\rho_1\ln S
-    \right]
-    }\,dS.
-    \label{eq:s1:t1}
-    \end{equation}
+在 $S_0>S_c$ 时，常规防控轨道上的感染人数可写为
+\begin{equation*}
+I(S)=I_0+\frac{\beta_2^0}{\beta_1^0}(S_0-S)
++\rho_1\ln\frac{S}{S_0}.
+\end{equation*}
+由于感染峰值发生在 $\dot I=0$，即 $S=S_c$ 处，故
+\begin{equation}
+I_{\max}^{no}
+=
+I_0+\frac{\beta_2^0}{\beta_1^0}(S_0-S_c)
++\rho_1\ln\frac{S_c}{S_0}.
+\label{eq:s1:Imax-no}
+\end{equation}
+记 Lambert $W$ 函数的幅角为
+\begin{equation}
+\begin{aligned}
+z_\eta
+&:=
+-\frac{1}{S_c}
+\exp\left[-\frac{C_0-\eta}{\rho_1}\right] \\
+&=
+-\frac{1}{e}
+\exp\left[-\frac{I_{\max}^{no}-\eta}{\rho_1}\right].
+\end{aligned}
+\label{eq:s1:lambert-argument}
+\end{equation}
+其中第二个等号利用了
+$I_{\max}^{no}=C_0-\rho_1+\rho_1\ln S_c$。
+由于 $z_\eta<0$，实值分支 $W_{-1}$ 的定义域条件可写为
+\[
+z_\eta\in\left[-\frac{1}{e},0\right)
+\quad\Longleftrightarrow\quad
+\eta\le I_{\max}^{no}.
+\]
+
+\begin{theorem}[干预启动点与首次触碰时间]
+\label{thm:s1:trigger}
+假设
+\[
+S_0>S_c,
+\qquad
+I_0<\eta<I_{\max}^{no}.
+\]
+则由式~\eqref{eq:s1:lambert-argument} 有
+$z_\eta\in(-1/e,0)$，故实值 Lambert 函数的 $-1$ 分支
+$W_{-1}(z_\eta)$ 良定义。常规防控轨道在感染上升阶段首次触碰医疗阈值时的易感人数唯一为
+\begin{equation}
+S^*=-S_cW_{-1}(z_\eta),
+\qquad
+S_c<S^*<S_0.
+\label{eq:s1:Sstar-lambert}
+\end{equation}
+开始控制的时间 $t_1>0$，且
+\begin{equation}
+t_1
+=
+\int_{S_0}^{S^*}
+\frac{1}{
+-\beta_1^0S\left[
+C_0-\frac{\beta_2^0}{\beta_1^0}S+\rho_1\ln S
+\right]
+}\,dS.
+\label{eq:s1:t1}
+\end{equation}
 \end{theorem}
 \begin{proof}
     在加强控制启动前，系统处于常规防控阶段，即 $c(t)=c_0$ 且 $q(t)=q_0$。
@@ -269,21 +315,31 @@ I_0+\frac{\beta_2^0}{\beta_1^0}S_0-\rho_1\ln S_0
 -\frac{1}{S_c}
 \exp\left[-\frac{C_0-\eta}{\rho_1}\right].
 \]
-由于我们关注的是感染人数上升阶段首次触碰医疗红线，此时 $S^*>S_c$，故应选取 Lambert $W$ 函数的 $-1$ 分支：
+由式~\eqref{eq:s1:lambert-argument}，上述方程可写为
 \[
-S^*
-=
--\frac{\gamma N}{\beta c_0(1-q_0)}W_{-1}\left(
--\frac{\beta c_0(1-q_0)}{\gamma N}
-\exp\left[-\frac{C_0-\eta}{\frac{\gamma}{\beta_1^0}}\right]
-\right)
-=
--S_c
-W_{-1}\left(
--\frac{1}{S_c}
-\exp\left[-\frac{C_0-\eta}{\rho_1}\right]
-\right)
+-\frac{S^*}{S_c}
+\exp\left(-\frac{S^*}{S_c}\right)
+=z_\eta.
 \]
+由于 $z_\eta\in(-1/e,0)$，Lambert $W$ 函数有两个实值分支，并且
+\[
+W_0(z_\eta)\in(-1,0),
+\qquad
+W_{-1}(z_\eta)\in(-\infty,-1).
+\]
+因此
+\[
+-S_cW_0(z_\eta)\in(0,S_c),
+\qquad
+-S_cW_{-1}(z_\eta)>S_c.
+\]
+前者对应同一常规防控轨道在感染峰值后的下降阶段交点，后者对应感染上升阶段交点。
+另一方面，在 $S\in(S_c,S_0)$ 上有
+$\dot I=I(\beta_2^0S-\gamma)>0$。
+结合 $I_0<\eta<I_{\max}^{no}$，常规防控轨道在到达峰值前恰有一次满足
+$I(t)=\eta$，且该时刻满足 $S_c<S(t)<S_0$。
+因此首次触碰根唯一，必须选择 $W_{-1}$ 分支，从而得到
+式~\eqref{eq:s1:Sstar-lambert}。
 
 在确定状态阈值 $S^*$ 后，启动加强控制的具体时间 $t_1$ 可由常规防控阶段的易感者的动态方程积分得到。由式 \eqref{eq:s1:first-integral} 有
 \[
@@ -305,19 +361,17 @@ C_0-\frac{\beta_2^0}{\beta_1^0}S+\rho_1\ln S
 \end{proof}
 
 \begin{remark}
-    ICU阈值能被触碰的条件是：$I_{\max}^{no} > \eta$,且为了问题有意义要求 $I_0 \le \eta$。其中 $I_{\max}^{no}$ 表示系统在常规防控水平 $(c_0,q_0)$ 下的感染峰值。具体地，在常规防控轨道上
-    \begin{equation*}
-    I(S)=I_0+\frac{\beta_2^0}{\beta_1^0}(S_0-S)+\rho_1\ln\frac{S}{S_0},
-    \end{equation*}
-    感染峰值发生在 $\dot I=0$，即 $S=S_c$ 处。因此
-    \begin{equation}
-    I_{\max}^{no}
-    =
-    I_0+\frac{\beta_2^0}{\beta_1^0}(S_0-S_c)
-    +\rho_1\ln\frac{S_c}{S_0}.
-    \label{eq:s1:Imax-no}
-    \end{equation}
-    如果 $I_{\max}^{no}\le \eta$，则常规防控已经足以避免突破医疗红线，无需启动加强控制；如果 $I_0>\eta$，则系统初始状态已经突破医疗红线。
+定理~\ref{thm:s1:trigger} 描述的是非退化的首次触碰情形。其边界与不可行情形如下：
+\begin{itemize}
+\item 若 $\eta=I_0$，则系统在初始时刻触碰阈值，$t_1=0$ 且 $S^*=S_0$；
+\item 若 $\eta=I_{\max}^{no}$，则
+$z_\eta=-1/e$、$W_{-1}(z_\eta)=-1$ 且 $S^*=S_c$，
+触碰发生在常规防控轨道的峰值处，阈值控制区间退化；
+\item 若 $\eta>I_{\max}^{no}$，则 $z_\eta<-1/e$，
+Lambert 方程不存在实根，常规防控轨道不会触碰医疗阈值；
+\item 若 $\eta<I_0$，则初始状态已经超过医疗阈值，
+不属于本文讨论的“首次触碰后启动控制”情形。
+\end{itemize}
 \end{remark}
 
 \subsection{阈值控制期的状态反馈控制 $q_c(S(t))$}
@@ -338,7 +392,8 @@ q_0, & t>t_2.
 \end{cases}
 \label{eq:s1:q-piecewise}
 \end{equation}
-进一步地，设加强控制确实被触发，即 $S^*>S_c$（等价于 $I_0<\eta<I_{\max}^{no}$，见\eqref{eq:s1:Imax-no}后的注），则该控制律具有以下结构：
+进一步地，设定理~\ref{thm:s1:trigger} 的非退化触发条件成立。
+由该定理有 $S^*>S_c$，此时该控制律具有以下结构：
 \begin{itemize}
 \item[(i)] \textbf{瞬时启动}：$q(t)$ 在 $t=t_1$ 处发生向上跳跃间断，
 \[
@@ -386,11 +441,22 @@ q'_c(t)=\frac{\gamma N}{\beta c_0} \frac{\dot{S}(t)}{S^{2}(t)}=- \frac{\frac{\ga
 
 
 \begin{theorem}[阈值隔离控制的拐点]\label{thm:s1:inflection}
-    假设$S_0>S_c$,$I_0<\eta<I_{\max}^{no}$,则阈值控制期内$q_c(t)$存在唯一拐点$t_{\mathrm{inf}}$,当且仅当$S_c<2\bar S<S^*$，等价地
-    \[\frac{1}{2}<(1-\beta)(1-q_0)<\frac{-W_{-1}\left(-\frac{1}{S_c}\exp\left[-\frac{C_0-\eta}{\rho_1}\right]\right)}{2}\]
-    当内部拐点存在时,其对应的易感人数和发生时间分别为:
+    假设 $S_0>S_c$ 且 $I_0<\eta<I_{\max}^{no}$。
+    由定理~\ref{thm:s1:trigger} 可知 $z_\eta\in(-1/e,0)$，
+    故下式中的实值分支 $W_{-1}(z_\eta)$ 良定义。
+    阈值控制期内 $q_c(t)$ 存在唯一内部拐点 $t_{\mathrm{inf}}$，当且仅当
     \[
-    S(t_{inf})=2\bar S,\quad
+    S_c<2\bar S<S^*.
+    \]
+    等价地，
+    \[
+    \frac{1}{2}
+    <(1-\beta)(1-q_0)
+    <-\frac{1}{2}W_{-1}(z_\eta).
+    \]
+    当内部拐点存在时，其对应的易感人数和发生时间分别为：
+    \[
+    S(t_{\mathrm{inf}})=2\bar S,\quad
     t_{\mathrm{inf}}
     =
     t_1+\frac{N}{c_0\eta}\ln\frac{S^*-\bar S}{\bar S},
@@ -409,7 +475,7 @@ q'_c(t)=\frac{\gamma N}{\beta c_0} \frac{\dot{S}(t)}{S^{2}(t)}=- \frac{\frac{\ga
     \]
 \end{theorem}
 \begin{proof}
-    由定理\eqref{thm:s1:qc-structure}
+    由定理~\ref{thm:s1:qc-structure}，
     \[
     q_c''(t)
     =
@@ -437,13 +503,25 @@ q'_c(t)=\frac{\gamma N}{\beta c_0} \frac{\dot{S}(t)}{S^{2}(t)}=- \frac{\frac{\ga
     \]
     所以$2\bar S >S_c$等价于$(1-\beta)(1-q_0)>\frac{1}{2}$,且拐点相对$S_c$的位置只受$\beta$和$q_0$的影响。
     
-    同时因为:
+    同时，由式~\eqref{eq:s1:Sstar-lambert}，
     \[
-    \frac{S^*}{2\bar S}=-\frac{W_{-1}\left(-\frac{1}{S_c}\exp\left[-\frac{C_0-\eta}{\rho_1}\right]\right)}{2(1-\beta)(1-q_0)}
+    \frac{S^*}{2\bar S}
+    =
+    -\frac{W_{-1}(z_\eta)}
+    {2(1-\beta)(1-q_0)}.
     \]
-    所以$2\bar S<S^*$等价于$(1-\beta)(1-q_0)<\frac{-W_{-1}\left(-\frac{1}{S_c}\exp\left[-\frac{C_0-\eta}{\rho_1}\right]\right)}{2}$
+    所以 $2\bar S<S^*$ 等价于
+    \[
+    (1-\beta)(1-q_0)<-\frac{1}{2}W_{-1}(z_\eta).
+    \]
 
-    综上，当 $\frac{1}{2}<(1-\beta)(1-q_0)<\frac{-W_{-1}\left(-\frac{1}{S_c}\exp\left[-\frac{C_0-\eta}{\rho_1}\right]\right)}{2}$ 存在拐点$t_{\mathrm{inf}}$，其中$S(t_{\mathrm{inf}})=2\bar S$。
+    综上，内部拐点 $t_{\mathrm{inf}}$ 存在，当且仅当
+    \[
+    \frac{1}{2}
+    <(1-\beta)(1-q_0)
+    <-\frac{1}{2}W_{-1}(z_\eta),
+    \]
+    此时 $S(t_{\mathrm{inf}})=2\bar S$。
     
     由$\dot{S}=-\frac{c_0\eta}{N}(S-\bar S)$,求解并带入初值条件$S(t_1)=S^*$，可得
     \[
@@ -541,7 +619,7 @@ $\lambda\to0$ 表示拐点靠近 $t_1$，$\lambda\to1$ 表示靠近 $t_2$。时�
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.92\textwidth]{scenario1_inflection_scan_t.pdf}
-    \caption{四个参数各取低、中、高三值时的隔离控制律 $q_c(t)$，横轴为真实时间 $t$（天）；圆点为拐点，短竖线标出控制解除时刻 $t_2$。参数固定同图~\ref{fig:s1:inflection-landscape}。须注意每条曲线的水平跨度是控制时长 $\Delta t$，而曲线整体的左右位置差来自启动时刻 $t_1$ 不同（传播越快 $t_1$ 越早），两者不可混读：例如 $c_0=15$ 的曲线靠左且短，$c_0=5$ 的靠右且长。}
+    \caption{四个参数各取低、中、高三值时的隔离控制律 $q_c(t)$，横轴为真实时间 $t$（天）；圆点为拐点，短竖线标出控制解除时刻 $t_2$。参数固定同图~\ref{fig:s1:inflection-landscape}。须注意每条曲线的水平跨度是控制时长 $\Delta t$，而曲线整体的左右位置差来自启动时刻 $t_1$ 不同（传播越快 $t_1$ 越早），两者不可混读：例如 $c_0=13$ 的曲线靠左且短（$t_1\approx2.3$ 天），$c_0=5$ 的靠右且长（$t_1\approx9.3$ 天）。}
     \label{fig:s1:inflection-scan}
 \end{figure}
 
@@ -1438,16 +1516,22 @@ $\eta=0.05N=38.15$。
 \[
 c_{0,\min}(0.05N)\approx3.3270.
 \]
-因此，$c_0$ 的一维扫描从 $c_{0,\min}+0.02\approx3.3470$ 开始，而不再只考察 $c_0\geq6$ 的下降分支。对每组参数，程序首先判断系统在常规防控背景下是否能够触及 $I=\eta$。若可行，则输出切入点 $S^*$、常规防控临界阈值 $S_c$、启动时间 $t_1$、控制时长 $\Delta t$、启动时刻所需最大隔离率
+为了覆盖可行边界附近的上升支、极大值及其后的下降支，全局景观采用
+\[
+c_0=2.3,2.4,\ldots,14,
+\qquad
+\frac{\eta}{N}=0.2\%,0.22\%,\ldots,5\%,
+\]
+共 $118\times241=28438$ 个参数点。对每组参数，程序首先判断系统在常规防控背景下是否能够触及 $I=\eta$。若不可行，则不计算后续指标；相应点在一维曲线中不连接，在二维景观中留白。若可行，则输出切入点 $S^*$、常规防控临界阈值 $S_c$、启动时间 $t_1$、控制时长 $\Delta t$、启动时刻所需最大隔离率
 \[
 q_{\max}=q_c(t_1),
 \]
-清零时间 $t_{\rm end}$，以及综合成本 $J$ 和总累计感染 $I_{t_{\rm cum}}$。相应的数值结果见表~\ref{tab:scenario1_c0_summary}--\ref{tab:scenario1_eta_summary} 和图~\ref{fig:scenario1_u_time_c0}--\ref{fig:scenario1_feasibility_c0_eta}。
+清零时间 $t_{\rm end}$，以及综合成本 $J$ 和总累计感染 $I_{t_{\rm cum}}$。表~\ref{tab:scenario1_c0_summary} 固定 $\eta/N=5\%$，其中首个代表点取非网格值 $c_{0,\min}+0.02\approx3.3470$；表~\ref{tab:scenario1_eta_summary} 固定 $c_0=10$。图~\ref{fig:scenario1_u_time_c0} 固定 $\eta/N=5\%$，图~\ref{fig:scenario1_u_time_eta} 固定 $c_0=10$；图~\ref{fig:scenario1_summary_c0} 取 $\eta/N=0.2\%,0.6\%,1\%,2\%$，图~\ref{fig:scenario1_summary_eta} 则取 $c_0=5,8,10,12$ 并扫描完整阈值区间。相应结果见表~\ref{tab:scenario1_c0_summary}--\ref{tab:scenario1_eta_summary} 和图~\ref{fig:scenario1_u_time_c0}--\ref{fig:scenario1_heatmaps_c0_eta}。
 
 \begin{table}[htbp]
   \centering
   \footnotesize
-  \caption{情景一中不同 $c_0$ 下的关键控制指标。}
+  \caption{固定 $\eta/N=5\%$ 时情景一中不同 $c_0$ 下的关键控制指标。第一行取 $c_0=c_{0,\min}+0.02\approx3.3470$，其余行为主文代表值。}
   \label{tab:scenario1_c0_summary}
   \input{../table/scenario1_c0_summary_table.tex}
 \end{table}
@@ -1455,7 +1539,7 @@ q_{\max}=q_c(t_1),
 \begin{table}[htbp]
   \centering
   \footnotesize
-  \caption{情景一中不同 $\eta$ 下的关键控制指标。}
+  \caption{固定 $c_0=10$ 时情景一中不同医疗容量阈值下的关键控制指标，其中 $\eta/N=0.2\%,0.6\%,1\%,2\%$。}
   \label{tab:scenario1_eta_summary}
   \input{../table/scenario1_eta_summary_table.tex}
 \end{table}
@@ -1463,50 +1547,62 @@ q_{\max}=q_c(t_1),
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.72\textwidth]{figures/scenario1_u_time_c0.pdf}
-    \caption{情景一中不同 $c_0$ 下隔离率 $q_c(t)$ 的时间轨迹。}
+    \caption{固定 $\eta/N=5\%$ 时，$c_0=4,5,8,10,12$ 下隔离率 $q_c(t)$ 的绝对时间轨迹。空心三角形和同色短竖线分别标出 $t_1$ 和 $t_2$；灰色虚线为 $q_0$，蓝色点线为 $\qinf$，暗红圆点为内部拐点。$c_0=4$ 时 $q_{\max}<\qinf$，故控制期内不存在内部拐点。}
     \label{fig:scenario1_u_time_c0}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.72\textwidth]{figures/scenario1_u_time_eta.pdf}
-    \caption{情景一中不同 $\eta$ 下隔离率 $q_c(t)$ 的时间轨迹。}
+    \caption{固定 $c_0=10$ 时，$\eta/N=0.2\%,0.6\%,1\%,2\%$ 下隔离率 $q_c(t)$ 的绝对时间轨迹。空心三角形和同色短竖线分别标出 $t_1$ 和 $t_2$；灰色虚线为 $q_0$，蓝色点线为 $\qinf$，暗红圆点为内部拐点。}
     \label{fig:scenario1_u_time_eta}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.88\textwidth]{figures/scenario1_summary_c0.pdf}
-    \caption{情景一中关键指标随 $c_0$ 的变化，其中扫描范围从 $c_{0,\min}+0.02$ 延伸至 $13$。}
+    \includegraphics[width=0.8\textwidth]{figures/c0_sensitivity_selected_eta.pdf}
+    \caption{情景一中关键指标随 $c_0\in[2.3,14]$ 的变化。四条曲线对应 $\eta/N=0.2\%,0.6\%,1\%,2\%$，每条曲线只显示其可行部分；面板 (b) 的暗红圆点为各曲线在离散网格上的 $\Delta t$ 极大值。六个面板依次为 $t_1,\Delta t,t_{\rm end},q_{\max},J,I_{t_{\rm cum}}$。}
     \label{fig:scenario1_summary_c0}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.88\textwidth]{figures/scenario1_summary_eta.pdf}
-    \caption{情景一中关键指标随 $\eta$ 的变化。}
+    \includegraphics[width=0.8\textwidth]{figures/eta_sensitivity_selected_c0.pdf}
+    \caption{情景一中 $c_0=5,8,10,12$ 时关键指标随 $\eta/N\in[0.2\%,5\%]$ 的变化，横轴采用对数尺度。六个面板依次为 $t_1,\Delta t,t_{\rm end},q_{\max},J,I_{t_{\rm cum}}$。}
     \label{fig:scenario1_summary_eta}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.88\textwidth]{figures/scenario1_heatmaps_c0_eta.pdf}
-    \caption{情景一中 $(c_0,\eta)$ 平面上的 $t_1$、$\Delta t$、$t_{\rm end}$ 与 $I_{t_{\rm cum}}$ 热图。}
+    \includegraphics[width=\textwidth]{figures/scenario1_heatmaps_c0_eta.pdf}
+    \caption{情景一参数景观：横轴为 $\eta/N\in[0.2\%,5\%]$，纵轴为 $c_0\in[2.3,14]$，四个面板依次为 $t_1$、$\Delta t$、$t_{\rm end}$ 与 $I_{t_{\rm cum}}$。白色区域表示常规防控轨道不能触及 $I=\eta$，黑色实线为解析可行边界 $c_{0,\min}(\eta)$，红色虚线为相应指标的等值线。}
     \label{fig:scenario1_heatmaps_c0_eta}
 \end{figure}
 
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.68\textwidth]{figures/scenario1_feasibility_c0_eta.pdf}
-    \caption{情景一中 $(c_0,\eta)$ 平面上是否能够触及 $I=\eta$ 的可行性区域。}
-    \label{fig:scenario1_feasibility_c0_eta}
-\end{figure}
+\clearpage
 
-从表~\ref{tab:scenario1_c0_summary} 和图~\ref{fig:scenario1_summary_c0} 可以看出，在固定 $\beta,\gamma,q_0,N,S_0,I_0,\eta$ 时，随着常规接触水平 $c_0$ 增大，系统触及医疗红线的时间 $t_1$ 明显提前，切入点 $S^*$ 上升，所需最大隔离率 $q_{\max}$ 增大。这与理论分析中 $S^*_{c_0}>0$、$t_{1,c_0}<0$ 以及 $q_{\max}$ 随 $c_0$ 增大而上升的结论一致。控制时长 $\Delta t$ 则呈现非单调变化：当 $c_0$ 从 $3.3470$ 增大到 $5$ 时，$\Delta t$ 从 $2.0432$ 天增加到 $7.5778$ 天；此后随着 $c_0$ 继续增大，$\Delta t$ 逐渐下降，在 $c_0=13$ 时为 $5.0428$ 天。当前离散扫描的最大值出现在 $c_0=5$，这表明转折点位于其附近，但该离散点不作为解析极值位置。该结果同时展示了式~\eqref{eq:s1:c0-min-limit} 所给出的左端边界趋势以及导数判别式允许的正、负两个分支。清零时间 $t_{\rm end}$、成本 $J$ 和总累计感染 $I_{t_{\rm cum}}$ 还受到控制后衰减阶段和累计流量的影响，不能由 $\Delta t$ 的变化方向直接推出。
+图~\ref{fig:scenario1_u_time_c0}--\ref{fig:scenario1_u_time_eta} 展示了不同参数组在绝对时间轴上启动、维持和解除加强隔离的全过程。图~\ref{fig:scenario1_u_time_c0} 中，$c_0=4$ 时 $q_{\max}=0.3413<\qinf\approx0.4083$，控制曲线始终位于拐点高度以下，因而没有内部拐点；$c_0=5,8,10,12$ 时则各有唯一内部拐点。图~\ref{fig:scenario1_u_time_eta} 中四条曲线的拐点均落在同一水平线 $\qinf$ 上，这是因为 $\qinf=1-1/[2(1-\beta)]$ 只由 $\beta$ 决定，而 $\eta$ 主要改变启动时刻与平台时间尺度。
 
-从表~\ref{tab:scenario1_eta_summary} 和图~\ref{fig:scenario1_summary_eta} 可以看出，在固定 $c_0$ 的情况下，医疗容量阈值 $\eta$ 越高，系统越晚触碰红线，即 $t_1$ 增大；触碰时易感者已经消耗更多，因此 $S^*$ 下降。与此同时，控制持续时间 $\Delta t$、最大隔离率 $q_{\max}$ 以及成本 $J$ 均下降。这与理论分析中 $S^*_\eta<0$、$t_{1,\eta}>0$、$\Delta t_\eta<0$ 以及 $q_{\max,\eta}<0$ 的结论一致。清零时间 $t_{\rm end}$ 和总累计感染 $I_{t_{\rm cum}}$ 同时受到平台高度、平台时长和后期衰减阶段的共同影响，因此在数值结果中单独列出。
+从表~\ref{tab:scenario1_c0_summary} 和图~\ref{fig:scenario1_summary_c0} 可以看出，在固定 $\beta,\gamma,q_0,N,S_0,I_0,\eta$ 且位于各自可行区间时，随着常规接触水平 $c_0$ 增大，切入点 $S^*$ 上升、启动时间 $t_1$ 提前、所需最大隔离率 $q_{\max}$ 增大。这与命题~\ref{prop:s1:sensitivity} 中 $S^*_{c_0}>0$、$(t_1)_{c_0}<0$ 和 $(q_{\max})_{c_0}>0$ 一致。控制时长 $\Delta t$ 则在完整可行区间上先升后降。以表~\ref{tab:scenario1_c0_summary} 的 $\eta/N=5\%$ 切片为例，
+\[
+\Delta t(3.3470)=2.0432,\qquad
+\Delta t(5)=7.5778,\qquad
+\Delta t(12)=5.3007\ {\rm d}.
+\]
+代表表中的 $c_0=5$ 已接近峰位，而完整 $0.1$ 步长网格的离散极大值出现在 $c_0=5.1$，对应 $\Delta t=7.5788$ 天。图~\ref{fig:scenario1_summary_c0} 中 $\eta/N=0.2\%,0.6\%,1\%,2\%$ 四条曲线的离散峰位分别约为 $c_0=4.3,4.4,4.4,4.6$，相应最大控制时长约为 $211.5435,69.8417,41.5169,20.2813$ 天。这些结果同时显示式~\eqref{eq:s1:c0-min-limit} 给出的左端趋势和命题~\ref{prop:s1:sensitivity} 中导数符号可能改变的两个分支。清零时间 $t_{\rm end}$、成本 $J$ 和总累计感染 $I_{t_{\rm cum}}$ 还受到控制后衰减阶段和累计流量的影响，不能由 $\Delta t$ 的变化方向推出其全局单调性。
 
-图~\ref{fig:scenario1_u_time_c0}--\ref{fig:scenario1_u_time_eta} 展示不同参数组在时间轴上启动、维持和解除加强隔离的全过程。本文对参数敏感性的判断主要依据 $S^*$、$t_1$、$\Delta t$、$t_{\rm end}$、$q_{\max}$、$J$ 和 $I_{t_{\rm cum}}$。最后，图~\ref{fig:scenario1_heatmaps_c0_eta} 和图~\ref{fig:scenario1_feasibility_c0_eta} 给出了 $(c_0,\eta)$ 平面上的关键指标变化与可行性区域，进一步说明当医疗容量较高或常规传播强度较低时，系统可能不会触及医疗红线，从而无需启动加强隔离控制。
+表~\ref{tab:scenario1_eta_summary} 给出固定 $c_0=10$ 的四个代表阈值，图~\ref{fig:scenario1_summary_eta} 则把比较扩展到 $c_0=5,8,10,12$ 和完整的 $\eta/N\in[0.2\%,5\%]$ 区间。对每个固定 $c_0$，随着医疗容量阈值提高，系统更晚触碰红线，故 $t_1$ 增大；触碰时易感者消耗更多，故 $S^*$ 下降；同时 $\Delta t$ 与 $q_{\max}$ 下降。这与命题~\ref{prop:s1:sensitivity} 中 $S^*_\eta<0$、$(t_1)_\eta>0$、$(\Delta t)_\eta<0$ 和 $(q_{\max})_\eta<0$ 一致。固定 $c_0=10$，当 $\eta/N$ 从 $0.2\%$ 增至 $2\%$ 时，
+\[
+\Delta t:152.0574\to15.0431,\qquad
+t_{\rm end}:180.5821\to46.8029,
+\]
+\[
+J:60.8005\to5.8888,\qquad
+I_{t_{\rm cum}}:173.0314\to233.7810.
+\]
+在当前参数区间内，提高阈值显著缩短平台和清零时间、降低成本，但总累计感染随平台高度上升而增加；这一方向来自平台高度、平台时长和后期衰减的共同作用，不作为对任意参数区域的全局结论。对每个固定 $c_0$，$q_{\max}$ 随 $\eta$ 的变化相对缓慢，而图中不同曲线之间的主要差异来自 $c_0$。在所选的 $c_0=5,8,10,12$ 上，$\Delta t$ 在完整阈值范围内始终按 $5>8>10>12$ 排列，没有发生曲线交叉。
+
+最后，图~\ref{fig:scenario1_heatmaps_c0_eta} 将上述一维切片扩展到 $(\eta/N,c_0)$ 平面。黑色实线给出解析边界 $c_{0,\min}(\eta)$；其下方白色区域表示常规防控轨道不能触及 $I=\eta$，因而无需启动加强隔离控制。该边界随 $\eta$ 增大而上移，说明医疗容量较高或常规传播强度较低时，参数点可能进入阈值不可达区。图中的有色区域只报告可行情形下的 $t_1$、$\Delta t$、$t_{\rm end}$ 和 $I_{t_{\rm cum}}$，红色虚线用于读取相应指标的等值水平。
 
 
 
@@ -1993,8 +2089,9 @@ $\mathcal{W}_{\rm cum}=\mathcal{W}_{\rm pcd}\cap\{N h\le I_{t\rm cum}^{\rm T}\}\
 $\mathcal{W}_{\rm clr}=\mathcal{W}_{\rm pcd}\cap\{t_{\rm end}\le t_{\rm end}^{\rm T}\}\cap\{N\ge I_{t\rm cum}^{\rm T}\}$，
 本文参数下 $\mathcal{W}_{\rm clr}\subset\mathcal{W}_{\rm cum}\subset\mathcal{W}_{\rm pcd}$。
 两个面板上以同色标记点与图~\ref{fig:panel_eta_lever}、\ref{fig:panel_N_lever} 的采样角色联动：
-圆点为 $\eta$ 杠杆（固定 $N_{\rm eff}=2\times10^{4}$）的四个取样，方点为 $N$ 杠杆（固定 $\eta=100$）
-的六个取样。
+圆点为 $\eta$ 杠杆（固定 $N_{\rm eff}=2\times10^{4}$）的三个展示取样，方点为 $N$ 杠杆（固定 $\eta=100$）
+的五个展示取样。
+同一三条 $\theta$ 边界在其他有效人口下的轨迹及拐点投影见附录~\ref{app:panel_eta_N}。
 
 面板 (a) 的阴影楔形以成本线为下界，对应 $T_{\max}\to\infty$ 的封顶口径（顶点 $N^\ast_\infty$）；
 两条时长线（$45$ d、$150$ d）画在其中，用以显示有限 $T_{\max}$ 下边界将如何抬高或压低，
@@ -2012,9 +2109,9 @@ $\mathcal{W}_{\rm clr}=\mathcal{W}_{\rm pcd}\cap\{t_{\rm end}\le t_{\rm end}^{\r
   阴影为占优楔形 $\mathcal{W}_{\rm pcd}$，以成本线为下界，对应 $T_{\max}\to\infty$ 口径，
   顶点 $N^\ast_\infty\approx9.17\times10^{4}$；由 $\theta_{\rm dur}(T)T\approx0.170$，
   $T_{\max}\lesssim103$ d 时改由时长线绑定，例如 $N^\ast(45\text{d})\approx4.04\times10^{4}$。
-  \textbf{(b) 弧线族（广延量）}：累计边界（蓝，$N h=I_{t\rm cum}^{\rm T}$，自 $(9471,151.90)$ 到
-  $(12177,10)$）与清零边界（红，$t_{\rm end}=t_{\rm end}^{\rm T}$，自 $(2097,27.89)$ 到
-  $(5914.3,151.90)$）；红色内区与蓝色外环互斥填充，故红区即两约束同时满足的区域。
+  \textbf{(b) 弧线族（广延量）}：累计边界（蓝青，$N h=I_{t\rm cum}^{\rm T}$，自 $(9471,151.90)$ 到
+  $(12177,10)$）与清零边界（暖灰棕，$t_{\rm end}=t_{\rm end}^{\rm T}$，自 $(2097,27.89)$ 到
+  $(5914.3,151.90)$）；暖灰棕内区与蓝青外环互斥填充，故暖灰棕区即两约束同时满足的区域。
   累计弧在 $(11764,19.48)$ 穿出楔形，其后一段以淡虚线示意等值线延续但不再构成
   $\mathcal{W}_{\rm cum}$ 的边界；清零弧在有效池下界 $N<I_{t\rm cum}^{\rm T}=2096.76$ 的一段
   同样以虚线示意（该区间内 $N_{\rm eff}$ 重解释在物理上失效，见第~\ref{sec:dom:limits}~节 (4)）。
@@ -2027,42 +2124,61 @@ $\mathcal{W}_{\rm clr}=\mathcal{W}_{\rm pcd}\cap\{t_{\rm end}\le t_{\rm end}^{\r
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/fig_panel_A.pdf}
-  \caption{$\eta$ 杠杆：固定有效人口 $N_{\rm eff}=2\times10^{4}$，沿四条尺度不变
-  边界取阈值 $\eta=\theta N_{\rm eff}$ 的情景一阈值控制轨迹。各条平台的高度即其 $\eta$，已在平台下降转角处直接标出；四条边界依次为
-  interior（$\Delta t=30$ d，$\theta_{\rm int}=5.612\times10^{-3}$，$\eta=112.2$）、
-  dur 45 d（$\theta_{\rm dur45}=3.762\times10^{-3}$，$\eta=75.2$）、
-  cost（$\theta_{\rm cost}=1.656\times10^{-3}$，$\eta=33.1$）与
-  dur 150 d（$\theta_{\rm dur150}=1.137\times10^{-3}$，$\eta=22.7$）。
-  (a) 社区感染者 $I(t)$（对数纵轴）：四条平台分别贴合各自的 $\eta$，且因
+  \caption{$\eta$ 杠杆：固定有效人口 $N_{\rm eff}=2\times10^{4}$，沿三条尺度不变
+  边界取阈值 $\eta=\theta N_{\rm eff}$ 的情景一阈值控制轨迹。各条平台的高度即其 $\eta$；
+  按 $\eta$ 升序，三条边界依次为
+  dur 150 d（$\theta_{\rm dur150}=1.137\times10^{-3}$，$\eta=22.7$）、
+  cost（$\theta_{\rm cost}=1.656\times10^{-3}$，$\eta=33.1$）、
+  dur 45 d（$\theta_{\rm dur45}=3.762\times10^{-3}$，$\eta=75.2$）。
+  (a) 社区感染者 $I(t)$（对数纵轴）：三条平台分别贴合各自的 $\eta$，且因
   $N_{\rm eff}<N^\ast_{45}$ 全部落在 $I_{\rm peak}^{\rm T}$ 之下（红点线）。
+  平台上的同色实心圆为 $q_c(t)$ 拐点时刻 $t_{\rm inf}$ 在 $I(t)$ 上的投影
+  $(t_{\rm inf},\eta)$，并非 $I(t)$ 自身的拐点。逐 $N_{\rm eff}$ 重拟合时，绝对
+  $t_{\rm inf}$ 随启动时间 $t_1$ 平移，但平台内相对位置
+  $\lambda=(t_{\rm inf}-t_1)/(t_2-t_1)\approx0.861$ 以及距平台结束的时间
+  $t_2-t_{\rm inf}\approx20.8/14.3/6.3$ d（依次对应 dur 150 d/cost/dur 45 d）
+  基本不随 $N_{\rm eff}$ 改变（见附录~\ref{app:panel_eta_N}）。
   灰点线为同一 $N_{\rm eff}$ 下的常规控制；黑实线为 TDINN 控制，取西安全市口径下
   的原始拟合轨迹（峰值 $151.90$、清零 $45.27$ d），作为固定的现实参照，不随
   $N_{\rm eff}$ 重算（见第~\ref{sec:dominance}~节 TDINN 基准的口径说明）。
-  (b) 隔离率 $q_c(t)$：四条松弛曲线与 TDINN 的上升高斯 $q_{\rm TDINN}(t)$；
-  灰点线与灰虚线分别为 $q_0=0.3230$ 与拐点高度 $\qinf=1-1/[2(1-\beta)]=0.4119$。
+  (b) 隔离率 $q_c(t)$：三条松弛曲线与 TDINN 的上升高斯 $q_{\rm TDINN}(t)$；
+  各条彩色实线均包含控制前和 $t_2$ 后直到自身动态清零的 $q_0=0.3230$ 阶段，
+  以及 $t_1\leq t\leq t_2$ 的阈值控制段；彩色竖直虚线连接 $t_1$ 处从
+  $q_0$ 到 $q_c(t_1^+)$ 的瞬时跳跃。曲线按动态清零时刻从长到短叠绘，使短清零轨迹
+  在重合的 $q_0$ 段上优先可见；各曲线在 $q_0$ 上的同色短竖线标出自身动态清零时刻；灰虚线为拐点高度
+  $\qinf=1-1/[2(1-\beta)]=0.4119$。
   白心圆为各条曲线的凹凸拐点，均落在 $\qinf$ 上，与其只依赖 $\beta$、
-  不依赖 $(N_{\rm eff},\eta)$ 的结论一致。}
+  不依赖 $(N_{\rm eff},\eta)$ 的结论一致。右上角内嵌柱图按 $\eta$ 递增排列，给出动态清零
+  $I(t)\leq1$ 时的总累计感染 $I_{t_{\rm cum}}$，柱色随 $\eta$ 加深，纵轴从零起算；
+  黑虚线为 TDINN 全市现实结局 $I_{t_{\rm cum}}^{\rm T}=2096.76$。三条均高于该参照且随
+  $\eta$ 递增；此处 $N_{\rm eff}=2\times10^4$ 已超过累计占优临界
+  $N^\ast_{\rm cum}\approx1.17\times10^4$（推论~\ref{cor:cum}），故累计约束在三条上均不成立。}
   \label{fig:panel_eta_lever}
 \end{figure}
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/fig_panel_B.pdf}
-  \caption{$N$ 杠杆：固定绝对阈值 $\eta=100$，在六个有效人口下的情景一阈值控制轨迹。
-  六条平台高度相同（均为 $\eta$），故 $N_{\rm eff}$ 无法在纵轴上直读，各曲线对应的 $N_{\rm eff}$ 已随角色名列于图例；六个取值取自各条边界与 $\eta=100$ 的交点：
+  \caption{$N$ 杠杆：固定绝对阈值 $\eta=100$，在五个有效人口下的情景一阈值控制轨迹。
+  五条平台高度相同（均为 $\eta$），故 $N_{\rm eff}$ 无法在纵轴上直读，各曲线对应的 $N_{\rm eff}$ 已随角色名列于图例；五个取值取自各条边界与 $\eta=100$ 的交点：
   clear $\le45.3$ d（$N_{\rm eff}=4{,}602$）、cumulative（$10{,}106$）、
-  interior（$17{,}819$）、dur 45 d（$26{,}582$）、cost（$60{,}386$）、
+  dur 45 d（$26{,}582$）、cost（$60{,}386$）、
   dur 150 d（$87{,}951$）。
-  (a) $I(t)$（对数纵轴）：六条平台\emph{全部恒在} $\eta=100$（灰虚线），与池规模无关，
+  (a) $I(t)$（对数纵轴）：五条平台\emph{全部恒在} $\eta=100$（灰虚线），与池规模无关，
   这是强度量只通过 $\theta=\eta/N_{\rm eff}$ 进入的直接体现；平台\emph{时长}则随
-  $N_{\rm eff}$ 增大而显著拉长。灰色带为常规控制在 $N_{\rm eff}\in[4{,}602,\,87{,}951]$（与上列六个取值同范围）
+  $N_{\rm eff}$ 增大而显著拉长。灰色带为常规控制在 $N_{\rm eff}\in[4{,}602,\,87{,}951]$（与上列五个取值同范围）
   上取 $8$ 条几何间隔轨迹的逐点最小--最大包络，仅绘制到全部成员均未清零为止；
   两条灰点线为区间端点的代表轨迹，因各成员按自身 $N_{\rm eff}$ 重拟合 $I_0$、轨迹相互交叉，
   端点轨迹并非处处即为包络。带宽即该反事实策略对池规模的敏感度（峰值处上下相差约 $55$ 倍），
   与阈值控制平台的零带宽形成对照。黑实线为 TDINN 控制的西安全市原始拟合轨迹
   （峰值 $151.90$、清零 $45.27$ d）：它是已发生的现实控制，作为固定参照只画一条，
   不随 $N_{\rm eff}$ 重算；红点线为其峰值 $I_{\rm peak}^{\rm T}$。
-  (b) $q_c(t)$：六条松弛曲线与 TDINN 的 $q_{\rm TDINN}(t)$；白心圆的拐点同样全部落在
+  (b) $q_c(t)$：五条松弛曲线与 TDINN 的 $q_{\rm TDINN}(t)$；每条彩色实线均包含
+  控制前和 $t_2$ 后直到自身动态清零的 $q_0$ 阶段，以及 $t_1\leq t\leq t_2$
+  的阈值控制段，彩色竖直虚线连接 $t_1$ 处从 $q_0$ 到 $q_c(t_1^+)$ 的瞬时跳跃。
+  曲线按动态清零时刻从长到短叠绘，使短清零轨迹在重合的 $q_0$ 段上优先可见；
+  各曲线在 $q_0$ 上的同色短竖线标出自身动态清零时刻。
+  白心圆的拐点同样全部落在
   $\qinf=0.4119$，给出跨 $N_{\rm eff}$ 的不变性，与图~\ref{fig:panel_eta_lever}
   的跨 $\eta$ 不变性互补。}
   \label{fig:panel_N_lever}
@@ -2114,6 +2230,57 @@ TDINN 的现实结局作为固定参照。这与“同一池上两种策略对�
 （ii）在情景二、情景三（同时调节 $c$ 与 $q$）下重做同一套尺度分析，检验二分结构是否保持；
 （iii）多城多病验证：在另一城市／病种的平行数据上重做本套分析，可检验 $\theta$ 阈值与 $\qinf$ 等结构不变量的可移植性；
 （iv）引入观测噪声与参数不确定性，评估开环控制律的稳健边界。
+
+\clearpage
+\appendix
+\section{不同有效人口下的 $\eta$ 杠杆补充图}
+\label{app:panel_eta_N}
+
+本附录固定三条尺度不变边界
+$\theta_{\rm dur150}=1.137\times10^{-3}$、
+$\theta_{\rm cost}=1.656\times10^{-3}$ 与
+$\theta_{\rm dur45}=3.762\times10^{-3}$，改变 $N_{\rm eff}$ 并按当前口径逐 $N_{\rm eff}$
+重拟合 $I_0$。各平台上的同色实心圆是 $q_c(t)$ 拐点时刻在 $I(t)$ 上的投影，而非
+$I(t)$ 自身拐点；绝对 $t_{\rm inf}$ 随 $t_1$ 平移，但
+$\lambda\approx0.861$ 与各边界的 $t_2-t_{\rm inf}$ 保持不变。右上 inset 均从零起算，
+但正文图~\ref{fig:panel_eta_lever} 与以下三图的纵轴上限分别按各自累计量级自适应；
+跨图比较应读取纵轴刻度与柱顶数值，不能直接比较柱高。
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{figures/fig_panel_A_N1e4.pdf}
+  \caption{$N_{\rm eff}=10^4$ 时的 $\eta$ 杠杆。三条边界到动态清零的总累计感染分别为
+  $1746.5$、$1781.8$ 与 $1884.8$，均低于 TDINN 固定参照 $2096.76$；但其动态清零时间
+  分别约为 $222.9$、$171.3$ 与 $103.8$ d，仍显著长于 TDINN 的 $45.27$ d。因此这里只能说
+  总累计感染这一单项指标较低，不能推出综合占优。另因逐 $N_{\rm eff}$ 只重拟合 $I_0$ 时
+  $N_{\rm eff}\lesssim10^4$ 的拟合质量已明显下降，本图仅作尺度结构的边界示例。}
+  \label{fig:panel_eta_N1e4}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{figures/fig_panel_A_N40377.pdf}
+  \caption{$N_{\rm eff}=40{,}377\approx N^\ast_{45}$ 时的 $\eta$ 杠杆。dur 45 d 边界的平台
+  高度 $\eta=151.898$，数值上近似达到 TDINN 峰值参照
+  $I_{\rm peak}^{\rm T}=151.90$，对应峰值约束的临界情形；dur 150 d 与 cost 平台仍位于
+  该参照线下方。}
+  \label{fig:panel_eta_N40377}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth]{figures/fig_panel_A_N91727.pdf}
+  \caption{$N_{\rm eff}=91{,}727\approx N^\ast_\infty$ 时的 $\eta$ 杠杆。cost 边界的平台
+  高度 $\eta=151.900$，数值上近似达到 $I_{\rm peak}^{\rm T}=151.90$；dur 45 d 平台
+  $\eta=345.077$ 已超过该参照，故峰值约束在该边界上不再成立，而 dur 150 d 平台仍低于参照。}
+  \label{fig:panel_eta_N91727}
+\end{figure}
+
+\clearpage
 
 % ===== 参考文献（Step 6 补全文献综述引用；当前仅含正文已直接引用的条目） =====
 \printbibliography
