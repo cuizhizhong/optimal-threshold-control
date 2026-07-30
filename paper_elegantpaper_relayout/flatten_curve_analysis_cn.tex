@@ -67,9 +67,16 @@
 \label{eq:model:full}
 \end{equation}
 
-\begin{figure}[h]
+相应的仓室转移结构见图~\ref{fig:model_schematic}。
+
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/Fig1.pdf}
+    \caption{含接触追踪与隔离的仓室转移结构：
+    $S$ 为社区易感者，$S_q$ 为隔离易感者，
+    $I$ 为社区感染者，$I_q$ 为隔离感染者，
+    $R$ 为移除者；箭头标注相应转移通道的主要系数。}
+    \label{fig:model_schematic}
 \end{figure}
 \subsection{模型控制}
 在传染病流行期间，如何设计控制策略以防止非隔离感染者($I$)数量超过重症监护室($ICU$)的数量，是一个重要的公共卫生问题。为解决这一关键问题，我们将控制策略引入到接触率 $c(t)$ 和隔离率 $q(t)$ 中。
