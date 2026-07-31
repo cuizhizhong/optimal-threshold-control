@@ -71,7 +71,7 @@
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.8\textwidth]{figures/Fig1.pdf}
+    \includegraphics[width=0.7\textwidth]{figures/Fig1.pdf}
     \caption{含接触追踪与隔离的仓室转移结构：
     $S$ 为社区易感者，$S_q$ 为隔离易感者，
     $I$ 为社区感染者，$I_q$ 为隔离感染者，
@@ -623,17 +623,18 @@ $\lambda\to0$ 表示拐点靠近 $t_1$，$\lambda\to1$ 表示靠近 $t_2$。时�
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.98\textwidth]{scenario1_inflection_landscape.pdf}
+    \includegraphics[width=0.8\textwidth]{scenario1_inflection_landscape.pdf}
     \caption{拐点的存在性、位置与两段时长图谱。四行分别沿 $q_0,\beta,c_0,\eta/N$ 扫描，其余参数固定为 $N=763$、$S_0=762$、$I_0=1$、$\gamma=0.3504$，以及未被扫描者取 $\beta=0.155$、$q_0=0.01526$、$c_0=10$、$\eta=0.05N$。左列为 $q_{\max}$、$\qinf$、$q_0$ 三条曲线，填色区即 $q_0<\qinf<q_{\max}$ 成立（存在内部拐点）的区间，灰虚线为存在性边界；右列为前段 $t_{\mathrm{inf}}-t_1$（深）与后段 $t_2-t_{\mathrm{inf}}$（浅）的时长堆叠，虚线为 $\Delta t$。}
     \label{fig:s1:inflection-landscape}
 \end{figure}
-
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.92\textwidth]{scenario1_inflection_scan_t.pdf}
+    \includegraphics[width=0.8\textwidth]{scenario1_inflection_scan_t.pdf}
     \caption{四个参数各取低、中、高三值时的隔离控制律 $q_c(t)$，横轴为真实时间 $t$（天）；圆点为拐点，短竖线标出控制解除时刻 $t_2$。参数固定同图~\ref{fig:s1:inflection-landscape}。须注意每条曲线的水平跨度是控制时长 $\Delta t$，而曲线整体的左右位置差来自启动时刻 $t_1$ 不同（传播越快 $t_1$ 越早），两者不可混读：例如 $c_0=13$ 的曲线靠左且短（$t_1\approx2.3$ 天），$c_0=5$ 的靠右且长（$t_1\approx9.3$ 天）。}
     \label{fig:s1:inflection-scan}
 \end{figure}
+
+图~\ref{fig:s1:inflection-landscape}（沿 $\beta$、$c_0$ 等单参数扫描）与图~\ref{fig:neff_inflection}（$\qinf$ 随 $\beta$）分别从一维刻画内部拐点的存在性。将存在判据 $s_c<2\bar s<s^*$ 直接画在 $(c_0,\beta)$ 平面上（图~\ref{fig:c0-beta-existence}，附录~\ref{app:c0_beta}，固定 $\theta=0.002$、$q_0=0.3230$），可统一读出两端消失：上界 $2\bar s<s^*$（$t_1$ 端，随 $c_0,\beta$ 弯曲）与下界 $\beta<\beta_{\max}=0.2614$（$t_2$ 端，只由 $\beta,q_0$ 定的水平线）围出内部拐点存在域。图~\ref{fig:neff_inflection} 与图~\ref{fig:c0-phase} 分别是本图沿 $\beta$ 轴、沿 $c_0$ 轴的截面；西安参数 $(c_0,\beta)=(12.8872,0.1498)$ 落在域内。
 
 \subsection{拐点处的曲率幅度}
 \label{sec:s1:inflection-curvature}
@@ -1558,14 +1559,14 @@ q_{\max}=q_c(t_1),
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.72\textwidth]{figures/scenario1_u_time_c0.pdf}
+    \includegraphics[width=0.7\textwidth]{figures/scenario1_u_time_c0.pdf}
     \caption{固定 $\eta/N=5\%$ 时，$c_0=4,5,8,10,12$ 下隔离率 $q_c(t)$ 的绝对时间轨迹。空心三角形和同色短竖线分别标出 $t_1$ 和 $t_2$；灰色虚线为 $q_0$，蓝色点线为 $\qinf$，暗红圆点为内部拐点。$c_0=4$ 时 $q_{\max}<\qinf$，故控制期内不存在内部拐点。}
     \label{fig:scenario1_u_time_c0}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.72\textwidth]{figures/scenario1_u_time_eta.pdf}
+    \includegraphics[width=0.7\textwidth]{figures/scenario1_u_time_eta.pdf}
     \caption{固定 $c_0=10$ 时，$\eta/N=0.2\%,0.6\%,1\%,2\%$ 下隔离率 $q_c(t)$ 的绝对时间轨迹。空心三角形和同色短竖线分别标出 $t_1$ 和 $t_2$；灰色虚线为 $q_0$，蓝色点线为 $\qinf$，暗红圆点为内部拐点。}
     \label{fig:scenario1_u_time_eta}
 \end{figure}
@@ -1586,12 +1587,12 @@ q_{\max}=q_c(t_1),
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=\textwidth]{figures/scenario1_heatmaps_c0_eta.pdf}
+    \includegraphics[width=0.8\textwidth]{figures/scenario1_heatmaps_c0_eta.pdf}
     \caption{情景一参数景观：横轴为 $\eta/N\in[0.2\%,5\%]$，纵轴为 $c_0\in[2.3,14]$，四个面板依次为 $t_1$、$\Delta t$、$t_{\rm end}$ 与 $\Itcum$。白色区域表示常规防控轨道不能触及 $I=\eta$，黑色实线为解析可行边界 $c_{0,\min}(\eta)$，红色虚线为相应指标的等值线。}
     \label{fig:scenario1_heatmaps_c0_eta}
 \end{figure}
 
-\clearpage
+%\clearpage
 
 图~\ref{fig:scenario1_u_time_c0}--\ref{fig:scenario1_u_time_eta} 展示了不同参数组在绝对时间轴上启动、维持和解除加强隔离的全过程。图~\ref{fig:scenario1_u_time_c0} 中，$c_0=4$ 时 $q_{\max}=0.3413<\qinf\approx0.4083$，控制曲线始终位于拐点高度以下，因而没有内部拐点；$c_0=5,8,10,12$ 时则各有唯一内部拐点。图~\ref{fig:scenario1_u_time_eta} 中四条曲线的拐点均落在同一水平线 $\qinf$ 上，这是因为 $\qinf=1-1/[2(1-\beta)]$ 只由 $\beta$ 决定，而 $\eta$ 主要改变启动时刻与平台时间尺度。
 
@@ -1685,67 +1686,100 @@ t_2=t_1+\frac{N}{c_0\eta}\ln\frac{S^*-\bar S}{S_c-\bar S}\approx101.97,
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.98\textwidth]{xian_control_comparison_panels.pdf}
-    \caption{$\eta=0.002N$ 时 TDINN 控制、情景一阈值控制与常规控制的动态比较。前两行主面板采用对数纵轴，内嵌小图采用线性纵轴放大 TDINN 与真实日报所在的低量级区间，真实数据点只放在每日新增病例的内嵌小图中。}
+    \includegraphics[width=0.7\textwidth]{xian_control_comparison_panels.pdf}
+    \caption{$\eta=0.002N$ 时 TDINN 控制、情景一阈值控制与常规控制的动态比较：$(a)$ 社区感染者 $I(t)$，$(b)$ 每日新增社区感染者 $I_{\rm new}(t)$，$(c)$ 每日新增隔离感染者 $I_{q_{\rm new}}(t)$，$(d)$ 接触率 $c(t)$，$(e)$ 隔离率 $q(t)$。$(a)$--$(c)$ 主面板采用对数纵轴，内嵌小图采用线性纵轴显示低量级区间；真实数据点只放在 $(b)$、$(c)$ 的内嵌小图中。浅灰点线标记观测结束日，弱化的深红虚线标记阈值控制的启动与解除时刻。}
     \label{fig:xian_panels}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.82\textwidth]{xian_control_cumulative.pdf}
-    \caption{三策略下累计感染规模的比较，三行分别为 $I_{\rm cum}(t)$、$I_{q_{\rm cum}}(t)$ 和 $\Itcum(t)$。}
+    \includegraphics[width=0.7\textwidth]{xian_control_cumulative.pdf}
+    \caption{三策略下累计感染规模的比较：$(a)$ 社区累计感染 $I_{\rm cum}(t)$，$(b)$ 隔离累计感染 $I_{q_{\rm cum}}(t)$，$(c)$ 总累计感染 $\Itcum(t)$。三个面板采用适合零起点数据的对称对数纵轴。}
     \label{fig:xian_cumulative}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.82\textwidth]{xian_effective_reproduction_number.pdf}
-    \caption{三策略下有效再生数 $R_e(t)$ 的比较，水平虚线为 $R_e(t)=1$。}
+    \includegraphics[width=0.7\textwidth]{xian_effective_reproduction_number.pdf}
+    \caption{三策略下有效再生数 $R_e(t)$ 的比较。深红虚线标记临界水平 $R_e=1$。}
     \label{fig:xian_Re}
 \end{figure}
 
 \begin{table}[htbp]
     \centering
     \footnotesize
-    \caption{$\eta=0.002N$ 下三类控制策略的数值比较。（$\max I$、$\Itcum$ 为直接模拟取整值；第~\ref{sec:dominance}节占优分析采用全精度固定拟合／重构参照值 $I_{\rm peak}^{\rm T}=151.90$、$\Itcum^{\rm T}=2096.76$。）}
+    \caption{$\eta=0.002N$ 下三类控制策略的数值比较。（表内 $\max I$、$\Itcum$ 为直接模拟取整值。）}
     \label{tab:xian_summary}
-    \resizebox{\textwidth}{!}{\input{../table/xian_control_comparison_results_table.tex}}
+    \resizebox{0.7\textwidth}{!}{\input{../table/xian_control_comparison_results_table.tex}}
 \end{table}
 
 在 $\eta=0.002N$、全市人口口径下，情景一阈值控制把社区感染者峰值精确限制在 $\eta=26{,}326$，且完全不降低接触率（$J_c=0$），但需维持约 $85.07$ 天额外隔离，清零约 $258.11$ 天，总累计感染显著高于 TDINN；TDINN 的峰值（约 $152$）和总累计感染（约 $2097$）都低得多，但同时使用了接触率和隔离率两种控制。值得注意的是，此时情景一的二次加权成本 $J\approx40.77$ 反而低于 TDINN 的 $J\approx49.35$，而峰值与累计却更高——说明二者的优劣是\emph{指标相对}的。TDINN 的全市固定拟合／重构参照值 $I_{\rm peak}^{\rm T}\approx151.90$、$J^{\rm T}\approx49.35$、$\Itcum^{\rm T}\approx2096.76$（表~\ref{tab:xian_summary} 报直接模拟取整 $152/2097$）将作为第~\ref{sec:dominance}节占优分析的 TDINN 基准。
 
+这一 $J$ 的反转是本文口径下的一个明确结论，而非数值巧合：情景一完全不动接触率（$J_c=0$），其成本全部来自平台期的隔离加强，而 TDINN 同时动用接触率与隔离率两个通道，二次加权（$w_q=2$）下隔离项占比更高。因此在 $\eta=0.002N$ 这一代表阈值上，情景一以“更高的峰值与累计、更长的时程”换来“更低的加权控制成本”——优劣完全是相对于所选指标集而言的，不能据 $J$ 一项判定综合占优。
+
+图~\ref{fig:xian_cumulative} 进一步显示三者累计规模的悬殊：情景一到清零的总累计感染达 $\sim2.38\times10^{6}$，而 TDINN 仅 $\sim2.1\times10^{3}$，相差三个数量级。这一差距并非控制效率的直接体现，而主要来自全市 $N=13\,163\,000$ 的易感池——平台期贴边维持使 $I(t)\equiv\eta$ 长期不衰，累计新发正比于所消耗的易感者，池越大、平台越长，累计越高。此点在第~\ref{sec:dominance}节以 $\Itcum=N\,h(\theta)$ 的标度结构精确刻画。
+
+图~\ref{fig:xian_Re} 把三策略压制传播的\emph{方式}差异摊开：常规控制 $R_e(0)\approx4.43$ 一路失控；TDINN 同时压 $c(t)$、抬 $q(t)$，使 $R_e$ 较快跌破 $1$；情景一在平台期把 $R_e$ 精确顶在 $\approx1$。须强调平台期 $R_e\approx1$ 是策略定义使然（“贴边维持”即令新发与移出相抵），并非控制优越的证据；情景一真正的代价出现在平台之后 $S(t)$ 缓慢降到临界水平、$R_e$ 才最终 $<1$ 的那段长尾里。
+
 \subsection{阈值 \texorpdfstring{$\eta$}{eta} 的敏感性}
 取 $\eta/N\in\{0.0001,0.0002,0.0005,0.001,0.0015,0.002,0.003,0.004,0.005,0.0075,0.01\}$ 扫描，结果见表~\ref{tab:xian_eta_sens} 与图~\ref{fig:xian_eta_sens}，可概括为
 \[
-\eta\downarrow\ \Rightarrow\ t_1\downarrow,\qquad \Delta t\uparrow,\qquad J_q\uparrow,\qquad t_{\rm end}\uparrow.
+\eta\downarrow\ \Rightarrow\ t_1\downarrow,\qquad \Delta t\uparrow,\qquad J\uparrow,\qquad t_{\rm end}\uparrow.
 \]
-启动时间变化不大：$\eta/N$ 从 $0.01$ 降到 $0.0001$，$t_1$ 仅从第 $18.55$ 天提前到第 $13.93$ 天。但控制时长与清零时间对 $\eta$ 很敏感：$\eta/N$ 从 $0.01$ 降到 $0.002$，控制时长从 $16.61$ 增到 $85.07$ 天；降到 $0.0001$ 时增到 $1710.66$ 天，清零 $2209.55$ 天。原因是平台期让 $I(t)$ 贴边维持而非立即下降，$\eta$ 越低易感者消耗越慢。这提示\textbf{提高 $\eta$} 是缩短平台、使情景一在给定指标上接近 TDINN 的一条杠杆（见第~\ref{sec:dominance}节）。
+启动时间变化不大：$\eta/N$ 从 $0.01$ 降到 $0.0001$，$t_1$ 仅从第 $18.55$ 天提前到第 $13.93$ 天。但控制时长与清零时间对 $\eta$ 很敏感：$\eta/N$ 从 $0.01$ 降到 $0.002$，控制时长从 $16.61$ 增到 $85.07$ 天；降到 $0.0001$ 时增到 $1710.66$ 天，清零 $2209.55$ 天。原因是平台期让 $I(t)$ 贴边维持而非立即下降，$\eta$ 越低易感者消耗越慢。这提示\textbf{提高 $\eta$} 是缩短平台、使情景一在给定指标上接近 TDINN 的一条杠杆（见第~\ref{sec:dominance}节）。反过来看，这条杠杆的另一端更值得警惕：$\eta$ 越低、平台越长且发散。若要把社区峰值压到西安真实疫情的量级（$\approx152$），所需的平台时长将不再是数十天，而是若干年——这一定量结果与其对易感池规模 $N$ 的依赖，正是下一节在 $(\eta,c_0)$ 图谱上要精确定位的内容。
 
 \begin{table}[htbp]
     \centering
     \footnotesize
     \caption{不同医疗阈值 $\eta$ 下情景一阈值控制的数值指标。}
     \label{tab:xian_eta_sens}
-    \resizebox{\textwidth}{!}{\input{../table/xian_eta_sensitivity_table.tex}}
+    \resizebox{0.7\textwidth}{!}{\input{../table/xian_eta_sensitivity_table.tex}}
 \end{table}
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.95\textwidth]{xian_eta_sensitivity.pdf}
-    \caption{不同医疗阈值 $\eta$ 下情景一阈值控制与 TDINN 控制的比较。}
+    \includegraphics[width=0.7\textwidth]{xian_eta_sensitivity.pdf}
+    \caption{不同相对医疗阈值 $\eta/N$ 下情景一阈值控制的敏感性：$(a)$ 启动隔离率 $q_c(t_1)$，$(b)$ 二次加权总成本 $J$，$(c)$ 总累计感染 $\Itcum$，$(d)$ 控制时长 $\Delta t$ 与清零时间 $t_{\rm end}$。横轴采用对数尺度，$(b)$--$(d)$ 的纵轴采用对数尺度；水平参照线给出 TDINN 控制的对应固定指标。}
     \label{fig:xian_eta_sens}
 \end{figure}
 
+\FloatBarrier
 \subsection{接触率 \texorpdfstring{$c_0$}{c0} 与阈值 \texorpdfstring{$\eta$}{eta} 的二维图谱}
-进一步在 $c_0\in[6,13],\ \eta\in[100,30000]$ 上作二维扫描（图~\ref{fig:xian_heatmaps}）。固定 $\eta$ 增大 $c_0$ 时，控制时长一般缩短约 $17\%$--$18\%$，但总累计感染、启动隔离率 $q_{\max}$ 与二次加权成本 $J$ 升高（在较大接触率下维持同一平台需要更强隔离）；从热图尺度看，$\eta$ 对控制时长的主导作用更强。该二维图谱把第~\ref{sec:num}节 $N=763$ 的 $c_0$--$\eta$ 敏感性放到真实参数下，趋势与理论分析一致。
+图~\ref{fig:xian_heatmaps} 在 $(\eta,c_0)$ 平面上给出情景一四个关键指标的二维图谱，横轴为绝对
+医疗阈值 $\eta$（对数）。两条竖直参照线标出本节关心的两个操作点：右线 $\eta=0.002N=26326$
+是我们在前几小节采用的代表阈值，左线 $\eta=I_{\rm peak}^{\rm T}=151.90$ 是西安真实疫情的社区峰值。
+二者在 $\Delta t$ 面板（图~\ref{fig:xian_heatmaps}a）上的落差，是理解本章的关键。
+
+\paragraph{压到真实峰所需的平台时长。}
+在西安全市口径（$N=13\,163\,000$，$c_0=12.8872$）下，由控制时长闭式
+\[
+\Delta t=\frac{N}{c_0\eta}\ln\frac{S^{*}-\bar S}{S_c-\bar S}
+\]
+可直接读出两个操作点的代价。取 $\eta=0.002N=26326$ 时 $\Delta t\approx85$~d；而若把峰值压到真实
+水平 $\eta=151.90$，则 $S^{*}\approx1.3162\times10^{7}$、对数因子 $\approx2.205$，得
+\[
+\Delta t(\eta=151.90)\approx1.48\times10^{4}\ \text{d}\approx 40.6\ \text{年}.
+\]
+也就是说，在全市易感池里“精确压平到真实峰”并非缩短疫情，而是把一个持续四十年的平台强加于系统。
+$\Delta t\propto N/(c_0\eta)$ 使然：峰压得越低（$\eta$ 越小）、池子越大（$N$ 越大），平台越长，二者由同一
+比例 $\theta=\eta/N$ 绑死、无法解耦。这解释了为何本章及第~\ref{sec:dominance}节的实例只能退而取虚高的
+$\eta=0.002N$（比真实峰高约 $170$ 倍）：并非该阈值对应任何现实医疗红线，而是全市口径下才能让平台
+回到可接受时程的选择。相应地，第~\ref{sec:dominance}节命题中“峰值 $\eta<I_{\rm peak}^{\rm T}$”一项应读作
+\emph{设计约束}，而非情景一相对 TDINN 的效果优势。
+
+\paragraph{全市易感池对阈值控制的口径问题。}
+上述悖论的根源在易感池的选取。在 $N=13\,163\,000$、而全程总感染仅约 2050 的拟合里，$S(t)\approx N$
+几乎不动——\emph{易感者耗竭这一机制根本没有启动}，整条疫情曲线由时变控制 $c(t),q(t)$ 产生，SIR 结构
+近乎惰性。作为“若不封控、全城暴露会如何”的反事实，全市 $N$ 给出的常规控制峰值（$\sim1.38\times10^{6}$）
+与累计（$\sim4.6\times10^{6}$）是有意义的；但对\emph{情景一阈值控制}而言它是错的池子，因为该策略的作用
+机制恰恰是易感耗竭，而这一机制在全市池里要数十年才能走完。换言之，让常规控制灾难化的池，正是让
+阈值控制失效的池。这促使我们在第~\ref{sec:dominance}节把有效混合人口 $N_{\rm eff}$ 作为一条独立坐标，
+分辨“反事实常规控制作用的大池”与“阈值控制真正能生效的小池”，从而解开本节的悖论。
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.48\textwidth]{xian_heatmap_control_duration.pdf}\hfill
-    \includegraphics[width=0.48\textwidth]{xian_heatmap_clear_time.pdf}\\[2pt]
-    \includegraphics[width=0.48\textwidth]{xian_heatmap_cum_total.pdf}\hfill
-    \includegraphics[width=0.48\textwidth]{xian_heatmap_J.pdf}
-    \caption{$(\eta,c_0)$ 平面上情景一阈值控制的控制时长、清零时间、总累计感染与二次加权成本 $J$ 热图（叠加红色等高线，横坐标按 $\log_{10}\eta$ 绘制、刻度标回真实 $\eta$）。}
+    \includegraphics[width=0.8\textwidth]{xian_heatmaps.pdf}
+    \caption{$(\eta,c_0)$ 平面上情景一阈值控制四个关键指标的二维图谱，横轴为绝对医疗阈值 $\eta$（对数）：$(a)$ 控制时长 $\Delta t$，$(b)$ 清零时间 $t_{\rm end}$，$(c)$ 总累计感染 $\Itcum$，$(d)$ 二次加权总成本 $J$。各面板采用与图~\ref{fig:scenario1_heatmaps_c0_eta} 一致的 \texttt{parula} 色图；时间指标与成本采用对数颜色归一化，总累计感染采用线性颜色归一化，等值线标注各指标水平。两条竖直参照线标出两个操作点：$\eta=I_{\rm peak}^{\rm T}=151.90$（西安真实社区峰值）与 $\eta=0.002N=26326$（代表阈值）；$(a)$ 面板上二者的 $\Delta t$ 落差量化了正文所述“在全市池里压到真实峰需约 40 年平台”的悖论。}
     \label{fig:xian_heatmaps}
 \end{figure}
 
@@ -1942,7 +1976,7 @@ $\Delta t,J$ 等强度量精确地只经 $\theta$ 进入；
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.8\textwidth]{neff_scaling_collapse.pdf}
+    \includegraphics[width=0.7\textwidth]{neff_scaling_collapse.pdf}
     \caption{固定 $(s_0,i_0,\theta=0.002)$ 时不同 $N_{\rm eff}$ 的归一化感染轨迹 $i(t)$ 与隔离率 $q(t)$ 折叠。白心圆为各 $N_{\rm eff}$ 下绝对判据 $I=1$ 对应的不同清零终点。}
     \label{fig:neff_collapse}
 \end{figure}
@@ -1958,7 +1992,7 @@ $\Delta t,J$ 等强度量精确地只经 $\theta$ 进入；
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.78\textwidth]{neff_inflection_beta.pdf}
+    \includegraphics[width=0.7\textwidth]{neff_inflection_beta.pdf}
     \caption{平台期隔离率拐点高度只由 $\beta$ 决定：理论曲线 $\qinf=1-1/[2(1-\beta)]$（即本文 $\qinf=q_c(2\bar S)$）与二阶差分数值拐点吻合，曲线与 $q_0$ 的交点给出存在边界 $\beta_{\max}\approx0.2614$；其右侧灰区（$\beta>\beta_{\max}$）为拐点消失、$q_c$ 全程凹的区域。}
     \label{fig:neff_inflection}
 \end{figure}
@@ -2440,7 +2474,7 @@ $N\lesssim N_{\rm cum,\infty}^\ast$。清零时刻上仅当
 $N\lesssim N_{\rm clr}$ 才不劣；两者一律取到清零口径，与 $\Itcum^{\rm T},t_{\rm end}^{\rm T}$
 的积分／终止终点一致。
 
-(2) \textbf{比较是跨尺度的反事实，不是同池对打。} TDINN 基准锁定为全市固定拟合参照
+(2) 比较是跨尺度的反事实，不是同池对打。 TDINN 基准锁定为全市固定拟合参照
 （第~\ref{sec:dominance}~节开头），而阈值控制在规模 $N_{\rm eff}$ 的池上求解。若改问“同一
 $N_{\rm eff}$ 上两策略孰优”，需把 TDINN 控制函数施加到该池并重解：数值上其绝对轨迹
 \emph{并不}保持不变，例如逐 $N$ 重拟合 $I_0$ 后
@@ -2469,14 +2503,14 @@ $12\%$--$82\%$。
 （该池上的 TDINN 清零更快）。两种口径回答的是不同问题，本节采用前者，
 因为本文选定的 TDINN 全市拟合指标是一组固定参照。
 
-(3) \textbf{有效人口重解释在小 $N$ 端已无法保持对数据的拟合。} 逐 $N$ 只有 $I_0$ 一个自由参数，
+(3) 有效人口重解释在小 $N$ 端已无法保持对数据的拟合。逐 $N$ 只有 $I_0$ 一个自由参数，
 其拟合残差随 $N$ 减小而显著退化（$\mathrm{rmse}$：全市 $9.43$、$N=10^4$ 时 $30.9$、
 $N=5.8\times10^3$ 时 $39.4$、$N\approx2.1\times10^3$ 时 $44.3$，即全市的 $3.3$–$4.7$ 倍），
 且所需 $I_0$ 由 $10^{-3}$ 升到 $10^{-1}$ 量级。故 $N\lesssim10^4$ 的反事实轨迹应理解为结构性推演，
 而非标定过的预测；而两条弧线给出的占优区恰好落在该区间，结论的可信度相应打折。
 若后续对每个 $N_{\rm eff}$ 重新拟合全部控制参数（而非只拟合 $I_0$），该退化可望消除。
 
-(4) \textbf{有效池下界与触发域墙。} 由式~\eqref{eq:dom:Nfloor}，当 $N<\Itcum^{\rm T}=2096.76$ 时，
+(4) 有效池下界与触发域墙。 由式~\eqref{eq:dom:Nfloor}，当 $N<\Itcum^{\rm T}=2096.76$ 时，
 累计约束因 $h<1$ 而算术必然成立（$Nh<N<\Itcum^{\rm T}$），不具信息量；清零约束则未必自动满足
 （数值上 $\eta=10$ 处 $N_{\rm clr}\approx1.1\times10^{3}$，故 $N\in(1.1\times10^{3},2.10\times10^{3})$ 上仍有
 $t_{\rm end}>t_{\rm end}^{\rm T}$）。但两条广延量约束的下界均取同一 $N\ge \Itcum^{\rm T}$：其依据是
@@ -2587,7 +2621,7 @@ $\mathcal{W}_{\rm clr}=\mathcal{W}_{\rm pcd}\cap\{t_{\rm end}\le t_{\rm end}^{\r
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=\textwidth]{figures/fig_panel_A.pdf}
+  \includegraphics[width=0.8\textwidth]{figures/fig_panel_A.pdf}
   \caption{$\eta$ 杠杆：固定有效人口 $N_{\rm eff}=2\times10^{4}$，沿三条由固定归一化初值
   理论口径得到的边界参照线取阈值 $\eta=\theta N_{\rm eff}$ 的情景一阈值控制轨迹。
   各条平台的高度即其 $\eta$；按 $\eta$ 升序，三条参照线依次为
@@ -2595,14 +2629,17 @@ $\mathcal{W}_{\rm clr}=\mathcal{W}_{\rm pcd}\cap\{t_{\rm end}\le t_{\rm end}^{\r
   cost（$\theta_{\rm cost}=1.656\times10^{-3}$，$\eta=33.1$）、
   dur 45 d（$\theta_{\rm dur45}=3.762\times10^{-3}$，$\eta=75.2$）。
   (a) 社区感染者 $I(t)$（对数纵轴）：三条平台分别贴合各自的 $\eta$，且因
-  $N_{\rm eff}<N^\ast(45\mathrm d)$ 全部落在 $I_{\rm peak}^{\rm T}$ 之下（红点线）。
+  $N_{\rm eff}<N^\ast(45\mathrm d)$ 全部落在 $I_{\rm peak}^{\rm T}$ 之下（红虚线）。
   平台上的同色实心圆为 $q_c(t)$ 拐点时刻 $t_{\rm inf}$ 在 $I(t)$ 上的投影
   $(t_{\rm inf},\eta)$，并非 $I(t)$ 自身的拐点。逐 $N_{\rm eff}$ 重拟合时，绝对
   $t_{\rm inf}$ 随启动时间 $t_1$ 平移，但平台内相对位置
   $\lambda=(t_{\rm inf}-t_1)/(t_2-t_1)\approx0.861$ 以及距平台结束的时间
   $t_2-t_{\rm inf}\approx20.8/14.3/6.3$ d（依次对应 dur 150 d/cost/dur 45 d）
   基本不随 $N_{\rm eff}$ 改变（见附录~\ref{app:panel_eta_N}）。
-  灰点线为同一 $N_{\rm eff}$ 下的常规控制；黑实线为 TDINN 在西安全市口径下
+  灰虚线为同一 $N_{\rm eff}$ 下的常规控制，其峰值 $\approx0.105\,N_{\rm eff}$、到动态清零的
+  总累计感染 $\approx0.348\,N_{\rm eff}$——两者都是与池规模无关的固定比例（随 $N_{\rm eff}$
+  线性放大，此处 $N_{\rm eff}=2\times10^4$ 即 $2093/6970$）；其中累计约为右上角 inset 中策略柱的两倍，
+  若入柱图会压扁三条策略柱的排序，故只以闭式给出、不在图中另绘；黑实线为 TDINN 在西安全市口径下
   的原始拟合轨迹（峰值 $151.90$、清零 $45.27$ d），作为固定拟合参照，不随
   $N_{\rm eff}$ 重算（见第~\ref{sec:dominance}~节 TDINN 基准的口径说明）。
   (b) 隔离率 $q_c(t)$：三条松弛曲线与 TDINN 的上升高斯 $q_{\rm TDINN}(t)$；
@@ -2623,7 +2660,7 @@ $\mathcal{W}_{\rm clr}=\mathcal{W}_{\rm pcd}\cap\{t_{\rm end}\le t_{\rm end}^{\r
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=\textwidth]{figures/fig_panel_B.pdf}
+  \includegraphics[width=0.8\textwidth]{figures/fig_panel_B.pdf}
   \caption{$N$ 杠杆：固定绝对阈值 $\eta=100$，在五个有效人口下的情景一阈值控制轨迹。
   五条平台高度相同（均为 $\eta$），故 $N_{\rm eff}$ 无法在纵轴上直读，各曲线对应的 $N_{\rm eff}$ 已随角色名列于图例；五个取值取自各条边界与 $\eta=100$ 的交点：
   clear $\le45.3$ d（$N_{\rm eff}=4{,}602$）、cumulative（$10{,}106$）、
@@ -2633,11 +2670,15 @@ $\mathcal{W}_{\rm clr}=\mathcal{W}_{\rm pcd}\cap\{t_{\rm end}\le t_{\rm end}^{\r
   这是强度量只通过 $\theta=\eta/N_{\rm eff}$ 进入的直接体现；平台\emph{时长}则随
   $N_{\rm eff}$ 增大而显著拉长。灰色带为常规控制在 $N_{\rm eff}\in[4{,}602,\,87{,}951]$（与上列五个取值同范围）
   上取 $8$ 条几何间隔轨迹的逐点最小--最大包络，仅绘制到全部成员均未清零为止；
-  两条灰点线为区间端点的代表轨迹，因各成员按自身 $N_{\rm eff}$ 重拟合 $I_0$、轨迹相互交叉，
+  两条灰虚线为区间端点的代表轨迹，因各成员按自身 $N_{\rm eff}$ 重拟合 $I_0$、轨迹相互交叉，
   端点轨迹并非处处即为包络。带宽即该反事实策略对池规模的敏感度（峰值处上下相差约 $55$ 倍），
-  与阈值控制平台的零带宽形成对照。黑实线为 TDINN 在西安全市口径下的原始拟合轨迹
+  与阈值控制平台的零带宽形成对照。带内每条常规控制的峰值 $\approx0.105\,N_{\rm eff}$、
+  到动态清零的总累计感染 $\approx0.348\,N_{\rm eff}$，均为与池规模无关的固定比例（随 $N_{\rm eff}$
+  线性放大，最大成员 $N_{\rm eff}=87{,}951$ 处约为 $9200/30600$）；其中累计约为 inset 中同规模策略柱的两倍，
+  故只以闭式给出、不在图中另绘。
+  黑实线为 TDINN 在西安全市口径下的原始拟合轨迹
   （峰值 $151.90$、清零 $45.27$ d），作为全市固定拟合参照只画一条，
-  不随 $N_{\rm eff}$ 重算；红点线为其峰值 $I_{\rm peak}^{\rm T}$。
+  不随 $N_{\rm eff}$ 重算；红虚线为其峰值 $I_{\rm peak}^{\rm T}$。
   (b) $q_c(t)$：五条松弛曲线与 TDINN 的 $q_{\rm TDINN}(t)$；每条彩色实线均包含
   控制前和 $t_2$ 后直到自身动态清零的 $q_0$ 阶段，以及 $t_1\leq t\leq t_2$
   的阈值控制段，彩色竖直虚线连接 $t_1$ 处从 $q_0$ 到 $q_c(t_1^+)$ 的瞬时跳跃。
@@ -2645,8 +2686,44 @@ $\mathcal{W}_{\rm clr}=\mathcal{W}_{\rm pcd}\cap\{t_{\rm end}\le t_{\rm end}^{\r
   各曲线在 $q_0$ 上的同色短竖线标出自身动态清零时刻。
   白心圆的拐点同样全部落在
   $\qinf=0.4119$，给出跨 $N_{\rm eff}$ 的不变性，与图~\ref{fig:panel_eta_lever}
-  的跨 $\eta$ 不变性互补。}
+  的跨 $\eta$ 不变性互补。右上角内嵌柱图按 $N_{\rm eff}$ 递增排列，给出动态清零
+  $I(t)\leq1$ 时的总累计感染 $\Itcum$；五柱依次约为
+  $1068/2097/5015/10785/15411$，黑虚线为 TDINN 全市固定拟合参照
+  $\Itcum^{\rm T}=2096.76$。因此 clear 边界低于该参照，cumulative 边界在数值上
+  近似达到该参照，而其余三条边界均高于该参照。}
   \label{fig:panel_N_lever}
+\end{figure}
+
+
+\subsection{接触率通道：$c_0$ 对阈值控制律的结构影响}
+\label{sec:dom:c0}
+
+第~\ref{sec:dominance}~节的占优分析中，$(N_{\rm eff},\eta)$ 只通过 $\theta=\eta/N$ 进入强度量（引理~\ref{lem:dom:scaling}），故 $\eta$ 杠杆与 $N$ 杠杆是同一条 $\theta$ 轴的两种走法。常规接触水平 $c_0$ 则是独立于 $\theta$ 的第三条轴：$s_c,\bar s\propto1/c_0$，而 $s^*$ 经 Lambert $W_{-1}$ 同时依赖 $\theta$ 与 $c_0$，因此改变 $c_0$ 一般会破坏 $\theta$ 坍缩。本节固定西安传播参数 $\beta,\gamma,q_0$、固定 $N_{\rm eff}=2\times10^4$ 与 $\theta=0.002$（即 $\eta=40$），在 $N_{\rm eff}$ 下一次性标定归一化初值并跨 $c_0$ 保持不变，只连续改变 $c_0$。
+
+由于 $c_0$ 改变即改变接触结构，第~\ref{sec:xian}~节锁定于全市 $c_0=12.8872$ 拟合的 TDINN 参照不再可比，故本节不与 TDINN 或常规控制对照，只考察阈值控制律自身随接触环境的结构响应；这也是本节为敏感性分析、而非占优分析的原因。相应地，$c_0$ 应理解为外生的接触环境（如低接触的有界单元与高密度城市之别），而非可自由调节的旋钮：若较低 $c_0$ 由封控／社交限制实现，则该分区本身即一种接触控制、其代价并未计入 $J_c$，此时``$J_c=0$''的表述须相应扣除（与第~\ref{sec:dom:xian}~节的两类小池讨论同源）。
+
+$c_0$ 对轨迹与控制律的作用。 图~\ref{fig:c0-panel} 给出五条代表轨迹。因 $\theta,N$ 固定，各平台高度恒为 $\eta$；随 $c_0$ 增大，系统更快触及红线（$t_1$ 提前）、上升支更陡，启动隔离率 $q_{\max}=1-\gamma/(\beta c_0 s^*)$ 单调升高，与命题~\ref{prop:s1:sensitivity} 的 $(t_1)_{c_0}<0$、$(q_{\max})_{c_0}>0$ 一致。
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{c0_sensitivity_panel.pdf}
+    \caption{固定 $N_{\rm eff}=2\times10^4$、$\theta=0.002$（$\eta=40$）、西安传播参数，沿 $c_0$ 取五个代表值的阈值控制轨迹。$(a)$~$I(t)$：平台同高 $=\eta$，$c_0$ 增大使 $t_1$ 提前、上升支变陡；实心圆为 $q_c(t)$ 拐点时刻 $t_{\mathrm{inf}}$ 在平台上的投影 $(t_{\mathrm{inf}},\eta)$，非 $I(t)$ 自身拐点。$(b)$~$q_c(t)$：$q_{\max}$ 随 $c_0$ 展开，白圈（内部拐点）全部落在 $\qinf=0.4119$；$c_0=3.43,3.49$ 因 $q_{\max}<\qinf$ 全程凸、无内部拐点。右上柱图为各情景到自身动态清零 $I(t)=1$ 的总累计感染 $\Itcum=I_{c,\mathrm{cum}}+I_{q,\mathrm{cum}}$，在这五个代表点上随 $c_0$ 递增。不画 TDINN 与常规控制：$c_0$ 改变了接触结构，固定参照不可比。}
+    \label{fig:c0-panel}
+\end{figure}
+
+$c_0$ 唯一地控制内部拐点的存在性。 这是 $c_0$ 通道与 $\theta$ 通道最尖锐的区别。阈值比例 $\theta$ 不进入拐点存在判据（第~\ref{sec:s1:inflection-position}~节，图~\ref{fig:s1:inflection-landscape} 的 $\eta/N$ 行拐点恒存在）；而 $c_0$ 经上界 $q_{\max}>\qinf\Leftrightarrow s^*>2\bar s$ 决定拐点是否从 $t_1$ 端掉出。图~\ref{fig:c0-panel} 中 $c_0=3.43,3.49$ 虽能触发控制，但 $q_{\max}<\qinf$，$q_c(t)$ 全程凸、无内部拐点；$c_0=3.59$ 起拐点出现。据此可在扫描区间内数值定出拐点存在边界。
+
+平台隔离率拐点高度的三重不变性。存在拐点时，其高度 $\qinf=1-\tfrac{1}{2(1-\beta)}$ 只依赖 $\beta$：图~\ref{fig:c0-panel} 中所有白圈仍落在同一条 $\qinf=0.4119$ 上。结合 $\eta$ 杠杆（图~\ref{fig:panel_eta_lever}）与 $N$ 杠杆（图~\ref{fig:panel_N_lever}），可得 $\qinf$ 对 $\eta,N,c_0$ 三者全不变，只有 $\beta$ 能移动它。
+
+$\Delta t$ 随 $c_0$ 的非单调性。 与 $\Delta t$ 关于 $\theta$ 严格单调递减（引理~\ref{lem:dom:mono}）不同，$\Delta t$ 关于 $c_0$ 无固定符号（命题~\ref{prop:s1:sensitivity}）：由式~\eqref{eq:s1:t2} 在触发边界处 $\Delta t\to0$，随 $c_0$ 增大先升至一个脊、再降。图~\ref{fig:c0-panel} 与图~\ref{fig:c0-scan} 显示，本节参数下 $\Delta t$ 在这五个代表点上依次为 $30.2,37.8,47.5,103.2,85.1$ 天——先随 $c_0$ 上升、越过脊后回落，脊约在 $c_0\approx6.61$（$\Delta t\approx103.2$ 天）。该脊并非数值巧合：由命题~\ref{prop:s1:sensitivity}，$\partial\Delta t/\partial c_0$ 的符号由判别式 $\ln(S_0/S^*)\gtrless\Theta$ 决定，脊 $\partial\Delta t/\partial c_0=0$ 恰是判别式取等 $\ln(S_0/S^*)=\Theta$ 的解，其中 $\Theta=\frac{S^*-S_c}{S_c}\left[\frac{S^*-\bar S}{S^*}\ln\frac{S^*-\bar S}{S_c-\bar S}-1\right]$。因此图~\ref{fig:c0-phase} 的 $\Delta t$ 脊线是该解析判据在 $(c_0,\theta)$ 平面上的零集，而非仅由数值极值定位。因此 $c_0$ 与 $\theta$ 虽同为作用于 $q_{\max}$、峰值的同向杠杆，在 $\Delta t$ 上却有定性差别。
+
+图~\ref{fig:c0-phase} 把上述结构统一到 $(\theta,c_0)$ 平面：触发边界、拐点边界 $s^*=2\bar s$ 与 $\Delta t$ 脊线三条曲线划分出各结构区，图~\ref{fig:c0-panel} 的三个代表 $c_0$ 正是这三条边界与 $\theta=0.002$ 水平线的交点。需强调本图只报告阈值控制律的结构量，不含占优边界。
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.72\textwidth]{c0_sensitivity_phase.pdf}
+    \caption{$(\theta,c_0)$ 平面上阈值控制律的结构相图。三条曲线为触发边界 $c_{0,\mathrm{trig}}(\theta)$、内部拐点边界 $s^*=2\bar s$ 与控制时长脊线 $\partial\Delta t/\partial c_0=0$，灰色等值线为 $\Delta t$（天）。图~\ref{fig:c0-panel} 的三个代表 $c_0$ 为三条边界与 $\theta=0.002$（点线）的交点，同色圆点标出。本图仅报告结构量，不含占优边界，亦不画 $J$ 或 $\eta=I^{\rm T}_{\rm peak}$ 参照线。}
+    \label{fig:c0-phase}
 \end{figure}
 
 
@@ -2746,7 +2823,7 @@ $t_2-t_{\rm inf}$
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=\textwidth]{figures/fig_panel_A_N1e4.pdf}
+  \includegraphics[width=0.7\textwidth]{figures/fig_panel_A_N1e4.pdf}
   \caption{$N_{\rm eff}=10^4$ 时的 $\eta$ 杠杆。三条边界参照线到动态清零的总累计感染分别为
   $1746.5$、$1781.8$ 与 $1884.8$，均低于 TDINN 全市固定拟合参照 $2096.76$；但其动态清零时间
   分别约为 $222.9$、$171.3$ 与 $103.8$ d，仍显著长于 TDINN 的 $45.27$ d。因此这里只能说
@@ -2755,11 +2832,9 @@ $t_2-t_{\rm inf}$
   \label{fig:panel_eta_N1e4}
 \end{figure}
 
-\clearpage
-
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=\textwidth]{figures/fig_panel_A_N40377.pdf}
+  \includegraphics[width=0.7\textwidth]{figures/fig_panel_A_N40377.pdf}
   \caption{$N_{\rm eff}=40{,}377\approx N^\ast(45\mathrm d)$ 时的 $\eta$ 杠杆。dur 45 d 参照线的平台
   高度 $\eta=151.898$，数值上近似达到 TDINN 峰值参照
   $I_{\rm peak}^{\rm T}=151.90$，对应峰值约束的临界情形；dur 150 d 与 cost 平台仍位于
@@ -2767,15 +2842,43 @@ $t_2-t_{\rm inf}$
   \label{fig:panel_eta_N40377}
 \end{figure}
 
-\clearpage
-
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=\textwidth]{figures/fig_panel_A_N91727.pdf}
+  \includegraphics[width=0.7\textwidth]{figures/fig_panel_A_N91727.pdf}
   \caption{$N_{\rm eff}=91{,}727\approx N^\ast_\infty$ 时的 $\eta$ 杠杆。cost 参照线的平台
   高度 $\eta=151.900$，数值上近似达到 $I_{\rm peak}^{\rm T}=151.90$；dur 45 d 平台
   $\eta=345.077$ 已超过该参照，故峰值约束在该边界上不再成立，而 dur 150 d 平台仍低于参照。}
   \label{fig:panel_eta_N91727}
+\end{figure}
+
+\clearpage
+
+\section{接触率通道的连续扫描}
+\label{app:c0_scan}
+
+本附录给出第~\ref{sec:dom:c0}~节 $c_0$ 通道的连续扫描全貌。它与正文图~\ref{fig:xian_heatmaps} 的
+$(\eta,c_0)$ 景观在 $\theta=\eta/N$ 上有重叠，此处为固定池规模 $N_{\rm eff}=2\times10^4$、$\theta=0.002$
+下 $c_0$ 通道的一维完整对照。
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{c0_sensitivity_scan.pdf}
+    \caption{固定 $N_{\rm eff}=2\times10^4$、$\theta=0.002$ 下阈值控制指标随背景接触率 $c_0$ 的连续扫描：$(a)$~$t_1$、$(b)$~$\Delta t$、$(c)$~$q_{\max}$、$(d)$~$\lambda$、$(e)$~二次加权成本 $J$、$(f)$~到动态清零的总累计感染 $\Itcum$。灰色竖线／阴影标出触发边界、拐点出现边界与 $\Delta t$ 脊；同色圆点为图~\ref{fig:c0-panel} 的五个代表 $c_0$。$J$ 与 $\Itcum$ 仅作该池规模下的结构结果，不叠加任何 TDINN 参照线。}
+    \label{fig:c0-scan}
+\end{figure}
+
+
+
+\section{拐点内部存在性的 $(c_0,\beta)$ 统一图}
+\label{app:c0_beta}
+
+本附录把第~\ref{sec:s1:inflection-position}~节的内部拐点存在判据 $s_c<2\bar s<s^*$ 画在 $(c_0,\beta)$ 平面上，作为图~\ref{fig:s1:inflection-landscape} 沿 $\beta$、$c_0$ 两行的二维统一；$\beta$ 在此为病原情景变量，其余口径（$\theta=0.002$、$q_0=0.3230$、固定归一化初值）与正文一致。
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{c0_beta_existence.pdf}
+    \caption{$(c_0,\beta)$ 平面上内部拐点的存在域（填色）：由上界 $2\bar s=s^*$（$t_1$ 端，实线，随 $c_0,\beta$ 弯曲）与下界 $\beta_{\max}=0.2614$（$t_2$ 端，水平虚线，只由 $\beta,q_0$ 定）围合而成。西安参数 $(c_0,\beta)=(12.8872,0.1498)$ 落在域内；灰色点线标出图~\ref{fig:c0-phase} 的 $c_0$ 截面所在 $\beta$。纯存在性；$\beta$ 为病原情景变量，$\theta$、$q_0$ 固定；不作任何策略比较，无 TDINN。}
+    \label{fig:c0-beta-existence}
 \end{figure}
 
 \clearpage
