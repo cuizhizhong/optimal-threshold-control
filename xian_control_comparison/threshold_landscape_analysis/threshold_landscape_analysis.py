@@ -7,6 +7,7 @@ threshold_landscape_analysis/ 子目录。它不覆盖西安主基准结果，
 
 from __future__ import annotations
 
+import argparse
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -17,6 +18,8 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib import patheffects
+from matplotlib.colorbar import Colorbar
+from matplotlib.colors import LogNorm, Normalize
 import numpy as np
 import pandas as pd
 from scipy.integrate import quad, solve_ivp
@@ -29,6 +32,7 @@ PARENT = HERE.parent
 sys.path.insert(0, str(PARENT))
 
 import xian_control_comparison as xcc  # noqa: E402
+import paper_plot_style as pps  # noqa: E402
 
 
 OUT_DIR = HERE
@@ -39,7 +43,7 @@ HEATMAP_DIR = OUT_DIR / "eta_c0_heatmap"
 C0_PANEL_DIR = OUT_DIR / "representative_c0_panels"
 HIGH_C0_STRESS_DIR = OUT_DIR / "high_c0_stress_test_panels"
 
-REPRESENTATIVE_ETAS = [100.0, 520.0, 1300.0, 3200.0, 6500.0, 15000.0, 26326.0]
+REPRESENTATIVE_ETAS = [100.0, 151.90, 520.0, 1300.0, 3200.0, 6500.0, 15000.0, 26326.0]
 REPRESENTATIVE_C0_ETAS = [100.0, 1300.0, 26326.0]
 REPRESENTATIVE_C0_VALUES = [6.0, 9.0, 12.8872]
 STRESS_C0_VALUES = [14.0, 18.0, 20.0]
@@ -713,9 +717,18 @@ def plot_panel(
     output_stem: str,
     linear_y_axis: bool = False,
 ) -> None:
-    colors = {"TDINN控制": "#0068a9", "情景一阈值控制": "#c43c39", "常规控制": "#333333"}
-    labels = {"TDINN控制": "TDINN control", "情景一阈值控制": "Threshold control", "常规控制": "Routine control"}
-    styles = {"TDINN控制": "-", "情景一阈值控制": "--", "常规控制": ":"}
+    colors = {
+        strategy: pps.STRATEGY_STYLES[strategy]["color"]
+        for strategy in pps.STRATEGY_STYLES
+    }
+    labels = {
+        strategy: pps.STRATEGY_STYLES[strategy]["label"]
+        for strategy in pps.STRATEGY_STYLES
+    }
+    styles = {
+        strategy: pps.STRATEGY_STYLES[strategy]["linestyle"]
+        for strategy in pps.STRATEGY_STYLES
+    }
     day_edges = np.arange(0.0, np.ceil(PANEL_X_END) + 1.0)
     day_starts = day_edges[:-1]
     t1 = float(threshold_summary.get("t1", np.nan))
@@ -913,19 +926,189 @@ def make_contour_levels(values: np.ndarray, metric: str) -> np.ndarray:
         positive = finite[finite > 0.0]
         if positive.size == 0:
             return np.array([])
-        raw = np.geomspace(float(np.nanmin(positive)), float(np.nanmax(positive)), 8)
+        lo = float(np.nanmin(positive))
+        hi = float(np.nanmax(positive))
+        # 几何等比档：以低端所在十进制档为基，逐级抬升；自动选比例（×2/×4/×8）
+        # 使档数约为 4--8 条，避免小面板拥挤。
+        base = 10.0 ** np.floor(np.log10(lo))
+        seq = [base]
+        for ratio in (2.0, 4.0, 8.0):
+            seq, v = [], base
+            while v < hi:
+                seq.append(v)
+                v *= ratio
+            if len([x for x in seq if x > lo]) <= 8:
+                break
+        raw = np.array([x for x in seq if x > lo], dtype=float)
     else:
-        raw = np.linspace(vmin, vmax, 8)
+        raw = np.linspace(vmin, vmax, 6)
     levels = np.unique(np.round(raw, decimals=8))
     return levels[(levels > vmin) & (levels < vmax)]
 
 
 def contour_label_format(metric: str) -> str:
-    if metric in {"control_duration", "clear_time", "cum_total_infections"}:
+    if metric == "cum_total_infections":
+        return "%.3g"          # 累计跨度窄，用 3 位有效数字避免 7 位整数标签拥挤
+    if metric in {"control_duration", "clear_time"}:
         return "%.0f"
     if metric == "J":
-        return "%.1f"
+        return "%.0f"
     return "%.2g"
+
+
+def heatmap_norm(values: np.ndarray, metric: str) -> Normalize:
+    """为跨数量级指标使用对数颜色归一化，其余指标使用线性归一化。"""
+
+    finite = values[np.isfinite(values)]
+    if finite.size == 0:
+        return Normalize(vmin=0.0, vmax=1.0)
+    if metric in {"control_duration", "clear_time", "J"}:
+        positive = finite[finite > 0.0]
+        if positive.size:
+            return LogNorm(vmin=float(np.nanmin(positive)), vmax=float(np.nanmax(positive)))
+    return Normalize(vmin=float(np.nanmin(finite)), vmax=float(np.nanmax(finite)))
+
+
+def heatmap_style(metric: str):
+    """返回颜色映射、等高线颜色和色条标签。"""
+
+    labels = {
+        "control_duration": r"$\Delta t$ (days)",
+        "clear_time": r"$t_{\rm end}$ (days)",
+        "cum_total_infections": r"$I_{t_{\rm cum}}$",
+        "J": r"$J$",
+    }
+    symbols = {
+        "control_duration": r"$\Delta t$",
+        "clear_time": r"$t_{\rm end}$",
+        "cum_total_infections": r"$I_{t_{\rm cum}}$",
+        "J": r"$J$",
+    }
+    return pps.PARULA_CMAP, pps.COLORS["red"], labels[metric], symbols[metric]
+
+
+def draw_heatmap(
+    fig,
+    ax,
+    eta_vals: np.ndarray,
+    c0_vals: np.ndarray,
+    values: np.ndarray,
+    metric: str,
+    panel: str | None = None,
+    show_contours: bool = True,
+    show_xlabel: bool = True,
+    show_ylabel: bool = True,
+    cax=None,
+):
+    """在给定坐标轴上绘制一张论文热图。"""
+
+    cmap, contour_color, colorbar_label, panel_symbol = heatmap_style(metric)
+    masked = np.ma.masked_invalid(values)
+    mesh = ax.pcolormesh(
+        eta_vals,
+        c0_vals,
+        masked,
+        shading="auto",
+        cmap=cmap,
+        norm=heatmap_norm(values, metric),
+        edgecolors="face",
+        linewidth=0.20,
+        antialiased=False,
+        snap=True,
+        rasterized=False,
+    )
+    if show_contours:
+        levels = make_contour_levels(values, metric)
+        if levels.size:
+            contours = ax.contour(
+                eta_vals,
+                c0_vals,
+                values,
+                levels=levels,
+                colors=contour_color,
+                linestyles="--",
+                linewidths=0.9,
+            )
+            labels = ax.clabel(
+                contours,
+                inline=True,
+                inline_spacing=3,
+                fontsize=7.0,
+                fmt=contour_label_format(metric),
+                colors="black",
+            )
+            for label in labels:
+                x_pos, y_pos = label.get_position()
+                if (
+                    y_pos < float(c0_vals.min()) + 0.35
+                    or y_pos > float(c0_vals.max()) - 0.25
+                    or x_pos < float(eta_vals.min()) * 1.12
+                    or x_pos > float(eta_vals.max()) / 1.12
+                ):
+                    label.set_visible(False)
+                    continue
+                label.set_path_effects(
+                    [patheffects.withStroke(linewidth=2.3, foreground="white")]
+                )
+
+    ax.set_xscale("log")
+    tick_etas = np.array([100.0, 1000.0, 10000.0, 30000.0])
+    tick_etas = tick_etas[(tick_etas >= eta_vals.min()) & (tick_etas <= eta_vals.max())]
+    ax.set_xticks(tick_etas)
+    ax.set_xticklabels([f"{v:g}" for v in tick_etas])
+    ax.set_yticks([6.0, 8.0, 10.0, 12.0, 13.0])
+    for x_eta, dash in [(151.90, (0, (4, 2))), (26326.0, (0, (1.2, 2.0)))]:
+        ax.axvline(
+            x_eta,
+            color=pps.COLORS["routine"],
+            lw=1.0,
+            linestyle=dash,
+            alpha=0.82,
+            zorder=5,
+        )
+    if metric == "control_duration":
+        y_lab = float(c0_vals.max()) * 0.985
+        ax.text(
+            151.90, y_lab, r"$I_{\mathrm{peak}}^{\mathrm{T}}$",
+            rotation=90, ha="right", va="top", fontsize=6.6,
+            color=pps.COLORS["routine"], clip_on=False,
+        )
+        ax.text(
+            26326.0, y_lab, r"$\eta=0.002N$",
+            rotation=90, ha="right", va="top", fontsize=6.6,
+            color=pps.COLORS["routine"], clip_on=False,
+        )
+        ax.annotate(
+            r"$\Delta t\approx1.48\times10^{4}\,$d $\approx$ 40 yr",
+            xy=(151.90, 10.6), xytext=(1500.0, 7.4),
+            fontsize=6.6, color="#111111",
+            arrowprops=dict(arrowstyle="->", lw=0.7, color="#111111"),
+        )
+    if show_xlabel:
+        ax.set_xlabel(r"$\eta$")
+    if show_ylabel:
+        ax.set_ylabel(r"$c_0$")
+    pps.style_axis(ax, panel, panel_x=-0.08)
+    ax.set_title(panel_symbol, fontsize=8.5, pad=3.0)
+    previous_raster_threshold = Colorbar.n_rasterize
+    Colorbar.n_rasterize = 512
+    try:
+        if cax is None:
+            cbar = fig.colorbar(mesh, ax=ax, pad=0.025, fraction=0.050)
+        else:
+            cbar = fig.colorbar(mesh, cax=cax)
+    finally:
+        Colorbar.n_rasterize = previous_raster_threshold
+    cbar.solids.set_edgecolor("face")
+    cbar.solids.set_linewidth(0.20)
+    cbar.solids.set_antialiased(False)
+    cbar.set_label(colorbar_label, labelpad=2.0)
+    cbar.ax.tick_params(labelsize=6.4, length=2.4, width=0.55, direction="in")
+    cbar.outline.set_linewidth(0.65)
+    if metric == "cum_total_infections":
+        cbar.formatter.set_powerlimits((0, 0))
+        cbar.update_ticks()
+    return mesh
 
 
 def plot_heatmap_with_contours(
@@ -935,33 +1118,91 @@ def plot_heatmap_with_contours(
     metric: str,
     title: str,
 ) -> None:
-    levels = make_contour_levels(values, metric)
-    if levels.size == 0:
-        return
-
-    x_vals = np.log10(eta_vals)
-    fig, ax = plt.subplots(figsize=(8.5, 5.6), constrained_layout=True)
-    mesh = ax.pcolormesh(x_vals, c0_vals, values, shading="auto", cmap="viridis")
-    contours = ax.contour(x_vals, c0_vals, values, levels=levels, colors="#d62728", linestyles="--", linewidths=1.1)
-    labels = ax.clabel(contours, inline=True, fontsize=8, fmt=contour_label_format(metric))
-    for label in labels:
-        label.set_path_effects([patheffects.withStroke(linewidth=2.5, foreground="white")])
-
-    tick_etas = np.array([100.0, 300.0, 1000.0, 3000.0, 10000.0, 30000.0])
-    tick_etas = tick_etas[(tick_etas >= eta_vals.min()) & (tick_etas <= eta_vals.max())]
-    ax.set_xticks(np.log10(tick_etas))
-    ax.set_xticklabels([f"{v:g}" for v in tick_etas])
-    ax.axvline(np.log10(26326.0), color="#777777", lw=1.0, linestyle=":")
-    ax.set_xlabel(r"$\eta$")
-    ax.set_ylabel(r"$c_0$")
-    ax.set_title(title)
-    fig.colorbar(mesh, ax=ax)
-    fig.savefig(HEATMAP_DIR / f"heatmap_{metric}_contour.pdf")
-    fig.savefig(HEATMAP_DIR / f"heatmap_{metric}_contour.png", dpi=220)
-    plt.close(fig)
+    del title
+    with pps.paper_style_context():
+        fig = plt.figure(figsize=(0.48 * pps.TEXT_WIDTH_IN, 2.45))
+        ax = fig.add_axes([0.16, 0.18, 0.64, 0.75])
+        cax = fig.add_axes([0.83, 0.18, 0.035, 0.75])
+        draw_heatmap(
+            fig,
+            ax,
+            eta_vals,
+            c0_vals,
+            values,
+            metric,
+            show_contours=True,
+            cax=cax,
+        )
+        pps.save_figure(fig, HEATMAP_DIR / f"heatmap_{metric}_contour")
+        plt.close(fig)
 
 
-def plot_heatmaps(heatmap: pd.DataFrame) -> None:
+def plot_combined_heatmaps(
+    eta_vals: np.ndarray,
+    c0_vals: np.ndarray,
+    metric_values: Dict[str, np.ndarray],
+) -> None:
+    """生成主论文图 16 使用的统一 2x2 热图。"""
+
+    metrics = [
+        "control_duration",
+        "clear_time",
+        "cum_total_infections",
+        "J",
+    ]
+    with pps.paper_style_context():
+        fig = plt.figure(figsize=(0.98 * pps.TEXT_WIDTH_IN, 5.00))
+        grid = fig.add_gridspec(
+            2,
+            4,
+            width_ratios=[1.0, 0.045, 1.0, 0.045],
+            left=0.085,
+            right=0.910,
+            bottom=0.105,
+            top=0.955,
+            wspace=0.38,
+            hspace=0.14,
+        )
+        axes = np.empty((2, 2), dtype=object)
+        colorbar_axes = np.empty((2, 2), dtype=object)
+        axes[0, 0] = fig.add_subplot(grid[0, 0])
+        axes[0, 1] = fig.add_subplot(grid[0, 2], sharex=axes[0, 0], sharey=axes[0, 0])
+        axes[1, 0] = fig.add_subplot(grid[1, 0], sharex=axes[0, 0], sharey=axes[0, 0])
+        axes[1, 1] = fig.add_subplot(grid[1, 2], sharex=axes[0, 0], sharey=axes[0, 0])
+        colorbar_axes[0, 0] = fig.add_subplot(grid[0, 1])
+        colorbar_axes[0, 1] = fig.add_subplot(grid[0, 3])
+        colorbar_axes[1, 0] = fig.add_subplot(grid[1, 1])
+        colorbar_axes[1, 1] = fig.add_subplot(grid[1, 3])
+        for index, (ax, metric, panel) in enumerate(
+            zip(
+                axes.ravel(),
+                metrics,
+                ["(a)", "(b)", "(c)", "(d)"],
+            )
+        ):
+            row, col = divmod(index, 2)
+            draw_heatmap(
+                fig,
+                ax,
+                eta_vals,
+                c0_vals,
+                metric_values[metric],
+                metric,
+                panel=panel,
+                show_contours=True,
+                show_xlabel=row == 1,
+                show_ylabel=col == 0,
+                cax=colorbar_axes[row, col],
+            )
+            if row == 0:
+                ax.tick_params(labelbottom=False)
+            if col == 1:
+                ax.tick_params(labelleft=False)
+        pps.save_figure(fig, HEATMAP_DIR / "xian_heatmaps")
+        plt.close(fig)
+
+
+def plot_heatmaps(heatmap: pd.DataFrame, paper_only: bool = False) -> None:
     metrics = [
         ("control_duration", r"$\Delta t$"),
         ("clear_time", r"$t_{\rm end}$"),
@@ -970,20 +1211,33 @@ def plot_heatmaps(heatmap: pd.DataFrame) -> None:
     ]
     eta_vals = np.array(sorted(heatmap["eta"].unique()))
     c0_vals = np.array(sorted(heatmap["c0"].unique()))
+    metric_values: Dict[str, np.ndarray] = {}
     for col, title in metrics:
         pivot = heatmap.pivot(index="c0", columns="eta", values=col).reindex(index=c0_vals, columns=eta_vals)
         values = pivot.to_numpy(dtype=float)
-        fig, ax = plt.subplots(figsize=(8.5, 5.6), constrained_layout=True)
-        mesh = ax.pcolormesh(eta_vals, c0_vals, values, shading="auto", cmap="viridis")
-        ax.set_xscale("log")
-        ax.set_xlabel(r"$\eta$")
-        ax.set_ylabel(r"$c_0$")
-        ax.set_title(title)
-        fig.colorbar(mesh, ax=ax)
-        fig.savefig(HEATMAP_DIR / f"heatmap_{col}.pdf")
-        fig.savefig(HEATMAP_DIR / f"heatmap_{col}.png", dpi=220)
-        plt.close(fig)
+        metric_values[col] = values
+        with pps.paper_style_context():
+            fig = plt.figure(figsize=(0.48 * pps.TEXT_WIDTH_IN, 2.45))
+            ax = fig.add_axes([0.16, 0.18, 0.64, 0.75])
+            cax = fig.add_axes([0.83, 0.18, 0.035, 0.75])
+            draw_heatmap(
+                fig,
+                ax,
+                eta_vals,
+                c0_vals,
+                values,
+                col,
+                show_contours=False,
+                cax=cax,
+            )
+            pps.save_figure(fig, HEATMAP_DIR / f"heatmap_{col}")
+            plt.close(fig)
         plot_heatmap_with_contours(eta_vals, c0_vals, values, col, title)
+
+    plot_combined_heatmaps(eta_vals, c0_vals, metric_values)
+
+    if paper_only:
+        return
 
     status_map = {"ok": 0.0, "q_below_q0": 1.0, "q_out_of_bounds": 2.0, "threshold_not_reached": 3.0, "not_cleared": 4.0}
     status_values = heatmap.assign(status_code=heatmap["status"].map(status_map).fillna(5.0)).pivot(
@@ -1130,8 +1384,8 @@ def run_cost_analysis(
 
 
 def run_eta_c0_heatmap(fit: xcc.InitialFit) -> pd.DataFrame:
-    eta_grid = merged_grid(np.geomspace(100.0, 30000.0, 50), REPRESENTATIVE_ETAS)
-    c0_grid = merged_grid(np.linspace(6.0, 13.0, 29), REPRESENTATIVE_C0_VALUES)
+    eta_grid = merged_grid(np.geomspace(50.0, 40000.0, 90), REPRESENTATIVE_ETAS)
+    c0_grid = merged_grid(np.linspace(6.0, 13.0, 45), REPRESENTATIVE_C0_VALUES)
     rows: List[Dict[str, float | str]] = []
     for c0 in c0_grid:
         params = LandscapeParams(c0=float(c0))
@@ -1249,5 +1503,40 @@ def main() -> None:
         print(f"  {path}")
 
 
+def regenerate_paper_heatmaps() -> None:
+    """从既有二维扫描 CSV 重绘论文热图，不重复运行 ODE 扫描。"""
+
+    ensure_dirs()
+    summary_path = HEATMAP_DIR / "eta_c0_heatmap_summary.csv"
+    if not summary_path.exists():
+        raise FileNotFoundError(
+            f"Missing {summary_path}; run the full threshold landscape analysis first."
+        )
+    heatmap = pd.read_csv(summary_path)
+    required = {
+        "eta",
+        "c0",
+        "control_duration",
+        "clear_time",
+        "cum_total_infections",
+        "J",
+    }
+    missing = sorted(required - set(heatmap.columns))
+    if missing:
+        raise ValueError(f"Heatmap summary is missing columns: {missing}")
+    plot_heatmaps(heatmap, paper_only=True)
+    print(f"Generated paper heatmaps from: {summary_path}")
+
+
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--paper-plots-only",
+        action="store_true",
+        help="read the existing eta-c0 summary CSV and only redraw Section 7 heatmaps",
+    )
+    cli_args = parser.parse_args()
+    if cli_args.paper_plots_only:
+        regenerate_paper_heatmaps()
+    else:
+        main()
