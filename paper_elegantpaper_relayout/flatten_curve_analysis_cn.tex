@@ -137,7 +137,9 @@ S(t_2)=S_c\doteq \frac{ \gamma N}{\beta c_0(1-q_0)}.
 
 
 \section{常规阶段首次积分与触发条件}
-由于恢复者 $R$、隔离易感者 $S_q$ 和隔离感染者 $I_q$ 仓室与式~\eqref{eq:model:full} 中的前两个方程是解耦的，因此我们只需要考虑以下的二维系统
+由于式~\eqref{eq:model:full} 中 $S$ 与 $I$ 的演化方程
+不显含 $S_q$、$I_q$ 和 $R$，故 $(S,I)$ 构成一个封闭的二维子系统。
+对于干预触发点及阈值控制轨迹的分析，只需考虑以下二维系统
 \begin{equation}
 \begin{cases}
 \dot{S}(t) = - \beta_1(t) S(t) I(t) \\
@@ -179,11 +181,6 @@ S_c=\frac{\gamma}{\beta_2^0}
 =\frac{\gamma N}{\beta c_0(1-q_0)}.
 \label{eq:model:baseline-symbols}
 \end{equation}
-并在情景一中记
-\begin{equation}
-\bar S=\frac{\gamma N(1-\beta)}{\beta c_0}<S_c.
-\label{eq:s1:barS}
-\end{equation}
 其中 $S_c$ 是常规防控水平 $(c_0,q_0)$ 下的临界易感人数。给定初始状态 $(S_0,I_0)$，常规防控阶段的首次积分为
 \begin{equation}
 I(t)+\frac{\beta_2^0}{\beta_1^0} S(t)-\rho_1\ln S(t)
@@ -191,6 +188,19 @@ I(t)+\frac{\beta_2^0}{\beta_1^0} S(t)-\rho_1\ln S(t)
 I_0+\frac{\beta_2^0}{\beta_1^0} S_0-\rho_1\ln S_0
 \doteq C_0.
 \label{eq:model:first-integral}
+\end{equation}
+在 $S_0>S_c$ 时，常规防控轨道上的感染人数可写为
+\begin{equation*}
+I(S)=I_0+\frac{\beta_2^0}{\beta_1^0}(S_0-S)
++\rho_1\ln\frac{S}{S_0}.
+\end{equation*}
+由于常规控制感染峰值发生在 $\dot I=0$，即 $S=S_c$ 处，故定义常规控制感染峰值:
+\begin{equation}
+I_{\max}^{no}
+=
+I_0+\frac{\beta_2^0}{\beta_1^0}(S_0-S_c)
++\rho_1\ln\frac{S_c}{S_0}=C_0-\rho_1+\rho_1\ln S_c.
+\label{eq:s1:Imax-no}
 \end{equation}
 
 为了确定干预策略的关键时间节点与对应的人口状态，需利用首次积分来求解临界易感人数$S^*$及其对应的首次到达时间$t_1$，以及通过$[t_1,t_2]$这段时间$I(t) = \eta(\dot{I}=0)$去计算$S(t),t \in [t_1,t_2]$和结束时间$t_2$以及控制函数$q_c(t)$,$c_c(t)$。
@@ -228,54 +238,33 @@ c(t)=c_0,\qquad t\ge 0,
 \beta_2^1(t)=\frac{\beta c_0(1-q_c(t))}{N}.
 \label{eq:s1:beta12-control}
 \end{equation}
+在后续推导中记
+\begin{equation}
+\bar S
+=
+\frac{\gamma N(1-\beta)}{\beta c_0}.
+\label{eq:s1:barS}
+\end{equation}
+由于
+\[
+\frac{\bar S}{S_c}
+=
+(1-\beta)(1-q_0)<1,
+\]
+故 $\bar S<S_c$。
 
 \subsection{干预启动点 $S^*$ 与时间 $t_1$ }
-在 $S_0>S_c$ 时，常规防控轨道上的感染人数可写为
-\begin{equation*}
-I(S)=I_0+\frac{\beta_2^0}{\beta_1^0}(S_0-S)
-+\rho_1\ln\frac{S}{S_0}.
-\end{equation*}
-由于感染峰值发生在 $\dot I=0$，即 $S=S_c$ 处，故
-\begin{equation}
-I_{\max}^{no}
-=
-I_0+\frac{\beta_2^0}{\beta_1^0}(S_0-S_c)
-+\rho_1\ln\frac{S_c}{S_0}.
-\label{eq:s1:Imax-no}
-\end{equation}
-记 Lambert $W$ 函数的幅角为
-\begin{equation}
-\begin{aligned}
-z_\eta
-&:=
--\frac{1}{S_c}
-\exp\left[-\frac{C_0-\eta}{\rho_1}\right] \\
-&=
--\frac{1}{e}
-\exp\left[-\frac{I_{\max}^{no}-\eta}{\rho_1}\right].
-\end{aligned}
-\label{eq:s1:lambert-argument}
-\end{equation}
-其中第二个等号利用了
-$I_{\max}^{no}=C_0-\rho_1+\rho_1\ln S_c$。
-由于 $z_\eta<0$，实值分支 $W_{-1}$ 的定义域条件可写为
-\[
-z_\eta\in\left[-\frac{1}{e},0\right)
-\quad\Longleftrightarrow\quad
-\eta\le I_{\max}^{no}.
-\]
 
 \begin{theorem}[干预启动点与首次触碰时间]
 \label{thm:s1:trigger}
-假设
-\[
-S_0>S_c,
-\qquad
-I_0<\eta<I_{\max}^{no}.
-\]
-则由式~\eqref{eq:s1:lambert-argument} 有
-$z_\eta\in(-1/e,0)$，故实值 Lambert 函数的 $-1$ 分支
-$W_{-1}(z_\eta)$ 良定义。常规防控轨道在感染上升阶段首次触碰医疗阈值时的易感人数唯一为
+假设\(S_0>S_c,I_0<\eta<I_{\max}^{no}\),定义:
+\begin{equation}
+z_\eta:=
+-\frac{1}{S_c}
+\exp\left[-\frac{C_0-\eta}{\rho_1}\right] \quad z_\eta\in\left(-\frac{1}{e},0\right)
+\label{eq:s1:lambert-argument}
+\end{equation}
+则常规防控轨道在感染上升阶段首次触碰医疗阈值时的易感人数唯一:
 \begin{equation}
 S^*=-S_cW_{-1}(z_\eta),
 \qquad
@@ -296,17 +285,7 @@ C_0-\frac{\beta_2^0}{\beta_1^0}S+\rho_1\ln S
 \end{equation}
 \end{theorem}
 \begin{proof}
-    在加强控制启动前，系统处于常规防控阶段，即 $c(t)=c_0$ 且 $q(t)=q_0$。
-可得常规防控阶段的首次积分
-\begin{equation}
-I(t)+\frac{\beta_2^0}{\beta_1^0}S(t)-\rho_1\ln S(t)
-=
-I_0+\frac{\beta_2^0}{\beta_1^0}S_0-\rho_1\ln S_0
-= C_0.
-\label{eq:s1:first-integral}
-\end{equation}
-
-已知 $I(t_1)=\eta$，$S^*=S(t_1)$。将该边界条件代入式 \eqref{eq:s1:first-integral} 得
+在加强控制启动前，系统处于常规防控阶段,有首次积分\eqref{eq:model:first-integral},已知 $I(t_1)=\eta$，$S^*=S(t_1)$。将该边界条件代入式\eqref{eq:model:first-integral}得
 \[
 \frac{\beta_2^0}{\beta_1^0}S^*-\rho_1\ln S^*
 =C_0-\eta.
@@ -333,7 +312,7 @@ I_0+\frac{\beta_2^0}{\beta_1^0}S_0-\rho_1\ln S_0
 \exp\left(-\frac{S^*}{S_c}\right)
 =z_\eta.
 \]
-由于 $z_\eta\in(-1/e,0)$，Lambert $W$ 函数有两个实值分支，并且
+由于$I_{\max}^{no}=C_0-\rho_1+\rho_1\ln S_c$,则$z_{\eta}=-\frac{1}{e}\exp\left[-\frac{I_{\max}^{no}-\eta}{\rho_1}\right]$ ,从而由$\eta< I_{\max}^{no}$,可得$z_\eta\in(-1/e,0)$，Lambert $W$ 函数有两个实值分支，并且
 \[
 W_0(z_\eta)\in(-1,0),
 \qquad
@@ -341,9 +320,11 @@ W_{-1}(z_\eta)\in(-\infty,-1).
 \]
 因此
 \[
--S_cW_0(z_\eta)\in(0,S_c),
-\qquad
--S_cW_{-1}(z_\eta)>S_c.
+S^*=-S_cW_0(z_\eta)\in(0,S_c),
+\]
+或者:
+\[
+S^*=-S_cW_{-1}(z_\eta)>S_c.
 \]
 前者对应同一常规防控轨道在感染峰值后的下降阶段交点，后者对应感染上升阶段交点。
 另一方面，在 $S\in(S_c,S_0)$ 上有
@@ -353,7 +334,7 @@ $I(t)=\eta$，且该时刻满足 $S_c<S(t)<S_0$。
 因此首次触碰根唯一，必须选择 $W_{-1}$ 分支，从而得到
 式~\eqref{eq:s1:Sstar-lambert}。
 
-在确定状态阈值 $S^*$ 后，启动加强控制的具体时间 $t_1$ 可由常规防控阶段的易感者的动态方程积分得到。由式 \eqref{eq:s1:first-integral} 有
+在确定状态阈值 $S^*$ 后，启动加强控制的具体时间 $t_1$ 可由常规防控阶段的易感者的动态方程积分得到。由式\eqref{eq:model:first-integral} 有
 \[
 I(S)=
 C_0-\frac{\beta_2^0}{\beta_1^0}S+\rho_1\ln S,
@@ -566,14 +547,14 @@ q_0<\qinf<q_{\max}.
 \label{sec:s1:inflection-position}
 上一小节给出拐点存在判据~\eqref{eq:s1:inflection-exist} 及其位置 $S(t_{\mathrm{inf}})=2\bar S$。这里进一步刻画拐点在控制区间内的相对位置，并统一说明拐点在两个边界处如何消失。
 
-\textbf{两段时长。} 由定理证明中已得的轨迹 $S(t)=\bar S+(S^*-\bar S)e^{-c_0\eta(t-t_1)/N}$ 知 $\ln(S-\bar S)$ 关于 $t$ 线性——控制期内系统在这把``对数尺子''上匀速滑动，拐点刻度 $\ln\bar S$（对应 $S=2\bar S$）与两端无关。于是从 $S=2\bar S$ 到 $S=S_c$ 所需时间可直接算得
+两段时长:由定理证明中已得的轨迹 $S(t)=\bar S+(S^*-\bar S)e^{-c_0\eta(t-t_1)/N}$ 知 $\ln(S-\bar S)$ 关于 $t$ 线性,拐点对应为 $\ln\bar S$（对应 $S=2\bar S$）与两端无关。于是从 $S=2\bar S$ 到 $S=S_c$ 所需时间可直接算得
 \begin{equation}
 t_2-t_{\mathrm{inf}}=\frac{N}{c_0\eta}\bigl[\ln\bar S-\ln(S_c-\bar S)\bigr]=\frac{N}{c_0\eta}\ln\frac{\bar S}{S_c-\bar S},
 \label{eq:s1:seg-low}
 \end{equation}
-与前段 $t_{\mathrm{inf}}-t_1=\frac{N}{c_0\eta}\ln\frac{S^*-\bar S}{\bar S}$ 相加恰为控制时长 $\Delta t$（式~\eqref{eq:s1:t2}），可作一致性校验。注意~\eqref{eq:s1:seg-low} 的对数中只出现 $S_c,\bar S$，故后段时长\emph{只}由 $\beta,q_0$ 决定；前段则经 $S^*$ 牵涉 $c_0,\eta$ 与初值。
+与前段 $t_{\mathrm{inf}}-t_1=\frac{N}{c_0\eta}\ln\frac{S^*-\bar S}{\bar S}$ 相加恰为控制时长 $\Delta t$（式~\eqref{eq:s1:t2}）。注意~\eqref{eq:s1:seg-low} 的对数中只出现 $S_c,\bar S$，故后段时长\emph{只}由 $\beta,q_0$ 决定；前段则经 $S^*$ 牵涉 $c_0,\eta$ 与初值。
 
-\textbf{相对位置。} 前段与后段共享同一时间尺度 $N/(c_0\eta)$，故可用无量纲的相对位置刻画拐点靠哪一端：
+相对位置: 前段与后段共享同一时间尺度 $N/(c_0\eta)$，故可用无量纲的相对位置刻画拐点靠哪一端：
 \begin{equation}
 \lambda:=\frac{t_{\mathrm{inf}}-t_1}{t_2-t_1}
 =\frac{\ln\dfrac{S^*-\bar S}{\bar S}}{\ln\dfrac{S^*-\bar S}{S_c-\bar S}}\in(0,1),
