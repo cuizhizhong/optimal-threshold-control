@@ -1391,6 +1391,20 @@ def write_readme(
 - `c0_sensitivity_main.png/.pdf`：I(t) 与 q(t) 的两面板主图。
 - `c0_sensitivity_main_linear.png/.pdf`：仅将主图 I(t) 纵轴改为线性坐标的对照版。
 - `c0_sensitivity_main_linear_cumulative.png/.pdf`：线性主图；用清零时总累计感染柱状图替代相对时间 inset。
+
+## 到论文图的映射（复制到 ../figures/ 时务必按此对应）
+
+主图有三个变体，**正文图 23 用的是 `main_linear_cumulative`**（线性纵轴 + 总累计感染柱图 inset），
+不是 `main`（对数纵轴 + 相对时间 inset）。三者版式相近，容易复制错。
+
+| 本目录输出 | ../figures/ 目标名 | 正文 |
+|---|---|---|
+| `c0_sensitivity_main_linear_cumulative.pdf` | `c0_sensitivity_panel.pdf` | 图 23（`fig:c0-panel`） |
+| `c0_sensitivity_phase.pdf` | `c0_sensitivity_phase.pdf` | 图 24（`fig:c0-phase`） |
+| `c0_sensitivity_scan.pdf` | `c0_sensitivity_scan.pdf` | 附录（`fig:c0-scan`） |
+| `c0_beta_existence.pdf` | `c0_beta_existence.pdf` | 附录（`fig:c0-beta-existence`） |
+
+`c0_sensitivity_main.pdf` 与 `c0_sensitivity_main_linear.pdf` 仅作对照，不进论文。
 - `c0_sensitivity_scan.png/.pdf`：c0 连续扫描的六指标图（t1、Δt、q_max、λ、J、I_tcum）。
 - `c0_sensitivity_phase.png/.pdf`：(θ,c0) 结构相图（三条结构边界叠 Δt 等值线）。
 - `c0_beta_existence.png/.pdf`：(c0,β) 平面内部拐点存在域（β 为病原情景变量，θ、q0 固定）。
