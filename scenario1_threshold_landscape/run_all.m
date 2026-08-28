@@ -4,9 +4,12 @@ script_dir = fileparts(mfilename('fullpath'));
 addpath(fullfile(script_dir, 'common'));
 scripts_dir = fullfile(script_dir, 'scripts');
 
-run_script(fullfile(scripts_dir, 'generate_landscape_data.m'));
 cfg = scenario1_params('current');
+reset_output_dirs(cfg);
+
+run_script(fullfile(scripts_dir, 'generate_landscape_data.m'));
 ensure_output_dirs(cfg);
+run_script(fullfile(scripts_dir, 'validate_main_outputs.m'));
 
 logfid = fopen(fullfile(cfg.paths.logs, 'run_all.log'), 'w');
 if logfid < 0
@@ -16,12 +19,14 @@ cleanup_log = onCleanup(@() fclose(logfid)); %#ok<NASGU>
 
 scripts = {
     'plot_baseline_validation.m'
+    'plot_main_q_trajectories.m'
     'plot_sensitivity_curves.m'
     'plot_heatmaps.m'
     'plot_duration_regions.m'
     'plot_representative_trajectories.m'
     'plot_cumulative_decomposition.m'
     'write_representative_tables.m'
+    'write_main_summary_tables.m'
 };
 
 for k = 1:numel(scripts)

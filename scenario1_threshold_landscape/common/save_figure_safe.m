@@ -1,11 +1,14 @@
-function ok = save_figure_safe(fig, filename, logfid)
+function ok = save_figure_safe(fig, filename, logfid, target_size_bp)
 %SAVE_FIGURE_SAFE Save a figure as PDF, with fallbacks for older MATLAB.
-%   Tries exportgraphics (R2020a+) first; on older releases (e.g. R2018b,
-%   which has no exportgraphics) it falls back to print -dpdf, and only
-%   drops to PNG if every PDF path fails.
+%   When a target size is supplied, first uses print -dpdf to preserve the
+%   requested MediaBox. Otherwise it tries exportgraphics (R2020a+) first.
+%   It only drops to PNG if every PDF path fails.
 
 if nargin < 3
     logfid = [];
+end
+if nargin < 4
+    target_size_bp = [];
 end
 
 ok = false;
@@ -16,7 +19,34 @@ end
 
 set(fig, 'Color', 'w');
 set(fig, 'PaperPositionMode', 'auto');
+axes_handles = findall(fig, 'Type', 'axes');
+for k = 1:numel(axes_handles)
+    try
+        axes_handles(k).Toolbar.Visible = 'off';
+    catch
+    end
+end
 drawnow;
+
+if ~isempty(target_size_bp)
+    try
+        set(fig, ...
+            'PaperUnits', 'points', ...
+            'PaperSize', target_size_bp, ...
+            'PaperPosition', [0, 0, target_size_bp], ...
+            'PaperPositionMode', 'manual', ...
+            'Renderer', 'painters');
+        print(fig, filename, '-dpdf', '-painters');
+        log_line(logfid, ['saved at final paper size ', filename]);
+        ok = true;
+    catch err_size
+        log_line(logfid, ['final-size PDF export failed: ', err_size.message]);
+    end
+end
+
+if ok
+    return;
+end
 
 try
     exportgraphics(fig, filename, 'ContentType', 'vector', 'BackgroundColor', 'white');

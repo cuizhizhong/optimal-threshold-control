@@ -112,10 +112,10 @@ plt.rcParams.update({
     "mathtext.fontset": "stix", "axes.unicode_minus": False,
     "font.size": 9.0, "axes.labelsize": 10.0,
     "xtick.labelsize": 8.5, "ytick.labelsize": 8.5, "legend.fontsize": 7.6,
-    "axes.linewidth": 0.9, "axes.edgecolor": "#444444",
+    "axes.linewidth": 0.9, "axes.edgecolor": "#000000",
     "axes.spines.top": False, "axes.spines.right": False,
-    "xtick.color": "#555555", "ytick.color": "#555555",
-    "xtick.labelcolor": "#222222", "ytick.labelcolor": "#222222",
+    "xtick.color": "#000000", "ytick.color": "#000000",
+    "xtick.labelcolor": "#000000", "ytick.labelcolor": "#000000",
     "lines.solid_capstyle": "round", "lines.dash_capstyle": "round",
     "legend.frameon": False, "legend.handlelength": 2.1,
     "legend.handletextpad": 0.6, "legend.labelspacing": 0.28,
@@ -123,26 +123,26 @@ plt.rcParams.update({
 })
 
 # line-weight hierarchy
-LW_MAIN, LW_PRIMARY, LW_SECONDARY, LW_SKELETON, LW_AUX = 2.00, 1.80, 1.50, 1.00, 0.90
+LW_MAIN, LW_PRIMARY, LW_SECONDARY, LW_SKELETON, LW_AUX = 2.20, 2.00, 1.70, 1.20, 1.10
 S_A, S_B, MK_LW = 18, 16, 0.7          # small sampling markers, consistent across (a)/(b)
 
 # colours
-C_PEAK, C_COST, C_D45, C_D150, C_TRIG = "#b2182b", "#4575b4", "#6f8faf", "#5a9e8f", "#c9ced3"
+C_PEAK, C_COST, C_D45, C_D150, C_TRIG = "#b2182b", "#206FB6", "#073068", "#6BADD7", "#c9ced3"
 C_WEDGE_A = "#E7EDF4"
-C_CUM, C_CLR = "#2f6db0", "#c0563f"
+C_CUM, C_CLR = "#238b8e", "#9a6b5a"
 C_SKEL, C_SKEL_LIGHT = "#A6AFB8", "#C2CAD2"
-C_WEDGE_B, C_CUM_FILL, C_CLR_FILL = "#EDF1F5", "#D8E6F3", "#EFDAD5"
-RC_COL = {"int": "#6a3d9a", "d45": "#4575b4", "cost": "#e08214", "d150": "#2ca25f",
+C_WEDGE_B, C_CUM_FILL, C_CLR_FILL = "#EDF1F5", "#D7EBE9", "#E7DDD8"
+RC_COL = {"int": "#084a91", "d45": "#073068", "cost": "#206FB6", "d150": "#6BADD7",
           "clr": C_CLR, "cum": C_CUM}
 
 XMIN, XMAX, YMIN, YMAX = 1e3, 1e6, 10., 4e3
 Ng = np.logspace(3, 6, 700)
 peak = np.full_like(Ng, IPEAK)
 
-A_pts = [("int", 2e4, th_int * 2e4), ("d45", 2e4, th_d45 * 2e4),
-         ("cost", 2e4, th_cost * 2e4), ("d150", 2e4, th_d150 * 2e4)]
-B_pts = [("int", 100 / th_int, 100), ("d45", 100 / th_d45, 100),
-         ("cost", 100 / th_cost, 100), ("d150", 100 / th_d150, 100),
+A_pts = [("d45", 2e4, th_d45 * 2e4), ("cost", 2e4, th_cost * 2e4),
+         ("d150", 2e4, th_d150 * 2e4)]
+B_pts = [("d45", 100 / th_d45, 100), ("cost", 100 / th_cost, 100),
+         ("d150", 100 / th_d150, 100),
          ("clr", 4601.9, 100),          # 直接求根值，与 Panel B 的 clear 角色一致
          ("cum", np.interp(100, cum_eta, cum_N), 100)]
 
@@ -227,22 +227,25 @@ up = cum_es >= ec
 axb.plot(np.r_[Nc, cum_Ns[up]], np.r_[ec, cum_es[up]],
          color=C_CUM, lw=LW_MAIN, zorder=7)                       # inside wedge (solid)
 axb.plot(np.r_[cum_Ns[~up], Nc], np.r_[cum_es[~up], ec],
-         color=C_CUM, lw=1.30, ls=(0, (4, 2)), alpha=0.5, zorder=6)  # out-of-wedge tail (faded dashed)
+         color=C_CUM, lw=1.50, ls=(0, (4, 2)), alpha=0.5, zorder=6)  # out-of-wedge tail (faded dashed)
 _uc = clr_es >= ETA_FLOOR
 axb.plot(np.r_[N_FLOOR, clr_Ns[_uc]], np.r_[ETA_FLOOR, clr_es[_uc]],
-         color=C_CLR, lw=LW_MAIN, zorder=8)                              # 有效池内(实线)
+         color=C_CLR, lw=LW_MAIN, alpha=0.85, zorder=8)                  # 有效池内(实线)
 axb.plot(np.r_[clr_Ns[~_uc], N_FLOOR], np.r_[clr_es[~_uc], ETA_FLOOR],
-         color=C_CLR, lw=1.70, ls=(0, (4.5, 2.2)), alpha=0.90, zorder=7)  # N<I^T_tcum: 仍是边界,虚线示意
+         color=C_CLR, lw=1.90, ls=(0, (4.5, 2.2)), alpha=0.85, zorder=7)  # N<I^T_tcum: 仍是边界,虚线示意
 # N* vertical line removed -> the decomposition intersections (N*_45, N*_cost,
 # N_cum, N_clr, domain wall) are reported in the caption / main text instead
 # cross-figure sampling markers (circle = Panel A, square = Panel B)
 for r, x, y in A_pts:
-    axb.scatter([x], [y], s=S_A, marker="o", fc=RC_COL[r], ec="white", lw=MK_LW, zorder=9)
+    axb.scatter([x], [y], s=S_A, marker="o", fc=RC_COL[r], ec="white", lw=MK_LW,
+                alpha=0.85 if r == "clr" else 1.0, zorder=9)
 for r, x, y in B_pts:
-    axb.scatter([x], [y], s=S_B, marker="s", fc=RC_COL[r], ec="white", lw=MK_LW, zorder=9)
+    axb.scatter([x], [y], s=S_B, marker="s", fc=RC_COL[r], ec="white", lw=MK_LW,
+                alpha=0.85 if r == "clr" else 1.0, zorder=9)
 axfmt(axb, "(b)", ylabel=False)
 legb = [Line2D([], [], color=C_CUM, lw=LW_MAIN, label="cumulative"),
-        Line2D([], [], color=C_CLR, lw=LW_MAIN, label=r"clear $\leq$ 45.3 d"),
+        Line2D([], [], color=C_CLR, lw=LW_MAIN, alpha=0.85,
+               label=r"clear $\leq$ 45.3 d"),
         Line2D([], [], color=C_SKEL, lw=LW_SKELETON + 0.05, label="constraint skeleton")]
 axb.legend(handles=legb, loc="lower right", borderaxespad=0.45)
 

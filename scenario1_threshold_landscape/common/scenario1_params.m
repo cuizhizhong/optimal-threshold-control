@@ -15,15 +15,23 @@ cfg.S0 = 762;
 cfg.I0 = 1;
 cfg.c0_base = 10;
 
-cfg.eta_frac_list = 0.002:0.0002:0.020;
+cfg.eta_frac_list = 0.002:0.0002:0.050;
 cfg.eta_list = cfg.eta_frac_list * cfg.N;
 cfg.eta_percent_list = 100 * cfg.eta_frac_list;
-cfg.c0_list = 6:0.1:14;
+cfg.c0_list = 2.3:0.1:14;
 
 cfg.selected_eta_frac = [0.002, 0.005, 0.010, 0.020];
-cfg.c0_response_eta_frac = [0.002, 0.010, 0.020];
 cfg.selected_c0 = [6, 10, 14];
 cfg.baseline_eta_frac = [0.020, 0.002];
+
+% Main-paper figures and tables. Keep these separate from the exploratory
+% representative-case selections above.
+cfg.main_c0_values = [4, 5, 8, 10, 12];
+cfg.main_eta_frac_values = [0.002, 0.006, 0.010, 0.020];
+cfg.main_c0_sweep_eta_frac = 0.050;
+cfg.main_eta_sweep_c0 = 10;
+cfg.main_eta_sweep_c0_values = [5, 8, 10, 12];
+cfg.c0_response_eta_frac = cfg.main_eta_frac_values;
 
 cfg.paths.base_dir = base_dir;
 cfg.paths.run_dir = run_dir;

@@ -28,7 +28,9 @@ def edges(param,lo,hi):
                 break
     return out
 # q0 行提到第一行：其左图 q_max 由 0.76 降到 0.52、右图 dt 由 6.1 降到 0.9，上方留白最多
-specs=[('q0',0.0,0.39,r'$q_0$'),('beta',0.065,0.50,r'$\beta$'),
+# q0 扫到 0.42（越过可行上界 q0^max=0.3977，I_max^no=eta 处），越界点因 status!='ok' 被跳过，
+# 曲线自然停在 0.398 处，右侧留白显示"常规控制触不到红线、控制退化"。
+specs=[('q0',0.0,0.42,r'$q_0$'),('beta',0.065,0.50,r'$\beta$'),
        ('c0',4.2,16,r'$c_0$'),('eta',0.0135,0.05,r'$\eta/N$')]
 fig,axes=plt.subplots(4,2,figsize=(8.2,9.4))
 for i,(param,lo,hi,plab) in enumerate(specs):
@@ -51,6 +53,8 @@ for i,(param,lo,hi,plab) in enumerate(specs):
     aR.plot(xs,hh+ll,color='0.25',ls='--',lw=0.9)
     for xv in edges(param,lo,hi): aR.axvline(xv,color='0.55',ls=(0,(2,2)),lw=0.9)
     aR.set_ylabel('duration (days)',fontsize=8.5); aR.tick_params(labelsize=7.5); aR.set_xlabel(plab)
+    if param=='q0':   # 强制显示到扫描上限，露出可行边界后的留白
+        aL.set_xlim(lo,hi); aR.set_xlim(lo,hi)
 # 图例锚在第一行（q0 行）右上，竖排
 axes[0,0].legend([plt.Line2D([],[],color=C_QMAX,lw=1.6),plt.Line2D([],[],color=C_QINF,lw=1.7),
     plt.Line2D([],[],color=C_Q0,lw=1.5)],[r'$q_{\max}$',r'$q_{\inf}$',r'$q_0$'],

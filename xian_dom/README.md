@@ -1,10 +1,13 @@
 # xian_dom — §8 有效人口占优分析：绘图与求解脚本
 
-产出主论文 `paper_elegantpaper_relayout/flatten_curve_analysis_cn.tex` §8.7 的三张占优图：
+产出主论文 `paper_elegantpaper_relayout/flatten_curve_analysis_cn.tex` §8.7 的三张占优图及
+Panel A 的三个附录案例：
 
 - 图 20 `fig_dom_combined.pdf`：$(N_{\rm eff},\eta)$ 平面占优区域，(a) 直线族（强度量）/ (b) 弧线族（广延量）；
-- 图 21 `fig_panel_A.pdf`：$\eta$ 杠杆（固定 $N_{\rm eff}=2\times10^4$，沿四条边界取 $\eta$）；
-- 图 22 `fig_panel_B.pdf`：$N$ 杠杆（固定 $\eta=100$，六个 $N_{\rm eff}$）。
+- 图 21 `fig_panel_A.pdf`：$\eta$ 杠杆（固定 $N_{\rm eff}=2\times10^4$，展示三条边界取值）；
+- 图 22 `fig_panel_B.pdf`：$N$ 杠杆（固定 $\eta=100$，展示五个 $N_{\rm eff}$）。
+- Panel A 另按 $N_{\rm eff}=10^4,\,2\times10^4,\,40377,\,91727$ 生成四个带后缀文件；
+  N2e4 文件另以 `fig_panel_A.pdf` 作正文兼容别名，其余三张进入附录。
 
 ## 口径（重要）
 
@@ -18,7 +21,7 @@ TDINN 是**固定的现实参照**：已发生的现实结局，用固定的四�
 | 文件 | 作用 |
 |---|---|
 | `dom_pretty.py` | 图 20 合成图（自包含，只需 numpy/matplotlib） |
-| `panels.py` | Panel A（直接 `python panels.py`）；含求解器封装 `solve_threshold`/`solve_tdinn` 与共享量 `N_OF`/`_envelope`（供 `compute_B` 导入） |
+| `panels.py` | 四个 $N_{\rm eff}$ 的 Panel A（直接 `python panels.py`）；`python panels.py diag` 输出四案例数值诊断；含求解器封装 `solve_threshold`/`solve_tdinn` 与共享量 `N_OF`/`_envelope`（供 `compute_B` 导入） |
 | `compute_B.py` | Panel B 重算，产出 `panelB.pkl`（约 25 s） |
 | `plot_B.py` | 从 `panelB.pkl` 快速绘 Panel B |
 | `resolve_clr.py` | 清零弧（$t_{\rm end}^{\rm T}=45.27$ d 口径）逐点求根 |
@@ -37,7 +40,7 @@ TDINN 是**固定的现实参照**：已发生的现实结局，用固定的四�
 
 ```bash
 python dom_pretty.py     # 图 20（自包含，只需 numpy/matplotlib）
-python panels.py         # 图 21 Panel A（不再需要 A 参数）
+python panels.py         # 正文 Panel A + 三张附录案例（四个带 N 后缀文件）
 python compute_B.py      # 图 22 的重算 → panelB.pkl（约 25 s）
 python plot_B.py         # 图 22 Panel B（读缓存，秒出）
 ```
@@ -49,13 +52,46 @@ python plot_B.py         # 图 22 Panel B（读缓存，秒出）
 
 ## 图去向与尺寸约束
 
-- 三脚本把图写到 `xian_dom/dominance_panels/`；定稿时把三个 `.pdf` 复制到 `../figures/`
+- 三脚本把图写到 `xian_dom/dominance_panels/`；定稿时把正文图与 Panel A 附录图复制到 `../figures/`
   （主论文 graphicspath 经 `../figures/` 解析）。
 - 三图按 tight bbox 宽度 = **451.28 bp**（= 主论文 `\textwidth`，A4 减左右各 1 in）渲染，
   使 `\includegraphics[width=\textwidth]` 缩放为 1.0×。改 `figsize` 后**必须用 `pdfinfo` 复量**
   （因 `bbox_inches="tight"`，成图尺寸 ≠ `figsize`）。当前值：`dom_pretty` `(6.288, 2.925)`、
-  `panels`/`plot_B` `(6.164, 5.459)`。
-- Panel A 的 $\eta$ 直标垂直余量仅约 $0.027$ decade；调大字号或让 $\eta$ 变五位数会重叠。
+  `panels`/`plot_B` `(6.151, 5.459)`。
+- 图 20--22 的四个共享角色仍定义为随 $\eta$ 加深的顺序蓝：
+  dur150 `#6BADD7`、cost `#206FB6`、dur45 `#073068`、interior `#084a91`；
+  为简化定稿图，图 20--22 当前只展示 dur150、cost、dur45，interior 数值角色与颜色定义保留，
+  但不绘制轨迹、图例、inset 柱或占优图采样点。
+  清零边界使用暖灰棕 `#9a6b5a`（曲线与采样标记 `alpha=0.85`），累计边界使用蓝青
+  `#238b8e`。图 20 的清零内区与累计外环分别使用浅暖灰棕 `#E7DDD8` 和浅蓝青
+  `#D7EBE9`；其他约束线与参照线颜色不变。
+- Panel A 不再在 $I(t)$ 平台转角处直接标 $\eta$；两面板均按
+  dur150 $\to$ cost $\to$ dur45（$\eta$ 升序）绘制。
+  图 21、22 的彩色策略轨迹统一使用实线，以颜色和空间位置区分角色；彩色策略使用 `lw=1.6`。图 20 仍保留边界图自身的
+  实线/虚线/点划线约定。
+  两个 Panel 的 $I(t)$ 与 $q_c(t)$ 均按 $t_{\rm clear}$ 从长到短叠绘，使后画的短清零
+  轨迹在共同平台或 $q_0$ 重合段上优先可见；图例仍按原有语义顺序排列，不随 painter order 改变。
+  Panel A 的 $I(t)$ 平台以同色实心圆标出 $q_c(t)$ 拐点时刻的投影 $(t_{\rm inf},\eta)$；
+  该点不是 $I(t)$ 自身拐点。四案例的绝对 $t_{\rm inf}$ 随逐 $N$ 重拟合的 $t_1$ 平移，
+  但平台内相对位置 $\lambda\approx0.861$ 与各边界的 $t_2-t_{\rm inf}$ 保持不变。
+  图 21、22 的 $I_{\rm peak}^{\rm T}$ 参照统一为红色虚线
+  `color="#a50518f4", lw=1.4, ls="--", alpha=0.8`；routine 轨迹统一为灰色虚线
+  `color="#8a8a8a", lw=1.4, ls="--", alpha=0.9`。Panel B 的灰色包络填色与上下边界
+  保持原样，只有包络内的代表性 routine 轨迹采用上述线型。
+  Panel A 的面板 (b) 右上角用从零起算的内嵌柱图比较三条阈值曲线在动态清零时的
+  总累计感染 $I_{t_{\rm cum}}$，并以 $I_{t_{\rm cum}}^{\rm T}=2096.76$ 虚线作为固定
+  TDINN 现实参照。
+  四案例的 $I(t)$ 上限与 inset 上限均按各自量级自适应，跨图比较应读取刻度和柱顶数值。
+- 图 21、22 的每条 $q_c(t)$ 均以角色色展示完整三阶段轨迹：控制前和 $t_2$ 后直到
+  自身动态清零的 $q_0$ 阶段为彩色实线，$t_1$ 处从 $q_0$ 到 $q_c(t_1^+)$ 的瞬时
+  跳跃为同色竖直虚线，$t_1\leq t\leq t_2$ 的阈值控制段为彩色实线。绘制顺序按
+  $t_{\rm clear}$ 从长到短，使后画的短清零轨迹覆盖重合段、其端点优先可见；每条曲线在
+  $q_0$ 上的同色短竖线标出自身动态清零时刻。图 22
+  直接从现有 `panelB.pkl` 恢复 $t_1,t_2,t_{\rm clear}$，无需重算缓存。
+  Panel B 的面板 (b) 右上角同样内嵌到清零总累计感染柱图，五柱按
+  `clear → cumulative → dur45 → cost → dur150`（即 $N_{\rm eff}$ 升序）排列，
+  横轴以 $10^3$ 人为单位。柱值由总累计感染的三段解析式结合缓存中的
+  $q_c(t_1^+)$、$t_2$ 和控制后 $I(t)$ 尾段恢复，不修改 `panelB.pkl`。
 
 ## 数值锚点（对账用）
 

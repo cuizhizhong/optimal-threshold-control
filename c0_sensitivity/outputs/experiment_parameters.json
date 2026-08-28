@@ -1,0 +1,47 @@
+{
+  "parameters": {
+    "N": 20000.0,
+    "beta": 0.1498,
+    "gamma": 0.2953,
+    "delta_q": 0.3531,
+    "q0": 0.323,
+    "theta": 0.002,
+    "full_city_N": 13163000.0,
+    "full_city_I0_reference": 0.00100662823352
+  },
+  "derived": {
+    "eta": 40.0,
+    "I0_refit_at_N_eff": 0.002043185813294379,
+    "I0_refit_objective": 22915.92600234917,
+    "full_city_I0_reproduction": 0.0010065918664377905,
+    "full_city_objective_reproduction": 1036.7614620981603,
+    "ridge_discriminant_residual": 3.222540758546222e-10,
+    "c0_trigger": 3.333718699165909,
+    "c0_inflection_onset": 3.543085331608684,
+    "c0_duration_max": 6.606990624468964,
+    "duration_max": 103.18105161704798,
+    "q_inf": 0.4119030816278523
+  },
+  "representative_c0": [
+    {
+      "role": "near-trigger",
+      "c0": 3.4337302601408863
+    },
+    {
+      "role": "near-inflection",
+      "c0": 3.4930853316086843
+    },
+    {
+      "role": "post-inflection",
+      "c0": 3.593085331608684
+    },
+    {
+      "role": "max-duration",
+      "c0": 6.606990624468964
+    },
+    {
+      "role": "baseline",
+      "c0": 12.8872
+    }
+  ]
+}

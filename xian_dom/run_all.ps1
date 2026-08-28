@@ -16,8 +16,9 @@ Run "图 22 重算(~25s)" "compute_B.py"
 Run "图 22 Panel B"    "plot_B.py"
 
 $fig = Join-Path $PSScriptRoot "..\figures"
-foreach ($f in "fig_dom_combined", "fig_panel_A", "fig_panel_B") {
+foreach ($f in "fig_dom_combined", "fig_panel_A", "fig_panel_A_N1e4", "fig_panel_A_N2e4",
+                 "fig_panel_A_N40377", "fig_panel_A_N91727", "fig_panel_B") {
     Copy-Item (Join-Path "dominance_panels" "$f.pdf") $fig -Force
     Write-Host "  copied $f.pdf -> figures/" -ForegroundColor Green
 }
-Write-Host "完成。三张图已更新到 $((Resolve-Path $fig).Path)" -ForegroundColor Green
+Write-Host "完成。正文图与 Panel A 附录图已更新到 $((Resolve-Path $fig).Path)" -ForegroundColor Green

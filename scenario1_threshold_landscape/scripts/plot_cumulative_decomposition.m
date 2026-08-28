@@ -12,11 +12,11 @@ logfid = open_log(cfg, 'plot_cumulative_decomposition.log');
 cleanup_log = onCleanup(@() fclose(logfid)); %#ok<NASGU>
 
 T = readtable(fullfile(cfg.paths.output_csv, 'eta_sensitivity_c0_10.csv'));
-plot_one_cumulative_decomposition(T, ...
+plot_one_cumulative_decomposition(T, cfg, ...
     fullfile(cfg.paths.figures, 'cumulative_decomposition_c0_10.pdf'), logfid);
 fprintf(logfid, 'cumulative decomposition finished\n');
 
-function plot_one_cumulative_decomposition(T, filename, logfid)
+function plot_one_cumulative_decomposition(T, cfg, filename, logfid)
 fig = figure('Position', [120, 110, 880, 520], 'Color', 'w', 'Visible', 'on');
 ax = axes(fig); hold(ax, 'on'); box(ax, 'on');
 x = T.eta_percent;
@@ -29,8 +29,8 @@ ylabel(ax, 'Cumulative infections');
 title(ax, '$c_0=10$');
 legend(ax, {'$I_{\rm pre}$', '$I_{\rm wall}$', '$I_{\rm post}$', '$I_{t_{\rm cum}}$'}, ...
     'Location', 'best', 'Interpreter', 'latex');
-xticks(ax, 0.2:0.2:2.0);
-xlim(ax, [0.15, 2.05]);
+xticks(ax, [0.2, 1, 2, 3, 4, 5]);
+xlim(ax, [min(cfg.eta_percent_list), max(cfg.eta_percent_list)]);
 style_axes(ax);
 save_figure_safe(fig, filename, logfid);
 end

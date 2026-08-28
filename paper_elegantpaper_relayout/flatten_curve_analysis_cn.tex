@@ -257,7 +257,7 @@ c(t)=c_0,\qquad t\ge 0,
 
 \begin{theorem}[干预启动点与首次触碰时间]
 \label{thm:s1:trigger}
-假设\(S_0>S_c,I_0<\eta<I_{\max}^{no}\),定义:
+当\(S_0>S_c,I_0<\eta<I_{\max}^{no}\),定义:
 \begin{equation}
 z_\eta:=
 -\frac{1}{S_c}
@@ -368,9 +368,9 @@ Lambert 方程不存在实根，常规防控轨道不会触碰医疗阈值；
 \end{remark}
 
 \subsection{阈值控制期的状态反馈控制 $q_c(S(t))$}
-\begin{theorem}[阈值控制期的状态反馈律及其结构性质]
+\begin{theorem}
 \label{thm:s1:qc-structure}
-对系统\eqref{eq:s1:dynamics}，在阈值控制期 $t\in[t_1,t_2]$ 内精准维持 $I(t)\equiv\eta$（即 $\dot I=0$）所需的隔离强度由如下状态反馈律唯一确定：
+对系统\eqref{eq:s1:dynamics}，如果定理~\ref{thm:s1:trigger} 的非退化触发条件(\(S_0>S_c,I_0<\eta<I_{\max}^{no}\))成立。在阈值控制期 $t\in[t_1,t_2]$ 内精准维持 $I(t)\equiv\eta$（即 $\dot I=0$）所需的隔离强度由如下状态反馈律唯一确定：
 \begin{equation}
 q_c(t)=q_c(S(t))=1-\frac{\gamma N}{\beta c_0 S(t)} \quad S\in [S_c,S^*].
 \label{eq:s1:q-control}
@@ -385,8 +385,7 @@ q_0, & t>t_2.
 \end{cases}
 \label{eq:s1:q-piecewise}
 \end{equation}
-进一步地，设定理~\ref{thm:s1:trigger} 的非退化触发条件成立。
-由该定理有 $S^*>S_c$，此时该控制律具有以下结构：
+控制函数具有以下结构：
 \begin{itemize}
 \item[(i)] \textbf{瞬时启动}：$q(t)$ 在 $t=t_1$ 处发生向上跳跃间断，
 \[
@@ -434,10 +433,7 @@ q'_c(t)=\frac{\gamma N}{\beta c_0} \frac{\dot{S}(t)}{S^{2}(t)}=- \frac{\frac{\ga
 
 
 \begin{theorem}[阈值隔离控制的拐点]\label{thm:s1:inflection}
-    假设 $S_0>S_c$ 且 $I_0<\eta<I_{\max}^{no}$。
-    由定理~\ref{thm:s1:trigger} 可知 $z_\eta\in(-1/e,0)$，
-    故下式中的实值分支 $W_{-1}(z_\eta)$ 良定义。
-    阈值控制期内 $q_c(t)$ 存在唯一内部拐点 $t_{\mathrm{inf}}$，当且仅当
+    设 $S_0>S_c$、$I_0<\eta<I_{\max}^{no}$（由定理~\ref{thm:s1:trigger}，$z_\eta\in(-1/e,0)$，故下式中的实值分支 $W_{-1}(z_\eta)$ 良定义）。则阈值控制期内 $q_c(t)$ 存在唯一内部拐点 $t_{\mathrm{inf}}$，当且仅当
     \[
     S_c<2\bar S<S^*.
     \]
@@ -454,7 +450,7 @@ q'_c(t)=\frac{\gamma N}{\beta c_0} \frac{\dot{S}(t)}{S^{2}(t)}=- \frac{\frac{\ga
     =
     t_1+\frac{N}{c_0\eta}\ln\frac{S^*-\bar S}{\bar S},
     \]
-    以及拐点处的隔离强度$\qinf:=q_c(2\bar S)=1-\frac{1}{2(1-\beta)}$,只依赖$\beta$.
+    以及拐点处的隔离强度 $\qinf:=q_c(2\bar S)=1-\dfrac{1}{2(1-\beta)}$，只依赖 $\beta$。
 
     此外:
     \[
@@ -474,7 +470,7 @@ q'_c(t)=\frac{\gamma N}{\beta c_0} \frac{\dot{S}(t)}{S^{2}(t)}=- \frac{\frac{\ga
     =
     \frac{\frac{\gamma c_0\eta^2}{\beta N}(S-\bar S)(2\bar S-S)}{S^3}.
     \]
-    由于 \(\frac{\gamma c_0\eta^2}{\beta N}>0,S>\bar S\)，所以$q_c''(t)$符号只由$2\bar S-S(t)$决定：
+    由于 \(\frac{\gamma c_0\eta^2}{\beta N}>0,\ S>\bar S\)，所以 $q_c''(t)$ 的符号只由 $2\bar S-S(t)$ 决定：
     \[
     S(t)>2\bar S
     \quad\Rightarrow\quad
@@ -494,7 +490,7 @@ q'_c(t)=\frac{\gamma N}{\beta c_0} \frac{\dot{S}(t)}{S^{2}(t)}=- \frac{\frac{\ga
     \[
     \frac{2\bar{S}}{S_c}=2(1-\beta)(1-q_0)
     \]
-    所以$2\bar S >S_c$等价于$(1-\beta)(1-q_0)>\frac{1}{2}$,且拐点相对$S_c$的位置只受$\beta$和$q_0$的影响。
+    所以 $2\bar S>S_c$ 等价于 $(1-\beta)(1-q_0)>\frac{1}{2}$，且拐点相对 $S_c$ 的位置只受 $\beta$ 和 $q_0$ 的影响。
     
     同时，由式~\eqref{eq:s1:Sstar-lambert}，
     \[
@@ -516,7 +512,7 @@ q'_c(t)=\frac{\gamma N}{\beta c_0} \frac{\dot{S}(t)}{S^{2}(t)}=- \frac{\frac{\ga
     \]
     此时 $S(t_{\mathrm{inf}})=2\bar S$。
     
-    由$\dot{S}=-\frac{c_0\eta}{N}(S-\bar S)$,求解并带入初值条件$S(t_1)=S^*$，可得
+    由 $\dot{S}=-\frac{c_0\eta}{N}(S-\bar S)$，求解并代入初值条件 $S(t_1)=S^*$，可得
     \[
     S(t)=\bar S+(S^*-\bar S)
     e^{-\frac{c_0\eta}{N}(t-t_1)}
@@ -531,11 +527,7 @@ q'_c(t)=\frac{\gamma N}{\beta c_0} \frac{\dot{S}(t)}{S^{2}(t)}=- \frac{\frac{\ga
     \ln\frac{S^*-\bar S}{\bar S}.
     \]
 \end{proof}
-同时我们也可以求得拐点处的隔离强度，记之为
-\[
-\qinf:=q_c(2\bar S)=1-\frac{\gamma N}{2\beta c_0 \bar S}=1-\frac{1}{2(1-\beta)},
-\]
-它只与病毒传播概率 $\beta$ 有关。于是拐点存在条件 $S_c<2\bar S<S^*$ 可等价地写在隔离强度轴上：
+由于 $q_c(S)=1-\gamma N/(\beta c_0 S)$ 关于 $S$ 严格递增，定理~\ref{thm:s1:inflection} 中的拐点存在条件 $S_c<2\bar S<S^*$ 可等价地写在隔离强度轴上（其中 $\qinf=q_c(2\bar S)$）：
 \begin{equation}
 q_0<\qinf<q_{\max}.
 \label{eq:s1:inflection-exist}
@@ -547,61 +539,572 @@ q_0<\qinf<q_{\max}.
 \label{sec:s1:inflection-position}
 上一小节给出拐点存在判据~\eqref{eq:s1:inflection-exist} 及其位置 $S(t_{\mathrm{inf}})=2\bar S$。这里进一步刻画拐点在控制区间内的相对位置，并统一说明拐点在两个边界处如何消失。
 
-两段时长:由定理证明中已得的轨迹 $S(t)=\bar S+(S^*-\bar S)e^{-c_0\eta(t-t_1)/N}$ 知 $\ln(S-\bar S)$ 关于 $t$ 线性,拐点对应为 $\ln\bar S$（对应 $S=2\bar S$）与两端无关。于是从 $S=2\bar S$ 到 $S=S_c$ 所需时间可直接算得
+由定理~\ref{thm:s1:inflection} 证明中的轨迹
+$S(t)=\bar S+(S^*-\bar S)e^{-c_0\eta(t-t_1)/N}$，
+拐点前、后两段时长分别为
 \begin{equation}
-t_2-t_{\mathrm{inf}}=\frac{N}{c_0\eta}\bigl[\ln\bar S-\ln(S_c-\bar S)\bigr]=\frac{N}{c_0\eta}\ln\frac{\bar S}{S_c-\bar S},
+t_{\mathrm{inf}}-t_1
+=
+\frac{N}{c_0\eta}
+\ln\frac{S^*-\bar S}{\bar S},
+\label{eq:s1:seg-high}
+\end{equation}
+\begin{equation}
+t_2-t_{\mathrm{inf}}
+=
+\frac{N}{c_0\eta}
+\ln\frac{\bar S}{S_c-\bar S}.
 \label{eq:s1:seg-low}
 \end{equation}
-与前段 $t_{\mathrm{inf}}-t_1=\frac{N}{c_0\eta}\ln\frac{S^*-\bar S}{\bar S}$ 相加恰为控制时长 $\Delta t$（式~\eqref{eq:s1:t2}）。注意~\eqref{eq:s1:seg-low} 的对数中只出现 $S_c,\bar S$，故后段时长\emph{只}由 $\beta,q_0$ 决定；前段则经 $S^*$ 牵涉 $c_0,\eta$ 与初值。
+两式相加即为控制时长 $\Delta t$（式~\eqref{eq:s1:t2}）。
+需区分实际时长与无量纲因子：两段实际时长均含公共尺度
+$N/(c_0\eta)$；只有式~\eqref{eq:s1:seg-low} 中的后段无量纲因子满足
+\[
+\ln\frac{\bar S}{S_c-\bar S}
+=
+\ln
+\frac{(1-\beta)(1-q_0)}
+{1-(1-\beta)(1-q_0)},
+\]
+因而仅依赖 $\beta,q_0$。前段无量纲因子还经 $S^*$ 依赖
+$c_0,\eta$ 与初值。
 
-相对位置: 前段与后段共享同一时间尺度 $N/(c_0\eta)$，故可用无量纲的相对位置刻画拐点靠哪一端：
+前、后两段共享同一时间尺度，故定义拐点在控制区间内的归一化相对位置
 \begin{equation}
-\lambda:=\frac{t_{\mathrm{inf}}-t_1}{t_2-t_1}
-=\frac{\ln\dfrac{S^*-\bar S}{\bar S}}{\ln\dfrac{S^*-\bar S}{S_c-\bar S}}\in(0,1),
+\lambda
+:=
+\frac{t_{\mathrm{inf}}-t_1}{t_2-t_1}
+=
+\frac{
+\ln\dfrac{S^*-\bar S}{\bar S}
+}{
+\ln\dfrac{S^*-\bar S}{S_c-\bar S}
+}
+\in(0,1).
 \label{eq:s1:lambda}
 \end{equation}
-$\lambda\to0$ 表示拐点靠近 $t_1$，$\lambda\to1$ 表示靠近 $t_2$。时间尺度 $N/(c_0\eta)$ 在分子分母中约去，故 $\lambda$ 只由 $S^*,\bar S,S_c$ 经两个对数因子之比决定；第~\ref{sec:num}节的参数下 $\lambda=0.458$。
+$\lambda\to0$ 表示归一化位置靠近 $t_1$ 端，
+$\lambda\to1$ 表示靠近 $t_2$ 端。
+这不表示绝对时刻 $t_{\mathrm{inf}}$ 具有相同的变化方向；
+第~\ref{sec:num}节参数下 $\lambda=0.458$。
 
-\textbf{参数方向。} 由式~\eqref{eq:s1:lambda}，$\lambda$ 只由两个对数因子之比决定。后段因子
+$\lambda$ 描述隔离强度减弱的特点. $q_c(t)$ 从 $q_{\max}$ 到 $q_0$ 近乎直线（其偏离首尾连线的幅度由第~\ref{sec:s1:inflection-curvature}小节的曲率上界~\eqref{eq:s1:qcpp-bound} 封顶），拐点是这条近直线朝哪一端轻微鼓出的位置，也是释放速率 $\lvert q_c'\rvert$ 最大的时刻。$\lambda\to1$ 时曲线偏向 $t_2$ 端（``后重型''：$q_c$ 在窗口大部分时间略高于线性时程，回落集中在末段），$\lambda\to0$ 时偏向 $t_1$ 端（``前重型''：回落集中在前段，随后略低于线性时程贴近 $q_0$）。由下文命题~\ref{prop:s1:lambda-sensitivity}，传染性增强（$\beta,c_0\uparrow$）使释放后重（$\lambda\uparrow$），医疗容量增大（$\eta\uparrow$）使其前重（$\lambda\downarrow$），基线隔离率 $q_0$ 的作用一般不单调。两点需强调：其一，$\lambda$ 是控制期内的归一化占比，绝对的控制快慢与代价由控制时长 $\Delta t$、清零时间 $t_{\mathrm{end}}$ 与成本 $J$ 承担，二者可脱钩（沿 $c_0$ 有 $\lambda_{c_0}>0$ 单调，而 $\Delta t_{c_0}$ 由推论~\ref{cor:s1:duration-sensitivity} 的 $\Theta$ 判据定、符号不定）；其二，$\lambda$ 同时被传染性（$\beta,c_0$）、医疗容量（$\eta$）与基线管控强度（$q_0$）三类输入牵动，后两者并非疾病严重程度，故 $\lambda$ 刻画的是释放节奏的偏向，而非疫情是否严重。
+
+\begin{lemma}[启动点的四参数敏感性]
+\label{lem:s1:Sstar-sensitivity}
+当\(S_0>S_c,I_0<\eta<I_{\max}^{no}\)时,固定其余参数，
+启动点 $S^*$ 满足
 \[
-\ln\frac{\bar S}{S_c-\bar S}=\ln\frac{(1-\beta)(1-q_0)}{1-(1-\beta)(1-q_0)}
+S^*_\eta<0,
+\qquad
+S^*_{c_0}>0,
+\qquad
+S^*_\beta>0,
+\qquad
+S^*_{q_0}<0.
 \]
-\emph{只}含 $\beta,q_0$（存在区内 $(1-\beta)(1-q_0)>\tfrac12$，即判据~\eqref{eq:s1:inflection-exist} 的下界，保证其为正）；前段因子 $\ln\!\big(S^*/\bar S-1\big)$ 则经比值 $S^*/\bar S$ 牵涉 $c_0,\eta$ 与初值。$\lambda$ 对前段因子递增、对后段因子递减，据此可逐条判定方向（下文以 $\lambda$ 增大记为拐点向 $t_2$ 端移动）：
-\begin{itemize}
-  \item $\eta$（即 $\theta=\eta/N$）只经前段因子：由命题~\ref{prop:s1:sensitivity} 的 $S^*_\eta<0$ 及 $\bar S$ 不含 $\eta$，$\eta$ 增大使 $S^*/\bar S$ 下降，故 $\lambda$ 单调减小，拐点向 $t_1$ 端移动。
-  \item $c_0$ 只经前段因子（$\bar S/S_c=(1-\beta)(1-q_0)$ 不含 $c_0$）：由命题~\ref{prop:s1:sensitivity} 的 $S^*_{c_0}>0$ 及 $\bar S\propto1/c_0$，$c_0$ 增大使 $S^*/\bar S$ 上升，故 $\lambda$ 单调增大，拐点向 $t_2$ 端移动。
-  \item $\beta$ 同时经前、后两段，且两通道同向：$\beta$ 增大使后段因子减小（推 $\lambda$ 增），又使 $\bar S\propto(1-\beta)/\beta$ 减小、从而 $S^*/\bar S$ 上升（推 $\lambda$ 增）。数值上 $\lambda$ 随 $\beta$ 单调增大，拐点向 $t_2$ 端移动。
-  \item $q_0$ 同时经前、后两段，但两通道反向：$q_0$ 增大使后段因子减小（推 $\lambda$ 增），却使 $S^*$ 及前段因子下降（推 $\lambda$ 减；$\bar S$ 不含 $q_0$），故净方向依 $\beta$ 而异。数值上，第~\ref{sec:num}节参数（$\beta=0.155$）下 $\lambda$ 在拐点存在区内几乎全程随 $q_0$ 递增（直到 $q_0\approx0.389$，占存在区约 $98\%$）；仅在 $2\bar S\to S^\ast$ 的邻近（约占存在区 $2\%$）$\lambda$ 转降，但那里 $\lambda\to0$ 是拐点经 $t_1$ 端掉出的定义结果，而非后段通道反转所致。两通道反向竞争的实质效应只在较低 $\beta$ 显现：$\beta=0.12$ 时递减段约占存在区 $32\%$，$\beta=0.10$ 时约占 $63\%$，此时 $\lambda$ 明显先增后减。
-\end{itemize}
-其中 $S^*$ 的方向可由同一直觉读出：提高阈值 $\eta$、降低接触率 $c_0$、减小传播概率 $\beta$ 或提高基线隔离率 $q_0$，都使系统在触及阈值前消耗更多易感者，故启动点 $S^*$ 下降。但该直觉只固定 $S^*$（进而前段因子）的方向；$q_0$ 因另有后段通道与之反向，其对 $\lambda$ 的净移动不能据此判断。
+若固定 $N,S_0,I_0$ 并以 $\theta=\eta/N$ 为参数，则
+\[
+S^*_\theta=NS^*_\eta<0.
+\]
+\end{lemma}
 
-\textbf{两端消失。} 判据~\eqref{eq:s1:inflection-exist} 的两个不等式恰对应拐点从两端掉出的两种结构：
-\begin{itemize}
-\item 当 $(1-\beta)(1-q_0)\le\tfrac12$（即 $2\bar S\le S_c$、$\qinf\le q_0$）时，控制期内恒有 $S\ge S_c\ge 2\bar S$，故 $q_c''<0$ 全程成立（$q_c$ 凹）：拐点经 $t_2$ 端掉出。
-\item 当 $2\bar S\ge S^*$（即 $\qinf\ge q_{\max}$）时，控制期内恒有 $S\le S^*\le 2\bar S$，故 $q_c''>0$ 全程成立（$q_c$ 凸）：拐点经 $t_1$ 端掉出。
-\end{itemize}
-这把两种``无内部拐点''的情形统一为``拐点从哪一端掉出''。表~\ref{tab:s1:inflection-roles} 汇总上述各因素对拐点相关量的作用方向。
+\begin{proof}
+由常规控制轨道的首次积分，在本证明中暂记阈值方程左端为
+\begin{equation}
+\begin{aligned}
+F(S^*;\eta,c_0,\beta,q_0)
+:={}&
+I_0+
+\frac{\beta(1-q_0)}
+{\beta+q_0(1-\beta)}
+(S_0-S^*) \\
+&+
+\rho_1\ln\frac{S^*}{S_0}
+-\eta
+=0.
+\end{aligned}
+\label{eq:s1:F-Sstar-param}
+\end{equation}
+由于 $\rho_1/S_c=\beta(1-q_0)/[\beta+q_0(1-\beta)]$，
+\[
+F_{S^*}
+=
+\rho_1
+\left(
+\frac1{S^*}-\frac1{S_c}
+\right)<0,
+\]
+其中使用了上升支条件 $S^*>S_c$。隐函数定理因而适用。
+
+首先，$F_\eta=-1$，故
+\begin{equation}
+S^*_\eta
+=
+\frac{1}{
+\rho_1
+\left(
+\dfrac1{S^*}-\dfrac1{S_c}
+\right)
+}
+<0.
+\label{eq:s1:Sstar-eta-sign}
+\end{equation}
+其次，$\rho_{1,c_0}=-\rho_1/c_0$，从而
+\[
+F_{c_0}
+=
+-\frac{\rho_1}{c_0}\ln\frac{S^*}{S_0}>0,
+\]
+并有
+\begin{equation}
+S^*_{c_0}
+=
+\frac{\ln(S^*/S_0)}
+{c_0
+\left(
+\dfrac1{S^*}-\dfrac1{S_c}
+\right)
+}
+>0.
+\label{eq:s1:Sstar-c0-sign}
+\end{equation}
+
+对 $\beta$，固定 $S^*$ 时
+\[
+\frac{\partial}{\partial\beta}
+\frac{\beta(1-q_0)}
+{\beta+q_0(1-\beta)}
+=
+\frac{q_0(1-q_0)}
+{\left[\beta+q_0(1-\beta)\right]^2},
+\]
+\[
+\rho_{1,\beta}
+=
+-\frac{\rho_1(1-q_0)}
+{\beta+q_0(1-\beta)}.
+\]
+因此
+\begin{equation}
+S^*_\beta
+=
+\frac{
+\displaystyle
+\frac{q_0(1-q_0)}
+{\left[\beta+q_0(1-\beta)\right]^2}
+(S_0-S^*)
+-
+\frac{\rho_1(1-q_0)}
+{\beta+q_0(1-\beta)}
+\ln\frac{S^*}{S_0}
+}{
+\displaystyle
+\rho_1
+\left(
+\frac1{S_c}-\frac1{S^*}
+\right)
+}
+>0.
+\label{eq:s1:Sstar-beta-sign}
+\end{equation}
+上式分母为正；分子两项均为正，因为
+$S_0>S^*$ 且 $\ln(S^*/S_0)<0$。
+
+最后，对 $q_0$ 有
+\[
+\frac{\partial}{\partial q_0}
+\frac{\beta(1-q_0)}
+{\beta+q_0(1-\beta)}
+=
+-\frac{\beta}
+{\left[\beta+q_0(1-\beta)\right]^2},
+\qquad
+\rho_{1,q_0}
+=
+-\frac{\rho_1(1-\beta)}
+{\beta+q_0(1-\beta)}.
+\]
+利用
+\[
+\frac{\rho_1(1-\beta)}
+{\beta+q_0(1-\beta)}
+=
+\frac{\beta\bar S}
+{\left[\beta+q_0(1-\beta)\right]^2},
+\]
+可得
+\begin{equation}
+S^*_{q_0}
+=
+-\frac{
+\beta
+\left[
+(S_0-S^*)
+-\bar S\ln\frac{S_0}{S^*}
+\right]
+}{
+\left[\beta+q_0(1-\beta)\right]^2
+\rho_1
+\left(
+\dfrac1{S_c}-\dfrac1{S^*}
+\right)
+}
+<0.
+\label{eq:s1:Sstar-q0-sign}
+\end{equation}
+事实上，由 $\bar S<S^*<S_0$ 及 $\ln x<x-1$（$x>1$）知
+\[
+\bar S\ln\frac{S_0}{S^*}
+<
+S^*\ln\frac{S_0}{S^*}
+<
+S_0-S^*,
+\]
+故式~\eqref{eq:s1:Sstar-q0-sign} 方括号内严格为正。
+当固定 $N$ 且 $\eta=N\theta$ 时，链式法则给出
+$S^*_\theta=NS^*_\eta<0$。
+\end{proof}
+
+\begin{proposition}[拐点相对位置的参数敏感性]
+\label{prop:s1:lambda-sensitivity}
+当\(S_0>S_c,I_0<\eta<I_{\max}^{no}\)以及$S_c<2\bar S<S^*$ ,固定其余参数,则
+\[
+\lambda_\eta<0,
+\qquad
+\lambda_{c_0}>0,
+\qquad
+\lambda_\beta>0.
+\]
+关于常规控制隔离率 $q_0$，偏导 $\lambda_{q_0}$ 一般没有固定符号；
+其驻点满足
+\begin{equation}
+\frac{
+\ln\dfrac{S^*-\bar S}{\bar S}
+}{
+(1-q_0)\bigl[\beta+q_0(1-\beta)\bigr]
+}
+=
+-
+\frac{
+\ln\dfrac{\bar S}{S_c-\bar S}
+}{
+S^*-\bar S
+}
+S^*_{q_0}.
+\label{eq:s1:lambda-q0-stationary}
+\end{equation}
+若固定 $N,S_0,I_0$，则
+$\lambda_\theta=N\lambda_\eta<0$。
+\end{proposition}
+
+\begin{proof}
+为简化本证明中的偏导计算，暂记
+\[
+A:=
+\ln\frac{S^*-\bar S}{\bar S},
+\qquad
+B:=
+\ln\frac{\bar S}{S_c-\bar S}.
+\]
+内部拐点条件保证 $A,B>0$，且
+\[
+\lambda=\frac{A}{A+B},
+\qquad
+\lambda_p
+=
+\frac{BA_p-AB_p}{(A+B)^2}.
+\]
+由引理~\ref{lem:s1:Sstar-sensitivity}，
+\[
+A_\eta
+=
+\frac{S^*_\eta}{S^*-\bar S}<0,
+\qquad
+B_\eta=0,
+\]
+故 $\lambda_\eta=BA_\eta/(A+B)^2<0$。
+
+由于 $\bar S_{c_0}=-\bar S/c_0$，直接整理得
+\[
+A_{c_0}
+=
+\frac{S^*_{c_0}+S^*/c_0}{S^*-\bar S}>0,
+\qquad
+B_{c_0}=0,
+\]
+从而 $\lambda_{c_0}>0$。
+
+又有
+\[
+\bar S_\beta
+=
+-\frac{\bar S}{\beta(1-\beta)},
+\]
+\[
+A_\beta
+=
+\frac{
+S^*_\beta+\dfrac{S^*}{\beta(1-\beta)}
+}{
+S^*-\bar S
+}>0,
+\qquad
+B_\beta
+=
+-\frac{1}{
+(1-\beta)\bigl[\beta+q_0(1-\beta)\bigr]
+}<0.
+\]
+因此
+\[
+\lambda_\beta
+=
+\frac{BA_\beta-AB_\beta}{(A+B)^2}>0.
+\]
+
+最后，$\bar S$ 不含 $q_0$，故
+\[
+A_{q_0}
+=
+\frac{S^*_{q_0}}{S^*-\bar S}<0,
+\qquad
+B_{q_0}
+=
+-\frac{1}{
+(1-q_0)\bigl[\beta+q_0(1-\beta)\bigr]
+}<0.
+\]
+于是
+\[
+\lambda_{q_0}
+=
+\frac{1}{(A+B)^2}
+\left[
+\frac{B S^*_{q_0}}{S^*-\bar S}
++
+\frac{A}{
+(1-q_0)\bigl[\beta+q_0(1-\beta)\bigr]
+}
+\right].
+\]
+方括号内第一项为负、第二项为正，故总符号不能统一确定。
+令其等于零并展开本证明内的临时记号 $A,B$，即得
+式~\eqref{eq:s1:lambda-q0-stationary}。固定 $N$ 时，
+$\eta=N\theta$ 给出 $\lambda_\theta=N\lambda_\eta<0$。
+\end{proof}
+
+\begin{corollaryn}[控制时长的参数方向]
+\label{cor:s1:duration-sensitivity}
+当\(S_0>S_c,I_0<\eta<I_{\max}^{no}\),固定其余参数有:
+\[
+\Delta t_\eta<0,
+\qquad
+\Delta t_\beta>0,
+\qquad
+\Delta t_{q_0}<0.
+\]
+若固定 $N,S_0,I_0$，则
+$\Delta t_\theta=N\Delta t_\eta<0$。
+另一方面，$\Delta t_{c_0}$ 没有固定符号。令
+\[
+\Theta
+=
+\frac{S^*-S_c}{S_c}
+\left[
+\frac{S^*-\bar S}{S^*}
+\ln\frac{S^*-\bar S}{S_c-\bar S}
+-1
+\right],
+\]
+则
+\[
+\frac{\partial\Delta t}{\partial c_0}
+\gtrless0
+\quad\Longleftrightarrow\quad
+\ln\frac{S_0}{S^*}
+\gtrless\Theta,
+\]
+等号情形亦对应成立。特别地，若 $\Theta\le0$，则
+$\partial\Delta t/\partial c_0>0$。
+\end{corollaryn}
+
+\begin{proof}
+由
+\[
+\Delta t
+=
+\frac{N}{c_0\eta}
+\ln\frac{S^*-\bar S}{S_c-\bar S}
+\]
+及 $S^*_\eta<0$，有
+\[
+\frac{\partial\Delta t}{\partial\eta}
+=
+-\frac{N}{c_0\eta^2}
+\ln\frac{S^*-\bar S}{S_c-\bar S}
++
+\frac{N}{c_0\eta}
+\frac{S^*_\eta}{S^*-\bar S}
+<0.
+\]
+固定 $N$ 时 $\eta=N\theta$，故
+$\Delta t_\theta=N\Delta t_\eta<0$；等价地，
+\[
+\frac{\partial\Delta t}{\partial\theta}
+=
+\frac1{c_0}
+\left[
+\frac1{\theta}
+\frac{S^*_\theta}{S^*-\bar S}
+-
+\frac1{\theta^2}
+\ln\frac{S^*-\bar S}{S_c-\bar S}
+\right]<0.
+\]
+
+对 $\beta$，
+\[
+\frac{\partial}{\partial\beta}
+\ln\frac{S^*-\bar S}{S_c-\bar S}
+=
+\frac{S^*_\beta-\bar S_\beta}{S^*-\bar S}
+-
+\frac{(S_c)_\beta-\bar S_\beta}{S_c-\bar S}.
+\]
+其中
+\[
+\bar S_\beta
+=
+-\frac{\bar S}{\beta(1-\beta)}<0,
+\qquad
+(S_c)_\beta-\bar S_\beta
+=
+-\frac{q_0S_c}{\beta}\le0.
+\]
+第一项严格为正，第二项非负，故 $\Delta t_\beta>0$。
+
+由于 $\bar S$ 不含 $q_0$，
+\[
+\frac{\partial}{\partial q_0}
+\ln\frac{S^*-\bar S}{S_c-\bar S}
+=
+\frac{S^*_{q_0}}{S^*-\bar S}
+-
+\frac{(S_c)_{q_0}}{S_c-\bar S},
+\qquad
+(S_c)_{q_0}
+=
+\frac{S_c}{1-q_0}>0.
+\]
+结合 $S^*_{q_0}<0$，得到 $\Delta t_{q_0}<0$。
+
+最后，由
+$\bar S_{c_0}=-\bar S/c_0$、
+$(S_c)_{c_0}=-S_c/c_0$ 及
+式~\eqref{eq:s1:Sstar-c0-sign}，可得
+\[
+\frac{\partial\Delta t}{\partial c_0}
+=
+\frac{N}{c_0^2\eta}
+\left[
+\frac{S^*}{S^*-\bar S}
+\left(
+1+
+\frac{S_c}{S^*-S_c}
+\ln\frac{S_0}{S^*}
+\right)
+-
+\ln\frac{S^*-\bar S}{S_c-\bar S}
+\right].
+\]
+将方括号与零比较并等价变形，正好得到
+$\ln(S_0/S^*)\gtrless\Theta$。由于
+$\ln(S_0/S^*)>0$，当 $\Theta\le0$ 时导数必为正。
+\end{proof}
+
+引理~\ref{lem:s1:Sstar-sensitivity}、命题~\ref{prop:s1:lambda-sensitivity} 与推论~\ref{cor:s1:duration-sensitivity} 的定号结论分列两表，避免混读：表~\ref{tab:s1:lambda-sensitivity} 给出启动点 $S^*$ 与相对位置 $\lambda$ 的方向，表~\ref{tab:s1:inflection-roles} 给出两端存在裕量与控制时长 $\Delta t$ 的方向。
 
 \begin{table}[htbp]
   \centering
   \footnotesize
-  \caption{各因素对拐点相关量的作用方向（固定归一化初值 $s_0=S_0/N,\ i_0=I_0/N$，每次只改变一个参数）。$+$ 正向，$-$ 负向，$\pm$ 非单调，$\times$ 无影响；$\lambda$ 列的 $+$ 表示拐点向 $t_2$ 端移动。$\Delta t$ 对 $c_0$ 在 $c_0\ge6$ 上为负、在整个可行区间上非单调，与命题~\ref{prop:s1:sensitivity} 中 $\partial\Delta t/\partial c_0$ 无固定符号一致。}
-  \label{tab:s1:inflection-roles}
-  \begin{tabular}{lcccc}
+  \caption{启动点与拐点归一化相对位置的解析方向}
+  \label{tab:s1:lambda-sensitivity}
+  \begin{tabular}{lccc}
     \toprule
-    影响对象 & $\beta$ & $q_0$ & $c_0$ & $\theta=\eta/N$\\
+    参数 $p$ & $S^*_p$ & $\lambda_p$ & 解释\\
     \midrule
-    $\qinf$ 的值                       & $-$ & $\times$ & $\times$ & $\times$\\
-    $t_2$ 端不掉出（$\qinf>q_0$）       & $-$ & $-$      & $\times$ & $\times$\\
-    $t_1$ 端不掉出（$\qinf<q_{\max}$）  & $+$ & $-$      & $+$      & $-$\\
-    相对位置 $\lambda$                  & $+$ & $\pm$    & $+$      & $-$\\
-    时间尺度 $\Delta t$                 & $+$ & $-$      & $\pm$    & $-$\\
+    $\eta$  & $<0$ & $<0$ & 归一化位置向 $t_1$ 端移动\\
+    $c_0$   & $>0$ & $>0$ & 归一化位置向 $t_2$ 端移动\\
+    $\beta$ & $>0$ & $>0$ & 归一化位置向 $t_2$ 端移动\\
+    $q_0$   & $<0$ & 符号不定 & 由式~\eqref{eq:s1:lambda-q0-stationary} 判定\\
     \bottomrule
   \end{tabular}
 \end{table}
 
-图~\ref{fig:s1:inflection-landscape} 把上述图景沿四个参数各画一行。由于 $\qinf$ 只含 $\beta$，它在 $q_0,c_0,\eta/N$ 三行均为水平线，只在 $\beta$ 行随 $\beta$ 下降。各行的消失行为并不相同：$\beta$ 行两端都会消失（左端经 $t_1$、右端经 $t_2$）；$c_0$ 行只在左端经 $t_1$ 消失；$q_0$ 行在可行区内拐点始终存在，右端的截断是控制本身不可行（常规控制触不到红线）而非拐点消失；$\eta/N$ 行拐点亦始终存在，印证 $\theta$ 不进入存在性判据~\eqref{eq:s1:inflection-exist}。图~\ref{fig:s1:inflection-scan} 则以真实时间为横轴，给出四个参数各取低、中、高三值时的 $q_c(t)$，可直接读出拐点位置随参数的移动。
+对于 $q_0$，解析结论是偏导符号一般不能统一确定，并不意味着每一组固定参数下
+$\lambda(q_0)$ 都必然非单调。作为数值展示，在
+$N=763,S_0=762,I_0=1,\gamma=0.3504,c_0=10,\eta/N=0.05$
+且 $q_0\in[0,0.39]$ 的指定扫描区间内，驻点残差发生变号的位置为
+\[
+\begin{array}{c|ccc}
+\beta & 0.10 & 0.12 & 0.155\\
+\hline
+q_0^\dagger
+&0.0736525&0.1969606&0.3890712
+\end{array}
+\]
+三个检测根两侧均为 $\lambda_{q_0}$ 由正变负，因而在相应参数切片上表现为
+局部极大。以 $10^{-7}$ 为残差阈值，本次扫描未检测到不变号的近零候选点。
+上述根由变号区间上的数值求根得到，不构成驻点存在性、唯一性或搜索完备性的证明。
 
+判据~\eqref{eq:s1:inflection-exist} 的两个不等式恰对应拐点从两端掉出的两种结构：
+\begin{itemize}
+\item 当 $(1-\beta)(1-q_0)\le\tfrac12$（即 $2\bar S\le S_c$、$\qinf\le q_0$）时，控制期内恒有 $S\ge S_c\ge 2\bar S$，故 $q_c''<0$ 全程成立（$q_c$ 凹）：拐点经 $t_2$ 端掉出。
+\item 当 $2\bar S\ge S^*$（即 $\qinf\ge q_{\max}$）时，控制期内恒有 $S\le S^*\le 2\bar S$，故 $q_c''>0$ 全程成立（$q_c$ 凸）：拐点经 $t_1$ 端掉出。
+\end{itemize}
+这把两种``无内部拐点''的情形统一为``拐点从哪一端掉出''，其参数方向汇总于表~\ref{tab:s1:inflection-roles}。
+
+\begin{table}[htbp]
+  \centering
+  \footnotesize
+  \caption{拐点结构量与控制时长的参数方向（固定 $N,S_0,I_0$ 及未被求导参数）。$+$、$-$ 分别表示相应量或存在裕量的局部导数为正、负，$\times$ 表示不依赖该参数；$c_0$ 对 $\Delta t$ 的方向须由推论~\ref{cor:s1:duration-sensitivity} 的 $\Theta$ 判据确定。}
+  \label{tab:s1:inflection-roles}
+  \begin{tabularx}{\textwidth}{lccccX}
+    \toprule
+    影响对象 & $\beta$ & $q_0$ & $c_0$ & $\theta=\eta/N$ & 解析依据\\
+    \midrule
+    $\qinf$ 的值
+      & $-$ & $\times$ & $\times$ & $\times$
+      & $\qinf=1-[2(1-\beta)]^{-1}$\\
+    $t_2$ 端存在裕量（$\qinf-q_0$）
+      & $-$ & $-$ & $\times$ & $\times$
+      & 式~\eqref{eq:s1:inflection-exist} 的下界\\
+    $t_1$ 端存在裕量（$S^*-2\bar S$）
+      & $+$ & $-$ & $+$ & $-$
+      & 引理~\ref{lem:s1:Sstar-sensitivity} 及 $\bar S$ 的显式式\\
+    控制时长 $\Delta t$
+      & $+$ & $-$ & 判据 & $-$
+      & 推论~\ref{cor:s1:duration-sensitivity}\\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+图~\ref{fig:s1:lambda-sensitivity} 直接绘制归一化位置 $\lambda$。前三个面板对应命题~\ref{prop:s1:lambda-sensitivity} 的三个定号导数；$q_0$ 面板则展示竞争项可以形成驻点，且检测位置随 $\beta$ 改变。灰色区域把``控制不可行''与``控制可行但无内部拐点''分开，避免把不存在的 $\lambda$ 延拓到边界之外。在图示基准参数下（其余固定为 $N=763,\,S_0=762,\,I_0=1,\,\gamma=0.3504$，未被扫描者取 $\beta=0.155,\,c_0=10,\,q_0=0.01526,\,\eta=0.05N$），控制可行——常规轨道能触及医疗红线 $\eta$ 且初值处于增长支——要求
+\[
+\frac{\eta}{N}\in\Big(\frac{I_0}{N},\,\frac{I_{\max}^{no}}{N}\Big)\approx(0.0013,\,0.394),\quad c_0\gtrsim3.33,\quad \beta\gtrsim0.053,\quad q_0\lesssim0.398;
+\]
+越出该范围加强控制不被触发。$c_0,\beta,\eta/N$ 的不可行区都一直延伸到 $0$（图中灰色仅为落在扫描窗口内的部分），只有 $q_0$ 的不可行区位于上界一侧（$q_0>0.398$）；$q_0$ 面板的灰色阴影只对应基准 $\beta=0.155$ 的不可行区。
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{scenario1_inflection_lambda_sensitivity.pdf}
+    \caption{拐点归一化位置 $\lambda$ 的四参数响应。前三幅在基准参数 $N=763$、$S_0=762$、$I_0=1$、$\gamma=0.3504$、$\beta=0.155$、$c_0=10$、$q_0=0.01526$、$\eta/N=0.05$ 下分别扫描 $\eta/N,c_0,\beta$；右下面板沿 $q_0$ 扫描并比较 $\beta=0.10,0.12,0.155$。浅灰表示控制不可行，深灰表示控制可行但无内部拐点（灰色区间的两侧即拐点经 $t_1$、$t_2$ 端消失的边界）。空心圆为驻点残差发生变号后数值精化得到的检测根（本组容差下未检出不变号的近零候选点）。数值搜索不构成驻点存在性、唯一性或完备性的证明。}
+    \label{fig:s1:lambda-sensitivity}
+\end{figure}
+
+
+图~\ref{fig:s1:inflection-landscape} 各行反映的是相应基准参数和扫描范围内的边界行为,把存在性与两段实际时长沿四个参数各画一行。由于 $\qinf$ 只含 $\beta$，它在 $q_0,c_0,\eta/N$ 三行均为水平线，只在 $\beta$ 行随 $\beta$ 下降。各行的消失行为并不相同：沿 $\beta$ 扫描可分别跨越 $t_1$ 端和 $t_2$ 端边界；沿 $c_0$ 扫描在左端跨越 $S^*=2\bar{S}$ 的 $t_1$-exit 边界。在本图采用的 $q_0$ 与 $\eta/N$ 扫描范围内，可行域内部未跨越该上边界，因此拐点保持存在。这只是当前参数切片的数值现象，并不表示 $q_0$ 或 $\eta/N$ 不进入存在性判据。一般而言，下界 $S_c<2\bar{S}$ 仅由 $\beta,q_0$ 决定，而上界 $2\bar{S}<S^*$ 还经 $S^*$ 受到 $c_0,\eta,\beta,q_0$ 及初值影响。$q_0$ 行在可行区内拐点始终存在，右端的截断是控制本身不可行（常规控制触不到红线）而非拐点消失；图~\ref{fig:s1:inflection-scan} 以真实时间为横轴，仅作为绝对启动时刻、解除时刻与控制时长的补充；
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{scenario1_inflection_landscape.pdf}
@@ -615,7 +1118,7 @@ $\lambda\to0$ 表示拐点靠近 $t_1$，$\lambda\to1$ 表示靠近 $t_2$。时�
     \label{fig:s1:inflection-scan}
 \end{figure}
 
-图~\ref{fig:s1:inflection-landscape}（沿 $\beta$、$c_0$ 等单参数扫描）与图~\ref{fig:neff_inflection}（$\qinf$ 随 $\beta$）分别从一维刻画内部拐点的存在性。将存在判据 $s_c<2\bar s<s^*$ 直接画在 $(c_0,\beta)$ 平面上（图~\ref{fig:c0-beta-existence}，附录~\ref{app:c0_beta}，固定 $\theta=0.002$、$q_0=0.3230$），可统一读出两端消失：上界 $2\bar s<s^*$（$t_1$ 端，随 $c_0,\beta$ 弯曲）与下界 $\beta<\beta_{\max}=0.2614$（$t_2$ 端，只由 $\beta,q_0$ 定的水平线）围出内部拐点存在域。图~\ref{fig:neff_inflection} 与图~\ref{fig:c0-phase} 分别是本图沿 $\beta$ 轴、沿 $c_0$ 轴的截面；西安参数 $(c_0,\beta)=(12.8872,0.1498)$ 落在域内。
+图~\ref{fig:s1:inflection-landscape}（沿 $\beta$、$c_0$ 等单参数扫描）从一维刻画内部拐点的存在性。将存在判据 $s_c<2\bar s<s^*$ 直接画在 $(c_0,\beta)$ 平面上（图~\ref{fig:c0-beta-existence}，附录~\ref{app:c0_beta}，固定 $\theta=0.002$、$q_0=0.3230$），可统一读出两端消失：上界 $2\bar s<s^*$（$t_1$ 端，随 $c_0,\beta$ 弯曲）与下界 $\beta<\beta_{\max}=0.2614$（$t_2$ 端，只由 $\beta,q_0$ 定的水平线）围出内部拐点存在域。图~\ref{fig:c0-phase} 是本图沿 $c_0$ 轴的截面；西安参数 $(c_0,\beta)=(12.8872,0.1498)$ 落在域内。
 
 \subsection{拐点处的曲率幅度}
 \label{sec:s1:inflection-curvature}
@@ -631,7 +1134,7 @@ q_c''(t)=\underbrace{\left(\frac{c_0\eta}{N}\right)^{2}\frac{1}{1-\beta}}_{\text
 \end{equation}
 其实际最大值还取决于控制期覆盖的区间 $x\in[S_c/\bar S,\,S^*/\bar S]$ 是否含 $3\pm\sqrt3$。
 
-式~\eqref{eq:s1:qcpp-factor} 中的时间尺度因子 $(c_0\eta/N)^2/(1-\beta)$ 只决定横轴单位：减小 $\eta/N$ 使 $\lvert q_c''\rvert\propto(\eta/N)^2$ 变小，但控制期 $\Delta t\propto N/(c_0\eta)$ 同步变长，等价于把同一条曲线沿天数轴拉宽——曲线形状（相对首尾连线的弯曲）几乎不变，而非变直\footnote{可用归一化弦偏差 $\max_{t\in[t_1,t_2]}\lvert q_c(t)-L(t)\rvert/(q_{\max}-q_0)$ 量度弯曲，其中 $L$ 为连接 $(t_1,q_{\max})$ 与 $(t_2,q_0)$ 的直线；该量与横轴单位无关。$N=763,\ S_0=762,\ I_0=1,\ \gamma=0.3504,\ \beta=0.155,\ c_0=10,\ q_0=0.01526,\ \eta=0.05N$ 一组约 $4.4\%$，第~\ref{sec:xian}节西安参数一组约 $9.6\%$——拐点虽严格存在，$q_c$ 在视觉上接近直线。}。数值上，取 $N=763,\ \beta=0.155,\ c_0=10,\ q_0=0.01526$，把 $\eta/N$ 由 $0.05$ 降到 $0.005$，则 $\Delta t$ 由约 $5.9$ 天拉长到约 $60.7$ 天、$\max\lvert q_c''\rvert$ 降为约 $1/100$，而弯曲程度仅由 $4.44\%$ 变到 $4.17\%$。
+式~\eqref{eq:s1:qcpp-factor} 中的时间尺度因子 $(c_0\eta/N)^2/(1-\beta)$ 只决定横轴单位：减小 $\eta/N$ 使 $\lvert q_c''\rvert\propto(\eta/N)^2$ 变小，但控制期 $\Delta t\propto N/(c_0\eta)$ 同步变长，等价于把同一条曲线沿天数轴拉宽——曲线形状（相对首尾连线的弯曲）几乎不变，而非变直\footnote{可用归一化弦偏差 $\max_{t\in[t_1,t_2]}\lvert q_c(t)-L(t)\rvert/(q_{\max}-q_0)$ 量度弯曲，其中 $L$ 为连接 $(t_1,q_{\max})$ 与 $(t_2,q_0)$ 的直线；该量与横轴单位无关。即便第~\ref{sec:xian}节西安参数一组也仅约 $9.6\%$，拐点虽严格存在，$q_c$ 在视觉上仍接近直线。}。数值上，取 $N=763,\ \beta=0.155,\ c_0=10,\ q_0=0.01526$，把 $\eta/N$ 由 $0.05$ 降到 $0.005$，则 $\Delta t$ 由约 $5.9$ 天拉长到约 $60.7$ 天、$\max\lvert q_c''\rvert$ 降为约 $1/100$，而弯曲程度（弦偏差）仅由 $4.44\%$ 变到 $4.17\%$。
 
 从展示角度看，拐点在 $q_c$ 上是曲率过零（最不显眼的特征），在 $q_c'$ 上则是极小值（最显眼的特征）：上述参数下 $q_c'$ 谷底比两端深约 $1.5$--$1.8$ 倍。因此要呈现拐点应画 $q_c'$，而非试图通过调参把 $q_c$ 掰弯——弯曲幅度受式~\eqref{eq:s1:qcpp-bound} 的上界约束。相应三面板诊断见图~\ref{fig:s1:inflection-diagnose}（第~\ref{sec:num}节）。
 
@@ -1109,7 +1612,7 @@ S^*\to S_c,
 $\Delta t$ 的增减方向仍由下述导数判别式决定，不能由
 式~\eqref{eq:s1:c0-min-limit} 推出整个可行区间上的单调性。
 
-\begin{proposition}[情景一阈值控制的参数敏感性]
+\begin{proposition}[启动时间与最大隔离率的参数敏感性]
 \label{prop:s1:sensitivity}
 在下述结论中，每次只改变一个参数，而其余参数保持不变。
 假设所考察参数点位于局部可行区域内，即系统在常规控制下能够首次触碰医疗容量阈值，
@@ -1121,19 +1624,11 @@ I_0<\eta<I_{\max}^{no}(c_0),
 \qquad
 S_0>S^*>S_c>\bar S.
 \]
-则情景一中的启动点、启动时间、控制持续时间和最大隔离率满足
-\[
-S^*_\eta<0,
-\qquad
-S^*_{c_0}>0,
-\]
+则情景一中的启动时间和最大隔离率满足
 \[
 (t_1)_\eta>0,
 \qquad
 (t_1)_{c_0}<0,
-\]
-\[
-(\Delta t)_\eta<0,
 \]
 以及
 \[
@@ -1141,96 +1636,15 @@ S^*_{c_0}>0,
 \qquad
 (q_{\max})_{c_0}>0.
 \]
-此外，$\Delta t$ 关于 $c_0$ 的导数不具有一般意义下的固定符号。令
-\[
-\Theta
-=
-\frac{S^*-S_c}{S_c}
-\left[
-\frac{S^*-\bar S}{S^*}
-\ln\frac{S^*-\bar S}{S_c-\bar S}
--1
-\right].
-\]
-则
-\[
-\frac{\partial\Delta t}{\partial c_0}>0
-\Longleftrightarrow
-\ln\frac{S_0}{S^*}>\Theta,
-\]
-\[
-\frac{\partial\Delta t}{\partial c_0}=0
-\Longleftrightarrow
-\ln\frac{S_0}{S^*}=\Theta,
-\]
-\[
-\frac{\partial\Delta t}{\partial c_0}<0
-\Longleftrightarrow
-\ln\frac{S_0}{S^*}<\Theta.
-\]
-特别地，若 $\Theta\leq 0$，则
-\[
-\frac{\partial\Delta t}{\partial c_0}>0.
-\]
 \end{proposition}
 
 \begin{proof}
-首先分析启动点 $S^*$。由首次积分可将 $S^*$ 写为隐函数
-\begin{equation}
-F(S^*;c_0,\eta)
-\doteq
-\eta-I_0+a(S^*-S_0)
--\rho_1\ln\frac{S^*}{S_0}
-=0.
-\label{eq:s1:F-Sstar-param}
-\end{equation}
-由于
-\begin{equation}
-F_S(S^*;c_0,\eta)
-=
-a-\frac{\rho_1}{S^*}
-=
-a\left(1-\frac{S_c}{S^*}\right)>0,
-\end{equation}
-隐函数定理给出
-\begin{equation}
-\frac{\partial S^*}{\partial \eta}
-=
--\frac{1}{F_S}<0.
-\label{eq:s1:Sstar-eta-sign}
-\end{equation}
-因此，医疗容量阈值越高，系统越晚触碰红线，触碰时已经消耗了更多易感者，
-故 $S^*$ 越低。另一方面，
-\begin{equation}
-\frac{\partial \rho_1}{\partial c_0}
-=-\frac{\rho_1}{c_0},
-\qquad
-F_{c_0}
-=
-\frac{\rho_1}{c_0}\ln\frac{S^*}{S_0}<0,
-\end{equation}
-其中使用了上升阶段 $S^*<S_0$。于是
-\begin{equation}
-\frac{\partial S^*}{\partial c_0}
-=
--\frac{F_{c_0}}{F_S}
-=
--\frac{S^*S_c}{c_0(S^*-S_c)}
-\ln\frac{S^*}{S_0}>0.
-\label{eq:s1:Sstar-c0-sign}
-\end{equation}
-这说明常规接触水平越高，疫情增长越快，系统会更早触碰医疗红线，此时易感者消耗较少，
-所以 $S^*$ 较高。
-
-再分析启动时间 $t_1$。令
-\[
-H=\beta+q_0(1-\beta),
-\]
-则
+由引理~\ref{lem:s1:Sstar-sensitivity}，有
+$S^*_\eta<0$ 与 $S^*_{c_0}>0$。启动时间可写为
 \begin{equation}
 t_1
 =
-\frac{N}{c_0H}
+\frac{N}{c_0\bigl[\beta+q_0(1-\beta)\bigr]}
 \int_{S^*}^{S_0}
 \frac{1}{S I(S;c_0)}\,dS,
 \qquad
@@ -1242,7 +1656,7 @@ I_0-a(S-S_0)+\rho_1\ln\frac{S}{S_0}.
 \begin{equation}
 \frac{\partial t_1}{\partial \eta}
 =
--\frac{N}{c_0H}
+-\frac{N}{c_0\bigl[\beta+q_0(1-\beta)\bigr]}
 \frac{1}{S^*\eta}
 \frac{\partial S^*}{\partial \eta}>0.
 \end{equation}
@@ -1257,135 +1671,17 @@ I_0-a(S-S_0)+\rho_1\ln\frac{S}{S_0}.
 \begin{align}
 \frac{\partial t_1}{\partial c_0}
 =&
--\frac{N}{c_0^2H}
+-\frac{N}{c_0^2\bigl[\beta+q_0(1-\beta)\bigr]}
 \int_{S^*}^{S_0}\frac{1}{S I(S;c_0)}\,dS
--\frac{N}{c_0H}
+-\frac{N}{c_0\bigl[\beta+q_0(1-\beta)\bigr]}
 \frac{1}{S^*\eta}
 \frac{\partial S^*}{\partial c_0} \nonumber\\
-&-\frac{N}{c_0H}
+&-\frac{N}{c_0\bigl[\beta+q_0(1-\beta)\bigr]}
 \int_{S^*}^{S_0}
 \frac{I_{c_0}(S;c_0)}{S I^2(S;c_0)}\,dS
 <0.
 \end{align}
 这说明常规接触水平越高，触碰医疗红线的时间越早。
-
-控制持续时间为
-\begin{equation}
-\Delta t
-=
-\frac{N}{c_0\eta}
-\ln\frac{S^*-\bar S}{S_c-\bar S}.
-\label{eq:s1:delta-param}
-\end{equation}
-由于固定 $c_0$ 时 $S_c$ 和 $\bar S$ 均不依赖于 $\eta$，且
-$S^*_\eta<0$，有
-\[
-\frac{\partial \Delta t}{\partial \eta}
-=
--\frac{N}{c_0\eta^2}
-\ln\frac{S^*-\bar S}{S_c-\bar S}
-+
-\frac{N}{c_0\eta}
-\frac{1}{S^*-\bar S}
-\frac{\partial S^*}{\partial \eta}.
-\]
-又因为 $S^*>S_c$。同时
-$S_c>\bar S$(容易验证$S_c-\bar S>0$)，因此
-\[
-\ln\frac{S^*-\bar S}{S_c-\bar S}>0.
-\]
-结合 $S^*_\eta<0$ 可知上式两项均为负，从而
-\[
-\frac{\partial \Delta t}{\partial \eta}<0.
-\]
-因此，医疗容量阈值越高，贴边维持医疗红线的控制持续时间越短。
-
-对 $c_0$ 的影响需要单独整理。由
-\[
-\Delta t
-=
-\frac{N}{c_0\eta}L,
-\qquad
-L=
-\ln\frac{S^*-\bar S}{S_c-\bar S},
-\]
-以及
-\[
-\bar S_{c_0}=-\frac{\bar S}{c_0},
-\qquad
-S_{c,c_0}=-\frac{S_c}{c_0},
-\]
-可得
-\[
-\frac{\partial L}{\partial c_0}
-=
-\frac{S^*_{c_0}+\bar S/c_0}{S^*-\bar S}
-+
-\frac{1}{c_0}.
-\]
-因此
-\[
-\frac{\partial\Delta t}{\partial c_0}
-=
-\frac{N}{c_0^2\eta}
-\left[
-\frac{S^*+c_0S^*_{c_0}}{S^*-\bar S}
--L
-\right].
-\]
-又由隐函数关系
-\[
-S^*_{c_0}
-=
--\frac{S^*S_c}{c_0(S^*-S_c)}
-\ln\frac{S^*}{S_0},
-\]
-可得
-\[
-c_0S^*_{c_0}
-=
-\frac{S^*S_c}{S^*-S_c}
-\ln\frac{S_0}{S^*}.
-\]
-因此
-\[
-\frac{\partial\Delta t}{\partial c_0}
-=
-\frac{N}{c_0^2\eta}
-\left[
-\frac{S^*}{S^*-\bar S}
-\left(
-1+
-\frac{S_c}{S^*-S_c}
-\ln\frac{S_0}{S^*}
-\right)
--L
-\right].
-\]
-由于 $N/(c_0^2\eta)>0$，导数的正、零、负由方括号中的量决定。将不等式
-\[
-\frac{S^*}{S^*-\bar S}
-\left(
-1+
-\frac{S_c}{S^*-S_c}
-\ln\frac{S_0}{S^*}
-\right)
-\gtrless
-L
-\]
-等价变形，得到
-\[
-\ln\frac{S_0}{S^*}
-\gtrless
-\frac{S^*-S_c}{S_c}
-\left[
-\frac{S^*-\bar S}{S^*}L
--1
-\right].
-\]
-这正是命题中关于 $\Theta$ 的判别式。由于 $S_0>S^*$，有
-$\ln(S_0/S^*)>0$，所以当 $\Theta\leq 0$ 时必有
-$\partial\Delta t/\partial c_0>0$。
 
 最后考虑最大隔离率。情景一的边界控制律可写为
 \[
@@ -1418,15 +1714,10 @@ q_c(t_1)
 \]
 \end{proof}
 
-因此，$c_0$ 对控制持续时间的影响不能仅由
-$S_0>S^*>S_c>\bar S$ 判断。判别式左端
-$\ln(S_0/S^*)$ 表示触碰红线前的易感者相对消耗，
-右端 $\Theta$ 由控制期端点 $S^*,S_c$ 以及常数 $\bar S$ 共同决定。
-该判别式给出的是在固定其余参数后，给定 $c_0$ 参数点处的导数符号，
-即描述 $c_0$ 在该点附近发生微小变化时，控制持续时间 $\Delta t$ 的增减方向。
-由于 $S^*$、$S_c$ 与 $\bar{S}$ 均随 $c_0$ 变化，
-判别式两端的相对大小可能在不同参数点发生改变，
-因此该结论不能推出 $\Delta t$ 在整个可行 $c_0$ 区间上的全局单调性。
+控制时长的四参数方向集中见推论~\ref{cor:s1:duration-sensitivity}。其中，
+$c_0$ 的 $\Theta$ 判据只给出固定其余参数后给定参数点处的局部导数符号；
+由于 $S^*,S_c,\bar S$ 均随 $c_0$ 变化，该判据不推出
+$\Delta t$ 在整个可行 $c_0$ 区间上的全局单调性。
 $q_{\max}$ 则刻画启动加强控制时需要达到的最大隔离率；
 医疗容量阈值越高，$q_{\max}$ 越低，而常规接触水平越高，$q_{\max}$ 越高。
 
@@ -1577,15 +1868,15 @@ q_{\max}=q_c(t_1),
 
 图~\ref{fig:scenario1_u_time_c0}--\ref{fig:scenario1_u_time_eta} 展示了不同参数组在绝对时间轴上启动、维持和解除加强隔离的全过程。图~\ref{fig:scenario1_u_time_c0} 中，$c_0=4$ 时 $q_{\max}=0.3413<\qinf\approx0.4083$，控制曲线始终位于拐点高度以下，因而没有内部拐点；$c_0=5,8,10,12$ 时则各有唯一内部拐点。图~\ref{fig:scenario1_u_time_eta} 中四条曲线的拐点均落在同一水平线 $\qinf$ 上，这是因为 $\qinf=1-1/[2(1-\beta)]$ 只由 $\beta$ 决定，而 $\eta$ 主要改变启动时刻与平台时间尺度。
 
-从表~\ref{tab:scenario1_c0_summary} 和图~\ref{fig:scenario1_summary_c0} 可以看出，在固定 $\beta,\gamma,q_0,N,S_0,I_0,\eta$ 且位于各自可行区间时，随着常规接触水平 $c_0$ 增大，切入点 $S^*$ 上升、启动时间 $t_1$ 提前、所需最大隔离率 $q_{\max}$ 增大。这与命题~\ref{prop:s1:sensitivity} 中 $S^*_{c_0}>0$、$(t_1)_{c_0}<0$ 和 $(q_{\max})_{c_0}>0$ 一致。控制时长 $\Delta t$ 则在完整可行区间上先升后降。以表~\ref{tab:scenario1_c0_summary} 的 $\eta/N=5\%$ 切片为例，
+从表~\ref{tab:scenario1_c0_summary} 和图~\ref{fig:scenario1_summary_c0} 可以看出，在固定 $\beta,\gamma,q_0,N,S_0,I_0,\eta$ 且位于各自可行区间时，随着常规接触水平 $c_0$ 增大，切入点 $S^*$ 上升、启动时间 $t_1$ 提前、所需最大隔离率 $q_{\max}$ 增大。这分别与引理~\ref{lem:s1:Sstar-sensitivity} 的 $S^*_{c_0}>0$ 以及命题~\ref{prop:s1:sensitivity} 的 $(t_1)_{c_0}<0$、$(q_{\max})_{c_0}>0$ 一致。控制时长 $\Delta t$ 则在完整可行区间上先升后降。以表~\ref{tab:scenario1_c0_summary} 的 $\eta/N=5\%$ 切片为例，
 \[
 \Delta t(3.3470)=2.0432,\qquad
 \Delta t(5)=7.5778,\qquad
 \Delta t(12)=5.3007\ {\rm d}.
 \]
-代表表中的 $c_0=5$ 已接近峰位，而完整 $0.1$ 步长网格的离散极大值出现在 $c_0=5.1$，对应 $\Delta t=7.5788$ 天。图~\ref{fig:scenario1_summary_c0} 中 $\eta/N=0.2\%,0.6\%,1\%,2\%$ 四条曲线的离散峰位分别约为 $c_0=4.3,4.4,4.4,4.6$，相应最大控制时长约为 $211.5435,69.8417,41.5169,20.2813$ 天。这些结果同时显示式~\eqref{eq:s1:c0-min-limit} 给出的左端趋势和命题~\ref{prop:s1:sensitivity} 中导数符号可能改变的两个分支。清零时间 $t_{\rm end}$、成本 $J$ 和总累计感染 $\Itcum$ 还受到控制后衰减阶段和累计流量的影响，不能由 $\Delta t$ 的变化方向推出其全局单调性。
+代表表中的 $c_0=5$ 已接近峰位，而完整 $0.1$ 步长网格的离散极大值出现在 $c_0=5.1$，对应 $\Delta t=7.5788$ 天。图~\ref{fig:scenario1_summary_c0} 中 $\eta/N=0.2\%,0.6\%,1\%,2\%$ 四条曲线的离散峰位分别约为 $c_0=4.3,4.4,4.4,4.6$，相应最大控制时长约为 $211.5435,69.8417,41.5169,20.2813$ 天。这些结果同时显示式~\eqref{eq:s1:c0-min-limit} 给出的左端趋势和推论~\ref{cor:s1:duration-sensitivity} 中导数符号可能改变的两个分支。清零时间 $t_{\rm end}$、成本 $J$ 和总累计感染 $\Itcum$ 还受到控制后衰减阶段和累计流量的影响，不能由 $\Delta t$ 的变化方向推出其全局单调性。
 
-表~\ref{tab:scenario1_eta_summary} 给出固定 $c_0=10$ 的四个代表阈值，图~\ref{fig:scenario1_summary_eta} 则把比较扩展到 $c_0=5,8,10,12$ 和完整的 $\eta/N\in[0.2\%,5\%]$ 区间。对每个固定 $c_0$，随着医疗容量阈值提高，系统更晚触碰红线，故 $t_1$ 增大；触碰时易感者消耗更多，故 $S^*$ 下降；同时 $\Delta t$ 与 $q_{\max}$ 下降。这与命题~\ref{prop:s1:sensitivity} 中 $S^*_\eta<0$、$(t_1)_\eta>0$、$(\Delta t)_\eta<0$ 和 $(q_{\max})_\eta<0$ 一致。固定 $c_0=10$，当 $\eta/N$ 从 $0.2\%$ 增至 $2\%$ 时，
+表~\ref{tab:scenario1_eta_summary} 给出固定 $c_0=10$ 的四个代表阈值，图~\ref{fig:scenario1_summary_eta} 则把比较扩展到 $c_0=5,8,10,12$ 和完整的 $\eta/N\in[0.2\%,5\%]$ 区间。对每个固定 $c_0$，随着医疗容量阈值提高，系统更晚触碰红线，故 $t_1$ 增大；触碰时易感者消耗更多，故 $S^*$ 下降；同时 $\Delta t$ 与 $q_{\max}$ 下降。这分别与引理~\ref{lem:s1:Sstar-sensitivity} 的 $S^*_\eta<0$、命题~\ref{prop:s1:sensitivity} 的 $(t_1)_\eta>0$、$(q_{\max})_\eta<0$ 以及推论~\ref{cor:s1:duration-sensitivity} 的 $(\Delta t)_\eta<0$ 一致。固定 $c_0=10$，当 $\eta/N$ 从 $0.2\%$ 增至 $2\%$ 时，
 \[
 \Delta t:152.0574\to15.0431,\qquad
 t_{\rm end}:180.5821\to46.8029,
@@ -1694,20 +1985,20 @@ t_2=t_1+\frac{N}{c_0\eta}\ln\frac{S^*-\bar S}{S_c-\bar S}\approx101.97,
     \resizebox{0.7\textwidth}{!}{\input{../table/xian_control_comparison_results_table.tex}}
 \end{table}
 
-在 $\eta=0.002N$、全市人口口径下，情景一阈值控制把社区感染者峰值精确限制在 $\eta=26{,}326$，且完全不降低接触率（$J_c=0$），但需维持约 $85.07$ 天额外隔离，清零约 $258.11$ 天，总累计感染显著高于 TDINN；TDINN 的峰值（约 $152$）和总累计感染（约 $2097$）都低得多，但同时使用了接触率和隔离率两种控制。值得注意的是，此时情景一的二次加权成本 $J\approx40.77$ 反而低于 TDINN 的 $J\approx49.35$，而峰值与累计却更高——说明二者的优劣是\emph{指标相对}的。TDINN 的全市固定拟合／重构参照值 $I_{\rm peak}^{\rm T}\approx151.90$、$J^{\rm T}\approx49.35$、$\Itcum^{\rm T}\approx2096.76$（表~\ref{tab:xian_summary} 报直接模拟取整 $152/2097$）将作为第~\ref{sec:dominance}节占优分析的 TDINN 基准。
+在 $\eta=0.002N$、全市人口口径下，情景一阈值控制把社区感染者峰值精确限制在 $\eta=26{,}326$，且完全不降低接触率（$J_c=0$），但需维持约 $85.07$ 天额外隔离，清零约 $258.11$ 天，总累计感染显著高于 TDINN；TDINN 的峰值（约 $152$）和总累计感染（约 $2097$）都低得多，但同时使用了接触率和隔离率两种控制。值得注意的是，此时情景一的二次加权成本 $J\approx40.77$ 反而低于 TDINN 的 $J\approx49.35$，而峰值与累计却更高——说明二者的优劣是指标相对的。TDINN 的全市固定拟合／重构参照值 $I_{\rm peak}^{\rm T}\approx151.90$、$J^{\rm T}\approx49.35$、$\Itcum^{\rm T}\approx2096.76$（表~\ref{tab:xian_summary} 报直接模拟取整 $152/2097$）将作为第~\ref{sec:dominance}节占优分析的 TDINN 基准。
 
-这一 $J$ 的反转是本文口径下的一个明确结论，而非数值巧合：情景一完全不动接触率（$J_c=0$），其成本全部来自平台期的隔离加强，而 TDINN 同时动用接触率与隔离率两个通道，二次加权（$w_q=2$）下隔离项占比更高。因此在 $\eta=0.002N$ 这一代表阈值上，情景一以“更高的峰值与累计、更长的时程”换来“更低的加权控制成本”——优劣完全是相对于所选指标集而言的，不能据 $J$ 一项判定综合占优。
+情景一阈值控制成本占优：情景一完全不动接触率（$J_c=0$），其成本全部来自平台期的隔离加强，而 TDINN 同时动用接触率与隔离率两个通道，二次加权（$w_q=2$）下隔离项占比更高。因此在 $\eta=0.002N$ 这一代表阈值上，情景一以“更高的峰值与累计、更长的时程”换来“更低的加权控制成本”——优劣与所选指标集相关的，不能据 $J$ 一项判定综合占优。
 
 图~\ref{fig:xian_cumulative} 进一步显示三者累计规模的悬殊：情景一到清零的总累计感染达 $\sim2.38\times10^{6}$，而 TDINN 仅 $\sim2.1\times10^{3}$，相差三个数量级。这一差距并非控制效率的直接体现，而主要来自全市 $N=13\,163\,000$ 的易感池——平台期贴边维持使 $I(t)\equiv\eta$ 长期不衰，累计新发正比于所消耗的易感者，池越大、平台越长，累计越高。此点在第~\ref{sec:dominance}节以 $\Itcum=N\,h(\theta)$ 的标度结构精确刻画。
 
-图~\ref{fig:xian_Re} 把三策略压制传播的\emph{方式}差异摊开：常规控制 $R_e(0)\approx4.43$ 一路失控；TDINN 同时压 $c(t)$、抬 $q(t)$，使 $R_e$ 较快跌破 $1$；情景一在平台期把 $R_e$ 精确顶在 $\approx1$。须强调平台期 $R_e\approx1$ 是策略定义使然（“贴边维持”即令新发与移出相抵），并非控制优越的证据；情景一真正的代价出现在平台之后 $S(t)$ 缓慢降到临界水平、$R_e$ 才最终 $<1$ 的那段长尾里。
+图~\ref{fig:xian_Re} 把三策略压制传播的方式差异摊开：常规控制 $R_e(0)\approx4.43$ 一路失控；TDINN 同时压 $c(t)$、抬 $q(t)$，使 $R_e$ 较快跌破 $1$；情景一在平台期把 $R_e$ 精确顶在 $\approx1$。须强调平台期 $R_e\approx1$ 是策略定义使然（“贴边维持”即令新发与移出相抵）.情景一真正的代价出现在平台之后 $S(t)$ 缓慢降到临界水平、$R_e$ 才最终 $<1$ 的那段长尾里。
 
 \subsection{阈值 \texorpdfstring{$\eta$}{eta} 的敏感性}
 取 $\eta/N\in\{0.0001,0.0002,0.0005,0.001,0.0015,0.002,0.003,0.004,0.005,0.0075,0.01\}$ 扫描，结果见表~\ref{tab:xian_eta_sens} 与图~\ref{fig:xian_eta_sens}，可概括为
 \[
 \eta\downarrow\ \Rightarrow\ t_1\downarrow,\qquad \Delta t\uparrow,\qquad J\uparrow,\qquad t_{\rm end}\uparrow.
 \]
-启动时间变化不大：$\eta/N$ 从 $0.01$ 降到 $0.0001$，$t_1$ 仅从第 $18.55$ 天提前到第 $13.93$ 天。但控制时长与清零时间对 $\eta$ 很敏感：$\eta/N$ 从 $0.01$ 降到 $0.002$，控制时长从 $16.61$ 增到 $85.07$ 天；降到 $0.0001$ 时增到 $1710.66$ 天，清零 $2209.55$ 天。原因是平台期让 $I(t)$ 贴边维持而非立即下降，$\eta$ 越低易感者消耗越慢。这提示\textbf{提高 $\eta$} 是缩短平台、使情景一在给定指标上接近 TDINN 的一条杠杆（见第~\ref{sec:dominance}节）。反过来看，这条杠杆的另一端更值得警惕：$\eta$ 越低、平台越长且发散。若要把社区峰值压到西安真实疫情的量级（$\approx152$），所需的平台时长将不再是数十天，而是若干年——这一定量结果与其对易感池规模 $N$ 的依赖，正是下一节在 $(\eta,c_0)$ 图谱上要精确定位的内容。
+启动时间变化不大：$\eta/N$ 从 $0.01$ 降到 $0.0001$，$t_1$ 仅从第 $18.55$ 天提前到第 $13.93$ 天。但控制时长与清零时间对 $\eta$ 很敏感：$\eta/N$ 从 $0.01$ 降到 $0.002$，控制时长从 $16.61$ 增到 $85.07$ 天；降到 $0.0001$ 时增到 $1710.66$ 天，清零 $2209.55$ 天。原因是平台期让 $I(t)$ 贴边维持而非立即下降，$\eta$ 越低易感者消耗越慢。显然提高 $\eta$是缩短平台、使情景一在给定指标上接近 TDINN 的一种方式（见第~\ref{sec:dominance}节）。反过来$\eta$ 越低、平台越长且发散。若要把社区峰值压到西安真实疫情的量级（$\approx152$），所需的平台时长将不再是数十天，而是若干年——这一定量结果与其对易感池规模 $N$ 的依赖，正是下一节在 $(\eta,c_0)$ 图谱上要精确定位的内容。
 
 \begin{table}[htbp]
     \centering
@@ -1731,7 +2022,7 @@ t_2=t_1+\frac{N}{c_0\eta}\ln\frac{S^*-\bar S}{S_c-\bar S}\approx101.97,
 是我们在前几小节采用的代表阈值，左线 $\eta=I_{\rm peak}^{\rm T}=151.90$ 是西安真实疫情的社区峰值。
 二者在 $\Delta t$ 面板（图~\ref{fig:xian_heatmaps}a）上的落差，是理解本章的关键。
 
-\paragraph{压到真实峰所需的平台时长。}
+
 在西安全市口径（$N=13\,163\,000$，$c_0=12.8872$）下，由控制时长闭式
 \[
 \Delta t=\frac{N}{c_0\eta}\ln\frac{S^{*}-\bar S}{S_c-\bar S}
@@ -1746,13 +2037,13 @@ $\Delta t\propto N/(c_0\eta)$ 使然：峰压得越低（$\eta$ 越小）、池�
 比例 $\theta=\eta/N$ 绑死、无法解耦。这解释了为何本章及第~\ref{sec:dominance}节的实例只能退而取虚高的
 $\eta=0.002N$（比真实峰高约 $170$ 倍）：并非该阈值对应任何现实医疗红线，而是全市口径下才能让平台
 回到可接受时程的选择。相应地，第~\ref{sec:dominance}节命题中“峰值 $\eta<I_{\rm peak}^{\rm T}$”一项应读作
-\emph{设计约束}，而非情景一相对 TDINN 的效果优势。
+设计约束，而非情景一相对 TDINN 的效果优势。
 
-\paragraph{全市易感池对阈值控制的口径问题。}
+
 上述悖论的根源在易感池的选取。在 $N=13\,163\,000$、而全程总感染仅约 2050 的拟合里，$S(t)\approx N$
-几乎不动——\emph{易感者耗竭这一机制根本没有启动}，整条疫情曲线由时变控制 $c(t),q(t)$ 产生，SIR 结构
+几乎不动——易感者耗竭这一机制根本没有启动，整条疫情曲线由时变控制 $c(t),q(t)$ 产生，SIR 结构
 近乎惰性。作为“若不封控、全城暴露会如何”的反事实，全市 $N$ 给出的常规控制峰值（$\sim1.38\times10^{6}$）
-与累计（$\sim4.6\times10^{6}$）是有意义的；但对\emph{情景一阈值控制}而言它是错的池子，因为该策略的作用
+与累计（$\sim4.6\times10^{6}$）是有意义的；但对情景一阈值控制而言它是错的池子，因为该策略的作用
 机制恰恰是易感耗竭，而这一机制在全市池里要数十年才能走完。换言之，让常规控制灾难化的池，正是让
 阈值控制失效的池。这促使我们在第~\ref{sec:dominance}节把有效混合人口 $N_{\rm eff}$ 作为一条独立坐标，
 分辨“反事实常规控制作用的大池”与“阈值控制真正能生效的小池”，从而解开本节的悖论。
@@ -1766,13 +2057,13 @@ $\eta=0.002N$（比真实峰高约 $170$ 倍）：并非该阈值对应任何现
 
 综合本章：情景一阈值控制并非无条件优于 TDINN 控制，而是在给定医疗容量 $\eta$ 下用隔离率守住社区感染者阈值；其相对 TDINN 的优劣取决于所选指标集以及比例 $\eta/N$。这一条件性将在第~\ref{sec:dominance}节精确刻画。
 
-\FloatBarrier
+
 \section{尺度不变性与有效人口占优}
 \label{sec:dominance}
 
 本节在有效人口口径下，刻画情景一阈值控制在一组给定比较指标上
-不劣于 TDINN 全市固定拟合参照的参数区域。
-下述解析标度命题采用固定归一化初值
+不劣于 TDINN (全市固定拟合参照)的参数区域。
+下述命题采用固定归一化初值
 $S_0/N$ 与 $I_0/N$ 的理论口径。
 在成本／时长约束给出的比例下界低于常规控制峰值分数的
 非退化情形下，存在临界有效人口 $N^\ast(T_{\max})$，
@@ -1781,9 +2072,9 @@ $S_0/N$ 与 $I_0/N$ 的理论口径。
 则占优区域对所有 $N$ 均为空。
 临界人口由传播参数、常规控制水平、归一化初值口径、
 成本权重、允许控制时长 $T_{\max}$
-与 TDINN 全市固定拟合参照共同决定。
+与 TDINN(全市固定拟合参照)共同决定。
 
-全节采用有量纲变量；占优分析使用以下两个无量纲比例：
+定义:
 \begin{equation}
   \theta:=\frac{\eta}{N}\quad(\text{阈值比例}),\qquad
   i_{\max}^{no}:=\frac{I_{\max}^{no}}{N}\quad(\text{常规控制峰值分数}),
@@ -1802,7 +2093,6 @@ $i_{\max}^{no}=I_{\max}^{no}/N$
 $\beta,\gamma,c_0,q_0,s_0,i_0$。
 结论是条件性的，且强依赖所选指标集（见推论~\ref{cor:cum}）。
 
-\paragraph{标度口径.}
 引理~\ref{lem:dom:scaling}
 及由其导出的直线边界，
 采用固定归一化初值
@@ -1843,7 +2133,7 @@ $I_{\rm peak}^{\rm T}$；
 称为作用于强度量的两条同向杠杆，
 不称其为完整占优意义下的无条件等价杠杆。
 
-\paragraph{TDINN 基准（全市固定拟合参照）.}
+TDINN 基准（全市固定拟合参照）:
 TDINN 曲线是对西安已发生疫情过程及其干预强度的
 模型拟合与反演。
 其时间函数
@@ -1870,7 +2160,7 @@ $c_{\rm TDINN},q_{\rm TDINN}$
 见第~\ref{sec:xian}~节。
 
 本节将上述四个数固定为
-\emph{西安全市口径下的 TDINN 固定拟合参照}，
+西安全市口径下的 TDINN 固定拟合参照，
 不随 $N_{\rm eff}$ 重算。
 相对地，情景一阈值控制与常规控制是反事实策略，
 需在各自 $N_{\rm eff}$ 上求解并逐 $N_{\rm eff}$
@@ -1891,20 +2181,30 @@ $c_{\rm TDINN},q_{\rm TDINN}$
 \begin{proof}
 记 $s_c:=S_c/N=\gamma/[\beta c_0(1-q_0)]$、$\bar s:=\bar S/N=\gamma(1-\beta)/(\beta c_0)$，
 二者不含 $N$。将式~\eqref{eq:s1:Sstar-lambert} 的 Lambert 幅角改写：由
-$\rho_1=\gamma N/(c_0H)$、$\frac{\beta_2^0/\beta_1^0}{\rho_1}=1/S_c$ 与 $C_0=I_0+\tfrac{\beta_2^0}{\beta_1^0}S_0-\rho_1\ln S_0$，
+$\rho_1=\gamma N/\{c_0[\beta+q_0(1-\beta)]\}$、
+$\frac{\beta_2^0/\beta_1^0}{\rho_1}=1/S_c$ 与
+$C_0=I_0+\tfrac{\beta_2^0}{\beta_1^0}S_0-\rho_1\ln S_0$，
 \[
   -\frac{C_0-\eta}{\rho_1}
   = \ln S_0-\frac{S_0}{S_c}-\frac{I_0-\eta}{\rho_1}
-  = \ln N+\underbrace{\Big[\ln\tfrac{S_0}{N}-\tfrac{S_0/N}{s_c}
-     -\tfrac{c_0H}{\gamma}\big(\tfrac{I_0}{N}-\theta\big)\Big]}_{=:A(\theta;\,S_0/N,\,I_0/N)} .
+  = \ln N+\left[
+  \ln\frac{S_0}{N}-\frac{S_0/N}{s_c}
+  -\frac{c_0[\beta+q_0(1-\beta)]}{\gamma}
+  \left(\frac{I_0}{N}-\theta\right)
+  \right].
 \]
-于是幅角
-$-\frac{1}{S_c}e^{-(C_0-\eta)/\rho_1}
- =-\frac{1}{N s_c}\,e^{\ln N}\,e^{A}
- =-\frac{1}{s_c}\,e^{A}$
-不含 $N$，仅依赖 $\theta$ 与归一化初值。故
-$S^\ast=-S_c\,W_{-1}(\cdot)=-N s_c\,W_{-1}\!\big(-s_c^{-1}e^{A}\big)$，
-即 $s^*=-s_c W_{-1}(\cdot)$ 只依赖 $\theta$。将其代入
+于是幅角可写为
+\[
+-\frac{1}{s_c}
+\exp\left[
+\ln\frac{S_0}{N}-\frac{S_0/N}{s_c}
+-\frac{c_0[\beta+q_0(1-\beta)]}{\gamma}
+\left(\frac{I_0}{N}-\theta\right)
+\right],
+\]
+其中 $e^{\ln N}$ 已与 $S_c=Ns_c$ 中的 $N$ 抵消。该式不含 $N$，
+仅依赖 $\theta$ 与归一化初值，故
+$s^*=-s_c W_{-1}(\cdot)$ 也只依赖 $\theta$。将其代入
 $\Delta t=\frac{N}{c_0\eta}\ln\frac{S^\ast-\bar S}{S_c-\bar S}
  =\frac{1}{c_0\theta}\ln\frac{s^*-\bar s}{s_c-\bar s}$、
 $q_{\max}=1-\frac{\gamma N}{\beta c_0 S^\ast}=1-\frac{\gamma}{\beta c_0\,s^*}$，
@@ -1969,14 +2269,7 @@ $\Delta t,J$ 等强度量精确地只经 $\theta$ 进入；
     \label{fig:neff_time}
 \end{figure}
 
-\textbf{结构不变量.} 第~\ref{sec:s1}节给出的平台期隔离率拐点高度 $\qinf=1-\frac{1}{2(1-\beta)}$ 只依赖传播概率 $\beta$。在上述实验上用均匀采样 $q_c(t)$ 的二阶差分独立定位拐点：固定 $\beta=0.1498$ 时，$\eta\in\{80,100,150\}$ 与 $N_{\rm eff}\in\{4,5,6\}\times10^4$ 六个校验点的数值拐点高度均为 $\qinf\approx0.4119$（与理论值最大绝对误差约 $8\times10^{-9}$），确认 $\qinf$ 不随 $N_{\rm eff},\eta$ 变化；改变 $\beta$ 时数值拐点高度沿 $1-\frac{1}{2(1-\beta)}$ 移动（图~\ref{fig:neff_inflection}）。图中 $\qinf$ 曲线与 $q_0$ 的交点即定理~\ref{thm:s1:inflection} 下界 $\qinf>q_0$ 的失效边界，等价于 $(1-\beta)(1-q_0)=\tfrac12$；代入 $q_0=0.3230$ 精确得 $\beta_{\max}=0.261448$，与数值一致。越过该边界（$\beta>\beta_{\max}$，即图中``no inflection''灰区）拐点经 $t_2$ 端掉出、控制期内 $q_c''<0$ 全程成立，对应第~\ref{sec:s1:inflection-position}小节的``全程凹''结构。此处的反演只是解析控制律下的一致性检查，不作为含噪数据上的参数估计。
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.7\textwidth]{neff_inflection_beta.pdf}
-    \caption{平台期隔离率拐点高度只由 $\beta$ 决定：理论曲线 $\qinf=1-1/[2(1-\beta)]$（即本文 $\qinf=q_c(2\bar S)$）与二阶差分数值拐点吻合，曲线与 $q_0$ 的交点给出存在边界 $\beta_{\max}\approx0.2614$；其右侧灰区（$\beta>\beta_{\max}$）为拐点消失、$q_c$ 全程凹的区域。}
-    \label{fig:neff_inflection}
-\end{figure}
+\textbf{结构不变量.} 第~\ref{sec:s1}节给出的平台期隔离率拐点高度 $\qinf=1-\frac{1}{2(1-\beta)}$ 只依赖传播概率 $\beta$。在上述实验上用均匀采样 $q_c(t)$ 的二阶差分独立定位拐点：固定 $\beta=0.1498$ 时，$\eta\in\{80,100,150\}$ 与 $N_{\rm eff}\in\{4,5,6\}\times10^4$ 六个校验点的数值拐点高度均为 $\qinf\approx0.4119$（与理论值最大绝对误差约 $8\times10^{-9}$），确认 $\qinf$ 不随 $N_{\rm eff},\eta$ 变化；改变 $\beta$ 时数值拐点高度沿 $1-\frac{1}{2(1-\beta)}$ 移动。$\qinf(\beta)$ 与 $q_0$ 的交点即定理~\ref{thm:s1:inflection} 下界 $\qinf>q_0$ 的失效边界，等价于 $(1-\beta)(1-q_0)=\tfrac12$；代入 $q_0=0.3230$ 精确得 $\beta_{\max}=0.261448$，与数值一致。越过该边界（$\beta>\beta_{\max}$）拐点经 $t_2$ 端掉出、控制期内 $q_c''<0$ 全程成立，对应第~\ref{sec:s1:inflection-position}小节的``全程凹''结构。此处的反演只是解析控制律下的一致性检查，不作为含噪数据上的参数估计。
 
 \subsection{单调性}
 
@@ -2001,8 +2294,8 @@ J\to+\infty.
 \end{lemma}
 \begin{proof}
 由引理~\ref{lem:dom:scaling}，$\Delta t,J$ 是 $\theta$ 的函数；固定 $N$ 时 $\theta$ 与 $\eta$ 同增，
-故其对 $\theta$ 的单调性等同于对 $\eta$ 的单调性。命题~\ref{prop:s1:sensitivity} 已给出
-$(\Delta t)_\eta<0$（及 $S^\ast_\eta<0$）。对 $J$：由式~\eqref{eq:dom:Jtheta}，前因子 $1/(c_0\theta)$
+故其对 $\theta$ 的单调性等同于对 $\eta$ 的单调性。推论~\ref{cor:s1:duration-sensitivity} 已给出
+$(\Delta t)_\eta<0$，引理~\ref{lem:s1:Sstar-sensitivity} 给出 $S^\ast_\eta<0$。对 $J$：由式~\eqref{eq:dom:Jtheta}，前因子 $1/(c_0\theta)$
 关于 $\theta$ 严格递减，而积分上限 $s^*$ 随 $\theta$ 递减（$S^\ast_\eta<0$）使非负被积区间收缩，
 故 $J$ 严格递减。
 
@@ -2174,7 +2467,7 @@ $\theta_{\rm bind}(T_{\max})\ge i_{\max}^{no}$，
 （成本、时长）及后续推论的广延量约束，不应将峰值一项读作方法优势。
 \end{remark}
 
-\begin{corollaryn}[成本上限与耐心无关]\label{cor:ceiling}
+\begin{corollaryn}\label{cor:ceiling}
 由引理~\ref{lem:dom:mono}，
 $\theta_{\rm dur}(T_{\max})$
 随 $T_{\max}$ 增大而单调递减，且
@@ -2225,82 +2518,39 @@ $\theta_{\rm cost}\ge i_{\max}^{no}$，
 命题~\ref{prop:dom:region} 的占优区仍对所有 $N$ 为空。
 \end{corollaryn}
 
-\begin{corollaryn}[纳入累计感染的收缩]\label{cor:cum}
-情景一到清零的总累计感染由
-定理~\ref{thm:s1:Itcum}
-的三段公式给出，记
+\begin{corollaryn}\label{cor:cum}
+在命题~\ref{prop:dom:region} 的占优区域上再加约束
+\emph{(iv)} $\Itcum^{\rm thr}\le\Itcum^{\rm T}$。由定理~\ref{thm:s1:Itcum}，
+到清零的总累计感染为
 \[
-  \Itcum^{\rm thr}
-  =
-  N\,h(\theta,N).
+  \Itcum^{\rm thr}=N\,h(\theta,N),\qquad \theta=\eta/N,
 \]
-退出段因绝对清零判据 $I=1$
-带有弱 $1/N$ 依赖，故严格地
-$h=h(\theta,N)$。
-
-假设在所考察参数范围内，
-对每个固定 $N$，
-$h(\theta,N)$ 关于 $\theta$ 单调不减。
-若再要求
-\emph{(iv)}
-\[
-  \Itcum^{\rm thr}
-  \le
-  \Itcum^{\rm T},
-\]
-则在命题~\ref{prop:dom:region} 的非空占优带内，
-累计感染在下端
-$\theta=\theta_{\rm bind}(T_{\max})$
-处最小。
-因此，对给定 $N$，
-占优带内存在满足累计约束的阈值，
-当且仅当
+其退出段因绝对清零判据 $I=1$ 带有弱 $1/N$ 依赖，故 $h=h(\theta,N)$。
+与仅经 $\theta$ 进入的强度量（峰值、成本、时长）不同，累计是广延量：其占优边界
 \begin{equation}
-  N\,
-  h\!\bigl(
-    \theta_{\rm bind}(T_{\max}),N
-  \bigr)
-  \le
-  \Itcum^{\rm T}.
+  N\,h(\theta,N)=\Itcum^{\rm T}
   \label{eq:dom:cum-feasible}
 \end{equation}
+在 $(N,\eta)$ 平面上是一条\emph{弧线}而非过原点直线，占优侧（$\Itcum^{\rm thr}\le\Itcum^{\rm T}$）
+为其小 $N$ 一侧。因此累计约束把占优区域整体收缩。
 
-若进一步有
-\[
-  F_{T_{\max}}(N)
-  :=
-  N\,
-  h\!\bigl(
-    \theta_{\rm bind}(T_{\max}),N
-  \bigr)
-\]
-关于 $N$ 严格递增，
-并且其值域跨越 $\Itcum^{\rm T}$，
-则方程
+对每个固定 $N$，$h(\theta,N)$ 关于 $\theta$ 单调不减，则该弧从大 $\theta$ 一侧削去占优区域，
+而累计占优边界的下边缘 $\theta=\theta_{\rm bind}(T_{\max})$ 最小，故弧与下边缘相交处才把带完全截断。
+记 $F_{T_{\max}}(N):=N\,h\!\bigl(\theta_{\rm bind}(T_{\max}),N\bigr)$，该交点的有效人口
+$N_{\rm cum}^\ast(T_{\max})$ 由
 \begin{equation}
-  F_{T_{\max}}\!\left(
-    N_{\rm cum}^\ast(T_{\max})
-  \right)
-  =
-  \Itcum^{\rm T}
+  F_{T_{\max}}\!\bigl(N_{\rm cum}^\ast(T_{\max})\bigr)=\Itcum^{\rm T}
   \label{eq:dom:Ncumstar}
 \end{equation}
-存在唯一根。
-此时累计约束给出的有效人口侧为
-\[
-  N\le N_{\rm cum}^\ast(T_{\max}),
-\]
-并与命题~\ref{prop:dom:region}
-的其他条件取交。
-上述结论本身不保证
-$N_{\rm cum}^\ast(T_{\max})$
-与 $N^\ast(T_{\max})$
-之间存在普遍的严格大小关系。
+确定。于是纳入累计后占优带对 $\eta$ 非空，当且仅当
+$N<\min\{N^\ast(T_{\max}),\,N_{\rm cum}^\ast(T_{\max})\}$（与式~\eqref{eq:dom:Nstar} 取交）：
+二者无普遍大小关系，须逐例数值比较。该弧的逐点求根与 $N_{\rm cum}^\ast$ 的数值唯一性口径
+见第~\ref{sec:dom:xian}~节。
 \end{corollaryn}
 
 注意 $h<1$，故当 $N<\Itcum^{\rm T}$ 时 $N h<N<\Itcum^{\rm T}$ 自动成立：
 此时“累计不劣”只是有效池装不下这么多人所致的算术必然，与控制优劣无关。
-因此下文一律附加\emph{有效池下界}
+因此下文一律附加有效池下界
 \begin{equation}
   N\ \ge\ \Itcum^{\rm T},
   \label{eq:dom:Nfloor}
@@ -2692,11 +2942,15 @@ $c_0$ 对轨迹与控制律的作用。 图~\ref{fig:c0-panel} 给出五条代�
     \label{fig:c0-panel}
 \end{figure}
 
-$c_0$ 唯一地控制内部拐点的存在性。 这是 $c_0$ 通道与 $\theta$ 通道最尖锐的区别。阈值比例 $\theta$ 不进入拐点存在判据（第~\ref{sec:s1:inflection-position}~节，图~\ref{fig:s1:inflection-landscape} 的 $\eta/N$ 行拐点恒存在）；而 $c_0$ 经上界 $q_{\max}>\qinf\Leftrightarrow s^*>2\bar s$ 决定拐点是否从 $t_1$ 端掉出。图~\ref{fig:c0-panel} 中 $c_0=3.43,3.49$ 虽能触发控制，但 $q_{\max}<\qinf$，$q_c(t)$ 全程凸、无内部拐点；$c_0=3.59$ 起拐点出现。据此可在扫描区间内数值定出拐点存在边界。
+在本节固定 $\theta,\beta,q_0$ 的单参数切片中，
+ $c_0$ 经上界 $q_{\max}>\qinf\Leftrightarrow s^*>2\bar s$ 决定拐点是否从 $t_1$ 端掉出
+,这是 $c_0$ 通道与当前 $\theta$ 扫描区间的主要差别(当前$\theta$对拐点存在与否影响不大)。但内部拐点的存在性并非由 $c_0$ 唯一决定：
+下界由 $\beta,q_0$ 决定，上界还经 $S^*$ 受到 $c_0,\eta,\beta,q_0$ 及初值影响。
+图~\ref{fig:c0-panel} 中 $c_0=3.43,3.49$ 虽能触发控制，但 $q_{\max}<\qinf$，$q_c(t)$ 全程凸、无内部拐点；$c_0=3.59$ 起拐点出现。据此可在扫描区间内数值定出拐点存在边界。
 
 平台隔离率拐点高度的三重不变性。存在拐点时，其高度 $\qinf=1-\tfrac{1}{2(1-\beta)}$ 只依赖 $\beta$：图~\ref{fig:c0-panel} 中所有白圈仍落在同一条 $\qinf=0.4119$ 上。结合 $\eta$ 杠杆（图~\ref{fig:panel_eta_lever}）与 $N$ 杠杆（图~\ref{fig:panel_N_lever}），可得 $\qinf$ 对 $\eta,N,c_0$ 三者全不变，只有 $\beta$ 能移动它。
 
-$\Delta t$ 随 $c_0$ 的非单调性。 与 $\Delta t$ 关于 $\theta$ 严格单调递减（引理~\ref{lem:dom:mono}）不同，$\Delta t$ 关于 $c_0$ 无固定符号（命题~\ref{prop:s1:sensitivity}）：由式~\eqref{eq:s1:t2} 在触发边界处 $\Delta t\to0$，随 $c_0$ 增大先升至一个脊、再降。图~\ref{fig:c0-panel} 与图~\ref{fig:c0-scan} 显示，本节参数下 $\Delta t$ 在这五个代表点上依次为 $30.2,37.8,47.5,103.2,85.1$ 天——先随 $c_0$ 上升、越过脊后回落，脊约在 $c_0\approx6.61$（$\Delta t\approx103.2$ 天）。该脊并非数值巧合：由命题~\ref{prop:s1:sensitivity}，$\partial\Delta t/\partial c_0$ 的符号由判别式 $\ln(S_0/S^*)\gtrless\Theta$ 决定，脊 $\partial\Delta t/\partial c_0=0$ 恰是判别式取等 $\ln(S_0/S^*)=\Theta$ 的解，其中 $\Theta=\frac{S^*-S_c}{S_c}\left[\frac{S^*-\bar S}{S^*}\ln\frac{S^*-\bar S}{S_c-\bar S}-1\right]$。因此图~\ref{fig:c0-phase} 的 $\Delta t$ 脊线是该解析判据在 $(c_0,\theta)$ 平面上的零集，而非仅由数值极值定位。因此 $c_0$ 与 $\theta$ 虽同为作用于 $q_{\max}$、峰值的同向杠杆，在 $\Delta t$ 上却有定性差别。
+$\Delta t$ 随 $c_0$ 的非单调性。 与 $\Delta t$ 关于 $\theta$ 严格单调递减（引理~\ref{lem:dom:mono}）不同，$\Delta t$ 关于 $c_0$ 无固定符号（推论~\ref{cor:s1:duration-sensitivity}）：由式~\eqref{eq:s1:t2} 在触发边界处 $\Delta t\to0$，随 $c_0$ 增大先升至一个脊、再降。图~\ref{fig:c0-panel} 与图~\ref{fig:c0-scan} 显示，本节参数下 $\Delta t$ 在这五个代表点上依次为 $30.2,37.8,47.5,103.2,85.1$ 天——先随 $c_0$ 上升、越过脊后回落，脊约在 $c_0\approx6.61$（$\Delta t\approx103.2$ 天）。该脊并非数值巧合：由推论~\ref{cor:s1:duration-sensitivity}，$\partial\Delta t/\partial c_0$ 的符号由判别式 $\ln(S_0/S^*)\gtrless\Theta$ 决定，脊 $\partial\Delta t/\partial c_0=0$ 恰是判别式取等 $\ln(S_0/S^*)=\Theta$ 的解，其中 $\Theta=\frac{S^*-S_c}{S_c}\left[\frac{S^*-\bar S}{S^*}\ln\frac{S^*-\bar S}{S_c-\bar S}-1\right]$。因此图~\ref{fig:c0-phase} 的 $\Delta t$ 脊线是该解析判据在 $(c_0,\theta)$ 平面上的零集，而非仅由数值极值定位。因此 $c_0$ 与 $\theta$ 虽同为作用于 $q_{\max}$、峰值的同向杠杆，在 $\Delta t$ 上却有定性差别。
 
 图~\ref{fig:c0-phase} 把上述结构统一到 $(\theta,c_0)$ 平面：触发边界、拐点边界 $s^*=2\bar s$ 与 $\Delta t$ 脊线三条曲线划分出各结构区，图~\ref{fig:c0-panel} 的三个代表 $c_0$ 正是这三条边界与 $\theta=0.002$ 水平线的交点。需强调本图只报告阈值控制律的结构量，不含占优边界。
 

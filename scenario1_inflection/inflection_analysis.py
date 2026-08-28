@@ -13,6 +13,7 @@
 """
 import numpy as np
 from scipy.special import lambertw
+from scipy.optimize import brentq, minimize_scalar
 
 SQRT3 = np.sqrt(3.0)
 G_MAX = 1.0 / (6.0 * SQRT3)          # |g(x)| 的上界 ≈ 0.09623
@@ -24,14 +25,15 @@ X_GMAX = (3.0 - SQRT3, 3.0 + SQRT3)  # g 的极值点 ≈ 1.2679, 4.7321
 # ----------------------------------------------------------------------
 def solve(beta, gamma, c0, q0, eta, N, S0, I0):
     """求情景一阈值控制的关键量；不可行时返回 status != 'ok'。"""
-    H = beta + q0 * (1.0 - beta)
-    a = beta * (1.0 - q0) / H
-    rho1 = gamma * N / (c0 * H)
+    den = beta + q0 * (1.0 - beta)
+    a = beta * (1.0 - q0) / den
+    rho1 = gamma * N / (c0 * den)
     S_c = gamma * N / (beta * c0 * (1.0 - q0))
     S_bar = gamma * N * (1.0 - beta) / (beta * c0)
     C0 = I0 + a * S0 - rho1 * np.log(S0)
 
     out = dict(beta=beta, gamma=gamma, c0=c0, q0=q0, eta=eta, N=N,
+               S0=S0, I0=I0,
                S_c=S_c, S_bar=S_bar, R0=beta * c0 * (1 - q0) * S0 / (gamma * N),
                q_inf=1.0 - 1.0 / (2.0 * (1.0 - beta)))
 
@@ -84,6 +86,172 @@ def solve(beta, gamma, c0, q0, eta, N, S0, I0):
                    seg_high=seg_high, seg_low=seg_low,
                    lam=seg_high / dt, seg_high_frac=seg_high / dt)
     return out
+
+
+# ----------------------------------------------------------------------
+# 解析参数敏感性
+# ----------------------------------------------------------------------
+def startup_sensitivities(res):
+    """返回启动点 S* 对 eta、c0、beta、q0、theta=eta/N 的解析偏导。
+
+    这里只要求常规控制轨道发生非退化首次触碰，即 ``res['status']=='ok'``；
+    启动点的偏导不要求控制期内存在内部拐点。
+    """
+    if res.get('status') != 'ok':
+        raise ValueError("startup_sensitivities 要求 res['status']=='ok'")
+
+    beta, gamma = res['beta'], res['gamma']
+    c0, q0 = res['c0'], res['q0']
+    N, S0 = res['N'], res['S0']
+    S_star, S_c, S_bar = res['S_star'], res['S_c'], res['S_bar']
+
+    den = beta + q0 * (1.0 - beta)
+    rho1 = gamma * N / (c0 * den)
+    inv_gap = 1.0 / S_star - 1.0 / S_c  # 严格为负
+    pos_gap = -inv_gap                   # 严格为正
+
+    dS_deta = 1.0 / (rho1 * inv_gap)
+    dS_dc0 = np.log(S_star / S0) / (c0 * inv_gap)
+    dS_dbeta = (
+        q0 * (1.0 - q0) * (S0 - S_star) / den ** 2
+        - rho1 * (1.0 - q0) * np.log(S_star / S0) / den
+    ) / (rho1 * pos_gap)
+    dS_dq0 = -(
+        beta * ((S0 - S_star) - S_bar * np.log(S0 / S_star))
+    ) / (den ** 2 * rho1 * pos_gap)
+
+    return dict(
+        dS_deta=dS_deta,
+        dS_dc0=dS_dc0,
+        dS_dbeta=dS_dbeta,
+        dS_dq0=dS_dq0,
+        dS_dtheta=N * dS_deta,
+    )
+
+
+def lambda_sensitivities(res):
+    """返回内部拐点相对位置 lambda 的解析偏导与 q0 驻点残差。
+
+    ``q0_stationarity_residual`` 是 lambda_q0 的正分母省略后的分子，
+    因而与 ``dlambda_dq0`` 同号。A、B 仅在本函数内部用于缩短计算。
+    """
+    if res.get('status') != 'ok':
+        raise ValueError("lambda_sensitivities 要求 res['status']=='ok'")
+    if not res.get('has_inflection', False):
+        raise ValueError("lambda_sensitivities 要求存在内部拐点")
+
+    beta, q0 = res['beta'], res['q0']
+    c0, N = res['c0'], res['N']
+    S_star, S_c, S_bar = res['S_star'], res['S_c'], res['S_bar']
+    ds = startup_sensitivities(res)
+
+    den = beta + q0 * (1.0 - beta)
+    A = np.log((S_star - S_bar) / S_bar)
+    B = np.log(S_bar / (S_c - S_bar))
+    lambda_den = (A + B) ** 2
+
+    dA_deta = ds['dS_deta'] / (S_star - S_bar)
+    dA_dc0 = (ds['dS_dc0'] + S_star / c0) / (S_star - S_bar)
+    dA_dbeta = (
+        ds['dS_dbeta'] + S_star / (beta * (1.0 - beta))
+    ) / (S_star - S_bar)
+    dA_dq0 = ds['dS_dq0'] / (S_star - S_bar)
+
+    dB_dbeta = -1.0 / ((1.0 - beta) * den)
+    dB_dq0 = -1.0 / ((1.0 - q0) * den)
+
+    dlambda_deta = B * dA_deta / lambda_den
+    dlambda_dc0 = B * dA_dc0 / lambda_den
+    dlambda_dbeta = (B * dA_dbeta - A * dB_dbeta) / lambda_den
+    q0_stationarity_residual = B * dA_dq0 - A * dB_dq0
+    dlambda_dq0 = q0_stationarity_residual / lambda_den
+
+    return dict(
+        dlambda_deta=dlambda_deta,
+        dlambda_dc0=dlambda_dc0,
+        dlambda_dbeta=dlambda_dbeta,
+        dlambda_dq0=dlambda_dq0,
+        dlambda_dtheta=N * dlambda_deta,
+        q0_stationarity_residual=q0_stationarity_residual,
+    )
+
+
+def find_q0_stationary_points(base, q0_bounds=(0.0, 0.39), n=2001,
+                              near_zero_tol=1e-7, dedupe_tol=1e-7):
+    """在指定 q0 区间内搜索 lambda(q0) 的数值驻点。
+
+    变号区间用 Brent 法精化；未变号的 |残差| 局部极小点用有界最小化
+    检查，并仅作为 ``candidates`` 返回。该搜索不构成驻点完备性证明。
+    """
+    lo, hi = map(float, q0_bounds)
+    if not (lo < hi and n >= 3):
+        raise ValueError("q0_bounds 必须递增且 n>=3")
+
+    def residual_at(q0):
+        p = dict(base)
+        p['q0'] = float(q0)
+        r = solve(**p)
+        if r.get('status') != 'ok' or not r.get('has_inflection', False):
+            return np.nan
+        return float(lambda_sensitivities(r)['q0_stationarity_residual'])
+
+    def append_unique(values, value):
+        if not any(abs(value - old) <= dedupe_tol for old in values):
+            values.append(float(value))
+
+    xs = np.linspace(lo, hi, int(n))
+    ys = np.array([residual_at(x) for x in xs], dtype=float)
+    roots = []
+
+    for i in range(len(xs) - 1):
+        y0, y1 = ys[i], ys[i + 1]
+        if not (np.isfinite(y0) and np.isfinite(y1)):
+            continue
+        if y0 * y1 < 0.0:
+            root = brentq(residual_at, xs[i], xs[i + 1], xtol=1e-13, rtol=1e-13)
+            append_unique(roots, root)
+    # 若根恰落在采样点上，仅在两侧残差异号时将其作为变号根处理。
+    for i in range(1, len(xs) - 1):
+        ym, y0, yp = ys[i - 1], ys[i], ys[i + 1]
+        if not (np.isfinite(ym) and np.isfinite(y0) and np.isfinite(yp)):
+            continue
+        if abs(y0) <= 1e-14 and ym * yp < 0.0:
+            root = brentq(residual_at, xs[i - 1], xs[i + 1],
+                          xtol=1e-13, rtol=1e-13)
+            append_unique(roots, root)
+
+    candidates = []
+    for i in range(1, len(xs) - 1):
+        ym, y0, yp = ys[i - 1], ys[i], ys[i + 1]
+        if not (np.isfinite(ym) and np.isfinite(y0) and np.isfinite(yp)):
+            continue
+        if ym * yp <= 0.0:
+            continue
+        if not (abs(y0) <= abs(ym) and abs(y0) <= abs(yp)):
+            continue
+
+        def objective(q):
+            value = residual_at(q)
+            return abs(value) if np.isfinite(value) else np.inf
+
+        opt = minimize_scalar(objective, bounds=(xs[i - 1], xs[i + 1]),
+                              method='bounded', options={'xatol': 1e-13})
+        if not opt.success or not np.isfinite(opt.fun) or opt.fun > near_zero_tol:
+            continue
+        q_candidate = float(opt.x)
+        if any(abs(q_candidate - root) <= dedupe_tol for root in roots):
+            continue
+        if any(abs(q_candidate - old[0]) <= dedupe_tol for old in candidates):
+            continue
+        candidates.append((q_candidate, float(opt.fun)))
+
+    return dict(
+        roots=sorted(roots),
+        candidates=sorted(candidates),
+        q0_bounds=(lo, hi),
+        sample_count=int(n),
+        near_zero_tol=float(near_zero_tol),
+    )
 
 
 def trajectory(res, n=2000):

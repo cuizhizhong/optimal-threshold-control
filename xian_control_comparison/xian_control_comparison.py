@@ -22,6 +22,8 @@ import pandas as pd
 from scipy.integrate import solve_ivp
 from scipy.optimize import brentq, least_squares
 
+import paper_plot_style as pps
+
 
 OUT_DIR = Path(__file__).resolve().parent
 ROOT_DIR = OUT_DIR.parent
@@ -780,28 +782,6 @@ def plot_results(
 
     if eta is None:
         eta = P.eta
-    plt.rcParams.update(
-        {
-            "font.family": "DejaVu Sans",
-            "axes.unicode_minus": False,
-            "mathtext.fontset": "dejavusans",
-        }
-    )
-    colors = {
-        "TDINN控制": "#0068a9",
-        "情景一阈值控制": "#c43c39",
-        "常规控制": "#333333",
-    }
-    plot_labels = {
-        "TDINN控制": "TDINN control",
-        "情景一阈值控制": "Threshold control",
-        "常规控制": "Routine control",
-    }
-    linestyles = {
-        "TDINN控制": "-",
-        "情景一阈值控制": "--",
-        "常规控制": ":",
-    }
     x_end = max(epidemic_clear_time(sub)[0] for _, sub in all_df.groupby("strategy", sort=False))
     x_end = max(x_end, float(observed["t"].iloc[-1]))
 
@@ -814,225 +794,329 @@ def plot_results(
     def add_policy_markers(ax) -> None:
         """标记观测数据结束日、阈值控制开始时刻和阈值控制结束时刻。"""
 
-        ax.axvline(observed["t"].iloc[-1], color="#999999", lw=1.0, linestyle=":", alpha=0.75)
-        ax.axvline(flat_details["t1"], color="#c43c39", lw=1.0, alpha=0.45)
+        ax.axvline(
+            observed["t"].iloc[-1],
+            color=pps.COLORS["light_gray"],
+            lw=0.8,
+            linestyle=(0, (1.2, 2.0)),
+            alpha=0.72,
+            zorder=0,
+        )
+        ax.axvline(
+            flat_details["t1"],
+            color=pps.COLORS["dark_red"],
+            lw=0.9,
+            linestyle=(0, (3.0, 2.0)),
+            alpha=0.32,
+            zorder=0,
+        )
         if np.isfinite(flat_details["t2_numeric"]):
-            ax.axvline(flat_details["t2_numeric"], color="#c43c39", lw=1.0, alpha=0.45)
-
-    # 图 1：观测到的每日报告病例。
-    fig_obs, ax_obs = plt.subplots(figsize=(8.4, 4.7), constrained_layout=True)
-    ax_obs.bar(
-        observed["t"],
-        observed["community_new"],
-        color="#d55e00",
-        alpha=0.62,
-        width=0.82,
-        label=r"$I_{new}(t)$",
-    )
-    ax_obs.bar(
-        observed["t"],
-        observed["quarantine_new"],
-        bottom=observed["community_new"],
-        color="#0072b2",
-        alpha=0.55,
-        width=0.82,
-        label=r"$I_{q_{new}}(t)$",
-    )
-    ax_obs.set_title("Daily reported cases")
-    ax_obs.set_xlabel(r"$t$")
-    ax_obs.set_ylabel("reported cases")
-    ax_obs.set_xlim(-0.8, observed["t"].iloc[-1] + 0.8)
-    ax_obs.legend(loc="lower right", fontsize=9)
-    fig_obs.savefig(OUT_DIR / "xian_observed_daily_cases.pdf")
-    fig_obs.savefig(OUT_DIR / "xian_observed_daily_cases.png", dpi=220)
-    plt.close(fig_obs)
-
-    # 图 2：社区感染轨道、每日新增和控制函数。
-    day_edges = np.arange(0.0, np.ceil(x_end) + 1.0)
-    day_starts = day_edges[:-1]
-
-    fig = plt.figure(figsize=(12.2, 11.8), constrained_layout=True)
-    gs = fig.add_gridspec(3, 2)
-    ax_I = fig.add_subplot(gs[0, :])
-    ax_new = fig.add_subplot(gs[1, 0])
-    ax_qnew = fig.add_subplot(gs[1, 1])
-    ax_c = fig.add_subplot(gs[2, 0])
-    ax_q = fig.add_subplot(gs[2, 1])
-
-    # 插图使用线性坐标，以便在主图使用对数坐标展示巨大反事实峰值时，
-    # 仍然能看清观测数据和 TDINN 尺度下的细节。
-    ax_I_zoom = ax_I.inset_axes([0.66, 0.62, 0.30, 0.30])
-    ax_new_zoom = ax_new.inset_axes([0.58, 0.58, 0.36, 0.32])
-    ax_qnew_zoom = ax_qnew.inset_axes([0.58, 0.58, 0.36, 0.32])
-
-    new_low_values: List[float] = [float(observed["community_new"].max())]
-    qnew_low_values: List[float] = [float(observed["quarantine_new"].max())]
-    new_all_values: List[float] = []
-    qnew_all_values: List[float] = []
-    threshold_daily_new_peak = 0.0
-    threshold_daily_qnew_peak = 0.0
-
-    for strategy, sub in all_df.groupby("strategy", sort=False):
-        # 每种策略的结果表都采用同一套列结构：
-        # S/I/Iq/Cc/Cq/c/q/Rt，因此这里可以统一作图。
-        label = plot_labels[strategy]
-        color = colors[strategy]
-        linestyle = linestyles[strategy]
-        ax_I.plot(sub["t"], sub["I"], label=label, color=color, linestyle=linestyle, lw=2.2)
-        daily_new = daily_cases_from_cumulative(sub, "Cc", day_edges)
-        daily_qnew = daily_cases_from_cumulative(sub, "Cq", day_edges)
-
-        # 主图和插图分别记录 y 轴范围，避免其中一类图压扁另一类细节。
-        new_all_values.append(float(np.max(daily_new)))
-        qnew_all_values.append(float(np.max(daily_qnew)))
-        if strategy == "TDINN控制":
-            new_low_values.append(float(np.max(daily_new)))
-            qnew_low_values.append(float(np.max(daily_qnew)))
-            ax_I_zoom.plot(sub["t"], sub["I"], label=label, color=color, linestyle=linestyle, lw=1.9)
-            ax_new_zoom.plot(day_starts, daily_new, label=label, color=color, linestyle=linestyle, lw=1.9)
-            ax_qnew_zoom.plot(day_starts, daily_qnew, label=label, color=color, linestyle=linestyle, lw=1.9)
-        if strategy == "情景一阈值控制":
-            threshold_daily_new_peak = float(np.max(daily_new))
-            threshold_daily_qnew_peak = float(np.max(daily_qnew))
-        ax_new.plot(day_starts, daily_new, label=label, color=color, linestyle=linestyle, lw=2.2)
-        ax_qnew.plot(day_starts, daily_qnew, label=label, color=color, linestyle=linestyle, lw=2.2)
-        ax_c.plot(sub["t"], sub["c"], label=label, color=color, linestyle=linestyle, lw=2.2)
-        ax_q.plot(sub["t"], sub["q"], label=label, color=color, linestyle=linestyle, lw=2.2)
-
-    ax_new_zoom.scatter(
-        observed["t"],
-        observed["community_new"],
-        s=24,
-        color="#d55e00",
-        edgecolors="white",
-        linewidths=0.5,
-        label="Observed data",
-        zorder=5,
-    )
-    ax_qnew_zoom.scatter(
-        observed["t"],
-        observed["quarantine_new"],
-        s=24,
-        color="#d55e00",
-        edgecolors="white",
-        linewidths=0.5,
-        label="Observed data",
-        zorder=5,
-    )
-
-    ax_I.axhline(eta, color="#777777", lw=1.2, linestyle="-.", label=r"$\eta$")
-    ax_I_zoom.axhline(eta, color="#777777", lw=1.0, linestyle="-.")
-    for ax in [ax_I, ax_I_zoom, ax_new, ax_new_zoom, ax_qnew, ax_qnew_zoom, ax_c, ax_q]:
-        add_policy_markers(ax)
-        ax.set_xlim(0, x_end)
-
-    learned_peak = float(all_df.loc[all_df["strategy"] == "TDINN控制", "I"].max())
-    I_full_peak = float(all_df["I"].max())
-
-    # 主图前两行使用对数 y 轴，把常规控制下的巨大反事实峰值
-    # 和较小的受控轨道放在同一张图中展示。
-    for ax in [ax_I, ax_new, ax_qnew]:
-        ax.set_yscale("log")
-    ax_I.set_ylim(1.0, max(1.08 * I_full_peak, 1.25 * eta, 1.35 * learned_peak, 200.0))
-    ax_I_zoom.set_xlim(0, min(x_end, 50.0))
-    ax_I_zoom.set_ylim(0.0, max(200.0, 1.35 * learned_peak))
-    ax_new.set_ylim(1.0, max(80.0, 1.08 * max(new_all_values), 1.35 * max(new_low_values)))
-    ax_qnew.set_ylim(1.0, max(180.0, 1.08 * max(qnew_all_values), 1.35 * max(qnew_low_values)))
-    ax_new_zoom.set_xlim(0, min(x_end, 50.0))
-    ax_qnew_zoom.set_xlim(0, min(x_end, 50.0))
-    ax_new_zoom.set_ylim(0.0, max(10.0, 1.35 * max(new_low_values)))
-    ax_qnew_zoom.set_ylim(0.0, max(10.0, 1.35 * max(qnew_low_values)))
-    for ax in [ax_I_zoom, ax_new_zoom, ax_qnew_zoom]:
-        ax.set_title("zoom", fontsize=8, pad=2)
-        ax.tick_params(labelsize=8)
-    ax_new_zoom.legend(loc="lower right", fontsize=6.5, frameon=True)
-    ax_qnew_zoom.legend(loc="lower right", fontsize=6.5, frameon=True)
-
-    ax_I.set_title("Community infections")
-    ax_I.set_ylabel(r"$I(t)$")
-    ax_new.set_title("Daily new community infections")
-    ax_new.set_ylabel(r"$I_{new}(t)$")
-    ax_qnew.set_title("Daily new quarantined infections")
-    ax_qnew.set_ylabel(r"$I_{q_{new}}(t)$")
-    ax_c.set_title("Contact rate")
-    ax_c.set_xlabel(r"$t$")
-    ax_c.set_ylabel(r"$c(t)$")
-    ax_q.set_title("Quarantine rate")
-    ax_q.set_xlabel(r"$t$")
-    ax_q.set_ylabel(r"$q(t)$")
-    ax_I.legend(loc="lower right", fontsize=8.5)
-    ax_new.legend(loc="lower right", fontsize=8.0)
-    ax_qnew.legend(loc="lower right", fontsize=8.0)
-    ax_c.legend(loc="lower right", fontsize=8.0)
-    ax_q.legend(loc="lower right", fontsize=8.0)
-    fig.savefig(OUT_DIR / "xian_control_comparison_panels.pdf")
-    fig.savefig(OUT_DIR / "xian_control_comparison_panels.png", dpi=220)
-    plt.close(fig)
-
-    # 图 3：累计感染。
-    fig2, axes = plt.subplots(3, 1, figsize=(8.8, 9.6), constrained_layout=True, sharex=True)
-    cumulative_specs = [
-        ("Cc", "community_cum", r"$I_{cum}(t)$", "Cumulative community infections"),
-        ("Cq", "quarantine_cum", r"$I_{q_{cum}}(t)$", "Cumulative quarantined infections"),
-        (None, "total_cum", r"$I_{t_{cum}}(t)$", "Total cumulative infections"),
-    ]
-    for ax, (model_col, observed_col, ylabel, title) in zip(axes, cumulative_specs):
-        y_max_values: List[float] = [float(observed[observed_col].max())]
-        for strategy, sub in all_df.groupby("strategy", sort=False):
-            y_values = sub["Cc"] + sub["Cq"] if model_col is None else sub[model_col]
-            y_max_values.append(float(np.max(y_values)))
-            ax.plot(
-                sub["t"],
-                y_values,
-                label=plot_labels[strategy],
-                color=colors[strategy],
-                linestyle=linestyles[strategy],
-                lw=2.2,
+            ax.axvline(
+                flat_details["t2_numeric"],
+                color=pps.COLORS["dark_red"],
+                lw=0.9,
+                linestyle=(0, (3.0, 2.0)),
+                alpha=0.32,
+                zorder=0,
             )
-        ax.plot(
-            observed["t"],
-            observed[observed_col],
-            "o",
-            color="#555555",
-            ms=3.6,
-            label="Observed data",
-        )
-        ax.axvline(observed["t"].iloc[-1], color="#999999", lw=1.0, linestyle=":", alpha=0.75)
-        ax.set_xlim(0, x_end)
-        ax.set_yscale("symlog", linthresh=100.0)
-        ax.set_ylim(0.0, 1.15 * max(y_max_values))
-        ax.set_title(title)
-        ax.set_ylabel(ylabel)
-    axes[-1].set_xlabel(r"$t$")
-    axes[0].legend(loc="lower right", fontsize=8.5, ncol=2)
-    fig2.savefig(OUT_DIR / "xian_control_cumulative.pdf")
-    fig2.savefig(OUT_DIR / "xian_control_cumulative.png", dpi=220)
-    plt.close(fig2)
 
-    # 图 4：有效再生数。
-    fig_rt, ax_rt = plt.subplots(figsize=(8.8, 4.8), constrained_layout=True)
-    rt_max_values: List[float] = []
-    for strategy, sub in all_df.groupby("strategy", sort=False):
-        rt_max_values.append(float(np.max(sub["Rt"])))
-        ax_rt.plot(
-            sub["t"],
-            sub["Rt"],
-            label=plot_labels[strategy],
-            color=colors[strategy],
-            linestyle=linestyles[strategy],
-            lw=2.2,
+    def plot_strategy(
+        ax,
+        sub: pd.DataFrame,
+        y_values: np.ndarray | pd.Series,
+        x_values: np.ndarray | pd.Series | None = None,
+        inset: bool = False,
+    ) -> None:
+        """按固定策略样式画一条曲线。"""
+
+        strategy = str(sub["strategy"].iloc[0])
+        spec = pps.STRATEGY_STYLES[strategy]
+        linewidth = max(1.7, float(spec["linewidth"]) - 0.4) if inset else spec["linewidth"]
+        if x_values is None:
+            x_values = sub["t"]
+        ax.plot(
+            x_values,
+            y_values,
+            color=spec["color"],
+            linestyle=spec["linestyle"],
+            lw=linewidth,
+            zorder=3,
         )
-    ax_rt.axhline(1.0, color="#777777", lw=1.2, linestyle="-.", label=r"$R_e(t)=1$")
-    add_policy_markers(ax_rt)
-    ax_rt.set_xlim(0, x_end)
-    ax_rt.set_ylim(0.0, max(1.2, 1.08 * max(rt_max_values)))
-    ax_rt.set_title("Effective reproduction number")
-    ax_rt.set_xlabel(r"$t$")
-    ax_rt.set_ylabel(r"$R_e(t)$")
-    ax_rt.legend(loc="lower right", fontsize=8.5)
-    fig_rt.savefig(OUT_DIR / "xian_effective_reproduction_number.pdf")
-    fig_rt.savefig(OUT_DIR / "xian_effective_reproduction_number.png", dpi=220)
-    plt.close(fig_rt)
+
+    def style_inset(ax) -> None:
+        """用完整细边框区分线性插图与主面板。"""
+
+        ax.grid(False)
+        for spine in ax.spines.values():
+            spine.set_visible(True)
+            spine.set_linewidth(0.65)
+            spine.set_color("#555555")
+        ax.tick_params(which="both", labelsize=6.0, length=2.4, width=0.55, pad=1.5)
+
+    with pps.paper_style_context():
+        # 图 11：观测到的每日报告病例。
+        fig_obs, ax_obs = plt.subplots(
+            figsize=(0.78 * pps.TEXT_WIDTH_IN, 2.75),
+            constrained_layout=True,
+        )
+        ax_obs.bar(
+            observed["t"],
+            observed["community_new"],
+            color=pps.COLORS["coral"],
+            width=0.86,
+            edgecolor="white",
+            linewidth=0.25,
+            label=r"$I_{\rm new}(t)$",
+            zorder=2,
+        )
+        ax_obs.bar(
+            observed["t"],
+            observed["quarantine_new"],
+            bottom=observed["community_new"],
+            color=pps.COLORS["sky"],
+            width=0.86,
+            edgecolor="white",
+            linewidth=0.25,
+            label=r"$I_{q_{\rm new}}(t)$",
+            zorder=2,
+        )
+        pps.style_axis(ax_obs)
+        ax_obs.set_xlabel(r"time $t$ (days)")
+        ax_obs.set_ylabel("daily reported cases")
+        ax_obs.set_xlim(-0.8, observed["t"].iloc[-1] + 0.8)
+        ax_obs.set_ylim(0.0, 1.08 * float(observed["total_new"].max()))
+        ax_obs.legend(loc="upper left", ncol=2, columnspacing=1.1)
+        pps.save_figure(fig_obs, OUT_DIR / "xian_observed_daily_cases")
+        plt.close(fig_obs)
+
+        # 图 12：社区感染轨道、每日新增和控制函数。
+        day_edges = np.arange(0.0, np.ceil(x_end) + 1.0)
+        day_starts = day_edges[:-1]
+
+        fig = plt.figure(
+            figsize=(0.98 * pps.TEXT_WIDTH_IN, 6.10),
+            constrained_layout=True,
+        )
+        gs = fig.add_gridspec(4, 2, height_ratios=[0.10, 1.12, 1.0, 1.0])
+        ax_legend = fig.add_subplot(gs[0, :])
+        ax_legend.axis("off")
+        ax_legend.legend(
+            handles=pps.strategy_handles(include_observed=True),
+            loc="center",
+            ncol=4,
+            columnspacing=1.0,
+            borderaxespad=0.0,
+        )
+        ax_I = fig.add_subplot(gs[1, :])
+        ax_new = fig.add_subplot(gs[2, 0])
+        ax_qnew = fig.add_subplot(gs[2, 1])
+        ax_c = fig.add_subplot(gs[3, 0])
+        ax_q = fig.add_subplot(gs[3, 1])
+
+        # 线性插图保留 TDINN 与真实日报的低量级细节。
+        ax_I_zoom = ax_I.inset_axes([0.665, 0.585, 0.305, 0.355])
+        ax_new_zoom = ax_new.inset_axes([0.535, 0.535, 0.435, 0.405])
+        ax_qnew_zoom = ax_qnew.inset_axes([0.535, 0.535, 0.435, 0.405])
+
+        new_low_values: List[float] = [float(observed["community_new"].max())]
+        qnew_low_values: List[float] = [float(observed["quarantine_new"].max())]
+        new_all_values: List[float] = []
+        qnew_all_values: List[float] = []
+
+        for strategy, sub in all_df.groupby("strategy", sort=False):
+            daily_new = daily_cases_from_cumulative(sub, "Cc", day_edges)
+            daily_qnew = daily_cases_from_cumulative(sub, "Cq", day_edges)
+            plot_strategy(ax_I, sub, sub["I"])
+            plot_strategy(ax_new, sub, daily_new, x_values=day_starts)
+            plot_strategy(ax_qnew, sub, daily_qnew, x_values=day_starts)
+            plot_strategy(ax_c, sub, sub["c"])
+            plot_strategy(ax_q, sub, sub["q"])
+
+            new_all_values.append(float(np.max(daily_new)))
+            qnew_all_values.append(float(np.max(daily_qnew)))
+            if strategy == "TDINN控制":
+                new_low_values.append(float(np.max(daily_new)))
+                qnew_low_values.append(float(np.max(daily_qnew)))
+                plot_strategy(ax_I_zoom, sub, sub["I"], inset=True)
+                plot_strategy(ax_new_zoom, sub, daily_new, x_values=day_starts, inset=True)
+                plot_strategy(ax_qnew_zoom, sub, daily_qnew, x_values=day_starts, inset=True)
+
+        ax_new_zoom.scatter(
+            observed["t"],
+            observed["community_new"],
+            s=18,
+            color=pps.COLORS["coral"],
+            edgecolors="white",
+            linewidths=0.55,
+            zorder=6,
+        )
+        ax_qnew_zoom.scatter(
+            observed["t"],
+            observed["quarantine_new"],
+            s=18,
+            color=pps.COLORS["coral"],
+            edgecolors="white",
+            linewidths=0.55,
+            zorder=6,
+        )
+
+        ax_I.axhline(
+            eta,
+            color=pps.COLORS["gray"],
+            lw=1.2,
+            linestyle=(0, (4.5, 2.0, 1.2, 2.0)),
+            zorder=1,
+        )
+        ax_I.text(
+            0.985,
+            1.10 * eta,
+            r"$\eta$",
+            transform=ax_I.get_yaxis_transform(),
+            ha="right",
+            va="bottom",
+            fontsize=7.4,
+            color=pps.COLORS["gray"],
+        )
+        for ax in [ax_I, ax_I_zoom, ax_new, ax_new_zoom, ax_qnew, ax_qnew_zoom, ax_c, ax_q]:
+            add_policy_markers(ax)
+        for ax in [ax_I, ax_new, ax_qnew, ax_c, ax_q]:
+            ax.set_xlim(0.0, x_end)
+        for ax in [ax_I_zoom, ax_new_zoom, ax_qnew_zoom]:
+            ax.set_xlim(0.0, min(x_end, 50.0))
+
+        learned_peak = float(all_df.loc[all_df["strategy"] == "TDINN控制", "I"].max())
+        I_full_peak = float(all_df["I"].max())
+        for ax in [ax_I, ax_new, ax_qnew]:
+            ax.set_yscale("log")
+        ax_I.set_ylim(1.0, max(1.08 * I_full_peak, 1.25 * eta, 1.35 * learned_peak, 200.0))
+        ax_new.set_ylim(1.0, max(80.0, 1.08 * max(new_all_values), 1.35 * max(new_low_values)))
+        ax_qnew.set_ylim(1.0, max(180.0, 1.08 * max(qnew_all_values), 1.35 * max(qnew_low_values)))
+        ax_I_zoom.set_ylim(0.0, max(200.0, 1.35 * learned_peak))
+        ax_new_zoom.set_ylim(0.0, max(10.0, 1.35 * max(new_low_values)))
+        ax_qnew_zoom.set_ylim(0.0, max(10.0, 1.35 * max(qnew_low_values)))
+
+        for ax in [ax_I_zoom, ax_new_zoom, ax_qnew_zoom]:
+            style_inset(ax)
+        for ax, panel in zip([ax_I, ax_new, ax_qnew, ax_c, ax_q], ["(a)", "(b)", "(c)", "(d)", "(e)"]):
+            pps.style_axis(ax, panel)
+        for ax in [ax_I, ax_new, ax_qnew]:
+            ax.tick_params(labelbottom=False)
+
+        ax_I.set_ylabel(r"$I(t)$")
+        ax_new.set_ylabel(r"$I_{\rm new}(t)$")
+        ax_qnew.set_ylabel(r"$I_{q_{\rm new}}(t)$")
+        ax_c.set_xlabel(r"time $t$ (days)")
+        ax_c.set_ylabel(r"$c(t)$")
+        ax_q.set_xlabel(r"time $t$ (days)")
+        ax_q.set_ylabel(r"$q(t)$")
+        pps.save_figure(fig, OUT_DIR / "xian_control_comparison_panels")
+        plt.close(fig)
+
+        # 图 13：累计感染。
+        fig2 = plt.figure(
+            figsize=(0.82 * pps.TEXT_WIDTH_IN, 5.40),
+            constrained_layout=True,
+        )
+        gs2 = fig2.add_gridspec(4, 1, height_ratios=[0.10, 1.0, 1.0, 1.0])
+        ax2_legend = fig2.add_subplot(gs2[0, 0])
+        ax2_legend.axis("off")
+        ax2_legend.legend(
+            handles=pps.strategy_handles(include_observed=True),
+            loc="center",
+            ncol=4,
+            columnspacing=0.9,
+            borderaxespad=0.0,
+        )
+        axes = [
+            fig2.add_subplot(gs2[1, 0]),
+            fig2.add_subplot(gs2[2, 0]),
+            fig2.add_subplot(gs2[3, 0]),
+        ]
+        cumulative_specs = [
+            ("Cc", "community_cum", r"$I_{\rm cum}(t)$"),
+            ("Cq", "quarantine_cum", r"$I_{q_{\rm cum}}(t)$"),
+            (None, "total_cum", r"$I_{t_{\rm cum}}(t)$"),
+        ]
+        for ax, (model_col, observed_col, ylabel), panel in zip(
+            axes,
+            cumulative_specs,
+            ["(a)", "(b)", "(c)"],
+        ):
+            y_max_values: List[float] = [float(observed[observed_col].max())]
+            for _, sub in all_df.groupby("strategy", sort=False):
+                y_values = sub["Cc"] + sub["Cq"] if model_col is None else sub[model_col]
+                y_max_values.append(float(np.max(y_values)))
+                plot_strategy(ax, sub, y_values)
+            ax.scatter(
+                observed["t"],
+                observed[observed_col],
+                s=14,
+                color=pps.COLORS["coral"],
+                edgecolors="white",
+                linewidths=0.5,
+                zorder=6,
+            )
+            ax.axvline(
+                observed["t"].iloc[-1],
+                color=pps.COLORS["light_gray"],
+                lw=0.8,
+                linestyle=(0, (1.2, 2.0)),
+                alpha=0.72,
+                zorder=0,
+            )
+            ax.set_xlim(0.0, x_end)
+            ax.set_yscale("symlog", linthresh=100.0)
+            ax.set_ylim(0.0, 1.15 * max(y_max_values))
+            ax.set_ylabel(ylabel)
+            pps.style_axis(ax, panel)
+        axes[0].tick_params(labelbottom=False)
+        axes[1].tick_params(labelbottom=False)
+        axes[-1].set_xlabel(r"time $t$ (days)")
+        pps.save_figure(fig2, OUT_DIR / "xian_control_cumulative")
+        plt.close(fig2)
+
+        # 图 14：有效再生数。
+        fig_rt, ax_rt = plt.subplots(
+            figsize=(0.82 * pps.TEXT_WIDTH_IN, 2.60),
+            constrained_layout=True,
+        )
+        rt_max_values: List[float] = []
+        for _, sub in all_df.groupby("strategy", sort=False):
+            rt_max_values.append(float(np.max(sub["Rt"])))
+            plot_strategy(ax_rt, sub, sub["Rt"])
+        ax_rt.axhline(
+            1.0,
+            color=pps.COLORS["dark_red"],
+            lw=1.25,
+            linestyle=(0, (4.0, 2.0)),
+            alpha=0.82,
+            zorder=1,
+        )
+        ax_rt.text(
+            0.985,
+            1.05,
+            r"$R_e(t)=1$",
+            transform=ax_rt.get_yaxis_transform(),
+            ha="right",
+            va="bottom",
+            fontsize=7.4,
+            color=pps.COLORS["dark_red"],
+        )
+        add_policy_markers(ax_rt)
+        ax_rt.set_xlim(0.0, x_end)
+        ax_rt.set_ylim(0.0, max(1.2, 1.08 * max(rt_max_values)))
+        ax_rt.set_xlabel(r"time $t$ (days)")
+        ax_rt.set_ylabel(r"$R_e(t)$")
+        pps.style_axis(ax_rt)
+        ax_rt.legend(
+            handles=pps.strategy_handles(),
+            loc="upper center",
+            bbox_to_anchor=(0.5, 1.02),
+            ncol=3,
+            columnspacing=1.1,
+        )
+        pps.save_figure(fig_rt, OUT_DIR / "xian_effective_reproduction_number")
+        plt.close(fig_rt)
 
 
 def write_eta_sensitivity_table(scan: pd.DataFrame) -> None:
@@ -1047,7 +1131,7 @@ def write_eta_sensitivity_table(scan: pd.DataFrame) -> None:
         rows.append(
             f"{row['eta']:.0f} & {eta_fraction_text(row['eta_fraction'])} & "
             f"{row['t1']:.2f} & {row['t2_numeric']:.2f} & {row['flat_control_duration']:.2f} & "
-            f"{row['q_start']:.4f} & {row['flat_J_q']:.2f} & "
+            f"{row['q_start']:.4f} & {row['flat_J']:.2f} & "
             f"{row['flat_cum_total']:.0f} & {row['flat_clear_time']:.2f} \\\\"
         )
     content = "\n".join(
@@ -1055,7 +1139,7 @@ def write_eta_sensitivity_table(scan: pd.DataFrame) -> None:
             "\\begin{tabular}{ccccccccc}",
             "\\toprule",
             "$\\eta$ & $\\eta/N$ & $t_1$ & $t_2$ & 控制时长 & $q_c(t_1)$ & "
-            "$J_q$ & $I_{t_{cum}}$ & 清零时间 \\\\",
+            "$J$ & $I_{t_{cum}}$ & 清零时间 \\\\",
             "\\midrule",
             *rows,
             "\\bottomrule",
@@ -1069,71 +1153,139 @@ def write_eta_sensitivity_table(scan: pd.DataFrame) -> None:
 def plot_eta_sensitivity(scan: pd.DataFrame, learned_summary: Dict[str, float | str]) -> None:
     """绘制情景一阈值控制随 eta 变化的敏感性结果。"""
 
-    plt.rcParams.update(
-        {
-            "font.family": "DejaVu Sans",
-            "axes.unicode_minus": False,
-            "mathtext.fontset": "dejavusans",
-        }
-    )
-    eta_values = scan["eta_fraction"].to_numpy()
-    fig, axes = plt.subplots(2, 2, figsize=(12.2, 8.0), constrained_layout=True)
-    ax_q, ax_j, ax_cum, ax_time = axes.ravel()
-
-    def eta_fraction_text(value: float) -> str:
-        """把 eta/N 紧凑格式化，用作坐标刻度标签。"""
-
-        return f"{value:.4f}".rstrip("0").rstrip(".")
+    eta_percent = 100.0 * scan["eta_fraction"].to_numpy()
+    threshold_color = pps.STRATEGY_STYLES["情景一阈值控制"]["color"]
 
     def set_eta_axis(ax) -> None:
-        """在所有敏感性分析子图上使用同一个 eta/N 对数坐标轴。"""
+        """统一使用 eta/N 的百分比对数轴，只标三个主要数量级。"""
 
         ax.set_xscale("log")
-        ax.set_xlim(float(eta_values.min() * 0.85), float(eta_values.max() * 1.15))
-        ax.set_xticks(eta_values)
-        ax.set_xticklabels([f"{eta_fraction_text(value)}N" for value in eta_values], rotation=45, ha="right")
-        ax.tick_params(axis="x", labelsize=8)
-        ax.set_xlabel(r"$\eta$")
+        ax.set_xlim(float(eta_percent.min() * 0.84), float(eta_percent.max() * 1.18))
+        ax.set_xticks([0.01, 0.1, 1.0])
+        ax.set_xticklabels(["0.01", "0.1", "1"])
+        ax.set_xlabel(r"$\eta/N$ (%)")
 
-    ax_q.plot(eta_values, scan["q_start"], "o-", color="#c43c39", lw=2.0, label=r"$q_c(t_1)$")
-    ax_q.set_ylabel("quarantine rate")
-    ax_q.legend(loc="lower right", fontsize=9)
-
-    actual_j = float(learned_summary["J_q"])
-    ax_j.plot(eta_values, scan["flat_J_q"], "o-", color="#c43c39", lw=2.0, label="Threshold control")
-    ax_j.axhline(actual_j, color="#0068a9", lw=1.8, linestyle="--", label="TDINN control")
-    ax_j.set_ylabel(r"$J_q$")
-    ax_j.legend(loc="lower right", fontsize=9)
-
-    actual_cum = float(learned_summary["cum_total_infections"])
-    ax_cum.plot(eta_values, scan["flat_cum_total"], "o-", color="#c43c39", lw=2.0, label="Threshold control")
-    ax_cum.axhline(actual_cum, color="#0068a9", lw=1.8, linestyle="--", label="TDINN control")
-    ax_cum.set_yscale("symlog", linthresh=5000.0)
-    ax_cum.set_ylabel("cumulative infections")
-    ax_cum.legend(loc="lower right", fontsize=9)
-
-    ax_time.plot(eta_values, scan["flat_control_duration"], "o-", color="#c43c39", lw=2.0, label="control duration")
-    ax_time.plot(eta_values, scan["flat_clear_time"], "s--", color="#7a7a7a", lw=1.8, label="clear time")
-    not_cleared = scan["flat_cleared"].to_numpy() < 0.5
-    if np.any(not_cleared):
-        ax_time.scatter(
-            eta_values[not_cleared],
-            scan.loc[not_cleared, "flat_clear_time"],
-            marker="o",
-            s=70,
-            facecolors="none",
-            edgecolors="#7a7a7a",
-            linewidths=1.4,
-            label="not cleared",
+    def label_tdinn_reference(ax, value: float) -> None:
+        ax.text(
+            0.97,
+            1.06 * value,
+            "TDINN",
+            transform=ax.get_yaxis_transform(),
+            ha="right",
+            va="bottom",
+            fontsize=6.8,
+            color=pps.COLORS["navy"],
         )
-    ax_time.set_ylabel("time")
-    ax_time.legend(loc="lower right", fontsize=9)
 
-    for ax in axes.ravel():
-        set_eta_axis(ax)
-    fig.savefig(OUT_DIR / "xian_eta_sensitivity.pdf")
-    fig.savefig(OUT_DIR / "xian_eta_sensitivity.png", dpi=220)
-    plt.close(fig)
+    with pps.paper_style_context():
+        fig, axes = plt.subplots(
+            2,
+            2,
+            figsize=(0.95 * pps.TEXT_WIDTH_IN, 4.35),
+            constrained_layout=True,
+        )
+        ax_q, ax_j, ax_cum, ax_time = axes.ravel()
+
+        ax_q.plot(
+            eta_percent,
+            scan["q_start"],
+            marker="o",
+            color=threshold_color,
+            lw=2.2,
+            ms=3.8,
+            markeredgewidth=0.0,
+        )
+        ax_q.set_ylabel(r"$q_c(t_1)$")
+
+        actual_j = float(learned_summary["J"])
+        ax_j.plot(
+            eta_percent,
+            scan["flat_J"],
+            marker="o",
+            color=threshold_color,
+            lw=2.2,
+            ms=3.8,
+            markeredgewidth=0.0,
+        )
+        ax_j.axhline(
+            actual_j,
+            color=pps.COLORS["navy"],
+            lw=1.3,
+            linestyle=(0, (4.2, 2.0)),
+        )
+        ax_j.set_yscale("log")
+        ax_j.set_ylabel(r"$J$")
+        label_tdinn_reference(ax_j, actual_j)
+
+        actual_cum = float(learned_summary["cum_total_infections"])
+        ax_cum.plot(
+            eta_percent,
+            scan["flat_cum_total"],
+            marker="o",
+            color=threshold_color,
+            lw=2.2,
+            ms=3.8,
+            markeredgewidth=0.0,
+        )
+        ax_cum.axhline(
+            actual_cum,
+            color=pps.COLORS["navy"],
+            lw=1.3,
+            linestyle=(0, (4.2, 2.0)),
+        )
+        ax_cum.set_yscale("log")
+        ax_cum.set_ylabel(r"$I_{t_{\rm cum}}$")
+        label_tdinn_reference(ax_cum, actual_cum)
+
+        ax_time.plot(
+            eta_percent,
+            scan["flat_control_duration"],
+            marker="o",
+            color=threshold_color,
+            lw=2.2,
+            ms=3.8,
+            markeredgewidth=0.0,
+            label=r"$\Delta t$",
+        )
+        ax_time.plot(
+            eta_percent,
+            scan["flat_clear_time"],
+            marker="s",
+            color=pps.COLORS["blue"],
+            lw=2.0,
+            ms=3.5,
+            markeredgewidth=0.0,
+            label=r"$t_{\rm end}$",
+        )
+        actual_time = float(learned_summary["clear_time"])
+        ax_time.axhline(
+            actual_time,
+            color=pps.COLORS["navy"],
+            lw=1.3,
+            linestyle=(0, (4.2, 2.0)),
+        )
+        not_cleared = scan["flat_cleared"].to_numpy() < 0.5
+        if np.any(not_cleared):
+            ax_time.scatter(
+                eta_percent[not_cleared],
+                scan.loc[not_cleared, "flat_clear_time"],
+                marker="o",
+                s=46,
+                facecolors="none",
+                edgecolors=pps.COLORS["blue"],
+                linewidths=1.2,
+                label="not cleared",
+            )
+        ax_time.set_yscale("log")
+        ax_time.set_ylabel("time (days)")
+        label_tdinn_reference(ax_time, actual_time)
+        ax_time.legend(loc="upper right")
+
+        for ax, panel in zip(axes.ravel(), ["(a)", "(b)", "(c)", "(d)"]):
+            set_eta_axis(ax)
+            pps.style_axis(ax, panel)
+        pps.save_figure(fig, OUT_DIR / "xian_eta_sensitivity")
+        plt.close(fig)
 
 
 def run_eta_sensitivity(
@@ -1177,12 +1329,14 @@ def run_eta_sensitivity(
                 "flat_control_duration": float(flat_summary["control_duration"]),
                 "flat_cum_total": float(flat_summary["cum_total_infections"]),
                 "flat_J_q": float(flat_summary["J_q"]),
+                "flat_J": float(flat_summary["J"]),
                 "real_peak_I": float(learned_rows[eta]["peak_I"]),
                 "real_time_above_eta": float(learned_rows[eta]["time_above_eta"]),
                 "real_clear_time": float(learned_rows[eta]["clear_time"]),
                 "real_control_duration": float(learned_rows[eta]["control_duration"]),
                 "real_cum_total": float(learned_rows[eta]["cum_total_infections"]),
                 "real_J_q": float(learned_rows[eta]["J_q"]),
+                "real_J": float(learned_rows[eta]["J"]),
                 "fixed_peak_I": float(fixed_rows[eta]["peak_I"]),
                 "fixed_time_above_eta": float(fixed_rows[eta]["time_above_eta"]),
                 "fixed_clear_time": float(fixed_rows[eta]["clear_time"]),

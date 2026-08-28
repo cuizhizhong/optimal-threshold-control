@@ -45,9 +45,9 @@ end
 xlabel(ax, '$\eta/N\;(\%)$');
 ylabel(ax, '$c_0$');
 title(ax, 'Regions classified by $\Delta t$');
-xticks(ax, 0.2:0.2:2.0);
-xlim(ax, [0.2, 2.0]);
-ylim(ax, [6, 14]);
+xticks(ax, [0.2, 1, 2, 3, 4, 5]);
+xlim(ax, [min(x), max(x)]);
+ylim(ax, [min(y), max(y)]);
 style_axes(ax);
 save_figure_safe(fig, filename, logfid);
 end

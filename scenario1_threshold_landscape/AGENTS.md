@@ -23,22 +23,32 @@ gamma = 0.3504;
 q0 = 0.01526;
 c0_base = 10;
 
-eta_frac_list = 0.002:0.0002:0.020;
-c0_list = 6:0.1:14;
+eta_frac_list = 0.002:0.0002:0.050;
+c0_list = 2.3:0.1:14;
 selected_eta_frac = [0.002, 0.005, 0.010, 0.020];
-c0_response_eta_frac = [0.002, 0.010, 0.020];
 selected_c0 = [6, 10, 14];
 baseline_eta_frac = [0.020, 0.002];
+
+main_c0_values = [4, 5, 8, 10, 12];
+main_eta_frac_values = [0.002, 0.006, 0.010, 0.020];
+main_c0_sweep_eta_frac = 0.050;
+main_eta_sweep_c0 = 10;
+main_eta_sweep_c0_values = [5, 8, 10, 12];
+c0_response_eta_frac = main_eta_frac_values;
 ```
 
-当前完整网格为 `91 x 81 = 7371` 个参数点。最近一次检查结果：
+探索性 `selected_*` 与主论文候选图的 `main_*` 配置必须分开维护。`baseline_eta_frac` 暂时保持
+`[0.020,0.002]`，因为 `plot_baseline_validation.m` 的两个稳定输出文件名仍按这两个阈值定义。
 
-- `current_run/output_csv/landscape_summary.csv`：7371 行；
-- `valid`：7371/7371；
-- `current_run/output_csv/diagnostics.csv`：0 条诊断记录；
+当前完整网格为 `241 x 118 = 28438` 个参数点。最近一次检查结果（2026-07-28）：
+
+- `current_run/output_csv/landscape_summary.csv`：28438 行；
+- `valid`：26780/28438；
+- `current_run/output_csv/diagnostics.csv`：1658 条预期的阈值不可达记录；
 - `current_run/output_csv/representative_cases.csv`：9 个代表组合；
-- `current_run/figures/`：14 张 PDF；
-- `current_run/tables/`：2 个 LaTeX 表格。
+- `current_run/output_csv/peak_validation.csv`：5 组峰值验收；
+- `current_run/figures/`：17 张 PDF；
+- `current_run/tables/`：4 个 LaTeX 表格。
 
 ## 目录结构与入口
 
@@ -49,8 +59,6 @@ scenario1_threshold_landscape/
 ├── AGENTS.md
 ├── README.md
 ├── run_all.m
-├── current_run.mat
-├── current_run.txt
 ├── common/
 ├── scripts/
 ├── current_run/
@@ -67,25 +75,33 @@ scenario1_threshold_landscape/
 matlab -batch "run('E:\work\draft\scenario1_threshold_landscape\run_all.m')"
 ```
 
-`run_all.m` 会先运行 `scripts/generate_landscape_data.m`，再顺序运行各绘图和表格脚本，结果直接覆盖写入 `current_run/`。`common/scenario1_params.m` 现在只负责返回参数和固定输出路径，不再做运行状态记录（`current_run.mat`/`current_run.txt`）或自动归档；`mode` 参数保留只为向后兼容，会被忽略。如需保留某一轮结果，请在重跑前手动复制 `current_run/`。`archive_runs/` 中的历史结果保留，但不再由脚本自动写入。
+`run_all.m` 会先调用 `common/reset_output_dirs.m` 清空 `current_run/` 的 `output_csv/`、`figures/`、`tables/`、`logs/`（避免上一轮过期文件残留），再运行 `scripts/generate_landscape_data.m` 和各绘图/表格脚本，生成本轮完整结果。`common/scenario1_params.m` 现在只负责返回参数和固定输出路径，不再做运行状态记录或自动归档；`mode` 参数保留只为向后兼容，会被忽略。如需保留某一轮结果，请在重跑前手动复制 `current_run/`。`archive_runs/` 中的历史结果保留，但不再由脚本自动写入。
+
+注意：`reset_output_dirs` 只应由 `run_all.m` 在整轮开始时调用；单独重跑某个 `scripts/plot_*.m` 时不要清空目录，否则会误删其他输出。
 
 ## 脚本职责
 
 - `scripts/generate_landscape_data.m`：只生成 CSV 和诊断，不画图。
+- `scripts/validate_main_outputs.m`：在绘图前强制检查 28438 行网格、有效指标、诊断码、五组 `Delta_t` 峰值与拐点恒等式。
 - `scripts/plot_baseline_validation.m`：生成两个基准验证图和 `baseline_validation_table.tex`；当前基准图同时画常规控制虚线、阈值控制曲线、`t1/t2` 竖线和 `eta/S_c/q0` 参考线。
-- `scripts/plot_sensitivity_curves.m`：生成固定 `c0=10` 的阈值响应曲线和选定阈值下的 `c0` 响应曲线；当前图线为连续线，无 marker。
-- `scripts/plot_heatmaps.m`：生成二维热图；当前比早期版本多输出 `heatmap_t1.pdf`。
+- `scripts/plot_main_q_trajectories.m`：生成主论文图 5/6 候选图；画平台期开环 `q_c(t)`、公共 `q0/q_inf` 参考线、切入/解除标记和内部拐点。
+- `scripts/plot_sensitivity_curves.m`：生成四档 `c0` 下的对数阈值响应图和四档阈值下的 `c0` 响应图；`c0` 图的 `Delta_t` 面板使用线性纵轴并标出离散峰值，`eta` 图的 `q_max` 面板固定为 `0.45--0.85`。
+- `scripts/plot_heatmaps.m`：生成六张单指标热图与 `t1/Delta_t/t_end/I_t_cum` 的 2×2 主论文候选图；解析可行边界以下留白。
 - `scripts/plot_duration_regions.m`：按 `Delta_t` 划分控制时长区域。
 - `scripts/plot_representative_trajectories.m`：生成代表阈值和代表 `c0` 下的轨迹图。
 - `scripts/plot_cumulative_decomposition.m`：生成累计感染分解图。
 - `scripts/write_representative_tables.m`：生成代表组合表。
+- `scripts/write_main_summary_tables.m`：生成主论文候选的 `c0`、`eta` 汇总 CSV 和 LaTeX 表。
 
 共享计算逻辑在 `common/`：
 
 - `compute_metrics.m`：理论指标和诊断的核心函数；
 - `compute_trajectory.m`：三阶段轨迹重构；
 - `q_control_tau.m`：平台期时间开环控制；
-- `save_figure_safe.m`：矢量 PDF 保存与 PNG fallback；
+- `critical_c0_for_eta.m`：解析求取给定 `eta` 的可行下界 `c0_min`；
+- `scenario1_inflection_point.m`：判断内部拐点并返回 `q_inf/t_inf`；
+- `scenario1_main_plot_style.m`：主论文图 5--9 的 Times/蓝色梯度/红色强调点样式，以及按论文最终宽度定义的物理尺寸；
+- `save_figure_safe.m`：矢量 PDF 保存、指定最终 MediaBox 尺寸与 PNG fallback；
 - `scenario1_params.m`：参数与固定输出路径（不再做归档/状态记录）。
 
 各绘图脚本共用的小工具也放在 `common/`，避免逐脚本复制：
@@ -95,7 +111,11 @@ matlab -batch "run('E:\work\draft\scenario1_threshold_landscape\run_all.m')"
 - `log_line.m`：带时间戳、同时写控制台和日志的输出；
 - `append_row.m`：按下标把标量 struct 追加进 struct 数组。
 
-注意：各图的 `style_axes` 保留在各自脚本内，因为每张图的字号/刻度方向是单独调过的，不做统一。
+主论文候选图共用 `scenario1_main_plot_style.m`；其他探索性图仍可保留各脚本内的局部 `style_axes`。
+主论文图的最终字号固定为：刻度 `8.5 pt`，坐标标签与标题 `10 pt`，图例 `7.5 pt`，
+面板编号 `11 pt`，普通注释 `8.5 pt`，热图等值线标签 `8 pt`。图 5/6、图 7/8、
+图 9 的目标 PDF 宽度分别为 `324.9 bp`、`397.1 bp`、`451.3 bp`；导出后应确认
+LaTeX 插入缩放比例处于 `0.98--1.02`。
 
 ## 当前图形输出与格式
 
@@ -106,7 +126,7 @@ baseline_validation_eta0002.pdf
 baseline_validation_eta0020.pdf
 c0_sensitivity_selected_eta.pdf
 cumulative_decomposition_c0_10.pdf
-eta_sensitivity_c0_10.pdf
+eta_sensitivity_selected_c0.pdf
 heatmap_t1.pdf
 heatmap_delta_t.pdf
 heatmap_t_end.pdf
@@ -114,6 +134,9 @@ heatmap_q_max.pdf
 heatmap_J.pdf
 heatmap_I_t_cum.pdf
 region_by_duration.pdf
+scenario1_heatmaps_c0_eta.pdf
+scenario1_u_time_c0.pdf
+scenario1_u_time_eta.pdf
 trajectories_c0_selected_eta0010.pdf
 trajectories_eta_selected_c0_10.pdf
 ```
@@ -122,8 +145,10 @@ trajectories_eta_selected_c0_10.pdf
 
 - 使用 `contourf(..., 200, 'LineColor','none')`；
 - 使用 `parula(256)`；
-- 每张热图设置固定 `color_limits`；
+- 除 `Delta_t` 固定为 `[0,215]` 外，其余色标由全体有效值按 1--2--5 规则向外取整后固定；
 - 叠加红色虚线等高线并尽量显示黑色标签；
+- 用 `critical_c0_for_eta` 的解析边界裁切白色不可行区，而不是用离散 `valid` 阶梯线代替；
+- 额外输出 `scenario1_heatmaps_c0_eta.pdf` 四面板合成图；
 - 使用 `Times New Roman`；
 - 图窗尺寸为 `[120, 100, 788, 734]`；
 - `exportgraphics(..., 'ContentType','image', 'Resolution',600)`，即 PDF 内采用高分辨率图像方式导出，避免复杂等高线矢量 PDF 过慢或过大。
