@@ -201,7 +201,7 @@ axa.plot(Ng, th_cost * Ng, color=C_COST, lw=LW_PRIMARY, zorder=5)
 axa.plot(Ng, th_d45 * Ng, color=C_D45, lw=LW_SECONDARY, ls="--", zorder=4)
 axa.plot(Ng, th_d150 * Ng, color=C_D150, lw=LW_SECONDARY, ls="-.", zorder=4)
 # N* vertex marker removed -> reported in caption (N*_45 = IPEAK/th_d45 ~= 40377)
-draw_floor(axa, label=True)
+draw_floor(axa, label=False)
 for r, x, y in A_pts:
     axa.scatter([x], [y], s=S_A, marker="o", fc=RC_COL[r], ec="white", lw=MK_LW, zorder=10)
 axfmt(axa, "(a)", ylabel=True)
@@ -249,12 +249,12 @@ Nc = ec / th_cost
 # 先整条淡虚线画出（等值线继续存在），再把"确实构成 W_cum 边界"的一段覆以实线。
 # 有效段同时要求：在楔形内 (eta >= ec) 且不低于下界 (N >= N_FLOOR，即 eta <= ETA_CUM_FLOOR)
 axb.plot(cum_Ns, cum_es,
-         color=C_CUM, lw=1.50, ls=(0, (4, 2)), alpha=0.5, zorder=6)
+         color=C_CUM, lw=1.5, ls=(0, (4, 2)), alpha=0.5, zorder=6)
 eff = (cum_es >= ec) & (cum_es <= ETA_CUM_FLOOR)
-axb.plot(cum_Ns[eff], cum_es[eff], color=C_CUM, lw=LW_MAIN, zorder=7)
+axb.plot(cum_Ns[eff], cum_es[eff], color=C_CUM, lw=1.5, zorder=7)
 # 清零弧：全段位于 N_FLOOR 左侧（与观测不相容），故全线虚线，不再有实线段
 axb.plot(clr_Ns, clr_es,
-         color=C_CLR, lw=1.90, ls=(0, (4.5, 2.2)), alpha=0.85, zorder=7)
+         color=C_CLR, lw=1.5, ls=(0, (4.5, 2.2)), alpha=0.85, zorder=7)
 draw_floor(axb, label=False)
 # N* vertical line removed -> the decomposition intersections (N*_45, N*_cost,
 # N_cum, N_clr, domain wall) are reported in the caption / main text instead
@@ -266,9 +266,9 @@ for r, x, y in B_pts:
     axb.scatter([x], [y], s=S_B, marker="s", fc=RC_COL[r], ec="white", lw=MK_LW,
                 alpha=0.85 if r == "clr" else 1.0, zorder=9)
 axfmt(axb, "(b)", ylabel=False)
-legb = [Line2D([], [], color=C_CUM, lw=LW_MAIN, label="cumulative"),
-        Line2D([], [], color=C_CLR, lw=1.90, ls=(0, (4.5, 2.2)), alpha=0.85,
-               label=r"clear $\leq$ 45.3 d (empty)"),
+legb = [Line2D([], [], color=C_CUM, lw=1.5, label="cumulative"),
+        Line2D([], [], color=C_CLR, lw=1.5, ls=(0, (4.5, 2.2)), alpha=0.85,
+               label=r"clear $\leq$ 45.3 d"),
         Line2D([], [], color=C_FLOOR, lw=1.6, label=r"$N_{\rm floor}$"),
         Line2D([], [], color=C_SKEL, lw=LW_SKELETON + 0.05, label="constraint skeleton")]
 axb.legend(handles=legb, loc="lower right", borderaxespad=0.45)

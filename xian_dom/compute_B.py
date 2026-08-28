@@ -38,8 +38,8 @@ for r in roles:
     built[r] = dict(t=s["t"].to_numpy(float), I=s["I"].to_numpy(float), q=s["q"].to_numpy(float),
                     N=series[r]["N"], ti=series[r]["ti"], qi=series[r]["qi"])
 
-# 常规控制带的 N 区间与六个阈值角色的 N 范围严格对齐（原先下端 5800 未盖住
-# clear 角色的 N=4537）。8 条成员各自按自身 N 重拟合 I0，故轨迹会相互交叉，
+# 常规控制带的 N 区间与六个阈值角色的 N 范围严格对齐。8 条成员共享同一绝对初值
+# I0（本节口径），故 i0=I0/N 随 N 变、轨迹会相互交叉，
 # 包络并非处处由两端成员给出。
 Nrib = np.geomspace(min(N_OF.values()), max(N_OF.values()), 8)
 _lo0, _hi0, rreps = _envelope(lambda N: prep(N)[2], Nrib, tg)

@@ -125,6 +125,12 @@ for r in draw_roles:
     b = D["built"][r]
     axi.plot(b["t"], b["I"], color=COL[r], ls=LS[r], lw=ROLE_LW[r],
              alpha=ALPHA.get(r, 1.0), zorder=5)
+    # 与 Panel A 一致：把 q_c(t) 的拐点时刻投影到 I(t) 上，即 (t_inf, eta)。
+    # 五条平台同高，故五个点落在同一条 I=eta 线上、横向铺开，直接读出 t_inf 随
+    # N_eff 的推移。注意这不是 I(t) 自身的拐点。
+    if np.isfinite(b["qi"]):
+        axi.scatter([b["ti"]], [ETA], s=28, marker="o", fc=COL[r], ec="white",
+                    linewidths=0.6, alpha=ALPHA.get(r, 1.0), zorder=6)
 h_peak = axi.axhline(IPEAK_T, color="#a50518f4", lw=1.6, ls="--", alpha=0.8, zorder=2)
 axi.text(tend * 0.995, IPEAK_T * 1.06, r"$I_{\rm peak}^{\rm T}$", fontsize=7.6,
          color="#a50518f4", ha="right", va="bottom")
