@@ -906,10 +906,11 @@ def plot_scan(
     boundaries: dict[str, float],
     cum_curve: np.ndarray,
 ) -> None:
+    # 2x4：上排为时间分解 t_end = t1 + Delta t + tail，下排为结构量与结局量。
     fig, axes = plt.subplots(
-        2, 3, figsize=(6.2911, 4.35), sharex=True, constrained_layout=True
+        2, 4, figsize=(6.2911, 3.55), sharex=True, constrained_layout=True
     )
-    ax_t1, ax_dt, ax_q, ax_lam, ax_J, ax_cum = axes.flat
+    ax_t1, ax_dt, ax_tail, ax_tend, ax_q, ax_lam, ax_J, ax_cum = axes.flat
     c = scan["c0"]
     curve_color = "#3f5568"
     trigger = boundaries["c0_trigger"]
@@ -983,6 +984,13 @@ def plot_scan(
     ax_cum.plot(cum_curve[:, 0], cum_curve[:, 1], color=curve_color, lw=1.7)
     ax_cum.set_ylabel(r"$I_{t\mathrm{cum}}$")
 
+    # 尾段与清零时刻：需完整三段积分，故用较粗网格（见 compute_cumulative_curve）。
+    ax_tail.plot(cum_curve[:, 0], cum_curve[:, 3], color=curve_color, lw=1.7)
+    ax_tail.set_ylabel(r"tail (days)")
+
+    ax_tend.plot(cum_curve[:, 0], cum_curve[:, 2], color=curve_color, lw=1.7)
+    ax_tend.set_ylabel(r"$t_{\rm end}$ (days)")
+
     y_for_ax = {
         id(ax_t1): lambda s: s.metrics.t1,
         id(ax_dt): lambda s: s.metrics.control_duration,
@@ -990,8 +998,10 @@ def plot_scan(
         id(ax_lam): lambda s: s.metrics.lambda_inf,
         id(ax_J): lambda s: s.metrics.cost_J,
         id(ax_cum): lambda s: s.metrics.cumulative_total,
+        id(ax_tail): lambda s: s.metrics.post_control_tail,
+        id(ax_tend): lambda s: s.metrics.clear_time,
     }
-    panel_labels = ("(a)", "(b)", "(c)", "(d)", "(e)", "(f)")
+    panel_labels = ("(a)", "(b)", "(c)", "(d)", "(e)", "(f)", "(g)", "(h)")
     for ax, panel_label in zip(axes.flat, panel_labels):
         ax.axvspan(3.0, trigger, color="#EEF1F4", alpha=1.0, zorder=-2)
         ax.axvline(trigger, color="#999999", ls="--", lw=0.8)
@@ -1043,7 +1053,7 @@ def plot_scan(
     #    ha="left",
     #    va="bottom",
     # )
-    for ax in (ax_lam, ax_J, ax_cum):
+    for ax in (ax_q, ax_lam, ax_J, ax_cum):
         ax.set_xlabel(r"$c_0$")
 
     for suffix in ("png", "pdf"):
@@ -1054,14 +1064,19 @@ def plot_scan(
 def compute_cumulative_curve(
     I0: float, boundaries: dict[str, float], n: int = 48
 ) -> np.ndarray:
-    """在较粗的 c0 网格上做完整积分，给出到各自动态清零 I(t)=1 时的总累计感染，
-    供附录扫描图的 I_tcum 面板使用。返回形状 (n, 2) 的数组，列为 [c0, I_tcum]。"""
+    """在较粗的 c0 网格上做完整积分，给出需要三段完整轨迹才能得到的量。
+
+    返回形状 (n, 4) 的数组，列为 [c0, I_tcum, t_end, tail]，其中
+    t_end 为到动态清零 I(t)=1 的时刻、tail 为解除控制后的尾段时长；
+    与解析扫描表中的 t1、control_duration 合起来即 t_end = t1 + Delta t + tail。
+    """
     c_lo = boundaries["c0_trigger"] * 1.01
     c_values = np.linspace(c_lo, 22.0, n)
     rows = []
     for c0 in c_values:
         sc = sample_scenario(float(c0), "scan", I0)
-        rows.append((float(c0), sc.metrics.cumulative_total))
+        rows.append((float(c0), sc.metrics.cumulative_total,
+                     sc.metrics.clear_time, sc.metrics.post_control_tail))
     return np.array(rows)
 
 
@@ -1405,7 +1420,8 @@ def write_readme(
 | `c0_beta_existence.pdf` | `c0_beta_existence.pdf` | 附录（`fig:c0-beta-existence`） |
 
 `c0_sensitivity_main.pdf` 与 `c0_sensitivity_main_linear.pdf` 仅作对照，不进论文。
-- `c0_sensitivity_scan.png/.pdf`：c0 连续扫描的六指标图（t1、Δt、q_max、λ、J、I_tcum）。
+- `c0_sensitivity_scan.png/.pdf`：c0 连续扫描的八指标图，上排 t1、Δt、tail、t_end
+  （三者相加即 t_end），下排 q_max、λ、J、I_tcum。
 - `c0_sensitivity_phase.png/.pdf`：(θ,c0) 结构相图（三条结构边界叠 Δt 等值线）。
 - `c0_beta_existence.png/.pdf`：(c0,β) 平面内部拐点存在域（β 为病原情景变量，θ、q0 固定）。
 - `c0_representative_summary.csv`：五个代表情景的指标表。

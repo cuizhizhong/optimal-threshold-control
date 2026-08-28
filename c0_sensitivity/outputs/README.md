@@ -72,7 +72,8 @@
 | `c0_beta_existence.pdf` | `c0_beta_existence.pdf` | 附录（`fig:c0-beta-existence`） |
 
 `c0_sensitivity_main.pdf` 与 `c0_sensitivity_main_linear.pdf` 仅作对照，不进论文。
-- `c0_sensitivity_scan.png/.pdf`：c0 连续扫描的六指标图（t1、Δt、q_max、λ、J、I_tcum）。
+- `c0_sensitivity_scan.png/.pdf`：c0 连续扫描的八指标图，上排 t1、Δt、tail、t_end
+  （三者相加即 t_end），下排 q_max、λ、J、I_tcum。
 - `c0_sensitivity_phase.png/.pdf`：(θ,c0) 结构相图（三条结构边界叠 Δt 等值线）。
 - `c0_beta_existence.png/.pdf`：(c0,β) 平面内部拐点存在域（β 为病原情景变量，θ、q0 固定）。
 - `c0_representative_summary.csv`：五个代表情景的指标表。

@@ -3067,6 +3067,28 @@ $c_0$ 对轨迹与控制律的作用。 图~\ref{fig:c0-panel} 给出五条代�
 
 $\Delta t$ 随 $c_0$ 的非单调性。 与 $\Delta t$ 关于 $\theta$ 严格单调递减（引理~\ref{lem:dom:mono}）不同，$\Delta t$ 关于 $c_0$ 无固定符号（推论~\ref{cor:s1:duration-sensitivity}）：由式~\eqref{eq:s1:t2} 在触发边界处 $\Delta t\to0$，随 $c_0$ 增大先升至一个脊、再降。图~\ref{fig:c0-panel} 与图~\ref{fig:c0-scan} 显示，本节参数下 $\Delta t$ 在这五个代表点上依次为 $30.2,37.8,47.5,103.2,85.1$ 天——先随 $c_0$ 上升、越过脊后回落，脊约在 $c_0\approx6.61$（$\Delta t\approx103.2$ 天）。该脊并非数值巧合：由推论~\ref{cor:s1:duration-sensitivity}，$\partial\Delta t/\partial c_0$ 的符号由判别式 $\ln(S_0/S^*)\gtrless\Theta$ 决定，脊 $\partial\Delta t/\partial c_0=0$ 恰是判别式取等 $\ln(S_0/S^*)=\Theta$ 的解，其中 $\Theta=\frac{S^*-S_c}{S_c}\left[\frac{S^*-\bar S}{S^*}\ln\frac{S^*-\bar S}{S_c-\bar S}-1\right]$。因此图~\ref{fig:c0-phase} 的 $\Delta t$ 脊线是该解析判据在 $(c_0,\theta)$ 平面上的零集，而非仅由数值极值定位。因此 $c_0$ 与 $\theta$ 虽同为作用于 $q_{\max}$、峰值的同向杠杆，在 $\Delta t$ 上却有定性差别。
 
+清零时刻是唯一全程单调的时间量。 $t_{\rm end}=t_1+\Delta t+\text{尾段}$ 三项中，
+$t_1$ 与尾段都随 $c_0$ 增大而单调缩短，唯 $\Delta t$ 非单调；数值上前两项的降幅压倒后者，
+故 $t_{\rm end}$ 在整个扫描区间内\emph{严格单调递减}（图~\ref{fig:c0-scan}(d)），
+由 $c_0=3.43$ 处的约 $368$ 天降到 $c_0=30$ 的约 $102$ 天。
+最能说明该压倒关系的是跨越 $\Delta t$ 脊的一段：由 $c_0=3.43$ 到 $6.61$，
+$\Delta t$ 增加约 $73$ 天，但 $t_1$ 由 $211.7$ 天降到 $28.3$ 天（减少约 $183$ 天），
+净效果仍是 $t_{\rm end}$ 下降约 $144$ 天。即在低接触环境中，
+阈值控制"平台短但迟迟不清零"，代价并不在平台本身而在漫长的触发前与退出后两段。
+
+成本与总累计的非单调性及其错位。 $J$ 与 $\Itcum$ 同样先升后降，但极值位置与 $\Delta t$ 脊并不重合：
+$\Delta t$ 的脊在 $c_0=6.61$，$\Itcum$ 的极大在 $c_0=13.88$（$3610$），
+$J$ 的极大在 $c_0=18.12$（$42.80$），三者依次右移。
+$J$ 的非单调性来自式~\eqref{eq:dom:Jtheta} 中两项相反的作用：前因子 $1/(c_0\theta)$ 随 $c_0$ 下降，
+而 $q_{\max}$ 升高、且 $s_c\propto1/c_0$ 下移使积分区间 $[s_c,s^\ast]$ 拉长；
+$c_0\lesssim18$ 时后者主导，之后前因子主导。
+一个实用的推论是：在 $c_0\in[10,25]$ 内 $J$ 仅在 $36$–$43$ 之间变动，
+即高接触环境下阈值控制的成本对 $c_0$ 相当不敏感。
+另值得一提，西安基线 $c_0=12.8872$ 几乎正落在 $\Itcum$ 的极大点上
+（$3608.6$ 对极大值 $3610.2$，相差 $0.04\%$）：在本节的单参数切片内，
+接触率无论升降，到清零的总累计感染都只会下降。这三处极值的错位说明，
+$c_0$ 不存在一个同时优化时长、成本与累计的取值。
+
 图~\ref{fig:c0-phase} 把上述结构统一到 $(\theta,c_0)$ 平面：触发边界、拐点边界 $s^*=2\bar s$ 与 $\Delta t$ 脊线三条曲线划分出各结构区，图~\ref{fig:c0-panel} 的三个代表 $c_0$ 正是这三条边界与 $\theta=0.002$ 水平线的交点。需强调本图只报告阈值控制律的结构量，不含占优边界。
 
 \begin{figure}[htbp]
@@ -3212,8 +3234,17 @@ $(\eta,c_0)$ 景观在 $\theta=\eta/N$ 上有重叠，此处为固定池规模 $
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.7\textwidth]{c0_sensitivity_scan.pdf}
-    \caption{固定 $N_{\rm eff}=2\times10^4$、$\theta=0.002$ 下阈值控制指标随背景接触率 $c_0$ 的连续扫描：$(a)$~$t_1$、$(b)$~$\Delta t$、$(c)$~$q_{\max}$、$(d)$~$\lambda$、$(e)$~二次加权成本 $J$、$(f)$~到动态清零的总累计感染 $\Itcum$。灰色竖线／阴影标出触发边界、拐点出现边界与 $\Delta t$ 脊；同色圆点为图~\ref{fig:c0-panel} 的五个代表 $c_0$。$J$ 与 $\Itcum$ 仅作该池规模下的结构结果，不叠加任何 TDINN 参照线。}
+    \includegraphics[width=\textwidth]{c0_sensitivity_scan.pdf}
+    \caption{固定 $N_{\rm eff}=2\times10^4$、$\theta=0.002$ 下阈值控制指标随背景接触率 $c_0$ 的连续扫描。
+    上排为时间分解，三者相加即第四个：$(a)$~启动时间 $t_1$、$(b)$~平台时长 $\Delta t$、
+    $(c)$~解除控制后的尾段、$(d)$~清零时刻 $t_{\rm end}=t_1+\Delta t+\text{尾段}$。
+    下排为结构量与结局量：$(e)$~$q_{\max}$、$(f)$~拐点相对位置 $\lambda$、
+    $(g)$~二次加权成本 $J$、$(h)$~到动态清零的总累计感染 $\Itcum$。
+    灰色竖线／阴影标出触发边界 $c_0=3.334$、拐点出现边界 $c_0=3.543$ 与 $\Delta t$ 脊 $c_0=6.607$；
+    同色圆点为图~\ref{fig:c0-panel} 的五个代表 $c_0$。
+    四个时间量中只有 $\Delta t$ 非单调，其余三个及 $t_{\rm end}$ 全程单调递减；
+    $J$ 与 $\Itcum$ 各自在 $c_0=18.1$ 与 $13.9$ 处取极大后缓降。
+    $J$ 与 $\Itcum$ 仅作该池规模下的结构结果，不叠加任何 TDINN 参照线。}
     \label{fig:c0-scan}
 \end{figure}
 
