@@ -50,18 +50,17 @@ PANEL_A_CASES = (
     (91_727.0, "fig_panel_A_N91727"),
 )
 
-# 全节单一口径：归一化初值固定，跨 N_eff 不重新拟合（见 caliber.py 与正文 §8 开头）。
-# i0 取第 7 节的全市标定值 I0_city / N_city；在该口径下引理 8.1 的 theta 不变性严格成立。
-I0_CITY, N_CITY = 0.00100662823352, 13_163_000.0
-I0_FRACTION = I0_CITY / N_CITY          # = 7.6474e-11
+# 全节单一口径：固定**绝对**初值 I0 = 1.0066e-3 人（第 7 节全市标定值），
+# 跨 N_eff 不重新拟合，故 i0 = I0/N 随 N 变（见 caliber.py 与正文 §8 开头）。
+# 用绝对而非归一化初值：N_eff 是同一次疫情的未知池规模，两条臂描述同一次播种。
+I0_ABS = 0.00100662823352
 
 
 def fixed_initial_fit(N):
-    """按固定归一化初值构造 InitialFit，替代逐 N 重拟合。"""
-    I0 = I0_FRACTION * float(N)
-    return xcc.InitialFit(S0=float(N) - I0, I0=I0, R0_initial=0.0,
+    """按固定绝对初值构造 InitialFit，替代逐 N 重拟合。"""
+    return xcc.InitialFit(S0=float(N) - I0_ABS, I0=I0_ABS, R0_initial=0.0,
                           objective=float("nan"), raw_rmse=float("nan"),
-                          residual_type="fixed_i0")
+                          residual_type="fixed_I0_abs")
 
 
 _cache = {}
@@ -284,9 +283,8 @@ def panel_A(N=2e4, output_stem="fig_panel_A", aliases=(), td=None):
 # ===== Panel B 的共享量（N_OF、_envelope，供 compute_B.py 导入）=====
 #       Panel B 本体已移到 compute_B.py + plot_B.py。
 # clear / cum 由 caliber.N_clr(100) / caliber.N_cum(100) 在全节单一口径下求根得到；
-# 其余三个由各自的 theta 直接给出。clear 成员在新口径下移到 1997（旧口径 4602），
-# 其平台已塌缩到 Delta t = 2.8 d，近于退化。
-N_OF = {"clear": 1997.0, "cum": 10102.3, "interior": 100 / TH["interior"],
+# 其余三个由各自的 theta 直接给出。
+N_OF = {"clear": 3969.7, "cum": 10102.3, "interior": 100 / TH["interior"],
         "dur45": 100 / TH["dur45"], "cost": 100 / TH["cost"], "dur150": 100 / TH["dur150"]}
 
 def _envelope(solver, N_list, tg):

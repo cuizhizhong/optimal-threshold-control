@@ -1,7 +1,17 @@
 """§8 占优分析的唯一口径与常数源。
 
-全节采用**固定归一化初值**的纯理论口径：i0 = I0_city / N_city 跨 N_eff 固定，
-不做任何逐 N 拟合。在该口径下引理"对 N 的标度不变性"无条件严格。
+全节采用**固定绝对初值**的口径：I0 = 1.0066e-3 人（第 7 节的全市标定值）
+跨 N_eff 固定，不做任何逐 N 拟合，故 i0 = I0 / N 随 N 变化。
+
+为什么用绝对初值而非归一化初值：§8 把 N_eff 当作**同一次疫情**的未知池规模，
+两条臂（实际干预与阈值控制反事实）描述的是同一次播种，理应共享同一个绝对初值。
+固定归一化初值会让小池分到荒谬的绝对种子（N=1e4 时 7.6e-7 人），并使反事实的
+绝对时刻与画在全市尺度的 TDINN 参照相差 658 倍种子、无法对齐。
+
+代价与其量化：引理"对 N 的标度不变性"的假设（固定 i0）在此不成立。但首次积分
+把 i0 与 theta 合并为 (theta - i0)，故 Delta t、J、q_max、s* 偏离纯 theta 依赖的
+相对量级恰为 i0/theta；本文 N >= N_floor = 1.06e4，即 i0 <= 9.5e-8，而 theta
+>= theta_dur150 = 1.14e-3，故该偏离 <= 8e-5。自检 [2] 逐条验证。
 
 本模块只依赖 numpy/scipy，自包含、可直接运行自检：
 
@@ -26,11 +36,17 @@ Q0 = 0.3230
 C0 = 12.8872
 
 N_CITY = 13_163_000.0
-# 第 7 节全市标定值（table/xian_initial_fit_table.tex 报 0.001007；
-# 与 c0_sensitivity 的 full_city_I0_reference 同源）。
-I0_CITY = 0.00100662823352
-I0 = I0_CITY / N_CITY          # = 7.6474e-11，全节唯一归一化初值
-S0 = 1.0 - I0
+# 第 7 节全市标定的绝对初值（table/xian_initial_fit_table.tex 报 0.001007；
+# 与 c0_sensitivity 的 full_city_I0_reference 同源）。全节固定此值，跨 N 不变。
+I0_ABS = 0.00100662823352
+
+
+def i0_of(N):
+    """给定池规模的归一化初值 i0 = I0_abs / N。"""
+    return I0_ABS / float(N)
+
+
+I0_REF = i0_of(N_CITY)         # = 7.6474e-11，全市处的 i0，用作参照线的代表值
 
 # --------------------------------------------------------------------------
 # TDINN 固定参照（该次疫情的已发生结局，不随 N_eff 重算）
@@ -54,33 +70,33 @@ B1 = C0 * (BETA + Q0 * (1.0 - BETA))          # ds/dt = -B1 * s * i
 B2 = BETA * C0 * (1.0 - Q0)                   # di/dt =  B2 * s * i - gamma * i
 S_C = GAMMA / B2                              # 背景临界易感分数
 S_BAR = GAMMA * (1.0 - BETA) / (BETA * C0)    # 平台段渐近线
-R_GROWTH = B2 * S0 - GAMMA                    # 初期指数增长率，约 1.011 /d
+R_GROWTH = B2 * (1.0 - I0_REF) - GAMMA        # 初期指数增长率，约 1.012 /d
 
 
-def i_of_s(s, i0=I0):
+def i_of_s(s, i0=I0_REF):
     """常规控制段的首次积分 i(s)。"""
     s0 = 1.0 - i0
     return i0 + (B2 / B1) * (s0 - s) + (GAMMA / B1) * np.log(s / s0)
 
 
-def i_max_no(i0=I0):
+def i_max_no(i0=I0_REF):
     """常规控制（无干预）峰值分数 i_max^no。"""
     return i_of_s(S_C, i0)
 
 
-def s_star(theta, i0=I0):
+def s_star(theta, i0=I0_REF):
     """首次触碰 i = theta 时的易感分数 s^*。"""
     s0 = 1.0 - i0
     return brentq(lambda s: i_of_s(s, i0) - theta, S_C * (1.0 + 1e-12), s0 * (1.0 - 1e-14),
                   xtol=1e-17, rtol=8.9e-16)
 
 
-def delta_t(theta, i0=I0):
+def delta_t(theta, i0=I0_REF):
     """平台控制时长（解析）。"""
     return (1.0 / (C0 * theta)) * np.log((s_star(theta, i0) - S_BAR) / (S_C - S_BAR))
 
 
-def cost_J(theta, w_q=2.0, i0=I0):
+def cost_J(theta, w_q=2.0, i0=I0_REF):
     """二次加权成本 J（S 域解析积分；情景一 c == c0 故 J_c = 0）。"""
     ss = s_star(theta, i0)
     integrand = lambda s: ((1.0 - GAMMA / (BETA * C0 * s) - Q0) / (1.0 - Q0)) ** 2 / (s - S_BAR)
@@ -112,8 +128,13 @@ def _rhs_plateau(t, y):
             BETA * C0 * q_c * s * theta]
 
 
-def solve(theta, N, i0=I0):
-    """求解情景一阈值控制的三段轨迹，返回结构量与广延量。"""
+def solve(theta, N, i0=None):
+    """求解情景一阈值控制的三段轨迹，返回结构量与广延量。
+
+    i0 默认由固定绝对初值导出：i0 = I0_abs / N（本节口径）。
+    """
+    if i0 is None:
+        i0 = i0_of(N)
     s0 = 1.0 - i0
 
     ev1 = lambda t, y: y[1] - theta
@@ -153,23 +174,23 @@ def solve(theta, N, i0=I0):
 # --------------------------------------------------------------------------
 # 边界求解
 # --------------------------------------------------------------------------
-def theta_cost(w_q=2.0, i0=I0):
+def theta_cost(w_q=2.0, i0=I0_REF):
     """等成本阈值：J(theta_cost) = J^T。"""
     return brentq(lambda th: cost_J(th, w_q, i0) - J_T, 1e-5, 0.05, xtol=1e-16, rtol=8.9e-16)
 
 
-def theta_dur(t_max, i0=I0):
+def theta_dur(t_max, i0=I0_REF):
     """等时长阈值：Delta t(theta_dur) = T_max。"""
     return brentq(lambda th: delta_t(th, i0) - t_max, 1e-5, 0.05, xtol=1e-16, rtol=8.9e-16)
 
 
-def theta_bind(t_max=np.inf, w_q=2.0, i0=I0):
+def theta_bind(t_max=np.inf, w_q=2.0, i0=I0_REF):
     """绑定阈值 max(theta_cost, theta_dur(T_max))；T_max=inf 时即 theta_cost。"""
     tc = theta_cost(w_q, i0)
     return tc if not np.isfinite(t_max) else max(tc, theta_dur(t_max, i0))
 
 
-def N_star(t_max=np.inf, w_q=2.0, i0=I0):
+def N_star(t_max=np.inf, w_q=2.0, i0=I0_REF):
     """临界有效人口 N*(T_max) = I_peak^T / theta_bind(T_max)。
 
     注意 theta_dur 随 T_max 递减，故 T_max 大于约 103 d 后成本约束绑定，
@@ -178,24 +199,25 @@ def N_star(t_max=np.inf, w_q=2.0, i0=I0):
     return IPEAK_T / theta_bind(t_max, w_q, i0)
 
 
-def N_clr(eta, i0=I0):
+# 弧线求根时 N 在变，i0 = I0_abs/N 必须随之变化——这是本口径与固定 i0 的关键差别。
+def N_clr(eta):
     """清零边界：t_end(eta/N, N) = t_end^T 的解 N。"""
-    lo = np.log10(eta / (i_max_no(i0) * 0.995))
-    return 10.0 ** brentq(lambda lg: solve(eta / 10 ** lg, 10 ** lg, i0)["t_end"] - TEND_T,
+    lo = np.log10(eta / (i_max_no(1e-9) * 0.99))
+    return 10.0 ** brentq(lambda lg: solve(eta / 10 ** lg, 10 ** lg)["t_end"] - TEND_T,
                           lo, 5.0, xtol=1e-12)
 
 
-def N_cum(eta, i0=I0):
+def N_cum(eta):
     """累计边界：N * h(eta/N, N) = Itcum^T 的解 N。"""
-    lo = max(3.0, np.log10(eta / (i_max_no(i0) * 0.995)))
-    return 10.0 ** brentq(lambda lg: solve(eta / 10 ** lg, 10 ** lg, i0)["Itcum"] - ITCUM_T,
+    lo = max(3.0, np.log10(eta / (i_max_no(1e-9) * 0.99)))
+    return 10.0 ** brentq(lambda lg: solve(eta / 10 ** lg, 10 ** lg)["Itcum"] - ITCUM_T,
                           lo, 5.5, xtol=1e-12)
 
 
-def N_cum_star(w_q=2.0, i0=I0):
+def N_cum_star(w_q=2.0):
     """累计弧与成本线的交点 N*_cum,inf。"""
-    th = theta_cost(w_q, i0)
-    return 10.0 ** brentq(lambda lg: solve(th, 10 ** lg, i0)["Itcum"] - ITCUM_T,
+    th = theta_cost(w_q)
+    return 10.0 ** brentq(lambda lg: solve(th, 10 ** lg)["Itcum"] - ITCUM_T,
                           3.5, 5.0, xtol=1e-13)
 
 
@@ -245,7 +267,8 @@ def beta_sweep(betas=(0.10, 0.12, 0.1498, 0.20, 0.25, 0.30), w_q=2.0):
 
 
 def _self_check():
-    print(f"i0 = {I0:.6e}   s_c = {S_C:.9f}   s_bar = {S_BAR:.9f}   r = {R_GROWTH:.4f} /d")
+    print(f"I0_abs = {I0_ABS:.6e} 人（跨 N 固定）   i0(N_city) = {I0_REF:.4e}")
+    print(f"s_c = {S_C:.9f}   s_bar = {S_BAR:.9f}   r = {R_GROWTH:.4f} /d")
     print(f"i_max^no = {i_max_no():.6f}")
     print(f"N_floor  = {N_FLOOR:.1f}   (旧下界 Itcum^T = {ITCUM_T:.2f}，偏松 {N_FLOOR/ITCUM_T:.2f} 倍)")
 
@@ -261,12 +284,24 @@ def _self_check():
     assert abs(r["t_end"] - 258.10) < 0.02, r["t_end"]
     assert abs(r["J"] - 40.7687) < 1e-3, r["J"]
 
-    print("\n[2] t1 与 dt 跨 N_eff 严格不变：")
-    for N in (5e4, 2e5, N_CITY):
-        r = solve(0.002, N)
-        print(f"    N={N:12,.0f}  t1={r['t1']:.6f}  dt={r['delta_t']:.6f}  t_end={r['t_end']:.3f}")
+    # 本口径下 i0 = I0_abs/N 随 N 变，故引理的假设不成立；但 Delta t、J、s* 只经
+    # (theta - i0) 进入，偏离量级为 i0/theta。下表验证该界。t1 随 N 变是预期行为
+    # （反事实与现实共享同一绝对播种，小池的 i0 更大、触发更早）。
+    print("\n[2] 引理覆盖量跨 N_eff 的偏离（应 <= i0/theta）：theta=0.002")
+    print(f"    {'N':>12} {'i0':>11} {'i0/theta':>10} {'t1':>8} {'dt':>11} {'J':>11} {'s*':>13}")
+    rows = [solve(0.002, N) for N in (1e4, 5e4, 2e5, 1e6, N_CITY)]
+    for N, r in zip((1e4, 5e4, 2e5, 1e6, N_CITY), rows):
+        i0 = i0_of(N)
+        print(f"    {N:12,.0f} {i0:11.3e} {i0/0.002:10.1e} {r['t1']:8.4f} "
+              f"{r['delta_t']:11.6f} {r['J']:11.6f} {r['s_star']:13.10f}")
+    for key, tol in (("delta_t", 1e-4), ("J", 1e-4), ("s_star", 1e-4)):
+        v = np.array([r[key] for r in rows])
+        spread = (v.max() - v.min()) / v.mean()
+        print(f"    {key:>8} 跨 N 相对极差 = {spread:.2e}")
+        assert spread < tol, (key, spread)
+    print(f"    t1 跨 N 跨度 = {max(r['t1'] for r in rows) - min(r['t1'] for r in rows):.2f} d（预期行为，非退化）")
 
-    print("\n[3] 直线族边界（口径统一后不应改变）：")
+    print("\n[3] 直线族边界（应与固定 i0 口径逐位相同）：")
     tc = theta_cost()
     print(f"    theta_cost   = {tc:.6e}")
     for T in (45.0, 60.0, 90.0, 150.0):
@@ -289,7 +324,10 @@ def _self_check():
     print(f"    {'eta':>8} {'N_clr':>10} {'N_cum':>10}")
     for eta in ETA_GRID:
         print(f"    {eta:8.2f} {N_clr(eta):10.1f} {N_cum(eta):10.1f}")
-    print(f"    清零弧全段最大值 {N_clr(IPEAK_T):.1f} < N_floor {N_FLOOR:.1f}  ->  清零占优区为空集")
+    mx = N_clr(IPEAK_T)
+    print(f"    清零弧全段最大值 {mx:.1f} < N_floor {N_FLOOR:.1f}（低 {N_FLOOR/mx:.2f} 倍）"
+          f"  ->  清零占优区为空集")
+    assert mx < N_FLOOR, (mx, N_FLOOR)
 
     print(f"\n[6] beta 稳健性（沿脊 beta*c0 = {RIDGE:.4f}）：")
     print(f"    {'beta':>6} {'c0':>8} {'theta_cost':>12} {'N*_inf':>11} {'N_floor':>10} {'N*/N_floor':>11}")

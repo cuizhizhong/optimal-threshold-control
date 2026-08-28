@@ -228,19 +228,18 @@ def run_threshold_case(
     return row
 
 
-# 论文 §8 全程采用固定归一化初值的单一口径（见 xian_dom/caliber.py）：
-# i0 = I0_city / N_city，跨 N_eff 不重新拟合。图 neff_time_metrics 由该口径生成。
-CITY_N, CITY_I0 = 13_163_000.0, 0.00100662823352
-FIXED_I0_FRACTION = CITY_I0 / CITY_N          # = 7.6474e-11
+# 论文 §8 全程采用固定**绝对**初值的单一口径（见 xian_dom/caliber.py）：
+# I0 = 1.0066e-3 人（第 7 节全市标定值），跨 N_eff 不重新拟合，故 i0 = I0/N 随 N 变。
+# 图 neff_time_metrics 由该口径生成。
+FIXED_I0_ABS = 0.00100662823352
 
 
 def fixed_initial_condition_for_N(params: tla.LandscapeParams) -> xcc.InitialFit:
-    """按固定归一化初值构造 InitialFit（不拟合）。"""
+    """按固定绝对初值构造 InitialFit（不拟合）。"""
 
-    I0 = FIXED_I0_FRACTION * params.N
-    return xcc.InitialFit(S0=params.N - I0, I0=I0, R0_initial=0.0,
+    return xcc.InitialFit(S0=params.N - FIXED_I0_ABS, I0=FIXED_I0_ABS, R0_initial=0.0,
                           objective=float("nan"), raw_rmse=float("nan"),
-                          residual_type="fixed_i0")
+                          residual_type="fixed_I0_abs")
 
 
 def build_summary(observed: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame]:

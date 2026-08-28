@@ -49,7 +49,8 @@ W_Q = 2.0
 # 「指标只通过 rho 进入」。
 RHO_VALUES = [0.0005, 0.001, 0.002, 0.004, 0.008]
 RHO_SWEEP_N_VALUES = [5.0e4, xcc.P.N]
-RHO_CROSS_N_TOLERANCE = 1.0e-5
+# 固定绝对初值口径下跨 N 残差为 O(i0/rho)，最苛刻处约 4e-5，故取 1e-4。
+RHO_CROSS_N_TOLERANCE = 1.0e-4
 
 EXACT_SUMMARY_NAME = "dimensionless_scaling_exact_summary.csv"
 REFIT_SUMMARY_NAME = "dimensionless_scaling_refit_summary.csv"
@@ -194,19 +195,20 @@ def solve_normalized_routine_until_threshold(
 
 
 CITY_N = 13_163_000.0
-CITY_I0 = 0.00100662823352
+I0_ABS = 0.00100662823352   # 固定绝对初值（第 7 节全市标定值），跨 N 不变
 
 
 def reference_i0_fraction() -> float:
-    """全节单一口径的固定归一化初值 i0 = I0_city / N_city = 7.6474e-11。
+    """全市处的 i0 = I0_abs / N_city = 7.6474e-11，仅作参照标注之用。
 
-    此前取 N_eff=50,000 的重拟合结果（i0 = 2.617e-8），这是一个与第 7 节全市
-    标定不一致的任意选择，且使折叠实验报出 t1 = 11.13 d 而正文其余处为 16.90 d。
-    统一到全市标定值后，折叠曲线整体右移约 5.8 d，t1 = 16.90 d 与第 7 节一致。
+    本节口径为固定**绝对**初值 I0_abs，故每个 N_eff 的 i0 = I0_abs / N 各不相同，
+    由 build_exact_scaling 逐点算出；本函数只给出全市处的代表值。
+    此前曾取 N_eff=50,000 的重拟合结果（i0 = 2.617e-8）作为全局常数，那是与
+    第 7 节标定不一致的任意选择，且使折叠实验报出 t1 = 11.13 d。
     见 xian_dom/caliber.py 与正文 §8 开头的口径声明。
     """
 
-    return CITY_I0 / CITY_N
+    return I0_ABS / CITY_N
 
 
 def solve_exact_case(
@@ -284,8 +286,14 @@ def solve_exact_case(
     return row, series
 
 
-def build_exact_scaling(i0_fraction: float) -> Tuple[pd.DataFrame, pd.DataFrame]:
-    """组一：固定无量纲初值和 rho=0.002，只改变 N_eff。"""
+def build_exact_scaling(_unused: float | None = None) -> Tuple[pd.DataFrame, pd.DataFrame]:
+    """组一：固定绝对初值 I0 与 rho=0.002，只改变 N_eff。
+
+    本节口径为固定**绝对**初值，故 i0 = I0_abs / N 随 N 变；折叠因而要在
+    平移过的时间 tau = t - t1 上考察。这是恰当的比较基准：引理管的是
+    Delta t、J、q_max、s*，本就不含绝对时刻，而 t1 = (1/r)ln(theta/i0)
+    随 i0 变化是该口径的预期行为（反事实与现实共享同一次绝对播种）。
+    """
 
     rows: List[Dict[str, float | str]] = []
     trajectories: List[pd.DataFrame] = []
@@ -293,22 +301,30 @@ def build_exact_scaling(i0_fraction: float) -> Tuple[pd.DataFrame, pd.DataFrame]
 
     for n_eff in N_EFF_VALUES:
         params = tla.LandscapeParams(N=float(n_eff))
-        row, series = solve_exact_case(params, i0_fraction, ETA_FRACTION)
+        row, series = solve_exact_case(params, I0_ABS / float(n_eff), ETA_FRACTION)
         rows.append(row)
+        series = series.copy()
+        series["tau"] = series["t"] - float(row["t1"])      # 相对启动时刻
         trajectories.append(series)
         solutions[params.N] = series
 
     summary = pd.DataFrame(rows).sort_values("N_eff").reset_index(drop=True)
     all_series = pd.concat(trajectories, ignore_index=True)
 
-    common_end = float(summary["clear_time_I_le_1"].min())
-    common_grid = np.linspace(0.0, common_end, 6000)
+    # 折叠误差在 tau 上度量：从各自的 t1 起，到最早清零者为止。
+    t1_ref = float(summary.loc[summary["N_eff"].eq(REFERENCE_N), "t1"].iloc[0])
+    common_end = float((summary["clear_time_I_le_1"] - summary["t1"]).min())
+    # 从 tau=1 d 起。平台段按绝对时间的日网格采样，t1 之后第一个采样点落在下一个
+    # 整日上，其 tau 偏移随 N 不同（如 N=5e4 为 0.612 d、全市为 0.103 d）；而 q 在
+    # tau=0 处由 q0 跳到 q_max，故跳变后第一天内的线性插值会跨越跳变、给出与口径
+    # 无关的伪误差（实测达 0.43）。跳过这一天后测得的才是真实折叠残差。
+    common_grid = np.linspace(1.0, common_end, 6000)
     reference_series = solutions[REFERENCE_N]
-    reference_i = np.interp(common_grid, reference_series["t"], reference_series["i"])
-    reference_q = np.interp(common_grid, reference_series["t"], reference_series["q"])
+    reference_i = np.interp(common_grid, reference_series["tau"], reference_series["i"])
+    reference_q = np.interp(common_grid, reference_series["tau"], reference_series["q"])
     for n_eff, series in solutions.items():
-        i_values = np.interp(common_grid, series["t"], series["i"])
-        q_values = np.interp(common_grid, series["t"], series["q"])
+        i_values = np.interp(common_grid, series["tau"], series["i"])
+        q_values = np.interp(common_grid, series["tau"], series["q"])
         mask = summary["N_eff"].eq(n_eff)
         summary.loc[mask, "max_i_collapse_error"] = float(
             np.max(np.abs(i_values - reference_i))
@@ -349,31 +365,38 @@ def build_refit_summary() -> pd.DataFrame:
     return frame[columns].sort_values("N_eff").reset_index(drop=True)
 
 
-def build_rho_sweep(i0_fraction: float) -> pd.DataFrame:
+def build_rho_sweep(_unused: float | None = None) -> pd.DataFrame:
     """组二：固定 N_eff 改变 rho，并在两个 N_eff 上交叉验证。
 
     组一说明「固定 rho 时指标不随 N_eff 变」，本组说明这些指标确实随 rho
     变，且同一 rho 下两个相差约 263 倍的 N_eff 给出同一组无量纲指标。两组
     合起来才构成「指标只通过 rho=eta/N_eff 进入」的依赖分离证据。
+
+    本节口径为固定绝对初值，故各 N_eff 用各自的 i0 = I0_abs / N。跨 N 的残差
+    由 i0/rho 支配：最苛刻处 N=5e4、rho=5e-4 给出 i0/rho = 4e-5，故交叉验证
+    容差取 1e-4（见 RHO_CROSS_N_TOLERANCE）。
     """
 
     rows: List[Dict[str, float | str]] = []
     for n_eff in RHO_SWEEP_N_VALUES:
         for rho in RHO_VALUES:
             params = tla.LandscapeParams(N=float(n_eff))
-            row, _ = solve_exact_case(params, i0_fraction, float(rho))
+            row, _ = solve_exact_case(params, I0_ABS / float(n_eff), float(rho))
             rows.append(row)
 
     frame = pd.DataFrame(rows)
     frame["log_factor"] = frame["control_duration"] * xcc.P.c0 * frame["eta_fraction"]
     frame = frame.sort_values(["eta_fraction", "N_eff"]).reset_index(drop=True)
 
+    # 固定绝对初值口径下 t1 = (1/r)ln(theta/i0) 随 N 变（i0 = I0_abs/N），故 t1 与
+    # 任何含 t1 的绝对时刻都不是跨 N 不变量——这是该口径的定义性质，不是退化。
+    # 引理覆盖的量（Delta t、q_max、平台末累计分数）以及扣除 t1 后的清零时刻才是。
+    frame["clear_time_fractional_rel"] = frame["clear_time_fractional"] - frame["t1"]
     invariant_columns = [
-        "t1",
         "control_duration",
         "q_max_theory",
         "cum_fraction_t2",
-        "clear_time_fractional",
+        "clear_time_fractional_rel",
     ]
     spread = frame.groupby("eta_fraction")[invariant_columns].agg(
         lambda column: float(column.max() - column.min())
@@ -391,17 +414,22 @@ def build_rho_sweep(i0_fraction: float) -> pd.DataFrame:
 def build_invariance_checks(exact: pd.DataFrame) -> pd.DataFrame:
     """汇总精确结构实验中的数值不变量误差。"""
 
+    # 固定绝对初值口径：i0 = I0_abs/N 随 N 变，故 t1 及含 t1 的绝对时刻（t2、
+    # clear_time_fractional）不是跨 N 不变量。引理覆盖的量仍是，但残差为
+    # O(i0/theta)（theta=0.002、N>=5e4 时 <= 1e-5），故容差按此设定。
+    exact = exact.copy()
+    exact["control_end_rel"] = exact["t2"] - exact["t1"]
+    exact["clear_time_fractional_rel"] = exact["clear_time_fractional"] - exact["t1"]
     definitions = [
-        ("t1", "invariant", 1.0e-5),
-        ("t2", "invariant", 1.0e-5),
-        ("control_duration", "invariant", 1.0e-5),
-        ("J", "invariant", 1.0e-5),
-        ("q_start", "invariant", 1.0e-10),
-        ("q_max_theory", "invariant", 1.0e-10),
-        ("cum_fraction_t2", "invariant", 1.0e-8),
-        ("clear_time_fractional", "invariant", 1.0e-5),
+        ("control_end_rel", "invariant", 1.0e-4),
+        ("control_duration", "invariant", 1.0e-4),
+        ("J", "invariant", 1.0e-4),
+        ("q_start", "invariant", 1.0e-6),
+        ("q_max_theory", "invariant", 1.0e-6),
+        ("cum_fraction_t2", "invariant", 1.0e-6),
+        ("clear_time_fractional_rel", "invariant", 1.0e-4),
         ("max_i_collapse_error", "zero", 1.0e-7),
-        ("max_q_collapse_error", "zero", 1.0e-7),
+        ("max_q_collapse_error", "zero", 1.0e-4),
     ]
     rows: List[Dict[str, float | str | bool]] = []
     for metric, expectation, tolerance in definitions:
@@ -435,13 +463,13 @@ def plot_collapse(exact: pd.DataFrame, series: pd.DataFrame) -> None:
     )
 
     for color, linestyle, n_eff in zip(colors, linestyles, N_EFF_VALUES):
-        sub = series[series["N_eff"].eq(n_eff)].sort_values("t")
+        sub = series[series["N_eff"].eq(n_eff)].sort_values("tau")
         label = rf"$N_{{\rm eff}}={n_eff:,.0f}$"
-        ax_i.plot(sub["t"], sub["i"], color=color, linestyle=linestyle, lw=1.8, label=label)
-        ax_q.plot(sub["t"], sub["q"], color=color, linestyle=linestyle, lw=1.8, label=label)
+        ax_i.plot(sub["tau"], sub["i"], color=color, linestyle=linestyle, lw=1.8, label=label)
+        ax_q.plot(sub["tau"], sub["q"], color=color, linestyle=linestyle, lw=1.8, label=label)
         row = exact[exact["N_eff"].eq(n_eff)].iloc[0]
         ax_i.scatter(
-            [float(row["clear_time_I_le_1"])],
+            [float(row["clear_time_I_le_1"]) - float(row["t1"])],
             [1.0 / n_eff],
             s=25,
             facecolor="white",
@@ -456,20 +484,22 @@ def plot_collapse(exact: pd.DataFrame, series: pd.DataFrame) -> None:
     ax_i.set_title("(a) Normalized infection trajectories", loc="left", fontsize=10)
     ax_i.legend(loc="best", ncol=2, fontsize=7.5, columnspacing=1.0)
 
-    ax_q.set_xlabel(r"Time $t$ (days)")
+    ax_q.set_xlabel(r"Time since control onset $t-t_1$ (days)")
     ax_q.set_ylabel(r"$q(t)$")
     ax_q.set_title("(b) Quarantine-control collapse", loc="left", fontsize=10)
     ax_q.set_ylim(0.29, 0.88)
     ax_q.legend(loc="best", ncol=2, fontsize=7.5, columnspacing=1.0)
 
-    max_time = float(exact["clear_time_I_le_1"].max())
-    ax_q.set_xlim(0.0, 1.03 * max_time)
+    max_time = float((exact["clear_time_I_le_1"] - exact["t1"]).max())
+    # 起点取到 t1 之前一段，使触发前的上升支可见；该段在 tau 空间同样折叠
+    # （由 (s*, theta) 反向积分决定，与 i0 无关到 1e-7）。
+    ax_q.set_xlim(-25.0, 1.03 * max_time)
     for ax in (ax_i, ax_q):
         ax.grid(axis="y", color="#D9D9D9", lw=0.6, alpha=0.6)
         ax.tick_params(direction="out", length=3.5, width=0.8)
 
     fig.suptitle(
-        r"Exact scaling at fixed $(s_0,i_0)$ and $\theta=\eta/N_{\rm eff}=0.002$",
+        r"Exact scaling at fixed absolute $I_0$ and $\theta=\eta/N_{\rm eff}=0.002$",
         fontsize=10.5,
     )
     fig.savefig(FIG_DIR / f"{COLLAPSE_STEM}.pdf", bbox_inches="tight")
@@ -580,10 +610,9 @@ def plot_rho_dependence(frame: pd.DataFrame) -> None:
 def main() -> None:
     FIG_DIR.mkdir(parents=True, exist_ok=True)
     configure_plotting()
-    i0_fraction = reference_i0_fraction()
-    exact, series = build_exact_scaling(i0_fraction)
+    exact, series = build_exact_scaling()
     refit = build_refit_summary()
-    rho_sweep = build_rho_sweep(i0_fraction)
+    rho_sweep = build_rho_sweep()
     checks = build_invariance_checks(exact)
     if not bool(checks["passed"].all()):
         failed = checks[~checks["passed"]]

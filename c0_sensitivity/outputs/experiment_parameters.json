@@ -11,33 +11,33 @@
   },
   "derived": {
     "eta": 40.0,
-    "I0_refit_at_N_eff": 1.5294814761376586e-06,
+    "I0_refit_at_N_eff": 0.00100662823352,
     "I0_refit_objective": NaN,
     "full_city_I0_reproduction": 0.0010065918664377905,
     "full_city_objective_reproduction": 1036.7614620981603,
-    "ridge_discriminant_residual": 2.5568945138249033e-08,
-    "c0_trigger": 3.3337303848809956,
-    "c0_inflection_onset": 3.5430938662561196,
-    "c0_duration_max": 6.606997923942586,
-    "duration_max": 103.18098229746988,
+    "ridge_discriminant_residual": 1.2315492028958097e-10,
+    "c0_trigger": 3.3337246320828537,
+    "c0_inflection_onset": 3.543089664693761,
+    "c0_duration_max": 6.6069943801824085,
+    "duration_max": 103.18101642319442,
     "q_inf": 0.4119030816278523
   },
   "representative_c0": [
     {
       "role": "near-trigger",
-      "c0": 3.4337422964274253
+      "c0": 3.4337363710453395
     },
     {
       "role": "near-inflection",
-      "c0": 3.4930938662561197
+      "c0": 3.4930896646937613
     },
     {
       "role": "post-inflection",
-      "c0": 3.5930938662561194
+      "c0": 3.593089664693761
     },
     {
       "role": "max-duration",
-      "c0": 6.606997923942586
+      "c0": 6.6069943801824085
     },
     {
       "role": "baseline",
