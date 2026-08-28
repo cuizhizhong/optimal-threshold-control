@@ -24,30 +24,38 @@ OUT = Path(__file__).resolve().parent / "dominance_panels"
 OUT.mkdir(parents=True, exist_ok=True)
 
 # ---------- fixed model quantities (solver-confirmed) ----------
-IPEAK, IMAX_NO = 151.90, 0.1047
-th_cost, th_d45, th_d150 = 1.656e-3, 3.762e-3, 1.137e-3
+IPEAK, IMAX_NO = 151.90363, 0.104653
+th_cost, th_d45, th_d150 = 1.656154e-3, 3.761624e-3, 1.137090e-3
 th_int = 5.612e-3
 Nstar_45 = IPEAK / th_d45          # strict caliber ~= 40377
 
 # ---------- arcs (embedded) ----------
-cum_eta = np.array([10, 11.99, 14.37, 17.23, 20.66, 24.77, 29.69, 35.60,
-                    42.67, 51.16, 61.33, 73.53, 88.15, 105.69, 126.70, 151.90])
-cum_N = np.array([12177, 12075, 11966, 11848, 11720, 11583, 11435, 11276,
-                  11104, 10918, 10719, 10504, 10273, 10025, 9758, 9471], float)
+# 由 caliber.py 在全节单一口径 (i0 = I0_city/N_city = 7.6474e-11) 上重新求根生成，
+# 见 caliber.N_cum / caliber.N_clr。累计弧与旧口径逐点相同（只经 theta 及弱 1/N 进入）；
+# 清零弧经 t1 对 i0 敏感，故整体左移。
+cum_eta = np.array([
+    10.0000, 11.9887, 14.3728, 17.2311, 20.6578, 24.7660, 29.6912, 35.5958,
+    42.6746, 51.1612, 61.3355, 73.5332, 88.1565, 105.6880, 126.7059, 151.9036
+], float)
+cum_N = np.array([
+    12176.6, 12075.0, 11965.5, 11847.5, 11720.3, 11583.1, 11435.1, 11275.5,
+    11103.5, 10918.2, 10718.7, 10503.9, 10273.0, 10024.6, 9757.8, 9471.0
+], float)
+clr_eta = cum_eta.copy()
 clr_N = np.array([
-    1125.00, 1135.00, 1150.00, 1170.00, 1200.00, 1250.00, 1300.00, 1350.00, 1400.00, 1450.00,
-    1500.00, 1539.00, 1692.00, 1860.00, 2045.00, 2096.76, 2249.00, 2472.00, 2718.00, 2988.00,
-    3285.00, 3611.00, 3970.00, 4365.00, 4799.00, 5276.00, 5800.00, 5914.28], float)
-clr_eta = np.array([
-    10.1121, 10.2567, 10.4757, 10.7710, 11.2218, 11.9921, 12.7852, 13.5995, 14.4342, 15.2883,
-    16.1612, 16.8546, 19.6776, 22.9581, 26.7787, 27.8858, 31.2378, 36.3967, 42.4289, 49.4513,
-    57.6533, 67.2339, 78.4689, 91.6684, 107.1742, 125.4387, 146.9905, 151.9000])
-# 有效池下界：真实疫情总累计感染 I^T_tcum=2096.76 人，有效混合池至少要装得下这些人，
-# 否则"累计不劣于 TDINN"只是池子容量所迫的算术必然，与控制优劣无关。
-# 该下界 (N=2096.76, eta*=27.8858, 求解器校验 clear=45.27 d) 比 I0=1 域墙 (N~1118) 更早绑定。
-N_FLOOR, ETA_FLOOR = 2096.76, 27.8858
-# top point (5827.5, IPEAK): clr contour meets the peak ceiling -> arc terminates
-# exactly on the peak line (solver: clear=45.000 there), same as cum arc top (9471, IPEAK)
+    519.16, 580.96, 649.82, 726.42, 811.44, 905.59, 1009.59, 1124.13,
+    1249.83, 1387.20, 1536.55, 1697.89, 1870.73, 2053.83, 2244.78, 2439.20
+], float)
+
+# 最小相容易感池 N_floor = I_cum^T + I_q,cum^T / beta = 605.40 + 1491.36/0.1498。
+# 由 dSq/dt = (1-beta)/beta * dIq_cum/dt（Sq 无回流）得该次疫情消耗的易感者总数，
+# 再由 S0 <= N 即得 N_eff >= N_floor。该恒等式与 N、c(t)、q(t) 及速率函数形式无关。
+# 旧下界只计感染者 (I^T_tcum = 2096.76)，偏松 5.04 倍。
+N_FLOOR = 10561.05
+N_FLOOR_OLD = 2096.76
+# 清零弧全段最大值 2439 < N_FLOOR，故清零占优区为空集，该弧全线虚线绘出。
+# 累计弧在 eta = 70.16 处穿过 N_FLOOR，在 (11762, 19.48) 处穿出楔形。
+ETA_CUM_FLOOR = 70.16
 
 
 def sort_unique(x, y):
@@ -143,7 +151,7 @@ A_pts = [("d45", 2e4, th_d45 * 2e4), ("cost", 2e4, th_cost * 2e4),
          ("d150", 2e4, th_d150 * 2e4)]
 B_pts = [("d45", 100 / th_d45, 100), ("cost", 100 / th_cost, 100),
          ("d150", 100 / th_d150, 100),
-         ("clr", 4601.9, 100),          # 直接求根值，与 Panel B 的 clear 角色一致
+         ("clr", 1997.0, 100),          # 直接求根值，与 Panel B 的 clear 角色一致
          ("cum", np.interp(100, cum_eta, cum_N), 100)]
 
 
@@ -160,14 +168,32 @@ def axfmt(ax, tag, ylabel=True):
     ax.tick_params(which="minor", length=2.2, width=0.65)
 
 
+C_FLOOR = "#3A3A3A"
+
+
+def draw_floor(ax, label=True):
+    """最小相容易感池下界：淡灰底 + 竖线。两个面板一致。
+
+    该下界是对未知 N_eff 的约束（式 eq:dom:Nfloor），对全节一律适用，
+    故直线族面板同样绘出，避免 (a) 暗示占优可延到任意小 N。
+    用淡灰实色而非斜纹：斜纹在 451 bp 宽度下会盖住骨架线与弧线。
+    """
+    ax.axvspan(XMIN, N_FLOOR, facecolor="#8A9099", alpha=0.13, lw=0, zorder=0.5)
+    ax.axvline(N_FLOOR, color=C_FLOOR, lw=1.35, zorder=5.6)
+    if label:
+        ax.text(N_FLOOR * 0.93, YMAX * 0.62, r"$N_{\rm floor}$", rotation=90,
+                ha="right", va="top", fontsize=7.2, color=C_FLOOR, zorder=11)
+
+
 # 目标: tight bbox 宽度 = 451.28 bp (= \textwidth, A4 减左右各 1 in)，
 # 使 \includegraphics[width=\textwidth] 缩放为 1.0×。改 figsize 后须用 pdfinfo 复量。
 fig, (axa, axb) = plt.subplots(1, 2, figsize=(6.288, 2.925), sharey=True,
                                constrained_layout=True)
 
 # ================= (a) straight-line family =================
+# 楔形只填到下界之右：N < N_floor 与观测不相容，不属于占优区
 axa.fill_between(Ng, th_cost * Ng, np.minimum(peak, IMAX_NO * Ng),
-                 where=np.minimum(peak, IMAX_NO * Ng) > th_cost * Ng,
+                 where=(np.minimum(peak, IMAX_NO * Ng) > th_cost * Ng) & (Ng >= N_FLOOR),
                  color=C_WEDGE_A, alpha=1.0, lw=0, zorder=1)
 axa.plot(Ng, IMAX_NO * Ng, color=C_TRIG, lw=LW_AUX, ls=":", alpha=0.85, zorder=3)
 axa.axhline(IPEAK, color=C_PEAK, lw=LW_PRIMARY, zorder=5)
@@ -175,6 +201,7 @@ axa.plot(Ng, th_cost * Ng, color=C_COST, lw=LW_PRIMARY, zorder=5)
 axa.plot(Ng, th_d45 * Ng, color=C_D45, lw=LW_SECONDARY, ls="--", zorder=4)
 axa.plot(Ng, th_d150 * Ng, color=C_D150, lw=LW_SECONDARY, ls="-.", zorder=4)
 # N* vertex marker removed -> reported in caption (N*_45 = IPEAK/th_d45 ~= 40377)
+draw_floor(axa, label=True)
 for r, x, y in A_pts:
     axa.scatter([x], [y], s=S_A, marker="o", fc=RC_COL[r], ec="white", lw=MK_LW, zorder=10)
 axfmt(axa, "(a)", ylabel=True)
@@ -182,30 +209,26 @@ lega = [Line2D([], [], color=C_PEAK, lw=LW_PRIMARY, label=r"peak $I_{\rm peak}^{
         Line2D([], [], color=C_COST, lw=LW_PRIMARY, label="cost"),
         Line2D([], [], color=C_D45, lw=LW_SECONDARY, ls="--", label="dur 45 d"),
         Line2D([], [], color=C_D150, lw=LW_SECONDARY, ls="-.", label="dur 150 d"),
-        Line2D([], [], color=C_TRIG, lw=LW_AUX, ls=":", label="trigger")]
+        Line2D([], [], color=C_TRIG, lw=LW_AUX, ls=":", label="trigger"),
+        Line2D([], [], color=C_FLOOR, lw=1.6, label=r"$N_{\rm floor}$")]
 axa.legend(handles=lega, loc="lower right", borderaxespad=0.45)
 
 # ================= (b) arc family =================
 eg = np.geomspace(YMIN, IPEAK, 600)
-xl = np.maximum(XMIN, eg / IMAX_NO)
+# 左边界由触发条件与最小相容易感池共同给出
+xl = np.maximum(np.maximum(XMIN, eg / IMAX_NO), N_FLOOR)
 cumN_i = np.interp(eg, cum_eta, cum_N, left=np.nan, right=np.nan)
-clrN_i = np.interp(eg, clr_eta, clr_N, left=np.nan, right=np.nan)
 xr_cum = np.minimum(eg / th_cost, cumN_i)
-xr_clr = np.minimum(eg / th_cost, clrN_i)
 valid_cum = np.isfinite(xr_cum) & (xr_cum > xl)
-valid_clr = np.isfinite(xr_clr) & (xr_clr > xl)
 # background W_pcd wedge (neutral, opaque)
 axb.fill_between(Ng, th_cost * Ng, np.minimum(peak, IMAX_NO * Ng),
-                 where=np.minimum(peak, IMAX_NO * Ng) > th_cost * Ng,
+                 where=(np.minimum(peak, IMAX_NO * Ng) > th_cost * Ng) & (Ng >= N_FLOOR),
                  color=C_WEDGE_B, alpha=1.0, lw=0, zorder=1)
-# clr inner region
-x_inner = np.where(valid_clr, np.minimum(xr_clr, np.where(valid_cum, xr_cum, xr_clr)), xl)
-axb.fill_betweenx(eg, xl, x_inner, where=valid_clr & (x_inner > xl),
-                  color=C_CLR_FILL, alpha=1.0, lw=0, zorder=3)
-# cumulative outer annulus (excludes clr)
-x_outer_left = np.maximum(xl, np.where(valid_clr, x_inner, xl))
-axb.fill_betweenx(eg, x_outer_left, xr_cum, where=valid_cum & (xr_cum > x_outer_left),
-                  color=C_CUM_FILL, alpha=1.0, lw=0, zorder=2)
+# 累计占优区：[N_FLOOR, min(eta/th_cost, N_cum)] 的窄条。它只有约 1.11 倍宽，
+# 在三个数量级的对数横轴上仅几个像素，故加深填充色并描边，否则读者会以为是空集。
+axb.fill_betweenx(eg, xl, xr_cum, where=valid_cum,
+                  color="#9FD4D1", alpha=1.0, lw=0, zorder=2.5)
+# 清零占优区为空集：清零弧全段 (max N = 2439) 位于 N_FLOOR 左侧，故不填充。
 # neutral-grey constraint skeleton (distinguished by linestyle)
 axb.plot(Ng, IMAX_NO * Ng, color=C_SKEL_LIGHT, lw=LW_AUX, ls=":", zorder=4)
 axb.axhline(IPEAK, color=C_SKEL, lw=LW_SKELETON + 0.05, alpha=0.75, zorder=4)
@@ -223,16 +246,16 @@ _d = np.interp(_egf, cum_eta, cum_N) - _egf / th_cost
 _k = np.where(np.diff(np.sign(_d)))[0]
 ec = float(_egf[_k[0]]) if len(_k) else cum_eta.min()
 Nc = ec / th_cost
-up = cum_es >= ec
-axb.plot(np.r_[Nc, cum_Ns[up]], np.r_[ec, cum_es[up]],
-         color=C_CUM, lw=LW_MAIN, zorder=7)                       # inside wedge (solid)
-axb.plot(np.r_[cum_Ns[~up], Nc], np.r_[cum_es[~up], ec],
-         color=C_CUM, lw=1.50, ls=(0, (4, 2)), alpha=0.5, zorder=6)  # out-of-wedge tail (faded dashed)
-_uc = clr_es >= ETA_FLOOR
-axb.plot(np.r_[N_FLOOR, clr_Ns[_uc]], np.r_[ETA_FLOOR, clr_es[_uc]],
-         color=C_CLR, lw=LW_MAIN, alpha=0.85, zorder=8)                  # 有效池内(实线)
-axb.plot(np.r_[clr_Ns[~_uc], N_FLOOR], np.r_[clr_es[~_uc], ETA_FLOOR],
-         color=C_CLR, lw=1.90, ls=(0, (4.5, 2.2)), alpha=0.85, zorder=7)  # N<I^T_tcum: 仍是边界,虚线示意
+# 先整条淡虚线画出（等值线继续存在），再把"确实构成 W_cum 边界"的一段覆以实线。
+# 有效段同时要求：在楔形内 (eta >= ec) 且不低于下界 (N >= N_FLOOR，即 eta <= ETA_CUM_FLOOR)
+axb.plot(cum_Ns, cum_es,
+         color=C_CUM, lw=1.50, ls=(0, (4, 2)), alpha=0.5, zorder=6)
+eff = (cum_es >= ec) & (cum_es <= ETA_CUM_FLOOR)
+axb.plot(cum_Ns[eff], cum_es[eff], color=C_CUM, lw=LW_MAIN, zorder=7)
+# 清零弧：全段位于 N_FLOOR 左侧（与观测不相容），故全线虚线，不再有实线段
+axb.plot(clr_Ns, clr_es,
+         color=C_CLR, lw=1.90, ls=(0, (4.5, 2.2)), alpha=0.85, zorder=7)
+draw_floor(axb, label=False)
 # N* vertical line removed -> the decomposition intersections (N*_45, N*_cost,
 # N_cum, N_clr, domain wall) are reported in the caption / main text instead
 # cross-figure sampling markers (circle = Panel A, square = Panel B)
@@ -244,8 +267,9 @@ for r, x, y in B_pts:
                 alpha=0.85 if r == "clr" else 1.0, zorder=9)
 axfmt(axb, "(b)", ylabel=False)
 legb = [Line2D([], [], color=C_CUM, lw=LW_MAIN, label="cumulative"),
-        Line2D([], [], color=C_CLR, lw=LW_MAIN, alpha=0.85,
-               label=r"clear $\leq$ 45.3 d"),
+        Line2D([], [], color=C_CLR, lw=1.90, ls=(0, (4.5, 2.2)), alpha=0.85,
+               label=r"clear $\leq$ 45.3 d (empty)"),
+        Line2D([], [], color=C_FLOOR, lw=1.6, label=r"$N_{\rm floor}$"),
         Line2D([], [], color=C_SKEL, lw=LW_SKELETON + 0.05, label="constraint skeleton")]
 axb.legend(handles=legb, loc="lower right", borderaxespad=0.45)
 

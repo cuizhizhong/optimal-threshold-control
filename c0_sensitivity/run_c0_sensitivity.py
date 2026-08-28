@@ -1408,8 +1408,13 @@ def main() -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     observed = pd.read_csv(OBSERVED_CSV, encoding="utf-8-sig")
 
-    I0, I0_objective = fit_initial_infection(P.N, observed)
+    # 论文 §8 全程采用固定归一化初值的单一口径：i0 = I0_city / N_city，
+    # 跨 N_eff 与跨 c0 均不重新拟合（见 xian_dom/caliber.py 与正文 §8 开头）。
+    # 此前本节在 N_eff=20,000 上单独拟合一次 I0，与全市标定不一致。
+    # 全市重拟合仍执行一次，仅用于复现性检查与 README 记录。
     full_city_fit, full_city_objective = fit_initial_infection(P.full_city_N, observed)
+    I0 = P.full_city_I0_reference / P.full_city_N * P.N
+    I0_objective = float("nan")
     boundaries = boundary_values(I0)
 
     # stale/bracket 双重保险：三边界须均大于各自 θ=1.656e-3 旧值，且严格有序。

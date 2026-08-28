@@ -228,23 +228,45 @@ def run_threshold_case(
     return row
 
 
+# 论文 §8 全程采用固定归一化初值的单一口径（见 xian_dom/caliber.py）：
+# i0 = I0_city / N_city，跨 N_eff 不重新拟合。图 neff_time_metrics 由该口径生成。
+CITY_N, CITY_I0 = 13_163_000.0, 0.00100662823352
+FIXED_I0_FRACTION = CITY_I0 / CITY_N          # = 7.6474e-11
+
+
+def fixed_initial_condition_for_N(params: tla.LandscapeParams) -> xcc.InitialFit:
+    """按固定归一化初值构造 InitialFit（不拟合）。"""
+
+    I0 = FIXED_I0_FRACTION * params.N
+    return xcc.InitialFit(S0=params.N - I0, I0=I0, R0_initial=0.0,
+                          objective=float("nan"), raw_rmse=float("nan"),
+                          residual_type="fixed_i0")
+
+
 def build_summary(observed: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame]:
+    """指标用固定归一化初值口径算；逐 N 重拟合结果仍写入 fit_rows 留档。
+
+    重拟合已不进入论文（原局限 (3) 的 rmse 退化表随口径统一而删除），但保留其
+    数值记录以便追溯该结论的来源。
+    """
+
     fit_rows: List[Dict[str, float | str]] = []
     rows: List[Dict[str, float | str]] = []
     for N_eff in N_EFF_VALUES:
         params = tla.LandscapeParams(N=float(N_eff))
-        fit = fit_initial_condition_for_N(observed, params)
+        refit = fit_initial_condition_for_N(observed, params)   # 仅留档
         fit_rows.append(
             {
                 "N_eff": params.N,
-                "I0_fit": fit.I0,
-                "I0_fraction": fit.I0 / params.N,
-                "S0_fit": fit.S0,
-                "fit_objective": fit.objective,
-                "fit_raw_rmse": fit.raw_rmse,
-                "residual_type": fit.residual_type,
+                "I0_fit": refit.I0,
+                "I0_fraction": refit.I0 / params.N,
+                "S0_fit": refit.S0,
+                "fit_objective": refit.objective,
+                "fit_raw_rmse": refit.raw_rmse,
+                "residual_type": refit.residual_type,
             }
         )
+        fit = fixed_initial_condition_for_N(params)
         for eta_name in ETA_SCENARIOS:
             rows.append(run_threshold_case(fit, params, eta_name))
     return pd.DataFrame(rows), pd.DataFrame(fit_rows)

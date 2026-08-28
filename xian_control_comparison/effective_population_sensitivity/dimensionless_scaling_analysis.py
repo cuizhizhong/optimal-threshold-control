@@ -193,12 +193,20 @@ def solve_normalized_routine_until_threshold(
     )
 
 
-def reference_i0_fraction() -> float:
-    """取 N_eff=50,000 的拟合结果作为固定无量纲初值。"""
+CITY_N = 13_163_000.0
+CITY_I0 = 0.00100662823352
 
-    fit_summary = pd.read_csv(HERE / "effective_population_fit_summary.csv")
-    reference = fit_summary[np.isclose(fit_summary["N_eff"], REFERENCE_N)].iloc[0]
-    return float(reference["I0_fit"]) / REFERENCE_N
+
+def reference_i0_fraction() -> float:
+    """全节单一口径的固定归一化初值 i0 = I0_city / N_city = 7.6474e-11。
+
+    此前取 N_eff=50,000 的重拟合结果（i0 = 2.617e-8），这是一个与第 7 节全市
+    标定不一致的任意选择，且使折叠实验报出 t1 = 11.13 d 而正文其余处为 16.90 d。
+    统一到全市标定值后，折叠曲线整体右移约 5.8 d，t1 = 16.90 d 与第 7 节一致。
+    见 xian_dom/caliber.py 与正文 §8 开头的口径声明。
+    """
+
+    return CITY_I0 / CITY_N
 
 
 def solve_exact_case(

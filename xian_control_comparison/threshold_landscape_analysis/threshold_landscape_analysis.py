@@ -165,6 +165,21 @@ def frame_from_arrays(
     )
 
 
+def solver_tolerances(y_start: np.ndarray) -> Tuple[float, float]:
+    """按初始感染者数定标的积分容差。
+
+    历史上这里固定用 atol=1e-4。在逐 N 重拟合 I0 的旧口径下 I0 约 1e-3--1e-1，
+    尚可接受；但本文改用固定归一化初值后 I0 = N*i0 可低至 1e-6（N=1e4 时
+    7.6e-7），此时 atol=1e-4 比初值本身还大两个量级，早期指数增长段被完全淹没，
+    表现为 t1 在本应严格不变的情形下随 N 漂移约 0.1 d。故把 atol 压到远低于 I0。
+    S 分量约 1e4--1e7，其精度由 rtol 控制，不受影响。
+    """
+
+    I0 = float(np.asarray(y_start).ravel()[1])
+    atol = 1.0e-4 if not np.isfinite(I0) or I0 <= 0.0 else min(1.0e-4, I0 * 1.0e-6)
+    return 1.0e-10, max(atol, 1.0e-30)
+
+
 def sample_dense_interval(
     t_start: float,
     t_end: float,
@@ -188,6 +203,7 @@ def solve_event_stage_param(
 ) -> Tuple[solve_ivp, float]:
     horizon_limit = params.dynamic_horizon_limit if horizon_limit is None else horizon_limit
     horizon = max(t_start + params.dynamic_horizon_initial, params.dynamic_horizon_initial)
+    _rtol, _atol = solver_tolerances(y_start)
     while horizon <= horizon_limit + 1.0e-9:
         sol = solve_ivp(
             rhs_with_controls(params, c_fun, q_fun),
@@ -195,8 +211,8 @@ def solve_event_stage_param(
             y_start,
             events=event_fun,
             dense_output=True,
-            rtol=1.0e-8,
-            atol=1.0e-4,
+            rtol=_rtol,
+            atol=_atol,
         )
         if not sol.success:
             raise RuntimeError(sol.message)
@@ -324,6 +340,49 @@ def compute_threshold_details(fit: xcc.InitialFit, eta: float, params: Landscape
         }
     )
     return details
+
+
+def analytic_control_costs(
+    details: Dict[str, float | str],
+    params: LandscapeParams,
+    eta: float,
+    w_c: float,
+    w_q: float,
+) -> Dict[str, float]:
+    """情景一阈值控制平台段成本的 S 域解析积分。
+
+    平台段 dS/dt = -(c0*eta/N)(S-Sbar) 给出 dt = -(N/(c0*eta)) dS/(S-Sbar)，
+    代入 q_c(S) = 1 - gamma*N/(beta*c0*S) 即得闭式，与主论文 §"成本函数" 的
+    J_q 表达式及 §"占优区域" 引理中的 J 表达式一致。
+
+    改用解析式的原因：compute_control_costs 在求解器输出网格上做梯形积分，
+    而 solve_threshold_fast 的平台段用 daily_grid（约 1 点/天）。q_c(t) 在 t1
+    处跳变、随后带曲率松弛，日网格梯形积分在 theta=0.002 上约有 1.3% 误差
+    （读数 40.25，解析值 40.7687）。TDINN/常规控制仍走数值路径：其 q(t) 是
+    光滑高斯，且不满足这里的平台段关系式。
+
+    情景一 c(t) ≡ c0，故 J_c ≡ 0。
+    """
+
+    nan_result = {"J_c": np.nan, "J_q": np.nan, "J": np.nan}
+    S_star = float(details.get("S_star", np.nan))
+    Sc = float(details.get("Sc", np.nan))
+    Sbar = float(details.get("Sbar", np.nan))
+    if not np.isfinite(S_star) or not np.isfinite(Sc) or not np.isfinite(Sbar):
+        return nan_result
+    if S_star <= Sc or Sc <= Sbar or eta <= 0.0:
+        return nan_result
+
+    def q_relative(S: float) -> float:
+        """归一化隔离加强强度 (q_c(S)-q0)/(1-q0)；在 [Sc, S_star] 上非负。"""
+
+        q_c = 1.0 - params.gamma * params.N / (params.beta * params.c0 * S)
+        return (q_c - params.q0) / (1.0 - params.q0)
+
+    prefactor = params.N / (params.c0 * eta)
+    linear, _ = quad(lambda S: q_relative(S) / (S - Sbar), Sc, S_star, limit=500)
+    square, _ = quad(lambda S: q_relative(S) ** 2 / (S - Sbar), Sc, S_star, limit=500)
+    return {"J_c": 0.0, "J_q": prefactor * linear, "J": w_q * prefactor * square}
 
 
 def interpolate_row(df: pd.DataFrame, t_value: float) -> np.ndarray:
@@ -646,6 +705,12 @@ def summarize_threshold(
     cum_community = xcc.interpolate_series(df["t"].to_numpy(), df["Cc"].to_numpy(), outcome_end)
     cum_quarantine = xcc.interpolate_series(df["t"].to_numpy(), df["Cq"].to_numpy(), outcome_end)
     costs = compute_control_costs(df, params, float(base["t1"]), float(base["t2"]), w_c, w_q)
+    # J_c/J_q/J 改取 S 域解析值（见 analytic_control_costs）；raw_c_cost/raw_q_cost
+    # 仍为数值积分结果，保留用于追溯。
+    if str(details.get("status", "")) == "ok":
+        analytic = analytic_control_costs(details, params, eta, w_c, w_q)
+        if all(np.isfinite(analytic[key]) for key in ("J_c", "J_q", "J")):
+            costs = {**costs, **analytic}
     q_mean = np.nan
     if np.isfinite(float(base["t1"])) and np.isfinite(float(base["t2"])) and float(base["t2"]) > float(base["t1"]):
         q_mean = xcc.integrate_interval(df["t"].to_numpy(), df["q"].to_numpy(), float(base["t1"]), float(base["t2"])) / (
