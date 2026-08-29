@@ -28,16 +28,16 @@
       "c0": 3.4337363710453395
     },
     {
-      "role": "near-inflection",
-      "c0": 3.4930896646937613
-    },
-    {
       "role": "post-inflection",
       "c0": 3.593089664693761
     },
     {
       "role": "max-duration",
       "c0": 6.6069943801824085
+    },
+    {
+      "role": "post-ridge",
+      "c0": 9.0
     },
     {
       "role": "baseline",

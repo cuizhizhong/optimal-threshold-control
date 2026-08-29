@@ -96,9 +96,9 @@ P = Parameters()
 # 与图 19--21 的顺序蓝保持一致；这里按 c0 从低到高逐渐加深。
 C0_COLORS = {
     "near-trigger": "#b6d9e9",
-    "near-inflection": "#93c7df",
-    "post-inflection": "#6fb4d6",
-    "max-duration": "#2779b6",
+    "post-inflection": "#93c7df",
+    "max-duration": "#6fb4d6",
+    "post-ridge": "#2779b6",
     "baseline": "#08458a",
 }
 # 代表 c0 的图例标签按重算后的实际值动态生成，避免残留旧阈值下的硬编码数值。
@@ -114,9 +114,9 @@ def c0_label(role: str, c0: float) -> str:
     return rf"$c_0={value}$" + C0_ROLE_ANNOTATIONS.get(role, "")
 C0_LINEWIDTHS = {
     "near-trigger": 1.6,
-    "near-inflection": 1.6,
     "post-inflection": 1.6,
     "max-duration": 1.6,
+    "post-ridge": 1.6,
     "baseline": 1.8,
 }
 
@@ -1091,20 +1091,23 @@ def select_representatives(
     dur = boundaries["c0_duration_max"]
 
     def build(lo: float, hi: float) -> tuple[list[tuple[str, float]], list[Scenario]]:
+        # "near-inflection"（c0=lo）不再作为最终代表点，但仍参与下面 checks_pass 的
+        # min/max 判定，以保留原有的两段式回退逻辑（相对间距失效则退回绝对间距 ±0.05）。
         reps = [
             ("near-trigger", trig * 1.03),
             ("near-inflection", lo),
             ("post-inflection", hi),
             ("max-duration", dur),
+            ("post-ridge", 9.0),
             ("baseline", 12.8872),
         ]
         return reps, [sample_scenario(c0, role, I0) for role, c0 in reps]
 
     def checks_pass(scenarios: list[Scenario]) -> bool:
         m = {s.metrics.role: s.metrics for s in scenarios}
-        # (1) 两点分居拐点边界两侧。
+        # (1) 两点分居拐点边界两侧：near-trigger 全程凸、post-inflection 有拐点。
         straddle = (
-            not m["near-inflection"].has_internal_inflection
+            not m["near-trigger"].has_internal_inflection
             and m["post-inflection"].has_internal_inflection
         )
         # (2) near-trigger 最近临界：c0 最低且 t1 最高（陡升）。边界过近时 ×0.95 会把
@@ -1118,9 +1121,12 @@ def select_representatives(
         representatives, scenarios = build(inf - 0.05, inf + 0.05)
 
     assert checks_pass(scenarios), (
-        "代表点自检未通过：需 near-inflection 全程凸、post-inflection 有拐点，"
+        "代表点自检未通过：需 near-trigger 全程凸、post-inflection 有拐点，"
         "且 near-trigger 为最低 c0、t1 最高"
     )
+    # near-inflection 仅用于上面的回退判定，最终不作为代表点返回。
+    representatives = [(role, c0) for role, c0 in representatives if role != "near-inflection"]
+    scenarios = [s for s in scenarios if s.metrics.role != "near-inflection"]
     return representatives, scenarios
 
 
@@ -1343,9 +1349,9 @@ def write_readme(
 
     # 直接读图结论里的代表 c0 一律按重算后的实际值动态生成，避免残留旧阈值下的硬编码。
     reps = {s.metrics.role: s.metrics for s in scenarios}
-    near_trio = "、".join(
+    near_pair = "、".join(
         f"{reps[r].c0:.2f}"
-        for r in ("near-trigger", "near-inflection", "post-inflection")
+        for r in ("near-trigger", "post-inflection")
     )
     ordered = [s.metrics for s in scenarios]
     convex_c0 = "、".join(f"{m.c0:.2f}" for m in ordered if not m.has_internal_inflection)
@@ -1383,8 +1389,8 @@ def write_readme(
 ## 直接读图结论
 
 1. c0 增大时，阈值平台高度始终等于 eta，变化的是到达平台的速度、平台长度和所需隔离强度。
-2. t1 严格提前，q_max 严格增大；c0={near_trio}
-   加密展示了触发边界到控制时长极大点之间的近临界过渡。
+2. t1 严格提前，q_max 严格增大；c0={near_pair}
+   分居拐点出现边界两侧，展示触发边界到控制时长极大点之间的近临界过渡。
 3. Delta t 在整个可行域上不是单调量：从触发边界的 0 上升，在 c0≈{boundaries['c0_duration_max']:.2f} 达到约 {boundaries['duration_max']:.2f} 天，
    随后随 c0 增大而下降；基准情景展示这一回落阶段。
 4. c0={convex_c0} 虽能触发阈值控制，但 q_max<q_inf，因此 q_c(t) 全程凸、无内部拐点。
