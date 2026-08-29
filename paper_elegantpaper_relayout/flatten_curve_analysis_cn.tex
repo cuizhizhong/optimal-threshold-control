@@ -588,9 +588,11 @@ $\lambda\to1$ 表示靠近 $t_2$ 端。
 这不表示绝对时刻 $t_{\mathrm{inf}}$ 具有相同的变化方向；
 第~\ref{sec:num}节参数下 $\lambda=0.458$。
 
-$\lambda$ 描述隔离强度减弱的特点. $q_c(t)$ 从 $q_{\max}$ 到 $q_0$ 近乎直线（其偏离首尾连线的幅度由第~\ref{sec:s1:inflection-curvature}小节的曲率上界~\eqref{eq:s1:qcpp-bound} 封顶），拐点是这条近直线朝哪一端轻微鼓出的位置，也是释放速率 $\lvert q_c'\rvert$ 最大的时刻。$\lambda\to1$ 时曲线偏向 $t_2$ 端（``后重型''：$q_c$ 在窗口大部分时间略高于线性时程，回落集中在末段），$\lambda\to0$ 时偏向 $t_1$ 端（``前重型''：回落集中在前段，随后略低于线性时程贴近 $q_0$）。由下文命题~\ref{prop:s1:lambda-sensitivity}，传染性增强（$\beta,c_0\uparrow$）使释放后重（$\lambda\uparrow$），医疗容量增大（$\eta\uparrow$）使其前重（$\lambda\downarrow$），基线隔离率 $q_0$ 的作用一般不单调。两点需强调：其一，$\lambda$ 是控制期内的归一化占比，绝对的控制快慢与代价由控制时长 $\Delta t$、清零时间 $t_{\mathrm{end}}$ 与成本 $J$ 承担，二者可脱钩（沿 $c_0$ 有 $\lambda_{c_0}>0$ 单调，而 $\Delta t_{c_0}$ 由推论~\ref{cor:s1:duration-sensitivity} 的 $\Theta$ 判据定、符号不定）；其二，$\lambda$ 同时被传染性（$\beta,c_0$）、医疗容量（$\eta$）与基线管控强度（$q_0$）三类输入牵动，后两者并非疾病严重程度，故 $\lambda$ 刻画的是释放节奏的偏向，而非疫情是否严重。
+$\lambda$ 描述隔离强度减弱的特点. $q_c(t)$ 从 $q_{\max}$ 到 $q_0$ 近乎直线（其偏离首尾连线的幅度由第~\ref{sec:s1:inflection-curvature}小节的曲率上界~\eqref{eq:s1:qcpp-bound} 封顶），拐点是这条近直线朝哪一端轻微鼓出的位置，也是释放速率 $\lvert q_c'\rvert$ 最大的时刻。$\lambda\to1$ 时曲线偏向 $t_2$ 端（``后重型''：$q_c$ 在窗口大部分时间略高于线性时程，回落集中在末段），$\lambda\to0$ 时偏向 $t_1$ 端（``前重型''：回落集中在前段，随后略低于线性时程贴近 $q_0$）。
 
-\begin{lemma}[启动点的四参数敏感性]
+由下文命题~\ref{prop:s1:lambda-sensitivity}，传染性增强（$\beta,c_0\uparrow$）使释放后重（$\lambda\uparrow$），医疗容量增大（$\eta\uparrow$）使其前重（$\lambda\downarrow$），基线隔离率 $q_0$ 的作用一般不单调。两点需强调：其一，$\lambda$ 是控制期内的归一化占比，绝对的控制快慢与代价由控制时长 $\Delta t$、清零时间 $t_{\mathrm{end}}$ 与成本 $J$ 承担，二者可脱钩（沿 $c_0$ 有 $\lambda_{c_0}>0$ 单调，而 $\Delta t_{c_0}$ 由推论~\ref{cor:s1:duration-sensitivity} 的 $\Theta$ 判据定、符号不定）；其二，$\lambda$ 同时被传染性（$\beta,c_0$）、医疗容量（$\eta$）与基线管控强度（$q_0$）三类输入牵动，后两者并非疾病严重程度，故 $\lambda$ 刻画的是释放节奏的偏向，而非疫情是否严重。
+
+\begin{lemma}[$S^*$的参数敏感性]
 \label{lem:s1:Sstar-sensitivity}
 当\(S_0>S_c,I_0<\eta<I_{\max}^{no}\)时,固定其余参数，
 启动点 $S^*$ 满足
@@ -894,7 +896,7 @@ B_{q_0}
 $\eta=N\theta$ 给出 $\lambda_\theta=N\lambda_\eta<0$。
 \end{proof}
 
-\begin{corollaryn}[控制时长的参数方向]
+\begin{corollaryn}[控制时长的参数敏感性]
 \label{cor:s1:duration-sensitivity}
 当\(S_0>S_c,I_0<\eta<I_{\max}^{no}\),固定其余参数有:
 \[
@@ -1504,7 +1506,7 @@ J
 \right]dt.
 \label{eq:cost:J}
 \end{equation}
-该泛函的被积函数为归一化控制强度，\textbf{不含人口规模 $N$}；故不同规模控制单元上的 $J$ 读数处于同一量纲，可直接比较。这一点在第~\ref{sec:dominance}~节比较不同 $N_{\rm eff}$ 上的成本时要用到。
+该泛函的被积函数为归一化控制强度，不含人口规模 $N$；这一点在第~\ref{sec:dominance}~节比较不同 $N_{\rm eff}$ 上的成本时要用到。
 
 这里隔离率提高项前的系数取为 2，用来表示隔离控制相对于接触率控制的较高边际成本。
 在情景一中 $c(t)\equiv c_0$，因此 $J_c=0$；后续数值表和主图只保留综合成本 $J$，
@@ -2094,7 +2096,7 @@ $N^\ast$（命题~\ref{prop:dom:region}）。二者的交集 $[N_{\rm floor},N^\
 $S_c,\bar S,I_{\max}^{no}$ 均随 $N$ 同比例缩放，故 $i_{\max}^{no}$ 不依赖 $N$，
 只依赖 $\beta,\gamma,c_0,q_0,s_0,i_0$。本节记归一化状态 $s=S/N$、$i=I/N$。
 
-\paragraph{初值设定。}
+初值的取法需要先交代清楚，因为它是本节唯一随 $N_{\rm eff}$ 变化的输入。
 本节全程取固定的绝对初值 $I_0=1.00663\times10^{-3}$（第~\ref{sec:xian}~节的全市标定值），
 跨 $N_{\rm eff}$ 不重新拟合，故 $i_0=I_0/N$ 随 $N$ 变化。这样取值的理由是：初始感染人数是该次
 疫情本身的属性，与所假设的混合池大小无关——$N_{\rm eff}$ 变化时改变的应当是参与混合的易感人群
@@ -2113,12 +2115,12 @@ $(\theta-i_0)$ 的形式进入首次触碰方程（$i_0$ 另经 $s_0=1-i_0$ 带�
 数字内不可见。真正随 $N$ 变的只有启动时间 $t_1\approx\frac{1}{r}\ln\frac{\theta}{i_0}$：
 池越小，同一批初始病例占的比例越大，越早触及阈值。这是该设定的定义性质而非退化。
 
-\paragraph{TDINN 比较基准。}
-TDINN 曲线是对西安已发生疫情过程及其干预强度的模型拟合与重构：其时间函数
+比较的另一端是 TDINN 控制。它是对西安已发生疫情过程及其干预强度的模型拟合与重构：其时间函数
 $c_{\rm TDINN}(t),q_{\rm TDINN}(t)$ 与初值 $I_0$ 在西安全市人口下由同一份真实日报数据校准，
-由拟合与重构轨迹算得表~\ref{tab:dom:tdinn} 的四个参照量。本文直接使用的观测量是每日新增社区
-病例与隔离病例（第~\ref{sec:xian}~节），表中四个量是基于 TDINN 拟合与重构结果的模型参照量，
-而不是四个直接观测量。
+由拟合与重构轨迹算得表~\ref{tab:dom:tdinn} 的四个参照量。前三项是对已发生疫情的重构，其值由每日新增社区与隔离病例
+数据锁定；$J^{\rm T}$ 由拟合得到的 $c_{\rm TDINN}(t),q_{\rm TDINN}(t)$ 按 $w_c=1,w_q=2$
+积分而来，由式~\eqref{eq:cost:J} 该泛函的被积函数为归一化控制强度、不含人口规模，
+故四者与所假设的 $N_{\rm eff}$ 无关。
 
 本节把这四个数作为已发生疫情的固定经验参照，不随 $N_{\rm eff}$ 作反事实重算；相对地，
 情景一阈值控制与常规控制是反事实策略，在各自 $N_{\rm eff}$ 上求解。因此本节回答的正是节首所述的
@@ -2127,11 +2129,7 @@ $c_{\rm TDINN}(t),q_{\rm TDINN}(t)$ 与初值 $I_0$ 在西安全市人口下由�
 \begin{table}[htbp]
   \centering
   \footnotesize
-  \caption{TDINN 比较基准：西安全市尺度下的四个参照量，作为已发生疫情的固定经验参照，
-  不随 $N_{\rm eff}$ 重算。前三项是对已发生疫情的重构，其值由每日新增社区与隔离病例这同一份
-  数据锁定；$J^{\rm T}$ 由拟合得到的 $c_{\rm TDINN}(t),q_{\rm TDINN}(t)$ 按 $w_c=1,w_q=2$
-  积分而来，由式~\eqref{eq:cost:J} 该泛函的被积函数为归一化控制强度、不含人口规模，
-  故四者与所假设的 $N_{\rm eff}$ 无关。}
+  \caption{TDINN 比较基准：西安全市尺度下的四个参照量.}
   \label{tab:dom:tdinn}
   \begin{tabular}{lll}
     \toprule
@@ -2192,13 +2190,13 @@ $q_{\max}=1-\frac{\gamma N}{\beta c_0 S^\ast}=1-\frac{\gamma}{\beta c_0\,s^*}$�
 其中 $q_c(N s)=1-\gamma/(\beta c_0 s)$ 不含 $N$。四者右端均只含 $\theta$。
 \end{proof}
 
-引理的证明不使用 $S_0\approx N$，只需初值以归一化形式固定。本节实际采用的是固定绝对初值，
+本节实际采用的是固定绝对初值，
 其 $i_0=I_0/N$ 随 $N$ 变，故该假设不严格成立；但按第~\ref{sec:dom:setup}~小节的估计，
 偏离量级为 $i_0/\theta\le8\times10^{-5}$，实测跨 $N$ 的相对极差 $\lesssim6\times10^{-7}$，
 故引理的结论在本节范围内以该精度成立。
 
-\paragraph{两条同向杠杆。}
-由引理~\ref{lem:dom:scaling}，提高医疗容量阈值 $\eta$ 与降低有效混合人口 $N$ 都通过增大 $\theta$
+引理~\ref{lem:dom:scaling} 的一个直接推论是，提高医疗容量阈值 $\eta$ 与降低有效混合人口 $N$
+都通过增大 $\theta$
 起作用，对平台时长、成本与最大隔离率而言方向一致。但二者对完整的占优条件并不等价：提高 $\eta$
 会同时抬高平台的绝对峰值、逼近固定上界 $I_{\rm peak}^{\rm T}$，降低 $N$ 则不改变给定平台的绝对
 高度 $\eta$；此外总累计感染与清零时刻还带有绝对规模依赖。故下文只把二者称为作用于这些指标的
@@ -2308,7 +2306,7 @@ $s\in(s_c,s_0]$ 成立，
 
 未知的 $N_{\rm eff}$ 有一个可由观测直接反推的下界，且该下界与所采取的控制策略无关。
 
-\begin{proposition}[与观测相容的有效人口下界]\label{prop:dom:floor}
+\begin{proposition}[有效人口下界]\label{prop:dom:floor}
 记 $I_{\rm cum}^{\rm T},I_{q_{\rm cum}}^{\rm T}$ 为该次疫情的累计社区感染与累计隔离感染，则
 \begin{equation}
   N_{\rm eff}\ \ge\ N_{\rm floor}
@@ -2507,8 +2505,7 @@ $\eta\le I_{\rm peak}^{\rm T}$ 给出一条水平线，故完整的占优条件�
 $\beta,\gamma,\delta_q$ 与 TDINN 控制函数，把人口规模解释为有效混合人口 $N_{\rm eff}$，
 在两组实验下考察阈值控制指标随 $(N_{\rm eff},\eta)$ 的变化。
 
-\paragraph{同比例阈值（固定 $\theta$）。}
-固定绝对初值 $I_0$ 与 $\theta=\eta/N_{\rm eff}=0.002$，令
+第一组实验取同比例阈值，即固定绝对初值 $I_0$ 与 $\theta=\eta/N_{\rm eff}=0.002$，令
 $N_{\rm eff}\in\{5\times10^4,\dots,1.316\times10^7\}$。六个规模下 $\Delta t\approx85.07$、
 隔离率轨迹 $q_c(t)$ 与平台结束时的累计感染比例完全重合，与引理~\ref{lem:dom:scaling} 一致：
 $\Delta t$ 跨 $N_{\rm eff}$ 的相对极差为 $2.4\times10^{-7}$。由于本节固定的是绝对初值，
@@ -2518,8 +2515,7 @@ $11.39$ 天升到全市的 $16.90$ 天。曲线的重合须相应地在平移时
 本就不含绝对时刻。在 $t-t_1$ 上的重合误差：$i$ 约 $3\times10^{-10}$，$q$ 约 $9\times10^{-6}$
 （后者受轨迹按日采样的线性插值限制，非初值设定所致）。
 
-\paragraph{固定绝对阈值（改变 $\theta$）。}
-固定 $\eta=100$，把 $N_{\rm eff}$ 从 $1.316\times10^7$ 降到 $5\times10^{4}$，
+第二组实验反过来固定绝对阈值 $\eta=100$，把 $N_{\rm eff}$ 从 $1.316\times10^7$ 降到 $5\times10^{4}$，
 则 $\theta=\eta/N_{\rm eff}$ 增大，平台控制时长由 $\Delta t\approx2.25\times10^4$ 天缩短到约
 $85$ 天（图~\ref{fig:neff_time}）。这是降低 $N_{\rm eff}$ 通过增大 $\theta$ 缩短平台期的数值体现，
 与提高 $\eta$ 同向。
@@ -2550,7 +2546,7 @@ $O(i_0/\theta)\lesssim8\times10^{-5}$）。具体地，
     \label{fig:neff_time}
 \end{figure}
 
-\paragraph{拐点高度的不变性。}
+在同一组实验上还可以检验拐点高度的不变性。
 第~\ref{sec:s1}~节给出的平台期隔离率拐点高度 $\qinf=1-\frac{1}{2(1-\beta)}$ 只依赖传播概率
 $\beta$。在上述实验上用均匀采样 $q_c(t)$ 的二阶差分独立定位拐点：固定 $\beta=0.1498$ 时，
 $\eta\in\{80,100,150\}$ 与 $N_{\rm eff}\in\{4,5,6\}\times10^4$ 六个校验点的数值拐点高度均为
@@ -2604,8 +2600,8 @@ $T_{\max}\in\{45,60,90,150,\infty\}\,\mathrm d$ 全部成立。又由 $\theta_{\
   \end{tabular}
 \end{table}
 
-\paragraph{占优区域图的构造。}
-在 $(N,\eta)$ 双对数平面上，命题~\ref{prop:dom:region} 的每条约束都是直线：峰值约束为水平线，
+这些阈值在 $(N,\eta)$ 平面上画出的正是占优区域的边界。取双对数坐标，
+命题~\ref{prop:dom:region} 的每条约束都是直线：峰值约束为水平线，
 其余为过原点射线（双对数下斜率 $1$）。
 \begin{align}
   \text{峰值线：}\ &
@@ -2669,7 +2665,7 @@ $\mathcal{W}_{\rm clr}\subset\mathcal{W}_{\rm cum}\subset\mathcal{W}_{\rm pcd}$�
   \label{fig:dom}
 \end{figure}
 
-\paragraph{主结论：使阈值控制不劣的有效人口区间。}
+由此可以读出本节的主结论，即使阈值控制不劣的有效人口区间。
 只取命题~\ref{prop:dom:region} 的 (i)(ii) 两项——峰值不超过实际干预所达到的
 $I_{\rm peak}^{\rm T}$、成本不超过 $J^{\rm T}$——即 $\theta_{\rm cost}N\le\eta\le I_{\rm peak}^{\rm T}$，
 与下界~\eqref{eq:dom:Nfloor} 取交得
@@ -2692,7 +2688,7 @@ $\theta_{\rm dur}=\theta_{\rm cost}$，即“主结论的时长代价”与“�
 方向扫描时，区间两端同步平移而比值 $N^\ast_\infty/N_{\rm floor}$ 的极差只有 $0.22\%$，
 即 $\beta$ 只决定区间的位置（附录~\ref{app:dom:numerics}）。
 
-\paragraph{两条弧线边界与区间的收窄。}
+以上只用了峰值与成本两项。再纳入总累计与清零两项附加约束，区间还会进一步收窄。
 推论~\ref{cor:cum} 与推论~\ref{cor:clr} 的两条边界由求解器逐点求根得到，均为微弯弧线而非竖直线，
 其端点与逐点取值见附录~\ref{app:dom:numerics}。就结论而言：
 
@@ -2707,9 +2703,8 @@ $N\in[1.06\times10^{4},\,1.18\times10^{4}]$——一条宽度不足 $1.12$ 倍�
 故在本文设定下清零占优区为空集——不存在同时满足 $N\ge N_{\rm floor}$ 与
 $t_{\rm end}\le t_{\rm end}^{\rm T}$ 的有效人口。
 
-\paragraph{两条杠杆的轨迹。}
-图~\ref{fig:panel_eta_lever} 与图~\ref{fig:panel_N_lever} 分别沿 $\eta$ 与 $N_{\rm eff}$
-两个方向展示同一条 $\theta$ 轴。
+以上是边界的位置。这些边界上的轨迹本身长什么样，则由图~\ref{fig:panel_eta_lever} 与
+图~\ref{fig:panel_N_lever} 给出，二者分别沿 $\eta$ 与 $N_{\rm eff}$ 两个方向展示同一条 $\theta$ 轴。
 
 图~\ref{fig:panel_eta_lever} 固定 $N_{\rm eff}=2\times10^{4}$，沿三条边界参照线取阈值。
 三条平台各自贴合其 $\eta$；因 $N_{\rm eff}<N^\ast(45\,\mathrm d)$，三者全部落在
@@ -2775,8 +2770,7 @@ $2093$ 与 $6970$，图~\ref{fig:panel_N_lever} 带内最大成员 $N_{\rm eff}=
   \label{fig:panel_N_lever}
 \end{figure}
 
-\paragraph{一个位置核对。}
-取 $N=5\times10^{4}$、$\eta=100$（即 $\theta=0.002$），在 $T_{\max}=150$ d 下该点落在
+最后作一个位置核对。取 $N=5\times10^{4}$、$\eta=100$（即 $\theta=0.002$），在 $T_{\max}=150$ d 下该点落在
 命题~\ref{prop:dom:region} 的占优带内：峰值 $100<151.90$、$J=40.77<49.35$、
 $\Delta t=85.07$ 天；但其到清零的总累计 $Nh\approx9.03\times10^{3}>\Itcum^{\rm T}$，
 清零 $t_{\rm end}\approx176$ d $>45.27$ d，(iv)(v) 均不满足，与推论~\ref{cor:cum}、\ref{cor:clr}
@@ -2816,8 +2810,8 @@ $\theta$ 一维化。本小节固定西安传播参数 $\beta,\gamma,q_0$、固�
 实现，则该分区本身即一种接触控制、其代价并未计入 $J_c$，此时“$J_c=0$”的表述须相应扣除
 （与第~\ref{sec:dom:xian}~小节的两类小池讨论同源）。
 
-\paragraph{$c_0$ 对轨迹与控制律的作用。}
-图~\ref{fig:c0-panel} 给出五条代表轨迹。因 $\theta,N$ 固定，各平台高度恒为 $\eta$；
+先看 $c_0$ 对轨迹与控制律的作用。图~\ref{fig:c0-panel} 给出五条代表轨迹。
+因 $\theta,N$ 固定，各平台高度恒为 $\eta$；
 随 $c_0$ 增大，系统更快触及红线（$t_1$ 提前）、上升支更陡，启动隔离率
 $q_{\max}=1-\gamma/(\beta c_0 s^*)$ 单调升高，与命题~\ref{prop:s1:sensitivity} 的
 $(t_1)_{c_0}<0$、$(q_{\max})_{c_0}>0$ 一致。
@@ -2848,8 +2842,7 @@ $c_0=3.59$ 起拐点出现。据此可在扫描区间内数值定出拐点的存
     \label{fig:c0-panel}
 \end{figure}
 
-\paragraph{$\Delta t$ 随 $c_0$ 的非单调性。}
-与 $\Delta t$ 关于 $\theta$ 严格单调递减（引理~\ref{lem:dom:mono}）不同，$\Delta t$ 关于 $c_0$
+控制时长的响应则要复杂得多。与 $\Delta t$ 关于 $\theta$ 严格单调递减（引理~\ref{lem:dom:mono}）不同，$\Delta t$ 关于 $c_0$
 无固定符号（推论~\ref{cor:s1:duration-sensitivity}）：由式~\eqref{eq:s1:t2} 在触发边界处
 $\Delta t\to0$，随 $c_0$ 增大先升至一个极大值、再降。图~\ref{fig:c0-panel} 与图~\ref{fig:c0-scan}
 显示，本小节参数下 $\Delta t$ 在这五个代表点上依次为 $30.2,37.8,47.5,103.2,85.1$ 天，
@@ -2867,7 +2860,7 @@ $\Theta=\frac{S^*-S_c}{S_c}\left[\frac{S^*-\bar S}{S^*}\ln\frac{S^*-\bar S}{S_c-
 而 $c_0$ 增大使 $q_{\max}$ 上升（$(q_{\max})_{c_0}>0$），且令 $\Delta t$ 非单调；
 平台的绝对高度在本切片中固定为 $\eta$，根本不随 $c_0$ 变。$c_0$ 的特征作用正是这种非单调性。
 
-\paragraph{清零时刻在扫描区间内单调递减。}
+四个时间量中，只有清零时刻在整个扫描区间上保持单调。
 $t_{\rm end}=t_1+\Delta t+\text{尾段}$ 三项中，$t_1$ 与尾段都随 $c_0$ 增大而缩短，
 唯 $\Delta t$ 非单调；数值上前两项的降幅压倒后者。数值扫描显示，在本文参数范围内 $t_{\rm end}$
 全程单调递减（图~\ref{fig:c0-scan}(d)），由 $c_0=3.43$ 处的约 $368$ 天降到 $c_0=30$ 的约 $102$ 天；
@@ -2877,8 +2870,8 @@ $73$ 天，但 $t_1$ 由 $211.7$ 天降到 $28.3$ 天（减少约 $183$ 天）�
 $144$ 天。即在低接触环境中，阈值控制“平台短但迟迟不清零”，代价并不在平台本身，
 而在漫长的触发前与退出后两段。
 
-\paragraph{成本与总累计的非单调性及其错位。}
-$J$ 与 $\Itcum$ 同样先升后降，但极值位置与 $\Delta t$ 的极大点并不重合：$\Delta t$ 的极大在
+成本与总累计同样先升后降，但三者的极值位置彼此错开。
+$J$ 与 $\Itcum$ 的极值与 $\Delta t$ 的极大点并不重合：$\Delta t$ 的极大在
 $c_0=6.61$，$\Itcum$ 的极大在 $c_0=13.88$（$3610$），$J$ 的极大在 $c_0=18.12$（$42.80$），
 三者依次右移。$J$ 的非单调性来自式~\eqref{eq:dom:Jtheta} 中两项相反的作用：前因子 $1/(c_0\theta)$
 随 $c_0$ 下降，而 $q_{\max}$ 升高、且 $s_c\propto1/c_0$ 下移使积分区间 $[s_c,s^\ast]$ 拉长；
@@ -3100,7 +3093,7 @@ $\eta=100$ 处 $N_{\rm clr}\approx3.97\times10^{3}$，全段最大值为 $N=5166
 
 \clearpage
 
-\section{接触率 $c_0$ 敏感性的连续扫描}
+\section{接触率 $c_0$ 敏感性分析}
 \label{app:c0_scan}
 
 本附录给出第~\ref{sec:dom:c0}~小节沿 $c_0$ 的连续扫描全貌。它与正文图~\ref{fig:xian_heatmaps} 的
