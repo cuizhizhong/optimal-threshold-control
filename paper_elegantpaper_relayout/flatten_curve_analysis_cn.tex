@@ -3019,6 +3019,10 @@ $J^{\rm T}$ 所依据的成本泛函~\eqref{eq:cost:J} 的被积函数亦不含�
 按引理~\ref{lem:dom:scaling} 与第~\ref{sec:dom:setup}~小节的估计，上述三条线即各 $N_{\rm eff}$ 上
 精确到 $O(i_0/\theta)\lesssim8\times10^{-5}$ 的等成本与等时长边界，不存在需要另行说明的漂移。
 
+本附录的三个 $N_{\rm eff}$ 取为三个临界有效人口，每图恰好展示一条边界线触及其参照：
+$N^\ast_{\rm cum,\infty}$ 处 cost 线的总累计恰等于 $\Itcum^{\rm T}$，
+$N^\ast(45\,\mathrm d)$ 与 $N^\ast_\infty$ 处 dur 45 d 与 cost 线的平台恰等于 $I_{\rm peak}^{\rm T}$。
+
 各平台上的同色实心圆是 $q_c(t)$ 拐点时刻在 $I(t)$ 上的投影，而非 $I(t)$ 自身的拐点。
 平台内的相对位置 $\lambda\approx0.861$ 与各参照线上的 $t_2-t_{\rm inf}$ 不随 $N_{\rm eff}$ 改变；
 启动时间 $t_1$ 则随 $N_{\rm eff}$ 变（$i_0=I_0/N$ 随 $N$ 变），故绝对拐点时刻 $t_{\rm inf}$
@@ -3028,32 +3032,36 @@ $J^{\rm T}$ 所依据的成本泛函~\eqref{eq:cost:J} 的被积函数亦不含�
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.7\textwidth]{figures/fig_panel_A_N1e4.pdf}
-  \caption{$N_{\rm eff}=10^4$ 时的 $\eta$ 杠杆。三条边界参照线到动态清零的总累计感染分别为
-  $1746.5$、$1781.8$ 与 $1884.8$，均低于 TDINN 全市固定拟合参照 $2096.76$；但其动态清零时间
-  分别约为 $224.3$、$172.7$ 与 $105.2$ d，仍显著长于 TDINN 的 $45.27$ d。因此这里只能说
-  总累计感染这一单项指标较低，不能推出综合占优。另因 $N_{\rm eff}=10^4$ 已略低于
-  有效人口下界 $N_{\rm floor}=1.06\times10^{4}$，本图仅作规模结构的边界示例。}
-  \label{fig:panel_eta_N1e4}
+  \includegraphics[width=0.7\textwidth]{figures/fig_panel_A_Ncumstar.pdf}
+  \caption{$N_{\rm eff}=11{,}763\approx N^\ast_{\rm cum,\infty}$ 时的 $\eta$ 杠杆。三条参照线的平台高度依次为
+  $\eta=13.375/19.481/44.246$。右上 inset 给出到动态清零的总累计感染：cost 线恰为
+  $\Itcum^{\rm T}=2096.76$——这正是 $N^\ast_{\rm cum,\infty}$ 的定义（累计弧与成本线的交点）；
+  dur 150 d 低于该参照，dur 45 d 高于该参照。故本图同时给出累计约束的三种情形，
+  而该 $N_{\rm eff}$ 即累计占优区的上端（第~\ref{sec:dom:xian}~小节的窄条
+  $[1.06\times10^{4},1.18\times10^{4}]$ 的右端点）。三条的动态清零时间分别约为
+  $227.5/175.3/107.1$ d，仍显著长于 TDINN 的 $45.27$ d：
+  累计不劣并不蕴含清零不劣。}
+  \label{fig:panel_eta_Ncumstar}
 \end{figure}
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.7\textwidth]{figures/fig_panel_A_N40377.pdf}
-  \caption{$N_{\rm eff}=40{,}377\approx N^\ast(45\mathrm d)$ 时的 $\eta$ 杠杆。dur 45 d 参照线的平台
-  高度 $\eta=151.898$，数值上近似达到 TDINN 峰值参照
-  $I_{\rm peak}^{\rm T}=151.90$，对应峰值约束的临界情形；dur 150 d 与 cost 平台仍位于
-  该参照线下方。}
-  \label{fig:panel_eta_N40377}
+  \includegraphics[width=0.7\textwidth]{figures/fig_panel_A_Nstar45.pdf}
+  \caption{$N_{\rm eff}=40{,}382\approx N^\ast(45\mathrm d)$ 时的 $\eta$ 杠杆。dur 45 d 参照线的平台
+  高度 $\eta=151.904$，恰为 TDINN 峰值参照
+  $I_{\rm peak}^{\rm T}=151.90$，对应峰值约束的临界情形；dur 150 d 与 cost 平台
+  （$\eta=45.918$、$66.880$）仍位于该参照线下方。}
+  \label{fig:panel_eta_Nstar45}
 \end{figure}
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.7\textwidth]{figures/fig_panel_A_N91727.pdf}
-  \caption{$N_{\rm eff}=91{,}727\approx N^\ast_\infty$ 时的 $\eta$ 杠杆。cost 参照线的平台
-  高度 $\eta=151.900$，数值上近似达到 $I_{\rm peak}^{\rm T}=151.90$；dur 45 d 平台
-  $\eta=345.077$ 已超过该参照，故峰值约束在该边界上不再成立，而 dur 150 d 平台仍低于参照。}
-  \label{fig:panel_eta_N91727}
+  \includegraphics[width=0.7\textwidth]{figures/fig_panel_A_Nstarinf.pdf}
+  \caption{$N_{\rm eff}=91{,}721\approx N^\ast_\infty$ 时的 $\eta$ 杠杆。cost 参照线的平台
+  高度 $\eta=151.904$，恰为 $I_{\rm peak}^{\rm T}=151.90$；dur 45 d 平台
+  $\eta=345.02$ 已超过该参照，故峰值约束在该边界上不再成立，而 dur 150 d 平台
+  （$\eta=104.295$）仍低于参照。}
+  \label{fig:panel_eta_Nstarinf}
 \end{figure}
 
 \clearpage

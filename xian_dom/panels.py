@@ -9,6 +9,7 @@ _XCC = Path(__file__).resolve().parent.parent / "xian_control_comparison"
 for _p in (_XCC, _XCC / "threshold_landscape_analysis", _XCC / "effective_population_sensitivity"):
     if str(_p) not in sys.path:
         sys.path.insert(0, str(_p))
+import caliber as cal
 if not hasattr(np, "trapz"):
     np.trapz = np.trapezoid
 import matplotlib; matplotlib.use("Agg")
@@ -32,8 +33,12 @@ N_FULL = 13_163_000.0
 Q0, QINF = 0.3230, 1.0 - 1.0 / (2.0 * (1.0 - 0.1498))   # 0.4119 (threshold inflection level)
 
 # confirmed scale-invariant thresholds (theta = eta/N)
-# 精确值由 caliber.theta_cost() / caliber.theta_dur() 求根得到（正文只报三位有效数字）
-TH = {"interior": 5.612e-3, "dur45": 3.761624e-3, "cost": 1.656154e-3, "dur150": 1.137090e-3}
+# 由 caliber.theta_dur()/theta_cost() 直接求根得到，不再手抄常数——同一组常数已因
+# 口径变更（归一化 i0 -> 固定绝对 I0）和 theta 精度变更过时过两次，根因是硬编码。
+# interior 无 caliber 对应项（caliber 未实现该角色的边界求解），保留旧值 5.612e-3，
+# 仅供旧诊断角色使用、不进入任何定稿图（PANEL_A_ROLES 已不含 interior）。
+TH = {"interior": 5.612e-3, "dur45": cal.theta_dur(45.0), "cost": cal.theta_cost(),
+      "dur150": cal.theta_dur(150.0)}
 # role colours / styles -- identical to dom RC_COL; shared roles deepen with eta
 COL = {"interior": "#084a91", "dur45": "#073068", "cost": "#206FB6", "dur150": "#6BADD7",
        "clear": "#9a6b5a", "cum": "#238b8e"}
@@ -43,11 +48,13 @@ ROLE_LW = {"interior": 1.8, "dur45": 1.8, "cost": 2.0, "dur150": 1.8,
 LAB = {"interior": r"interior ($\Delta t{=}30$d)", "dur45": "dur 45 d", "cost": "cost",
        "dur150": "dur 150 d", "clear": r"clear $\leq$ 45.3 d", "cum": "cumulative"}
 PANEL_A_ROLES = ("dur150", "cost", "dur45")
+# 三个附录案例改取三个临界有效人口（角色定义，见 caliber.py），不再手抄数值——
+# 同一组常数已因口径变更和 theta 精度变更过时过两次。
 PANEL_A_CASES = (
-    (10_000.0, "fig_panel_A_N1e4"),
-    (20_000.0, "fig_panel_A_N2e4"),
-    (40_377.0, "fig_panel_A_N40377"),
-    (91_727.0, "fig_panel_A_N91727"),
+    (cal.N_cum_star(),   "fig_panel_A_Ncumstar"),   # 累计临界人口
+    (20_000.0,           "fig_panel_A_N2e4"),       # 正文展示案例（别名 fig_panel_A）
+    (cal.N_star(45.0),   "fig_panel_A_Nstar45"),    # 时长-45d 临界人口
+    (cal.N_star(),       "fig_panel_A_Nstarinf"),   # 成本临界人口 = N*_inf
 )
 
 # 全节单一口径：固定**绝对**初值 I0 = 1.0066e-3 人（第 7 节全市标定值），
