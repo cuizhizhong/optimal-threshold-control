@@ -1,0 +1,40 @@
+===== Figure_10_time_varying_states.py =====
+/mnt/data/tracing_isolation_optimal_control_complete/figures/Figure_10_time_varying_states.jpg
+elapsed=0:01.23 maxrss=184808KB
+OK Figure_10_time_varying_states.py
+===== Figure_1_phase_geometry.py =====
+/mnt/data/tracing_isolation_optimal_control_complete/figures/Figure_1_phase_geometry.jpg
+elapsed=0:01.87 maxrss=230976KB
+OK Figure_1_phase_geometry.py
+===== Figure_2_state_time_series.py =====
+/mnt/data/tracing_isolation_optimal_control_complete/figures/Figure_2_state_time_series.jpg
+elapsed=0:01.58 maxrss=224376KB
+OK Figure_2_state_time_series.py
+===== Figure_3_control_coefficients.py =====
+/mnt/data/tracing_isolation_optimal_control_complete/figures/Figure_3_control_coefficients.jpg
+elapsed=0:01.49 maxrss=224820KB
+OK Figure_3_control_coefficients.py
+===== Figure_4_uniqueness_cost.py =====
+/mnt/data/tracing_isolation_optimal_control_complete/figures/Figure_4_uniqueness_cost.jpg
+elapsed=0:01.47 maxrss=222888KB
+OK Figure_4_uniqueness_cost.py
+===== Figure_5_policy_cost_comparison.py =====
+/mnt/data/tracing_isolation_optimal_control_complete/figures/Figure_5_policy_cost_comparison.jpg
+elapsed=0:01.54 maxrss=222064KB
+OK Figure_5_policy_cost_comparison.py
+===== Figure_6_capacity_dependence.py =====
+/mnt/data/tracing_isolation_optimal_control_complete/figures/Figure_6_capacity_dependence.jpg
+elapsed=0:01.90 maxrss=222664KB
+OK Figure_6_capacity_dependence.py
+===== Figure_7_probability_dependence.py =====
+/mnt/data/tracing_isolation_optimal_control_complete/figures/Figure_7_probability_dependence.jpg
+elapsed=0:01.79 maxrss=222064KB
+OK Figure_7_probability_dependence.py
+===== Figure_8_regime_map.py =====
+/mnt/data/tracing_isolation_optimal_control_complete/figures/Figure_8_regime_map.jpg
+elapsed=0:06.29 maxrss=302880KB
+OK Figure_8_regime_map.py
+===== Figure_9_time_varying_control.py =====
+/mnt/data/tracing_isolation_optimal_control_complete/figures/Figure_9_time_varying_control.jpg
+elapsed=0:01.29 maxrss=186376KB
+OK Figure_9_time_varying_control.py
