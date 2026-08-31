@@ -1,0 +1,5 @@
+Python syntax/import/runtime validation
+Python 3.13.5
+py_compile: PASS for all Python files
+Runtime: all ten Figure_*.py scripts executed successfully; see logs/python_run.log and python_run_after_tv.log.
+Data generation: generate_data.py and generate_data.py --recompute-tv executed successfully.

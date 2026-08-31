@@ -1,0 +1,21 @@
+Constant-contact analytical/numerical validation
+regime=capacity-q1
+J_exact=1.52951116015147
+J_reported=1.52951116015147
+|J_exact-J_reported|=0.000e+00
+J_trapezoid_dense=1.52949981506235
+|J_trapezoid-J_exact|=1.135e-05
+max_i_dense=0.15, K=0.15, excess=0.000e+00
+q_min=0, q_max=1
+release_safe_boundary_residual=0.000e+00
+q1_invariant_residual=8.327e-17
+switching_theta_residual=-4.292e-08
+boundary_objective_first_derivative=4.3965384e-08
+boundary_objective_second_derivative=3.6346188
+fill_box_saving_percent=3.0964769812
+
+Time-varying regularized direct-transcription validation
+max_i_optimized=0.15
+capacity_excess=5.551e-17
+max_i_no_isolation=0.459970918678048
+q_min=0, q_max=1

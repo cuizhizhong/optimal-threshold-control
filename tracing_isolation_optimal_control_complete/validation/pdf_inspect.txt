@@ -1,0 +1,42 @@
+PDF: /mnt/data/tracing_isolation_optimal_control_complete/tracing_isolation_optimal_control.pdf
+Pages: 26
+Encrypted: False
+Page sizes (pt, rounded):
+  - 595 x 842 (26 page(s))
+Metadata:
+  /Author: Technical report
+  /CreationDate: D:20260728035839Z
+  /Creator: LaTeX with hyperref
+  /Producer: xdvipdfmx (20240305)
+  /Title: 跟踪隔离模型中双传播系数的最优控制与唯一性
+Outline items: 41
+Form fields: 0
+Attachments: 0
+Annotations: 114
+
+Fonts (pdffonts, first 25 lines):
+name                                 type              encoding         emb sub uni object ID
+------------------------------------ ----------------- ---------------- --- --- --- ---------
+XBCUVW+FandolSong-Bold-Identity-H    CID Type 0C       Identity-H       yes yes no       4  0
+VUZOEN+FandolSong-Regular-Identity-H CID Type 0C       Identity-H       yes yes no       6  0
+DNLOZK+LMRoman12-Regular-Identity-H  CID Type 0C       Identity-H       yes yes yes      8  0
+BNWGAD+CMR10                         Type 1C           Builtin          yes yes yes     10  0
+QDEQSQ+CMMI10                        Type 1C           Builtin          yes yes yes     11  0
+BMSVTH+CMSY10                        Type 1C           Builtin          yes yes no      12  0
+RFYABP+CMR7                          Type 1C           Builtin          yes yes yes     13  0
+BVWNTM+CMEX10                        Type 1C           Builtin          yes yes yes     14  0
+SAMYOM+CMSY7                         Type 1C           Builtin          yes yes yes     15  0
+DSBNOW+LMRoman10-Regular-Identity-H  CID Type 0C       Identity-H       yes yes yes     16  0
+SCESLF+CMMI7                         Type 1C           Builtin          yes yes yes     18  0
+RLSADD+LMRoman10-Bold-Identity-H     CID Type 0C       Identity-H       yes yes yes     24  0
+ISHCBI+CMSY8                         Type 1C           Builtin          yes yes yes     41  0
+EAELSH+CMR8                          Type 1C           Builtin          yes yes yes     42  0
+EVOTFX+LMRoman12-Bold-Identity-H     CID Type 0C       Identity-H       yes yes yes     77  0
+IPQQYF+LMRoman8-Regular-Identity-H   CID Type 0C       Identity-H       yes yes yes     82  0
+JBIQHS+FandolKai-Regular-Identity-H  CID Type 0C       Identity-H       yes yes no      92  0
+USLQGH+LMRoman10-Italic-Identity-H   CID Type 0C       Identity-H       yes yes yes     95  0
+WTJXEI+CMMI8                         Type 1C           Builtin          yes yes yes     97  0
+EIYIZG+CMMI6                         Type 1C           Builtin          yes yes yes    112  0
+FOOVRJ+LMRoman6-Regular-Identity-H   CID Type 0C       Identity-H       yes yes yes    140  0
+HRCUWI+CMMI12                        Type 1C           Builtin          yes yes yes    157  0
+FZQRBE+CMR12                         Type 1C           Builtin          yes yes yes    158  0

@@ -1,0 +1,11 @@
+file,width_px,height_px,dpi_x,dpi_y,size_bytes
+Figure_1_phase_geometry.jpg,2482,1698,300,300,222509
+Figure_2_state_time_series.jpg,2490,1525,300,300,189695
+Figure_3_control_coefficients.jpg,2490,1525,300,300,187861
+Figure_4_uniqueness_cost.jpg,2429,1517,300,300,190005
+Figure_5_policy_cost_comparison.jpg,2490,1525,300,300,149079
+Figure_6_capacity_dependence.jpg,2489,1517,300,300,180634
+Figure_7_probability_dependence.jpg,2490,1517,300,300,155551
+Figure_8_regime_map.jpg,2462,1637,300,300,143338
+Figure_9_time_varying_control.jpg,2476,1556,300,300,188813
+Figure_10_time_varying_states.jpg,2490,1525,300,300,174671

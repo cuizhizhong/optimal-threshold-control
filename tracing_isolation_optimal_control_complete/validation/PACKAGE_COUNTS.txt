@@ -1,0 +1,9 @@
+Package inventory counts
+LaTeX sources: 3
+Python files: 12
+MATLAB figure scripts: 10
+JPG figures (excluding contact sheet): 10
+CSV data files: 12
+Final PDF files: 1
+Validation files: 27
+Total files: 81

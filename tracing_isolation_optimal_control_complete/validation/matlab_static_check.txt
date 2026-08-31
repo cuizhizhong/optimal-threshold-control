@@ -1,0 +1,14 @@
+MATLAB static validation (lexical/block/path/output checks)
+MATLAB/Octave runtime execution is not part of this check.
+PASS Figure_1_phase_geometry.m: 265 lines, 19 local functions
+PASS Figure_2_state_time_series.m: 258 lines, 19 local functions
+PASS Figure_3_control_coefficients.m: 257 lines, 19 local functions
+PASS Figure_4_uniqueness_cost.m: 259 lines, 19 local functions
+PASS Figure_5_policy_cost_comparison.m: 255 lines, 19 local functions
+PASS Figure_6_capacity_dependence.m: 8 lines, 0 local functions
+PASS Figure_7_probability_dependence.m: 6 lines, 0 local functions
+PASS Figure_8_regime_map.m: 10 lines, 0 local functions
+PASS Figure_9_time_varying_control.m: 10 lines, 0 local functions
+PASS Figure_10_time_varying_states.m: 9 lines, 0 local functions
+
+Summary: 10/10 scripts passed.
