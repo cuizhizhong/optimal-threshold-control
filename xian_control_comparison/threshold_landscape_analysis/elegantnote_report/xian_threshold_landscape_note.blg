@@ -1,9 +1,0 @@
-[1] Config.pm:307> INFO - This is Biber 2.19
-[1] Config.pm:310> INFO - Logfile is 'xian_threshold_landscape_note.blg'
-[343] biber-MSWIN64:340> INFO - === 
-[461] Biber.pm:419> INFO - Reading 'xian_threshold_landscape_note.bcf'
-[852] Biber.pm:979> INFO - Found 0 citekeys in bib section 0
-[901] bbl.pm:660> INFO - Writing 'xian_threshold_landscape_note.bbl' with encoding 'UTF-8'
-[902] bbl.pm:763> INFO - Output to xian_threshold_landscape_note.bbl
-[903] Biber.pm:131> WARN - The file 'xian_threshold_landscape_note.bcf' does not contain any citations!
-[903] Biber.pm:133> INFO - WARNINGS: 1
