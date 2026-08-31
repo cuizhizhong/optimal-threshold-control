@@ -1,0 +1,6 @@
+PDF: /mnt/data/tracing_isolation_optimal_control_complete/tracing_isolation_optimal_control.pdf
+Pages: 26
+Encrypted: False
+Openable (PyMuPDF): True
+Likely scanned: False
+XFA present: False

@@ -1,0 +1,25 @@
+{
+  "path": "/mnt/data/tracing_isolation_optimal_control_complete/tracing_isolation_optimal_control.pdf",
+  "pages": 26,
+  "encrypted": false,
+  "page_sizes": [
+    {
+      "width_pt": 595,
+      "height_pt": 842,
+      "count": 26
+    }
+  ],
+  "metadata": {
+    "/Creator": "LaTeX with hyperref",
+    "/Title": "\u8ddf\u8e2a\u9694\u79bb\u6a21\u578b\u4e2d\u53cc\u4f20\u64ad\u7cfb\u6570\u7684\u6700\u4f18\u63a7\u5236\u4e0e\u552f\u4e00\u6027",
+    "/Author": "Technical report",
+    "/Producer": "xdvipdfmx (20240305)",
+    "/CreationDate": "D:20260728035839Z"
+  },
+  "outline_items": 41,
+  "form_fields": 0,
+  "attachments": 0,
+  "annotations": 114,
+  "poppler_pdfinfo": "Title:           \u8ddf\u8e2a\u9694\u79bb\u6a21\u578b\u4e2d\u53cc\u4f20\u64ad\u7cfb\u6570\u7684\u6700\u4f18\u63a7\u5236\u4e0e\u552f\u4e00\u6027\nAuthor:          Technical report\nCreator:         LaTeX with hyperref\nProducer:        xdvipdfmx (20240305)\nCreationDate:    Tue Jul 28 03:58:39 2026 UTC\nCustom Metadata: no\nMetadata Stream: no\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           26\nEncrypted:       no\nPage size:       595.28 x 841.89 pts (A4)\nPage rot:        0\nFile size:       2330197 bytes\nOptimized:       no\nPDF version:     1.5",
+  "poppler_pdffonts": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nXBCUVW+FandolSong-Bold-Identity-H    CID Type 0C       Identity-H       yes yes no       4  0\nVUZOEN+FandolSong-Regular-Identity-H CID Type 0C       Identity-H       yes yes no       6  0\nDNLOZK+LMRoman12-Regular-Identity-H  CID Type 0C       Identity-H       yes yes yes      8  0\nBNWGAD+CMR10                         Type 1C           Builtin          yes yes yes     10  0\nQDEQSQ+CMMI10                        Type 1C           Builtin          yes yes yes     11  0\nBMSVTH+CMSY10                        Type 1C           Builtin          yes yes no      12  0\nRFYABP+CMR7                          Type 1C           Builtin          yes yes yes     13  0\nBVWNTM+CMEX10                        Type 1C           Builtin          yes yes yes     14  0\nSAMYOM+CMSY7                         Type 1C           Builtin          yes yes yes     15  0\nDSBNOW+LMRoman10-Regular-Identity-H  CID Type 0C       Identity-H       yes yes yes     16  0\nSCESLF+CMMI7                         Type 1C           Builtin          yes yes yes     18  0\nRLSADD+LMRoman10-Bold-Identity-H     CID Type 0C       Identity-H       yes yes yes     24  0\nISHCBI+CMSY8                         Type 1C           Builtin          yes yes yes     41  0\nEAELSH+CMR8                          Type 1C           Builtin          yes yes yes     42  0\nEVOTFX+LMRoman12-Bold-Identity-H     CID Type 0C       Identity-H       yes yes yes     77  0\nIPQQYF+LMRoman8-Regular-Identity-H   CID Type 0C       Identity-H       yes yes yes     82  0\nJBIQHS+FandolKai-Regular-Identity-H  CID Type 0C       Identity-H       yes yes no      92  0\nUSLQGH+LMRoman10-Italic-Identity-H   CID Type 0C       Identity-H       yes yes yes     95  0\nWTJXEI+CMMI8                         Type 1C           Builtin          yes yes yes     97  0\nEIYIZG+CMMI6                         Type 1C           Builtin          yes yes yes    112  0\nFOOVRJ+LMRoman6-Regular-Identity-H   CID Type 0C       Identity-H       yes yes yes    140  0\nHRCUWI+CMMI12                        Type 1C           Builtin          yes yes yes    157  0\nFZQRBE+CMR12                         Type 1C           Builtin          yes yes yes    158  0\nCTWXKE+LMMono10-Regular-Identity-H   CID Type 0C       Identity-H       yes yes yes    237  0"
+}

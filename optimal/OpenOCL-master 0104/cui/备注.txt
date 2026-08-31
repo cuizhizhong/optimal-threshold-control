@@ -1,0 +1,16 @@
+1. CUI
+ 文献模型,最优控制
+
+2.CUI_c
+崔--q=q0,c(t)最优控制
+
+3.CUI_q
+崔--c=c0,q(t)最优控制
+
+
+4.CUI_cq
+崔--c(t),q(t)最优控制
+
+
+5.ODEODEODE, 模型为ODE_SI
+崔模型解析解q(t)

@@ -1,0 +1,7 @@
+quantity,value
+success,True
+message,Optimization terminated successfully
+objective,2.428013635189901
+max_i,0.15000000000000005
+eps,0.04
+smooth,0.006
