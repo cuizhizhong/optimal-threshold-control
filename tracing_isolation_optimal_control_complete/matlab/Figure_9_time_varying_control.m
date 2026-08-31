@@ -1,0 +1,10 @@
+clear; close all; clc;
+thisDir=fileparts(mfilename('fullpath')); root=fileparts(thisDir); T=readtable(fullfile(root,'data','time_varying_multi_eps.csv'));
+figure('Color','w','Position',[100 100 900 570]); yyaxis left; hold on;
+stairs(T.time,T.q_eps_0p10,'LineWidth',1.9,'DisplayName','epsilon=0.10');
+stairs(T.time,T.q_eps_0p04,'LineWidth',1.9,'DisplayName','epsilon=0.04');
+stairs(T.time,T.q_eps_0p015,'LineWidth',1.9,'DisplayName','epsilon=0.015');
+ylabel('Regularized optimal isolation q_epsilon(t)'); ylim([-0.02 1.04]);
+yyaxis right; plot(T.time,T.c,'--','LineWidth',1.7,'DisplayName','c(t)'); ylabel('Contact rate c(t)');
+xlabel('Time'); title('Prescribed time-varying contacts: unique regularized controls'); grid on; box on; legend('Location','northeast');
+out=fullfile(root,'figures','Figure_9_time_varying_control.jpg'); print(gcf,out,'-djpeg','-r300'); fprintf('%s\n',out);
