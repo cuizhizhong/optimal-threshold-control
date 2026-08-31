@@ -1,0 +1,15 @@
+quantity,value,description
+beta1_bar,1.0,natural coefficient in S equation
+q,0.8,fixed ratio beta2/beta1
+beta2_bar,0.8,natural coefficient in I equation
+gamma,0.3,recovery rate
+S0,0.99,initial susceptible fraction
+I0,0.01,initial infectious fraction
+K,0.15,capacity
+S_h,0.37499999999999994,release/herd threshold in S
+I_peak_laissez,0.21076632485253255,unregulated infection peak
+S_entry,0.6667873240308615,first capacity-hit susceptible level
+tau1,6.6594644456248355,capacity-entry time
+tau2,11.84679465061793,release time
+J_star,1.3503627745007234,minimal suppression cost
+S_infinity_opt,0.11314108600662606,final susceptible fraction under optimum
