@@ -1,0 +1,1273 @@
+\documentclass[11pt,a4paper,UTF8]{ctexart}
+
+\usepackage[a4paper,margin=2.25cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{graphicx}
+\usepackage{booktabs,longtable,array,tabularx,multirow}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{listings}
+\usepackage{siunitx}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\graphicspath{{../figures/}}
+\setstretch{1.16}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.18em}
+\setlist{nosep,leftmargin=2.4em}
+\captionsetup{font=small,labelfont=bf}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!55!black,
+  citecolor=blue!55!black,
+  urlcolor=blue!55!black,
+  pdftitle={跟踪隔离模型中双传播系数的最优控制与唯一性},
+  pdfauthor={Technical report}
+}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{跟踪隔离模型的最优控制与唯一性}
+\fancyhead[R]{\thepage/\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}[theorem]{命题}
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{corollary}[theorem]{推论}
+\newtheorem{assumption}[theorem]{假设}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{定义}
+\newtheorem{remark}[theorem]{注}
+\newtheorem{example}[theorem]{例}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Acal}{\mathcal{A}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\Gcal}{\mathcal{G}}
+\newcommand{\Uad}{\mathcal{U}_{\mathrm{ad}}}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\one}{\mathbf{1}}
+\newcommand{\proj}{\operatorname{Proj}}
+\newcommand{\ess}{\operatorname*{ess}}
+\newcommand{\argmin}{\operatorname*{arg\,min}}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  frame=single,
+  breaklines=true,
+  columns=fullflexible,
+  showstringspaces=false
+}
+
+\title{\bfseries 跟踪隔离模型中双传播系数的最优控制与唯一性\\[2mm]
+\large 常接触率的解析切换几何、时变接触率的唯一性判据与可复现数值分析}
+\author{技术分析报告}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+本文研究由同一跟踪隔离策略驱动、但在易感者耗竭方程和感染者生成方程中产生两个不同系数的二维系统。原始计数变量满足
+\[
+\dot S=-\beta_1(t)SI,\qquad
+\dot I=\beta_2(t)SI-\gamma I,
+\]
+其中
+\[
+\beta_1(t)=\frac{c(t)[p+(1-p)q(t)]}{N},\qquad
+\beta_2(t)=\frac{pc(t)(1-q(t))}{N}.
+\]
+这里 $c(t)$ 是接触数函数，$q(t)\in[0,1]$ 是跟踪隔离比例，$p\in(0,1)$ 是单次接触传播概率。本文以感染比例不超过医疗容量 $K$ 为状态约束，并采用与“传播系数相对自然水平的下降量”一致的线性跟踪成本
+\[
+J(q)=\int_0^{\infty}p c(t)q(t)\dd t.
+\]
+
+当 $c(t)\equiv c$ 为常数时，问题具有一套不同于经典单传播系数模型的解析几何。本文给出：自然传播轨道与最大安全集；容量边界上的唯一最小可行控制 $q_B(s)=1-h/s$；完全跟踪弧的不变量；由端点映射构造的显式成本；Hamilton--Jacobi 切换函数；切换曲线沿完全跟踪特征线至多出现一个非平凡交点的严格证明；以及在可直接检验的横截性条件下的完整验证定理。最优反馈具有三种可能结构：无控制；$0\to1\to0$；或
+\[
+0\longrightarrow q_B(s)\longrightarrow1\longrightarrow0.
+\]
+在线性成本下，内部控制只能取 $0$ 或 $1$，中间值仅可能由容量边界的可行性强制产生。若切换函数除孤立时刻外不为零，且切换曲线与自然轨道和容量边界横截相交，则 $q^*$ 在几乎处处意义下全局唯一。与允许“免费加速传播”的单传播系数模型不同，本模型中 $q>0$ 始终付费且只能降低感染生成率，因此进入安全集以后唯一最优延拓为 $q=0$，不存在第三阶段的自由延拓非唯一性。
+
+当 $c(t)$ 为给定的时变函数时，值函数变为非自治，固定安全轨道和闭式切换曲线一般消失。本文给出时变 Hamilton--Jacobi 方程、容量边界可行集、线性成本下的必要且可检验的几乎处处唯一性判据，并说明仅凭系数的代数形式不能无条件保证唯一性。加入小的严格凸正则项后，获得唯一的投影反馈公式。最后，本文提供常接触率的解析数值算法、时变接触率的直接配置算法、十幅 300 dpi 图形、十个独立 Python 程序、十个独立 MATLAB 程序、CSV 数据、编译日志和 PDF 校验清单。
+\end{abstract}
+
+\noindent\textbf{关键词：} 跟踪隔离；最优控制；状态约束；唯一性；Hamilton--Jacobi 方程；切换曲线；医疗容量；SIR 模型
+
+\tableofcontents
+\newpage
+
+\section{问题来源与建模目标}
+
+附件论文研究标准 SIR 约化系统中同一个传播函数同时控制易感者减少和感染者增加的情形，并以传播函数低于自然水平的幅度作为线性抑制成本\citep{MicloSpiroWeibull2022}。其核心结果是：若自然传播峰值超过医疗容量，则最优策略先不控制，在感染首次达到容量时突然加强控制，随后沿容量边界逐步放松，最后恢复自然传播。该论文还证明最优控制在前两个阶段一致，而若允许传播率无成本地高于自然水平，则解除控制以后可能出现多重最优延拓。
+
+本文考虑的跟踪隔离机制与上述结构有本质区别。恢复者、隔离易感者和隔离感染者舱室与前两个方程解耦后，保留的二维系统为
+\begin{equation}
+\begin{cases}
+\dot S(t)=-\beta_1(t)S(t)I(t),\\[1mm]
+\dot I(t)=\beta_2(t)S(t)I(t)-\gamma I(t),
+\end{cases}
+\label{eq:count-model}
+\end{equation}
+其中
+\begin{equation}
+\beta_1(t)=\frac{c(t)[p+(1-p)q(t)]}{N},
+\qquad
+\beta_2(t)=\frac{pc(t)(1-q(t))}{N}.
+\label{eq:beta12}
+\end{equation}
+原图中的传播概率记号为 $\beta$。为避免与 $\beta_1,\beta_2$ 混淆，本文将它改记为 $p\in(0,1)$。
+
+式\eqref{eq:beta12}具有两个重要特点。
+\begin{enumerate}[label=(\roman*)]
+\item $q$ 增大时，感染生成系数 $\beta_2$ 单调下降；
+\item $q$ 增大时，未隔离易感者从 $S$ 舱室移出的速度增大，因此 $\beta_1$ 单调上升。
+\end{enumerate}
+所以不能把该模型简单等同于“把同一个传播率替换成两个独立函数”。两个系数由同一政策变量 $q(t)$ 严格耦合，且耦合方向相反。这一结构正是新的最优几何出现的原因。
+
+令
+\[
+s(t)=\frac{S(t)}{N},\qquad i(t)=\frac{I(t)}{N},
+\]
+则\eqref{eq:count-model}化为
+\begin{equation}
+\begin{cases}
+\dot s=-c(t)[p+(1-p)q]si,\\[1mm]
+\dot i=pc(t)(1-q)si-\gamma i.
+\end{cases}
+\label{eq:normalized-model}
+\end{equation}
+医疗容量写为
+\begin{equation}
+0<i(t)\le K<1.
+\label{eq:capacity}
+\end{equation}
+不实施跟踪隔离时 $q=0$，感染生成系数为 $pc(t)$；实施隔离以后，它下降为 $pc(t)(1-q)$。因此与附件线性抑制成本最直接对应的费用为
+\begin{equation}
+J(q)=\int_0^\infty pc(t)q(t)\dd t.
+\label{eq:linear-cost}
+\end{equation}
+若乘以任意正常数或加入固定货币换算系数，最优控制不变。
+
+\begin{definition}[可行控制与几乎处处唯一]
+给定 $c(t)>0$，可行控制集合 $\Uad$ 由所有可测函数 $q:[0,\infty)\to[0,1]$ 组成，并要求\eqref{eq:normalized-model}的解满足\eqref{eq:capacity}。若任意两个最优控制 $q_1^*,q_2^*$ 满足
+\[
+q_1^*(t)=q_2^*(t)\quad\text{对几乎所有 }t\ge0,
+\]
+则称最优控制几乎处处唯一。孤立切换时刻上的取值不影响这一概念。
+\end{definition}
+
+\begin{remark}[为什么需要明确成本]
+仅给出\eqref{eq:normalized-model}不能讨论“唯一最优控制”。若成本改为二次型、包含感染人数、包含控制变化率，或者同时把 $c$ 也作为控制，最优结构都会改变。本文首先完整处理\eqref{eq:linear-cost}，再讨论时变 $c$ 和严格凸正则化。
+\end{remark}
+
+\section{解的适定性、正性与基本耗散}
+
+本节允许 $c(t)$ 为任意局部有界正函数。
+
+\begin{theorem}[全局解与正不变性]
+设 $c\in L^\infty_{\mathrm{loc}}([0,\infty))$，$c(t)>0$ 几乎处处，$q\in\Uad$，且 $s_0>0,i_0>0,s_0+i_0\le1$。则\eqref{eq:normalized-model}存在唯一全局 Carath\'eodory 解，并满足
+\begin{align}
+s(t)&=s_0\exp\left[-\int_0^t c(\tau)(p+(1-p)q(\tau))i(\tau)\dd\tau\right]>0,
+\label{eq:s-positive}\\
+i(t)&=i_0\exp\left[\int_0^t\{pc(\tau)(1-q(\tau))s(\tau)-\gamma\}\dd\tau\right]>0,
+\label{eq:i-positive}\\
+\frac{\dd}{\dd t}(s+i)&=-c(t)q(t)si-\gamma i\le0.
+\label{eq:sum-decay}
+\end{align}
+因此
+\[
+0<s(t)+i(t)\le s_0+i_0\le1,
+\qquad
+\int_0^\infty i(t)\dd t\le\frac{s_0+i_0}{\gamma}.
+\]
+若 $c$ 有界，则 $i(t)\to0$。
+\end{theorem}
+
+\begin{proof}
+右端关于状态局部 Lipschitz、关于时间可测，故局部 Carath\'eodory 解唯一。分别除以 $s$ 和 $i$ 后积分得到\eqref{eq:s-positive}和\eqref{eq:i-positive}。两方程相加即得\eqref{eq:sum-decay}。状态始终位于紧三角形
+\[
+\{(s,i):s\ge0,i\ge0,s+i\le s_0+i_0\},
+\]
+所以不存在有限时间爆破，解可延拓到全部 $t\ge0$。由\eqref{eq:sum-decay}积分得到 $i\in L^1(0,\infty)$。当 $c$ 有界时，$\dot i$ 有界，故 $i$ 一致连续；由 Barbalat 引理可知 $i(t)\to0$。
+\end{proof}
+
+\begin{remark}[非守恒并非矛盾]
+在二维约化系统中
+\[
+\dot s+\dot i=-c qsi-\gamma i.
+\]
+第一项表示被跟踪接触者离开未隔离的 $S$--$I$ 子系统，第二项表示感染者恢复或移除。因此 $s+i$ 下降是完整舱室模型投影后的正常现象。
+\end{remark}
+
+\section{常接触率下的自然轨道与最大安全集}
+\label{sec:safe-set}
+
+从本节到第\ref{sec:constant-uniqueness}节假设
+\begin{equation}
+c(t)\equiv c>0.
+\label{eq:constant-c}
+\end{equation}
+定义四个基本参数
+\begin{equation}
+b=pc,\qquad
+h=\frac{\gamma}{pc},\qquad
+\ell=\frac{\gamma}{c}=ph,
+\qquad
+r=(1-p)h=h-\ell.
+\label{eq:thresholds}
+\end{equation}
+其中 $h$ 是无隔离传播下的临界易感比例，$r$ 是跟踪机制在轨道不变量中产生的新阈值。
+
+\subsection{自然传播不变量与峰值}
+
+当 $q=0$ 时，系统为
+\begin{equation}
+\dot s=-pcsi,
+\qquad
+\dot i=(pcs-\gamma)i.
+\label{eq:q0-system}
+\end{equation}
+定义
+\begin{equation}
+\Phi(s,i)=i+s-h\ln s.
+\label{eq:Phi}
+\end{equation}
+直接计算得 $\dot\Phi=0$。因此经过 $(s_0,i_0)$ 的自然轨道为
+\begin{equation}
+i(s)=i_0+s_0-s+h\ln\frac{s}{s_0}.
+\label{eq:natural-orbit}
+\end{equation}
+当 $s_0>h$ 时，感染峰值在 $s=h$ 处取得：
+\begin{equation}
+i_{\mathrm{pk}}=i_0+s_0-h+h\ln\frac{h}{s_0}.
+\label{eq:natural-peak}
+\end{equation}
+若 $s_0\le h$，则 $i$ 从初始时刻起单调下降。
+
+\begin{corollary}[无控制情形]
+若 $s_0\le h$ 或 $i_{\mathrm{pk}}\le K$，则 $q^*(t)\equiv0$ 是唯一最优控制，且最小成本为零。
+\end{corollary}
+
+\begin{proof}
+$q=0$ 可行且成本为零。由于成本密度 $pcq$ 在 $q>0$ 时严格为正，任何在正测度集合上取正值的控制成本都严格大于零。
+\end{proof}
+
+\subsection{最大无控制安全集}
+
+若当前状态满足 $s\le h$，自然传播下 $i$ 不再增长。若 $s>h$，自然传播峰值为
+\[
+i+s-h\ln s-h+h\ln h.
+\]
+因此最大无控制安全集为
+\begin{equation}
+\Acal=
+\{(s,i):0<s\le h,\ 0\le i\le K\}
+\cup
+\left\{(s,i):s>h,\ i+s-h\ln s\le K+h-h\ln h\right\}.
+\label{eq:safe-set}
+\end{equation}
+其上边界写成
+\begin{equation}
+i=a(s):=K+h-h\ln h-s+h\ln s,
+\qquad s\ge h.
+\label{eq:safe-boundary}
+\end{equation}
+
+\begin{proposition}[安全集的精确性]
+对任意 $0<i\le K$，状态 $(s,i)$ 属于 $\Acal$ 当且仅当从该状态开始取 $q\equiv0$ 时，未来始终满足 $i(t)\le K$。进入 $\Acal$ 后，唯一零成本延拓为 $q=0$ 几乎处处。
+\end{proposition}
+
+\begin{proof}
+由自然轨道不变量和峰值位置直接得到充要性。若某个可行控制在进入 $\Acal$ 后仍在正测度集合上满足 $q>0$，则产生严格正的附加成本，而 $q=0$ 已经可行，因此不可能最优。
+\end{proof}
+
+\section{两个关键不变量及其控制含义}
+
+对一般 $q\in[0,1]$，\eqref{eq:Phi}的导数不再为零。利用 $h=\gamma/(pc)$ 和 $r=(1-p)h$，可得
+\begin{equation}
+\boxed{\dot\Phi=-cqi(s-r).}
+\label{eq:Phi-derivative}
+\end{equation}
+这说明在流行阶段通常满足 $s>h>r$ 时，任何正隔离都会把状态推向更低的自然传播轨道。
+
+当 $q=1$ 时，系统化为
+\begin{equation}
+\dot s=-csi,
+\qquad
+\dot i=-\gamma i.
+\label{eq:q1-system}
+\end{equation}
+于是
+\begin{equation}
+\boxed{\Psi(s,i):=i-\ell\ln s\quad\text{保持不变}.}
+\label{eq:Psi}
+\end{equation}
+沿完全跟踪弧，从初点 $(s_a,i_a)$ 到终点 $(s_b,i_b)$，有
+\begin{align}
+i_b-\ell\ln s_b&=i_a-\ell\ln s_a,
+\label{eq:q1-characteristic}\\
+i(t)&=i_a\e^{-\gamma(t-t_a)},
+\label{eq:q1-i}\\
+s(t)&=s_a\exp\left[-\frac{c}{\gamma}(i_a-i(t))\right].
+\label{eq:q1-s}
+\end{align}
+完全跟踪弧的成本为
+\begin{equation}
+\int_{t_a}^{t_b}pc\dd t
+=\frac{pc}{\gamma}\ln\frac{i_a}{i_b}
+=\frac1h\ln\frac{i_a}{i_b}.
+\label{eq:q1-cost}
+\end{equation}
+
+\begin{remark}[与单传播系数模型的根本差异]
+经典模型在容量边界上控制一个共同传播率，使 $s$ 线性下降。本模型中 $q$ 同时改变易感者移出和感染生成，因而容量边界动力学变为指数型；此外，完全跟踪 $q=1$ 会令感染立即按恢复率指数下降，却仍继续消耗未隔离易感者。这使“沿容量边界一直运行到 $s=h$”一般不再最优。
+\end{remark}
+
+\section{Hamilton--Jacobi 方程与点态最小化}
+
+记
+\begin{align}
+f_0(s,i)&=(-pcsi,\ pcsi-\gamma i),
+\label{eq:f0}\\
+f_1(s,i)&=(-csi,\ -\gamma i).
+\label{eq:f1}
+\end{align}
+则
+\begin{equation}
+\dot x=f_0(x)+q[f_1(x)-f_0(x)],
+\qquad x=(s,i).
+\label{eq:control-affine}
+\end{equation}
+设值函数在某个内部区域可微。稳态 Hamilton--Jacobi 方程为
+\begin{equation}
+0=\min_{0\le q\le1}
+\left\{
+V_s[-c(p+(1-p)q)si]
++V_i[pc(1-q)si-\gamma i]
++pcq
+\right\}.
+\label{eq:HJB}
+\end{equation}
+写成
+\begin{equation}
+H(q)=H_0+q\Sigma,
+\label{eq:H-affine}
+\end{equation}
+其中
+\begin{align}
+H_0&=V_s(-pcsi)+V_i(pcsi-\gamma i),
+\label{eq:H0}\\
+\Sigma(s,i)&=pc-csi[(1-p)V_s+pV_i].
+\label{eq:switching-function}
+\end{align}
+
+\begin{lemma}[内部 bang--bang 结构]
+在 $i<K$ 的状态约束内部，若 $V$ 可微，则
+\begin{equation}
+q^*(s,i)=
+\begin{cases}
+0,&\Sigma(s,i)>0,\\
+1,&\Sigma(s,i)<0,
+\end{cases}
+\label{eq:bangbang}
+\end{equation}
+而 $\Sigma=0$ 是切换或奇异条件。除非 $\Sigma$ 在一段正长度轨道上恒为零，否则内部最优控制只取 $0$ 或 $1$。
+\end{lemma}
+
+\begin{proof}
+$H(q)$ 关于 $q$ 是区间 $[0,1]$ 上的仿射函数。斜率正时唯一极小点为 $q=0$，斜率负时唯一极小点为 $q=1$；斜率为零时整个区间都是点态极小集。
+\end{proof}
+
+\subsection{容量边界的可行控制}
+
+在 $i=K$ 上要求向量场不能指向 $i>K$：
+\[
+\dot i=[pc(1-q)s-\gamma]K\le0.
+\]
+因此边界可行控制集合为
+\begin{equation}
+Q_K(s)=
+\left[
+q_{\min}(s),1
+\right],
+\qquad
+q_{\min}(s)=\max\left\{0,1-\frac{h}{s}\right\}.
+\label{eq:boundary-feasible}
+\end{equation}
+当 $s>h$ 时，保持感染恰好等于容量的唯一切向控制是
+\begin{equation}
+\boxed{q_B(s)=1-\frac{h}{s}.}
+\label{eq:qB}
+\end{equation}
+若边界 Hamiltonian 的斜率 $\Sigma>0$，则最小可行控制 $q_B$ 是唯一点态极小；若 $\Sigma<0$，则唯一点态极小为 $q=1$。
+
+\section{完全跟踪弧的端点映射与显式值函数}
+\label{sec:q1-value}
+
+考虑安全集外的状态 $(s,i)$，并假设其 $q=1$ 特征线首先与安全边界\eqref{eq:safe-boundary}相交于 $(\bar s,\bar i)$。由\eqref{eq:q1-characteristic}，端点满足
+\begin{equation}
+\begin{cases}
+\bar i=a(\bar s),\\
+i-\ell\ln s=\bar i-\ell\ln\bar s.
+\end{cases}
+\label{eq:endpoint-system}
+\end{equation}
+消去 $\bar i$ 得
+\begin{equation}
+K+h-h\ln h-\bar s+r\ln\bar s
+=i-\ell\ln s.
+\label{eq:endpoint-root}
+\end{equation}
+左端对 $\bar s>h$ 的导数为
+\[
+-1+\frac{r}{\bar s}<0,
+\]
+所以只要存在交点，交点唯一。
+
+\begin{definition}[完全跟踪值函数]
+在端点映射存在的区域，定义
+\begin{equation}
+W(s,i)=\frac1h\ln\frac{i}{\bar i(s,i)}.
+\label{eq:W}
+\end{equation}
+它正是从 $(s,i)$ 取 $q=1$ 到达安全集边界所需的成本。
+\end{definition}
+
+为求导，记 $a'(x)=(h-x)/x$。对\eqref{eq:endpoint-system}隐式求导得到
+\begin{equation}
+\bar s_s=\frac{\ell\bar s}{s(\bar s-r)},
+\qquad
+\bar s_i=-\frac{\bar s}{\bar s-r}.
+\label{eq:endpoint-derivatives}
+\end{equation}
+进一步得到
+\begin{align}
+W_s&=\frac{\ell(\bar s-h)}{h s(\bar s-r)\bar i},
+\label{eq:Ws}\\
+W_i&=\frac1h\left[
+\frac1i-\frac{\bar s-h}{(\bar s-r)\bar i}
+\right].
+\label{eq:Wi}
+\end{align}
+
+\begin{proposition}[完全跟踪弧的 HJB 恒等式]
+定义
+\begin{equation}
+\Theta(s,i)=\frac{s-h}{i(s-r)}.
+\label{eq:Theta}
+\end{equation}
+则 $W$ 满足
+\begin{align}
+\nabla W\cdot f_1+pc&=0,
+\label{eq:H1-zero}\\
+\nabla W\cdot f_0
+&=\frac{pc}{h}i(s-r)
+\left[
+\Theta(s,i)-\Theta(\bar s,\bar i)
+\right].
+\label{eq:H0-theta}
+\end{align}
+因此在
+\[
+\Theta(s,i)>\Theta(\bar s,\bar i)
+\]
+的区域，$q=1$ 是唯一 HJB 极小控制；在反向不等式区域，$q=0$ 更优。
+\end{proposition}
+
+\begin{proof}
+将\eqref{eq:Ws}--\eqref{eq:Wi}代入 $f_1=(-csi,-\gamma i)$，利用 $\ell=\gamma/c$，直接得到\eqref{eq:H1-zero}。对 $f_0=pc i(-s,s-h)$，有
+\[
+\nabla W\cdot f_0=pc i[-sW_s+(s-h)W_i].
+\]
+代入导数并注意
+\[
+p+\frac{s-h}{h}=\frac{s-r}{h},
+\]
+整理即得\eqref{eq:H0-theta}。
+\end{proof}
+
+\section{切换曲线及其非平凡根的唯一性}
+\label{sec:switching-curve}
+
+切换条件由两种端点控制的 Hamiltonian 相等给出：
+\begin{equation}
+\boxed{
+\Theta(s,i)=\Theta(\bar s,\bar i).
+}
+\label{eq:switch-condition}
+\end{equation}
+其中 $(s,i)$ 和 $(\bar s,\bar i)$ 位于同一条 $q=1$ 特征线。固定安全边界端点 $(\bar s,\bar i)$，向后沿 $q=1$ 特征线写成
+\begin{equation}
+i(s)=\bar i+\ell\ln\frac{s}{\bar s},
+\qquad s\ge\bar s.
+\label{eq:q1-backward}
+\end{equation}
+
+\begin{lemma}[$\Theta$ 沿完全跟踪特征线的单峰性]
+在 $s>h$ 上，沿\eqref{eq:q1-backward}有
+\begin{equation}
+\frac{\dd}{\dd s}\ln\Theta(s,i(s))
+=\ell\left[
+\frac1{(s-h)(s-r)}-\frac1{s i(s)}
+\right].
+\label{eq:theta-log-derivative}
+\end{equation}
+令
+\begin{equation}
+g(s)=\frac{(s-h)(s-r)}s.
+\label{eq:g}
+\end{equation}
+则
+\begin{equation}
+\frac{\dd}{\dd s}[g(s)-i(s)]
+=\frac{(s-h)(s+r)}{s^2}>0.
+\label{eq:g-minus-i}
+\end{equation}
+因此 $g-i$ 至多过零一次，$\Theta(s,i(s))$ 至多先增后减，只有一个局部极大值。
+\end{lemma}
+
+\begin{proof}
+由\eqref{eq:Theta}和 $i'(s)=\ell/s$，
+\[
+\frac{\dd}{\dd s}\ln\Theta
+=\frac1{s-h}-\frac1{s-r}-\frac{\ell}{si}
+=\ell\left[
+\frac1{(s-h)(s-r)}-\frac1{si}
+\right].
+\]
+另一方面
+\[
+g(s)=s-(h+r)+\frac{hr}{s},
+\]
+从而
+\[
+g'(s)-i'(s)
+=1-\frac{hr}{s^2}-\frac{\ell}{s}
+=\frac{s^2-\ell s-hr}{s^2}
+=\frac{(s-h)(s+r)}{s^2}>0.
+\]
+式\eqref{eq:theta-log-derivative}的符号与 $i-g$ 相同，故结论成立。
+\end{proof}
+
+\begin{corollary}[同一特征线上的唯一非平凡切换点]
+固定端点 $(\bar s,\bar i)$。方程
+\[
+\Theta(s,i(s))=\Theta(\bar s,\bar i)
+\]
+除平凡根 $s=\bar s$ 外至多有一个根 $s>\bar s$。若该根存在，则完全跟踪弧的起点唯一。
+\end{corollary}
+
+\begin{proof}
+$\Theta$ 至多单峰。它从端点值出发后若先升高，只能在越过唯一极大值以后回到端点值一次；若初始即不升高，则不存在非平凡根。
+\end{proof}
+
+该推论给出切换曲线 $\Gamma$ 的自然参数化。以安全边界端点 $\bar s$ 为参数，先令
+\begin{equation}
+\bar i=a(\bar s),
+\label{eq:endpoint-a}
+\end{equation}
+再求唯一非平凡根 $s=\sigma(\bar s)$：
+\begin{equation}
+\begin{cases}
+i_\sigma=\bar i+\ell\ln(\sigma/\bar s),\\[1mm]
+\displaystyle
+\frac{\sigma-h}{i_\sigma(\sigma-r)}
+=\frac{\bar s-h}{\bar i(\bar s-r)}.
+\end{cases}
+\label{eq:switch-param}
+\end{equation}
+于是
+\[
+\Gamma=\{(\sigma(\bar s),i_\sigma(\bar s))\}.
+\]
+
+\section{医疗容量边界上的解析控制、时间与成本}
+\label{sec:boundary-arc}
+
+在 $i=K$、$s>h$ 上采用\eqref{eq:qB}，有
+\begin{align}
+\dot i&=0,
+\label{eq:boundary-i}\\
+\dot s&=-cK(s-r).
+\label{eq:boundary-s}
+\end{align}
+因此从 $s=s_a$ 开始，
+\begin{equation}
+s(t)=r+(s_a-r)\e^{-cK(t-t_a)}.
+\label{eq:boundary-s-explicit}
+\end{equation}
+若从 $s_{\mathrm{hi}}$ 下降到 $s_{\mathrm{lo}}$，持续时间为
+\begin{equation}
+T_B(s_{\mathrm{hi}},s_{\mathrm{lo}})
+=\frac1{cK}\ln\frac{s_{\mathrm{hi}}-r}{s_{\mathrm{lo}}-r}.
+\label{eq:boundary-duration}
+\end{equation}
+成本为
+\begin{align}
+C_B(s_{\mathrm{hi}},s_{\mathrm{lo}})
+&=\int pc\left(1-\frac hs\right)\dd t
+\notag\\
+&=\frac{p}{K}\int_{s_{\mathrm{lo}}}^{s_{\mathrm{hi}}}
+\frac{s-h}{s(s-r)}\dd s
+\notag\\
+&=\frac{p}{K(1-p)}
+\left[
+\ln\frac{s_{\mathrm{hi}}}{s_{\mathrm{lo}}}
+-p\ln\frac{s_{\mathrm{hi}}-r}{s_{\mathrm{lo}}-r}
+\right].
+\label{eq:boundary-cost}
+\end{align}
+
+设自然轨道首次到达容量时的易感比例为 $s_1>h$，它是方程
+\begin{equation}
+K=i_0+s_0-s_1+h\ln\frac{s_1}{s_0}
+\label{eq:s1}
+\end{equation}
+的大根。若沿容量边界运行到 $s=\sigma$ 后切换为 $q=1$，总成本为
+\begin{equation}
+\mathcal J_B(\sigma)
+=C_B(s_1,\sigma)+W(\sigma,K).
+\label{eq:JB}
+\end{equation}
+利用\eqref{eq:Ws}可得
+\begin{equation}
+\mathcal J_B'(\sigma)
+=\frac{p}{\sigma}
+\left[
+\Theta(\bar s,\bar i)-\Theta(\sigma,K)
+\right].
+\label{eq:JB-derivative}
+\end{equation}
+因此容量边界上的最优切换点与切换曲线和直线 $i=K$ 的交点完全一致。
+
+\begin{proposition}[容量边界切换点的严格局部唯一性]
+若方程
+\[
+\Theta(\sigma,K)=\Theta(\bar s(\sigma),\bar i(\sigma))
+\]
+在 $(h,s_1)$ 内有横截根 $\sigma_B$，即两边差的导数在根处非零，并且 $\mathcal J_B'$ 在根前后由负变正，则 $\sigma_B$ 是严格局部极小点。任意充分接近的不同切换位置都产生严格更高成本。
+\end{proposition}
+
+\begin{proof}
+由\eqref{eq:JB-derivative}，横截根是孤立驻点。若导数由负变正，则按一元微积分判据为严格局部极小。数值上还可直接检验 $\mathcal J_B''(\sigma_B)>0$。
+\end{proof}
+
+\section{常接触率下的最优反馈综合}
+\label{sec:synthesis}
+
+完整反馈由安全集 $\Acal$、切换曲线 $\Gamma$ 和容量边界共同确定。为避免把几何退化情形隐含在结论中，先明确可检验条件。
+
+\begin{assumption}[非退化切换综合条件]
+\label{ass:geometry}
+在所考虑的参数和初值区域中：
+\begin{enumerate}[label=(G\arabic*)]
+\item 与最优轨道相关的 $q=1$ 特征线均唯一地到达安全边界；
+\item 切换曲线 $\Gamma$ 是简单分段 $C^1$ 曲线；
+\item 自然轨道与 $\Gamma$、容量线与 $\Gamma$ 的相交均为横截相交，且每条相关自然轨道至多相交一次；
+\item 不存在一段正长度的内部奇异弧 $\Sigma\equiv0$，也不存在最优轨道沿 $\Gamma$ 滑行的区间。
+\end{enumerate}
+\end{assumption}
+
+(G1) 的唯一性已由端点方程的单调性证明；同一 $q=1$ 特征线上的非平凡切换根至多一个已由第\ref{sec:switching-curve}节证明。剩余条件是低维横截性条件，可由解析导数或一维数值根检验；它们在参数的开邻域内稳定，退化只发生在余维至少一的参数集合上。
+
+\begin{definition}[候选反馈]
+定义 $Q^*(s,i)$ 如下：
+\begin{enumerate}[label=(\roman*)]
+\item 若 $(s,i)\in\Acal$，取 $Q^*=0$；
+\item 若状态位于切换曲线与安全集之间的完全跟踪区域，取 $Q^*=1$；
+\item 若状态位于自然等待区域，取 $Q^*=0$；
+\item 若 $i=K$ 且位于容量进入点和容量--切换交点之间，取
+\[
+Q^*(s,K)=q_B(s)=1-h/s;
+\]
+到达容量--切换交点以后，立即取 $Q^*=1$。
+\end{enumerate}
+\end{definition}
+
+
+候选轨道有三类。
+
+\paragraph{类型 I：自然传播安全。}
+\[
+q^*(t)\equiv0.
+\]
+
+\paragraph{类型 II：容量前直接切换。}
+自然轨道先与 $\Gamma$ 相交：
+\begin{equation}
+0\longrightarrow1\longrightarrow0.
+\label{eq:direct-structure}
+\end{equation}
+
+\paragraph{类型 III：先到容量。}
+自然轨道先到 $i=K$，随后沿容量边界到达 $\Gamma$：
+\begin{equation}
+0\longrightarrow q_B(s)\longrightarrow1\longrightarrow0.
+\label{eq:capacity-structure}
+\end{equation}
+
+纯粹“填满容量直到 $s=h$”是类型 III 的极限情形，即容量--切换交点退化为 $(h,K)$。
+
+\subsection{候选值函数的分段构造}
+
+在安全集上置 $V=0$。在完全跟踪区域置 $V=W$。在自然等待区域，令状态沿 $q=0$ 轨道前进到第一次碰到 $\Gamma$ 或容量边界，并把 $V$ 定义为该首次碰撞点的后续值；因为等待段成本为零，$V$ 沿自然轨道保持常数。在容量边界等待区，若容量--切换交点为 $(s_B,K)$，则
+\begin{equation}
+V(s,K)=C_B(s,s_B)+W(s_B,K),
+\qquad s\ge s_B.
+\label{eq:boundary-value}
+\end{equation}
+该构造在切换曲线上满足值匹配；式\eqref{eq:switch-condition}又保证 Hamiltonian 平滑匹配。
+
+\begin{theorem}[验证定理]
+\label{thm:verification}
+假设\ref{ass:geometry}成立。设上述分段值函数 $V$ 连续、局部 Lipschitz，并在各开区域内 $C^1$。则：
+\begin{enumerate}[label=(\alph*)]
+\item 对每个可行控制 $q$，沿其轨道几乎处处有
+\begin{equation}
+\frac{\dd}{\dd t}V(s(t),i(t))+pcq(t)\ge0;
+\label{eq:verification-ineq}
+\end{equation}
+\item 候选反馈 $Q^*$ 使\eqref{eq:verification-ineq}取等号；
+\item 若轨道在有限时间进入 $\Acal$，或者满足标准横截条件 $V(s(t),i(t))\to0$，则
+\begin{equation}
+J(q)\ge V(s_0,i_0),
+\end{equation}
+而候选反馈达到等号，故为全局最优。
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+在每个可微区域，候选 $V$ 满足受状态约束的 HJB 方程
+\[
+\min_{q\in Q(s,i)}\{\nabla V\cdot f(s,i,q)+pcq\}=0.
+\]
+因此对任意可行 $q$，括号内非负，即得\eqref{eq:verification-ineq}。候选反馈逐点取 Hamiltonian 极小元，所以等号成立。积分到进入安全集的时刻 $T$，利用 $V(T)=0$，得
+\[
+\int_0^Tpcq\dd t\ge V(s_0,i_0).
+\]
+进入安全集后唯一最优延拓为 $q=0$，故总成本同样满足该下界。若只在无穷远逼近安全集，则对 $[0,T]$ 积分并令 $T\to\infty$，利用横截条件得到结论。切换界面上的不可微点只构成零测集；局部 Lipschitz 函数沿绝对连续轨道的链式法则几乎处处成立。候选反馈使每段均取等号，故达到 $V(s_0,i_0)$。
+\end{proof}
+
+\section{\texorpdfstring{常接触率下 $q(t)$ 的唯一性}{常接触率下 q(t) 的唯一性}}
+\label{sec:constant-uniqueness}
+
+\begin{theorem}[几乎处处全局唯一性]
+\label{thm:unique-q}
+在定理\ref{thm:verification}的条件下，进一步假设 HJB 极小集沿候选最优轨道除有限个切换时刻外均为单点。则最优控制 $q^*$ 在 $[0,\infty)$ 上几乎处处唯一。
+\end{theorem}
+
+\begin{proof}
+设 $q$ 是任意最优控制。验证不等式积分后必须取等号，否则其成本严格大于值函数。因此
+\[
+\nabla V\cdot f(s,i,q)+pcq=0
+\]
+沿最优轨道几乎处处成立，即 $q(t)$ 必须属于点态 Hamiltonian 极小集。自然等待区和安全集内唯一极小元为 $0$；完全跟踪区唯一极小元为 $1$；容量边界等待区唯一最小可行元为 $q_B(s)$。只有孤立切换点可能同时允许两个端点或一个区间的点态极小元，但这些时刻测度为零。因此所有最优控制几乎处处相同。
+\end{proof}
+
+\begin{remark}[唯一性可能失效的精确位置]
+线性成本下，非唯一性只可能来自以下退化：
+\begin{enumerate}[label=(\roman*)]
+\item $\Sigma=0$ 在正长度内部区间上成立，形成奇异弧；
+\item 最优轨道沿切换曲线切向滑行；
+\item 容量边界上 $\Sigma=0$ 在正长度区间成立，使 $[q_B,1]$ 中多个控制同时最小。
+\end{enumerate}
+这些不是由模型代数形式自动产生的普遍现象，而是需要附加等式同时成立的非泛型情形。基准参数下三个退化均未发生。
+\end{remark}
+
+\subsection{为什么解除隔离以后也唯一}
+
+附件单传播系数模型把高于自然传播水平的控制视为无成本，因此在达到群体免疫以后，某些“加速传播”延拓也可能零成本。当前模型中 $q\in[0,1]$，且
+\[
+\beta_2=pc(1-q)
+\]
+只会随着 $q$ 增大而下降；不存在通过 $q$ 把感染生成率提高到自然水平以上的方向。更重要的是，任何 $q>0$ 都有严格正成本 $pcq$。因此进入 $\Acal$ 后，$q=0$ 不仅可行，而且是唯一零成本控制。这使最优控制从“解除时刻以前唯一”提升为“全时段几乎处处唯一”。
+
+\subsection{\texorpdfstring{从 $q^*$ 到 $\beta_1^*,\beta_2^*$ 的唯一性}{从 q* 到 beta1*, beta2* 的唯一性}}
+
+当 $c$ 为已知常数时，映射
+\begin{equation}
+q\mapsto
+\left(
+\frac{c[p+(1-p)q]}N,
+\frac{pc(1-q)}N
+\right)
+\label{eq:q-to-betas}
+\end{equation}
+是单射。因此 $q^*$ 几乎处处唯一当且仅当 $(\beta_1^*,\beta_2^*)$ 几乎处处唯一。反演公式为
+\begin{equation}
+q=1-\frac{N\beta_2}{pc}
+=\frac{N(\beta_1-\beta_2)}c.
+\label{eq:q-inversion-known-c}
+\end{equation}
+即使 $c$ 未知，只要 $\beta_1,\beta_2$ 同时可识别，也有
+\begin{align}
+c&=N\left[\beta_1+\frac{1-p}{p}\beta_2\right],
+\label{eq:c-inversion}\\
+q&=\frac{\beta_1-\beta_2}{\beta_1+\frac{1-p}{p}\beta_2}.
+\label{eq:q-inversion}
+\end{align}
+
+\section{\texorpdfstring{时变接触率 $c(t)$：能证明什么，不能无条件证明什么}{时变接触率 c(t)：能证明什么，不能无条件证明什么}}
+\label{sec:time-varying}
+
+现在令 $c(t)>0$ 为给定的外生函数。由于恢复率 $\gamma$ 不随时间缩放，简单的时间变换不能把问题化为常接触率模型。事实上，若令
+\[
+\tau(t)=\int_0^t c(s)\dd s,
+\]
+则
+\[
+\frac{\dd i}{\dd\tau}=p(1-q)si-\frac{\gamma}{c(t(\tau))}i,
+\]
+恢复项仍显式依赖时间。因此固定不变量、固定群体免疫阈值和自治切换曲线一般消失。
+
+\subsection{非自治 HJB 方程}
+
+值函数写为 $V(t,s,i)$。HJB 方程为
+\begin{equation}
+\begin{aligned}
+0=V_t+\min_{q\in Q(t,s,i)}\Big\{&
+-c(t)[p+(1-p)q]siV_s\\
+&+[pc(t)(1-q)s-\gamma]iV_i
++pc(t)q
+\Big\}.
+\end{aligned}
+\label{eq:time-HJB}
+\end{equation}
+在内部 $Q=[0,1]$；在 $i=K$ 上
+\begin{equation}
+Q(t,s,K)=
+\left[
+\max\left\{0,1-\frac{\gamma}{pc(t)s}\right\},1
+\right].
+\label{eq:time-boundary-set}
+\end{equation}
+时变切换函数为
+\begin{equation}
+\Sigma(t,s,i)=pc(t)-c(t)si[(1-p)V_s+pV_i].
+\label{eq:time-switch}
+\end{equation}
+
+\begin{theorem}[线性成本下的时变唯一性判据]
+设非自治值函数在最优轨道附近具有足够正则性，并且：
+\begin{enumerate}[label=(\roman*)]
+\item 在状态约束内部，$\Sigma(t,s^*(t),i^*(t))\ne0$ 对几乎所有 $t$ 成立；
+\item 在容量边界上，受限 Hamiltonian 的极小元除孤立时刻外为单点；
+\item 由相应反馈生成的闭环状态方程解唯一。
+\end{enumerate}
+则最优控制几乎处处唯一。
+\end{theorem}
+
+\begin{proof}
+证明与定理\ref{thm:unique-q}相同。线性 Hamiltonian 的极小元由 $\Sigma$ 符号决定；若 $\Sigma\ne0$，内部极小元唯一。边界上在可行区间内最小元也按斜率唯一确定。验证等式迫使任意最优控制逐点属于该单点极小集。
+\end{proof}
+
+\begin{remark}[为什么不能仅凭 $c(t)$ 的函数形式宣称唯一]
+若 $\Sigma=0$ 在正长度时间区间上成立，线性 Hamiltonian 对 $q$ 不敏感，可能出现奇异控制或多重最优解。因此对任意给定时变 $c(t)$，唯一性需要检查值梯度、切换函数及横截性；不能从\eqref{eq:beta12}本身无条件推出。
+\end{remark}
+
+\subsection{严格凸正则化}
+
+为消除线性成本的点态平局，可采用
+\begin{equation}
+J_\varepsilon(q)=
+\int_0^T\left[pc(t)q(t)+\frac{\varepsilon}{2}q(t)^2\right]\dd t,
+\qquad\varepsilon>0.
+\label{eq:regularized-cost}
+\end{equation}
+若还需政策平滑，可在离散数值中加入 $\eta\sum(q_{j+1}-q_j)^2$，或在连续模型中把 $q$ 扩展为状态并惩罚 $\dot q$。
+
+\begin{proposition}[唯一的点态正则化反馈]
+若 $V_\varepsilon$ 可微，则内部最优控制唯一，且
+\begin{equation}
+q_\varepsilon^*(t,s,i)
+=\proj_{[0,1]}
+\left(
+\frac{c(t)si[(1-p)V_s+pV_i]-pc(t)}{\varepsilon}
+\right).
+\label{eq:projection-feedback}
+\end{equation}
+在容量边界上，把投影区间替换为\eqref{eq:time-boundary-set}。若该反馈局部 Lipschitz，则闭环轨道唯一，从而最优控制唯一。
+\end{proposition}
+
+\begin{proof}
+正则化 Hamiltonian 关于 $q$ 的二阶导数为 $\varepsilon>0$，故严格凸。无约束一阶条件给出括号中的表达式，加入控制区间和边界可行区间后得到欧氏投影。局部 Lipschitz 反馈与状态向量场组合后满足常微分方程唯一性条件。
+\end{proof}
+
+\section{\texorpdfstring{若同时把 $c(t)$ 和 $q(t)$ 都作为控制}{若同时把 c(t) 和 q(t) 都作为控制}}
+
+如果 $c$ 不再外生，而目标函数只惩罚 $q$，问题会立刻退化：取 $c(t)=0,q(t)=0$ 即可停止所有新接触，且费用为零。因此联合控制必须同时惩罚接触减少，例如
+\begin{equation}
+\int_0^T
+\left[
+\alpha_c(c_0-c)^2+\alpha_q q^2+\alpha_{cq}cq
+\right]\dd t,
+\label{eq:joint-cost}
+\end{equation}
+并设置 $0<c_{\min}\le c\le c_{\max}$。若成本关于 $(c,q)$ 严格凸、控制集合凸紧，并且相应闭环满足唯一性，则可获得局部或全局唯一反馈。若缺少对 $c$ 的成本和下界，任何关于 $q$ 的唯一性结论都没有政策意义。
+
+\section{数值算法}
+\label{sec:numerical-method}
+
+\subsection{常接触率：解析降维算法}
+
+常接触率问题不需要在高维控制网格上直接搜索。算法为：
+\begin{enumerate}[label=步骤 \arabic*：]
+\item 计算 $h,r,\ell$ 和自然峰值\eqref{eq:natural-peak}；若峰值不超过 $K$，结束；
+\item 求自然轨道首次到达容量的大根 $s_1$；
+\item 对每个可能的完全跟踪起点 $(s_a,i_a)$，由\eqref{eq:endpoint-root}求唯一安全端点，再由\eqref{eq:q1-cost}计算 $W$；
+\item 分别最小化两类一维成本：
+\begin{align*}
+\mathcal J_D(s)&=W(s,i_{\mathrm{nat}}(s)),\qquad s\in[s_1,s_0],\\
+\mathcal J_B(s)&=C_B(s_1,s)+W(s,K),\qquad s\in(h,s_1];
+\end{align*}
+\item 比较直接切换、容量边界切换和纯容量填充的成本；
+\item 用解析公式拼接 $q=0$、$q_B$、$q=1$ 和最终 $q=0$ 段。
+\end{enumerate}
+切换根和一维极小均使用带括区间的 Brent/fzero 与有界标量最小化；状态段用高精度事件定位或解析表达式。
+
+\subsection{时变接触率：直接配置}
+
+取 $T=18$，把 $q$ 在 $n=48$ 个小区间上设为分段常数，用四阶 Runge--Kutta 推进状态。离散目标为
+\begin{equation}
+J_{\varepsilon,\eta}^n
+=\Delta t\sum_{j=0}^{n-1}
+\left[pc(t_{j+1/2})q_j+\frac\varepsilon2q_j^2\right]
++\frac{\eta}{2\Delta t}\sum_{j=0}^{n-2}(q_{j+1}-q_j)^2.
+\label{eq:discrete-objective}
+\end{equation}
+约束包括 $0\le q_j\le1$、所有网格点 $i_j\le K$，以及终端状态进入基准接触率 $c_0$ 的安全集。使用 SLSQP 求解，并用不同 $\varepsilon$ 检查正则化极限。
+
+\section{基准参数与数值结果}
+\label{sec:numerical-results}
+
+基准参数为
+\begin{equation}
+p=0.5,
+\quad c=2,
+\quad\gamma=0.3,
+\quad K=0.15,
+\quad s_0=0.99,
+\quad i_0=0.01.
+\label{eq:baseline}
+\end{equation}
+于是
+\[
+h=0.3,
+\qquad r=0.15,
+\qquad\ell=0.15.
+\]
+表\ref{tab:baseline-results}给出关键结果。
+
+\begin{table}[H]
+\centering
+\caption{基准参数下的解析--数值结果}
+\label{tab:baseline-results}
+\begin{tabular}{@{}lll@{}}
+\toprule
+量 & 数值 & 含义\\
+\midrule
+$i_{\rm pk}$ & $0.3418232595$ & 无隔离自然峰值\\
+$s_1$ & $0.7775221610$ & 首次到达 $i=K$ 的易感比例\\
+$\tau_1$ & $4.3491915577$ & 首次到达容量时间\\
+$s_B$ & $0.5476951355$ & 容量边界转入 $q=1$ 的唯一切换值\\
+$T_B$ & $1.5203108877$ & 容量边界段持续时间\\
+$s_R$ & $0.4516637907$ & 解除隔离时易感比例\\
+$i_R$ & $0.1210828901$ & 解除隔离时感染比例\\
+$T_{q=1}$ & $0.7138664706$ & 完全跟踪段持续时间\\
+$J^*$ & $1.5295111602$ & 最小控制成本\\
+$J_{\rm FB}$ & $1.5783855040$ & 纯容量填充成本\\
+$J_{\rm direct}$ & $1.6364798118$ & 容量前直接转入 $q=1$ 的最小成本\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+容量切换方程在 $s_B$ 处的数值横截导数约为 $-3.9813$，一维成本二阶差分约为 $3.6346>0$，所以该切换点是严格且稳定的极小点。纯容量填充比最优策略高约
+\[
+\frac{J_{\rm FB}-J^*}{J_{\rm FB}}\times100\%=3.0965\%.
+\]
+
+\subsection{相平面结构}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.94\textwidth]{Figure_1_phase_geometry.jpg}
+\caption{常接触率下的相平面几何。虚线为无隔离轨道，点线为最大安全轨道，实细线为切换曲线，粗线为最优轨道。最优轨道先自然到达容量，沿 $i=K$ 运行，再转入 $q=1$，最后在安全边界解除隔离。}
+\label{fig:phase}
+\end{figure}
+
+图\ref{fig:phase}显示，切换曲线不是容量线，也不是群体免疫直线 $s=h$。本模型允许在容量边界尚未走到 $h$ 以前转入完全跟踪；这正是相对于经典 filling-the-box 策略的新增结构。
+
+\subsection{状态时间序列}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.92\textwidth]{Figure_2_state_time_series.jpg}
+\caption{最优策略下的状态时间序列。感染比例首次达到 $K$ 后保持一段时间，转入完全跟踪后下降，解除隔离以后沿最大安全轨道自然演化。}
+\label{fig:states}
+\end{figure}
+
+图\ref{fig:states}中 $i(t)$ 在容量边界段严格等于 $K$，但在完全跟踪段下降到 $i_R<K$ 后才解除隔离。解除点位于最大安全轨道上，因此后续 $q=0$ 不会再次超过容量。
+
+\subsection{一个控制产生两个不同系数}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.92\textwidth]{Figure_3_control_coefficients.jpg}
+\caption{最优 $q^*(t)$ 与两个归一化传播系数。$\beta_1/c=p+(1-p)q$ 随 $q$ 增大而上升，$\beta_2/c=p(1-q)$ 随 $q$ 增大而下降。}
+\label{fig:coefficients}
+\end{figure}
+
+容量边界段
+\[
+q_B=1-h/s
+\]
+随 $s$ 下降而逐渐减小；相应地，$\beta_2$ 逐步恢复，而 $\beta_1$ 逐步下降。完全跟踪段 $q=1$ 时 $\beta_2=0$，感染只按恢复率衰减。
+
+\subsection{严格一维极小与唯一性数值证据}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Figure_4_uniqueness_cost.jpg}
+\caption{把容量边界转入 $q=1$ 的易感比例作为一维变量时，总成本具有唯一严格极小点。该图与解析导数\eqref{eq:JB-derivative}共同验证基准参数下的横截唯一性。}
+\label{fig:unique-cost}
+\end{figure}
+
+图\ref{fig:unique-cost}不是用“控制网格搜索”得到的黑箱曲线，而是由容量边界闭式成本和完全跟踪闭式成本直接相加得到。曲线严格极小意味着任意提前或延迟转入 $q=1$ 都会增加成本。
+
+\subsection{可行策略成本比较}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Figure_5_policy_cost_comparison.jpg}
+\caption{四种可行策略的成本比较。最优的容量边界--完全跟踪组合低于纯 filling-the-box、到容量即完全跟踪以及更早完全跟踪。}
+\label{fig:policy-cost}
+\end{figure}
+
+\subsection{容量、传播概率与结构区间}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Figure_6_capacity_dependence.jpg}
+\caption{最小成本随医疗容量 $K$ 增大而下降，并在自然峰值附近降为零。纯容量填充在大部分绑定区间略高于真正最优策略。}
+\label{fig:capacity}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Figure_7_probability_dependence.jpg}
+\caption{相对于纯 filling-the-box，采用容量边界后转入完全跟踪所节省的成本随单次传播概率 $p$ 的变化。跟踪机制对两个方程的非对称作用在较小 $p$ 时更突出。}
+\label{fig:p-sensitivity}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{Figure_8_regime_map.jpg}
+\caption{$p$--$K$ 参数平面中的最优结构图：无控制、容量前直接完全跟踪、以及容量边界加完全跟踪。边界附近是结构转换而非数值失稳。}
+\label{fig:regime}
+\end{figure}
+
+图\ref{fig:regime}说明“先到容量”不是所有参数下都成立。容量较大时自然传播本身安全；中间区域可能在达到容量以前与切换曲线相交；容量较紧时则出现类型 III。
+
+\subsection{时变接触率的正则化结果}
+
+取
+\begin{equation}
+c(t)=2\left[1+0.55\exp\left(-\frac12\left(\frac{t-5.5}{1.35}\right)^2\right)\right],
+\label{eq:contact-surge}
+\end{equation}
+它表示一次平滑接触高峰，远离高峰后回到基准值 $2$。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.92\textwidth]{Figure_9_time_varying_control.jpg}
+\caption{给定时变接触率时，不同严格凸参数 $\varepsilon$ 下的唯一正则化控制。$\varepsilon$ 越小，控制越接近线性成本的 bang--bang/边界极限。}
+\label{fig:time-control}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.92\textwidth]{Figure_10_time_varying_states.jpg}
+\caption{接触高峰下的感染轨道。无隔离会显著超过容量，正则化最优控制把最大感染比例压在 $K=0.15$ 上。}
+\label{fig:time-states}
+\end{figure}
+
+离散求解中 $\varepsilon=0.04$ 的目标值约为 $2.4280$，网格最大感染比例为 $0.1500000000$，容量误差处于数值容差范围。图\ref{fig:time-control}中不同 $\varepsilon$ 的主要激活窗口稳定地集中在接触高峰前后，说明结果不是单一正则参数造成的伪影。
+
+\FloatBarrier
+\section{生物学与政策解释}
+
+\subsection{为什么容量边界后可能需要完全跟踪}
+
+在单传播系数模型中，沿容量边界运行会逐渐接近 $s=h$，此时自然传播恰好不再增长。当前模型中完全跟踪 $q=1$ 有两个同时发生的效果：
+\begin{enumerate}[label=(\roman*)]
+\item 新感染生成项立刻降为零，$i$ 以速率 $\gamma$ 指数下降；
+\item 被跟踪的易感接触者继续离开未隔离 $S$ 舱室，使状态更快进入无控制安全集。
+\end{enumerate}
+因此在容量边界上运行到某个内生切换点后，短时完全跟踪可能比继续维持 $i=K$ 更便宜。
+
+\subsection{容量不是唯一阈值}
+
+系统包含三个不同阈值：
+\begin{enumerate}[label=(\roman*)]
+\item 医疗容量 $K$：状态可行性阈值；
+\item 自然传播阈值 $h=\gamma/(pc)$：无隔离下感染增长率变号的位置；
+\item 跟踪几何阈值 $r=(1-p)h$：出现在 $\dot\Phi$、容量动力学和切换函数中。
+\end{enumerate}
+最优切换点由 $\Theta$ 匹配决定，通常不等于其中任何一个单独阈值。
+
+\subsection{唯一性的政策含义}
+
+几乎处处唯一意味着：在给定模型、成本、容量和参数下，除孤立切换瞬间外，不存在另一条成本完全相同但政策强度不同的最优路径。这对政策解释很重要，因为它排除了“任意延后或提前都一样好”的平坦目标面。另一方面，时变 $c(t)$ 下若切换函数在区间上接近零，数值上会表现为多条近似等价策略；此时应报告近最优集合，而不应过度宣称单一路径。
+
+\section{理论边界与进一步扩展}
+
+\begin{enumerate}[label=\arabic*.]
+\item 本文的闭式几何依赖 $c$ 为常数。周期接触、季节性或行为反馈会使值函数显式依赖时间。
+\item 线性成本产生 bang--bang 结构和潜在奇异退化。严格凸成本会平滑控制，并使点态极小元唯一。
+\item 若隔离效能不完全，可把 $q=1$ 时的感染生成系数改为正残余值；端点不变量会改变，但 HJB 与特征线方法仍适用。
+\item 若跟踪能力有上限 $q\le q_{\max}<1$，则完全跟踪段替换为饱和段 $q=q_{\max}$，容量可行性还要求 $q_{\max}\ge1-h/s$。
+\item 若 $c$ 和 $q$ 都内生，必须同时建模社交接触成本、跟踪资源成本和政策变化成本。
+\item 参数不确定时，可把 $p,c,\gamma$ 视为区间或随机过程，研究鲁棒状态约束和风险敏感目标。
+\end{enumerate}
+
+\section{主要结论}
+
+本文得到以下结论。
+\begin{enumerate}[label=\arabic*.]
+\item 跟踪隔离模型中的 $\beta_1$ 和 $\beta_2$ 虽不同，但不是独立控制；它们由同一个 $q(t)$ 以相反方向耦合。
+\item 对固定常数 $c$，自然传播安全集、容量边界控制、完全跟踪不变量和切换函数都可显式写出。
+\item 内部线性 Hamiltonian 决定最优控制只取 $0$ 或 $1$；唯一中间控制为容量边界强制的 $q_B=1-h/s$。
+\item 切换曲线沿每条完全跟踪特征线至多有一个非平凡根，因此完全跟踪开始点具有内在唯一性。
+\item 在横截性和无奇异弧的可检验条件下，候选反馈满足完整 HJB 验证定理，并在全时间轴上几乎处处唯一。
+\item 基准参数的唯一最优结构为
+\[
+0\to q_B(s)\to1\to0,
+\]
+最小成本为 $1.5295111602$，比纯容量填充低约 $3.10\%$。
+\item 对给定时变 $c(t)$，唯一性不再由自治几何自动保证；线性成本下必须检查时变切换函数，严格凸正则化则给出唯一投影反馈。
+\item 当 $c$ 已知时，$q$ 与 $(\beta_1,\beta_2)$ 一一对应；即使 $c$ 未知，只要两个系数同时可识别，也可由显式公式恢复 $c$ 和 $q$。
+\end{enumerate}
+
+\appendix
+\section{完全跟踪值函数导数的逐步计算}
+
+由
+\[
+G(s,i,\bar s)=i-\ell\ln s-a(\bar s)+\ell\ln\bar s=0
+\]
+及
+\[
+a'(\bar s)=\frac{h-\bar s}{\bar s},
+\]
+有
+\[
+G_{\bar s}=-a'(\bar s)+\frac\ell{\bar s}
+=1-\frac h{\bar s}+\frac\ell{\bar s}
+=1-\frac r{\bar s}
+=\frac{\bar s-r}{\bar s}.
+\]
+于是
+\[
+-\frac\ell s+G_{\bar s}\bar s_s=0,
+\qquad
+1+G_{\bar s}\bar s_i=0,
+\]
+从而得到\eqref{eq:endpoint-derivatives}。又
+\[
+\bar i_s=a'(\bar s)\bar s_s,
+\qquad
+\bar i_i=a'(\bar s)\bar s_i.
+\]
+对
+\[
+W=\frac1h(\ln i-\ln\bar i)
+\]
+求导即得
+\[
+W_s=-\frac1h\frac{a'(\bar s)\bar s_s}{\bar i}
+=\frac{\ell(\bar s-h)}{h s(\bar s-r)\bar i},
+\]
+以及
+\[
+W_i=\frac1h\left[
+\frac1i-\frac{a'(\bar s)\bar s_i}{\bar i}
+\right]
+=\frac1h\left[
+\frac1i-\frac{\bar s-h}{(\bar s-r)\bar i}
+\right].
+\]
+
+\section{容量边界成本积分的逐步计算}
+
+由 $\dot s=-cK(s-r)$，
+\[
+\dd t=-\frac{\dd s}{cK(s-r)}.
+\]
+于是
+\[
+C_B=\int pc\left(1-\frac hs\right)\dd t
+=\frac pK\int_{s_{\rm lo}}^{s_{\rm hi}}
+\frac{s-h}{s(s-r)}\dd s.
+\]
+作部分分式
+\[
+\frac{s-h}{s(s-r)}=\frac{A}{s}+\frac{B}{s-r}.
+\]
+比较系数：
+\[
+A+B=1,
+\qquad
+-Ar=-h.
+\]
+因此
+\[
+A=\frac h r=\frac1{1-p},
+\qquad
+B=-\frac p{1-p}.
+\]
+代回并积分即得\eqref{eq:boundary-cost}。
+
+\section{数值复现说明}
+
+所有图形对应独立 Python 和 MATLAB 文件。Python 公共解析模块为
+\path{python/common_tracing.py}，数据总生成器为
+\path{python/generate_data.py}。常接触率数据可运行
+\begin{lstlisting}
+python python/generate_data.py
+\end{lstlisting}
+重新生成；时变接触率直接配置可运行
+\begin{lstlisting}
+python python/generate_data.py --recompute-tv
+\end{lstlisting}
+重新求解。每幅图可单独执行，例如
+\begin{lstlisting}
+python python/Figure_1_phase_geometry.py
+python python/Figure_10_time_varying_states.py
+\end{lstlisting}
+MATLAB 文件使用脚本末尾局部函数，不依赖额外工具箱；第 6--10 图读取包内 CSV，以避免重复进行大量参数扫描。
+
+\section{校验口径}
+
+本报告区分三类结论：
+\begin{enumerate}[label=(\roman*)]
+\item 由恒等式、单调性和 HJB 点态极小直接证明的解析结论；
+\item 在明确横截性假设下成立的全局验证与唯一性定理；
+\item 仅针对基准参数或参数扫描得到的数值结论。
+\end{enumerate}
+常接触率基准参数满足横截条件，并通过一维成本二阶差分、切换函数导数、容量误差和独立策略比较共同校验。时变接触率结果是严格凸正则化后的离散最优解，不把它误述为未正则化连续问题的闭式唯一解。
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
