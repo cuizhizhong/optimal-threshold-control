@@ -14,10 +14,15 @@ Run "图 20"            "dom_pretty.py"
 Run "图 21 Panel A"    "panels.py"
 Run "图 22 重算(~25s)" "compute_B.py"
 Run "图 22 Panel B"    "plot_B.py"
+Run "图 23 轨迹分解"   "plot_B_decomp.py"
 
+# 名单须与 panels.py 的 PANEL_A_CASES 输出名一致（曾长期写成已废弃的
+# N1e4/N40377/N91727，导致 copy 阶段报错）：正文用 fig_panel_A（=N2e4 的别名），
+# 附录三例为 Ncumstar / Nstar45 / Nstarinf。
 $fig = Join-Path $PSScriptRoot "..\figures"
-foreach ($f in "fig_dom_combined", "fig_panel_A", "fig_panel_A_N1e4", "fig_panel_A_N2e4",
-                 "fig_panel_A_N40377", "fig_panel_A_N91727", "fig_panel_B") {
+foreach ($f in "fig_dom_combined", "fig_panel_A", "fig_panel_A_N2e4",
+                 "fig_panel_A_Ncumstar", "fig_panel_A_Nstar45", "fig_panel_A_Nstarinf",
+                 "fig_panel_B", "fig_panel_B_trajectory_decomposition") {
     Copy-Item (Join-Path "dominance_panels" "$f.pdf") $fig -Force
     Write-Host "  copied $f.pdf -> figures/" -ForegroundColor Green
 }

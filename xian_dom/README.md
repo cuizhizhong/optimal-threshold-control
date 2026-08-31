@@ -52,12 +52,33 @@ python plot_B.py         # 图 22 Panel B（读缓存，秒出）
 
 ## 图去向与尺寸约束
 
-- 三脚本把图写到 `xian_dom/dominance_panels/`；定稿时把正文图与 Panel A 附录图复制到 `../figures/`
-  （主论文 graphicspath 经 `../figures/` 解析）。
-- 三图按 tight bbox 宽度 = **451.28 bp**（= 主论文 `\textwidth`，A4 减左右各 1 in）渲染，
+- 四脚本把图写到 `xian_dom/dominance_panels/`；定稿时把正文图与 Panel A 附录图复制到 `../figures/`
+  （主论文 graphicspath 经 `../figures/` 解析）。`run_all.ps1` 已包含全部生成与复制步骤。
+- 各图按 tight bbox 宽度 = **451.28 bp**（= 主论文 `\textwidth`，A4 减左右各 1 in）渲染，
   使 `\includegraphics[width=\textwidth]` 缩放为 1.0×。改 `figsize` 后**必须用 `pdfinfo` 复量**
   （因 `bbox_inches="tight"`，成图尺寸 ≠ `figsize`）。当前值：`dom_pretty` `(6.288, 2.925)`、
-  `panels`/`plot_B` `(6.151, 5.459)`。
+  `panels`/`plot_B` `(6.151, 5.459)`、`plot_B_decomp` `(6.151, 4.0)`。
+
+## 图 23：图 22 的轨迹分解（`plot_B_decomp.py`）
+
+正文图 23 `fig:panel_N_decomp`，紧接图 22 收在 §8.6。目的是把图 22 里被压成灰色包络的常规控制
+与五条重合的阈值平台按 $N_{\rm eff}$ 拆开。`GridSpec(2,4)`：(a)--(d) 四格各对应一个
+$N_{\rm eff}$，画该 $N$ 的阈值控制（实线）、同 $N$ 的常规控制（虚线）与固定 TDINN（黑实线）；
+(e) 跨两列只画四条常规控制，(f) 跨两列只画四条阈值控制 + 唯一一条 TDINN。
+
+- **只取四个角色** `clear / cum / dur45 / cost`，丢掉图 22 的 `dur150`（$N$=87944）。
+- **口径守恒**：阈值轨迹与 $t_{\rm inf}$、TDINN 全部直接读 `panelB.pkl`，不重算；只有常规控制
+  缓存里没有这四个 $N$（缓存只存 8 条几何间隔的包络成员），故用 `panels.prep(N)[2]` 现解——
+  该调用与 `compute_B.py` 求包络成员时逐字相同。脚本末尾打印四行校验表
+  （$t_1/t_{\rm inf}/t_2/\Delta t/t_{\rm clear}$ 与常规峰值、峰时、清零），供对账。
+- **绝不 `import plot_B`**：它是脚本式模块，import 会立刻重绘并覆盖 `fig_panel_B.pdf`。
+  `threshold_q_parts` 与 `COL/ETA/IPEAK_T/Q0/ALPHA/ROLE_LW` 因此是复制过去的。
+- **横轴逐格自适应**（定版决策）：`xmax = 1.05 ×` 该格实际画到的最晚清零时刻，六格不共用。
+  好处是 (a)/(b) 的三条线分得开；**代价是第一排看不出平台时长随 $N$ 从 6.3 d 涨到 102.8 d**，
+  该数字由正文文字给出，图内只有共用横轴的 (f) 能直读。曾比较过的另两种横轴口径
+  （六格共用、仅 (e) 放大）保留在脚本末尾的注释里。
+- **图内不加图题、不加图例**，只有 (a)--(f) 角标；面板与线型的识别信息全部由图注承担，
+  绘制约定沿用图 22 的图注（§8 现行约定：图注只留识别信息，分析进正文）。
 - 图 20--22 的四个共享角色仍定义为随 $\eta$ 加深的顺序蓝：
   dur150 `#6BADD7`、cost `#206FB6`、dur45 `#073068`、interior `#084a91`；
   为简化定稿图，图 20--22 当前只展示 dur150、cost、dur45，interior 数值角色与颜色定义保留，

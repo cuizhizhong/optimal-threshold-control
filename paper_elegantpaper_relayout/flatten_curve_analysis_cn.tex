@@ -1126,7 +1126,7 @@ q_0^\dagger
 \label{sec:s1:inflection-curvature}
 存在拐点并不意味着 $q_c(t)$ 在视觉上明显弯曲。将定理证明中 $q_c''$ 的表达式按 $x=S/\bar S$ 改写，可分离出时间尺度与形状两个因子：
 \begin{equation}
-q_c''(t)=\underbrace{\left(\frac{c_0\eta}{N}\right)^{2}\frac{1}{1-\beta}}_{\text{时间尺度因子}}\;\underbrace{\frac{(x-1)(2-x)}{x^{3}}}_{g(x)},\qquad x=\frac{S}{\bar S}.
+q_c''(t)=\left(\frac{c_0\eta}{N}\right)^{2}\frac{1}{1-\beta}\;\frac{(x-1)(2-x)}{x^{3}},\qquad x=\frac{S}{\bar S}.
 \label{eq:s1:qcpp-factor}
 \end{equation}
 形状因子 $g$ 满足 $g(2)=0$（拐点处），在 $x=3\pm\sqrt3\approx1.27,\,4.73$ 取极值，且 $|g|\le\frac{1}{6\sqrt3}\approx0.096$，与 $c_0,\eta,N,\beta$ 无关。由此得 $q_c''$ 的一致上界
@@ -2707,28 +2707,60 @@ $t_{\rm end}\le t_{\rm end}^{\rm T}$ 的有效人口。
 图~\ref{fig:panel_N_lever} 给出，二者分别沿 $\eta$ 与 $N_{\rm eff}$ 两个方向展示同一条 $\theta$ 轴。
 
 图~\ref{fig:panel_eta_lever} 固定 $N_{\rm eff}=2\times10^{4}$，沿三条边界参照线取阈值。
-三条平台各自贴合其 $\eta$；因 $N_{\rm eff}<N^\ast(45\,\mathrm d)$，三者全部落在
-$I_{\rm peak}^{\rm T}$ 之下。平台内的拐点相对位置 $\lambda=(t_{\rm inf}-t_1)/(t_2-t_1)\approx0.861$
-与距平台结束的时间 $t_2-t_{\rm inf}\approx20.8/14.3/6.3$ d（依次对应 dur 150 d、cost、dur 45 d）
-基本不随 $N_{\rm eff}$ 改变（附录~\ref{app:panel_eta_N}）；绝对的拐点时刻则随启动时间 $t_1$
-（本图三条依次为 $9.92/10.29/11.12$ d）在不同 $N_{\rm eff}$ 的图之间平移。三条策略柱均高于
-$\Itcum^{\rm T}$，因为 $N_{\rm eff}=2\times10^{4}$ 已超过累计临界
-$N_{\rm cum,\infty}^\ast\approx1.18\times10^{4}$，与推论~\ref{cor:cum} 一致。
+因 $N_{\rm eff}<N^\ast(45\,\mathrm d)$，三条平台全部落在 $I_{\rm peak}^{\rm T}$ 之下；
+但三条策略柱又都高于 $\Itcum^{\rm T}$，因为该 $N_{\rm eff}$ 已超过累计临界
+$N_{\rm cum,\infty}^\ast\approx1.18\times10^{4}$（推论~\ref{cor:cum}）。峰值不劣与累计不劣
+在同一个 $N_{\rm eff}$ 上分道扬镳，这正是注记~\ref{rem:dom:dichotomy} 中只依赖 $\theta$ 的约束
+与依赖绝对规模的约束之别的直观形式。平台内的拐点相对位置
+$\lambda=(t_{\rm inf}-t_1)/(t_2-t_1)\approx0.861$ 与距平台结束的时间
+$t_2-t_{\rm inf}\approx20.8/14.3/6.3$ d（依次对应 dur 150 d、cost、dur 45 d）基本不随
+$N_{\rm eff}$ 改变（附录~\ref{app:panel_eta_N}）；绝对的拐点时刻则随启动时间 $t_1$
+（本图三条依次为 $9.92/10.29/11.12$ d）在不同 $N_{\rm eff}$ 的图之间平移。
 
-图~\ref{fig:panel_N_lever} 反过来固定 $\eta=100$。五条平台的高度恒为 $\eta$、与池规模无关，
-这是这些指标只与 $\theta$ 有关的最直接体现；随 $N_{\rm eff}$ 增大改变的是平台的时长而非高度。
-作为对照，常规控制的灰色包络带宽度随 $N_{\rm eff}$ 显著展开，与阈值控制平台的零带宽形成对照。
-两图中常规控制的峰值与到清零的总累计感染都是与池规模无关的固定比例 $\approx0.105\,N_{\rm eff}$
-与 $\approx0.348\,N_{\rm eff}$（图~\ref{fig:panel_eta_lever} 的 $N_{\rm eff}=2\times10^4$ 处即
-$2093$ 与 $6970$，图~\ref{fig:panel_N_lever} 带内最大成员 $N_{\rm eff}=87{,}944$ 处约为 $9200$
-与 $30600$）；其中累计约为内嵌柱图中同规模策略柱的两倍，入柱图会压扁各柱的排序，
-故只以闭式给出。图~\ref{fig:panel_N_lever} 内嵌柱图五柱与 $\Itcum^{\rm T}$ 的关系正是两条弧的
-定义：clear 边界远低于该参照，cumulative 边界按定义恰好达到它，其余三条边界均高于它；
+图~\ref{fig:panel_N_lever} 反过来固定 $\eta=100$：五条平台的高度恒为 $\eta$、与池规模无关，
+随 $N_{\rm eff}$ 增大的是平台的时长而非高度。其机制是直接的。平台上 $I\equiv\eta$，
+易感者的消耗速率 $\propto S\eta/N$ 在 $S\approx N$ 时约等于 $\eta$、与池规模无关，
+于是烧完规模为 $N$ 的池所需时间正比于 $N$——这正是前面 $\theta\,\Delta t\approx0.170$
+近似为常数、即 $\Delta t\approx0.170\,N/\eta$ 的来源。常规控制下消耗速率 $\propto SI/N$
+而 $I$ 本身与 $N$ 同阶，速率随池规模同步放大，时间尺度因而不动；其峰值与到清零的总累计
+感染都退化为与池规模无关的固定比例 $\approx0.105\,N_{\rm eff}$ 与 $\approx0.348\,N_{\rm eff}$
+（图~\ref{fig:panel_eta_lever} 的 $N_{\rm eff}=2\times10^4$ 处即 $2093$ 与 $6970$，
+图~\ref{fig:panel_N_lever} 中 $N_{\rm eff}=87{,}944$ 处约为 $9200$ 与 $30600$）。
+图~\ref{fig:panel_N_lever} 内嵌柱图五柱与 $\Itcum^{\rm T}$ 的关系正是两条弧的定义：
+clear 边界远低于该参照，cumulative 边界按定义恰好达到它，其余三条均高于它；
 其中 clear 成员的平台仅 $\Delta t=6.3$ d，已近于退化。
 
-两图合起来给出拐点高度的不变性：所有白心拐点都落在 $\qinf=1-1/[2(1-\beta)]=0.4119$ 上，
-与 $\eta$ 和 $N_{\rm eff}$ 都无关。第~\ref{sec:dom:c0}~小节将说明它对 $c_0$ 同样不变，
-只有 $\beta$ 能移动它。
+图~\ref{fig:panel_N_decomp} 把同一组解按 $N_{\rm eff}$ 拆开，两条臂各自的规模响应因而可以分读。
+常规控制一侧（面板 (e)），四条轨迹的峰值依次为 $415/1057/2782/6319$，即上述固定比例
+$\approx0.105\,N_{\rm eff}$；而它们的动态清零时刻只从 $38.5$ d 推到 $50.9$ d。$N_{\rm eff}$
+增大十五倍，峰值展开一个数量级以上，疫情的持续时间却几乎不动——这是自然流行的典型标志，
+规模决定烧掉多少人，不决定烧多久。阈值控制一侧（面板 (f)）恰好相反：四条平台的高度恒为
+$\eta=100$，而平台时长 $\Delta t$ 依次为 $6.3/16.8/45.0/102.8$ d，在同一段 $N_{\rm eff}$
+区间上拉长十六倍，到清零的时刻也随之从 $45.3$ d 推到 $201.6$ d。$N_{\rm eff}$ 这个杠杆
+因此不作用在阈值控制的纵向尺度上，而完全转移到了时间轴上；这既是命题~\ref{prop:dom:region}
+中时长约束 $\Delta t\le T_{\max}$ 会给出一个 $N$ 上界 $N^\ast$ 的由来，也说明前面清零占优区
+为空并非数值上的偶然：阈值控制的机制就是把峰值换成时间，再要求它比一次硬压制更早清零，
+等于要求同一个杠杆在两端同时得利。
+
+逐格来看 (a)--(d)，三条轨迹的相对位置随 $N_{\rm eff}$ 系统地翻转。在 clear 边界
+（$N_{\rm eff}=3{,}970$）上常规控制的峰值 $415$ 只有 $I_{\rm peak}^{\rm T}=151.90$ 的 $2.7$ 倍，
+三条轨迹挤在同一量级、清零时刻也都在 $38$--$45$ d 之间；到 cost 边界
+（$N_{\rm eff}=60{,}381$）常规控制峰值已是 $I_{\rm peak}^{\rm T}$ 的 $41.6$ 倍，而阈值控制被
+钉在 $\eta=100$ 上、以十倍于 TDINN 的时间跨度缓慢清零。同一张图里，TDINN 是唯一一条
+四格完全重合的轨迹——它是已经发生的事，不随假设的池规模重算，这正是第~\ref{sec:dom:setup}~
+小节把它作为固定参照的含义。这组翻转解释了占优区间为何有界：池越大，被压掉的峰值越可观、
+阈值控制的相对价值越高，但要付的平台时长同样随池规模线性增长，二者的交汇正是
+命题~\ref{prop:dom:region} 划出的有限区间 $\mathcal{W}_{\rm pcd}$，而不是“池越小越好”
+或“池越大越好”这样的单调结论。
+
+与这些随 $N_{\rm eff}$ 移动的量相对照的是两个不变量。其一，平台上的实心圆从 $16.9$ d 推到
+$99.9$ d，但它在平台内的相对位置始终是 $\lambda\approx0.861$：隔离率上升最快的时刻总落在
+平台走完约 $86\%$ 处，无论平台是六天还是一百天。其二，所有白心拐点都落在
+$\qinf=1-1/[2(1-\beta)]=0.4119$ 上，与 $\eta$ 和 $N_{\rm eff}$ 都无关；
+第~\ref{sec:dom:c0}~小节将说明它对 $c_0$ 同样不变，只有传播概率 $\beta$ 能移动它。
+两者合起来说明，隔离力度曲线的形状——何时最吃力、吃力到什么高度——是病原传播概率与追踪
+机制本身的性质，既不随疫情规模也不随所设阈值改变。$N_{\rm eff}$ 与 $\eta$ 决定的只是这套
+追踪隔离产能要维持多久，而不是要备到多大。
 
 \begin{figure}[htbp]
   \centering
@@ -2768,6 +2800,19 @@ $2093$ 与 $6970$，图~\ref{fig:panel_N_lever} 带内最大成员 $N_{\rm eff}=
   $\qinf=0.4119$。右上角内嵌柱图按 $N_{\rm eff}$ 递增排列，给出到动态清零的总累计感染，
   五柱依次约为 $945/2097/5016/10784/15410$，黑虚线为 $\Itcum^{\rm T}=2096.76$。}
   \label{fig:panel_N_lever}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{figures/fig_panel_B_trajectory_decomposition.pdf}
+  \caption{图~\ref{fig:panel_N_lever} 的轨迹分解：仍固定 $\eta=100$，取其中四个有效人口
+  clear $\le45.3$ d（$N_{\rm eff}=3{,}970$）、cumulative（$10{,}102$）、dur 45 d（$26{,}584$）、
+  cost（$60{,}381$），把三类 $I(t)$ 按 $N_{\rm eff}$ 逐条拆开。角色配色、实心圆与两条参照线的
+  含义均同图~\ref{fig:panel_N_lever}。(a)--(d) 依上列次序各对应一个 $N_{\rm eff}$，每格三条：
+  该 $N_{\rm eff}$ 的阈值控制（实线）、同一 $N_{\rm eff}$ 的常规控制（虚线）、固定 TDINN（黑实线）；
+  (e) 只画四条常规控制（均为实线），(f) 只画四条阈值控制与唯一一条 TDINN。
+  六格共用对数纵轴，横轴则各自贴合本格内容，跨格比较时间须读刻度。}
+  \label{fig:panel_N_decomp}
 \end{figure}
 
 最后作一个位置核对。取 $N=5\times10^{4}$、$\eta=100$（即 $\theta=0.002$），在 $T_{\max}=150$ d 下该点落在
