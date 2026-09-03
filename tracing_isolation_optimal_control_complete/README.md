@@ -4,7 +4,7 @@
 
 \[
 \dot S=-\beta_1(t)SI,\qquad
-\dot I=\beta_2(t)SI-\gamma I,
+\dot I=\beta_2(t)SI-\gamma I
 \]
 
 在
