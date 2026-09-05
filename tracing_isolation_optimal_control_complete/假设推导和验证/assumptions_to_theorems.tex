@@ -1,0 +1,416 @@
+% ======================================================================
+% assumptions_to_theorems.tex
+%
+% 用途：把 main.tex 中假设 \ref{ass:geometry} 的 (G1)--(G4) 全部升格为定理，
+%       并修正注 8.2 第 (iii) 项。
+%
+% 插入位置：作为第 8 节（常接触率下 q(t) 的唯一性）的前半部分，
+%           置于定理 \ref{thm:unique-q} 之前；注 8.2 请改用本文件末尾的版本。
+%
+% 依赖的已有记号与标签（main.tex 中已定义）：
+%   h, r=(1-p)h, ell=ph, a(s), Theta(s,i), g(s)
+%   eq:normalized-model, eq:f0, eq:f1, eq:switching-function, eq:HJB,
+%   eq:g, eq:g-minus-i, eq:theta-log-derivative, eq:JB-derivative,
+%   eq:verification-ineq, eq:safe-boundary, ass:geometry, thm:unique-q
+%
+% 新增标签：lem:logderiv, lem:fixed-direction, thm:no-singular, lem:below-g,
+%   lem:phi, thm:g3, prop:reachable, prop:wait-interval, prop:Gamma-C1,
+%   prop:sigma-zero-boundary, prop:boundary-unique, rmk:degeneracy
+% ======================================================================
+
+\section{假设 (G1)--(G4) 的证明}
+\label{sec:assumptions-proved}
+
+假设\ref{ass:geometry}中的四个条件原本作为可检验的横截性条件列出。本节证明它们全部可由模型结构直接推出，因此该假设可以整体删去。作为副产品，我们还修正注中关于容量边界退化情形的表述。
+
+全节假设 $c(t)\equiv c>0$、$p\in(0,1)$，并沿用记号
+\[
+b=pc,\quad \kappa=\frac{1-p}{p},\quad h=\frac{\gamma}{pc},\quad \ell=\frac\gamma c=ph,\quad r=(1-p)h=h-\ell .
+\]
+
+% ----------------------------------------------------------------------
+\subsection{一个通用的对数导数公式}
+
+\begin{lemma}[$\Theta$ 沿任意曲线的对数导数]
+\label{lem:logderiv}
+沿平面上任一可微曲线 $i=\iota(s)$，
+\begin{equation}
+\frac{\dd}{\dd s}\ln\Theta\bigl(s,\iota(s)\bigr)
+=\frac{\ell}{(s-h)(s-r)}-\frac{\iota'(s)}{\iota(s)} .
+\label{eq:general-logderiv}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+$\partial_s\ln\Theta=\frac1{s-h}-\frac1{s-r}=\frac{\ell}{(s-h)(s-r)}$，
+$\partial_i\ln\Theta=-\frac1i$，代入链式法则。
+\end{proof}
+
+取 $\iota'=\ell/s$（$q=1$ 特征线）即还原式\eqref{eq:theta-log-derivative}；取 $\iota=a$、
+$a'(\bar s)=(h-\bar s)/\bar s$ 则给出沿安全边界的版本
+\begin{equation}
+\bar P(\bar s):=\frac{\dd}{\dd\bar s}\ln\Theta\bigl(\bar s,a(\bar s)\bigr)
+=\frac{\ell}{(\bar s-h)(\bar s-r)}+\frac{\bar s-h}{\bar s\,a(\bar s)} .
+\label{eq:Pbar}
+\end{equation}
+
+% ----------------------------------------------------------------------
+\subsection{(G1)：完全跟踪弧的可达域}
+\label{sec:G1}
+
+沿 $q=1$ 弧有 $i(t)=i_a\e^{-\gamma t}$，感染在有限时间内不会归零，而
+$s(t)\to s_a\exp(-i_a/\ell)$。因此特征线未必能到达安全边界：当感染比例过低时，
+完全跟踪几乎不消耗未隔离易感者，$W$ 的定义域并非整个不安全区域。原文
+(G1) 只由端点方程的单调性给出了\emph{唯一性}，本小节补足\emph{存在性}并给出闭式刻画。
+
+\begin{definition}[安全边界的端点]
+设 $s_{\max}$ 为 $a(x)=0$ 在 $(h,\infty)$ 上的根，即
+\begin{equation}
+s_{\max}-h\ln s_{\max}=K+h-h\ln h .
+\label{eq:smax}
+\end{equation}
+由 $a(h)=K>0$ 与 $a'(x)=(h-x)/x<0$（$x>h$）知该根存在且唯一，且 $s_{\max}>h$。
+点 $(s_{\max},0)$ 是安全边界\eqref{eq:safe-boundary}与 $i=0$ 的交点。
+\end{definition}
+
+\begin{proposition}[可达域的闭式刻画]
+\label{prop:reachable}
+设 $s>h$、$0<i\le K$ 且 $i>a(s)$。则由 $(s,i)$ 出发的 $q=1$ 特征线在有限时间内到达安全集，
+当且仅当
+\begin{equation}
+\boxed{\;i>\ell\ln\frac{s}{s_{\max}}\;}
+\label{eq:reachable}
+\end{equation}
+在该区域（记为 $\Dcal$）内端点 $\bar s(s,i)\in(h,s)$ 存在且唯一，$W$ 有限；在 $\Dcal$ 之外
+完全跟踪弧的成本为 $+\infty$。$\partial\Dcal$ 恰为过点 $(s_{\max},0)$ 的 $q=1$ 特征线。
+\end{proposition}
+
+\begin{proof}
+记 $G(x)=a(x)-\ell\ln x$，则 $G'(x)=\frac{h-x}{x}-\frac{\ell}{x}=\frac{r-x}{x}<0$
+对 $x>r$ 成立，故 $G$ 在 $[h,s]$ 上严格递减。特征线关系为 $G(\bar s)=\Psi:=i-\ell\ln s$。
+由 $G(s)=a(s)-\ell\ln s\le i-\ell\ln s=\Psi$（不安全性）与
+$\Psi\le K-\ell\ln h=G(h)$（因 $i\le K$ 且 $h<s$），根 $\bar s\in[h,s]$ 总存在且唯一。
+
+但特征线只在 $i>0$ 的部分被实际走过。特征线上 $i$ 归零的位置为
+$x_0=s\e^{-i/\ell}$，而 $i(\bar s)=a(\bar s)$，故端点物理可达当且仅当 $a(\bar s)>0$，
+即 $\bar s>x_0$。若 $x_0\le h$，则 $\bar s\ge h\ge x_0$，且等号只能在退化情形出现，故可达。
+若 $x_0>h$，由 $i(x_0)=0$ 得 $\Psi=-\ell\ln x_0$，于是由 $G$ 的严格单调性
+\[
+\bar s>x_0\iff G(x_0)>G(\bar s)=\Psi\iff a(x_0)-\ell\ln x_0>-\ell\ln x_0\iff a(x_0)>0 .
+\]
+两种情形合并为 $x_0<s_{\max}$（因 $a>0$ 在 $(h,\infty)$ 上等价于 $x<s_{\max}$，
+而 $x_0\le h<s_{\max}$ 自动满足）。最后
+\[
+x_0<s_{\max}\iff s\e^{-i/\ell}<s_{\max}\iff i>\ell\ln\frac{s}{s_{\max}},
+\]
+即\eqref{eq:reachable}。该不等式的等号情形即 $\Psi=-\ell\ln s_{\max}$，
+正是过 $(s_{\max},0)$ 的特征线。
+\end{proof}
+
+\begin{proposition}[等待轨迹与可达域相交于单个区间]
+\label{prop:wait-interval}
+定义\emph{等待轨迹} $\mathcal W$：
+\[
+i_w(s)=\begin{cases}
+i_{\rm nat}(s), & s\in[s_1,s_0],\\
+K, & s\in(h,s_1),
+\end{cases}
+\]
+并令 $R(s)=i_w(s)-\ell\ln(s/s_{\max})$。则 $R$ 在 $\mathcal W$ 上严格递减，且 $R(h^+)>0$。
+因此 $\mathcal W\cap\Dcal=(h,s_D)$ 为单个区间。又因 $\Dcal$ 之外总成本为 $+\infty$，
+最优切换点必位于该区间内。
+\end{proposition}
+
+\begin{proof}
+自然轨道段 $R'(s)=\frac{h-s}{s}-\frac{\ell}{s}=\frac{r-s}{s}<0$（因 $s>h>r$）；
+容量段 $R'(s)=-\ell/s<0$。$R$ 在 $s_1$ 处连续，故整体严格递减。
+又 $h<s_{\max}$ 给出 $R(h^+)=K-\ell\ln(h/s_{\max})>0$。
+\end{proof}
+
+% ----------------------------------------------------------------------
+\subsection{(G4)：不存在正长度奇异弧}
+\label{sec:G4}
+
+\begin{lemma}[控制方向的固定性]
+\label{lem:fixed-direction}
+$g:=f_1-f_0=-b\,s\,i\,(\kappa,\,1)$，即控制方向场恒平行于常向量 $(\kappa,1)$。
+\end{lemma}
+
+\begin{proof}
+由\eqref{eq:f0}--\eqref{eq:f1}，
+$f_1-f_0=\bigl(-csi+pcsi,\ -\gamma i-pcsi+\gamma i\bigr)=\bigl(-c(1-p)si,\ -pcsi\bigr)$，
+提出 $-pcsi$ 即得。
+\end{proof}
+
+\begin{theorem}[不存在正长度内部奇异弧]
+\label{thm:no-singular}
+在状态约束内部 $\{i<K,\ s>h\}$ 中，不存在正长度时间区间使 $\Sigma\equiv0$。
+特别地，(G4) 自动成立；最优轨道亦不可能沿切换曲线 $\Gamma$ 切向滑行；
+异常极值（$\lambda_0=0$）不存在。
+\end{theorem}
+
+\begin{proof}
+设某区间上 $\Sigma\equiv0$，记 $\lambda=(\lambda_s,\lambda_i)$ 为共态。
+
+\emph{(a) 三个代数条件。} 由\eqref{eq:switching-function}与引理\ref{lem:fixed-direction}，
+\begin{equation}
+\Sigma=b\bigl[1-si(\kappa\lambda_s+\lambda_i)\bigr]=0 .
+\label{eq:E1}
+\end{equation}
+由 HJB\eqref{eq:HJB}，$\min_qH(q)=0$；奇异时 $H(q)\equiv H_0$ 与 $q$ 无关，故
+\begin{equation}
+H_0=\langle\lambda,f_0\rangle=b\,i\bigl[-s\lambda_s+(s-h)\lambda_i\bigr]=0 .
+\label{eq:E3}
+\end{equation}
+又 $\Sigma$ 在区间上恒零，故
+\begin{equation}
+\dot\Sigma=\bigl\langle\lambda,[f_0,g]\bigr\rangle=0,
+\label{eq:E2}
+\end{equation}
+其中求导时 $q$ 项相消，故\eqref{eq:E2}不含控制。
+
+\emph{(b) 共态唯一确定。} 把\eqref{eq:E1}与\eqref{eq:E3}视为 $\lambda$ 的线性方程组，
+\[
+\det\begin{pmatrix}\kappa&1\\-s&s-h\end{pmatrix}=\kappa(s-h)+s=\frac{s-r}{p}\ne0
+\qquad(s>r),
+\]
+于是
+\begin{equation}
+\lambda_s=\frac{p\,\Theta(s,i)}{s},\qquad \lambda_i=\frac{p\,\Theta(s,i)}{s-h}.
+\label{eq:sing-lambda}
+\end{equation}
+若取齐次右端（$\lambda_0=0$ 的异常情形），同一非零行列式给出 $\lambda=0$，
+与 $(\lambda_0,\lambda)\ne0$ 矛盾。
+
+\emph{(c) 奇异轨迹。} 把\eqref{eq:sing-lambda}代入\eqref{eq:E2}化简，得
+\begin{equation}
+i=g(s)=\frac{(s-h)(s-r)}{s},
+\label{eq:singular-locus}
+\end{equation}
+即式\eqref{eq:g}中的同一函数。故奇异弧只能位于这条一维曲线上。
+
+\emph{(d) 曲线上不可停留。} 正长度奇异弧要求轨道沿\eqref{eq:singular-locus}运动，
+即 $\dot i=g'(s)\dot s$。代入\eqref{eq:normalized-model}解出所需控制，
+并记 $\mathcal D_p:=(2p-1)s^2+r^2$，得
+\begin{equation}
+q_{\rm sing}=\frac{p\bigl[(s-h)(s+r)+s(s-r)\bigr]}{\mathcal D_p},
+\qquad
+q_{\rm sing}-1=\frac{(s-h)(s+r)}{\mathcal D_p}.
+\label{eq:q-sing}
+\end{equation}
+在 $s>h>r>0$ 上分子 $(s-h)(s+r)>0$，且
+$p\bigl[(s-h)(s+r)+s(s-r)\bigr]>0$。于是：
+若 $\mathcal D_p>0$（$p\ge\frac12$ 时自动成立）则 $q_{\rm sing}>1$；
+若 $\mathcal D_p<0$ 则 $q_{\rm sing}<0$；
+若 $\mathcal D_p=0$ 则切向方程化为 $q\cdot0=$ 正数，无解。
+三种情形均与 $q\in[0,1]$ 矛盾。
+
+\emph{(e) 另一分支。} $g(s)>0$ 的另一分支 $s<r$ 满足 $s<r<h$，
+若同时 $i\le K$ 则状态已在 $\Acal$ 内，那里 $V\equiv0$、$\Sigma=pc>0$；若 $i>K$ 则不可行。
+
+最后，沿 $\Gamma$ 切向滑行要求轨道在 $\Sigma=0$ 的界面上停留正长度时间，即构成奇异弧，已被排除。
+\end{proof}
+
+% ----------------------------------------------------------------------
+\subsection{(G3)：横截性与至多一个切换点}
+\label{sec:G3}
+
+\begin{definition}[统一残差]
+对 $\mathcal W$ 上每点，设 $\bar s(s)\in(h,s)$ 为其 $q=1$ 特征线的安全边界端点，
+$\bar a=a(\bar s)$，$w(s)=i_w'(s)$。定义
+\begin{equation}
+D(s):=\Theta(\bar s,\bar a)-\Theta\bigl(s,i_w(s)\bigr),\qquad s\in\mathcal W\cap\Dcal .
+\label{eq:unified-residual}
+\end{equation}
+\end{definition}
+
+在 $s$ 处转入 $q=1$ 的总成本 $F(s)$ 满足 $F'(s)=\lambda(s)D(s)$，$\lambda>0$：
+容量段即\eqref{eq:JB-derivative}，自然轨道段的对应式为
+\begin{equation}
+\frac{\dd}{\dd s}W\bigl(s,i_{\rm nat}(s)\bigr)
+=\frac{s-r}{hs}\Bigl[\Theta(\bar s,\bar a)-\Theta\bigl(s,i_{\rm nat}(s)\bigr)\Bigr].
+\label{eq:JD-derivative}
+\end{equation}
+因此 (G3) 等价于：$D$ 至多有一个零点，且该零点横截。
+
+\begin{lemma}[零点位于奇异曲线下方]
+\label{lem:below-g}
+设 $s^*$ 是 $D$ 的任一零点，则 $i_w(s^*)<g(s^*)$。
+\end{lemma}
+
+\begin{proof}
+$D(s^*)=0$ 说明 $(s^*,i_w(s^*))$ 与 $(\bar s,\bar a)$ 位于同一条 $q=1$ 特征线上且 $\Theta$ 相等，
+即 $s^*$ 是该特征线上的非平凡根。由引理\ref{lem:logderiv}，沿特征线
+$\frac{\dd}{\dd s}\ln\Theta$ 与 $i-g$ 同号；由\eqref{eq:g-minus-i}，$g-i$ 沿特征线严格递增，
+故 $i-g$ 严格递减。若 $i_w(s^*)-g(s^*)\ge0$，则 $i-g>0$ 于整个 $[\bar s,s^*)$，
+于是 $\Theta$ 在 $[\bar s,s^*]$ 上严格递增，与两端相等矛盾。
+\end{proof}
+
+\begin{lemma}[辅助函数的单调性]
+\label{lem:phi}
+$\varphi(x):=\dfrac{(x-h)(x-r)^2}{x}$ 在 $(h,\infty)$ 上严格递增。
+\end{lemma}
+
+\begin{proof}
+$(\ln\varphi)'(x)=\frac1{x-h}+\frac2{x-r}-\frac1x$。当 $x>h>r>0$ 时
+$\frac1{x-h}>\frac1x$，故 $(\ln\varphi)'>\frac2{x-r}>0$。
+\end{proof}
+
+\begin{theorem}[横截性与唯一交点]
+\label{thm:g3}
+$D$ 的每个零点 $s^*$ 满足 $D'(s^*)>0$。因此 $D$ 在 $\mathcal W\cap\Dcal$ 上至多有一个零点；
+若存在，则该零点是由负到正的横截穿越，且 $F$ 在其处取严格局部极小。(G3) 自动成立。
+\end{theorem}
+
+\begin{proof}
+记 $P=\frac{\ell}{(s-h)(s-r)}-\frac{w}{i_w}$（引理\ref{lem:logderiv}），$\bar P$ 见\eqref{eq:Pbar}。
+对特征线关系 $a(\bar s)-\ell\ln\bar s=i_w(s)-\ell\ln s$ 隐式求导，用
+$a'(\bar s)-\ell/\bar s=(r-\bar s)/\bar s$，得
+\begin{equation}
+\bar s'(s)=\frac{\bar s\,(\ell/s-w)}{\bar s-r}.
+\label{eq:sbar-prime}
+\end{equation}
+由\eqref{eq:unified-residual}，$D'=\Theta(\bar s,\bar a)\bar P\bar s'-\Theta(s,i_w)P$；
+零点处两个 $\Theta$ 相等且为正，故
+$\operatorname{sign}D'(s^*)=\operatorname{sign}\bigl(\bar P\bar s'-P\bigr)$。
+
+\emph{自然轨道段（$w=(h-s)/s$）。} 此时\eqref{eq:sbar-prime}给出
+$\bar s'=\bar s(s-r)/\bigl(s(\bar s-r)\bigr)$，代入并整理（$\Theta$ 项完全相消）得恒等式
+\begin{equation}
+\bar P\bar s'-P=\frac{(s-r)\ell}{s}
+\left[\frac1{\varphi(\bar s)}-\frac1{\varphi(s)}\right].
+\label{eq:natural-reduction}
+\end{equation}
+
+\emph{容量边界段（$w=0,\ i_w=K$）。} 此时 $\bar s'=\bar s\ell/\bigl(s(\bar s-r)\bigr)$，
+同样直接计算得
+\begin{equation}
+\bar P\bar s'-P=\frac{\ell}{s}
+\left[\frac{\ell\bar s}{(\bar s-h)(\bar s-r)^2}+\Theta-\frac{s}{(s-h)(s-r)}\right].
+\label{eq:capacity-reduction}
+\end{equation}
+另一方面，利用 $\Theta=(s-h)/\bigl(K(s-r)\bigr)$ 可验证恒等式
+\begin{equation}
+\frac{\ell s}{(s-h)(s-r)^2}+\Theta-\frac{s}{(s-h)(s-r)}
+=\frac{(s-h)(s-r)-Ks}{K(s-r)^2}
+=\frac{s\bigl[g(s)-K\bigr]}{K(s-r)^2},
+\label{eq:capacity-slack}
+\end{equation}
+由引理\ref{lem:below-g}它在零点处严格为正。代入\eqref{eq:capacity-reduction}得
+\[
+\bar P\bar s'-P>\frac{\ell^2}{s}
+\left[\frac1{\varphi(\bar s)}-\frac1{\varphi(s)}\right].
+\]
+
+\emph{合并。} 两段都归结为 $\varphi(\bar s)<\varphi(s)$，而 $h<\bar s<s$ 与引理\ref{lem:phi}给出该式。
+故 $D'(s^*)>0$。
+
+设 $z_1<z_2$ 为相邻零点。由 $D'(z_1)>0$ 知 $D>0$ 于 $z_1$ 右侧；由 $D'(z_2)>0$ 知 $D<0$ 于
+$z_2$ 左侧；介值定理给出 $(z_1,z_2)$ 内另有零点，矛盾。故至多一个零点。
+又当 $s\to h^+$ 时 $\Theta(s,K)\sim(s-h)/(K\ell)$、$\Theta(\bar s,\bar a)\sim(\bar s-h)/(K\ell)$
+且 $\bar s<s$，故 $D<0$；若零点存在，必为由负到正的穿越。
+\end{proof}
+
+\begin{remark}
+式\eqref{eq:capacity-slack}的分子恰为 $s[g(s)-K]$，而 $g$ 正是定理\ref{thm:no-singular}中的
+奇异轨迹\eqref{eq:singular-locus}。“切换点严格位于奇异曲线下方”既是横截性成立的原因，
+也是奇异弧不能出现在最优轨道上的几何表述。
+\end{remark}
+
+% ----------------------------------------------------------------------
+\subsection{(G2)：切换曲线的正则性}
+
+\begin{proposition}
+\label{prop:Gamma-C1}
+切换曲线 $\Gamma=\{(\sigma(\bar s),i_\sigma(\bar s))\}$ 是简单的实解析曲线。
+\end{proposition}
+
+\begin{proof}
+\emph{正则性。} $\sigma(\bar s)$ 由 $\Theta(\sigma,i(\sigma))=\Theta(\bar s,\bar a)$ 隐式定义；
+隐函数定理的非退化条件是该式左端对 $\sigma$ 的导数非零，即
+$\frac{\dd}{\dd s}\ln\Theta\big|_\sigma\ne0$。由引理\ref{lem:below-g}的论证，
+在非平凡根处 $i<g$，故该导数严格为负。方程各项均为实解析函数，故 $\sigma$ 实解析。
+
+\emph{单射性。} 不同的 $\bar s$ 给出不同的 $\Psi=G(\bar s)=a(\bar s)-\ell\ln\bar s$
+（$G$ 严格递减），即不同的 $q=1$ 特征线；特征线是 $\Psi$ 的水平集，互不相交，
+故对应的 $\Gamma$ 上的点互异。
+\end{proof}
+
+% ----------------------------------------------------------------------
+\subsection{容量边界上的退化情形：对注 8.2 的修正}
+\label{sec:boundary-correction}
+
+\begin{proposition}[容量等待弧上切换函数恒为零]
+\label{prop:sigma-zero-boundary}
+设容量--切换交点为 $(s_B,K)$。在容量等待弧 $\{(s,K):s_B<s<s_1\}$ 上，
+\begin{equation}
+V_s(s,K)=\frac{p\,\Theta(s,K)}{s},\qquad
+V_i(s,K)=\frac{p}{K(s-r)},
+\label{eq:V-grad-boundary}
+\end{equation}
+从而 $(1-p)V_s+pV_i=\dfrac{p}{Ks}$ 且
+\begin{equation}
+\Sigma(s,K)=pc-csK\cdot\frac{p}{Ks}\equiv0 .
+\label{eq:sigma-zero}
+\end{equation}
+该式对一切 $p\in(0,1)$ 与 $c,h,K,s$ 成立，是恒等式。
+\end{proposition}
+
+\begin{proof}
+$V_s$ 由 $V(s,K)=C_B(s,s_B)+W(s_B,K)$ 求导得到，即
+$\frac{\dd}{\dd s}C_B(s,s_B)=\frac{p}{K}\cdot\frac{s-h}{s(s-r)}=\frac{p\Theta}{s}$。
+$V_i$ 由边界下方的输运规则给出：对 $i<K$，$V$ 沿 $q=0$ 轨道为常数，
+若该轨道在 $s'$ 处触及 $i=K$ 则 $V(s,i)=C_B(s',s_B)+W(s_B,K)$；
+由 $\partial s'/\partial i=s'/(s'-h)$ 及 $C_B'(s')=p\Theta(s',K)/s'$ 得
+$V_i=p/\bigl(K(s'-r)\bigr)$，令 $i\to K^-$ 即得\eqref{eq:V-grad-boundary}。
+代入\eqref{eq:switching-function}化简即得\eqref{eq:sigma-zero}。
+\end{proof}
+
+\begin{proposition}[边界弧控制仍唯一]
+\label{prop:boundary-unique}
+在边界下方的等待区域 $\{(s,i):s\ge s_B,\ 0<i<K\}$ 内，
+\begin{equation}
+\Sigma(s,i)=pc\left[1-\frac{i(s-r)}{K\bigl(s'(s,i)-r\bigr)}\right]>0,
+\label{eq:sigma-below}
+\end{equation}
+其中 $s'(s,i)<s$ 为该点自然轨道触及 $i=K$ 的位置。因此任何在正测度时间集上取 $q>q_B$
+而离开容量边界的可行控制，都会在 $\Sigma>0$ 的开区域内使用 $q>0$，
+使 $H=q\Sigma>0$ 严格成立，成本严格更高。故边界弧上最优控制仍唯一等于 $q_B$。
+\end{proposition}
+
+\begin{proof}
+\eqref{eq:sigma-below}由命题\ref{prop:sigma-zero-boundary}证明中的 $V_s,V_i$ 代入
+\eqref{eq:switching-function}得到。符号判定如下：沿自然轨道记 $m(\sigma)=\iota(\sigma)(\sigma-r)$，则
+\[
+m'(\sigma)=\frac{(h-\sigma)(\sigma-r)}{\sigma}+\iota(\sigma)=\iota(\sigma)-g(\sigma).
+\]
+$g$ 在 $\sigma>\sqrt{hr}$ 上递增，而 $\sqrt{hr}<h<s_B$；由引理\ref{lem:below-g}，$K<g(s_B)$，
+故对一切 $\sigma\ge s_B$ 有 $\iota(\sigma)\le K<g(s_B)\le g(\sigma)$，即 $m'<0$。
+于是 $m(s)<m(s')$，即 $i(s-r)<K(s'-r)$，代入\eqref{eq:sigma-below}得 $\Sigma>0$。
+
+$\Sigma\equiv0$ 仅发生在一维集合 $\{i=K\}$ 上，任何离开该集合的轨道立即进入 $\Sigma>0$ 的开区域，
+验证不等式\eqref{eq:verification-ineq}在该区域上对 $q>0$ 严格成立，积分后给出严格更高的成本。
+\end{proof}
+
+% ----------------------------------------------------------------------
+% 以下用于替换原注 8.2
+% ----------------------------------------------------------------------
+\begin{remark}[唯一性可能失效的精确位置（修订版）]
+\label{rmk:degeneracy}
+线性成本下，非唯一性原则上可能来自三类退化。本节的结果给出如下结论。
+\begin{enumerate}[label=(\roman*)]
+\item \emph{内部奇异弧}（$\Sigma=0$ 在正长度内部区间上成立）：由定理\ref{thm:no-singular}
+无条件排除。
+\item \emph{沿切换曲线切向滑行}：等价于 (i)，同样排除。
+\item \emph{容量边界上 $\Sigma=0$ 在正长度区间上成立}：由命题\ref{prop:sigma-zero-boundary}，
+这一情形\emph{总是}发生，并非非泛型现象。但由命题\ref{prop:boundary-unique}，
+边界正下方 $\Sigma>0$ 严格成立，任何离开边界的替代控制都严格更贵，故唯一性不受影响。
+\end{enumerate}
+因此定理\ref{thm:unique-q}中关于唯一性的结论无需附加横截性假设。
+\end{remark}
+
+\begin{remark}[机制解释]
+$\Sigma\equiv0$ 在容量边界上成立有直接含义：沿容量边界运行时，
+多投入一单位跟踪隔离的边际现金支出恰好等于其边际未来收益，政策处于收支平衡的刀刃状态。
+唯一性并非来自边界上的严格不等式，而是来自离开边界后立刻出现的严格惩罚。
+\end{remark}
