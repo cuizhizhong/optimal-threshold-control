@@ -1,0 +1,456 @@
+% =====================================================================
+%  B 组补充：无奇异弧、界面正则性、切换曲线整体几何、类型穷尽性
+%  拟插入位置：紧接 A 组之后（第 9 节末），或拆分为第 9 节附录与第 10 节前置。
+%  依赖：A 组的引理 A.1（梯度匹配）、引理 A.2（端点存在性）、定理 A.4。
+%  说明：
+%   - 全篇不使用 Pontryagin 极大值原理，也不使用粘性解比较定理；
+%     所需工具只有显式不变量 Phi、Psi 与 Clarke 广义梯度（仅用于一条曲线）。
+%   - 方程全局编号；仅用标准 LaTeX 数学命令。
+%   - 需要宏包：amsmath, amssymb, amsthm。
+% =====================================================================
+
+\section*{B 组补充：整体几何与唯一性的收尾}
+
+A 组已把验证定理的局部前提补齐。本节处理四件全局性的事：
+排除内部奇异弧 (\S B.1)、界面处非光滑点的严格处理 (\S B.2)、
+切换曲线 $\Gamma$ 的整体几何与三类结构的穷尽性 (\S B.3)、
+以及类型 II 的一维成本函数 (\S B.4)。
+
+\begin{remark}[方法论：为何不引入 PMP]
+\label{rem:no-pmp}
+先前的一个顾虑是：用 $\nabla V$ 论证"无奇异弧"似乎循环，因为奇异弧候选处
+$V$ 是否可微正是待证的。该顾虑只在把无奇异弧放在验证定理\emph{之前}时成立。
+事实上定理\ref{thm:verification}的证明完全不需要该条件——
+验证不等式(61)是对状态与控制值的全称命题，任何"其他最优控制"（包括假想的奇异控制）
+都已被其积分步骤一次性覆盖。无奇异弧只在唯一性定理\ref{thm:uniqueness}中起作用。
+因此正确的顺序是
+\[
+  \text{显式构造 }V
+  \;\longrightarrow\;
+  \text{验证 }(61)\ (\text{不用 G4})
+  \;\longrightarrow\;
+  V\text{ 是值函数，各开区域 }C^1\text{ 是构造事实}
+  \;\longrightarrow\;
+  \text{算 }\Sigma\text{ 定号，得唯一性.}
+\]
+第三步之后 $\nabla V$ 已经合法，循环消失。本节据此完成 (G4)，
+不引入协态、不引入状态约束下的乘子测度。
+\end{remark}
+
+
+\subsection*{B.1 内部奇异弧的排除：滑行控制的闭式}
+
+由 A 组，给定候选 $V$ 后
+\begin{equation}
+  \{\Sigma=0\}=\Gamma\;\cup\;\{i=K,\ \sigma_B\le s\le s_1\},
+  \label{eq:B-Sigma-zero-set}
+\end{equation}
+其中容量弧一支已由命题\ref{prop:cap-uniqueness}处理。因此"内部奇异弧"
+等价于"轨道沿 $\Gamma$ 滑行正测度时间"，而这是一个纯粹的
+\emph{向量场与曲线相切}问题，不涉及 $V$ 的二阶导数。
+
+沿用引理\ref{lem:grad-match}的基 $\{T,f_0\}$（$\nabla\Phi\cdot T=1$，$\nabla\Phi\cdot f_0=0$），
+并记
+\begin{equation}
+  m:=\nabla\Psi\cdot T=\left.\frac{\mathrm{d}\Psi}{\mathrm{d}\Phi}\right|_{\Gamma}.
+  \label{eq:B-m-def}
+\end{equation}
+
+\begin{lemma}[滑行控制的闭式]
+\label{lem:slide-control}
+设 $x\in\Gamma$，$s>h$。则 $f(x,q)$ 与 $\Gamma$ 相切的 $q$ 至多一个，且
+\begin{equation}
+  \boxed{\;q_{\mathrm{slide}}(x)=\frac{p}{\,p-m(x)\,}.\;}
+  \label{eq:B-qslide}
+\end{equation}
+进一步
+\begin{equation}
+  q_{\mathrm{slide}}(x)\in[0,1]\iff m(x)\le 0 .
+  \label{eq:B-slide-criterion}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+写 $f_1-f_0=\alpha T+\beta f_0$。引理\ref{lem:grad-match}第 2 步已给 $\alpha=-c\Lambda$。
+以 $\nabla\Psi$ 作用两端，用\eqref{eq:A-Psi-pairings}（$\nabla\Psi\cdot f_1=0$，
+$\nabla\Psi\cdot f_0=pc\Lambda$，故 $\nabla\Psi\cdot(f_1-f_0)=-pc\Lambda$）：
+\[
+  -pc\Lambda=-c\Lambda\,m+\beta\,pc\Lambda
+  \quad\Longrightarrow\quad
+  \beta=\frac{m-p}{p}.
+\]
+于是
+\[
+  f(x,q)=f_0+q(\alpha T+\beta f_0)=q\alpha T+(1+q\beta)f_0 ,
+\]
+与 $T$ 平行当且仅当 $1+q\beta=0$，即 $q=-1/\beta=p/(p-m)$。
+若 $\beta=0$（即 $m=p$）则无解，不存在相切控制。
+判据\eqref{eq:B-slide-criterion}：$p>0$，故 $q_{\mathrm{slide}}>0$ 要求 $p-m>0$；
+在此前提下 $q_{\mathrm{slide}}\le 1\iff p\le p-m\iff m\le0$。
+若 $p-m<0$ 则 $q_{\mathrm{slide}}<0$。两种情形合并即得。
+\end{proof}
+
+\begin{remark}[自检：公式在容量线上复现 $q_B$]
+\label{rem:slide-check}
+把\eqref{eq:B-qslide}用到直线 $i=K$：那里
+$\frac{\mathrm{d}\Phi}{\mathrm{d}s}=\frac{s-h}{s}$，$\frac{\mathrm{d}\Psi}{\mathrm{d}s}=-\frac{\ell}{s}$，
+故 $m=-\frac{\ell}{s-h}$，代入得
+\[
+  q_{\mathrm{slide}}=\frac{p}{p+\frac{\ell}{s-h}}
+  =\frac{p(s-h)}{p(s-h)+\ell}
+  =\frac{p(s-h)}{ps}=1-\frac{h}{s}=q_B(s),
+\]
+（用到 $\ell=ph$），恰好复现容量弧的唯一切向控制式(33)。这为\eqref{eq:B-qslide}提供了
+一个独立于 $\Gamma$ 的正确性检验。
+\end{remark}
+
+\begin{theorem}[无内部奇异弧]
+\label{thm:no-singular}
+在 $\Gamma$ 上处处有
+\begin{equation}
+  m=\left.\frac{\mathrm{d}\Psi}{\mathrm{d}\Phi}\right|_{\Gamma}>0 ,
+  \label{eq:B-m-positive}
+\end{equation}
+从而 $q_{\mathrm{slide}}\notin[0,1]$：不存在沿 $\Gamma$ 滑行的可行轨道，
+$\Sigma\equiv0$ 不可能在正长度的内部区间上成立。
+假设\ref{ass:nondegenerate}(G4) 的内部部分因此是定理。
+\end{theorem}
+
+\begin{proof}
+以安全端点 $\bar s$ 参数化 $\Gamma$，记 $\Gamma$ 上对应点为
+$\bigl(\sigma(\bar s),\,i_\sigma(\bar s)\bigr)$。
+
+\emph{分子。} $\Psi$ 是 $q=1$ 弧的不变量（\eqref{eq:A-Psi-pairings}），
+而 $\Gamma$ 上的点与其安全端点位于同一条 $q=1$ 特征线，故
+$\Psi(\sigma,i_\sigma)=\Psi\bigl(\bar s,a(\bar s)\bigr)$。于是可在安全边界上求导：
+\begin{equation}
+  \frac{\mathrm{d}\Psi}{\mathrm{d}\bar s}
+  =a'(\bar s)-\frac{\ell}{\bar s}
+  =\frac{h-\bar s}{\bar s}-\frac{\ell}{\bar s}
+  =\frac{r-\bar s}{\bar s}<0
+  \qquad(\bar s>h>r).
+  \label{eq:B-dPsi}
+\end{equation}
+
+\emph{分母。} 直接求导并使用第 7 节已证的切换曲线单调性
+$\sigma'(\bar s)<0$、$i_\sigma'(\bar s)<0$：
+\begin{equation}
+  \frac{\mathrm{d}\Phi}{\mathrm{d}\bar s}
+  =\Bigl(1-\frac{h}{\sigma}\Bigr)\sigma'(\bar s)+i_\sigma'(\bar s)<0 ,
+  \label{eq:B-dPhi}
+\end{equation}
+因为 $\sigma>h$ 使第一个因子为正，两项皆负。
+
+两者相除得 $m>0$，再由\eqref{eq:B-slide-criterion}即得结论。
+\end{proof}
+
+\begin{remark}[基准参数下的数值]
+\eqref{eq:B-dPsi}的数值与解析式吻合到 $10^{-6}$。在 $\bar s=0.42,\,0.44,\,0.46$ 处
+\[
+  m=0.0679,\;0.1149,\;0.1749,
+  \qquad
+  q_{\mathrm{slide}}=1.1570,\;1.2984,\;1.5379,
+\]
+均严格大于 $1$，与定理\ref{thm:no-singular}一致，
+也与"奇异控制候选恒落在 $[0,1]$ 之外"的既有数值观察相符。
+\end{remark}
+
+
+\subsection*{B.2 界面处的严格处理}
+
+定理\ref{thm:verification}的原证明称"切换界面上的不可微点只构成零测集"。
+这一说法对\emph{候选}轨道成立，但对\emph{竞争}轨道不成立：
+后者完全可能在界面上停留正测度时间。本小节给出不依赖粘性解理论的严格替代。
+
+候选 $V$ 的非光滑点集由三条曲线构成：$\Gamma$、$\partial\mathcal{A}$、$\{i=K\}$。
+其中前后两条已由 A 组处理：
+
+\begin{itemize}
+\item $\Gamma$：由引理\ref{lem:grad-match}，$V$ 在其上 $C^1$，$\partial_C V$ 为单点，
+      无需特殊处理；由定理\ref{thm:no-singular}，也不存在沿其滑行的轨道。
+\item $\{i=K\}$：由注\ref{rem:one-sided}，可行速度锥完全落在 $\{\dot i\le0\}$ 内，
+      即只指向 $V$ 有定义的一侧，单侧导数是合法的方向导数。
+\end{itemize}
+
+只剩 $\partial\mathcal{A}$，那里确有梯度跳跃：内侧 $\nabla V=0$，外侧 $\nabla W\neq0$。
+
+\begin{lemma}[安全边界上的广义梯度验证]
+\label{lem:clarke-dA}
+设 $x\in\partial\mathcal{A}$，$s>h$。则 Clarke 广义梯度
+$\partial_C V(x)=\mathrm{conv}\{0,\nabla W(x)\}$，且对一切
+$\zeta\in\partial_C V(x)$ 与一切 $q\in[0,1]$，
+\begin{equation}
+  \zeta\cdot f(x,q)+pcq\ \ge\ 0 .
+  \label{eq:B-clarke-ineq}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+写 $\zeta=\theta\,\nabla W(x)$，$\theta\in[0,1]$。
+在 $\partial\mathcal{A}$ 上安全端点即其自身，故 $\Theta(x)=\Theta(\bar x)$，
+由正文式(42)得 $\nabla W\cdot f_0=0$，于是 $\zeta\cdot f_0=0$。
+又由式(41)，$\nabla W\cdot(f_1-f_0)=(\nabla W\cdot f_1+pc)-pc-\nabla W\cdot f_0=-pc$，故
+\[
+  \zeta\cdot f(x,q)+pcq
+  =\underbrace{\zeta\cdot f_0}_{=0}+q\bigl[\theta\,\nabla W\cdot(f_1-f_0)+pc\bigr]
+  =q\,pc\,(1-\theta)\ \ge\ 0 .
+\]
+\end{proof}
+
+\begin{proposition}[验证不等式的严格形式]
+\label{prop:verification-rigorous}
+候选 $V$ 局部 Lipschitz，且在 $\{i\le K\}$ 上除 $\Gamma\cup\partial\mathcal{A}$
+外为 $C^1$。对任意可行控制 $q(\cdot)$ 与相应的绝对连续轨道 $x(\cdot)$，
+$t\mapsto V(x(t))$ 几乎处处可微，且
+\begin{equation}
+  \frac{\mathrm{d}}{\mathrm{d}t}V(x(t))+pc\,q(t)\ \ge\ 0
+  \qquad\text{a.e.}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+局部 Lipschitz 函数沿绝对连续曲线的复合仍绝对连续，故几乎处处可微，
+且在可微点 $\frac{\mathrm{d}}{\mathrm{d}t}V(x(t))=\zeta\cdot\dot x(t)$
+对某 $\zeta\in\partial_C V(x(t))$ 成立。分三种情形：
+若 $x(t)$ 位于 $C^1$ 开区域，$\partial_C V$ 为单点，不等式即 HJB；
+若 $x(t)\in\Gamma$，同样为单点（引理\ref{lem:grad-match}）；
+若 $x(t)\in\partial\mathcal{A}$，用引理\ref{lem:clarke-dA}。
+$\{i=K\}$ 上按注\ref{rem:one-sided}取单侧导数，可行速度锥保证其合法。
+\end{proof}
+
+\begin{remark}[$\partial\mathcal{A}$ 上滑行是无害的]
+$\partial\mathcal{A}$ 本身是一条 $q=0$ 轨道，轨道确实可以在其上停留正测度时间。
+但 $V\equiv0$ 于 $\overline{\mathcal{A}}$，故此时
+$\frac{\mathrm{d}}{\mathrm{d}t}V=0$ 且 $pcq=0$，等号成立，不产生任何损失，
+也不破坏唯一性（该段上 $q=0$ 仍是唯一零成本控制，见命题3.2）。
+\end{remark}
+
+
+\subsection*{B.3 切换曲线的整体几何与三类结构的穷尽性}
+
+本小节把假设\ref{ass:nondegenerate}中剩下的 (G2) 与 (G3) 一并升级为定理，
+关键只用一句话：$\Gamma$ 在相平面中是一条\emph{严格递增}的曲线。
+
+\begin{theorem}[$\Gamma$ 是严格递增的 $C^1$ 简单曲线]
+\label{thm:Gamma-increasing}
+在 $\Gamma$ 的定义域上：
+\begin{enumerate}
+\item[(a)] $\Gamma$ 是 $C^1$ 的，且可写成 $\bar s\mapsto(\sigma(\bar s),i_\sigma(\bar s))$；
+\item[(b)] $\dfrac{\mathrm{d}i_\sigma}{\mathrm{d}\sigma}
+      =\dfrac{i_\sigma'(\bar s)}{\sigma'(\bar s)}>0$，
+      即 $\Gamma$ 是某严格递增函数 $s\mapsto i_\Gamma(s)$ 的图像；
+\item[(c)] 特别地 $\Gamma$ 是简单曲线，(G2) 成立。
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(a) 记 $F(s;\bar s):=\Theta\bigl(s,\,a(\bar s)+\ell\ln(s/\bar s)\bigr)-\Theta\bigl(\bar s,a(\bar s)\bigr)$，
+它关于 $(s,\bar s)$ 是 $C^\infty$ 的。第 7 节的严格单峰性表明：$\Theta$ 沿特征线的峰点
+严格位于平凡根 $\bar s$ 与非平凡根 $\sigma$ 之间，故在 $\sigma$ 处
+$\partial F/\partial s\neq0$。隐函数定理给出 $\sigma\in C^1$，
+$i_\sigma(\bar s)=a(\bar s)+\ell\ln(\sigma/\bar s)$ 随之 $C^1$。
+
+(b) 第 7 节已证 $\sigma'(\bar s)<0$ 与 $i_\sigma'(\bar s)<0$，两负之商为正。
+
+(c) 严格递增函数的图像不自交。
+\end{proof}
+
+\begin{corollary}[(G3) 全部为定理]
+\label{cor:G3-theorem}
+\begin{enumerate}
+\item[(i)] 每条自然轨道（$q=0$，在 $s>h$ 上 $\frac{\mathrm{d}i}{\mathrm{d}s}=\frac{h-s}{s}<0$，
+      故为严格递减函数的图像）与 $\Gamma$ 至多相交一次，且相交必为横截
+      （斜率一正一负，不可能相切）。
+\item[(ii)] 容量线 $\{i=K\}$（斜率 $0$）与 $\Gamma$（斜率 $>0$）至多相交一次，
+      且必为横截。
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+两条分别为严格递增与严格递减（或常值）函数的图像，其差严格单调，至多一个零点；
+零点处两斜率不等，故横截。
+\end{proof}
+
+于是三类结构的判别可以写成完全显式的形式。
+
+\begin{proposition}[三类结构的穷尽性与判据]
+\label{prop:exhaustive}
+设初值 $(s_0,i_0)$ 可行（$0<i_0\le K$）。记
+\[
+  \Phi_0=i_0+s_0-h\ln s_0,\qquad
+  i_{\mathrm{nat}}(s)=\Phi_0-s+h\ln s,\qquad
+  i_{\mathrm{pk}}=i_{\mathrm{nat}}(h).
+\]
+则恰好出现下列三种互斥情形之一：
+\begin{enumerate}
+\item[(I)] $s_0\le h$ 或 $i_{\mathrm{pk}}\le K$：则 $q^*\equiv0$，$J^*=0$（推论3.1）。
+\item[(II)] 否则 $s_1:=$ $\{i_{\mathrm{nat}}(s)=K\}$ 的大根存在；
+      设 $\sigma_\Gamma$ 为自然弧与 $\Gamma$ 的唯一交点的 $s$ 坐标
+      （由推论\ref{cor:G3-theorem}(i) 唯一）。若 $\sigma_\Gamma>s_1$，
+      则结构为 $0\to1\to0$，切换于 $\sigma_\Gamma$。
+\item[(III)] 若 $\sigma_\Gamma<s_1$（含自然弧与 $\Gamma$ 不相交的情形），
+      则结构为 $0\to q_B\to1\to0$：自然弧先到 $i=K$ 于 $s_1$，
+      沿容量边界运行到 $\sigma_B=\Gamma\cap\{i=K\}$（由推论\ref{cor:G3-theorem}(ii) 唯一），
+      再转入 $q=1$。$\sigma_B\to h$ 为纯容量填充的退化极限。
+\end{enumerate}
+边界情形 $\sigma_\Gamma=s_1$ 使容量段退化为一点，是 (II)(III) 的公共边界。
+\end{proposition}
+
+\begin{corollary}[类型 III 的必要相容条件]
+\label{cor:typeIII-necessary}
+若结构为类型 III，则 $K<g(s_1)$，等价地
+\begin{equation}
+  s_1>s_g:=\frac{(h+r+K)+\sqrt{(h+r+K)^2-4hr}}{2}.
+  \label{eq:B-sg}
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+类型 III 意味着自然弧的首次碰撞点是 $(s_1,K)$，且 $\sigma_\Gamma<s_1$。
+由引理\ref{lem:Gamma-below-G}，$\Gamma$ 上处处 $i<g$；由引理\ref{lem:peak-locus}(a)，
+$i-g$ 沿自然弧关于 $s$ 严格递减，故在 $s_1>\sigma_\Gamma$ 处
+$i_{\mathrm{nat}}(s_1)-g(s_1)<0$，即 $K<g(s_1)$。展开即\eqref{eq:B-sg}。
+\end{proof}
+
+\begin{remark}[\eqref{eq:B-sg} 是必要而非充分]
+\label{rem:sg-not-sufficient}
+\eqref{eq:B-sg}是一个闭式的廉价检验，可用于快速排除类型 III，
+但它不构成充分条件：在 $p=0.75,\ c=2,\ \gamma=0.3,\ K\approx0.2936$，
+$(s_0,i_0)=(0.99,0.01)$ 处有
+\[
+  s_1=0.60928>s_g=0.52457,
+  \qquad\text{但}\qquad
+  \sigma_\Gamma=0.61211>s_1 ,
+\]
+故实为类型 II。在 $p\in[0.25,0.8]\times K\in[0.04,0.35]$ 的 $12\times12$ 网格上
+（$116$ 个非平凡样本），判据 $s_1\gtrless s_g$ 有 $11$ 例与真实类型不符，
+而判据 $\sigma_\Gamma\gtrless s_1$ 全部正确。
+因此命题\ref{prop:exhaustive}应以 $\sigma_\Gamma$ 为准，
+\eqref{eq:B-sg}仅作为一致性校验列入验证套件。
+同一网格上 $\Theta-\bar\Theta$ 沿自然弧的符号变化次数恒为 $1$，
+与推论\ref{cor:G3-theorem}(i) 一致。
+\end{remark}
+
+
+\subsection*{B.4 类型 II 的一维成本函数}
+
+正文第 8 节对容量边界切换点给出了式(57)与命题8.1，
+但类型 II 的直接切换只在 13.1 节的算法中以 $J_D$ 的形式出现，未给导数公式。
+本小节补齐，与式(57)构成对称的一对。
+
+\begin{proposition}[直接切换成本的导数]
+\label{prop:JD-derivative}
+设自然弧上取 $s\in[s_1,s_0]$ 处切入 $q=1$，总成本
+\begin{equation}
+  J_D(s):=W\bigl(s,\,i_{\mathrm{nat}}(s)\bigr).
+  \label{eq:B-JD}
+\end{equation}
+则
+\begin{equation}
+  \boxed{\;J_D'(s)=-\frac{s-r}{hs}\Bigl[\Theta\bigl(s,i_{\mathrm{nat}}(s)\bigr)-\Theta(\bar s,\bar i)\Bigr]
+  \;=\;\frac{s-r}{pcs\,\Lambda}\,\Sigma_W(s,i_{\mathrm{nat}}(s)) . \;}
+  \label{eq:B-JDp}
+\end{equation}
+特别地 $J_D'(s)=0$ 当且仅当 $(s,i_{\mathrm{nat}}(s))\in\Gamma$，
+即一维变分给出的驻点与 HJB 切换曲线完全一致；
+且由推论\ref{cor:G3-theorem}(i)，该驻点在自然弧上唯一。
+\end{proposition}
+
+\begin{proof}
+由链式法则与 $\frac{\mathrm{d}i_{\mathrm{nat}}}{\mathrm{d}s}=\frac{h-s}{s}$，
+\[
+  J_D'(s)=W_s+\frac{h-s}{s}W_i
+  =-\frac{1}{s}\Bigl[-sW_s+(s-h)W_i\Bigr].
+\]
+另一方面 $f_0=pci\,(-s,\;s-h)$，故
+$\nabla W\cdot f_0=pci\bigl[-sW_s+(s-h)W_i\bigr]$，
+代入正文式(42) $\nabla W\cdot f_0=\frac{pc}{h}\Lambda[\Theta-\bar\Theta]$ 得
+\[
+  -sW_s+(s-h)W_i=\frac{\Lambda}{hi}\bigl[\Theta-\bar\Theta\bigr]
+  =\frac{s-r}{h}\bigl[\Theta-\bar\Theta\bigr].
+\]
+回代即得\eqref{eq:B-JDp}的第一式；第二式用\eqref{eq:A-SigmaW}
+$\Sigma_W=-\frac{pc}{h}\Lambda[\Theta-\bar\Theta]$ 改写。
+\end{proof}
+
+\begin{proposition}[严格极小与可行性截断]
+\label{prop:JD-min}
+在类型 II 中（$\sigma_\Gamma>s_1$），$J_D$ 在 $[s_1,s_0]$ 内部的唯一驻点为
+$\sigma_\Gamma$，且 $J_D'$ 在其处由负变正，故为严格局部（因唯一性亦为全局）极小点。
+在类型 III 中（$\sigma_\Gamma<s_1$），$J_D'>0$ 于整个可行区间 $[s_1,s_0]$，
+故 $J_D$ 的约束极小在左端点取得：
+\begin{equation}
+  \min_{s\in[s_1,s_0]}J_D(s)=J_D(s_1)=J_{\mathrm{direct}} ,
+  \label{eq:B-Jdirect}
+\end{equation}
+这正是表\ref{tab:benchmark}中 $J_{\mathrm{direct}}$ 一项的含义：
+它不是内点极小，而是容量约束截断产生的边界极小。
+\end{proposition}
+
+\begin{proof}
+由\eqref{eq:B-JDp}，$\mathrm{sign}\,J_D'=\mathrm{sign}(\bar\Theta-\Theta)$。
+$\Theta-\bar\Theta$ 沿自然弧的零点由推论\ref{cor:G3-theorem}(i) 唯一且横截，
+故符号在该点严格改变一次。当 $s>\sigma_\Gamma$ 时 $\Theta<\bar\Theta$
+（等价于定理\ref{thm:wait-Sigma-positive}给出的 $\Sigma>0$ 一侧），
+故 $J_D'>0$；当 $s<\sigma_\Gamma$ 时反号。类型 III 下 $\sigma_\Gamma<s_1$，
+整个 $[s_1,s_0]$ 落在 $J_D'>0$ 一侧。
+\end{proof}
+
+\begin{remark}[基准参数下的数值核对]
+$p=0.5,\ c=2,\ \gamma=0.3,\ K=0.15,\ (s_0,i_0)=(0.99,0.01)$：
+公式\eqref{eq:B-JDp}与 $J_D$ 的中心差分在 $s\in[0.65,0.90]$ 上吻合到 $8$ 位有效数字。
+无约束驻点 $\sigma_\Gamma=0.69342<s_1=0.7775221610$，
+故为类型 III；相应地
+\[
+  J_D(s_1)=1.6364797199 ,
+\]
+与表\ref{tab:benchmark}的 $J_{\mathrm{direct}}=1.6364798118$ 一致（差异源于根定位容差），
+且确为边界极小而非内点极小。
+\end{remark}
+
+
+\subsection*{B.5 小结：假设\ref{ass:nondegenerate}的最终状态}
+
+综合 A、B 两组：
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\hline
+条目 & 最终状态 & 依据\\
+\hline
+(G1) 端点唯一性 & 定理 & 正文式(35)的单调性\\
+(G1) 端点存在性 & 定理 $+$ 判据 $\Psi>\Psi_K$ & 引理\ref{lem:endpoint-exists}\\
+(G2) $\Gamma$ 为简单 $C^1$ 曲线 & 定理 & 定理\ref{thm:Gamma-increasing}\\
+(G3) 自然轨道 $\cap\,\Gamma$ 横截且至多一次 & 定理 & 推论\ref{cor:G3-theorem}(i)\\
+(G3) 容量线 $\cap\,\Gamma$ 横截且至多一次 & 定理 & 推论\ref{cor:G3-theorem}(ii)\\
+(G4) 无内部奇异弧 & 定理 & 定理\ref{thm:no-singular}\\
+(G4) 不沿 $\Gamma$ 滑行 & 定理 & 定理\ref{thm:no-singular}\\
+(G4) 容量弧 $\Sigma\equiv0$ & 恒等式（非退化） & 命题\ref{prop:cap-Sigma-zero}，注\ref{rem:correct-8.2}\\
+\hline
+\end{tabular}
+\end{center}
+
+因此假设\ref{ass:nondegenerate}可以整体删去，其内容分别由上述定理承担。
+定理\ref{thm:verification}与定理\ref{thm:uniqueness}的陈述中
+"假设9.1成立"一句应替换为对本表的引用；
+摘要中"在可直接检验的横截性条件下"亦可相应加强。
+唯一保留为条件的是命题\ref{prop:exhaustive}的类型判别本身
+——但它不是假设，而是对初值的三分，且判据完全显式。
+
+% =====================================================================
+%  引用的正文与 A 组 label（请按实际名称替换）：
+%    \label{ass:nondegenerate}          -> 假设 9.1
+%    \label{thm:verification}           -> 定理 9.3
+%    \label{thm:uniqueness}             -> 定理 10.1
+%    \label{tab:benchmark}              -> 表 1
+%    \label{lem:grad-match}             -> A.1
+%    \label{lem:endpoint-exists}        -> A.2
+%    \label{lem:peak-locus}             -> A.4 峰值曲线统一性
+%    \label{lem:Gamma-below-G}          -> A.4 切换点位于峰值曲线之下
+%    \label{thm:wait-Sigma-positive}    -> A.4 主定理
+%    \label{prop:cap-Sigma-zero}        -> A.5
+%    \label{prop:cap-uniqueness}        -> A.5
+%    \label{rem:one-sided}              -> A.5 单侧可微
+%    \label{rem:correct-8.2}            -> A.5 对注 8.2(iii) 的更正
+%    \eqref{eq:A-Psi-pairings}, \eqref{eq:A-SigmaW} -> A 组
+% =====================================================================

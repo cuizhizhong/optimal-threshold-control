@@ -1,0 +1,633 @@
+% =====================================================================
+%  A 组补充：验证定理 (定理 9.3) 的前置引理
+%  拟插入位置：第 9 节，假设 9.1 之后、定义 9.2 之前。
+%  说明：
+%   - 方程使用全局编号（与正文一致），此处一律用 \label/\eqref 交叉引用。
+%   - 仅使用标准 LaTeX 数学命令（\frac、\partial 等），未使用论文自定义宏。
+%   - 引用正文既有编号时写成 \eqref{eq:...}，请按论文实际 label 名替换；
+%     若正文尚未给这些式子加 label，可直接改回硬编号 (17)(23)(38)(41)(42) 等。
+%   - 需要宏包：amsmath, amssymb, amsthm（定理环境 lemma/proposition/remark/theorem）。
+% =====================================================================
+
+\section*{A 组补充：验证定理的前置引理}
+
+本节把定理\ref{thm:verification}（验证定理）所依赖、但在正文中以一句话带过或
+默认成立的五件事逐条补全。为使本节可独立阅读，先重述所需记号，随后给出五条引理，
+它们分别处理：切换曲线上的梯度匹配 (\S A.1)、端点映射的存在性 (\S A.2)、
+"无限期全力跟踪"路径的排除 (\S A.3)、等待弧上切换函数的定号 (\S A.4)、
+以及容量边界上的单侧可微性与唯一性论证 (\S A.5)。
+
+\subsection*{A.0 记号回顾}
+
+状态 $x=(s,i)$，控制 $q\in[0,1]$，
+\begin{equation}
+  h=\frac{\gamma}{pc},\qquad
+  \ell=\frac{\gamma}{c}=ph,\qquad
+  r=(1-p)h,\qquad
+  h=\ell+r .
+  \label{eq:A-constants}
+\end{equation}
+向量场
+\begin{equation}
+  f_0=\bigl(-pcsi,\;pcsi-\gamma i\bigr),\qquad
+  f_1=\bigl(-csi,\;-\gamma i\bigr),\qquad
+  f(x,q)=f_0+q\,(f_1-f_0),
+  \label{eq:A-fields}
+\end{equation}
+其中
+\begin{equation}
+  f_1-f_0=-csi\,(1-p,\;p).
+  \label{eq:A-fdiff}
+\end{equation}
+两个不变量与安全集
+\begin{equation}
+  \Phi(s,i)=i+s-h\ln s,\qquad
+  \Psi(s,i)=i-\ell\ln s,\qquad
+  \Phi_A:=K+h-h\ln h,
+  \label{eq:A-invariants}
+\end{equation}
+\begin{equation}
+  \mathcal{A}=\{s\le h,\;0\le i\le K\}\cup\{s>h,\;\Phi(s,i)\le \Phi_A\},
+  \qquad
+  \partial\mathcal{A}\cap\{s\ge h\}=\{i=a(s)\},\;\;a(s)=\Phi_A-s+h\ln s .
+  \label{eq:A-safeset}
+\end{equation}
+对可微的 $V$，Hamiltonian 与切换函数为
+\begin{equation}
+  H(q)=\nabla V\cdot f_0+q\,\Sigma,
+  \qquad
+  \Sigma:=\nabla V\cdot(f_1-f_0)+pc
+        =pc-csi\bigl[(1-p)V_s+pV_i\bigr].
+  \label{eq:A-Sigma}
+\end{equation}
+本节反复使用如下两个标量场：
+\begin{equation}
+  \boxed{\;\Lambda(s,i):=i\,(s-r),\qquad
+  g(s):=\frac{(s-h)(s-r)}{s}\;}
+  \label{eq:A-Lambda-g}
+\end{equation}
+它们与正文的 $\Theta$ 由 $\Theta(s,i)=(s-h)/\Lambda(s,i)$ 相联系；$g$ 即正文式(46)中的函数。
+直接计算给出四个恒等式，本节全部推理都建立在它们之上：
+\begin{align}
+  \nabla\Phi\cdot f_0&=0, &
+  \nabla\Phi\cdot(f_1-f_0)&=-c\,\Lambda,
+  \label{eq:A-Phi-pairings}\\
+  \nabla\Psi\cdot f_1&=0, &
+  \nabla\Psi\cdot f_0&=pc\,\Lambda .
+  \label{eq:A-Psi-pairings}
+\end{align}
+
+\begin{proof}[\eqref{eq:A-Phi-pairings}--\eqref{eq:A-Psi-pairings} 的验证]
+$\nabla\Phi=(1-h/s,\,1)$，故
+$\nabla\Phi\cdot f_0=-pcsi+pchi+pcsi-\gamma i=(pch-\gamma)i=0$；
+$\nabla\Phi\cdot(f_1-f_0)=-csi\bigl[(1-p)(1-h/s)+p\bigr]=-csi\,\frac{s-r}{s}=-c\,i(s-r)$。
+$\nabla\Psi=(-\ell/s,\,1)$，故
+$\nabla\Psi\cdot f_1=c\ell i-\gamma i=0$（因 $c\ell=\gamma$）；
+$\nabla\Psi\cdot f_0=pc\ell i+pcsi-\gamma i=pci(\ell+s-h)=pc\,i(s-r)$（因 $\ell-h=-r$）。
+\end{proof}
+
+于是沿任意可行轨道
+\begin{equation}
+  \dot\Phi=-cq\,\Lambda\le 0,
+  \qquad
+  \dot\Psi=pc\,(1-q)\,\Lambda\ge 0
+  \qquad (s>r).
+  \label{eq:A-two-monotone}
+\end{equation}
+第一式即正文式(17)。第二式是它的对偶，正文未列出，但 \S A.2--\S A.3 需要它。
+
+\begin{remark}[成本的状态化表示]
+由 $\mathrm{d}J=pcq\,\mathrm{d}t$ 与 \eqref{eq:A-two-monotone} 的第一式，在 $\{q>0\}$ 上
+\begin{equation}
+  \mathrm{d}J=\frac{p}{\Lambda(s,i)}\,\bigl(-\mathrm{d}\Phi\bigr),
+  \label{eq:A-price}
+\end{equation}
+右端不含 $q$。即"单位 $\Phi$ 下降所需成本"只是状态的函数，等于 $p/\Lambda$。
+这解释了为何 $\Lambda$ 而非 $q$ 是本问题的核心量，也解释了 \S A.4 中 $\Sigma$ 的定号
+为何完全由 $\Lambda$ 的比较给出。
+\end{remark}
+
+
+\subsection*{A.1 切换曲线上的梯度匹配}
+
+正文 9.1 节称"式(43)保证 Hamiltonian 平滑匹配"。这句话在完全跟踪一侧是平凡的：
+由\eqref{eq:A-Sigma}与正文式(41)--(42)，
+\begin{equation}
+  \Sigma_W:=\nabla W\cdot(f_1-f_0)+pc
+  =\bigl(\nabla W\cdot f_1+pc\bigr)-\nabla W\cdot f_0
+  =-\frac{pc}{h}\,\Lambda\,\bigl[\Theta(s,i)-\Theta(\bar s,\bar i)\bigr],
+  \label{eq:A-SigmaW}
+\end{equation}
+故 $\Sigma_W|_\Gamma=0$ 正是 $\Gamma$ 的定义式(43)。但在等待一侧，$V_{\mathrm{wait}}$
+的构造中已无自由参数：$\psi$ 由值匹配唯一确定，因此
+$\Sigma_{\mathrm{wait}}|_\Gamma=0$ 是待证命题而非边界条件。下面补上这个证明。
+
+设等待区中 $V_{\mathrm{wait}}=\psi(\Phi)$（合法性见注\ref{rem:psi-well-posed}），
+其中 $\psi$ 由值匹配定义：
+\begin{equation}
+  \psi(\Phi):=W\bigl(x_\Gamma(\Phi)\bigr),
+  \qquad
+  \{x_\Gamma(\Phi)\}=\Gamma\cap\{\Phi(\cdot)=\Phi\}.
+  \label{eq:A-psi-def}
+\end{equation}
+
+\begin{remark}[$V_{\mathrm{wait}}$ 写成 $\Phi$ 的函数是合法的]
+\label{rem:psi-well-posed}
+正文 9.1 节把等待区的 $V$ \emph{定义}为沿 $q=0$ 轨道首次碰撞点的后续值，
+即"沿每条 $q=0$ 轨道取常值"。$\Phi$ 的水平集是函数图像 $i=\Phi-s+h\ln s$，
+对每个 $s$ 单值，故连通；又由 $\dot s<0$，水平集与等待区之交恰为一段轨道。
+因此"沿每条轨道取常值"与"是 $\Phi$ 的函数"等价。
+需要强调的是这是\emph{构造}，不是从最优性推出的性质：动态规划只给出单向不等式
+$V(x)\le V(x(t))$，反向不等式等价于"等待确实最优"，正是待证结论。
+\end{remark}
+
+\begin{lemma}[切换曲线上的梯度匹配]
+\label{lem:grad-match}
+设 $x_\Gamma\in\Gamma$，且 $\Phi$ 沿 $\Gamma$ 在 $x_\Gamma$ 附近严格单调
+（等价地：自然轨道与 $\Gamma$ 在 $x_\Gamma$ 横截相交，即假设\ref{ass:nondegenerate}(G3)）。
+则
+\begin{equation}
+  \psi'(\Phi)=\frac{p}{\Lambda(x_\Gamma)},
+  \qquad
+  \nabla V_{\mathrm{wait}}(x_\Gamma)=\nabla W(x_\Gamma),
+  \qquad
+  \Sigma_{\mathrm{wait}}(x_\Gamma)=\Sigma_W(x_\Gamma)=0 .
+  \label{eq:A-grad-match}
+\end{equation}
+特别地，$V$ 在 $\Gamma$ 上是 $C^1$ 的，而不仅仅是连续的；$\Sigma$ 跨 $\Gamma$ 连续。
+\end{lemma}
+
+\begin{proof}
+以 $\Phi$ 为参数刻画 $\Gamma$，记切向量 $T:=\dfrac{\mathrm{d}x_\Gamma}{\mathrm{d}\Phi}$。
+该参数化的合法性即横截性假设；归一化给出
+\begin{equation}
+  \nabla\Phi\cdot T=1 .
+  \label{eq:A-T-norm}
+\end{equation}
+
+\emph{第 1 步（$\{T,f_0\}$ 是 $\mathbb{R}^2$ 的基）。}
+由\eqref{eq:A-Phi-pairings}有 $\nabla\Phi\cdot f_0=0$，而\eqref{eq:A-T-norm}给出
+$\nabla\Phi\cdot T=1$，故 $T$ 与 $f_0$ 不平行；又 $f_0\neq0$（因 $i>0$）。
+
+\emph{第 2 步（分解 $f_1-f_0$）。}
+写 $f_1-f_0=\alpha T+\beta f_0$。以 $\nabla\Phi$ 作用两端，
+利用\eqref{eq:A-Phi-pairings}与\eqref{eq:A-T-norm}：
+\begin{equation}
+  -c\,\Lambda=\alpha\cdot 1+\beta\cdot 0
+  \quad\Longrightarrow\quad
+  \alpha=-c\,\Lambda .
+  \label{eq:A-alpha}
+\end{equation}
+
+\emph{第 3 步（以 $\nabla W$ 作用）。}
+\[
+  \nabla W\cdot(f_1-f_0)=-c\Lambda\,(\nabla W\cdot T)+\beta\,(\nabla W\cdot f_0).
+\]
+关键在于：$x_\Gamma\in\Gamma$ 上正文式(42)给出 $\nabla W\cdot f_0=0$，
+第二项整体消失，$\beta$ 的具体取值无关紧要。又由链式法则与\eqref{eq:A-psi-def}，
+$\nabla W\cdot T=\frac{\mathrm{d}}{\mathrm{d}\Phi}W(x_\Gamma(\Phi))=\psi'(\Phi)$。故
+\[
+  \nabla W\cdot(f_1-f_0)=-c\,\Lambda\,\psi' .
+\]
+
+\emph{第 4 步（定出 $\psi'$）。}
+代入 $\Sigma_W(x_\Gamma)=0$，即 $\nabla W\cdot(f_1-f_0)+pc=0$，得
+$-c\Lambda\psi'+pc=0$，于是 $\psi'=p/\Lambda(x_\Gamma)$。
+
+\emph{第 5 步（回代等待侧）。}
+$\nabla V_{\mathrm{wait}}=\psi'\nabla\Phi$，由\eqref{eq:A-Phi-pairings}，
+\[
+  \Sigma_{\mathrm{wait}}(x_\Gamma)
+  =\psi'\,\nabla\Phi\cdot(f_1-f_0)+pc
+  =\frac{p}{\Lambda}\,(-c\Lambda)+pc=0 .
+\]
+
+\emph{第 6 步（梯度相等）。}
+在基 $\{T,f_0\}$ 上比较两侧梯度的配对值：
+\[
+  \nabla V_{\mathrm{wait}}\cdot T=\psi'(\nabla\Phi\cdot T)=\psi',
+  \qquad
+  \nabla W\cdot T=\psi'
+  \qquad(\text{第 3 步});
+\]
+\[
+  \nabla V_{\mathrm{wait}}\cdot f_0=\psi'(\nabla\Phi\cdot f_0)=0,
+  \qquad
+  \nabla W\cdot f_0=0
+  \qquad(\text{式}(42)\text{ 在 }\Gamma\text{ 上}).
+\]
+两组配对值逐一相同，而 $\{T,f_0\}$ 张成 $\mathbb{R}^2$，故
+$\nabla V_{\mathrm{wait}}(x_\Gamma)=\nabla W(x_\Gamma)$。
+\end{proof}
+
+\begin{remark}[$\Gamma$ 的几何意义]
+第 6 步给出一个值得单独指出的解释：
+\[
+  x\in\Gamma
+  \iff \Theta(x)=\Theta(\bar x)
+  \iff \nabla W\cdot f_0=0
+  \iff W\ \text{沿自然轨道方向的方向导数为零}.
+\]
+因此 $\Gamma$ 不是 $V$ 的梯度间断面，恰恰相反，它是使值匹配自动升级为梯度匹配的那条曲线。
+这也把假设\ref{ass:nondegenerate}(G4)中"最优轨道不沿 $\Gamma$ 滑行"一条大幅弱化：
+$V$ 在 $\Gamma$ 上 $C^1$，因而 $\Gamma$ 上不存在需要广义梯度处理的角点。
+\end{remark}
+
+\begin{remark}[等待区在容量边界一侧也匹配]
+\label{rem:cap-match}
+若等待弧首次碰撞的是容量线而非 $\Gamma$，则\eqref{eq:A-psi-def}换成
+$\psi(\Phi)=V(s_1,K)$，$s_1=s_1(\Phi)$ 为首次碰撞点。沿 $i=K$ 有
+$\frac{\mathrm{d}\Phi}{\mathrm{d}s}=\frac{s-h}{s}$，而由正文式(54)的被积函数，
+$\frac{\mathrm{d}}{\mathrm{d}s}V(s,K)=\frac{p}{K}\cdot\frac{s-h}{s(s-r)}$。两式相除：
+\begin{equation}
+  \psi'=\frac{p}{K\,(s_1-r)}=\frac{p}{\Lambda(s_1,K)} ,
+  \label{eq:A-psi-cap}
+\end{equation}
+与引理\ref{lem:grad-match}的公式\emph{形式完全相同}。因此 $\Sigma_{\mathrm{wait}}$
+在容量进入点同样为零，梯度匹配在两类碰撞界面上是统一的。
+\end{remark}
+
+由引理\ref{lem:grad-match}与注\ref{rem:cap-match}，等待区内 $\psi'$ 沿每条 $q=0$
+轨道是常数 $p/\Lambda_\star$（$\Lambda_\star$ 取首次碰撞点之值），从而
+\begin{equation}
+  \boxed{\;\Sigma_{\mathrm{wait}}(s,i)=c\Bigl[p-\psi'\,\Lambda(s,i)\Bigr]
+  =pc\left[1-\frac{\Lambda(s,i)}{\Lambda_\star}\right],
+  \qquad\text{故}\quad
+  \Sigma_{\mathrm{wait}}>0\iff \Lambda(s,i)<\Lambda_\star . \;}
+  \label{eq:A-Sigma-wait}
+\end{equation}
+\S A.4 将证明右端不等式在整段被走过的等待弧上严格成立。
+
+
+\subsection*{A.2 端点映射的存在性}
+
+正文第 6 节由 $-1+r/\bar s<0$ 证明了端点映射的\emph{唯一性}，
+即假设\ref{ass:nondegenerate}(G1)的一半；但\emph{存在性}未加讨论。
+这不是形式上的缺失：$q=1$ 弧在有限时间内不可能使 $i=0$，若 $s$ 的极限过大，
+该特征线将永远不与 $\partial\mathcal{A}$ 相交，此时 $W$、$\Theta$、$\Gamma$ 全部无定义。
+
+由\eqref{eq:A-Psi-pairings}，$\Psi$ 是 $q=1$ 弧的不变量，
+沿该弧 $i\to0$、$s\to s_\infty$，其中
+\begin{equation}
+  s_\infty=s\,e^{-i/\ell}=e^{-\Psi(s,i)/\ell}.
+  \label{eq:A-sinf}
+\end{equation}
+定义 $s_K>h$ 为 $a(s_K)=0$ 的唯一解，即
+\begin{equation}
+  s_K-h\ln s_K=\Phi_A,\qquad s_K>h;
+  \qquad
+  \Psi_K:=-\ell\ln s_K .
+  \label{eq:A-sK}
+\end{equation}
+（$x\mapsto x-h\ln x$ 在 $x>h$ 上严格递增且 $\Phi_A>h-h\ln h$，故 $s_K$ 存在唯一。）
+
+\begin{lemma}[端点映射的存在性判据]
+\label{lem:endpoint-exists}
+设 $(s,i)$ 可行（$0<i\le K$）且 $(s,i)\notin\mathcal{A}$。则由 $(s,i)$ 出发的
+$q=1$ 特征线在有限时间内与 $\partial\mathcal{A}$ 相交，当且仅当
+\begin{equation}
+  \boxed{\;s\,e^{-i/\ell}<s_K
+  \quad\Longleftrightarrow\quad
+  \Psi(s,i)>\Psi_K . \;}
+  \label{eq:A-G1-existence}
+\end{equation}
+此时交点唯一，且必落在曲线段 $\{i=a(\bar s),\ \bar s\ge h\}$ 上。
+记 $\mathcal{E}:=\{\Psi>\Psi_K\}$，则由\eqref{eq:A-two-monotone}的第二式，
+$\mathcal{E}$ 对\emph{任意}可行控制前向不变。
+\end{lemma}
+
+\begin{proof}
+沿 $q=1$ 弧有 $\frac{\mathrm{d}i}{\mathrm{d}s}=\frac{\ell}{s}$，故
+\begin{equation}
+  \frac{\mathrm{d}\Phi}{\mathrm{d}s}
+  =\frac{\ell}{s}+1-\frac{h}{s}=1-\frac{r}{s}=\frac{s-r}{s}>0
+  \qquad(s>r),
+  \label{eq:A-dPhi-ds-q1}
+\end{equation}
+即 $s$ 递减时 $\Phi$ 严格递减，其极限为 $\Phi_\infty=s_\infty-h\ln s_\infty$。
+
+\emph{充分性。} 设 $s_\infty<s_K$。若 $s_\infty<h$，则 $s$ 在有限时间内下穿 $h$；
+由 $\dot i=-\gamma i<0$，此时 $i<K$，状态已入 $\mathcal{A}$。
+若 $h\le s_\infty<s_K$，由 $x\mapsto x-h\ln x$ 在 $[h,\infty)$ 上严格递增得
+$\Phi_\infty<\Phi_A$，故 $\Phi$ 在有限时间内下穿 $\Phi_A$。
+两种情形下，$\Phi$ 在 $s\ge h$ 的范围内即已达到 $\Phi_A$：
+在 $s=h$ 处 $\Phi=i(h)+h-h\ln h\le\Phi_A$ 等价于 $i(h)\le K$，而 $i$ 沿弧递减且初值 $\le K$，
+故此式成立；由\eqref{eq:A-dPhi-ds-q1}的严格单调性，穿越点 $\bar s\ge h$ 唯一。
+
+\emph{必要性。} 设 $s_\infty\ge s_K>h$。则全程 $s(t)>s_\infty\ge h$，且
+$\Phi(t)>\Phi_\infty=s_\infty-h\ln s_\infty\ge s_K-h\ln s_K=\Phi_A$，故永不进入 $\mathcal{A}$。
+
+\emph{前向不变性。} $s>r$ 时\eqref{eq:A-two-monotone}给出 $\dot\Psi\ge0$，
+故 $\Psi>\Psi_K$ 一旦成立即永远成立。
+\end{proof}
+
+\begin{remark}[基准参数下该条件在初值处\emph{不}成立]
+\label{rem:G1-fails-at-t0}
+取基准参数 $p=0.5,\ c=2,\ \gamma=0.3,\ K=0.15$，则
+$h=0.3$，$\ell=r=0.15$，$\Phi_A=0.8111918413$，$s_K=0.7073030022$，
+$\Psi_K=0.0519444196$。而初值 $(s_0,i_0)=(0.99,0.01)$ 给出
+\[
+  \Psi(s_0,i_0)=0.0115075504<\Psi_K,
+  \qquad
+  s_\infty=0.9261519152>s_K .
+\]
+即\emph{从初始时刻起全力跟踪，永远无法到达安全边界}。
+沿自然轨道 $\Psi$ 严格上升，直到 $(s,i)\approx(0.9421286676,\,0.0430024060)$
+才首次满足\eqref{eq:A-G1-existence}。作为对照，容量进入点
+$(s_1,K)=(0.7775221610,\,0.15)$ 与容量切换点 $(\sigma_B,K)=(0.5476951355,\,0.15)$ 处
+分别有 $\Psi=0.1877464699$ 与 $\Psi=0.2403054703$，均远大于 $\Psi_K$。
+\end{remark}
+
+注\ref{rem:G1-fails-at-t0}说明引理\ref{lem:endpoint-exists}绝非可有可无的技术条件：
+它在基准算例的初值处确实失效，并由等待过程恢复。这同时给出"为何必须先等待"的一个
+与成本无关的、纯可达性层面的理由。
+
+
+\subsection*{A.3 "无限期全力跟踪"路径的排除}
+
+\begin{lemma}[有限时间不可清零，且无限期跟踪成本发散]
+\label{lem:no-eradication}
+对任意可测控制 $q:[0,\infty)\to[0,1]$：
+\begin{enumerate}
+\item[(i)] $i(t)>0$ 对一切有限 $t$ 成立；
+\item[(ii)] $J(q)<\infty$ 当且仅当 $q\in L^1(0,\infty)$；
+\item[(iii)] 若存在 $\delta>0$ 使 $\{t:q(t)\ge\delta\}$ 有无限测度，则 $J(q)=+\infty$。
+      特别地，$q\equiv 1$ 于 $[t_a,\infty)$ 的成本为 $+\infty$。
+\end{enumerate}
+因此"用 $q=1$ 把疾病直接清零"不是一条候选最优路径；它被\emph{成本发散}排除，
+与切换几何无关，也不需要验证不等式。
+\end{lemma}
+
+\begin{proof}
+(i) $\dot i=\bigl[pc(1-q)s-\gamma\bigr]i$ 关于 $i$ 线性齐次，故
+$i(t)=i_0\exp\int_0^t\bigl[pc(1-q)s-\gamma\bigr]\,\mathrm{d}\tau>0$。
+(ii) 由 $c$ 为常数，$J(q)=pc\int_0^\infty q\,\mathrm{d}t$，结论显然。
+(iii) 由 (ii)，$J\ge pc\,\delta\cdot\bigl|\{q\ge\delta\}\bigr|=+\infty$。
+对 $q\equiv1$ 亦可直接由正文式(23)得到：从 $i_a$ 降到 $i_b$ 的成本为
+$\frac{1}{h}\ln\frac{i_a}{i_b}$，令 $i_b\to0$ 即发散。
+\end{proof}
+
+\begin{remark}
+定义\ref{def:candidate}给出的三类候选轨道均满足 $q$ 具有紧支集，故 $J<\infty$，
+从而值函数 $V(s_0,i_0)<\infty$。于是任何成本为 $+\infty$ 的控制自动被排除，
+无需纳入验证定理的比较范围。这与引理\ref{lem:endpoint-exists}是互补的：
+后者说明 $\Psi\le\Psi_K$ 时 $q\equiv1$ 根本到不了安全集，前者说明即便"到得了极限"，
+代价也是无穷。
+\end{remark}
+
+
+\subsection*{A.4 等待弧上 $\Sigma>0$ 的严格证明}
+
+由\eqref{eq:A-Sigma-wait}，等待区的验证不等式归结为沿被走过的 $q=0$ 弧
+证明 $\Lambda<\Lambda_\star$。本小节证明这一点\emph{无须额外假设}，
+从而把假设\ref{ass:nondegenerate}(G3)中关于自然轨道的一半升级为定理。
+
+\begin{lemma}[峰值曲线的统一性]
+\label{lem:peak-locus}
+沿 $q=0$ 轨道（视为 $s$ 的函数 $i(s)$，$\frac{\mathrm{d}i}{\mathrm{d}s}=\frac{h-s}{s}$）有
+\begin{equation}
+  \frac{\mathrm{d}\Lambda}{\mathrm{d}s}=i(s)-g(s);
+  \label{eq:A-dLambda}
+\end{equation}
+沿 $q=1$ 特征线（$\frac{\mathrm{d}i}{\mathrm{d}s}=\frac{\ell}{s}$，即正文式(44)）有
+\begin{equation}
+  \frac{\mathrm{d}}{\mathrm{d}s}\ln\Theta(s,i(s))
+  =\frac{\ell}{s\,i(s)\,(s-h)(s-r)}\Bigl[s\,i(s)-(s-h)(s-r)\Bigr],
+  \label{eq:A-dTheta}
+\end{equation}
+其符号同样由 $i(s)-g(s)$ 决定（\eqref{eq:A-dTheta}即正文式(45)的等价写法）。
+即：$\Lambda$ 沿自然弧的驻点集与 $\Theta$ 沿完全跟踪特征线的驻点集是\emph{同一条曲线}
+\begin{equation}
+  \mathcal{G}:=\{(s,i):\,i=g(s)\}.
+  \label{eq:A-peak-locus}
+\end{equation}
+进一步，在 $s>h$ 上：
+\begin{enumerate}
+\item[(a)] 沿 $q=0$ 弧，$\dfrac{\mathrm{d}}{\mathrm{d}s}\bigl[i(s)-g(s)\bigr]
+      =\dfrac{h}{s}-2+\dfrac{hr}{s^2}\le -p<0$；
+\item[(b)] 沿 $q=1$ 特征线，$\dfrac{\mathrm{d}}{\mathrm{d}s}\bigl[i(s)-g(s)\bigr]
+      =\dfrac{\ell}{s}-1+\dfrac{hr}{s^2}<0$。
+\end{enumerate}
+故沿两类弧，$i-g$ 都是 $s$ 的严格减函数，两类弧与 $\mathcal{G}$ 至多相交一次。
+\end{lemma}
+
+\begin{proof}
+\eqref{eq:A-dLambda}：$\frac{\mathrm{d}}{\mathrm{d}s}\bigl[i(s-r)\bigr]
+=\frac{h-s}{s}(s-r)+i=i-g(s)$。
+\eqref{eq:A-dTheta}：直接对 $\ln\Theta=\ln(s-h)-\ln i-\ln(s-r)$ 求导并代入
+$\frac{\mathrm{d}i}{\mathrm{d}s}=\frac{\ell}{s}$，整理得正文式(45)，再通分即得。
+(a)(b)：$g(s)=s-(h+r)+\frac{hr}{s}$，$g'(s)=1-\frac{hr}{s^2}$。于是
+$\frac{\mathrm{d}}{\mathrm{d}s}(i-g)=\frac{h-s}{s}-1+\frac{hr}{s^2}
+=\frac{h}{s}-2+\frac{hr}{s^2}$；该式在 $s\ge h$ 上关于 $s$ 递减，
+其在 $s=h$ 处的值为 $1-2+\frac{r}{h}=-p$，故 $\le -p<0$。
+同理 $\frac{\ell}{s}-1+\frac{hr}{s^2}$ 在 $s=h$ 处为 $p-1+(1-p)=0$ 且随 $s$ 严格递减，
+故在 $s>h$ 上严格为负。
+\end{proof}
+
+\begin{lemma}[切换点位于峰值曲线之下]
+\label{lem:Gamma-below-G}
+设 $x_\Gamma=(s_\Gamma,i_\Gamma)\in\Gamma$，$s_\Gamma>h$。则
+\begin{equation}
+  i_\Gamma<g(s_\Gamma).
+  \label{eq:A-Gamma-below}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+由 $\Gamma$ 的定义，$x_\Gamma$ 与其安全端点 $(\bar s,\bar i)$ 位于同一条 $q=1$ 特征线上，
+且 $\Theta(x_\Gamma)=\Theta(\bar s,\bar i)$，而 $\bar s<s_\Gamma$（非平凡根）。
+由引理\ref{lem:peak-locus}(b)，沿该特征线 $i-g$ 关于 $s$ 严格递减，
+故 $\ln\Theta$ 先严格增后严格减，即 $\Theta$ 关于 $s$ 严格单峰。
+一个严格单峰的连续函数在两个不同点取相同值，其峰点必严格位于两点之间：
+$\bar s<s_{\max}<s_\Gamma$，且 $i(s_{\max})=g(s_{\max})$。
+再由 $i-g$ 关于 $s$ 严格递减，在 $s_\Gamma>s_{\max}$ 处有 $i_\Gamma-g(s_\Gamma)<0$。
+\end{proof}
+
+\begin{theorem}[等待弧上切换函数严格为正]
+\label{thm:wait-Sigma-positive}
+设自 $x_0=(s_0,i_0)\notin\mathcal{A}$、$i_0<K$ 出发的 $q=0$ 弧首次碰到
+$\Gamma\cup\{i=K\}$ 于 $x_\star=(s_\star,i_\star)$，且
+\begin{equation}
+  i_\star<g(s_\star).
+  \label{eq:A-star-cond}
+\end{equation}
+则在被走过的弧段 $\{s\in(s_\star,s_0]\}$ 上，$\Lambda$ 沿运动方向严格递增，
+故 $\Lambda<\Lambda_\star$ 且由\eqref{eq:A-Sigma-wait}
+\begin{equation}
+  \Sigma_{\mathrm{wait}}>0
+  \qquad\text{在整段弧上严格成立},
+\end{equation}
+从而 $q=0$ 是该段上 HJB 的\emph{唯一}点态极小元。
+此外：
+\begin{enumerate}
+\item[(a)] 若 $x_\star\in\Gamma$，则\eqref{eq:A-star-cond}\emph{自动成立}（引理\ref{lem:Gamma-below-G}）；
+\item[(b)] 若 $x_\star\in\{i=K\}$（即 $i_\star=K$，$s_\star=s_1$ 为正文式(55)的大根），
+      则\eqref{eq:A-star-cond}等价于显式不等式
+      \begin{equation}
+        (s_1-h)(s_1-r)>K\,s_1
+        \quad\Longleftrightarrow\quad
+        s_1>s_g:=\frac{(h+r+K)+\sqrt{(h+r+K)^2-4hr}}{2},
+        \label{eq:A-typeIII-check}
+      \end{equation}
+      这是一个闭式的一维检验，且恰是候选取类型 III 的相容性条件。
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+由引理\ref{lem:peak-locus}(a)，沿该 $q=0$ 弧 $i-g$ 关于 $s$ 严格递减。
+条件\eqref{eq:A-star-cond}即 $(i-g)(s_\star)<0$，故对一切 $s>s_\star$ 有
+$(i-g)(s)<(i-g)(s_\star)<0$，即由\eqref{eq:A-dLambda}得
+$\frac{\mathrm{d}\Lambda}{\mathrm{d}s}<0$ 在 $(s_\star,s_0]$ 上处处成立。
+运动方向为 $s$ 递减（引理：$\dot s<0$），故 $\Lambda$ 沿运动严格递增并在 $x_\star$
+处首次达到 $\Lambda_\star$。于是 $\Lambda<\Lambda_\star$ 在弧内部严格成立，
+代入\eqref{eq:A-Sigma-wait}即得 $\Sigma_{\mathrm{wait}}>0$。
+由\eqref{eq:A-Sigma}，$H(q)=H_0+q\Sigma$ 关于 $q$ 是斜率严格为正的仿射函数，
+故 $[0,1]$ 上唯一极小元为 $q=0$。
+(a) 即引理\ref{lem:Gamma-below-G}。
+(b) $K<g(s_1)$ 展开即 $(s_1-h)(s_1-r)>Ks_1$，等价于
+$s_1^2-(h+r+K)s_1+hr>0$；由 $s_1>h>\sqrt{hr}$ 知 $s_1$ 位于两根之外的右侧，
+即 $s_1>s_g$。
+\end{proof}
+
+\begin{remark}[(b) 失效即意味着类型 II]
+若 $K\ge g(s_1)$，则在容量进入点处 $\frac{\mathrm{d}\Lambda}{\mathrm{d}s}\ge0$，
+即 $\Lambda$ 在到达容量之前已经越过峰值，
+从而 $\Sigma$ 在到达 $i=K$ 之前已经变号——这正说明最优结构不是类型 III 而是类型 II
+（在触及容量前即切入 $q=1$）。因此\eqref{eq:A-typeIII-check}不是额外的技术假设，
+而是类型判别本身的解析判据，应与 \S B.3 的穷尽性命题合并陈述。
+\end{remark}
+
+\begin{remark}[基准参数下的检验]
+$s_1=0.7775221610$，$g(s_1)=0.3853983249>K=0.15$，
+$s_g=0.5121320344<s_1$，\eqref{eq:A-typeIII-check}成立。
+又 $\sigma_B=0.5476951355$，$g(\sigma_B)=0.1798576326>K$，
+与引理\ref{lem:Gamma-below-G}一致：$\Gamma$ 与 $\{i=K\}$ 的交点位于
+$\mathcal{G}$ 与 $\{i=K\}$ 的交点 $s_g$ 之右。
+\end{remark}
+
+
+\subsection*{A.5 容量边界：单侧可微性、$\Sigma\equiv0$ 与唯一性论证的更正}
+
+容量边界上有一个必须显式处理的结构性事实：切换函数在整段容量弧上\emph{恒等于零}。
+这不是基准参数下的巧合，而是对一切参数成立的恒等式。
+
+\begin{proposition}[容量弧上的切换函数恒为零]
+\label{prop:cap-Sigma-zero}
+在容量等待弧 $\{i=K,\ \sigma_B\le s\le s_1\}$ 上，
+候选值函数的（自 $i<K$ 一侧取的）单侧梯度为
+\begin{equation}
+  \nabla V(s,K)=\frac{p}{\Lambda(s,K)}\,\nabla\Phi(s,K),
+  \label{eq:A-cap-grad}
+\end{equation}
+从而
+\begin{equation}
+  \nabla V\cdot f_0=0,
+  \qquad
+  \Sigma(s,K)\equiv 0
+  \qquad\text{对一切参数与一切 }s\in[\sigma_B,s_1].
+  \label{eq:A-cap-Sigma}
+\end{equation}
+因此在容量弧上，$H(q)=\nabla V\cdot f_0=0$ \emph{与 $q$ 无关}：
+可行集 $Q_K(s)=[q_B(s),1]$ 中\emph{每一个}控制都使 HJB 取到极小。
+\end{proposition}
+
+\begin{proof}
+沿 $i=K$ 用注\ref{rem:cap-match}的计算得 $\frac{\mathrm{d}}{\mathrm{d}s}V(s,K)$
+与 $\frac{\mathrm{d}\Phi}{\mathrm{d}s}$ 之比为 $p/\Lambda(s,K)$，即 $V$ 沿该曲线的
+微分等于 $\frac{p}{\Lambda}\mathrm{d}\Phi$。另一方面，位于容量弧正下方的点
+$(s,K-\varepsilon)$ 属于等待区，其值由\eqref{eq:A-Sigma-wait}给出，
+且其首次碰撞点随 $\varepsilon\to0^+$ 趋于 $(s,K)$，故 $\psi'\to p/\Lambda(s,K)$。
+两者一致，给出\eqref{eq:A-cap-grad}。再由\eqref{eq:A-Phi-pairings}，
+$\nabla V\cdot f_0=\frac{p}{\Lambda}\nabla\Phi\cdot f_0=0$，
+$\Sigma=\frac{p}{\Lambda}\nabla\Phi\cdot(f_1-f_0)+pc=\frac{p}{\Lambda}(-c\Lambda)+pc=0$。
+\end{proof}
+
+\begin{remark}[对正文注 8.2(iii) 的更正]
+\label{rem:correct-8.2}
+正文注 8.2(iii) 把"容量边界上 $\Sigma=0$ 在正长度区间上成立"列为一种
+"基准参数下未发生"的退化。命题\ref{prop:cap-Sigma-zero}表明这一表述有误：
+$\Sigma\equiv0$ 在容量等待弧上是\emph{恒等式}，对一切参数成立。
+结论（唯一性）不变，但理由必须改写：唯一性在容量弧上\emph{不能}由切换函数的符号得到，
+只能由状态约束的可行性与随后的状态分离得到，见命题\ref{prop:cap-uniqueness}。
+\end{remark}
+
+\begin{remark}[单侧可微性]
+\label{rem:one-sided}
+$V$ 只定义在 $\{i\le K\}$ 上，故 $V_i(s,K)$ 只能理解为自 $i<K$ 一侧的单侧导数。
+这已经足够：在 $i=K$ 上可行控制满足 $\dot i=\bigl[pc(1-q)s-\gamma\bigr]K\le0$，
+可行速度锥完全落在 $\{\dot i\le 0\}$ 内，即只指向 $V$ 有定义的一侧。
+因此\eqref{eq:A-cap-grad}中的梯度是沿一切可行方向的合法方向导数，
+链式法则 $\frac{\mathrm{d}}{\mathrm{d}t}V=\nabla V\cdot f$ 沿任意可行绝对连续轨道成立。
+本注应在定理\ref{thm:verification}的证明中显式引用，替代原文"不可微点构成零测集"的说法。
+\end{remark}
+
+\begin{proposition}[容量弧上的唯一性]
+\label{prop:cap-uniqueness}
+设定理\ref{thm:verification}的条件成立，并设\eqref{eq:A-typeIII-check}成立。
+则在候选最优轨道的容量段上，最优控制几乎处处等于 $q_B(s)=1-h/s$。
+\end{proposition}
+
+\begin{proof}
+由命题\ref{prop:cap-Sigma-zero}，逐点比较无法区分 $[q_B,1]$ 中的控制，
+故论证必须转到状态空间。分两步。
+
+\emph{第 1 步（容量弧的正下方 $\Sigma>0$ 严格成立）。}
+取 $s\in(\sigma_B,s_1)$ 与小 $\varepsilon>0$，考察 $(s,K-\varepsilon)$。
+该点属于等待区，其 $q=0$ 弧因 $s>h$ 而 $\dot i>0$，故在某 $s'<s$ 处首次碰到 $i=K$。
+由\eqref{eq:A-Sigma-wait}，
+$\Sigma=pc\bigl[1-\Lambda(s,K-\varepsilon)/\Lambda(s',K)\bigr]$。
+由定理\ref{thm:wait-Sigma-positive}（其条件由\eqref{eq:A-typeIII-check}与
+引理\ref{lem:peak-locus}(a)保证），$\Lambda$ 沿该弧严格递增至 $\Lambda(s',K)$，
+故 $\Sigma>0$ 严格成立。即：容量弧本身是 $\{\Sigma=0\}$，而其正下方的开区域是 $\{\Sigma>0\}$。
+
+\emph{第 2 步（任何偏离都进入 $\{\Sigma>0\}$ 并付出严格代价）。}
+设 $q$ 为最优控制且在容量段的某正测度集上 $q>q_B$。
+由 $\dot i=\bigl[pc(1-q)s-\gamma\bigr]K<0$，状态离开 $\{i=K\}$ 进入第 1 步的开区域。
+在该区域内 $\Sigma>0$ 严格，故 $H(q)=H_0+q\Sigma>0$ 对一切 $q>0$ 严格成立，
+即验证不等式(61)在正测度集上严格成立，从而
+$J(q)>V(s_0,i_0)$，与最优性矛盾。
+若状态要返回 $\{i=K\}$，需 $\dot i>0$ 即 $q<q_B$，此段可取 $q=0$ 而不产生额外损失；
+但离开段的严格损失已不可弥补。
+因此 $q=q_B$ 几乎处处成立。
+\end{proof}
+
+\begin{remark}[对定理\ref{thm:uniqueness}证明的相应修改]
+正文定理\ref{thm:uniqueness}的证明中"容量边界等待区唯一最小可行元为 $q_B(s)$"一句
+应替换为对命题\ref{prop:cap-uniqueness}的引用：
+在容量弧上点态极小集是整个 $[q_B,1]$，唯一性来自\emph{状态分离}而非点态选择。
+其余三段（安全集、自然等待区、完全跟踪区）的论证不变，
+但等待区一段现在可引用定理\ref{thm:wait-Sigma-positive}而不再依赖假设。
+\end{remark}
+
+
+\subsection*{A.6 小结：假设\ref{ass:nondegenerate}的状态更新}
+
+经 \S A.1--\S A.5，假设\ref{ass:nondegenerate}的四条可作如下重新分类：
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\hline
+条目 & 更新后状态 & 依据\\
+\hline
+(G1) 唯一性 & 定理（原有） & 正文式(35)的单调性\\
+(G1) 存在性 & 定理 $+$ 显式判据 $\Psi>\Psi_K$ & 引理\ref{lem:endpoint-exists}\\
+(G2) $\Gamma$ 为简单分段 $C^1$ 曲线 & 仍为假设 & 见 \S B（待补）\\
+(G3) 自然轨道 $\cap\,\Gamma$ 横截 & 定理 & 定理\ref{thm:wait-Sigma-positive}(a)\\
+(G3) 容量线 $\cap\,\Gamma$ 横截 & 定理 $+$ 显式判据\eqref{eq:A-typeIII-check} & 定理\ref{thm:wait-Sigma-positive}(b)\\
+(G4) 无内部奇异弧 & 仍为假设（应改用 PMP 论证） & 见 \S B.1（待补）\\
+(G4) 不沿 $\Gamma$ 滑行 & 不再需要 & 引理\ref{lem:grad-match}（$V$ 在 $\Gamma$ 上 $C^1$）\\
+\hline
+\end{tabular}
+\end{center}
+
+其中 (G4) 关于容量边界的部分应按注\ref{rem:correct-8.2}整体改写：
+$\Sigma\equiv0$ 在容量弧上是恒等式，不是退化。
+
+% =====================================================================
+%  引用的正文 label（请按论文实际名称替换）：
+%    \label{ass:nondegenerate}  -> 假设 9.1
+%    \label{def:candidate}      -> 定义 9.2
+%    \label{thm:verification}   -> 定理 9.3
+%    \label{thm:uniqueness}     -> 定理 10.1
+%    \eqref{eq:...}             -> 正文式 (17)(23)(35)(38)(41)(42)(43)(44)(45)(54)(55)
+% =====================================================================

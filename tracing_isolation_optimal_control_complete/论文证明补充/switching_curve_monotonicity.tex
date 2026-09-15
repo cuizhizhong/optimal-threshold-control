@@ -1,0 +1,227 @@
+% =====================================================================
+%  第 7 节补充：切换曲线的单调参数化
+%  拟插入位置：第 7 节，引理 7.1（Theta 沿完全跟踪特征线的单峰性）
+%              与非平凡根唯一性之后，第 8 节之前。
+%  作用：为 A、B 两组的定理 B.1（无奇异弧）与定理 B.3（Gamma 严格递增）
+%        提供被引用的基础结论。此前 sigma'<0 与 i_sigma'<0 未写入正文。
+%  仅用标准 LaTeX 数学命令；方程全局编号。
+% =====================================================================
+
+\subsection*{7.1 切换曲线的单调参数化}
+
+第 7 节已证：沿每条 $q=1$ 特征线，$\Theta$ 严格单峰，
+从而除平凡根 $s=\bar s$ 外至多有一个非平凡根。
+把该根记作 $\sigma(\bar s)$，相应的感染比例记作
+\begin{equation}
+  i_\sigma(\bar s)=a(\bar s)+\ell\ln\frac{\sigma(\bar s)}{\bar s},
+  \label{eq:isigma-def}
+\end{equation}
+于是切换曲线为
+\begin{equation}
+  \Gamma=\bigl\{\bigl(\sigma(\bar s),\,i_\sigma(\bar s)\bigr):\ \bar s\in(h,\bar s^{*})\bigr\}.
+  \label{eq:Gamma-param}
+\end{equation}
+本小节证明该参数化严格单调。所有推导都在
+$\bar s>h$、$\sigma>\bar s>h>r$、$i>0$ 的区域内进行，
+故 $\Theta>0$，取对数合法，不存在隐含的附加前提。
+
+\paragraph{记号。}
+沿一条 $q=1$ 特征线，$\Psi=i-\ell\ln s$ 为常数（式(19)），故
+\begin{equation}
+  i(s;\Psi)=\Psi+\ell\ln s,
+  \qquad
+  \ln\Theta(s;\Psi)=u(s)-\ln\bigl(\Psi+\ell\ln s\bigr),
+  \qquad
+  u(s):=\ln\frac{s-h}{s-r}.
+  \label{eq:lnTheta}
+\end{equation}
+注意
+\begin{equation}
+  u'(s)=\frac{1}{s-h}-\frac{1}{s-r}=\frac{h-r}{(s-h)(s-r)}=\frac{\ell}{(s-h)(s-r)},
+  \label{eq:uprime}
+\end{equation}
+（用到 $h-r=\ell$），故
+\begin{equation}
+  \frac{\partial}{\partial s}\ln\Theta(s;\Psi)
+  =\ell\left[\frac{1}{(s-h)(s-r)}-\frac{1}{s\,i}\right],
+  \label{eq:dlnTheta-ds}
+\end{equation}
+这正是式(45)。
+
+\begin{lemma}[安全端点沿 $\partial\mathcal{A}$ 的移动]
+\label{lem:Psi-along-dA}
+把安全端点 $(\bar s,a(\bar s))$ 视为特征线标号 $\Psi$ 的载体，则
+\begin{equation}
+  \frac{\mathrm{d}\Psi}{\mathrm{d}\bar s}
+  =a'(\bar s)-\frac{\ell}{\bar s}
+  =\frac{h-\bar s}{\bar s}-\frac{\ell}{\bar s}
+  =\frac{r-\bar s}{\bar s}\;<\;0
+  \qquad(\bar s>r).
+  \label{eq:dPsi-dsbar}
+\end{equation}
+因此 $\bar s\mapsto\Psi$ 是严格递减的一一对应，可以互为参数。
+\end{lemma}
+
+\begin{proof}
+$\Psi(\bar s)=a(\bar s)-\ell\ln\bar s$，$a'(x)=(h-x)/x$，再用 $h-\ell=r$。
+\end{proof}
+
+\begin{proposition}[切换曲线参数化的严格单调性]
+\label{prop:sigma-monotone}
+在 $\Gamma$ 的参数域上，
+\begin{equation}
+  \sigma'(\bar s)<0
+  \qquad\text{且}\qquad
+  i_\sigma'(\bar s)<0 .
+  \label{eq:sigma-monotone}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+由引理\ref{lem:Psi-along-dA}可改用 $\Psi$ 作参数；因 $\mathrm{d}\Psi/\mathrm{d}\bar s<0$，
+只需证 $\mathrm{d}\sigma/\mathrm{d}\Psi>0$。
+
+\emph{第 1 步（定义方程）。} 非平凡根由
+\begin{equation}
+  H(\sigma;\Psi):=\ln\Theta(\sigma;\Psi)-\ln\bar\Theta(\Psi)=0
+  \label{eq:H-def}
+\end{equation}
+确定，其中 $\bar\Theta(\Psi):=\Theta\bigl(\bar s(\Psi),a(\bar s(\Psi))\bigr)$
+是该特征线在安全边界端点处的 $\Theta$ 值。
+
+\emph{第 2 步（$\partial H/\partial\sigma<0$）。}
+由单峰性，峰点严格位于平凡根 $\bar s$ 与非平凡根 $\sigma$ 之间
+（两点取相同的 $\Theta$ 值，而 $\Theta$ 先严格增后严格减）。
+故在 $\sigma$ 处 $\Theta$ 关于 $s$ 严格递减：
+\begin{equation}
+  \frac{\partial H}{\partial\sigma}
+  =\left.\frac{\partial\ln\Theta}{\partial s}\right|_{(\sigma,i_\sigma)}<0,
+  \qquad
+  \left.\frac{\partial\ln\Theta}{\partial s}\right|_{(\bar s,\bar i)}>0 .
+  \label{eq:H-sigma-sign}
+\end{equation}
+特别地隐函数定理适用，$\sigma\in C^1$。
+
+\emph{第 3 步（分解 $\mathrm{d}\ln\bar\Theta/\mathrm{d}\Psi$）。}
+端点同时位于特征线与 $\partial\mathcal{A}$ 上，故其随 $\Psi$ 的移动可分解为
+"固定 $s$ 改变 $\Psi$"与"沿特征线移动 $s$"两部分。由\eqref{eq:lnTheta}，
+$\partial\ln\Theta/\partial\Psi|_{s}=-1/i$，于是
+\begin{equation}
+  \frac{\mathrm{d}\ln\bar\Theta}{\mathrm{d}\Psi}
+  =-\frac{1}{\bar i}
+  +\left.\frac{\partial\ln\Theta}{\partial s}\right|_{(\bar s,\bar i)}
+   \cdot\frac{\mathrm{d}\bar s}{\mathrm{d}\Psi}.
+  \label{eq:dlnThetabar}
+\end{equation}
+
+\emph{第 4 步（$\partial H/\partial\Psi>0$）。}
+由\eqref{eq:H-def}与\eqref{eq:dlnThetabar}，
+\begin{equation}
+  \frac{\partial H}{\partial\Psi}
+  =-\frac{1}{i_\sigma}-\frac{\mathrm{d}\ln\bar\Theta}{\mathrm{d}\Psi}
+  =\underbrace{\left(\frac{1}{\bar i}-\frac{1}{i_\sigma}\right)}_{(\mathrm{A})}
+  \;\underbrace{-\;
+   \left.\frac{\partial\ln\Theta}{\partial s}\right|_{(\bar s,\bar i)}
+   \cdot\frac{\mathrm{d}\bar s}{\mathrm{d}\Psi}}_{(\mathrm{B})}.
+  \label{eq:H-Psi}
+\end{equation}
+两项皆严格为正：
+\begin{itemize}
+\item (A)：沿特征线 $\frac{\mathrm{d}i}{\mathrm{d}s}=\frac{\ell}{s}>0$ 且 $\sigma>\bar s$，
+      故 $i_\sigma>\bar i>0$，于是 $1/\bar i>1/i_\sigma$。
+\item (B)：由\eqref{eq:H-sigma-sign}第二式，$\partial\ln\Theta/\partial s|_{\bar s}>0$；
+      由引理\ref{lem:Psi-along-dA}，$\mathrm{d}\bar s/\mathrm{d}\Psi=\bar s/(r-\bar s)<0$。
+      负号乘积再取相反数即为正。
+\end{itemize}
+
+\emph{第 5 步（结论）。} 由隐函数定理与第 2、4 步，
+\[
+  \frac{\mathrm{d}\sigma}{\mathrm{d}\Psi}
+  =-\frac{\partial H/\partial\Psi}{\partial H/\partial\sigma}
+  =-\frac{(+)}{(-)}>0 ,
+\]
+再由 $\mathrm{d}\Psi/\mathrm{d}\bar s<0$ 得 $\sigma'(\bar s)<0$。
+最后由\eqref{eq:isigma-def}的等价写法 $i_\sigma=\Psi+\ell\ln\sigma$，
+\begin{equation}
+  i_\sigma'(\bar s)=\frac{\mathrm{d}\Psi}{\mathrm{d}\bar s}
+  +\frac{\ell}{\sigma}\,\sigma'(\bar s)<0 ,
+  \label{eq:isigma-prime}
+\end{equation}
+两项皆负。
+\end{proof}
+
+\begin{corollary}[$\Gamma$ 在相平面中严格递增]
+\label{cor:Gamma-increasing-slope}
+\begin{equation}
+  \frac{\mathrm{d}i_\sigma}{\mathrm{d}\sigma}
+  =\frac{i_\sigma'(\bar s)}{\sigma'(\bar s)}
+  =\frac{1}{\sigma'(\bar s)}\frac{\mathrm{d}\Psi}{\mathrm{d}\bar s}+\frac{\ell}{\sigma}
+  \;>\;0 ,
+  \label{eq:Gamma-slope}
+\end{equation}
+因为第一项是两个负数之商，第二项显然为正。
+\end{corollary}
+
+\begin{corollary}[$\Phi$ 沿 $\Gamma$ 严格递减]
+\label{cor:Phi-decreasing}
+在 $\Gamma$ 上成立恒等式
+\begin{equation}
+  \Phi=\Psi+\sigma-r\ln\sigma
+  \label{eq:Phi-Psi-identity}
+\end{equation}
+（由 $\Phi-\Psi=s-h\ln s+\ell\ln s=s-r\ln s$ 与 $h-\ell=r$ 直接得到），故
+\begin{equation}
+  \frac{\mathrm{d}\Phi}{\mathrm{d}\bar s}
+  =\frac{\mathrm{d}\Psi}{\mathrm{d}\bar s}
+  +\frac{\sigma-r}{\sigma}\,\sigma'(\bar s)\;<\;0 ,
+  \label{eq:dPhi-dsbar-clean}
+\end{equation}
+两项皆负（$\sigma>r$）。
+\end{corollary}
+
+\begin{remark}[对后续引用的说明]
+\label{rem:only-sigma-needed}
+命题\ref{prop:sigma-monotone}的两条结论中，
+\eqref{eq:Gamma-slope}与\eqref{eq:dPhi-dsbar-clean}
+其实只依赖 $\sigma'(\bar s)<0$ 与引理\ref{lem:Psi-along-dA}；
+$i_\sigma'(\bar s)<0$ 是\eqref{eq:isigma-prime}的推论而非独立输入。
+恒等式\eqref{eq:Phi-Psi-identity}使推论\ref{cor:Phi-decreasing}的证明
+不必再对 $i_\sigma$ 求导，这是比直接展开
+$\frac{\mathrm{d}\Phi}{\mathrm{d}\bar s}=(1-h/\sigma)\sigma'+i_\sigma'$ 更短的路径。
+\end{remark}
+
+\begin{remark}[基准参数下的数值]
+\label{rem:mono-numeric}
+$p=0.5$，$c=2$，$\gamma=0.3$，$K=0.15$：
+
+\begin{center}
+\begin{tabular}{@{}rrrrrrr@{}}
+\hline
+$\bar s$ & $\sigma$ & $i_\sigma$ & $\sigma'$ & $i_\sigma'$ &
+$\mathrm{d}i_\sigma/\mathrm{d}\sigma$ & $\mathrm{d}\Phi/\mathrm{d}\bar s$\\
+\hline
+0.405 & 0.993297 & 0.269603 & $-17.086$ & $-3.210$ & $0.188$ & $-15.136$\\
+0.420 & 0.788279 & 0.225381 & $-10.907$ & $-2.718$ & $0.249$ & $-9.475$\\
+0.435 & 0.652540 & 0.187298 & $-7.499$  & $-2.379$ & $0.317$ & $-6.431$\\
+0.450 & 0.556617 & 0.153534 & $-5.451$  & $-2.136$ & $0.392$ & $-4.648$\\
+0.465 & 0.485401 & 0.122917 & $-4.135$  & $-1.955$ & $0.473$ & $-3.535$\\
+\hline
+\end{tabular}
+\end{center}
+
+\eqref{eq:H-Psi}的两项之和在同样五点处为
+$8.238,\;6.159,\;4.357,\;2.597,\;0.622$，全部为正，
+且在 $\bar s\uparrow\bar s^{*}=0.4690841$ 时趋于零
+——此时峰点与平凡根合并，$i_\sigma\to\bar i$ 使 (A) 项消失，
+$\partial\ln\Theta/\partial s|_{\bar s}\to0$ 使 (B) 项消失，
+与命题\ref{prop:Gamma-endpoint}一致。
+恒等式\eqref{eq:Phi-Psi-identity}在测试点上的残差为机器零。
+\end{remark}
+
+% =====================================================================
+%  被本节支撑的后续结论：
+%    定理 B.1（无内部奇异弧）—— 用推论\ref{cor:Phi-decreasing}
+%    定理 B.3（Gamma 严格递增的 C^1 简单曲线）—— 用推论\ref{cor:Gamma-increasing-slope}
+%  引用的 label：
+%    \label{prop:Gamma-endpoint} -> C.2（Gamma 的下端点）
+% =====================================================================

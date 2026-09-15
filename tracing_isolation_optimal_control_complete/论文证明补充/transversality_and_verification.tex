@@ -1,0 +1,216 @@
+% =====================================================================
+%  C 组补充：无穷时域横截条件、Gamma 的定义域端点、验证套件
+%  拟插入位置：C.1 并入定理 9.3 的证明之前；C.2 并入第 7 节末或 B.3；
+%              C.3 并入附录 D（校验口径）。
+%  依赖：A 组（引理 A.1--A.5）、B 组（定理 B.1、B.3）。
+%  需要宏包：amsmath, amssymb, amsthm, booktabs。
+% =====================================================================
+
+\section*{C 组补充：横截条件、$\Gamma$ 的端点与验证套件}
+
+\subsection*{C.1 无穷时域的横截条件：不是假设，是定理}
+
+定理\ref{thm:verification}(c) 目前的陈述含一个选言：
+"若轨道在有限时间进入 $\mathcal{A}$，\emph{或者}满足标准横截条件
+$V(s(t),i(t))\to0$"。本小节说明第二支可以证明，因而整个选言可以去掉。
+
+先澄清为什么这一条不能靠 $V\ge0$ 敷衍过去。把验证不等式(61)在 $[0,T]$ 上积分：
+\begin{equation}
+  V(x_0)\ \le\ \int_0^{T}pc\,q\,\mathrm{d}t+V\bigl(x(T)\bigr)
+  \ \le\ J(q)+V\bigl(x(T)\bigr).
+  \label{eq:C-integrated}
+\end{equation}
+要得到 $J(q)\ge V(x_0)$，需要
+$\liminf_{T\to\infty}V(x(T))=0$。$V\ge0$ 只会使\eqref{eq:C-integrated}的右端\emph{变大}，
+方向恰好相反，因此无济于事。这是对竞争轨道的一个实质要求。
+
+\begin{lemma}[有限成本可行轨道必趋于安全集]
+\label{lem:transversality}
+设 $q(\cdot)$ 可行（即 $i(t)\le K$ 对一切 $t\ge0$）且 $J(q)<\infty$。记
+$s_\infty^{\mathrm{tot}}:=\lim_{t\to\infty}s(t)$（由 $\dot s<0$ 与 $s>0$，极限存在）。则
+\begin{enumerate}
+\item[(i)] $s_\infty^{\mathrm{tot}}\le h$；
+\item[(ii)] $\lim_{T\to\infty}V\bigl(x(T)\bigr)=0$。
+\end{enumerate}
+从而 $J(q)\ge V(x_0)$ 对一切可行控制无条件成立
+（成本为 $+\infty$ 的控制平凡满足该不等式）。
+\end{lemma}
+
+\begin{proof}
+因 $c$ 为常数，$J(q)=pc\int_0^\infty q\,\mathrm{d}t$，故
+$J(q)<\infty\iff q\in L^1(0,\infty)$。
+
+\emph{(i)} 反证。设 $s_\infty^{\mathrm{tot}}>h$，则 $s(t)\ge s_\infty^{\mathrm{tot}}>h$
+对一切 $t$ 成立。由 $\dot i/i=pc\bigl[(1-q)s-h\bigr]$ 与 $s\le s_0$，
+\[
+  \ln\frac{i(T)}{i_0}
+  =pc\int_0^{T}\bigl[(1-q)s-h\bigr]\mathrm{d}t
+  \ \ge\ pc\Bigl[(s_\infty^{\mathrm{tot}}-h)\,T-s_0\int_0^{T}q\,\mathrm{d}t\Bigr].
+\]
+右端第一项线性发散，第二项因 $q\in L^1$ 而有界，故 $i(T)\to+\infty$，
+与可行性 $i\le K$ 矛盾。
+
+\emph{(ii)} 由 (i) 分两种情形。
+
+若 $s_\infty^{\mathrm{tot}}<h$：存在有限 $T_0$ 使 $s(T_0)<h$，
+此时 $i(T_0)\le K$，故 $x(T_0)\in\mathcal{A}$。
+$\mathcal{A}$ 前向不变：$s$ 递减故 $s\le h$ 保持，而
+$\dot i=\bigl[pc(1-q)s-\gamma\bigr]i\le pc(s-h)i\le0$ 故 $i\le K$ 保持。
+由构造 $V|_{\mathcal{A}}\equiv0$，故 $V(x(T))=0$ 对一切 $T\ge T_0$。
+
+若 $s_\infty^{\mathrm{tot}}=h$：则 $s(t)>h>r$ 对一切有限 $t$ 成立，
+由\eqref{eq:A-two-monotone}得 $\dot\Phi=-cq\,i(s-r)\le0$，即 $\Phi$ 单调不增；
+$\Phi$ 又有下界，故 $\Phi_\infty:=\lim\Phi$ 存在。
+再由 $i=\Phi-s+h\ln s$ 与 $s\to h$ 得
+$i_\infty:=\lim i=\Phi_\infty-h+h\ln h$ 存在，且由可行性 $i_\infty\le K$，于是
+\[
+  \Phi_\infty=i_\infty+h-h\ln h\ \le\ K+h-h\ln h=\Phi_A .
+\]
+若不等号严格，则 $\Phi$ 在有限时间下穿 $\Phi_A$（且其时 $s>h$），状态进入 $\mathcal{A}$，
+归入前一情形。若取等（$i_\infty=K$），则 $x(T)\to(h,K)\in\partial\mathcal{A}$；
+$V$ 连续且 $V|_{\partial\mathcal{A}}=0$，故 $V(x(T))\to0$。
+\end{proof}
+
+\begin{corollary}[定理\ref{thm:verification}(c) 的简化陈述]
+\label{cor:verification-clean}
+定理\ref{thm:verification}(c) 可改写为：\emph{对每个可行控制 $q$ 有
+$J(q)\ge V(s_0,i_0)$，且候选反馈达到等号，故为全局最优。}
+无需附加"有限时间进入 $\mathcal{A}$ 或满足横截条件"的选言。
+\end{corollary}
+
+\begin{proof}
+$J(q)=\infty$ 时不等式平凡。$J(q)<\infty$ 时由引理\ref{lem:transversality}(ii)
+与\eqref{eq:C-integrated}令 $T\to\infty$ 即得。候选反馈由引理\ref{lem:no-eradication}
+的注给出 $q$ 具紧支集，故 $J<\infty$；由 A、B 两组，
+其在每一段上均使(61)取等号。
+\end{proof}
+
+
+\subsection*{C.2 $\Gamma$ 的定义域端点}
+
+定理\ref{thm:Gamma-increasing}给出 $\Gamma$ 是严格递增的 $C^1$ 简单曲线，
+但未指明其定义域。补齐如下，它同时解释了相图中 $\Gamma$ 为何终止于安全边界。
+
+\begin{proposition}[$\Gamma$ 的下端点落在 $\partial\mathcal{A}\cap\mathcal{G}$ 上]
+\label{prop:Gamma-endpoint}
+设 $\bar s^*\in(h,s_K)$ 为方程
+\begin{equation}
+  a(\bar s)=g(\bar s)
+  \label{eq:C-sbar-star}
+\end{equation}
+的解。则 $\Gamma$ 的参数域为 $\bar s\in(h,\bar s^*)$：
+当 $\bar s\uparrow\bar s^*$ 时非平凡根 $\sigma(\bar s)\downarrow\bar s^*$，
+与平凡根合并；$\bar s>\bar s^*$ 时非平凡根不存在。
+因此 $\Gamma$ 的下端点为 $(\bar s^*,a(\bar s^*))$，
+它同时位于安全边界 $\partial\mathcal{A}$ 与峰值曲线
+$\mathcal{G}=\{i=g(s)\}$ 之上。
+\end{proposition}
+
+\begin{proof}
+由引理\ref{lem:peak-locus}(b)，$\Theta$ 沿 $q=1$ 特征线严格单峰，峰点由
+$i(s)=g(s)$ 确定。非平凡根存在当且仅当峰点严格位于平凡根 $\bar s$ 之右，
+即 $a(\bar s)>g(\bar s)$；两者相等时峰点与平凡根重合，非平凡根随之与之合并。
+由 $a$ 严格递减（$a'(\bar s)=(h-\bar s)/\bar s<0$）与 $g$ 严格递增
+（$g'(s)=1-hr/s^2>0$，$s>h$），\eqref{eq:C-sbar-star}的解唯一。
+\end{proof}
+
+\begin{remark}
+基准参数下 $\bar s^*=0.4690841463$，$a(\bar s^*)=g(\bar s^*)=0.1150157619$。
+这解释了 \S C.3 的验证套件中 $\Gamma$ 的扫描区间为何取 $\bar s\in(h,0.466]$：
+超出该范围端点方程无非平凡根，并非数值失败。
+\end{remark}
+
+
+\subsection*{C.3 验证套件的扩充}
+
+现有 \texttt{verify\_all.py} 的 32 项检查针对原有结论。
+A、B、C 三组新增的结论需要独立验证，为此提供 \texttt{verify\_supplement.py}
+（不依赖 \texttt{verify\_all.py} 的内部函数，参数与几何完全重算）。
+基准参数下 $41$ 项全部通过。主要项目与实测残差列于表\ref{tab:supplement-checks}。
+
+\begin{table}[htbp]
+\centering
+\caption{补充验证套件（\texttt{verify\_supplement.py}），基准参数下 48/48 通过}
+\label{tab:supplement-checks}
+\small
+\begin{tabular}{@{}llll@{}}
+\toprule
+来源 & 检验项 & 判据 & 实测\\
+\midrule
+A.0 & $\nabla\Phi\cdot f_0=0$ & $<10^{-8}$ & $3.5\times10^{-18}$\\
+A.0 & $\nabla\Phi\cdot(f_1-f_0)=-c\Lambda$ & $<10^{-8}$ & $2.8\times10^{-17}$\\
+A.0 & $\nabla\Psi\cdot f_1=0$ & $<10^{-8}$ & $3.5\times10^{-18}$\\
+A.0 & $\nabla\Psi\cdot f_0=pc\Lambda$ & $<10^{-8}$ & $1.4\times10^{-17}$\\
+A.1 & $\psi'=p/\Lambda$ 于 $\Gamma$（10 点） & 相对 $<2\times10^{-5}$ & $2.3\times10^{-8}$\\
+A.1 & $\nabla V_{\mathrm{wait}}=\nabla W$ 于 $\Gamma$ & $<5\times10^{-5}$ & $6.4\times10^{-9}$\\
+A.1 & $\Sigma_W=0$ 于 $\Gamma$ & $<5\times10^{-5}$ & $1.6\times10^{-9}$\\
+A.1 & $\psi'=p/\Lambda$ 于容量进入点 & $<10^{-8}$ & $0$\\
+A.2 & $\mathrm{d}\Psi/\mathrm{d}\bar s=(r-\bar s)/\bar s$ & $<10^{-6}$ & $3.7\times10^{-11}$\\
+A.2 & 初值处判据失效 $\Psi_0<\Psi_K$ & --- & $0.01151<0.05194$\\
+A.2 & 判据首次成立点 & --- & $(0.9421287,\,0.0430024)$\\
+A.2 & $\dot\Psi\ge0$ 前向不变性 & 0 违例 & 0 违例\\
+A.3 & $q=1$ 成本 $\sim-\ln i_b/h$ 发散 & 单调无界 & $362.09$ @ $i_b=10^{-48}$\\
+A.4 & $\Gamma$ 上处处 $i<g(s)$ & 全部满足 & 最小裕度 $3.8\times10^{-3}$\\
+A.4 & 等待弧上 $\Lambda$ 沿运动严格递增 & 全部满足 & ---\\
+A.4 & 等待弧上 $\Sigma>0$ 严格 & $>0$ & $\min\Sigma=2.5\times10^{-6}$\\
+A.4 & 类型 III 相容条件 $K<g(s_1)$ & 成立 & $g(s_1)=0.385398$\\
+A.5 & 容量弧上 $\Sigma\equiv0$（恒等式） & $<10^{-8}$ & $2.2\times10^{-16}$\\
+A.5 & 容量弧上 $\nabla V\cdot f_0=0$ & $<10^{-8}$ & $9.4\times10^{-17}$\\
+A.5 & 容量弧正下方 $\Sigma>0$（75 点） & $>0$ & $\min\Sigma=1.4\times10^{-3}$\\
+B.1 & $q_{\mathrm{slide}}$ 在 $i=K$ 上复现 $q_B$ & $<10^{-8}$ & $1.1\times10^{-16}$\\
+B.1 & $\Gamma$ 上 $m=\mathrm{d}\Psi/\mathrm{d}\Phi>0$ & $>0$ & $m\in[0.0412,0.1882]$\\
+B.1 & $q_{\mathrm{slide}}\notin[0,1]$（8 点） & 全部满足 & $q\in[1.090,1.604]$\\
+B.2 & $\partial\mathcal{A}$ 上 $\nabla W\cdot f_0=0$ & $<5\times10^{-5}$ & $9.5\times10^{-10}$\\
+B.2 & $\partial\mathcal{A}$ 上 $\nabla W\cdot(f_1-f_0)=-pc$ & $<5\times10^{-5}$ & $1.1\times10^{-9}$\\
+B.3 & $\Gamma$ 在相平面严格递增 & $\mathrm{d}i/\mathrm{d}s>0$ & $[0.208,0.460]$\\
+B.3 & 自然弧与 $\Gamma$ 恰一次相交 & 变号 1 次 & $\sigma_\Gamma=0.6934152$\\
+B.3 & 判据 $\sigma_\Gamma\gtrless s_1$（116 样本） & 0 例不符 & 0 例\\
+B.3 & 判据 $s_1\gtrless s_g$ 仅为必要条件 & --- & 11 例假阳性\\
+B.3 & $\Theta-\bar\Theta$ 变号次数集合 & $\{1\}$ & $\{1\}$\\
+B.4 & $J_D'$ 公式 vs 中心差分 & $<10^{-5}$ & $2.0\times10^{-8}$\\
+B.4 & 类型 III 下 $J_D'>0$ 于 $[s_1,s_{\mathrm{cross}}]$ & 全部满足 & 边界极小于 $s_1$\\
+B.4 & $J_D(s_1)=J_{\mathrm{direct}}$ & $<2\times10^{-7}$ & $1.6364797$ vs $1.6364798$\\
+B.4 & $J_D'(\sigma_\Gamma)=0$ & $<10^{-8}$ & $8.1\times10^{-15}$\\
+C.1 & 候选轨道有限时间进入 $\mathcal{A}$ & 成立 & $\Phi(T)=\Phi_A$ @ $T=40$\\
+C.1 & 容量约束全程满足 & $i\le K+10^{-6}$ & $\max i=0.15000000$\\
+C.1 & 候选成本数值积分 vs 表\ref{tab:benchmark} & $<5\times10^{-3}$ & $1.529454$ vs $1.529511$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{remark}[两处应写入附录 D 的口径说明]
+\label{rem:D-caliber}
+\begin{enumerate}
+\item[(i)] 表\ref{tab:supplement-checks}中"$\Gamma$ 上"各项的扫描区间为
+      $\bar s\in(h,\,0.466]$，上界来自命题\ref{prop:Gamma-endpoint}的 $\bar s^*=0.4690841$，
+      而非数值失败。
+\item[(ii)] $J_D$ 只在满足引理\ref{lem:endpoint-exists}判据的区域有定义。
+      基准参数下该区域为 $s<s_{\mathrm{cross}}=0.9421287$，
+      故 B.4 的导数检验区间为 $[s_1,\,s_{\mathrm{cross}}]$ 而非 $[s_1,s_0]$。
+      这是注\ref{rem:G1-fails-at-t0}的直接数值后果。
+\end{enumerate}
+\end{remark}
+
+附录 D 的三级口径应据此更新为：
+\begin{enumerate}
+\item[(i)] 由恒等式、单调性与 HJB 点态极小直接证明的解析结论
+      ——现已包含原假设 9.1 的全部四条；
+\item[(ii)] 需要对给定初值做一维根检验的结论
+      ——仅剩命题\ref{prop:exhaustive}的类型判别，且判据显式；
+\item[(iii)] 仅针对基准参数或参数扫描的数值结论
+      ——时变 $c(t)$ 的正则化结果，以及表\ref{tab:supplement-checks}中
+      $116$ 样本网格上的类型判据统计。
+\end{enumerate}
+
+% =====================================================================
+%  引用的 label（请按实际名称替换）：
+%    \label{thm:verification}        -> 定理 9.3
+%    \label{tab:benchmark}           -> 表 1
+%    \label{lem:no-eradication}      -> A.3
+%    \label{lem:endpoint-exists}     -> A.2
+%    \label{lem:peak-locus}          -> A.4 峰值曲线统一性
+%    \label{rem:G1-fails-at-t0}      -> A.2 注（初值处判据失效）
+%    \label{thm:Gamma-increasing}    -> B.3
+%    \label{prop:exhaustive}         -> B.3 穷尽性命题
+%    \eqref{eq:A-two-monotone}       -> A.0
+% =====================================================================
