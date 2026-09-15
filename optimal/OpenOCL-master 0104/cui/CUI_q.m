@@ -63,6 +63,14 @@ q = solution.controls.q.value;
 t_ref = linspace(0, T_plot, 4001)';
 [S_ref, I_ref, q_ref] = baseline_reference(t_ref, beta, gamma, c_0, S0, I0, I_m);
 
+% 同参数、同初值下令 q(t) = 0，作为无控制基准轨道。
+rhs_uncontrolled = @(~, y) [-beta*c_0*y(1)*y(2); ...
+    (beta*c_0*y(1)-gamma)*y(2)];
+ode_opts = odeset('RelTol', 2e-10, 'AbsTol', 1e-12);
+[~, Y_uncontrolled] = ode45(rhs_uncontrolled, t_ref, [S0; I0], ode_opts);
+S_uncontrolled = Y_uncontrolled(:, 1);
+I_uncontrolled = Y_uncontrolled(:, 2);
+
 J_num = beta * c_0 * trapz(Tc, q);
 J_report = 1.5295111602;
 fprintf('\nOpenOCL baseline result\n');
@@ -76,50 +84,73 @@ fprintf('J_report = %.10f, relative error = %.4f%%\n', ...
 figure(4);
 clf;
 set(gcf, 'Color', 'w', 'Position', [100 100 760 760]);
+font_name = 'Times New Roman';
+font_size = 10;
+uncontrolled_color = [0.55 0.55 0.55];
 
 %% --控制量q
 subplot(3, 1, 1);
+set(gca, 'FontName', font_name, 'FontSize', font_size);
 hold on
 plot(Tc, q, 'LineWidth', 2, 'Color', current_color, ...
     'DisplayName', 'OpenOCL numerical');
 plot(t_ref, q_ref, '--', 'LineWidth', 2, 'Color', color_list(1, :), ...
     'DisplayName', 'Report analytical');
 
-xlabel('t','FontName', 'TimesNewRoman','FontSize',10);
-ylabel('$q^*(t)$','FontName', 'TimesNewRoman','FontSize',10,'Interpreter', 'Latex');
-title('(a) Optimal control','FontName', 'TimesNewRoman','FontSize',10);
+xlabel('t', 'FontName', font_name, 'FontSize', font_size, ...
+    'Interpreter', 'latex');
+ylabel('$q^*(t)$', 'FontName', font_name, 'FontSize', font_size, ...
+    'Interpreter', 'latex');
+title('(a) Optimal control', 'FontName', font_name, 'FontSize', font_size);
 xlim([0 T_plot]); ylim([-0.03 1.05]); grid on; box on;
-legend('Location', 'northeast', 'Box', 'off');
+legend('Location', 'northeast', 'Box', 'off', ...
+    'FontName', font_name, 'FontSize', font_size);
 
 % --状态量S
 subplot(3, 1, 2);
+set(gca, 'FontName', font_name, 'FontSize', font_size);
 hold on
-plot(Tstates, S, 'LineWidth', 2, 'Color', current_color, ...
+h_S_uncontrolled = plot(t_ref, S_uncontrolled, 'LineWidth', 2, ...
+    'Color', uncontrolled_color, 'DisplayName', 'Uncontrolled');
+h_S_num = plot(Tstates, S, 'LineWidth', 2, 'Color', current_color, ...
     'DisplayName', 'OpenOCL numerical');
-plot(t_ref, S_ref, '--', 'LineWidth', 2, 'Color', color_list(1, :), ...
+h_S_ref = plot(t_ref, S_ref, '--', 'LineWidth', 2, 'Color', color_list(1, :), ...
     'DisplayName', 'Report analytical');
-yline(gamma/(beta*c_0), 'r--', 'LineWidth', 2, ...
+h_threshold = yline(gamma/(beta*c_0), 'r--', 'LineWidth', 2, ...
     'DisplayName', 'h = gamma/(pc)');
 hold off
-xlabel('t','FontName', 'TimesNewRoman','FontSize',10);
-ylabel('$S$','FontName', 'TimesNewRoman','FontSize',10,'Interpreter', 'Latex');
-title('(b) Susceptible fraction','FontName', 'TimesNewRoman','FontSize',10);
+xlabel('t', 'FontName', font_name, 'FontSize', font_size, ...
+    'Interpreter', 'latex');
+ylabel('$S$', 'FontName', font_name, 'FontSize', font_size, ...
+    'Interpreter', 'latex');
+title('(b) Susceptible fraction', 'FontName', font_name, 'FontSize', font_size);
 xlim([0 T_plot]); ylim([0 1.02]); grid on; box on;
+legend([h_S_num, h_S_ref, h_S_uncontrolled], ...
+    'Location', 'northeast', 'Box', 'off', ...
+    'FontName', font_name, 'FontSize', font_size);
 
 % --状态量I
 subplot(3, 1, 3);
+set(gca, 'FontName', font_name, 'FontSize', font_size);
 hold on
-plot(Tstates, I, 'LineWidth', 2, 'Color', current_color, ...
+h_I_uncontrolled = plot(t_ref, I_uncontrolled, 'LineWidth', 2, ...
+    'Color', uncontrolled_color, 'DisplayName', 'Uncontrolled');
+h_I_num = plot(Tstates, I, 'LineWidth', 2, 'Color', current_color, ...
     'DisplayName', 'OpenOCL numerical');
-plot(t_ref, I_ref, '--', 'LineWidth', 2, 'Color', color_list(1, :), ...
+h_I_ref = plot(t_ref, I_ref, '--', 'LineWidth', 2, 'Color', color_list(1, :), ...
     'DisplayName', 'Report analytical');
-yline(I_m, 'r--', 'LineWidth', 2, ...
+h_capacity = yline(I_m, 'r--', 'LineWidth', 2, ...
     'DisplayName', 'Capacity K');
 hold off
-xlabel('t','FontName', 'TimesNewRoman','FontSize',10);
-ylabel('$I$','FontName', 'TimesNewRoman','FontSize',10,'Interpreter', 'Latex');
-title('(c) Infectious fraction','FontName', 'TimesNewRoman','FontSize',10);
-xlim([0 T_plot]); ylim([0 0.18]); grid on; box on;
+xlabel('t', 'FontName', font_name, 'FontSize', font_size, ...
+    'Interpreter', 'latex');
+ylabel('$I$', 'FontName', font_name, 'FontSize', font_size, ...
+    'Interpreter', 'latex');
+title('(c) Infectious fraction', 'FontName', font_name, 'FontSize', font_size);
+xlim([0 T_plot]); ylim([0 0.36]); grid on; box on;
+legend([h_I_num, h_I_ref, h_I_uncontrolled], ...
+    'Location', 'northeast', 'Box', 'off', ...
+    'FontName', font_name, 'FontSize', font_size);
 exportgraphics(gcf, 'CUI_q.pdf', 'Resolution', 600, 'BackgroundColor', 'white');
 exportgraphics(gcf, 'CUI_q.png', 'Resolution', 300, 'BackgroundColor', 'white');
 
@@ -214,5 +245,3 @@ end
 
 
  % exportgraphics(gcf, 'fig8.pdf', 'ContentType', 'vector');
-
-
