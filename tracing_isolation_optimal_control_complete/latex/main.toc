@@ -1,44 +1,43 @@
-\contentsline {section}{\numberline {1}问题来源与建模目标}{2}{section.1}%
-\contentsline {section}{\numberline {2}解的适定性、正性与基本耗散}{3}{section.2}%
-\contentsline {section}{\numberline {3}常接触率下的自然轨道与最大安全集}{3}{section.3}%
-\contentsline {subsection}{\numberline {3.1}自然传播不变量与峰值}{4}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}最大无控制安全集}{4}{subsection.3.2}%
-\contentsline {section}{\numberline {4}两个关键不变量及其控制含义}{4}{section.4}%
-\contentsline {section}{\numberline {5}Hamilton--Jacobi 方程与点态最小化}{5}{section.5}%
-\contentsline {subsection}{\numberline {5.1}容量边界的可行控制}{6}{subsection.5.1}%
-\contentsline {section}{\numberline {6}完全跟踪弧的端点映射与显式值函数}{6}{section.6}%
-\contentsline {section}{\numberline {7}切换曲线及其非平凡根的唯一性}{7}{section.7}%
-\contentsline {section}{\numberline {8}医疗容量边界上的解析控制、时间与成本}{8}{section.8}%
-\contentsline {section}{\numberline {9}常接触率下的最优反馈综合}{9}{section.9}%
-\contentsline {paragraph}{类型 I：自然传播安全。}{10}{paragraph*.2}%
-\contentsline {paragraph}{类型 II：容量前直接切换。}{10}{paragraph*.3}%
-\contentsline {paragraph}{类型 III：先到容量。}{10}{paragraph*.4}%
-\contentsline {subsection}{\numberline {9.1}候选值函数的分段构造}{10}{subsection.9.1}%
-\contentsline {section}{\numberline {10}常接触率下 $q(t)$ 的唯一性}{11}{section.10}%
-\contentsline {subsection}{\numberline {10.1}为什么解除隔离以后也唯一}{11}{subsection.10.1}%
-\contentsline {subsection}{\numberline {10.2}从 $q^*$ 到 $\beta _1^*,\beta _2^*$ 的唯一性}{12}{subsection.10.2}%
-\contentsline {section}{\numberline {11}时变接触率 $c(t)$：能证明什么，不能无条件证明什么}{12}{section.11}%
-\contentsline {subsection}{\numberline {11.1}非自治 HJB 方程}{12}{subsection.11.1}%
-\contentsline {subsection}{\numberline {11.2}严格凸正则化}{13}{subsection.11.2}%
-\contentsline {section}{\numberline {12}若同时把 $c(t)$ 和 $q(t)$ 都作为控制}{13}{section.12}%
-\contentsline {section}{\numberline {13}数值算法}{13}{section.13}%
-\contentsline {subsection}{\numberline {13.1}常接触率：解析降维算法}{13}{subsection.13.1}%
-\contentsline {subsection}{\numberline {13.2}时变接触率：直接配置}{14}{subsection.13.2}%
-\contentsline {section}{\numberline {14}基准参数与数值结果}{14}{section.14}%
-\contentsline {subsection}{\numberline {14.1}相平面结构}{15}{subsection.14.1}%
-\contentsline {subsection}{\numberline {14.2}状态时间序列}{16}{subsection.14.2}%
-\contentsline {subsection}{\numberline {14.3}一个控制产生两个不同系数}{17}{subsection.14.3}%
-\contentsline {subsection}{\numberline {14.4}严格一维极小与唯一性数值证据}{18}{subsection.14.4}%
-\contentsline {subsection}{\numberline {14.5}可行策略成本比较}{18}{subsection.14.5}%
-\contentsline {subsection}{\numberline {14.6}容量、传播概率与结构区间}{19}{subsection.14.6}%
-\contentsline {subsection}{\numberline {14.7}时变接触率的正则化结果}{20}{subsection.14.7}%
-\contentsline {section}{\numberline {15}生物学与政策解释}{22}{section.15}%
-\contentsline {subsection}{\numberline {15.1}为什么容量边界后可能需要完全跟踪}{22}{subsection.15.1}%
-\contentsline {subsection}{\numberline {15.2}容量不是唯一阈值}{22}{subsection.15.2}%
-\contentsline {subsection}{\numberline {15.3}唯一性的政策含义}{22}{subsection.15.3}%
-\contentsline {section}{\numberline {16}理论边界与进一步扩展}{22}{section.16}%
-\contentsline {section}{\numberline {17}主要结论}{22}{section.17}%
-\contentsline {section}{\numberline {A}完全跟踪值函数导数的逐步计算}{23}{appendix.A}%
-\contentsline {section}{\numberline {B}容量边界成本积分的逐步计算}{23}{appendix.B}%
-\contentsline {section}{\numberline {C}数值复现说明}{24}{appendix.C}%
-\contentsline {section}{\numberline {D}校验口径}{24}{appendix.D}%
+\contentsline {section}{\numberline {1}问题来源与建模目标}{4}{section.1}%
+\contentsline {section}{\numberline {2}解的适定性、正性与基本耗散}{4}{section.2}%
+\contentsline {section}{\numberline {3}常接触率问题、自然轨道与安全目标集}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}自然传播不变量与峰值}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}安全集与目标边界}{5}{subsection.3.2}%
+\contentsline {section}{\numberline {4}两类控制弧与显式成本}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}一般控制下的不变量导数}{6}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}完全跟踪弧}{6}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}容量弧}{7}{subsection.4.3}%
+\contentsline {section}{\numberline {5}有限成本可行性与首次到达问题}{7}{section.5}%
+\contentsline {section}{\numberline {6}HJB 方程与验证所需的边界条件}{8}{section.6}%
+\contentsline {section}{\numberline {7}完全跟踪成本的有限可达域及导数}{9}{section.7}%
+\contentsline {section}{\numberline {8}切换曲线的存在、单调性及严格横穿}{10}{section.8}%
+\contentsline {section}{\numberline {9}全域候选反馈与候选成本}{12}{section.9}%
+\contentsline {section}{\numberline {10}全域梯度、拼接正则性与验证不等式}{14}{section.10}%
+\contentsline {subsection}{\numberline {10.1}两种等待分支的统一导数}{14}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}内部界面与局部 Lipschitz 性}{14}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}容量 Hamiltonian 与沿任意轨道的链式法则}{16}{subsection.10.3}%
+\contentsline {section}{\numberline {11}全局最优性验证}{16}{section.11}%
+\contentsline {section}{\numberline {12}常接触率下控制与轨道的唯一性}{17}{section.12}%
+\contentsline {subsection}{\numberline {12.1}一维切换成本与全局结论的关系}{17}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}从控制到两个传播系数}{18}{subsection.12.2}%
+\contentsline {section}{\numberline {13}时变接触率 $c(t)$：条件性结论}{18}{section.13}%
+\contentsline {subsection}{\numberline {13.1}非自治 HJB 方程}{19}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}有限时域严格凸正则化}{19}{subsection.13.2}%
+\contentsline {section}{\numberline {14}同时控制接触率与跟踪比例时的限制}{20}{section.14}%
+\contentsline {section}{\numberline {15}数值算法}{20}{section.15}%
+\contentsline {subsection}{\numberline {15.1}常接触率：解析几何降维}{20}{subsection.15.1}%
+\contentsline {subsection}{\numberline {15.2}时变接触率：离散求解与其证据范围}{20}{subsection.15.2}%
+\contentsline {section}{\numberline {16}基准参数与数值结果}{20}{section.16}%
+\contentsline {subsection}{\numberline {16.1}相平面结构}{22}{subsection.16.1}%
+\contentsline {subsection}{\numberline {16.2}状态时间序列}{23}{subsection.16.2}%
+\contentsline {subsection}{\numberline {16.3}一个控制产生两个不同系数}{24}{subsection.16.3}%
+\contentsline {subsection}{\numberline {16.4}一维成本曲线的数值展示}{24}{subsection.16.4}%
+\contentsline {subsection}{\numberline {16.5}可行策略成本比较}{25}{subsection.16.5}%
+\contentsline {subsection}{\numberline {16.6}容量、传播概率与结构区间}{25}{subsection.16.6}%
+\contentsline {subsection}{\numberline {16.7}时变接触率的原工程离散结果}{27}{subsection.16.7}%
+\contentsline {section}{\numberline {17}模型内的机制解释与理论边界}{28}{section.17}%
+\contentsline {section}{\numberline {18}主要结论}{28}{section.18}%
+\contentsline {section}{\numberline {A}完全跟踪成本导数的逐步计算}{29}{appendix.A}%
+\contentsline {section}{\numberline {B}容量边界成本积分的逐步计算}{29}{appendix.B}%
+\contentsline {section}{\numberline {C}证明依赖与校验口径}{29}{appendix.C}%
+\contentsline {section}{\numberline {D}原工程数值复现与本次修订的关系}{30}{appendix.D}%

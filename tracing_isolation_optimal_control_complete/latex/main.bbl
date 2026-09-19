@@ -1,9 +1,15 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{2}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Liberzon(2012)]{Liberzon2012}
+Daniel Liberzon.
+\newblock \emph{Calculus of Variations and Optimal Control Theory: A Concise
+  Introduction}.
+\newblock Princeton University Press, 2012.
 
 \bibitem[Miclo et~al.(2022)Miclo, Spiro, and Weibull]{MicloSpiroWeibull2022}
 Laurent Miclo, Daniel Spiro, and J{\"o}rgen Weibull.
