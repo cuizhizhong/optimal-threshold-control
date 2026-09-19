@@ -1,0 +1,34 @@
+{
+  "theory_build": {
+    "exit_code": 0,
+    "pages": 19,
+    "engine": "XeLaTeX (TeX Live 2025/dev/Debian)",
+    "bibtex_command": "bibtex.original",
+    "undefined_references": 0,
+    "undefined_citations": 0,
+    "overfull_boxes": 0,
+    "missing_glyph_warnings": 0
+  },
+  "full_original_graphics_build": {
+    "exit_code": 12,
+    "status": "BLOCKED_MISSING_ORIGINAL_FIGURES",
+    "first_missing_file": "Figure_1_phase_geometry.jpg",
+    "original_graphics_replaced_in_deliverable": false
+  },
+  "full_syntax_diagnostic": {
+    "exit_code": 0,
+    "pages": 26,
+    "status": "PASS_SYNTAX_ONLY",
+    "method": "A separate temporary source replaced includegraphics with labeled boxes; all other text and formulas compiled. This diagnostic PDF is not delivered.",
+    "undefined_references": 0,
+    "undefined_citations": 0,
+    "overfull_boxes": 0
+  },
+  "visual_review": {
+    "renderer": "PyMuPDF",
+    "theory_pages_rendered": 19,
+    "theory_pages_inspected_via_contact_sheets": 19,
+    "notes": "No clipping, broken glyphs or formula overlap observed. Actual original-figure layout has NOT been inspected."
+  },
+  "mathematical_scope": "Analytical proofs are written in main.tex; these builds are not proofs or formal verification."
+}

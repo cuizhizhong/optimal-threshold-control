@@ -1,0 +1,575 @@
+Rc files read:
+  NONE
+Latexmk: This is Latexmk, John Collins, 11 Dec. 2024. Version 4.86.
+No existing .aux file, so I'll make a simple one, and require run of *latex.
+Latexmk: applying rule 'xelatex'...
+Rule 'xelatex':  Reasons for rerun
+Category 'other':
+  Rerun of 'xelatex' forced or previously required:
+    Reason or flag: 'Initial setup'
+
+------------
+Run number 1 of rule 'xelatex'
+------------
+------------
+Running 'xelatex -no-pdf -interaction=nonstopmode -halt-on-error -recorder -output-directory="/mnt/data/threshold_revision_work/build_full_original"  "main.tex"'
+------------
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2025/dev/Debian) (preloaded format=xelatex)
+ restricted \write18 enabled.
+entering extended mode
+(./main.tex
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
+(/usr/share/texlive/texmf-dist/tex/latex/ctex/ctexart.cls
+(/usr/share/texlive/texmf-dist/tex/latex/ctex/config/ctexbackend.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-xetex.def))
+Document Class: ctexart 2022/07/14 v2.5.10 Chinese adapter for class article (C
+TEX)
+(/usr/share/texlive/texmf-dist/tex/latex/ctex/ctexhook.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/ctex/ctexpatch.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fix-cm.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def))
+(/usr/share/texlive/texmf-dist/tex/latex/ctex/config/ctexopts.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2024/06/29 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/ctex/engine/ctex-engine-xetex.def
+(/usr/share/texlive/texmf-dist/tex/xelatex/xecjk/xeCJK.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xtemplate/xtemplate.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+(/usr/share/texlive/texmf-dist/tex/xelatex/xecjk/xeCJK.cfg)))
+(/usr/share/texlive/texmf-dist/tex/latex/zhnumber/zhnumber.sty
+(/usr/share/texlive/texmf-dist/tex/latex/zhnumber/zhnumber-utf8.cfg))
+(/usr/share/texlive/texmf-dist/tex/latex/ctex/scheme/ctex-scheme-chinese-articl
+e.def (/usr/share/texlive/texmf-dist/tex/latex/ctex/config/ctex-name-utf8.cfg))
+ (/usr/share/texlive/texmf-dist/tex/latex/ctex/fontset/ctex-fontset-fandol.def)
+) (/usr/share/texlive/texmf-dist/tex/latex/ctex/config/ctex.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mathtools.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mhsetup.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/xetex.def)))
+(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/ltcaption.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/placeins/placeins.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/stringenc/stringenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hxetex.def
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstpatch.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg))
+(/usr/share/texlive/texmf-dist/tex/xelatex/xecjk/xeCJK-listings.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/siunitx/siunitx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/translations/translations.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/lastpage/lastpage.sty
+(/usr/share/texlive/texmf-dist/tex/latex/lastpage/lastpage2e.sty
+(/usr/share/texlive/texmf-dist/tex/latex/lastpage/lastpagemodern.sty) 
+)) (/mnt/data/threshold_revision_work/build_full_original/main.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/translations/translations-basic-dictio
+nary-english.trsl) (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+No file main.toc.
+
+[1]
+
+Package natbib Warning: Citation `MicloSpiroWeibull2022' on page 2 undefined on
+ input line 90.
+
+
+Package natbib Warning: Citation `Liberzon2012' on page 2 undefined on input li
+ne 92.
+
+
+LaTeX Warning: Reference `eq:capacity' on page 2 undefined on input line 135.
+
+
+LaTeX Warning: Reference `eq:normalized-model' on page 2 undefined on input lin
+e 141.
+
+
+LaTeX Warning: Reference `eq:linear-cost' on page 2 undefined on input line 141
+.
+
+
+LaTeX Warning: Reference `eq:normalized-model' on page 2 undefined on input lin
+e 151.
+
+
+
+LaTeX Warning: Reference `LastPage' on page 2 undefined on input line 164.
+
+[2]
+
+LaTeX Warning: Reference `sec:constant-uniqueness' on page 3 undefined on input
+ line 178.
+
+
+LaTeX Warning: Reference `thm:wellposed' on page 3 undefined on input line 195.
+
+
+
+
+LaTeX Warning: Reference `LastPage' on page 3 undefined on input line 232.
+
+[3]
+
+LaTeX Warning: Reference `eq:natural-peak' on page 4 undefined on input line 24
+1.
+
+
+LaTeX Warning: Reference `eq:Phi-derivative' on page 4 undefined on input line 
+265.
+
+
+LaTeX Warning: Reference `eq:sum-decay' on page 4 undefined on input line 267.
+
+
+
+LaTeX Warning: Reference `LastPage' on page 4 undefined on input line 302.
+
+[4]
+
+LaTeX Warning: Reference `eq:boundary-duration' on page 5 undefined on input li
+ne 342.
+
+
+LaTeX Warning: Reference `eq:boundary-cost' on page 5 undefined on input line 3
+42.
+
+
+
+LaTeX Warning: Reference `LastPage' on page 5 undefined on input line 364.
+
+[5]
+
+LaTeX Warning: Reference `eq:i-integrable' on page 6 undefined on input line 36
+5.
+
+
+LaTeX Warning: Reference `lem:finite-entry' on page 6 undefined on input line 3
+82.
+
+
+
+LaTeX Warning: Reference `LastPage' on page 6 undefined on input line 420.
+
+[6]
+
+Package natbib Warning: Citation `MicloSpiroWeibull2022' on page 7 undefined on
+ input line 425.
+
+
+Package natbib Warning: Citation `Liberzon2012' on page 7 undefined on input li
+ne 426.
+
+
+LaTeX Warning: Reference `eq:H-affine' on page 7 undefined on input line 435.
+
+
+LaTeX Warning: Reference `eq:endpoint-system' on page 7 undefined on input line
+ 472.
+
+
+LaTeX Warning: Reference `lem:finite-feasible' on page 7 undefined on input lin
+e 485.
+
+
+
+LaTeX Warning: Reference `LastPage' on page 7 undefined on input line 492.
+
+[7]
+
+LaTeX Warning: Reference `eq:Ws' on page 8 undefined on input line 523.
+
+
+LaTeX Warning: Reference `eq:Wi' on page 8 undefined on input line 523.
+
+
+LaTeX Warning: Reference `eq:q1-backward' on page 8 undefined on input line 543
+.
+
+
+
+LaTeX Warning: Reference `LastPage' on page 8 undefined on input line 569.
+
+[8]
+
+LaTeX Warning: Reference `lem:unimodal' on page 9 undefined on input line 599.
+
+
+LaTeX Warning: Reference `lem:unimodal' on page 9 undefined on input line 613.
+
+
+LaTeX Warning: Reference `eq:Gamma-slope' on page 9 undefined on input line 639
+.
+
+
+
+LaTeX Warning: Reference `LastPage' on page 9 undefined on input line 647.
+
+[9]
+
+LaTeX Warning: Reference `eq:Gamma-slope' on page 10 undefined on input line 65
+6.
+
+
+LaTeX Warning: Reference `eq:Gamma-hit-map' on page 10 undefined on input line 
+676.
+
+
+LaTeX Warning: Reference `prop:reachable' on page 10 undefined on input line 71
+5.
+
+
+
+LaTeX Warning: Reference `LastPage' on page 10 undefined on input line 718.
+
+[10]
+
+LaTeX Warning: Reference `eq:strict-crossing' on page 11 undefined on input lin
+e 721.
+
+
+LaTeX Warning: Reference `eq:candidate-feedback' on page 11 undefined on input 
+line 767.
+
+
+LaTeX Warning: Reference `eq:boundary-duration' on page 11 undefined on input l
+ine 776.
+
+
+LaTeX Warning: Reference `lem:tracking-region' on page 11 undefined on input li
+ne 777.
+
+
+LaTeX Warning: Reference `eq:sum-decay' on page 11 undefined on input line 778.
+
+
+
+LaTeX Warning: Reference `eq:candidate-U' on page 11 undefined on input line 77
+9.
+
+
+
+LaTeX Warning: Reference `LastPage' on page 11 undefined on input line 799.
+
+[11]
+
+LaTeX Warning: Reference `eq:Ws' on page 12 undefined on input line 816.
+
+
+LaTeX Warning: Reference `eq:Wi' on page 12 undefined on input line 816.
+
+
+LaTeX Warning: Reference `eq:waiting-gradient' on page 12 undefined on input li
+ne 845.
+
+
+LaTeX Warning: Reference `lem:unimodal' on page 12 undefined on input line 851.
+
+
+
+LaTeX Warning: Reference `eq:Lambda-natural' on page 12 undefined on input line
+ 855.
+
+
+LaTeX Warning: Reference `eq:waiting-gradient' on page 12 undefined on input li
+ne 876.
+
+
+
+LaTeX Warning: Reference `LastPage' on page 12 undefined on input line 877.
+
+[12]
+
+LaTeX Warning: Reference `cor:Gamma-labels' on page 13 undefined on input line 
+892.
+
+
+LaTeX Warning: Reference `eq:waiting-gradient' on page 13 undefined on input li
+ne 898.
+
+
+LaTeX Warning: Reference `eq:capacity-gradient' on page 13 undefined on input l
+ine 898.
+
+
+
+LaTeX Warning: Reference `LastPage' on page 13 undefined on input line 946.
+
+[13]
+
+LaTeX Warning: Reference `lem:waiting-HJB' on page 14 undefined on input line 9
+55.
+
+
+LaTeX Warning: Reference `lem:tracking-region' on page 14 undefined on input li
+ne 955.
+
+
+LaTeX Warning: Reference `prop:W-HJB' on page 14 undefined on input line 955.
+
+
+LaTeX Warning: Reference `eq:capacity-gradient' on page 14 undefined on input l
+ine 957.
+
+
+LaTeX Warning: Reference `eq:capacity-tie' on page 14 undefined on input line 9
+58.
+
+
+LaTeX Warning: Reference `prop:regularity' on page 14 undefined on input line 9
+72.
+
+
+LaTeX Warning: Reference `prop:all-HJB' on page 14 undefined on input line 973.
+
+
+
+LaTeX Warning: Reference `eq:boundary-cost' on page 14 undefined on input line 
+980.
+
+
+LaTeX Warning: Reference `eq:constants' on page 14 undefined on input line 994.
+
+
+
+LaTeX Warning: Reference `def:admissible' on page 14 undefined on input line 99
+4.
+
+
+LaTeX Warning: Reference `eq:candidate-U' on page 14 undefined on input line 99
+5.
+
+
+LaTeX Warning: Reference `eq:value-definition' on page 14 undefined on input li
+ne 995.
+
+
+LaTeX Warning: Reference `prop:candidate-attainment' on page 14 undefined on in
+put line 1001.
+
+
+LaTeX Warning: Reference `prop:candidate-attainment' on page 14 undefined on in
+put line 1005.
+
+
+LaTeX Warning: Reference `lem:finite-entry' on page 14 undefined on input line 
+1007.
+
+
+LaTeX Warning: Reference `lem:trajectory-verification' on page 14 undefined on 
+input line 1008.
+
+
+
+LaTeX Warning: Reference `LastPage' on page 14 undefined on input line 1012.
+
+[14]
+
+LaTeX Warning: Reference `thm:verification' on page 15 undefined on input line 
+1022.
+
+
+LaTeX Warning: Reference `thm:verification' on page 15 undefined on input line 
+1028.
+
+
+LaTeX Warning: Reference `eq:HJB-table' on page 15 undefined on input line 1031
+.
+
+
+LaTeX Warning: Reference `lem:strict-crossing' on page 15 undefined on input li
+ne 1032.
+
+
+LaTeX Warning: Reference `eq:strict-crossing' on page 15 undefined on input lin
+e 1052.
+
+
+LaTeX Warning: Reference `lem:tracking-region' on page 15 undefined on input li
+ne 1054.
+
+
+
+LaTeX Warning: Reference `LastPage' on page 15 undefined on input line 1082.
+
+[15]
+
+LaTeX Warning: Reference `thm:verification' on page 16 undefined on input line 
+1084.
+
+
+LaTeX Warning: Reference `def:candidate' on page 16 undefined on input line 109
+4.
+
+
+LaTeX Warning: Reference `thm:unique-q' on page 16 undefined on input line 1098
+.
+
+
+
+LaTeX Warning: Reference `LastPage' on page 16 undefined on input line 1142.
+
+[16]
+
+LaTeX Warning: Reference `eq:time-boundary-set' on page 17 undefined on input l
+ine 1187.
+
+
+LaTeX Warning: Reference `eq:linear-cost' on page 17 undefined on input line 11
+98.
+
+
+
+LaTeX Warning: Reference `LastPage' on page 17 undefined on input line 1204.
+
+[17]
+
+LaTeX Warning: Reference `thm:verification' on page 18 undefined on input line 
+1213.
+
+
+LaTeX Warning: Reference `eq:endpoint-root' on page 18 undefined on input line 
+1219.
+
+
+LaTeX Warning: Reference `cor:one-dimensional-min' on page 18 undefined on inpu
+t line 1222.
+
+
+LaTeX Warning: Reference `eq:reachable' on page 18 undefined on input line 1223
+.
+
+
+LaTeX Warning: Reference `tab:baseline-results' on page 18 undefined on input l
+ine 1253.
+
+
+LaTeX Warning: Reference `thm:verification' on page 18 undefined on input line 
+1255.
+
+
+LaTeX Warning: Reference `thm:unique-q' on page 18 undefined on input line 1255
+.
+
+
+
+LaTeX Warning: Reference `LastPage' on page 18 undefined on input line 1275.
+
+[18]
+
+LaTeX Warning: File `Figure_1_phase_geometry.jpg' not found on input line 1284.
+
+
+! Unable to load picture or PDF file 'Figure_1_phase_geometry.jpg'.
+<to be read again> 
+                   }
+l.1284 ...\textwidth]{Figure_1_phase_geometry.jpg}
+                                                  
+Output written on /mnt/data/threshold_revision_work/build_full_original/main.xd
+v (18 pages, 261916 bytes).
+Transcript written on /mnt/data/threshold_revision_work/build_full_original/mai
+n.log.
+Latexmk: Getting log file '/mnt/data/threshold_revision_work/build_full_original/main.log'
+Latexmk: Examining '/mnt/data/threshold_revision_work/build_full_original/main.fls'
+Latexmk: Examining '/mnt/data/threshold_revision_work/build_full_original/main.log'
+Latexmk: References changed.
+Latexmk: Missing input file 'main.toc' (or dependence on it) from following:
+  No file main.toc.
+Latexmk: Missing input file 'Figure_1_phase_geometry.jpg' (or dependence on it) from following:
+  LaTeX Warning: File `Figure_1_phase_geometry.jpg' not found on input line 1284.
+Latexmk: Missing input file 'Figure_1_phase_geometry.jpg' (or dependence on it) from following:
+  LaTeX Warning: File `Figure_1_phase_geometry.jpg' not found on input line 1284.
+Latexmk: Missing input file 'Figure_1_phase_geometry.jpg' (or dependence on it) from following:
+  ! Unable to load picture or PDF file 'Figure_1_phase_geometry.jpg'.
+Latexmk: Log file says output to '/mnt/data/threshold_revision_work/build_full_original/main.xdv'
+Latexmk: Summary of warnings from last run of *latex:
+  Latex failed to resolve 96 reference(s)
+  Latex failed to resolve 4 citation(s)
+Latexmk: ====Undefined refs and citations with line #s in .tex file:
+  Citation `MicloSpiroWeibull2022' on page 2 undefined on input line 90
+  Citation `Liberzon2012' on page 2 undefined on input line 92
+  Reference `eq:capacity' on page 2 undefined on input line 135
+  Reference `eq:normalized-model' on page 2 undefined on input line 141
+  Reference `eq:linear-cost' on page 2 undefined on input line 141
+  Reference `eq:normalized-model' on page 2 undefined on input line 151
+  Reference `LastPage' on page 2 undefined on input line 164
+ And 93 more --- see log file '/mnt/data/threshold_revision_work/build_full_original/main.log'
+Latexmk: Errors, so I did not complete making targets
+Collected error summary (may duplicate other messages):
+  xelatex: Command for 'xelatex' gave return code 1
+      Refer to '/mnt/data/threshold_revision_work/build_full_original/main.log' and/or above output for details
+
+Latexmk: Sometimes, the -f option can be used to get latexmk
+  to try to force complete processing.
+  But normally, you will need to correct the file(s) that caused the
+  error, and then rerun latexmk.
+  In some cases, it is best to clean out generated files before rerunning
+  latexmk after you've corrected the files.

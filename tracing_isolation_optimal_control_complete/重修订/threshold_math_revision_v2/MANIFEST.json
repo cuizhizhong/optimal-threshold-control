@@ -1,0 +1,39 @@
+{
+  "repository": "cuizhizhong/optimal-threshold-control",
+  "branch": "codex/integrate-theory-revision",
+  "live_branch_commit": "f33f8b591cefb8226e2c4196d739b841c368fb47",
+  "base_commit": "f33f8b591cefb8226e2c4196d739b841c368fb47",
+  "repository_file": "tracing_isolation_optimal_control_complete/latex/main.tex",
+  "base_git_blob": "51aaa6b923b92f22a7039b42bab713cf46264530",
+  "base_sha256": "1e65689a32b2dc9331ec8813001eb4d186e50e651677966b0be7a22fc2824bf8",
+  "revised_git_blob": "5e43b4af7db0871726ad1a4e977f17f75ed87570",
+  "revised_sha256": "b943045fcba109e829a2165d631b533beac2d6ab3e5a76845a7e907278ea7cce",
+  "base_bytes": 69094,
+  "revised_bytes": 74267,
+  "base_lines": 1469,
+  "revised_lines": 1564,
+  "references_bib_git_blob": "3a92a56b10e39128781902934f5e8f70ffa25482",
+  "references_bib_sha256": "99b7b00f4610c957f1d4441b3fe0f18662257a0dc26dce8f3c2523c216403dfd",
+  "reused_verification_script_sha256": "d6823791fef0ced4801162c07f42938e61c1ea49a01e212b4ce4ee87545c2af5",
+  "control_class_compatibility_added": false,
+  "remote_write_performed": false,
+  "compiled_in_this_round": false,
+  "source_acquisition": "Live branch ref + GitHub.fetch_file SHA; exact mounted main.tex matched by git blob hash.",
+  "revised_git_blob_is_not_a_commit": true,
+  "edit_operations": 36,
+  "new_labels": [
+    "lem:ac-level-set",
+    "eq:ac-level-set",
+    "eq:strict-crossing-time",
+    "lem:chi-regions",
+    "eq:chi-regions"
+  ],
+  "patch_sha256": "4452b667b0f272cd0e1b0aafa04f92b45d088a00ab8bc78d6bb8c0623a1f3944",
+  "modified_repository_files": [
+    "tracing_isolation_optimal_control_complete/latex/main.tex"
+  ],
+  "patch_insertions": 146,
+  "patch_deletions": 51,
+  "checks_status": "PASS",
+  "check_report_generated_utc": "2026-09-19T08:23:56.902802+00:00"
+}

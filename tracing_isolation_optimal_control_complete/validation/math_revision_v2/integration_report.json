@@ -1,0 +1,19 @@
+{
+  "source_sha256": "b943045fcba109e829a2165d631b533beac2d6ab3e5a76845a7e907278ea7cce",
+  "source_byte_identical_to_package": true,
+  "package_checksums_pass": true,
+  "full_pdf_pages": 31,
+  "theory_pdf_pages": 20,
+  "full_pdf_images": 10,
+  "builds_pass": true,
+  "log_warnings": {
+    "main": [],
+    "theory_only": []
+  },
+  "visual_review": "All 31 full-paper and 20 theory pages inspected; new lemmas and main theorems inspected enlarged. No clipping or overlap found. Existing sparse final TOC page retained.",
+  "synctex_present": true,
+  "root_pdf_matches": true,
+  "existing_HJB_note_preserved": true,
+  "line_endings": "Git initially produced CRLF. Source normalized to delivered LF. Regression patch round-trip rerun with process-only core.autocrlf=false; passed. Global/repository Git config unchanged.",
+  "verification_scope": "Checks do not certify mathematical proofs. Regression report not_run describes regression script scope; compilation and rendering were performed separately as recorded here."
+}

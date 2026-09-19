@@ -1,0 +1,344 @@
+{
+  "generated_utc": "2026-09-19T08:23:56.902802+00:00",
+  "scope": "Analytical proofs are in main.tex. These checks are not formal proof verification.",
+  "compiled_in_this_round": false,
+  "not_run": [
+    "XeLaTeX/BibTeX or full-figure PDF build",
+    "MATLAB/Octave/OpenOCL",
+    "time-varying SLSQP",
+    "new parameter convergence studies"
+  ],
+  "source": {
+    "status": "PASS",
+    "checks": {
+      "base_matches_live_blob": true,
+      "revised_matches_manifest": true,
+      "all_existing_labels_preserved": true,
+      "new_labels_exactly_as_documented": true,
+      "protected_model_cost_control_candidate_blocks_unchanged": true,
+      "right_continuity_compatibility_not_added": true,
+      "no_stale_G1_G4_text": true,
+      "environment_stack_balanced": true,
+      "grouping_braces_balanced": true,
+      "math_display_pairs_balanced": true,
+      "dollar_math_delimiters_even": true,
+      "original_figure_references_preserved": true,
+      "bibliography_copy_unchanged": true,
+      "no_duplicate_labels": true,
+      "no_undefined_references": true,
+      "no_missing_citation_keys": true
+    },
+    "protected_blocks": {
+      "eq:count-model": true,
+      "eq:beta12": true,
+      "eq:normalized-model": true,
+      "eq:capacity": true,
+      "eq:linear-cost": true,
+      "eq:constants": true,
+      "eq:value-definition": true,
+      "eq:candidate-feedback": true,
+      "eq:candidate-U": true,
+      "eq:global-optimality": true,
+      "eq:capacity-tie": true,
+      "eq:regions": true,
+      "def:admissible": true,
+      "tab:baseline-results": true
+    },
+    "latex_static": {
+      "sha256": "b943045fcba109e829a2165d631b533beac2d6ab3e5a76845a7e907278ea7cce",
+      "line_count": 1564,
+      "labels": 164,
+      "duplicate_labels": [],
+      "undefined_references": [],
+      "missing_bibliography_keys": [],
+      "figure_dependencies": [
+        "Figure_1_phase_geometry.jpg",
+        "Figure_2_state_time_series.jpg",
+        "Figure_3_control_coefficients.jpg",
+        "Figure_4_uniqueness_cost.jpg",
+        "Figure_5_policy_cost_comparison.jpg",
+        "Figure_6_capacity_dependence.jpg",
+        "Figure_7_probability_dependence.jpg",
+        "Figure_8_regime_map.jpg",
+        "Figure_9_time_varying_control.jpg",
+        "Figure_10_time_varying_states.jpg"
+      ],
+      "missing_local_figures": [
+        "Figure_1_phase_geometry.jpg",
+        "Figure_2_state_time_series.jpg",
+        "Figure_3_control_coefficients.jpg",
+        "Figure_4_uniqueness_cost.jpg",
+        "Figure_5_policy_cost_comparison.jpg",
+        "Figure_6_capacity_dependence.jpg",
+        "Figure_7_probability_dependence.jpg",
+        "Figure_8_regime_map.jpg",
+        "Figure_9_time_varying_control.jpg",
+        "Figure_10_time_varying_states.jpg"
+      ],
+      "old_geometry_assumption_reference_present": false,
+      "note": "Missing original figures are reported as dependencies, not replaced or fabricated."
+    },
+    "new_labels": [
+      "eq:ac-level-set",
+      "eq:chi-regions",
+      "eq:strict-crossing-time",
+      "lem:ac-level-set",
+      "lem:chi-regions"
+    ],
+    "environment_errors": [],
+    "remaining_environment_stack": [],
+    "scope": "Lightweight source checks, not a TeX compiler or proof assistant."
+  },
+  "new_region_side_samples": {
+    "status": "PASS",
+    "counts": {
+      "below": 128,
+      "above": 128,
+      "on_interface": 128,
+      "h_to_e_unsafe": 32,
+      "capacity_left_of_sB": 24
+    },
+    "models": 8,
+    "all_boolean_comparisons_passed": true,
+    "max_gamma_hit_inverse_error": 8.870681966755001e-14,
+    "max_phi_minus_phiGamma_minus_chi_error": 3.885780586188048e-16,
+    "scope": "Finite auxiliary-strip samples for the new region-side lemma; the universal statement is proved in TeX."
+  },
+  "existing_formula_regression": {
+    "status": "PASS",
+    "groups": {
+      "all_exact_identities": true,
+      "sampled_HJB_equation": true,
+      "sampled_HJB_inequality": true,
+      "sampled_strict_branch_signs": true,
+      "sampled_gradient_finite_differences": true,
+      "sampled_switching_geometry": true,
+      "candidate_ODE_costs": true,
+      "candidate_ODE_capacity": true,
+      "candidate_ODE_terminal": true,
+      "old_capacity_domain_regression": true,
+      "immediate_control_regression": true,
+      "safe_boundary_branch_regression": true,
+      "benchmark_cost": true
+    },
+    "exact_algebra": {
+      "Phi_f0": true,
+      "Phi_control_direction": true,
+      "Psi_f1": true,
+      "Psi_f0": true,
+      "capacity_i": true,
+      "capacity_s": true,
+      "W_H1": true,
+      "W_H0": true,
+      "waiting_H0": true,
+      "waiting_Sigma": true,
+      "capacity_Sigma": true,
+      "Lambda_natural": true,
+      "theta_log_q1": true,
+      "g_minus_I_q1": true,
+      "gradient_match_s": true,
+      "gradient_match_i": true,
+      "capacity_cost_primitive": true
+    },
+    "sample_count": 640,
+    "sample_counts": {
+      "wait_capacity": 143,
+      "safe": 393,
+      "wait_gamma": 83,
+      "tracking": 21
+    },
+    "gradient_fd_count": 640,
+    "max_relative_gradient_fd_error": 2.5210159158739355e-09,
+    "max_abs_sampled_min_H": 4.1166130032842905e-16,
+    "max_negative_H_violation": 4.1166130032842905e-16,
+    "geometry_sample_count": 128,
+    "models": [
+      {
+        "p": 0.5,
+        "h": 0.3,
+        "K": 0.15,
+        "sK": 0.7073030021837694,
+        "e": 0.46908414634252626,
+        "sB": 0.5476951246795451,
+        "counts": {
+          "wait_capacity": 27,
+          "safe": 43,
+          "wait_gamma": 7,
+          "tracking": 3
+        }
+      },
+      {
+        "p": 0.25,
+        "h": 0.2,
+        "K": 0.08,
+        "sK": 0.435750487171816,
+        "e": 0.31083953486589283,
+        "sB": 0.3947060803781865,
+        "counts": {
+          "wait_capacity": 38,
+          "safe": 27,
+          "wait_gamma": 13,
+          "tracking": 2
+        }
+      },
+      {
+        "p": 0.75,
+        "h": 0.2,
+        "K": 0.3,
+        "sK": 0.7694793502062642,
+        "e": 0.44331855050128643,
+        "sB": 0.6280654825114237,
+        "counts": {
+          "wait_gamma": 31,
+          "tracking": 5,
+          "safe": 39,
+          "wait_capacity": 5
+        }
+      },
+      {
+        "p": 0.8,
+        "h": 0.65,
+        "K": 0.03,
+        "sK": 0.867970449275409,
+        "e": 0.6858402546012821,
+        "sB": 0.6870508333566658,
+        "counts": {
+          "safe": 71,
+          "wait_capacity": 9
+        }
+      },
+      {
+        "p": 0.2,
+        "h": 0.08,
+        "K": 0.4,
+        "sK": 0.6472573924124387,
+        "e": 0.3658046405042982,
+        "sB": 3.4952885160659637,
+        "counts": {
+          "wait_gamma": 32,
+          "safe": 37,
+          "tracking": 11
+        }
+      },
+      {
+        "p": 0.9,
+        "h": 0.15,
+        "K": 0.01,
+        "sK": 0.21163214929505014,
+        "e": 0.16063295954219098,
+        "sB": 0.16104477340543522,
+        "counts": {
+          "wait_capacity": 64,
+          "safe": 16
+        }
+      },
+      {
+        "p": 0.5,
+        "h": 1.2,
+        "K": 0.15,
+        "sK": 1.9038984545510353,
+        "e": 1.426190527562279,
+        "sB": 1.4636607948296088,
+        "counts": {
+          "safe": 80
+        }
+      },
+      {
+        "p": 0.4,
+        "h": 0.8,
+        "K": 0.35,
+        "sK": 1.797738373742212,
+        "e": 1.231760940179288,
+        "sB": 1.4586033851394753,
+        "counts": {
+          "safe": 80
+        }
+      }
+    ],
+    "benchmark": {
+      "sK": 0.7073030021837694,
+      "e": 0.46908414634252626,
+      "s1": 0.7775221610386437,
+      "sB": 0.5476951246795451,
+      "sR": 0.4516637862455485,
+      "iR": 0.12108289155035945,
+      "tau1": 4.349191557719972,
+      "TB": 1.5203109780974815,
+      "T1": 0.7138664296892887,
+      "Jstar": 1.5295111601514724,
+      "Jfilling": 1.5783855039561376,
+      "Jdirect": 1.6364797199042445
+    },
+    "candidate_ODE_checks": [
+      {
+        "region": "wait_capacity",
+        "cost_error": 2.3495427825537263e-11,
+        "capacity_excess": 2.03759231709455e-12,
+        "terminal_residual": 2.0599077998895154e-12
+      },
+      {
+        "region": "tracking",
+        "cost_error": 5.551115123125783e-17,
+        "capacity_excess": 0.0,
+        "terminal_residual": 1.1102230246251565e-16
+      },
+      {
+        "region": "wait_gamma",
+        "cost_error": 1.242944549367797e-13,
+        "capacity_excess": 0.0,
+        "terminal_residual": 1.1102230246251565e-16
+      },
+      {
+        "region": "capacity",
+        "cost_error": 1.4210854715202004e-14,
+        "capacity_excess": 0.0,
+        "terminal_residual": 3.3306690738754696e-16
+      },
+      {
+        "region": "safe",
+        "cost_error": 0.0,
+        "capacity_excess": 0.0,
+        "terminal_residual": 0.0
+      }
+    ],
+    "old_domain_regression": {
+      "state": [
+        0.6,
+        0.05804415416798357
+      ],
+      "old_formula_Sigma": -0.10341169185199761,
+      "actual_region": "wait_gamma",
+      "cap_hit": 0.3078127763098847,
+      "sB": 0.5476951246795451
+    },
+    "safe_boundary_regression": {
+      "correct_limit_Ui": 13.624087265648352,
+      "incorrect_Wi": 19.17555147823771,
+      "eps": [
+        0.0001,
+        1e-05,
+        1e-06
+      ],
+      "computed_Ui": [
+        13.612250740048578,
+        13.62290281365036,
+        13.623968812448606
+      ]
+    },
+    "immediate_control_regression": {
+      "region": "tracking",
+      "cost": 0.43398100732253986,
+      "past_gamma_s": 0.5120932578254697
+    }
+  },
+  "patch": {
+    "status": "PASS",
+    "git_apply_check_passed": true,
+    "patch_output_byte_identical_to_delivered_main": true,
+    "reverse_patch_restores_exact_base": true,
+    "git_diff_check_passed": true,
+    "numstat": "146\t51\ttracing_isolation_optimal_control_complete/latex/main.tex",
+    "scope": "Disposable local test repository only; no remote branch was modified."
+  },
+  "status": "PASS"
+}

@@ -1,0 +1,15 @@
+{
+  "package": "constant-contact-rate unified LaTeX revision",
+  "revision_date": "2026-09-18",
+  "repository": "cuizhizhong/optimal-threshold-control",
+  "project_subdirectory": "tracing_isolation_optimal_control_complete",
+  "base_commit": "496e454b34f7ce6861238041d5bd14b475e37917",
+  "original_main_git_blob": "4ca903f272c8f60ddb308df8f4b550f7364cb971",
+  "replacement_main_sha256": "1e65689a32b2dc9331ec8813001eb4d186e50e651677966b0be7a22fc2824bf8",
+  "repository_modified": false,
+  "reference_database_changed": false,
+  "original_figures_included": false,
+  "theory_pdf_pages": 19,
+  "full_original_figure_build": "NOT_COMPLETED: original figure dependencies unavailable",
+  "mathematical_verification": "Analytical proof text and internal review; no proof-assistant certification or independent peer review."
+}

@@ -1,0 +1,182 @@
+[
+  {
+    "topic": "版本来源注释",
+    "old": "% Unified revision of the constant-contact-rate theory.\n% Base: cuizhizhong/optimal-threshold-control@496e454b34f7ce6861238041d5bd14b475e37917\n% Original main.tex Git blob: 4ca903f272c8f60ddb308df8f4b550f7364cb971",
+    "new": "% Mathematical clarification of the constant-contact-rate theory.\n% Merge base: cuizhizhong/optimal-threshold-control@f33f8b591cefb8226e2c4196d739b841c368fb47\n% Base main.tex Git blob: 51aaa6b923b92f22a7039b42bab713cf46264530"
+  },
+  {
+    "topic": "稿件日期",
+    "old": "\\date{2026年9月18日修订稿}",
+    "new": "\\date{2026年9月19日}"
+  },
+  {
+    "topic": "理论入口说明",
+    "old": "省略时变讨论和原工程图形章节。",
+    "new": "省略时变讨论和数值图形章节。"
+  },
+  {
+    "topic": "摘要措辞",
+    "old": "原工程数值图表用于说明及计算复核，与解析证明的证据范围分别陈述。",
+    "new": "数值图表用于说明及计算复核，与解析证明的证据范围分别陈述。"
+  },
+  {
+    "topic": "单列水平集引理",
+    "old": "\n\\section{常接触率问题、自然轨道与安全目标集}",
+    "new": "\n\\begin{lemma}[绝对连续函数的水平集性质]\n\\label{lem:ac-level-set}\n设 $v:[a,b]\\to\\R$ 绝对连续，$\\alpha\\in\\R$ 固定。\n则\n\\begin{equation}\nv'(t)=0\\quad\\text{对 }\\{t\\in[a,b]:v(t)=\\alpha\\}\\text{ 中几乎所有 }t\\text{ 成立}.\n\\label{eq:ac-level-set}\n\\end{equation}\n特别地，若 $u,v$ 均绝对连续，并在可测时间集合 $E\\subset[a,b]$ 上满足 $u=v$，\n则 $u'=v'$ 在 $E$ 上几乎处处成立。\n上述结论也适用于开时间区间上的局部绝对连续函数。\n\\end{lemma}\n\\begin{proof}\n绝对连续函数在 $(a,b)$ 几乎处处可微。\n记 $E_\\alpha=\\{t:v(t)=\\alpha\\}$。该集合的孤立点至多可数：\n每个孤立点均可选取一个与 $E_\\alpha$ 的交恰为该点的有理端点开区间，且同一区间不能对应两个这样的点。\n若 $t\\in E_\\alpha\\cap(a,b)$ 不是孤立点且 $v'(t)$ 存在，\n可选 $t_n\\in E_\\alpha\\setminus\\{t\\}$、$t_n\\to t$，因而\n\\[\nv'(t)=\\lim_{n\\to\\infty}\\frac{v(t_n)-v(t)}{t_n-t}=0.\n\\]\n不可微点构成零测集，孤立点及区间端点也构成零测集，故 \\eqref{eq:ac-level-set} 成立。\n对 $u-v$ 的零水平集应用同一结论，即得第二条。\n局部结论通过用可数个紧子区间覆盖开时间区间得到。\n\\end{proof}\n\n\\section{常接触率问题、自然轨道与安全目标集}"
+  },
+  {
+    "topic": "可测控制的容量方向量词",
+    "old": "\\label{eq:boundary-feasible}\n\\end{equation}\n当 $s>h$ 时，唯一切向控制是",
+    "new": "\\label{eq:boundary-feasible}\n\\end{equation}\n这是边界上内指或切向速度的条件，不是对可测控制在每个孤立时刻的代表值施加限制。\n沿实际可行轨道，状态方程及引理\\ref{lem:ac-level-set}共同确定容量时间集合上的几乎处处关系。\n当 $s>h$ 时，唯一切向控制是"
+  },
+  {
+    "topic": "明确 chi 的定义域",
+    "old": "令 $\\chi(s,i)=i-I_\\Gamma(s)$。在 $\\Gamma_\\infty$ 上，",
+    "new": "在开集 $\\{s>e,\\ i>0\\}$ 上令 $\\chi(s,i)=i-I_\\Gamma(s)$。\n在 $\\Gamma_\\infty$ 上，"
+  },
+  {
+    "topic": "横穿证明统一引用水平集引理",
+    "old": "两式由 \\eqref{eq:Gamma-slope} 直接得到，任意 $f_q$ 为二者凸组合。\n在曲线每个点的小邻域内，导数对 $q\\in[0,1]$ 一致严格为正。\n对绝对连续实函数 $v$，在水平集 $\\{v=0\\}$ 上有 $v'=0$ 几乎处处：\n在几乎每个可微的非孤立水平集点，用同一水平集内趋近的差商即可得到零导数，孤立点至多可数。\n将此事实用于 $v(t)=\\chi(x(t))$ 并局部化，以可数邻域覆盖曲线，得到零测结论。\n同一局部正下界还表明从曲线上出发后即进入 $\\chi>0$ 一侧。",
+    "new": "两式由 \\eqref{eq:Gamma-slope} 直接得到，任意 $f_q$ 为二者凸组合。\n对每个 $x_*\\in\\Gamma_K$，由连续性可取闭包位于 $\\{s>e,i>0\\}$ 的小邻域 $O_*$ 及 $\\delta_*>0$，\n使\n\\[\n\\nabla\\chi(x)\\cdot f_q(x)\\ge\\delta_*\\qquad(x\\in O_*,\\ 0\\le q\\le1).\n\\]\n轨道在 $O_*$ 内的每个开时间区间上，$v(t)=\\chi(x(t))$ 局部绝对连续，且链式法则几乎处处成立。\n引理\\ref{lem:ac-level-set}使 $v'=0$ 在 $\\{v=0\\}$ 上几乎处处成立，\n而状态方程在该集合上又给出 $v'\\ge\\delta_*$，所以这部分时间集合为零测集。\n用可数个 $O_*$ 覆盖 $\\Gamma_K$，并使用其开时间原像的可数个连通分支，即得整体零测结论。\n若 $x(t_0)=x_*$，轨道连续性保证它在充分短的 $[t_0,t_0+\\varepsilon]$ 内保持于 $O_*$。\n积分得到\n\\begin{equation}\n\\chi(x(t))\\ge\\delta_*(t-t_0)>0\\qquad(t_0<t\\le t_0+\\varepsilon).\n\\label{eq:strict-crossing-time}\n\\end{equation}\n因此轨道从切换曲线上出发后立即进入正侧，无需控制的时间连续性。"
+  },
+  {
+    "topic": "删除几何中的旧稿编号",
+    "old": "本稿不再额外假设旧 G1--G4；也不声称上述几何论证排除了所有 PMP 异常极值。",
+    "new": "上述几何性质由模型条件推出；本论证不涉及对全部 PMP 异常极值的分类。"
+  },
+  {
+    "topic": "新增 chi 与分区对应引理",
+    "old": "\n\\begin{lemma}[完全跟踪分区的可达性及不再返回等待区]",
+    "new": "\n\\begin{lemma}[切换界面两侧与分区的对应]\n\\label{lem:chi-regions}\n记 $\\phi_\\Gamma(s)=\\Phi(s,I_\\Gamma(s))$，$s>e$。\n在 $x=(s,i)\\in\\Omega\\setminus\\widehat{\\Acal}$、$s>e$、$\\Phi_A<\\phi:=\\Phi(x)\\le\\Phi_B$ 时，\n\\begin{align}\nx\\in\\mathcal T&\\iff s<\\eta_\\Gamma(\\phi)\\iff\\chi(s,i)>0,\\notag\\\\\nx\\in\\mathcal W_\\Gamma&\\iff s>\\eta_\\Gamma(\\phi)\\iff\\chi(s,i)<0,\\notag\\\\\nx\\in\\Gamma_K&\\iff s=\\eta_\\Gamma(\\phi)\\iff\\chi(s,i)=0.\n\\label{eq:chi-regions}\n\\end{align}\n此外，对任意不安全 $x\\in\\Omega$，若 $s>e$ 且 $\\chi(x)>0$，则自动有\n$s<s_B$、$\\Phi(x)<\\Phi_B$，从而 $x\\in\\mathcal T$，不必另加 $\\Phi(x)\\le\\Phi_B$。\n若 $h<s\\le e$，不安全状态同样属于 $\\mathcal T$，但不在该区域使用 $I_\\Gamma$ 或 $\\chi$。\n\\end{lemma}\n\\begin{proof}\n推论\\ref{cor:Gamma-labels}给出 $\\phi_\\Gamma$ 严格递增，且\n$\\phi_\\Gamma(\\eta_\\Gamma(\\phi))=\\phi$。\n因此\n\\[\ns<\\eta_\\Gamma(\\phi)\n\\iff \\phi>\\phi_\\Gamma(s)\n\\iff i>I_\\Gamma(s)\n\\iff \\chi(s,i)>0.\n\\]\n反向严格不等式及等号同理；结合定义\\ref{def:regions}得到 \\eqref{eq:chi-regions}。\n若仅已知 $\\chi(s,i)>0$，则 $I_\\Gamma(s)<i\\le K=I_\\Gamma(s_B)$，\n由 $I_\\Gamma$ 严格递增知 $s<s_B$。又 $s>e>h$，而 $s-h\\ln s$ 在 $s>h$ 严格递增，所以\n\\[\n\\Phi(x)=i+s-h\\ln s\\le K+s-h\\ln s<\\Phi_B.\n\\]\n这使第一条的适用条件自动成立。\n最后，若 $h<s\\le e$，则\n\\[\n\\Phi_A<\\Phi(x)\\le K+e-h\\ln e<\\Phi_B,\n\\qquad s\\le e<\\eta_\\Gamma(\\Phi(x)),\n\\]\n故 $x\\in\\mathcal T$。此处没有把仅定义于 $s>e$ 的切换图像延拓到其端点左侧。\n\\end{proof}\n\n\\begin{lemma}[完全跟踪分区的可达性及不再返回等待区]"
+  },
+  {
+    "topic": "补清 D 与 chi 的局部梯度方向",
+    "old": "$D$ 在 $\\mathcal E$ 内光滑，其不安全零集恰为非平凡切换曲线，且该处 $\\nabla D\\ne0$。\n于是 $\\nabla D$ 为 $\\nabla\\chi$ 的负倍数；结合 \\eqref{eq:strict-crossing} 得 $L_{f_0}D<0$。",
+    "new": "$D$ 在 $\\mathcal E$ 内光滑，其不安全零集恰为非平凡切换曲线，且该处 $\\nabla D\\ne0$。\n在容量切换点，正安全端点和 $G'(\\bar s)\\ne0$ 也使 $D$ 具有开邻域上的光滑延拓。\n$D$ 与 $\\chi$ 的零曲线在切换点有相同切空间，故两者梯度成比例；\n由 $L_{f_1}D<0<L_{f_1}\\chi$ 知比例系数严格为负，再由 \\eqref{eq:strict-crossing} 得 $L_{f_0}D<0$。"
+  },
+  {
+    "topic": "跟踪弧不返回等待区的显式分区引用",
+    "old": "在从 $s$ 降至 $z$ 的完全跟踪弧上，$D<0$ 始终保持。\n同时 $\\Phi$ 严格下降，故不可能进入 $\\phi>\\Phi_B$ 的分支；也不能穿过 $D=0$ 回到自然等待区。\n从切换点出发时同样在 $s$ 下降后立即有 $D<0$。\n正端点保证到达时间有限，而 $i$ 严格下降保证容量可行性。",
+    "new": "在从 $s$ 降至 $z$ 的完全跟踪弧上，$D<0$ 始终保持。\n同时 $\\Phi$ 严格下降，故到达安全集之前始终满足 $\\Phi_A<\\Phi\\le\\Phi_B$。\n当 $s>e$ 时，引理\\ref{lem:chi-regions}表明离开 $\\mathcal T$ 进入等待分支必须先经过 $\\chi=0$，\n而在该界面 $D=0$，与沿弧的 $D<0$ 矛盾；当 $h<s\\le e$ 时，不安全状态本身即属于 $\\mathcal T$。\n从切换点出发时，由 \\eqref{eq:strict-crossing-time}及引理\\ref{lem:chi-regions}立即进入 $\\mathcal T$，\n之后适用同一论证。\n正端点保证到达时间有限，而 $i$ 严格下降保证容量可行性。"
+  },
+  {
+    "topic": "安全边界引用水平集引理",
+    "old": "下述验证使用绝对连续函数的零水平集性质，不需要这条广义梯度等式。",
+    "new": "下述验证使用引理\\ref{lem:ac-level-set}的零水平集性质，不需要这条广义梯度等式。"
+  },
+  {
+    "topic": "容量迹复合函数的绝对连续性与链式法则",
+    "old": "在时间集合 $E_K=\\{t:i(t)=K\\}$ 上，绝对连续函数的水平集性质给出 $\\dot i=0$ 几乎处处。\n若同时 $s>h$，状态方程强制 $q=q_B(s)$，进而 $\\dot s=-cK(s-r)$。\n令 $b(s)=U(s,K)$。$b$ 在 $s>h$ 是 $C^1$，且 $u(t)-b(s(t))=0$ 于 $E_K$；\n再次应用水平集性质，得到 $u'=b'(s)\\dot s$ 于该集合几乎处处。",
+    "new": "在时间集合 $E_K=\\{t\\in[0,T]:i(t)=K\\}$ 上，引理\\ref{lem:ac-level-set}给出 $\\dot i=0$ 几乎处处。\n若同时 $s>h$，状态方程强制 $q=q_B(s)$，进而 $\\dot s=-cK(s-r)$。\n对所有 $s>0$ 令 $b(s)=U(s,K)$。由命题\\ref{prop:regularity}，$b$ 局部 Lipschitz，且在 $s>h$ 为 $C^1$，\n所以 $b(s(t))$ 在 $[0,T]$ 绝对连续。\n由于 $u(t)=b(s(t))$ 于 $E_K$，引理\\ref{lem:ac-level-set}的第二条使两者导数在 $E_K$ 上几乎处处相等；\n再在 $s>h$ 的部分使用普通链式法则，得到 $u'=b'(s)\\dot s$。"
+  },
+  {
+    "topic": "安全时间集合统一引用",
+    "old": "在 $E_A=\\{t:x(t)\\in\\Acal\\}$ 上 $u=0$，因此 $u'=0$ 几乎处处，残差为 $pcq\\ge0$。",
+    "new": "在 $E_A=\\{t\\in[0,T]:x(t)\\in\\Acal\\}$ 上 $u=0$，\n由引理\\ref{lem:ac-level-set}得 $u'=0$ 几乎处处，残差为 $pcq\\ge0$。"
+  },
+  {
+    "topic": "主定理条件直接引用前置结论",
+    "old": "本定理不再以旧 G1--G4、候选函数局部 Lipschitz 性或无穷远横截条件为未证假设。",
+    "new": "所需候选达到性、正则性及终端处理分别由命题\\ref{prop:candidate-attainment}、\\ref{prop:regularity}和引理\\ref{lem:finite-entry}给出。"
+  },
+  {
+    "topic": "唯一性证明中的水平集量词",
+    "old": "在 $\\{t:i(t)=K,s(t)>h\\}$ 上，水平集性质使 $\\dot i=0$ 几乎处处，故 $q=q_B(s)$ 几乎处处。",
+    "new": "在 $\\{t:i(t)=K,s(t)>h\\}$ 上，对每个有限时间区间应用引理\\ref{lem:ac-level-set}，\n得到 $\\dot i=0$ 几乎处处，故由状态方程有 $q=q_B(s)$ 几乎处处。"
+  },
+  {
+    "topic": "唯一性末段显式衔接横穿与分区",
+    "old": "在非平凡切换点，包括 $(s_B,K)$，\\eqref{eq:strict-crossing} 在小邻域中对所有 $q$ 给出一致正下界，\n从而轨道立即进入 $\\chi>0$ 的完全跟踪侧，不能等待或返回等待侧。\n在完全跟踪区，$q=1$，引理\\ref{lem:tracking-region}与 ODE 唯一性确定直到安全集的整段轨道。",
+    "new": "在非平凡切换点，包括 $(s_B,K)$，取完全位于不安全区域且 $s>e$ 的相对小邻域。\n由 \\eqref{eq:strict-crossing-time}，任意可行轨道从该点出发后立即满足 $\\chi>0$。\n引理\\ref{lem:chi-regions}进一步保证这些状态属于 $\\mathcal T$；\n特别地，在容量切换点也由 $i\\le K$ 与 $\\chi>0$ 自动得到 $s<s_B$、$\\Phi<\\Phi_B$，无需额外假设分支选择。\n在完全跟踪区，零残差强制 $q=1$ 几乎处处。\n引理\\ref{lem:tracking-region}与 ODE 唯一性于是确定直到安全集的整段轨道，并排除返回等待分支。"
+  },
+  {
+    "topic": "时变时间变换的量词",
+    "old": "由于恢复率 $\\gamma$ 不随时间缩放，令 $\\tau(t)=\\int_0^t c(v)\\dd v$ 后仍有",
+    "new": "由于恢复率 $\\gamma$ 不随时间缩放，令 $\\tau(t)=\\int_0^t c(v)\\dd v$ 后，\n在该时间变换的值域内仍按几乎处处意义有"
+  },
+  {
+    "topic": "非自治 HJB 的条件性微分表述",
+    "old": "对具体定义的时变问题，若值函数 $V(t,s,i)$ 具有相应正则性，其内部 HJB 形式为",
+    "new": "对具体定义的时变问题，在值函数 $V(t,s,i)$ 具备所需正则性、动态规划可作微分化的点，\n内部 HJB 的条件性微分形式为"
+  },
+  {
+    "topic": "非自治 HJB 时间与轨道量词分离",
+    "old": "\\label{eq:time-HJB}\n\\end{equation}\n内部取 $Q=[0,1]$；容量边界的瞬时可行方向对应",
+    "new": "\\label{eq:time-HJB}\n\\end{equation}\n当 $c$ 仅可测时，上式至多按时间几乎处处理解：在相应的 Lebesgue 点和所需值函数导数存在处使用，\n不要求它在每个指定时刻都是经典等式。\n若进一步用于验证，仍须针对每条被比较的轨道建立复合函数的链式法则和沿轨道的几乎处处不等式；\n仅有状态--时间空间中几乎处处的等式，不自动保证它沿任意轨道成立。\n内部取 $Q=[0,1]$；容量边界在上述几乎处处时间意义下的内指或切向速度条件对应"
+  },
+  {
+    "topic": "非自治边界条件代表值说明",
+    "old": "\\label{eq:time-switch}\n\\end{equation}\n若在时间 $t$ 定义无控制安全集",
+    "new": "\\label{eq:time-switch}\n\\end{equation}\n式 \\eqref{eq:time-boundary-set}--\\eqref{eq:time-switch} 不把时间零测集上的 $c,q$ 代表值作为额外的点态轨道约束。\n若在时间 $t$ 定义无控制安全集"
+  },
+  {
+    "topic": "正则化公式与时间约定一致",
+    "old": "若相应的有限时域值函数 $V_\\varepsilon^T$ 可微，则固定 $(t,s,i)$ 及其值梯度时，\nHamiltonian 的内部极小元唯一，形式为",
+    "new": "若相应的有限时域值函数 $V_\\varepsilon^T$ 在所考虑的点可微，\n则固定满足上述时间约定的 $(t,s,i)$ 及其值梯度时，Hamiltonian 的内部极小元唯一，形式为"
+  },
+  {
+    "topic": "数值实现的论文措辞",
+    "old": "原工程采用 $T=18$、$n=48$ 个分段常数控制，用四阶 Runge--Kutta 推进。",
+    "new": "配套数值实现采用 $T=18$、$n=48$ 个分段常数控制，用四阶 Runge--Kutta 推进。"
+  },
+  {
+    "topic": "基准结果措辞（数值不改）",
+    "old": "表\\ref{tab:baseline-results}由独立端点求根和自然段求积更新，显示八位小数；\n原工程图形文件未在本次理论修订中重绘，极小的末位差别不改变所示几何。",
+    "new": "表\\ref{tab:baseline-results}给出端点求根和自然段求积的数值评价，显示八位小数。"
+  },
+  {
+    "topic": "图7说明",
+    "old": "原工程参数扫描中，相对于纯容量填充的成本节省",
+    "new": "配套参数扫描中，相对于纯容量填充的成本节省"
+  },
+  {
+    "topic": "图8说明",
+    "old": "原工程 $p$--$K$ 参数扫描的结构图。",
+    "new": "配套 $p$--$K$ 参数扫描的结构图。"
+  },
+  {
+    "topic": "时变数值标题",
+    "old": "\\subsection{时变接触率的原工程离散结果}",
+    "new": "\\subsection{时变接触率的离散结果}"
+  },
+  {
+    "topic": "图9说明",
+    "old": "由原工程离散求解器得到的控制。",
+    "new": "由配套离散求解器得到的控制。"
+  },
+  {
+    "topic": "图10说明",
+    "old": "原工程时变计算中的感染轨道。",
+    "new": "时变离散计算中的感染轨道。"
+  },
+  {
+    "topic": "保留数值证据边界并移出历史说明",
+    "old": "原工程报告 $\\varepsilon=0.04$ 时目标值约为 $2.4280$、网格最大感染比例约为 $0.15$。\n本次理论修订未重新求解该时变非线性规划，故将这些数值作为继承的离散计算结果，\n不据此断言无穷时域最优性、连续轨道唯一性或正则化极限。",
+    "new": "配套离散计算报告 $\\varepsilon=0.04$ 时目标值约为 $2.4280$、网格最大感染比例约为 $0.15$。\n这些数值仅属于上述有限维离散问题，不能据此断言无穷时域最优性、连续轨道唯一性或正则化极限。"
+  },
+  {
+    "topic": "依赖附录删除旧稿编号",
+    "old": "相对于旧版本的 G1--G4，端点存在性现在由命题\\ref{prop:reachable}及引理\\ref{lem:tracking-region}处理；",
+    "new": "端点存在性由命题\\ref{prop:reachable}及引理\\ref{lem:tracking-region}处理；"
+  },
+  {
+    "topic": "依赖附录新增准确引用",
+    "old": "不滑行由引理\\ref{lem:strict-crossing}处理。",
+    "new": "不滑行由引理\\ref{lem:strict-crossing}处理，横穿方向与实际分区的衔接由引理\\ref{lem:chi-regions}处理。\n容量和安全时间集合上的导数关系统一使用引理\\ref{lem:ac-level-set}。"
+  },
+  {
+    "topic": "移出版本管理说明",
+    "old": "本次修改范围、输入版本、实际执行的检查和未执行的检查见随附的修订记录。\n",
+    "new": ""
+  },
+  {
+    "topic": "复现附录标题与措辞",
+    "old": "\\section{原工程数值复现与本次修订的关系}\n原工程公共解析模块仍为 \\path{python/common_tracing.py}，总生成器为 \\path{python/generate_data.py}。\n原有命令为",
+    "new": "\\section{数值复现说明}\n配套公共解析模块为 \\path{python/common_tracing.py}，总生成器为 \\path{python/generate_data.py}。\n复现命令为"
+  },
+  {
+    "topic": "复现日志和脚本来源移入交付记录",
+    "old": "本次修订不覆盖原图形、CSV 或这些求解程序；它们的旧日志不是本次新执行的验证结果。\n随附 \\path{verification/verify_revision.py} 独立核对本稿公式、分区及基准结果，\n并输出机器可读报告。其取样检查不替代本稿的解析证明。",
+    "new": "图形和 CSV 的复现应与所使用的源码版本、参数及求解器设置一并记录。\n符号恒等式、有限样本和编译检查的作用是发现计算或实现错误，不替代本稿的解析证明。"
+  }
+]
