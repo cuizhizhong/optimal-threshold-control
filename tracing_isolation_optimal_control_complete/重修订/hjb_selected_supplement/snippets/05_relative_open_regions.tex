@@ -1,0 +1,28 @@
+\begin{remark}[控制分区的相对开放性]
+\label{rem:relative-open-control-regions}
+记 $\mathcal W:=\mathcal W_\Gamma\cup\mathcal W_K$。
+由引理\ref{lem:chi-regions}及分区定义，
+\[
+\mathcal W
+=\{x=(s,i)\in\Omega\setminus\widehat{\Acal}:
+  i<K,\ s>e,\ \chi(s,i)<0\}.
+\]
+事实上，当 $\Phi\le\Phi_B$ 时使用该引理；当 $\Phi>\Phi_B$ 且 $i<K$ 时，
+$s\ge\eta_K(\Phi)>s_B$，故 $I_\Gamma(s)>K>i$。
+反向包含由按 $\Phi\le\Phi_B$ 或 $\Phi>\Phi_B$ 分类得到。
+由于安全集在 $\Omega$ 中相对闭，上式表明 $\mathcal W$ 在 $\Omega$ 中相对开。
+
+在 $\mathcal T$ 中实际上有 $\Phi<\Phi_B$。
+若 $\Phi=\Phi_B$，则 $i\le K$ 以及 $s>h$ 给出
+\[
+s-h\ln s\ge s_B-h\ln s_B,
+\]
+从而 $s\ge s_B=\eta_\Gamma(\Phi_B)$，与 $\mathcal T$ 的定义矛盾。
+因此 $\mathcal T$ 也可由
+\[
+s>h,\qquad \Phi_A<\Phi<\Phi_B,\qquad
+s<\eta_\Gamma(\Phi)
+\]
+这些连续严格不等式在 $\Omega$ 中刻画，故亦相对开。
+将上述集合限制到 $\Dcal$ 后，相对开放性仍成立。
+\end{remark}

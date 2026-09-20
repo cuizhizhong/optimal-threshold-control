@@ -1,0 +1,37 @@
+\begin{corollary}[最优策略的分区表述]
+\label{cor:optimal-synthesis}
+在定理\ref{thm:verification}和定理\ref{thm:unique-q}的条件下，
+固定 $x_0\in\Dcal$。
+下述辅助分区均与物理域 $\Dcal$ 取交。
+最优控制按几乎处处相等识别，其阶段顺序由初值唯一确定如下。
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item 若 $x_0\in\Acal$，则永久取 $q=0$。
+\item 若 $x_0\in\mathcal T\cup\Gamma_K$，则立即取 $q=1$，
+直至首次进入 $\Acal$，随后永久取 $q=0$。
+\item 若 $x_0\in\mathcal W_\Gamma$，则先取 $q=0$，
+直至到达 $y_\Gamma(\Phi(x_0))$；随后取 $q=1$ 至首次进入 $\Acal$，
+再永久取 $q=0$。
+\item 若 $x_0\in\mathcal W_K\cup\mathcal B$，则先取 $q=0$ 至容量触点
+$(\eta_K(\Phi(x_0)),K)$；初值位于 $\mathcal B$ 时该等待阶段长度为零。
+此后沿 $q=q_B(s)$ 的容量弧运行至 $(s_B,K)$，
+再取 $q=1$ 至首次进入 $\Acal$，最后永久取 $q=0$。
+\end{enumerate}
+特别地，不安全初值的最优控制具有式\eqref{eq:direct-structure}
+或式\eqref{eq:capacity-structure}的结构。
+正长度容量阶段恰对应于 $x_0\in\mathcal W_K\cup\mathcal B$；
+对不安全初值，$\Phi(x_0)=\Phi_B$ 时不产生正长度容量阶段。
+上述结构不规定孤立切换时刻的控制代表值。
+\end{corollary}
+
+\begin{proof}
+定义\ref{def:candidate}给出各分区的候选控制及事件顺序，
+命题\ref{prop:candidate-attainment}证明其可行性和有限时间达到性。
+定理\ref{thm:verification}证明这些控制实现值函数，
+定理\ref{thm:unique-q}排除同一初值下其他不同的最优控制轨道。
+在 $\mathcal W_K\cup\mathcal B$ 中，$\Phi(x_0)>\Phi_B$，
+故容量阶段从严格大于 $s_B$ 的易感坐标开始，持续时间严格为正。
+对不安全初值，若 $\Phi(x_0)=\Phi_B$，则
+$x_0\in\mathcal W_\Gamma\cup\{(s_B,K)\}$。
+初值为 $(s_B,K)$ 时立即完全跟踪；其余情形先自然到达该点，再立即完全跟踪。
+因此不会出现正长度容量阶段。
+\end{proof}

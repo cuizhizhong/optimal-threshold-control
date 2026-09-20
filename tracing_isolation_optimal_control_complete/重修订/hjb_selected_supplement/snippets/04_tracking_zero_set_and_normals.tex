@@ -1,0 +1,45 @@
+为确定 $D$ 的符号，先说明其零集。
+任取 $x=(s,i)\in\mathcal E$，记其安全端点的易感坐标为 $z=\bar s(x)$。
+由命题\ref{prop:reachable}，$h<z<s$ 且 $i=I_z(s)$，所以
+\[
+D(x)=0
+\iff \Theta(s,I_z(s))=\Theta(z,a(z)).
+\]
+平凡根 $s=z$ 位于安全边界，不属于这里的不安全状态。
+由引理\ref{lem:unimodal}，上述等式成立当且仅当
+$h<z<e$ 且 $s=\sigma(z)$。
+结合已经证明的切换点可达性以及 $i\le K$，得到
+\[
+\{x\in\mathcal E:D(x)=0\}=\Gamma_K.
+\]
+
+在非平凡切换点 $y=(\sigma(z),j(z))$，
+沿所属的反向完全跟踪特征线有
+\[
+\left.\frac{\mathrm d}{\mathrm d s}D(s,I_z(s))\right|_{s=\sigma(z)}
+=-\left.\frac{\mathrm d}{\mathrm d s}\Theta(s,I_z(s))\right|_{s=\sigma(z)}>0,
+\]
+其中严格符号来自非平凡根位于单峰函数的严格下降段。
+由于 $q=1$ 时 $\dot s=-csi<0$，故 $L_{f_1}D(y)<0$，特别地
+$\nabla D(y)\ne0$。
+端点映射的光滑性给出 $D$ 在各有关点附近的光滑性；
+在容量切换点，$a(z)>0$ 及 $G'(z)\ne0$ 还给出环境开邻域上的光滑延拓，
+这里只将其用于求导。
+
+另一方面，$\chi(s,i)=i-I_\Gamma(s)$ 满足
+$\nabla\chi=(-I_\Gamma'(s),1)\ne0$。
+沿 $\Gamma_K$ 上的恒等式 $D(s,I_\Gamma(s))=0$ 求导，
+得到 $\nabla D\cdot(1,I_\Gamma')=0$；
+在容量端点通过 $s\uparrow s_B$ 取极限，关系同样成立。
+因此存在标量 $\lambda(y)$，使
+\[
+\nabla D(y)=\lambda(y)\nabla\chi(y),\qquad
+\lambda(y)=\frac{L_{f_1}D(y)}{L_{f_1}\chi(y)}<0.
+\]
+再由引理\ref{lem:strict-crossing}知 $L_{f_0}D(y)<0$。
+沿自然轨道的时间方向有 $\dot s<0$，所以在触点 $s=\eta$ 处，
+$D$ 沿该轨道关于 $s$ 的导数严格为正。
+向未来即向较小 $s$ 移动时，$D$ 因而先变为负值。
+从 $y_\Gamma$ 到 $x$ 的自然轨道段已知保持在 $\mathcal E$ 内，
+而该轨道没有第二个非平凡切换交点。
+由零集刻画和连续性，到 $x$ 为止始终有 $D<0$。

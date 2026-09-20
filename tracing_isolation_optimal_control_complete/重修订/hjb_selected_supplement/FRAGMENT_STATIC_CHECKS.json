@@ -1,0 +1,104 @@
+{
+  "scope": "generated snippets only; no full-manuscript compilation or full reference-resolution check",
+  "base_blob": "929a3a523c059adcd74efc4e47c774e0c38a1c11",
+  "fragments": {
+    "01_internal_C1_patching.tex": {
+      "lines": 50,
+      "environment_errors": [],
+      "brace_errors": [],
+      "sha256": "2d3943117e7ff0934388e34311519272d8071bc4a9001e9396c8a17de22bc82a"
+    },
+    "02_relative_local_lipschitz.tex": {
+      "lines": 51,
+      "environment_errors": [],
+      "brace_errors": [],
+      "sha256": "950aad4b7525a55d89a0dae563e46a3ee3b42b9bbb9320b5b55dba9802a7b1bd"
+    },
+    "03_implicit_function_domain.tex": {
+      "lines": 17,
+      "environment_errors": [],
+      "brace_errors": [],
+      "sha256": "3db553dc2a7933ef46cb9173ba52317d32dc7556d260c40c026fbedc38212992"
+    },
+    "04_tracking_zero_set_and_normals.tex": {
+      "lines": 45,
+      "environment_errors": [],
+      "brace_errors": [],
+      "sha256": "45ac99ce15d206c8968a4cc8a3ae7b92a080a80aa76072b78f47ce372c9127ad"
+    },
+    "05_relative_open_regions.tex": {
+      "lines": 28,
+      "environment_errors": [],
+      "brace_errors": [],
+      "sha256": "319e7916c56a4632ce178798a4142a25778424641b16f4656d88da9806abcfc3"
+    },
+    "06_interval_flow_argument.tex": {
+      "lines": 15,
+      "environment_errors": [],
+      "brace_errors": [],
+      "sha256": "878f07d6c398ad7a1277bdceeaa785495a8c3bf23660d475172b900af50b5096"
+    },
+    "07_time_set_coverage.tex": {
+      "lines": 8,
+      "environment_errors": [],
+      "brace_errors": [],
+      "sha256": "5431db62d1fd031019d6e19418acd6ad0164c291c7329b4f2fda51a66f539903"
+    },
+    "08_platform_hamiltonian_clarification.tex": {
+      "lines": 6,
+      "environment_errors": [],
+      "brace_errors": [],
+      "sha256": "7c8f874a37d934766c47606147bdf01dec3e4b730be269ea7f6843219bf11e7b"
+    },
+    "09_candidate_integral_equation.tex": {
+      "lines": 9,
+      "environment_errors": [],
+      "brace_errors": [],
+      "sha256": "1b6e6a7a0fa8a962a1e7f8b15454e112cb4562fdaab865d9c82c6b48da7bbd30"
+    },
+    "10_model_comparison.tex": {
+      "lines": 23,
+      "environment_errors": [],
+      "brace_errors": [],
+      "sha256": "f804a07036472fd708b9a84ce7367edec6b4a59718bd70afebe1ad08e7cadbbf"
+    },
+    "11_optimal_synthesis.tex": {
+      "lines": 37,
+      "environment_errors": [],
+      "brace_errors": [],
+      "sha256": "bb1b63311d793998a26d0ba53dc70e6a0be3e89c863914502516cba88012b017"
+    }
+  },
+  "new_labels": [
+    "rem:relative-open-control-regions",
+    "cor:optimal-synthesis"
+  ],
+  "external_citation_keys": [
+    "MicloSpiroWeibull2022"
+  ],
+  "full_manuscript_compiled": false,
+  "applied_to_remote_repository": false,
+  "reference_targets_to_resolve_after_merge": [
+    "cor:optimal-synthesis",
+    "def:candidate",
+    "eq:Gamma-slope",
+    "eq:HJB-table",
+    "eq:Psi",
+    "eq:boundary-cost",
+    "eq:boundary-value",
+    "eq:capacity-structure",
+    "eq:capacity-tie",
+    "eq:direct-structure",
+    "eq:switch-condition",
+    "eq:waiting-gradient",
+    "lem:chi-regions",
+    "lem:strict-crossing",
+    "lem:unimodal",
+    "prop:candidate-attainment",
+    "prop:reachable",
+    "rem:relative-open-control-regions",
+    "thm:unique-q",
+    "thm:verification"
+  ],
+  "all_fragment_lexical_checks_passed": true
+}

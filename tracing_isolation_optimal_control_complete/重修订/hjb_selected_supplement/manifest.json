@@ -1,0 +1,91 @@
+{
+  "repository": "cuizhizhong/optimal-threshold-control",
+  "branch": "codex/integrate-theory-revision",
+  "target": "tracing_isolation_optimal_control_complete/latex/main.tex",
+  "base_blob": "929a3a523c059adcd74efc4e47c774e0c38a1c11",
+  "new_labels": [
+    "rem:relative-open-control-regions",
+    "cor:optimal-synthesis"
+  ],
+  "operations": [
+    {
+      "file": "snippets/01_internal_C1_patching.tex",
+      "title": "内部界面的梯度延拓与 C^1 拼接",
+      "action": "replace_range",
+      "anchor": "在 prop:regularity 的证明中，替换从 \\emph{内部值与梯度匹配。} 开始、到 \\emph{安全边界连续性。} 之前的全部内容；保留后者及其后各段。",
+      "rationale": "展开已有梯度匹配和局部坐标计算；不要求整个分区闭包或安全边界上全域 C^1。"
+    },
+    {
+      "file": "snippets/02_relative_local_lipschitz.tex",
+      "title": "相对局部 Lipschitz 的显式估计",
+      "action": "replace_range",
+      "anchor": "在 prop:regularity 的同一证明中，替换从 \\emph{一致梯度界。} 开始、到该证明的 \\end{proof} 之前的全部内容；保留 \\end{proof}。",
+      "rationale": "保留安全边界连续性及容量迹的前置计算，补出坐标线段、有限分段和具体估计。"
+    },
+    {
+      "file": "snippets/03_implicit_function_domain.tex",
+      "title": "隐函数定理的局部定义域",
+      "action": "replace_range",
+      "anchor": "在 prop:Gamma-geometry 的证明开头，替换从“取特征线标号”开始到“根方程为 ... =0。”的三句话；保留随后“由引理\\ref{lem:unimodal}”及 F_s、F_psi 的原计算。",
+      "rationale": "只补反函数、对数定义域及非平凡根邻域，不改变原来的求导与端点论证。"
+    },
+    {
+      "file": "snippets/04_tracking_zero_set_and_normals.tex",
+      "title": "切换零集与法向量关系",
+      "action": "replace_range",
+      "anchor": "在 lem:tracking-region 的证明中，替换从“为确定 $D$ 的符号”开始、到“向未来即向较小 $s$ 移动时 ... 到 $x$ 为止均有 $D<0$。”为止的整段；保留前面的可达性证明和后面的“设 $x$ 的安全端点为 $z$”。",
+      "rationale": "显式排除平凡根，限定零集为 Gamma_K，并在容量端点用内侧极限说明法向量关系。"
+    },
+    {
+      "file": "snippets/05_relative_open_regions.tex",
+      "title": "等待区与完全跟踪区的相对开放性",
+      "action": "insert_after_proof",
+      "anchor": "插入到 lem:chi-regions 的证明结束之后、lem:tracking-region 之前。",
+      "rationale": "只建立分段轨道分析实际需要的相对开放性；不添加 Gamma_K union B 在 Omega 中相对闭的错误断言。"
+    },
+    {
+      "file": "snippets/06_interval_flow_argument.tex",
+      "title": "从几乎处处的控制选择到分段状态方程",
+      "action": "insert_in_proof",
+      "anchor": "在 thm:unique-q 的证明中，插入到 E_K^- 零测集论证之后的“因此，在轨道属于整个 ... q=1 几乎处处。”之后、\\emph{容量弧上的延续。} 之前。仅插入，不替换整篇唯一性证明。",
+      "rationale": "把原来直接引用 ODE 唯一性的步骤写成积分方程；保留现有容量、横穿和安全延拓论证。"
+    },
+    {
+      "file": "snippets/07_time_set_coverage.tex",
+      "title": "验证引理中的时间集合覆盖",
+      "action": "replace_sentence",
+      "anchor": "在 lem:trajectory-verification 的证明末尾，将“以上集合覆盖所有时刻。”替换为本片段；保留其后的物理斜边说明。",
+      "rationale": "只显式写出已由安全集定义保证的覆盖，不增加新的验证假设。"
+    },
+    {
+      "file": "snippets/08_platform_hamiltonian_clarification.tex",
+      "title": "平台 Hamiltonian 与允许控制集的区分",
+      "action": "insert_after_proof",
+      "anchor": "插入到 prop:all-HJB 的证明结束之后、lem:trajectory-verification 之前。",
+      "rationale": "不修改控制区间、不把原表格改成无约束控制问题，只澄清量词和优化域。"
+    },
+    {
+      "file": "snippets/09_candidate_integral_equation.tex",
+      "title": "候选反馈轨道的积分表述",
+      "action": "insert_in_proof",
+      "anchor": "在 prop:candidate-attainment 的证明末尾，插入到“候选构造不需要先使用任何最优性结论。”之前。",
+      "rationale": "用积分方程说明反馈轨道，不把切换时刻的代表值设为额外控制约束。"
+    },
+    {
+      "file": "snippets/10_model_comparison.tex",
+      "title": "与 MSW 的动力学及成本差别",
+      "action": "insert_before_section",
+      "anchor": "插入到第 1 节“结果的适用范围”注记结束之后、\\section{解的适定性、正性与基本耗散} 之前。保留原有文献引述和模型方程。",
+      "rationale": "模型对照来自 MSW 期刊版式(1)、式(2)；本模型结论通过已有标签引用，不声称一种新验证方法或已完成全面原创性检索。"
+    },
+    {
+      "file": "snippets/11_optimal_synthesis.tex",
+      "title": "最优策略的分区汇总",
+      "action": "insert_after_proof",
+      "anchor": "插入到 thm:unique-q 的证明结束之后、“一维切换成本与全局结论的关系”子节之前；不能把这个最优结构推论前移为全局验证的前提。",
+      "rationale": "仅汇总已经证明的候选、达到性、最优性及唯一性；不借这个推论反证其前置定理。"
+    }
+  ],
+  "additional_operations": "12_small_edits.md",
+  "status": "textual supplement only; not applied to repository; not full-manuscript compiled"
+}

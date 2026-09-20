@@ -2,11 +2,11 @@ This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded forma
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**main.tex
-(./main.tex
+**theory_only.tex
+(./theory_only.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
-(e:/software/texlive/2026/texmf-dist/tex/latex/ctex/ctexart.cls
+(./main.tex (e:/software/texlive/2026/texmf-dist/tex/latex/ctex/ctexart.cls
 (e:/software/texlive/2026/texmf-dist/tex/latex/ctex/config/ctexbackend.cfg
 File: ctexbackend.cfg 2022/07/14 v2.5.10 Backend configuration file (CTEX)
 )
@@ -1031,8 +1031,8 @@ Package hyperref Info: Option `colorlinks' set `true' on input line 22.
 \c@theorem=\count387
 Package translations Info: No language package found. I am going to use `englis
 h' as default language. on input line 53.
- (./main.aux)
-\openout1 = `main.aux'.
+ (./theory_only.aux)
+\openout1 = `theory_only.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
 LaTeX Font Info:    ... okay on input line 53.
@@ -1152,9 +1152,9 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring ON on input line 53.
-(./main.out) (./main.out)
+(./theory_only.out) (./theory_only.out)
 \@outlinefile=\write3
-\openout3 = `main.out'.
+\openout3 = `theory_only.out'.
 
 \c@lstlisting=\count388
 
@@ -1176,42 +1176,7 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 55.
 
 (e:/software/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (./main.toc
-[1
-
-] [2])
-\tf@toc=\write4
-\openout4 = `main.toc'.
-
- [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16]
-[17] [18] [19] [20] [21] [22] [23] [24] [25] [26]
-File: ../figures/Figure_1_phase_geometry.jpg Graphic file (type bmp)
-<../figures/Figure_1_phase_geometry.jpg>
- [27]
-File: ../figures/Figure_2_state_time_series.jpg Graphic file (type bmp)
-<../figures/Figure_2_state_time_series.jpg>
- [28]
-File: ../figures/Figure_3_control_coefficients.jpg Graphic file (type bmp)
-<../figures/Figure_3_control_coefficients.jpg>
- [29]
-File: ../figures/Figure_4_uniqueness_cost.jpg Graphic file (type bmp)
-<../figures/Figure_4_uniqueness_cost.jpg>
- [30]
-File: ../figures/Figure_5_policy_cost_comparison.jpg Graphic file (type bmp)
-<../figures/Figure_5_policy_cost_comparison.jpg>
-File: ../figures/Figure_6_capacity_dependence.jpg Graphic file (type bmp)
-<../figures/Figure_6_capacity_dependence.jpg>
-File: ../figures/Figure_7_probability_dependence.jpg Graphic file (type bmp)
-<../figures/Figure_7_probability_dependence.jpg>
-File: ../figures/Figure_8_regime_map.jpg Graphic file (type bmp)
-<../figures/Figure_8_regime_map.jpg>
- [31]
-[32]
-File: ../figures/Figure_9_time_varying_control.jpg Graphic file (type bmp)
-<../figures/Figure_9_time_varying_control.jpg>
-File: ../figures/Figure_10_time_varying_states.jpg Graphic file (type bmp)
-<../figures/Figure_10_time_varying_states.jpg>
- [33] [34] [35]
+)
 
 Package fontspec Info: 
 (fontspec)             Could not resolve font "FangSong/BI" (it probably
@@ -1238,24 +1203,32 @@ Package fontspec Info:
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->"FangSong/OT:script=hani;language=dflt;"
 
- (./main.bbl) [36]
 
+(./theory_only.toc [1
+
+])
+\tf@toc=\write4
+\openout4 = `theory_only.toc'.
+
+ [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13]
+[14] [15] [16] [17] [18] [19] [20] [21] [22] [23] [24] (./theory_only.bbl)
+[25] 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
-(./main.aux)
+(./theory_only.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2022/08/05>
  ***********
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: E940F0E26953676DFA1E3EBF35CFBB52;6016.
- ) 
+Package rerunfilecheck Info: File `theory_only.out' has not changed.
+(rerunfilecheck)             Checksum: 1BD53C6447DF36BE4F37DFD531BCD51A;3735.
+ ) ) 
 Here is how much of TeX's memory you used:
- 25836 strings out of 468168
- 581881 string characters out of 5432357
- 986445 words of memory out of 5000000
- 54173 multiletter control sequences out of 15000+600000
- 646946 words of font info for 158 fonts, out of 8000000 for 9000
+ 25647 strings out of 468168
+ 575112 string characters out of 5432357
+ 982436 words of memory out of 5000000
+ 53998 multiletter control sequences out of 15000+600000
+ 644449 words of font info for 145 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 93i,12n,111p,1197b,1105s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,12n,114p,1221b,1105s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.xdv (36 pages, 518296 bytes).
+Output written on theory_only.xdv (25 pages, 407924 bytes).

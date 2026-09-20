@@ -1,0 +1,51 @@
+\emph{一致梯度界与相对局部 Lipschitz 性。}
+等待区内 $j\ge i$、$\eta-r>h-r=\ell$，从而
+\[
+0<U_i\le\frac{1}{hi},\qquad 0\le U_s\le U_i.
+\]
+完全跟踪区内 $0<\Theta(\bar x)<\Theta(x)<1/i$，故
+\[
+0\le W_s\le\frac{p}{si},\qquad 0\le W_i\le\frac{1}{hi}.
+\]
+内部切换界面取相同的梯度极限。
+安全集内部 $U$ 为常数零；沿任何完全位于安全集内的线段，$U$ 的增量亦为零。
+
+固定 $x_*\in\Omega$，取包含 $x_*$ 的一个充分小的闭矩形
+\[
+R=[s_-,s_+]\times[i_-,i_+],\qquad s_->0,\quad i_->0,
+\]
+使 $x_*$ 属于 $R\cap\Omega$ 的相对内部。
+在该集合各光滑分支上，两偏导数的绝对值均不超过
+\[
+M_R:=\max\left\{\frac{1}{hi_-},\frac{p}{s_-i_-}\right\}.
+\]
+不位于 $i=K$ 的水平或竖直线段只可能穿过以下内部界面：
+安全边界 $i=a(s)$ 的有关部分、非平凡切换图像 $i=I_\Gamma(s)$，
+以及等待分支界面 $i=\Phi_B-s+h\ln s$ 的有关部分。
+安全边界在 $s>h$ 严格递减，切换图像严格递增，
+最后一条图像在所用的 $s>s_B>h$ 范围内严格递减。
+故每条水平或竖直线段与各图像至多相交一次。
+在有限个交点之间分段应用一维微积分基本定理，
+再利用已经证明的界面连续性取端点极限，
+可知水平线段上 $U$ 的增量绝对值不超过 $M_R$ 乘以其长度，
+竖直线段上也有相同估计。
+
+若水平线段位于 $i=K$，则使用容量迹 $b(s)=U(s,K)$。
+在 $s\le h$ 上 $b=0$；在 $h<s<s_B$ 上 $b'=W_s(s,K)$；
+在 $s>s_B$ 上由 \eqref{eq:boundary-value} 和 \eqref{eq:boundary-cost}
+得到 $b'=p(s-h)/[Ks(s-r)]$。
+这些导数满足上述局部界；在 $h,s_B$ 处分段并使用容量迹连续性，
+得到同一水平线段估计。
+
+任取 $x=(s_1,i_1),y=(s_2,i_2)\in R\cap\Omega$，
+中间点 $z=(s_2,i_1)$ 以及连接 $x$ 到 $z$、$z$ 到 $y$ 的两条坐标线段
+均属于 $R\cap\Omega$。
+因此
+\[
+|U(x)-U(y)|
+\le M_R\bigl(|s_1-s_2|+|i_1-i_2|\bigr)
+\le\sqrt{2}\,M_R\lVert x-y\rVert.
+\]
+这证明 $U$ 在 $\Omega$ 上相对局部 Lipschitz。
+将该估计限制到 $\Dcal\subset\Omega$ 即得物理域上的结论；
+这里的辅助坐标线段无需满足 $s+i\le1$。
