@@ -1,0 +1,757 @@
+{
+  "verified": true,
+  "cases": [
+    {
+      "case_id": "E1",
+      "x0": [
+        0.75,
+        0.01
+      ],
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "solver_settings": {
+        "T": 300,
+        "N": 4000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "success": true,
+      "return_status": "Solve_Succeeded",
+      "J_reference": 0.41618591477600209,
+      "J_openocl": 0.41620500909728464,
+      "assessment": {
+        "capacity_excess": 2.9680482563354538E-7,
+        "state_discrepancy": 6.7520285806921265E-8,
+        "initial_error": 0,
+        "control_violation": 0,
+        "state_violation": 0,
+        "tail_max_q": 0,
+        "terminal_peak": 1.7325247983399638E-27,
+        "terminal_safe": true,
+        "reintegrated_terminal_peak": 1.7325278667594323E-27,
+        "tail": {
+          "tail_start_time": 279.99999999997738,
+          "max_abs_q_on_tail": 0,
+          "control_returned_to_zero": true,
+          "zero_control_future_peak": 1.7325247983399638E-27,
+          "zero_control_continuation_safe": true,
+          "capacity": 0.15,
+          "tolerance": 1E-6
+        },
+        "arcs": [
+          {
+            "type": "0",
+            "t_start": 0,
+            "t_end": 6.9750000000000112,
+            "cells": 93
+          },
+          {
+            "type": "transition",
+            "t_start": 6.9750000000000112,
+            "t_end": 7.0500000000000114,
+            "cells": 1
+          },
+          {
+            "type": "1",
+            "t_start": 7.0500000000000114,
+            "t_end": 7.4250000000000123,
+            "cells": 5
+          },
+          {
+            "type": "transition",
+            "t_start": 7.4250000000000123,
+            "t_end": 7.5000000000000124,
+            "cells": 1
+          },
+          {
+            "type": "0",
+            "t_start": 7.5000000000000124,
+            "t_end": 299.99999999997738,
+            "cells": 3900
+          }
+        ],
+        "observed_structure": "0 -> 1 -> 0",
+        "transition_cells": 2,
+        "events": {
+          "capacity_start": null,
+          "capacity_end": null,
+          "full_start": 7.0500000000000114,
+          "release": 7.5000000000000124,
+          "full_state": [
+            0.50724235075939439,
+            0.133048513109561
+          ],
+          "release_state": [
+            0.45656384823818225,
+            0.11942027052238467
+          ]
+        },
+        "relative_cost_difference": 4.5879306830530925E-5,
+        "passed": true,
+        "notes": "阶段由原始控制及容量接近程度识别；过渡单元保留，事件精度受网格限制。"
+      }
+    },
+    {
+      "case_id": "E2",
+      "x0": [
+        0.99,
+        0.01
+      ],
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "solver_settings": {
+        "T": 300,
+        "N": 8000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "success": true,
+      "return_status": "Solve_Succeeded",
+      "J_reference": 1.5295111601514726,
+      "J_openocl": 1.5295233613984434,
+      "assessment": {
+        "capacity_excess": 7.9910605466082529E-7,
+        "state_discrepancy": 8.57058412018219E-8,
+        "initial_error": 0,
+        "control_violation": 0,
+        "state_violation": 0,
+        "tail_max_q": 0,
+        "terminal_peak": 1.4035884888896698E-27,
+        "terminal_safe": true,
+        "reintegrated_terminal_peak": 1.4036357308630484E-27,
+        "tail": {
+          "tail_start_time": 279.99999999999932,
+          "max_abs_q_on_tail": 0,
+          "control_returned_to_zero": true,
+          "zero_control_future_peak": 1.4035884888896698E-27,
+          "zero_control_continuation_safe": true,
+          "capacity": 0.15,
+          "tolerance": 1E-6
+        },
+        "arcs": [
+          {
+            "type": "0",
+            "t_start": 0,
+            "t_end": 4.3125000000000036,
+            "cells": 115
+          },
+          {
+            "type": "transition",
+            "t_start": 4.3125000000000036,
+            "t_end": 4.3500000000000032,
+            "cells": 1
+          },
+          {
+            "type": "q_B",
+            "t_start": 4.3500000000000032,
+            "t_end": 5.849999999999989,
+            "cells": 40
+          },
+          {
+            "type": "transition",
+            "t_start": 5.849999999999989,
+            "t_end": 5.8874999999999886,
+            "cells": 1
+          },
+          {
+            "type": "1",
+            "t_start": 5.8874999999999886,
+            "t_end": 6.5624999999999822,
+            "cells": 18
+          },
+          {
+            "type": "transition",
+            "t_start": 6.5624999999999822,
+            "t_end": 6.5999999999999819,
+            "cells": 1
+          },
+          {
+            "type": "0",
+            "t_start": 6.5999999999999819,
+            "t_end": 299.99999999999932,
+            "cells": 7824
+          }
+        ],
+        "observed_structure": "0 -> q_B -> 1 -> 0",
+        "transition_cells": 3,
+        "events": {
+          "capacity_start": 4.3500000000000032,
+          "capacity_end": 5.849999999999989,
+          "full_start": 5.8874999999999886,
+          "release": 6.5999999999999819,
+          "full_state": [
+            0.54459900713484022,
+            0.14902369768329585
+          ],
+          "release_state": [
+            0.45082582232515567,
+            0.12136383612068538
+          ]
+        },
+        "relative_cost_difference": 7.9772199697832229E-6,
+        "passed": true,
+        "notes": "阶段由原始控制及容量接近程度识别；过渡单元保留，事件精度受网格限制。"
+      }
+    },
+    {
+      "case_id": "E3",
+      "x0": [
+        0.5,
+        0.14
+      ],
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "solver_settings": {
+        "T": 300,
+        "N": 4000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "success": true,
+      "return_status": "Solve_Succeeded",
+      "J_reference": 0.43398100732253919,
+      "J_openocl": 0.43399851635235542,
+      "assessment": {
+        "capacity_excess": 4.8023851589862332E-8,
+        "state_discrepancy": 1.7337208169099227E-8,
+        "initial_error": 0,
+        "control_violation": 0,
+        "state_violation": 0,
+        "tail_max_q": 0,
+        "terminal_peak": 3.7887293510690024E-28,
+        "terminal_safe": true,
+        "reintegrated_terminal_peak": 3.7887393324957803E-28,
+        "tail": {
+          "tail_start_time": 279.99999999997738,
+          "max_abs_q_on_tail": 0,
+          "control_returned_to_zero": true,
+          "zero_control_future_peak": 3.7887293510690024E-28,
+          "zero_control_continuation_safe": true,
+          "capacity": 0.15,
+          "tolerance": 1E-6
+        },
+        "arcs": [
+          {
+            "type": "1",
+            "t_start": 0,
+            "t_end": 0.375,
+            "cells": 5
+          },
+          {
+            "type": "transition",
+            "t_start": 0.375,
+            "t_end": 0.45,
+            "cells": 1
+          },
+          {
+            "type": "0",
+            "t_start": 0.45,
+            "t_end": 299.99999999997738,
+            "cells": 3994
+          }
+        ],
+        "observed_structure": "1 -> 0",
+        "transition_cells": 1,
+        "events": {
+          "capacity_start": null,
+          "capacity_end": null,
+          "full_start": 0,
+          "release": 0.45,
+          "full_state": [
+            0.5,
+            0.14
+          ],
+          "release_state": [
+            0.44526195898830251,
+            0.12320217859122577
+          ]
+        },
+        "relative_cost_difference": 4.0345152255058964E-5,
+        "passed": true,
+        "notes": "阶段由原始控制及容量接近程度识别；过渡单元保留，事件精度受网格限制。"
+      }
+    },
+    {
+      "case_id": "E4",
+      "x0": [
+        0.7,
+        0.15
+      ],
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "solver_settings": {
+        "T": 300,
+        "N": 8000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "success": true,
+      "return_status": "Solve_Succeeded",
+      "J_reference": 1.2688347783424891,
+      "J_openocl": 1.2688310955840425,
+      "assessment": {
+        "capacity_excess": 7.7028695877334741E-7,
+        "state_discrepancy": 4.1252984916972935E-9,
+        "initial_error": 0,
+        "control_violation": 0,
+        "state_violation": 0,
+        "tail_max_q": 0,
+        "terminal_peak": 5.1438860000543528E-28,
+        "terminal_safe": true,
+        "reintegrated_terminal_peak": 5.1438866533161613E-28,
+        "tail": {
+          "tail_start_time": 279.99999999999932,
+          "max_abs_q_on_tail": 0,
+          "control_returned_to_zero": true,
+          "zero_control_future_peak": 5.1438860000543528E-28,
+          "zero_control_continuation_safe": true,
+          "capacity": 0.15,
+          "tolerance": 1E-6
+        },
+        "arcs": [
+          {
+            "type": "q_B",
+            "t_start": 0,
+            "t_end": 1.0499999999999998,
+            "cells": 28
+          },
+          {
+            "type": "transition",
+            "t_start": 1.0499999999999998,
+            "t_end": 1.0875,
+            "cells": 1
+          },
+          {
+            "type": "1",
+            "t_start": 1.0875,
+            "t_end": 1.7625000000000015,
+            "cells": 18
+          },
+          {
+            "type": "transition",
+            "t_start": 1.7625000000000015,
+            "t_end": 1.8000000000000016,
+            "cells": 1
+          },
+          {
+            "type": "0",
+            "t_start": 1.8000000000000016,
+            "t_end": 299.99999999999932,
+            "cells": 7952
+          }
+        ],
+        "observed_structure": "q_B -> 1 -> 0",
+        "transition_cells": 2,
+        "events": {
+          "capacity_start": 0,
+          "capacity_end": 1.0499999999999998,
+          "full_start": 1.0875,
+          "release": 1.8000000000000016,
+          "full_state": [
+            0.54679920452810082,
+            0.14990313747217898
+          ],
+          "release_state": [
+            0.45128423831309245,
+            0.1212107780732774
+          ]
+        },
+        "relative_cost_difference": -2.9024728116725762E-6,
+        "passed": true,
+        "notes": "阶段由原始控制及容量接近程度识别；过渡单元保留，事件精度受网格限制。"
+      }
+    },
+    {
+      "case_id": "E5",
+      "x0": [
+        0.5,
+        0.15
+      ],
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "solver_settings": {
+        "T": 300,
+        "N": 4000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "success": true,
+      "return_status": "Solve_Succeeded",
+      "J_reference": 0.53623319670501668,
+      "J_openocl": 0.53625636159160439,
+      "assessment": {
+        "capacity_excess": 5.5710069973846643E-8,
+        "state_discrepancy": 2.5027230232677056E-8,
+        "initial_error": 0,
+        "control_violation": 0,
+        "state_violation": 0,
+        "tail_max_q": 0,
+        "terminal_peak": 3.6529557186061275E-28,
+        "terminal_safe": true,
+        "reintegrated_terminal_peak": 3.6529639885422143E-28,
+        "tail": {
+          "tail_start_time": 279.99999999997738,
+          "max_abs_q_on_tail": 0,
+          "control_returned_to_zero": true,
+          "zero_control_future_peak": 3.6529557186061275E-28,
+          "zero_control_continuation_safe": true,
+          "capacity": 0.15,
+          "tolerance": 1E-6
+        },
+        "arcs": [
+          {
+            "type": "1",
+            "t_start": 0,
+            "t_end": 0.525,
+            "cells": 7
+          },
+          {
+            "type": "transition",
+            "t_start": 0.525,
+            "t_end": 0.6,
+            "cells": 1
+          },
+          {
+            "type": "0",
+            "t_start": 0.6,
+            "t_end": 299.99999999997738,
+            "cells": 3992
+          }
+        ],
+        "observed_structure": "1 -> 0",
+        "transition_cells": 1,
+        "events": {
+          "capacity_start": null,
+          "capacity_end": null,
+          "full_start": 0,
+          "release": 0.6,
+          "full_state": [
+            0.5,
+            0.15
+          ],
+          "release_state": [
+            0.42743594613122721,
+            0.12877069220364767
+          ]
+        },
+        "relative_cost_difference": 4.319927734808847E-5,
+        "passed": true,
+        "notes": "阶段由原始控制及容量接近程度识别；过渡单元保留，事件精度受网格限制。"
+      }
+    }
+  ],
+  "additional_checks": {
+    "E2": {
+      "case_id": "E2",
+      "x0": [
+        0.99,
+        0.01
+      ],
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "solver_settings": {
+        "T": 300,
+        "N": 8000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "success": true,
+      "return_status": "Solve_Succeeded",
+      "J_reference": 1.5295111601514726,
+      "J_openocl": 1.5295233613984434,
+      "assessment": {
+        "capacity_excess": 7.9910605466082529E-7,
+        "state_discrepancy": 8.57058412018219E-8,
+        "initial_error": 0,
+        "control_violation": 0,
+        "state_violation": 0,
+        "tail_max_q": 0,
+        "terminal_peak": 1.4035884888896698E-27,
+        "terminal_safe": true,
+        "reintegrated_terminal_peak": 1.4036357308630484E-27,
+        "tail": {
+          "tail_start_time": 279.99999999999932,
+          "max_abs_q_on_tail": 0,
+          "control_returned_to_zero": true,
+          "zero_control_future_peak": 1.4035884888896698E-27,
+          "zero_control_continuation_safe": true,
+          "capacity": 0.15,
+          "tolerance": 1E-6
+        },
+        "arcs": [
+          {
+            "type": "0",
+            "t_start": 0,
+            "t_end": 4.3125000000000036,
+            "cells": 115
+          },
+          {
+            "type": "transition",
+            "t_start": 4.3125000000000036,
+            "t_end": 4.3500000000000032,
+            "cells": 1
+          },
+          {
+            "type": "q_B",
+            "t_start": 4.3500000000000032,
+            "t_end": 5.849999999999989,
+            "cells": 40
+          },
+          {
+            "type": "transition",
+            "t_start": 5.849999999999989,
+            "t_end": 5.8874999999999886,
+            "cells": 1
+          },
+          {
+            "type": "1",
+            "t_start": 5.8874999999999886,
+            "t_end": 6.5624999999999822,
+            "cells": 18
+          },
+          {
+            "type": "transition",
+            "t_start": 6.5624999999999822,
+            "t_end": 6.5999999999999819,
+            "cells": 1
+          },
+          {
+            "type": "0",
+            "t_start": 6.5999999999999819,
+            "t_end": 299.99999999999932,
+            "cells": 7824
+          }
+        ],
+        "observed_structure": "0 -> q_B -> 1 -> 0",
+        "transition_cells": 3,
+        "events": {
+          "capacity_start": 4.3500000000000032,
+          "capacity_end": 5.849999999999989,
+          "full_start": 5.8874999999999886,
+          "release": 6.5999999999999819,
+          "full_state": [
+            0.54459900713484022,
+            0.14902369768329585
+          ],
+          "release_state": [
+            0.45082582232515567,
+            0.12136383612068538
+          ]
+        },
+        "relative_cost_difference": 7.9772199697832229E-6,
+        "passed": true,
+        "notes": "阶段由原始控制及容量接近程度识别；过渡单元保留，事件精度受网格限制。"
+      }
+    },
+    "E1": {
+      "case_id": "E1",
+      "x0": [
+        0.75,
+        0.01
+      ],
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "solver_settings": {
+        "T": 300,
+        "N": 4000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "constant_control",
+        "control": 0.7
+      },
+      "success": true,
+      "return_status": "Solve_Succeeded",
+      "J_reference": 0.41618591477600209,
+      "J_openocl": 0.41620500909728475,
+      "assessment": {
+        "capacity_excess": 2.9680482568905653E-7,
+        "state_discrepancy": 6.752028558487666E-8,
+        "initial_error": 0,
+        "control_violation": 0,
+        "state_violation": 0,
+        "tail_max_q": 0,
+        "terminal_peak": 1.732524798341341E-27,
+        "terminal_safe": true,
+        "reintegrated_terminal_peak": 1.7325278667593849E-27,
+        "tail": {
+          "tail_start_time": 279.99999999997738,
+          "max_abs_q_on_tail": 0,
+          "control_returned_to_zero": true,
+          "zero_control_future_peak": 1.732524798341341E-27,
+          "zero_control_continuation_safe": true,
+          "capacity": 0.15,
+          "tolerance": 1E-6
+        },
+        "arcs": [
+          {
+            "type": "0",
+            "t_start": 0,
+            "t_end": 6.9750000000000112,
+            "cells": 93
+          },
+          {
+            "type": "transition",
+            "t_start": 6.9750000000000112,
+            "t_end": 7.0500000000000114,
+            "cells": 1
+          },
+          {
+            "type": "1",
+            "t_start": 7.0500000000000114,
+            "t_end": 7.4250000000000123,
+            "cells": 5
+          },
+          {
+            "type": "transition",
+            "t_start": 7.4250000000000123,
+            "t_end": 7.5000000000000124,
+            "cells": 1
+          },
+          {
+            "type": "0",
+            "t_start": 7.5000000000000124,
+            "t_end": 299.99999999997738,
+            "cells": 3900
+          }
+        ],
+        "observed_structure": "0 -> 1 -> 0",
+        "transition_cells": 2,
+        "events": {
+          "capacity_start": null,
+          "capacity_end": null,
+          "full_start": 7.0500000000000114,
+          "release": 7.5000000000000124,
+          "full_state": [
+            0.50724235075939728,
+            0.13304851310956411
+          ],
+          "release_state": [
+            0.45656384823818147,
+            0.11942027052238489
+          ]
+        },
+        "relative_cost_difference": 4.5879306830797687E-5,
+        "passed": true,
+        "notes": "阶段由原始控制及容量接近程度识别；过渡单元保留，事件精度受网格限制。"
+      }
+    }
+  }
+}

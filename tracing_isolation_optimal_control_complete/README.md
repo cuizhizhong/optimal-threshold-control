@@ -1,5 +1,14 @@
 # 跟踪隔离模型中双传播系数的最优控制与唯一性
 
+## 当前长时域数值版本
+
+当前论文见 [latex/main.pdf](latex/main.pdf)，数值部分已改为五个初值的真实 OpenOCL 求解、三张图和一张成本表。
+采用 `T=300, d=2`；E1/E3/E5 使用 `N=4000`，E2/E4 经容量重积分核查后使用 `N=8000`。
+复现入口与模型约束见 [数值代码说明](matlab/numerical_scenarios/README.md)，实际结果与验收记录见 [核查说明](validation/numerical_scenarios/CHECKS.md)。
+原代码、图片、数据及下述原版说明保留；旧数值正文由 Git 历史追溯。
+
+## 原版文件包说明
+
 本文件包研究
 
 $$
@@ -18,7 +27,7 @@ $$
 
 ## 1. 文件结构
 
-- `tracing_isolation_optimal_control.pdf`：已编译的最终中文报告，26 页。
+- `tracing_isolation_optimal_control.pdf`：原版中文报告，26 页；当前修订稿为 `latex/main.pdf`。
 - `latex/main.tex`：完整 LaTeX 主文件。
 - `latex/references.bib`：BibTeX 文献库。
 - `latex/main.bbl`：本次编译生成的参考文献表，便于无 BibTeX 环境直接复编。

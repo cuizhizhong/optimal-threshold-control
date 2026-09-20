@@ -1,0 +1,46 @@
+{
+  "status": "passed",
+  "main_pages": 32,
+  "theory_only_pages": 25,
+  "main_pages_visually_checked": [
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32
+  ],
+  "theory_only_pages_visually_checked": [
+    23,
+    24,
+    25
+  ],
+  "undefined_references": false,
+  "duplicate_labels": false,
+  "overfull_boxes": false,
+  "figures": {
+    "FigN1_regions": {
+      "panels": 1,
+      "minimum_font_pt": 9,
+      "visual_check": "passed"
+    },
+    "FigN2_waiting": {
+      "panels": 4,
+      "minimum_font_pt": 12,
+      "visual_check": "passed"
+    },
+    "FigN3_boundary_tracking": {
+      "panels": 6,
+      "minimum_font_pt": 12,
+      "visual_check": "passed"
+    }
+  },
+  "implementation_commit": "e08b0bab4cb81bc1e950ae936c0a36d3834ab687",
+  "pdf_sha256": {
+    "main": "3dd70c2ada8d5e1be303b4898efee9ce80f40a70cb4a37bb1d247ffc03b28420",
+    "theory_only": "d18f594c281954d411685c2fcb7b6e2076743fb644a37f552be2c913108d27fc"
+  }
+}

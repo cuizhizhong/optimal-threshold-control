@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "case_id": "E1",
+      "N": 4000,
+      "J_reference": 0.4161859147760021,
+      "J_openocl": 0.41620500909728464,
+      "capacity_excess": 2.968048256335454e-07
+    },
+    {
+      "case_id": "E2",
+      "N": 8000,
+      "J_reference": 1.5295111601514726,
+      "J_openocl": 1.5295233613984434,
+      "capacity_excess": 7.991060546608253e-07
+    },
+    {
+      "case_id": "E3",
+      "N": 4000,
+      "J_reference": 0.4339810073225392,
+      "J_openocl": 0.43399851635235537,
+      "capacity_excess": 4.802385158986233e-08
+    },
+    {
+      "case_id": "E4",
+      "N": 8000,
+      "J_reference": 1.2688347783424891,
+      "J_openocl": 1.2688310955840425,
+      "capacity_excess": 7.702869587733474e-07
+    },
+    {
+      "case_id": "E5",
+      "N": 4000,
+      "J_reference": 0.5362331967050167,
+      "J_openocl": 0.5362563615916044,
+      "capacity_excess": 5.571006997384664e-08
+    }
+  ],
+  "neutral_guess_passed": true,
+  "refinement_passed": true,
+  "legacy_interval_cost": 1.5295254516585441
+}

@@ -1,0 +1,240 @@
+% Insert in main.tex in place of the existing numerical-method/results block.
+% Keep this input within the existing non-TheoryOnly conditional block.
+% Required main packages: amsmath, graphicx, booktabs, natbib, placeins, float.
+% Add the supplied AvramFreddiGoreac2022 entry to references.bib.
+\providecommand{\NumLatexRoot}{.}
+\providecommand{\NumFigureRoot}{../figures/numerical_scenarios}
+\providecommand{\NumTheoryRef}[2]{#2~\ref{#1}}
+\input{\NumLatexRoot/numerical_reference_values.tex}
+\input{\NumLatexRoot/numerical_pending.tex}
+\providecommand{\NumMeshDetails}{}
+
+% Missing actual figures remain blank. Never substitute predicted OCP plots.
+\newcommand{\NumFigureOrBlank}[2]{%
+  \IfFileExists{\NumFigureRoot/#1}{%
+    \includegraphics[width=0.97\linewidth]{\NumFigureRoot/#1}%
+  }{%
+    \fbox{\parbox[c][#2][c]{0.93\linewidth}{\mbox{}}}%
+  }%
+}
+\newcommand{\NumFindingParagraph}[1]{\par\smallskip #1\par\smallskip}
+
+\section{数值方法与实验设置}
+\label{sec:numerical-method}
+
+本节通过不同初值区域下的代表性算例，比较解析最优策略与直接配点求解结果，
+重点考察等待阶段、容量弧和完全跟踪阶段的出现顺序及其切换位置。
+算例组织借鉴 \citet[第6节]{AvramFreddiGoreac2022} 的区域相关情景设计，
+但使用本模型的状态方程、控制成本及
+\NumTheoryRef{def:regions}{分区定义}，不移用其控制结构。
+全局最优性由\NumTheoryRef{thm:verification}{验证定理}给出；
+数值计算用于检验解析结构的计算一致性。
+
+所有主算例采用相同参数
+\begin{equation}
+ p=0.5,\qquad c=2,\qquad \gamma=0.3,\qquad K=0.15,
+ \label{eq:numerical-common-parameters}
+\end{equation}
+仅改变初始状态。状态 $s,i$ 均为相对于初始总量的比例，允许 $s_0+i_0<1$。
+相应地，$h=\gamma/(pc)=0.3$，$\ell=r=0.15$。
+这些参数用于说明理论结构，不视为对某一具体疫情的参数标定。
+
+数值优化保持原动力学和线性目标：
+\begin{equation}
+\begin{aligned}
+ \min_{q}\quad &J_T(q)=\int_0^T pcq(t)\,\mathrm dt,\\
+ \text{满足}\quad
+ &\dot s=-c[p+(1-p)q]si,\qquad
+ \dot i=[pc(1-q)s-\gamma]i,\\
+ &q\in[0,1],\quad 0\le s\le1,\quad 0\le i\le K,\quad
+ (s(0),i(0))=(s_0,i_0).
+\end{aligned}
+\label{eq:numerical-ocp}
+\end{equation}
+不添加二次控制正则化，也不预设阶段数、切换时刻或容量段控制。
+因此，容量控制 $q_B(s)=1-h/s$ 及其离开位置是待与优化输出比较的理论预测，
+而不是数值优化中的额外阶段约束。
+
+理论控制问题定义在无限时间区间上，而直接配点计算采用一个足够长的固定时域
+$[0,T]$ 进行截断近似。数值问题不增加终端状态约束或终端成本，
+也不要求终点预先落入解析构造的某个区域。
+这种处理与 \citet[第6节]{AvramFreddiGoreac2022} 的数值展示思路相同：
+选取足够长的固定时域，使主要控制阶段在终止时刻之前已经结束，
+再比较有限时域数值解与解析结构。这里不把“$T$ 足够大”解释为
+有限时域问题与无限时域问题在一般意义下的严格等价性。
+
+作为截断效应的轻量后处理，每个被报告的算例在求解后检查两点：
+控制是否已在终点前的一段时间内回到 $q\approx0$，以及终端状态从此继续取
+$q=0$ 时的未来无控制峰值是否不超过 $K$。该检查不进入优化约束，
+不预设解除状态或解除时刻，也不单独设置图表。
+
+\ifNumResultsVerified
+计算采用
+\else
+计算拟采用
+\fi
+MATLAB/OpenOCL 直接配点方法，基准网格将 $[0,T]$ 划分为
+$N=\NumIntervals$ 个控制区间，设置 $T=\NumHorizon$、$d=\NumDegree$，
+控制在各区间内为常数，离散非线性规划由 IPOPT 求解。
+\NumMeshDetails
+解析轨道按正文的自然段、容量段和完全跟踪段公式独立生成；
+用作初始猜测时仍不固定其阶段结构。
+数值控制成本按完整求解时域计算为
+\begin{equation}
+ J_{\mathrm{OCL}}=pc\sum_{k=1}^{N}q_k\Delta t_k,
+ \label{eq:numerical-cost-sum}
+\end{equation}
+不以绘图窗口作为积分范围。
+优化输出的容量约束、长时域尾段及终端无控制延拓在结果采用前另行核查。
+% Fill from actual checks only. Empty until the experiments have run.
+\NumFindingParagraph{\NumCheckStatement}
+
+\section{不同初值区域下的数值验证}
+\label{sec:numerical-results}
+
+\subsection{代表初值与相平面分区}
+
+选取表\ref{tab:numerical-scenarios}中的五个初值，分别覆盖两种等待区、
+内部立即完全跟踪区以及容量线上内生阈值两侧的状态。
+算例 E1 与 E2 保持 $i_0$ 相同，用来区分两种等待方式；
+算例 E4 与 E5 保持 $i_0=K$，用来检验容量初值是否需要先维持平台。
+算例 E3 补充了 $i_0<K$ 时直接采用完全跟踪的情形。
+
+由安全边界和切换条件的数值评价得
+\begin{equation}
+ s_B\approx\NumSBRef,
+ \label{eq:numerical-sB}
+\end{equation}
+其中 $(s_B,K)$ 为切换曲线与容量线的交点。
+图\ref{fig:numerical-regions}用同一相平面标记初值、区域和相应轨道。
+两种等待分支之间的边界使用正文定义的自然轨道标号
+$\Phi=\Phi_B$，不是整条竖线 $s=s_B$。
+所有区域均限制在 $s>0$、$0<i\le K$、$s+i\le1$ 的物理域内。
+
+\begin{table}[H]
+\centering
+\small
+\setlength{\tabcolsep}{4.2pt}
+\caption{代表初值、理论控制结构与控制成本。$J_{\mathrm{ref}}$ 为解析公式的数值评价，
+$J_{\mathrm{OCL}}$ 为直接配点返回控制在完整求解时域内的成本。}
+\label{tab:numerical-scenarios}
+\begin{tabular}{@{}clclrr@{}}
+\toprule
+算例 & $(s_0,i_0)$ & 区域 & 理论结构 & $J_{\mathrm{ref}}$ & $J_{\mathrm{OCL}}$\\
+\midrule
+E1 & $(0.75,0.01)$ & $\mathcal W_\Gamma$ & $0\to1\to0$ & \NumJRefEOne & \NumJOclEOne\\
+E2 & $(0.99,0.01)$ & $\mathcal W_K$ & $0\to q_B\to1\to0$ & \NumJRefETwo & \NumJOclETwo\\
+E3 & $(0.50,0.14)$ & $\mathcal T$ & $1\to0$ & \NumJRefEThree & \NumJOclEThree\\
+E4 & $(0.70,0.15)$ & $\mathcal B$ & $q_B\to1\to0$ & \NumJRefEFour & \NumJOclEFour\\
+E5 & $(0.50,0.15)$ & $\mathcal T\cap\{i=K\}$ & $1\to0$ & \NumJRefEFive & \NumJOclEFive\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\NumFigureOrBlank{FigN1_regions.pdf}{4.2cm}
+\caption{不同初值区域及代表轨道的相平面对照。
+图中标出安全边界、切换曲线 $\Gamma_K$、容量线 $i=K$、两种等待区的公共边界，
+以及 E1--E5 的初始状态。理论几何与直接配点轨道采用不同线型或标记。}
+\label{fig:numerical-regions}
+\end{figure}
+
+\subsection{两种等待区域的对照}
+
+算例 E1 的初值 $(0.75,0.01)$ 属于 $\mathcal W_\Gamma$。
+根据\NumTheoryRef{def:candidate}{反馈构造}，先取 $q=0$，
+沿自然轨道到达 $\Gamma_K$ 后采用完全跟踪，并在进入安全集后解除。
+理论结构为
+\[
+ 0\longrightarrow1\longrightarrow0.
+\]
+解析公式给出的完全跟踪起点约为
+\[
+ (s_\Gamma,i_\Gamma)
+ \approx(\NumSwitchSEOneRef,\NumSwitchIEOneRef),
+ \qquad i_\Gamma<K.
+\]
+因此，本例的关键检验是数值优化是否在容量尚未达到时开始完全跟踪，
+以及是否没有出现正长度容量平台。
+
+算例 E2 的初值 $(0.99,0.01)$ 属于 $\mathcal W_K$。
+理论预测先自然达到容量，再采用 $q_B(s)=1-h/s$，
+沿 $i=K$ 运行至 $(s_B,K)$，之后转入完全跟踪并在安全边界解除。
+其结构为
+\[
+ 0\longrightarrow q_B(s)\longrightarrow1\longrightarrow0.
+\]
+图\ref{fig:numerical-waiting}并列比较这两种等待方式。
+平台是否出现、完全跟踪开始时的感染比例及切换点的位置，
+共同构成本组情景的比较内容。
+
+\begin{figure}[H]
+\centering
+\NumFigureOrBlank{FigN2_waiting.pdf}{5.0cm}
+\caption{两种等待区域下的控制与感染比例：左列为 E1，右列为 E2；
+上排为 $q(t)$，下排为 $i(t)$。
+每幅图比较解析参考与 OpenOCL 结果，数值控制按分段常数形式显示，
+感染图中的水平线表示容量 $K$。}
+\label{fig:numerical-waiting}
+\end{figure}
+
+% EXPERIMENT_REQUIRED: actual E1/E2 observations and a few useful event values.
+\NumFindingParagraph{\NumFindingWaiting}
+
+不存在容量平台与全时域内不接触容量并非同一命题。
+解析策略在安全边界解除后，感染比例可以沿无控制轨道再次上升至 $K$，
+但不超过它；此时 $q=0$，不应将这种后续接触误判为容量控制弧。
+
+\subsection{立即完全跟踪与容量边界初值}
+
+算例 E3 的初值 $(0.50,0.14)$ 位于 $\mathcal T$ 的内部，且 $i_0<K$。
+理论策略从初始正长度阶段起即采用 $q=1$，到达安全集后取 $q=0$。
+本例检验没有初始等待阶段的 $1\to0$ 结构，
+而不是等待感染达到容量后才开始控制。
+
+算例 E4 和 E5 均从容量线出发，但 $s_0$ 分别位于 $s_B$ 两侧：
+\[
+ 0.70>s_B,\qquad 0.50<s_B.
+\]
+E4 属于容量等待弧 $\mathcal B$，理论上先采用 $q_B$ 保持容量，
+在 $s=s_B$ 时转为完全跟踪；E5 则属于立即完全跟踪区，
+理论上应直接采用 $q=1$ 并离开容量线。
+因此，两者对应
+\[
+ \mathrm{E4}:\quad q_B\to1\to0,
+ \qquad
+ \mathrm{E5}:\quad 1\to0.
+\]
+这组对照说明，是否维持容量不能仅由 $i_0=K$ 决定，
+还取决于状态在内生切换阈值两侧的位置。
+
+另一个比较是 E2 与 E4 在容量退出时的状态。
+两例到达该事件的时间不同，但理论上均经过同一状态 $(s_B,K)$；
+从该点起的后续解析轨道相同。
+因此可以在相平面中比较其数值退出位置，而不要求不同算例的时间序列重合。
+
+\begin{figure}[H]
+\centering
+\NumFigureOrBlank{FigN3_boundary_tracking.pdf}{5.0cm}
+\caption{立即完全跟踪与容量边界初值的对照。
+从左到右为 E3、E4、E5，上排为 $q(t)$，下排为 $i(t)$。
+解析参考与 OpenOCL 结果的比较重点为初始控制阶段、容量平台是否出现，以及解除位置。}
+\label{fig:numerical-boundary-tracking}
+\end{figure}
+
+% EXPERIMENT_REQUIRED: observed initial stages and E2/E4 numerical exit states.
+\NumFindingParagraph{\NumFindingTrackingBoundary}
+
+\subsection{成本对照与结构总结}
+
+表\ref{tab:numerical-scenarios}同时保留解析成本与直接配点成本，
+用少量定量信息补充策略结构的比较。
+其中解析成本依据各段显式成本求得，而数值成本依据式
+\eqref{eq:numerical-cost-sum}计算。
+比较不要求孤立切换时刻的控制代表值一致，
+重点是各正长度阶段及其连接状态是否与理论预测相符。
+
+% EXPERIMENT_REQUIRED: summarize supported structures only after all runs.
+\NumFindingParagraph{\NumOverallFinding}
+\FloatBarrier

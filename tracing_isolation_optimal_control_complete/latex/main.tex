@@ -45,6 +45,8 @@
 \newcommand{\proj}{\operatorname{Proj}}
 \newcommand{\ess}{\operatorname*{ess}}
 \newcommand{\argmin}{\operatorname*{arg\,min}}
+% 在 TheoryOnly 跳过数值输入时也保持条件命令已定义。
+\newif\ifNumResultsVerified
 \lstset{basicstyle=\ttfamily\small,frame=single,breaklines=true,columns=fullflexible,showstringspaces=false}
 \title{\bfseries 跟踪隔离模型中双传播系数的最优控制与唯一性\\[2mm]
 \large 常接触率的全域 HJB 验证、轨道唯一性与数值分析}
@@ -79,7 +81,8 @@ $0\to1\to0$ 或 $0\to q_B(s)\to1\to0$，允许初始等待或容量阶段长度�
 
 给定时变接触率时，仅保留非自治 HJB、条件性的唯一性判据和正则化的点态投影公式，
 不把点态严格凸性或离散求解收敛解释为连续问题的全局唯一性证明。
-数值图表用于说明及计算复核，与解析证明的证据范围分别陈述。
+数值部分围绕不同初值区域设置五个代表性算例，比较解析策略与长时域直接配点结果；
+数值计算与解析证明的证据范围分别陈述。
 \end{abstract}
 \noindent\textbf{关键词：} 跟踪隔离；最优控制；状态约束；HJB 验证；切换曲线；几乎处处唯一性
 \tableofcontents\newpage
@@ -1781,150 +1784,7 @@ q_\varepsilon^*(t,s,i)=\proj_{[0,1]}
 动力学中的 $cq$ 项以及非线性状态约束也不会自动给出整个问题的严格凸性。
 本稿不为此扩展声称全局唯一性。
 
-\section{数值算法}
-\label{sec:numerical-method}
-\subsection{常接触率：解析几何降维}
-定理\ref{thm:verification}提供解析最优性依据；求根仅用于评价其中的函数。
-实现时先判断 $s_0\le h$ 或自然峰值不超过 $K$，若成立则返回 $q=0$。
-对不安全初值，计算 $s_K,e,s_B,\Phi_B$。
-若 $\Phi(x_0)\le\Phi_B$，求 $y_\Gamma(\Phi(x_0))$ 并比较 $s_0$ 与 $\eta_\Gamma$：
-交点在未来时等待，交点在过去或当前时立即控制。
-若 $\Phi(x_0)>\Phi_B$，求自然容量触点并沿平台到 $s_B$。
-最后由 \eqref{eq:endpoint-root} 求正安全端点，拼接各段。
-
-原有一维成本最小化算法也可保留，但必须将 $W$ 的不可达部分设为指定方案的 $+\infty$，
-包含初值端点与纯容量填充端点，并使用推论\ref{cor:one-dimensional-min}解释其解。
-完全跟踪代数根的存在不等于正感染可达性，不能忽略 \eqref{eq:reachable}。
-近合并端点的求根还需避免把平凡根误当作非平凡根。
-
-\subsection{时变接触率：离散求解与其证据范围}
-配套数值实现采用 $T=18$、$n=48$ 个分段常数控制，用四阶 Runge--Kutta 推进。
-离散目标为
-\begin{equation}
-\begin{aligned}
-J_{\varepsilon,\eta}^n={}&\Delta t\sum_{j=0}^{n-1}
-\left[pc(t_{j+1/2})q_j+\frac\varepsilon2q_j^2\right]\\
-&+\frac{\eta}{2\Delta t}\sum_{j=0}^{n-2}(q_{j+1}-q_j)^2.
-\end{aligned}
-\label{eq:discrete-objective}
-\end{equation}
-控制与网格状态满足 $0\le q_j\le1$、$i_j\le K$，另设置进入基准常接触率 $c_0$ 的安全集的终端约束，
-用 SLSQP 求解。该问题是有限维的非线性规划。
-网格点可行不自动保证网格间的连续容量约束；一次局部优化收敛不证明全局极小或唯一性。
-
-尤其，只有当 $T$ 之后\emph{确实把接触率设为} $c_0$，该终端约束才直接给出相应的零成本安全延拓。
-若接触率仅渐近趋于 $c_0$ 而在任意有限时间仍高于它，则基准安全边界上的终点不自动对真实未来路径安全。
-因此下列时变计算保留为原离散问题的数值示例，未建立其与无穷时域连续问题的严格等价性。
-
-\section{基准参数与数值结果}
-\label{sec:numerical-results}
-基准参数保持为
-\begin{equation}
-p=0.5,\quad c=2,\quad\gamma=0.3,\quad K=0.15,\quad s_0=0.99,\quad i_0=0.01.
-\label{eq:baseline}
-\end{equation}
-于是 $h=0.3$、$r=\ell=0.15$。
-表\ref{tab:baseline-results}给出端点求根和自然段求积的数值评价，显示八位小数。
-这些计算是数值复核，不是定理\ref{thm:verification}或定理\ref{thm:unique-q}的证明前提。
-\begin{table}[H]
-\centering
-\caption{基准参数下的解析公式数值评价}
-\label{tab:baseline-results}
-\begin{tabular}{@{}lll@{}}
-\toprule 量&数值&含义\\\midrule
-$i_{\rm pk}$&$0.34182326$&无隔离自然峰值\\
-$s_1$&$0.77752216$&首次容量触点的易感比例\\
-$\tau_1$&$4.34919156$&首次到达容量的时间\\
-$s_B$&$0.54769512$&容量转完全跟踪的切换值\\
-$T_B$&$1.52031098$&容量阶段持续时间\\
-$s_R$&$0.45166379$&解除隔离时易感比例\\
-$i_R$&$0.12108289$&解除隔离时感染比例\\
-$T_{q=1}$&$0.71386643$&完全跟踪阶段持续时间\\
-$J^*$&$1.52951116$&最小控制成本\\
-$J_{\rm FB}$&$1.57838550$&纯容量填充成本\\
-$J_{\rm direct}$&$1.63647972$&自然等待后直接跟踪策略族的最低成本\\
-\bottomrule
-\end{tabular}
-\end{table}
-这里 $J_{\rm direct}=\min_{\sigma\in[s_1,s_0]}\mathcal J_D(\sigma)$。
-对不属于式\eqref{eq:reachable}有限可达域的切换状态，
-按照定义\ref{def:W}将该指定策略的成本置为 $+\infty$。
-在本基准初值下，最小值取于区间端点 $\sigma=s_1$，
-即自然轨道首次到达容量后立即转入完全跟踪。
-相对于纯容量填充，节省约 $3.0965\%$。
-基准初值本身不属于 $\mathcal E$，因为
-$s_0\e^{-i_0/\ell}\approx0.92615192>s_K\approx0.70730300$；
-这与原问题的值有限并不矛盾。
-
-\subsection{相平面结构}
-\begin{figure}[H]\centering
-\includegraphics[width=0.94\textwidth]{Figure_1_phase_geometry.jpg}
-\caption{常接触率下的相平面几何。虚线为无隔离轨道，点线为最大安全轨道，实细线为切换曲线，粗线为最优轨道。最优轨道先自然到达容量，沿 $i=K$ 运行，再转入 $q=1$，最后在安全边界解除隔离。}
-\label{fig:phase}\end{figure}
-切换曲线不是容量线或群体免疫直线 $s=h$。
-本模型允许在容量边界尚未走到 $h$ 以前转入完全跟踪，这是相对于经典 filling-the-box 的新增结构。
-
-\subsection{状态时间序列}
-\begin{figure}[H]\centering
-\includegraphics[width=0.92\textwidth]{Figure_2_state_time_series.jpg}
-\caption{最优策略下的状态时间序列。感染比例首次达到 $K$ 后保持一段时间，转入完全跟踪后下降，解除隔离以后沿最大安全轨道自然演化。}
-\label{fig:states}\end{figure}
-$i(t)$ 在平台阶段等于 $K$，完全跟踪后下降到 $i_R<K$。
-解除点位于安全边界，后续自然演化可以再次上升至 $K$，但不会超过容量。
-
-\subsection{一个控制产生两个不同系数}
-\begin{figure}[H]\centering
-\includegraphics[width=0.92\textwidth]{Figure_3_control_coefficients.jpg}
-\caption{最优控制与归一化传播系数。按计数变量记号，应读作 $N\beta_1/c=p+(1-p)q$ 与 $N\beta_2/c=p(1-q)$；前者随 $q$ 上升，后者随 $q$ 下降。}
-\label{fig:coefficients}\end{figure}
-平台控制 $q_B=1-h/s$ 随 $s$ 下降而下降；完全跟踪 $q=1$ 时，$\beta_2=0$，感染按恢复率衰减。
-
-\subsection{一维成本曲线的数值展示}
-\begin{figure}[H]\centering
-\includegraphics[width=0.9\textwidth]{Figure_4_uniqueness_cost.jpg}
-\caption{容量转完全跟踪位置与总成本的关系。曲线展示一维策略族的严格极小；解析依据为 \eqref{eq:JB-derivative} 及推论\ref{cor:one-dimensional-min}，图形本身不承担全局最优性证明。}
-\label{fig:unique-cost}\end{figure}
-该曲线由容量成本与完全跟踪成本相加得到；所有可测控制之间的比较由全域验证定理完成。
-
-\subsection{可行策略成本比较}
-\begin{figure}[H]\centering
-\includegraphics[width=0.9\textwidth]{Figure_5_policy_cost_comparison.jpg}
-\caption{基准参数下四种可行策略的成本比较。容量边界--完全跟踪组合低于纯容量填充、到容量即完全跟踪和所展示的更早完全跟踪方案。}
-\label{fig:policy-cost}\end{figure}
-
-\subsection{容量、传播概率与结构区间}
-\begin{figure}[H]\centering
-\includegraphics[width=0.9\textwidth]{Figure_6_capacity_dependence.jpg}
-\caption{最小成本随医疗容量变化的数值评价。容量增大时可行控制类扩大，所以值函数不增；自然传播安全时成本为零。}
-\label{fig:capacity}\end{figure}
-\begin{figure}[H]\centering
-\includegraphics[width=0.9\textwidth]{Figure_7_probability_dependence.jpg}
-\caption{配套参数扫描中，相对于纯容量填充的成本节省随传播概率变化的数值结果。该图不构成对所有参数的严格比较静态结论。}
-\label{fig:p-sensitivity}\end{figure}
-\begin{figure}[H]\centering
-\includegraphics[width=0.9\textwidth]{Figure_8_regime_map.jpg}
-\caption{配套 $p$--$K$ 参数扫描的结构图。一般初值的精确判别应使用定义\ref{def:regions}，并允许初始即处于完全跟踪区。}
-\label{fig:regime}\end{figure}
-“先到容量”不是所有参数和初值下的共同结构；自然安全、容量前直接跟踪以及正长度容量平台都可能出现。
-
-\subsection{时变接触率的离散结果}
-保留原接触高峰函数
-\begin{equation}
-c(t)=2\left[1+0.55\exp\left(-\frac12\left(\frac{t-5.5}{1.35}\right)^2\right)\right].
-\label{eq:contact-surge}
-\end{equation}
-它在有限时间仍严格大于 $2$，只在无穷远趋于基准值。
-\begin{figure}[H]\centering
-\includegraphics[width=0.92\textwidth]{Figure_9_time_varying_control.jpg}
-\caption{给定时变接触率时，不同 $\varepsilon$ 下由配套离散求解器得到的控制。这里不声称这些离散解全局唯一，也未证明 $\varepsilon\downarrow0$ 时收敛到原连续问题的最优控制。}
-\label{fig:time-control}\end{figure}
-\begin{figure}[H]\centering
-\includegraphics[width=0.92\textwidth]{Figure_10_time_varying_states.jpg}
-\caption{时变离散计算中的感染轨道。网格容量误差属于离散检查，不替代连续时间可行性和终端安全延拓的独立验证。}
-\label{fig:time-states}\end{figure}
-配套离散计算报告 $\varepsilon=0.04$ 时目标值约为 $2.4280$、网格最大感染比例约为 $0.15$。
-这些数值仅属于上述有限维离散问题，不能据此断言无穷时域最优性、连续轨道唯一性或正则化极限。
-\FloatBarrier
+\input{numerical_scenarios.tex}
 
 \section{模型内的机制解释与理论边界}
 \label{sec:limitations}
@@ -1956,8 +1816,15 @@ $q_{\max}<1$、完全跟踪后残余感染生成、隔离者回流、联合控�
 证明最优控制在全时间轴上几乎处处唯一。
 允许零长度阶段后，非平凡结构为 $0\to1\to0$ 或 $0\to q_B\to1\to0$；
 安全初值唯一采用 $q=0$。
-基准初值的数值评价为 $J^*\approx1.52951116$，相对纯容量填充节省约 $3.10\%$。
+基准初值的解析公式数值评价为 $J^*\approx1.52951116$，相对纯容量填充节省约 $3.10\%$。
 数值计算只评价或核对解析构造，不承担全局充分性证明。
+\ifdefined\TheoryOnly\else
+\ifNumResultsVerified
+五个代表初值的直接配点结果再现了两种等待方式、内部立即完全跟踪，
+以及容量线上切换阈值两侧的不同初始阶段。
+该比较支持所选算例的结构一致性，不构成全域最优性或唯一性的额外证明。
+\fi
+\fi
 
 \ifdefined\TheoryOnly\else
 时变接触率仅保留条件性的验证与唯一性讨论。
@@ -2033,15 +1900,25 @@ A=\frac1{1-p},\qquad B=-\frac p{1-p}.
 后面三类检查可发现错误，但均不等价于对所有可行控制的解析证明，也不是形式化证明系统的验证。
 
 \ifdefined\TheoryOnly\else
+\clearpage
 \section{数值复现说明}
-配套公共解析模块为 \path{python/common_tracing.py}，总生成器为 \path{python/generate_data.py}。
-复现命令为
+主数值实验使用 MATLAB/OpenOCL，入口位于
+\path{matlab/numerical_scenarios/}。从仓库根目录运行：
 \begin{lstlisting}
-python python/generate_data.py
-python python/generate_data.py --recompute-tv
-python python/Figure_1_phase_geometry.py
-python python/Figure_10_time_varying_states.py
+addpath(fullfile(pwd, ...
+ 'tracing_isolation_optimal_control_complete', ...
+ 'matlab', 'numerical_scenarios'));
+run_numerical_scenarios();
+make_numerical_figures();
+export_numerical_latex();
 \end{lstlisting}
+原始数组、实际设置及求解状态与图形分别保存于以下目录：
+\begin{lstlisting}
+data/numerical_scenarios/
+figures/numerical_scenarios/
+\end{lstlisting}
+作图和数值宏导出只读取保存结果；结果分析文字与原始轨道一并核对。
+旧 Python/MATLAB 绘图代码和原数据保留，供既往数值材料追溯。
 图形和 CSV 的复现应与所使用的源码版本、参数及求解器设置一并记录。
 符号恒等式、有限样本和编译检查的作用是发现计算或实现错误，不替代本稿的解析证明。
 \fi
