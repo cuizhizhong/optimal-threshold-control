@@ -1,0 +1,74 @@
+下面记录验证证明中的等号条件，以用于下一节的唯一性分析。
+
+\begin{corollary}[验证等号条件]
+\label{cor:verification-equality}
+在定理\ref{thm:verification}的条件下，固定 $x_0\in\Dcal$。
+对任意满足 $J_{x_0}(q)<\infty$ 的可行控制 $q\in\Uad(x_0)$，记
+\[
+\tau_q:=\tau_{\Acal}(x_0,q).
+\]
+在 $(0,\tau_q)$ 上几乎处处定义
+\begin{equation}
+R_q(t):=\frac{\mathrm d}{\mathrm d t}U(x_q(t))+pcq(t).
+\label{eq:trajectory-verification-residual}
+\end{equation}
+则 $\tau_q<\infty$，$R_q\in L^1(0,\tau_q)$，且 $R_q\ge0$ 几乎处处。
+此外，
+\begin{equation}
+J_{x_0}(q)-V(x_0)
+=
+\int_0^{\tau_q}R_q(t)\dd t
++
+\int_{\tau_q}^{\infty}pcq(t)\dd t.
+\label{eq:verification-gap}
+\end{equation}
+因此，在上述有限成本可行控制类中，$q$ 最优当且仅当
+\begin{equation}
+\begin{cases}
+R_q(t)=0 & \text{几乎处处于 }(0,\tau_q),\\
+q(t)=0 & \text{几乎处处于 }(\tau_q,\infty).
+\end{cases}
+\label{eq:verification-equality-conditions}
+\end{equation}
+当 $x_0\in\Acal$ 时，取 $\tau_q=0$，并将第一个积分理解为零。
+\end{corollary}
+
+\begin{proof}
+由引理\ref{lem:finite-entry}，$\tau_q<\infty$，且
+$x_q(\tau_q)\in\Acal$，故 $U(x_q(\tau_q))=0$。
+若 $\tau_q>0$，引理\ref{lem:trajectory-verification}保证
+$U\circ x_q$ 在 $[0,\tau_q]$ 上绝对连续，且 $R_q\ge0$ 几乎处处。
+绝对连续函数的导数可积，而 $q$ 有界，所以
+$R_q\in L^1(0,\tau_q)$。
+由微积分基本定理，
+\begin{align*}
+\int_0^{\tau_q}R_q(t)\dd t
+&=U(x_q(\tau_q))-U(x_0)
+  +\int_0^{\tau_q}pcq(t)\dd t\\
+&=-U(x_0)+\int_0^{\tau_q}pcq(t)\dd t.
+\end{align*}
+将成本积分在 $\tau_q$ 处分开，并使用
+定理\ref{thm:verification}中的 $U(x_0)=V(x_0)$，
+即得 \eqref{eq:verification-gap}。
+当 $\tau_q=0$ 时，$U(x_0)=V(x_0)=0$，该恒等式同样成立。
+
+式\eqref{eq:verification-gap}右端两项均非负。
+非负可积函数的积分为零，当且仅当该函数几乎处处为零；
+又因 $pc>0$，第二项为零当且仅当 $q=0$ 几乎处处于
+$(\tau_q,\infty)$。
+结合最优性的定义，得到 \eqref{eq:verification-equality-conditions}。
+\end{proof}
+
+\begin{remark}[等号条件与唯一性]
+\label{rem:verification-equality-uniqueness}
+在 $U$ 可微的不安全内部，普通链式法则给出
+\[
+R_q(t)=H_U(x_q(t),q(t))
+\]
+几乎处处成立。
+在状态约束边界上，仍使用引理\ref{lem:trajectory-verification}
+所建立的沿轨道导数关系。
+推论\ref{cor:verification-equality}刻画最优控制的等号条件，
+但不单独蕴含最优控制唯一。
+唯一性还需结合状态约束、切换曲线的横穿性质及状态方程解的唯一性。
+\end{remark}

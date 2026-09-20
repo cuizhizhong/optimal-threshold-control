@@ -1,0 +1,76 @@
+\begin{lemma}[最优轨道在容量弧上的延续]
+\label{lem:no-early-boundary-exit}
+在定理\ref{thm:verification}的条件下，设 $q\in\Uad(x_0)$ 为最优控制，
+其状态轨道为 $x_q=(s_q,i_q)$，首次进入安全集的时间为 $\tau_q$。
+若某个 $t_0\in[0,\tau_q)$ 满足
+\[
+x_q(t_0)=(s_*,K),\qquad s_*>s_B,
+\]
+令
+\[
+t_B:=t_0+T_B(s_*,s_B)
+=t_0+\frac1{cK}\ln\frac{s_*-r}{s_B-r}.
+\]
+则 $t_B<\tau_q$，并且
+\begin{equation}
+i_q(t)=K,\qquad
+s_q(t)=r+(s_*-r)\e^{-cK(t-t_0)}
+\quad(t_0\le t\le t_B).
+\label{eq:optimal-boundary-continuation}
+\end{equation}
+在 $(t_0,t_B)$ 上，$q(t)=q_B(s_q(t))$ 几乎处处。
+特别地，最优轨道不能在 $s>s_B$ 时离开容量边界。
+\end{lemma}
+
+\begin{proof}
+先证明局部结论。
+由 $\Phi(s_*,K)>\Phi_B$ 及连续性，
+可取 $(s_*,K)$ 在 $\Dcal$ 中的一个相对邻域 $O$，
+使其中 $s>s_B$、$\Phi>\Phi_B$，且
+\[
+O\cap\{i<K\}\subset\mathcal W_K.
+\]
+轨道连续性给出 $\delta>0$，使
+$t_0+\delta<\min\{\tau_q,t_B\}$ 且
+$x_q([t_0,t_0+\delta])\subset O$。
+
+若开时间集合
+\[
+E:=\{t\in(t_0,t_0+\delta):i_q(t)<K\}
+\]
+非空，取其任一连通分支 $(a,b)$。
+由连续性及 $i_q(t_0)=K$，有 $a\ge t_0$ 和 $i_q(a)=K$。
+在 $(a,b)$ 上轨道属于 $\mathcal W_K$。
+推论\ref{cor:verification-equality}与
+引理\ref{lem:waiting-HJB}因此给出 $q=0$ 几乎处处于 $(a,b)$。
+于是对每个 $t\in(a,b)$，
+\[
+i_q(t)-K
+=\int_a^t pc\bigl(s_q(v)-h\bigr)i_q(v)\dd v>0,
+\]
+因为 $s_q(v)>s_B>h$ 且 $i_q(v)>0$。
+这与 $i_q<K$ 矛盾，故 $E$ 为空。
+因此 $i_q=K$ 在 $[t_0,t_0+\delta]$ 上成立。
+
+在任何保持 $i_q=K$ 的时间区间上，
+引理\ref{lem:ac-level-set}与状态方程给出
+\[
+q(t)=1-\frac{h}{s_q(t)},\qquad
+\dot s_q(t)=-cK(s_q(t)-r)
+\]
+几乎处处成立，从而得到 \eqref{eq:optimal-boundary-continuation} 中的显式解。
+
+为将局部结论延续至 $t_B$，令
+\[
+t_*:=\sup\{T\in[t_0,t_B]:
+ i_q(t)=K\text{ 对所有 }t\in[t_0,T]\text{ 成立}\}.
+\]
+由局部结论，$t_*>t_0$；由连续性，$i_q=K$ 在 $[t_0,t_*]$ 上成立。
+若 $t_*<t_B$，上述显式解给出 $s_q(t_*)>s_B$。
+同时，该段轨道始终位于安全集外，故 $t_*<\tau_q$。
+在 $t_*$ 处重新应用局部结论，可将 $i_q=K$ 的区间继续向右延长，
+与 $t_*$ 的定义矛盾。
+因此 $t_*=t_B$，所述状态公式与控制公式在整个容量阶段成立。
+最后，$x_q(t_B)=(s_B,K)$，且
+$\Phi(s_B,K)=\Phi_B>\Phi_A$，所以 $t_B<\tau_q$。
+\end{proof}

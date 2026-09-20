@@ -1,0 +1,401 @@
+Latexmk: Invoked as 'e:\software\texlive\2026\texmf-dist\scripts\latexmk\latexmk'
+Rc files read:
+  NONE
+Latexmk: This is Latexmk, John Collins, 15 June 2025. Version 4.87.
+Latexmk: applying rule 'xelatex'...
+Rule 'xelatex':  Reasons for rerun
+Changed files or newly in use/created:
+  E:/work/optimal-threshold-control/tracing_isolation_optimal_control_complete/latex/main.tex
+  main.tex
+Category 'changed_user':
+  E:/work/optimal-threshold-control/tracing_isolation_optimal_control_complete/latex/main.tex
+  main.tex
+
+------------
+Run number 1 of rule 'xelatex'
+------------
+------------
+Running 'xelatex -no-pdf -interaction=nonstopmode -halt-on-error -recorder  "theory_only.tex"'
+------------
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex)
+ restricted \write18 enabled.
+entering extended mode
+(./theory_only.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+(./main.tex (e:/software/texlive/2026/texmf-dist/tex/latex/ctex/ctexart.cls
+(e:/software/texlive/2026/texmf-dist/tex/latex/ctex/config/ctexbackend.cfg)
+(e:/software/texlive/2026/texmf-dist/tex/latex/l3kernel/expl3.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/l3backend/l3backend-xetex.def))
+Document Class: ctexart 2022/07/14 v2.5.10 Chinese adapter for class article (C
+TEX)
+(e:/software/texlive/2026/texmf-dist/tex/latex/ctex/ctexhook.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/ctex/ctexpatch.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/base/fix-cm.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/base/ts1enc.def))
+(e:/software/texlive/2026/texmf-dist/tex/latex/ctex/config/ctexopts.cfg)
+(e:/software/texlive/2026/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(e:/software/texlive/2026/texmf-dist/tex/latex/base/size11.clo))
+(e:/software/texlive/2026/texmf-dist/tex/latex/ctex/engine/ctex-engine-xetex.de
+f (e:/software/texlive/2026/texmf-dist/tex/xelatex/xecjk/xeCJK.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/l3packages/xtemplate/xtemplate.s
+ty) (e:/software/texlive/2026/texmf-dist/tex/latex/fontspec/fontspec.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/l3packages/xparse/xparse.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/base/fontenc.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+(e:/software/texlive/2026/texmf-dist/tex/xelatex/xecjk/xeCJK.cfg)))
+(e:/software/texlive/2026/texmf-dist/tex/latex/zhnumber/zhnumber.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/zhnumber/zhnumber-utf8.cfg))
+(e:/software/texlive/2026/texmf-dist/tex/latex/ctex/scheme/ctex-scheme-chinese-
+article.def
+(e:/software/texlive/2026/texmf-dist/tex/latex/ctex/config/ctex-name-utf8.cfg))
+
+(e:/software/texlive/2026/texmf-dist/tex/latex/ctex/fontset/ctex-fontset-window
+s.def)) (e:/software/texlive/2026/texmf-dist/tex/latex/ctex/config/ctex.cfg)
+(e:/software/texlive/2026/texmf-dist/tex/latex/geometry/geometry.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/graphics/keyval.sty)
+(e:/software/texlive/2026/texmf-dist/tex/generic/iftex/ifvtex.sty
+(e:/software/texlive/2026/texmf-dist/tex/generic/iftex/iftex.sty)))
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsmath/amstext.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(e:/software/texlive/2026/texmf-dist/tex/latex/amscls/amsthm.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/mathtools/mathtools.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/tools/calc.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/mathtools/mhsetup.sty))
+(e:/software/texlive/2026/texmf-dist/tex/latex/tools/bm.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/graphics/graphicx.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/graphics/graphics.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/graphics/trig.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(e:/software/texlive/2026/texmf-dist/tex/latex/graphics-def/xetex.def)))
+(e:/software/texlive/2026/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/tools/longtable.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/tools/array.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/tools/tabularx.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/multirow/multirow.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/enumitem/enumitem.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/setspace/setspace.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/caption/caption.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/caption/caption3.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/caption/ltcaption.sty))
+(e:/software/texlive/2026/texmf-dist/tex/latex/caption/subcaption.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/float/float.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/placeins/placeins.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/xcolor/xcolor.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(e:/software/texlive/2026/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(e:/software/texlive/2026/texmf-dist/tex/latex/hyperref/hyperref.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)
+(e:/software/texlive/2026/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+ (e:/software/texlive/2026/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+(e:/software/texlive/2026/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(e:/software/texlive/2026/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(e:/software/texlive/2026/texmf-dist/tex/generic/infwarerr/infwarerr.sty)))
+(e:/software/texlive/2026/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/hyperref/nameref.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/refcount/refcount.sty)
+(e:/software/texlive/2026/texmf-dist/tex/generic/gettitlestring/gettitlestring.
+sty (e:/software/texlive/2026/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
+(e:/software/texlive/2026/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(e:/software/texlive/2026/texmf-dist/tex/generic/stringenc/stringenc.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(e:/software/texlive/2026/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/hyperref/puenc.def)
+(e:/software/texlive/2026/texmf-dist/tex/latex/url/url.sty)
+(e:/software/texlive/2026/texmf-dist/tex/generic/bitset/bitset.sty
+(e:/software/texlive/2026/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty)))
+(e:/software/texlive/2026/texmf-dist/tex/latex/hyperref/hxetex.def
+(e:/software/texlive/2026/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.st
+y
+(e:/software/texlive/2026/texmf-dist/tex/generic/uniquecounter/uniquecounter.st
+y))) (e:/software/texlive/2026/texmf-dist/tex/latex/natbib/natbib.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/listings/listings.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/listings/lstpatch.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/listings/lstmisc.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/listings/listings.cfg))
+(e:/software/texlive/2026/texmf-dist/tex/xelatex/xecjk/xeCJK-listings.sty)
+==> First Aid for listings.sty no longer applied!
+    Expected:
+        2024/09/23 1.10c (Carsten Heinz)
+    but found:
+        2025/11/14 1.11b (Carsten Heinz)
+    so I'm assuming it got fixed.
+(e:/software/texlive/2026/texmf-dist/tex/latex/siunitx/siunitx.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/translations/translations.sty))
+(e:/software/texlive/2026/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/lastpage/lastpage.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/lastpage/lastpage2e.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/lastpage/lastpagemodern.sty) 
+)) (./theory_only.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+(./theory_only.out) (./theory_only.out)
+(e:/software/texlive/2026/texmf-dist/tex/latex/translations/translations-basic-
+dictionary-english.trsl)
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(./theory_only.toc [1]) [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13]
+[14] [15] [16]
+
+LaTeX Warning: Reference `eq:verification-gap' on page 17 undefined on input li
+ne 1164.
+
+
+LaTeX Warning: Reference `eq:verification-gap' on page 17 undefined on input li
+ne 1167.
+
+
+LaTeX Warning: Reference `eq:verification-equality-conditions' on page 17 undef
+ined on input line 1171.
+
+
+LaTeX Warning: Reference `cor:verification-equality' on page 17 undefined on in
+put line 1183.
+
+[17]
+
+LaTeX Warning: Reference `cor:verification-equality' on page 18 undefined on in
+put line 1234.
+
+
+LaTeX Warning: Reference `eq:optimal-boundary-continuation' on page 18 undefine
+d on input line 1251.
+
+[18]
+
+LaTeX Warning: Reference `cor:verification-equality' on page 19 undefined on in
+put line 1285.
+
+
+LaTeX Warning: Reference `lem:no-early-boundary-exit' on page 19 undefined on i
+nput line 1320.
+
+[19] [20]
+
+LaTeX Warning: Reference `cor:verification-equality' on page 21 undefined on in
+put line 1744.
+
+
+LaTeX Warning: Reference `lem:no-early-boundary-exit' on page 21 undefined on i
+nput line 1746.
+
+[21] (./theory_only.bbl) [22]
+
+enddocument/afterlastpage (AED): lastpage setting LastPage.
+(./theory_only.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) )
+Output written on theory_only.xdv (22 pages, 345920 bytes).
+Transcript written on theory_only.log.
+Latexmk: Getting log file 'theory_only.log'
+Latexmk: Examining 'theory_only.fls'
+Latexmk: Examining 'theory_only.log'
+Latexmk: Found input bbl file 'theory_only.bbl'
+Latexmk: References changed.
+Latexmk: Log file says output to 'theory_only.xdv'
+Latexmk: Using bibtex to make bibliography file(s).
+  ===Source file 'theory_only.bbl' for 'xelatex'
+Latexmk: Found bibliography file(s):
+  ./references.bib
+Latexmk: applying rule 'bibtex theory_only'...
+Rule 'bibtex theory_only':  Reasons for rerun
+Changed files or newly in use/created:
+  theory_only.aux
+
+------------
+Run number 1 of rule 'bibtex theory_only'
+------------
+------------
+Running 'bibtex  "theory_only.aux"'
+------------
+This is BibTeX, Version 0.99e (TeX Live 2026)
+The top-level auxiliary file: theory_only.aux
+The style file: plainnat.bst
+Database file #1: references.bib
+Latexmk: applying rule 'xelatex'...
+Rule 'xelatex':  Reasons for rerun
+Changed files or newly in use/created:
+  theory_only.aux
+  theory_only.toc
+
+------------
+Run number 2 of rule 'xelatex'
+------------
+------------
+Running 'xelatex -no-pdf -interaction=nonstopmode -halt-on-error -recorder  "theory_only.tex"'
+------------
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex)
+ restricted \write18 enabled.
+entering extended mode
+(./theory_only.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+(./main.tex (e:/software/texlive/2026/texmf-dist/tex/latex/ctex/ctexart.cls
+(e:/software/texlive/2026/texmf-dist/tex/latex/ctex/config/ctexbackend.cfg)
+(e:/software/texlive/2026/texmf-dist/tex/latex/l3kernel/expl3.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/l3backend/l3backend-xetex.def))
+Document Class: ctexart 2022/07/14 v2.5.10 Chinese adapter for class article (C
+TEX)
+(e:/software/texlive/2026/texmf-dist/tex/latex/ctex/ctexhook.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/ctex/ctexpatch.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/base/fix-cm.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/base/ts1enc.def))
+(e:/software/texlive/2026/texmf-dist/tex/latex/ctex/config/ctexopts.cfg)
+(e:/software/texlive/2026/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(e:/software/texlive/2026/texmf-dist/tex/latex/base/size11.clo))
+(e:/software/texlive/2026/texmf-dist/tex/latex/ctex/engine/ctex-engine-xetex.de
+f (e:/software/texlive/2026/texmf-dist/tex/xelatex/xecjk/xeCJK.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/l3packages/xtemplate/xtemplate.s
+ty) (e:/software/texlive/2026/texmf-dist/tex/latex/fontspec/fontspec.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/l3packages/xparse/xparse.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/base/fontenc.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+(e:/software/texlive/2026/texmf-dist/tex/xelatex/xecjk/xeCJK.cfg)))
+(e:/software/texlive/2026/texmf-dist/tex/latex/zhnumber/zhnumber.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/zhnumber/zhnumber-utf8.cfg))
+(e:/software/texlive/2026/texmf-dist/tex/latex/ctex/scheme/ctex-scheme-chinese-
+article.def
+(e:/software/texlive/2026/texmf-dist/tex/latex/ctex/config/ctex-name-utf8.cfg))
+
+(e:/software/texlive/2026/texmf-dist/tex/latex/ctex/fontset/ctex-fontset-window
+s.def)) (e:/software/texlive/2026/texmf-dist/tex/latex/ctex/config/ctex.cfg)
+(e:/software/texlive/2026/texmf-dist/tex/latex/geometry/geometry.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/graphics/keyval.sty)
+(e:/software/texlive/2026/texmf-dist/tex/generic/iftex/ifvtex.sty
+(e:/software/texlive/2026/texmf-dist/tex/generic/iftex/iftex.sty)))
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsmath/amstext.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(e:/software/texlive/2026/texmf-dist/tex/latex/amscls/amsthm.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/mathtools/mathtools.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/tools/calc.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/mathtools/mhsetup.sty))
+(e:/software/texlive/2026/texmf-dist/tex/latex/tools/bm.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/graphics/graphicx.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/graphics/graphics.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/graphics/trig.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(e:/software/texlive/2026/texmf-dist/tex/latex/graphics-def/xetex.def)))
+(e:/software/texlive/2026/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/tools/longtable.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/tools/array.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/tools/tabularx.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/multirow/multirow.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/enumitem/enumitem.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/setspace/setspace.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/caption/caption.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/caption/caption3.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/caption/ltcaption.sty))
+(e:/software/texlive/2026/texmf-dist/tex/latex/caption/subcaption.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/float/float.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/placeins/placeins.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/xcolor/xcolor.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(e:/software/texlive/2026/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(e:/software/texlive/2026/texmf-dist/tex/latex/hyperref/hyperref.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)
+(e:/software/texlive/2026/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+ (e:/software/texlive/2026/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+(e:/software/texlive/2026/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(e:/software/texlive/2026/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(e:/software/texlive/2026/texmf-dist/tex/generic/infwarerr/infwarerr.sty)))
+(e:/software/texlive/2026/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/hyperref/nameref.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/refcount/refcount.sty)
+(e:/software/texlive/2026/texmf-dist/tex/generic/gettitlestring/gettitlestring.
+sty (e:/software/texlive/2026/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
+(e:/software/texlive/2026/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(e:/software/texlive/2026/texmf-dist/tex/generic/stringenc/stringenc.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(e:/software/texlive/2026/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/hyperref/puenc.def)
+(e:/software/texlive/2026/texmf-dist/tex/latex/url/url.sty)
+(e:/software/texlive/2026/texmf-dist/tex/generic/bitset/bitset.sty
+(e:/software/texlive/2026/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty)))
+(e:/software/texlive/2026/texmf-dist/tex/latex/hyperref/hxetex.def
+(e:/software/texlive/2026/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.st
+y
+(e:/software/texlive/2026/texmf-dist/tex/generic/uniquecounter/uniquecounter.st
+y))) (e:/software/texlive/2026/texmf-dist/tex/latex/natbib/natbib.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/listings/listings.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/listings/lstpatch.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/listings/lstmisc.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/listings/listings.cfg))
+(e:/software/texlive/2026/texmf-dist/tex/xelatex/xecjk/xeCJK-listings.sty)
+==> First Aid for listings.sty no longer applied!
+    Expected:
+        2024/09/23 1.10c (Carsten Heinz)
+    but found:
+        2025/11/14 1.11b (Carsten Heinz)
+    so I'm assuming it got fixed.
+(e:/software/texlive/2026/texmf-dist/tex/latex/siunitx/siunitx.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/translations/translations.sty))
+(e:/software/texlive/2026/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/lastpage/lastpage.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/lastpage/lastpage2e.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/lastpage/lastpagemodern.sty) 
+)) (./theory_only.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+(./theory_only.out) (./theory_only.out)
+(e:/software/texlive/2026/texmf-dist/tex/latex/translations/translations-basic-
+dictionary-english.trsl)
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(./theory_only.toc [1]) [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13]
+[14] [15] [16] [17] [18] [19] [20] [21] (./theory_only.bbl) [22]
+
+enddocument/afterlastpage (AED): lastpage setting LastPage.
+(./theory_only.aux) ) )
+Output written on theory_only.xdv (22 pages, 347368 bytes).
+Transcript written on theory_only.log.
+Latexmk: Getting log file 'theory_only.log'
+Latexmk: Examining 'theory_only.fls'
+Latexmk: Examining 'theory_only.log'
+Latexmk: Found input bbl file 'theory_only.bbl'
+Latexmk: Log file says output to 'theory_only.xdv'
+Latexmk: Using bibtex to make bibliography file(s).
+  ===Source file 'theory_only.bbl' for 'xelatex'
+Latexmk: Found bibliography file(s):
+  ./references.bib
+Latexmk: applying rule 'xdvipdfmx'...
+Rule 'xdvipdfmx':  Reasons for rerun
+Changed files or newly in use/created:
+  /e/work/optimal-threshold-control/tracing_isolation_optimal_control_complete/latex/theory_only.xdv
+  theory_only.xdv
+Category 'changed_source_rules':
+  xelatex
+Category 'changed_user':
+  /e/work/optimal-threshold-control/tracing_isolation_optimal_control_complete/latex/theory_only.xdv
+
+------------
+Run number 1 of rule 'xdvipdfmx'
+------------
+------------
+Running 'xdvipdfmx -E -o "theory_only.pdf"  "theory_only.xdv"'
+------------
+theory_only.xdv -> theory_only.pdf
+[1][2][3][4][5][6][7][8][9][10][11][12][13][14][15][16][17][18][19][20][21][22]
+341682 bytes written
+Latexmk: All targets (theory_only.xdv theory_only.pdf) are up-to-date
+

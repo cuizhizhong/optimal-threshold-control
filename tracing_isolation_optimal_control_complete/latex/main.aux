@@ -147,89 +147,96 @@
 \newlabel{sec:global-verification}{{11}{17}{全局最优性验证}{section.11}{}}
 \newlabel{thm:verification}{{11.1}{17}{常接触率下的全局最优性与达到性}{theorem.11.1}{}}
 \newlabel{eq:global-optimality}{{82}{17}{常接触率下的全局最优性与达到性}{equation.82}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {12}常接触率下控制与轨道的唯一性}{18}{section.12}\protected@file@percent }
-\newlabel{sec:constant-uniqueness}{{12}{18}{常接触率下控制与轨道的唯一性}{section.12}{}}
-\newlabel{thm:unique-q}{{12.1}{18}{全时间轴上的几乎处处唯一性}{theorem.12.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {12.1}一维切换成本与全局结论的关系}{18}{subsection.12.1}\protected@file@percent }
-\newlabel{eq:JD}{{83}{19}{一维切换成本与全局结论的关系}{equation.83}{}}
-\newlabel{eq:JB}{{84}{19}{一维切换成本与全局结论的关系}{equation.84}{}}
-\newlabel{eq:JD-derivative}{{85}{19}{一维切换成本与全局结论的关系}{equation.85}{}}
-\newlabel{eq:JB-derivative}{{86}{19}{一维切换成本与全局结论的关系}{equation.86}{}}
-\newlabel{cor:one-dimensional-min}{{12.2}{19}{候选策略族中的唯一极小}{theorem.12.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {12.2}从控制到两个传播系数}{19}{subsection.12.2}\protected@file@percent }
-\newlabel{eq:q-to-betas}{{87}{19}{从控制到两个传播系数}{equation.87}{}}
-\newlabel{eq:q-inversion-known-c}{{88}{19}{从控制到两个传播系数}{equation.88}{}}
-\newlabel{eq:c-inversion}{{89}{19}{从控制到两个传播系数}{equation.89}{}}
-\newlabel{eq:q-inversion}{{90}{19}{从控制到两个传播系数}{equation.90}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {13}时变接触率 $c(t)$：条件性结论}{19}{section.13}\protected@file@percent }
-\newlabel{sec:time-varying}{{13}{19}{\texorpdfstring {时变接触率 $c(t)$：条件性结论}{时变接触率：条件性结论}}{section.13}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {13.1}非自治 HJB 方程}{20}{subsection.13.1}\protected@file@percent }
-\newlabel{eq:time-HJB}{{91}{20}{非自治 HJB 方程}{equation.91}{}}
-\newlabel{eq:time-boundary-set}{{92}{20}{非自治 HJB 方程}{equation.92}{}}
-\newlabel{eq:time-switch}{{93}{20}{非自治 HJB 方程}{equation.93}{}}
-\newlabel{prop:time-conditional}{{13.1}{20}{条件性的时变唯一性充分条件}{theorem.13.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {13.2}有限时域严格凸正则化}{20}{subsection.13.2}\protected@file@percent }
-\newlabel{eq:regularized-cost}{{94}{20}{有限时域严格凸正则化}{equation.94}{}}
-\newlabel{prop:regularized-pointwise}{{13.2}{20}{唯一的点态正则化极小元}{theorem.13.2}{}}
-\newlabel{eq:projection-feedback}{{95}{20}{唯一的点态正则化极小元}{equation.95}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {14}同时控制接触率与跟踪比例时的限制}{21}{section.14}\protected@file@percent }
-\newlabel{eq:joint-cost}{{96}{21}{同时控制接触率与跟踪比例时的限制}{equation.96}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {15}数值算法}{21}{section.15}\protected@file@percent }
-\newlabel{sec:numerical-method}{{15}{21}{数值算法}{section.15}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {15.1}常接触率：解析几何降维}{21}{subsection.15.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {15.2}时变接触率：离散求解与其证据范围}{21}{subsection.15.2}\protected@file@percent }
-\newlabel{eq:discrete-objective}{{97}{21}{时变接触率：离散求解与其证据范围}{equation.97}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {16}基准参数与数值结果}{22}{section.16}\protected@file@percent }
-\newlabel{sec:numerical-results}{{16}{22}{基准参数与数值结果}{section.16}{}}
-\newlabel{eq:baseline}{{98}{22}{基准参数与数值结果}{equation.98}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces 基准参数下的解析公式数值评价}}{22}{table.caption.2}\protected@file@percent }
+\newlabel{cor:verification-equality}{{11.2}{18}{验证等号条件}{theorem.11.2}{}}
+\newlabel{eq:trajectory-verification-residual}{{83}{18}{验证等号条件}{equation.83}{}}
+\newlabel{eq:verification-gap}{{84}{18}{验证等号条件}{equation.84}{}}
+\newlabel{eq:verification-equality-conditions}{{85}{18}{验证等号条件}{equation.85}{}}
+\newlabel{rem:verification-equality-uniqueness}{{11.3}{18}{等号条件与唯一性}{theorem.11.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {12}常接触率下控制与轨道的唯一性}{19}{section.12}\protected@file@percent }
+\newlabel{sec:constant-uniqueness}{{12}{19}{常接触率下控制与轨道的唯一性}{section.12}{}}
+\newlabel{lem:no-early-boundary-exit}{{12.1}{19}{最优轨道在容量弧上的延续}{theorem.12.1}{}}
+\newlabel{eq:optimal-boundary-continuation}{{86}{19}{最优轨道在容量弧上的延续}{equation.86}{}}
+\newlabel{thm:unique-q}{{12.2}{20}{全时间轴上的几乎处处唯一性}{theorem.12.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.1}一维切换成本与全局结论的关系}{21}{subsection.12.1}\protected@file@percent }
+\newlabel{eq:JD}{{87}{21}{一维切换成本与全局结论的关系}{equation.87}{}}
+\newlabel{eq:JB}{{88}{21}{一维切换成本与全局结论的关系}{equation.88}{}}
+\newlabel{eq:JD-derivative}{{89}{21}{一维切换成本与全局结论的关系}{equation.89}{}}
+\newlabel{eq:JB-derivative}{{90}{21}{一维切换成本与全局结论的关系}{equation.90}{}}
+\newlabel{cor:one-dimensional-min}{{12.3}{21}{候选策略族中的唯一极小}{theorem.12.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.2}从控制到两个传播系数}{21}{subsection.12.2}\protected@file@percent }
+\newlabel{eq:q-to-betas}{{91}{21}{从控制到两个传播系数}{equation.91}{}}
+\newlabel{eq:q-inversion-known-c}{{92}{21}{从控制到两个传播系数}{equation.92}{}}
+\newlabel{eq:c-inversion}{{93}{21}{从控制到两个传播系数}{equation.93}{}}
+\newlabel{eq:q-inversion}{{94}{21}{从控制到两个传播系数}{equation.94}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {13}时变接触率 $c(t)$：条件性结论}{22}{section.13}\protected@file@percent }
+\newlabel{sec:time-varying}{{13}{22}{\texorpdfstring {时变接触率 $c(t)$：条件性结论}{时变接触率：条件性结论}}{section.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.1}非自治 HJB 方程}{22}{subsection.13.1}\protected@file@percent }
+\newlabel{eq:time-HJB}{{95}{22}{非自治 HJB 方程}{equation.95}{}}
+\newlabel{eq:time-boundary-set}{{96}{22}{非自治 HJB 方程}{equation.96}{}}
+\newlabel{eq:time-switch}{{97}{22}{非自治 HJB 方程}{equation.97}{}}
+\newlabel{prop:time-conditional}{{13.1}{22}{条件性的时变唯一性充分条件}{theorem.13.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.2}有限时域严格凸正则化}{23}{subsection.13.2}\protected@file@percent }
+\newlabel{eq:regularized-cost}{{98}{23}{有限时域严格凸正则化}{equation.98}{}}
+\newlabel{prop:regularized-pointwise}{{13.2}{23}{唯一的点态正则化极小元}{theorem.13.2}{}}
+\newlabel{eq:projection-feedback}{{99}{23}{唯一的点态正则化极小元}{equation.99}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {14}同时控制接触率与跟踪比例时的限制}{23}{section.14}\protected@file@percent }
+\newlabel{eq:joint-cost}{{100}{23}{同时控制接触率与跟踪比例时的限制}{equation.100}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {15}数值算法}{23}{section.15}\protected@file@percent }
+\newlabel{sec:numerical-method}{{15}{23}{数值算法}{section.15}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {15.1}常接触率：解析几何降维}{23}{subsection.15.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {15.2}时变接触率：离散求解与其证据范围}{24}{subsection.15.2}\protected@file@percent }
+\newlabel{eq:discrete-objective}{{101}{24}{时变接触率：离散求解与其证据范围}{equation.101}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {16}基准参数与数值结果}{24}{section.16}\protected@file@percent }
+\newlabel{sec:numerical-results}{{16}{24}{基准参数与数值结果}{section.16}{}}
+\newlabel{eq:baseline}{{102}{24}{基准参数与数值结果}{equation.102}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces 基准参数下的解析公式数值评价}}{24}{table.caption.2}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{tab:baseline-results}{{1}{22}{基准参数下的解析公式数值评价}{table.caption.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {16.1}相平面结构}{23}{subsection.16.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces 常接触率下的相平面几何。虚线为无隔离轨道，点线为最大安全轨道，实细线为切换曲线，粗线为最优轨道。最优轨道先自然到达容量，沿 $i=K$ 运行，再转入 $q=1$，最后在安全边界解除隔离。}}{23}{figure.caption.3}\protected@file@percent }
-\newlabel{fig:phase}{{1}{23}{常接触率下的相平面几何。虚线为无隔离轨道，点线为最大安全轨道，实细线为切换曲线，粗线为最优轨道。最优轨道先自然到达容量，沿 $i=K$ 运行，再转入 $q=1$，最后在安全边界解除隔离。}{figure.caption.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {16.2}状态时间序列}{24}{subsection.16.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces 最优策略下的状态时间序列。感染比例首次达到 $K$ 后保持一段时间，转入完全跟踪后下降，解除隔离以后沿最大安全轨道自然演化。}}{24}{figure.caption.4}\protected@file@percent }
-\newlabel{fig:states}{{2}{24}{最优策略下的状态时间序列。感染比例首次达到 $K$ 后保持一段时间，转入完全跟踪后下降，解除隔离以后沿最大安全轨道自然演化。}{figure.caption.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {16.3}一个控制产生两个不同系数}{25}{subsection.16.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces 最优控制与归一化传播系数。按计数变量记号，应读作 $N\beta _1/c=p+(1-p)q$ 与 $N\beta _2/c=p(1-q)$；前者随 $q$ 上升，后者随 $q$ 下降。}}{25}{figure.caption.5}\protected@file@percent }
-\newlabel{fig:coefficients}{{3}{25}{最优控制与归一化传播系数。按计数变量记号，应读作 $N\beta _1/c=p+(1-p)q$ 与 $N\beta _2/c=p(1-q)$；前者随 $q$ 上升，后者随 $q$ 下降。}{figure.caption.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {16.4}一维成本曲线的数值展示}{25}{subsection.16.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces 容量转完全跟踪位置与总成本的关系。曲线展示一维策略族的严格极小；解析依据为 \eqref  {eq:JB-derivative} 及推论\ref {cor:one-dimensional-min}，图形本身不承担全局最优性证明。}}{25}{figure.caption.6}\protected@file@percent }
-\newlabel{fig:unique-cost}{{4}{25}{容量转完全跟踪位置与总成本的关系。曲线展示一维策略族的严格极小；解析依据为 \eqref {eq:JB-derivative} 及推论\ref {cor:one-dimensional-min}，图形本身不承担全局最优性证明。}{figure.caption.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {16.5}可行策略成本比较}{26}{subsection.16.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces 基准参数下四种可行策略的成本比较。容量边界--完全跟踪组合低于纯容量填充、到容量即完全跟踪和所展示的更早完全跟踪方案。}}{26}{figure.caption.7}\protected@file@percent }
-\newlabel{fig:policy-cost}{{5}{26}{基准参数下四种可行策略的成本比较。容量边界--完全跟踪组合低于纯容量填充、到容量即完全跟踪和所展示的更早完全跟踪方案。}{figure.caption.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {16.6}容量、传播概率与结构区间}{26}{subsection.16.6}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces 最小成本随医疗容量变化的数值评价。容量增大时可行控制类扩大，所以值函数不增；自然传播安全时成本为零。}}{26}{figure.caption.8}\protected@file@percent }
-\newlabel{fig:capacity}{{6}{26}{最小成本随医疗容量变化的数值评价。容量增大时可行控制类扩大，所以值函数不增；自然传播安全时成本为零。}{figure.caption.8}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces 配套参数扫描中，相对于纯容量填充的成本节省随传播概率变化的数值结果。该图不构成对所有参数的严格比较静态结论。}}{27}{figure.caption.9}\protected@file@percent }
-\newlabel{fig:p-sensitivity}{{7}{27}{配套参数扫描中，相对于纯容量填充的成本节省随传播概率变化的数值结果。该图不构成对所有参数的严格比较静态结论。}{figure.caption.9}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces 配套 $p$--$K$ 参数扫描的结构图。一般初值的精确判别应使用定义\ref {def:regions}，并允许初始即处于完全跟踪区。}}{27}{figure.caption.10}\protected@file@percent }
-\newlabel{fig:regime}{{8}{27}{配套 $p$--$K$ 参数扫描的结构图。一般初值的精确判别应使用定义\ref {def:regions}，并允许初始即处于完全跟踪区。}{figure.caption.10}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {16.7}时变接触率的离散结果}{28}{subsection.16.7}\protected@file@percent }
-\newlabel{eq:contact-surge}{{99}{28}{时变接触率的离散结果}{equation.99}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces 给定时变接触率时，不同 $\varepsilon $ 下由配套离散求解器得到的控制。这里不声称这些离散解全局唯一，也未证明 $\varepsilon \downarrow 0$ 时收敛到原连续问题的最优控制。}}{28}{figure.caption.11}\protected@file@percent }
-\newlabel{fig:time-control}{{9}{28}{给定时变接触率时，不同 $\varepsilon $ 下由配套离散求解器得到的控制。这里不声称这些离散解全局唯一，也未证明 $\varepsilon \downarrow 0$ 时收敛到原连续问题的最优控制。}{figure.caption.11}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces 时变离散计算中的感染轨道。网格容量误差属于离散检查，不替代连续时间可行性和终端安全延拓的独立验证。}}{29}{figure.caption.12}\protected@file@percent }
-\newlabel{fig:time-states}{{10}{29}{时变离散计算中的感染轨道。网格容量误差属于离散检查，不替代连续时间可行性和终端安全延拓的独立验证。}{figure.caption.12}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {17}模型内的机制解释与理论边界}{29}{section.17}\protected@file@percent }
-\newlabel{sec:limitations}{{17}{29}{模型内的机制解释与理论边界}{section.17}{}}
-\newlabel{rem:unproved-extensions}{{17.1}{29}{本稿未完成、且未用于主定理的扩展证明}{theorem.17.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {18}主要结论}{29}{section.18}\protected@file@percent }
-\newlabel{sec:conclusions}{{18}{29}{主要结论}{section.18}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {A}完全跟踪成本导数的逐步计算}{30}{appendix.A}\protected@file@percent }
-\newlabel{app:W-derivatives}{{A}{30}{完全跟踪成本导数的逐步计算}{appendix.A}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {B}容量边界成本积分的逐步计算}{30}{appendix.B}\protected@file@percent }
-\newlabel{app:capacity-integral}{{B}{30}{容量边界成本积分的逐步计算}{appendix.B}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {C}证明依赖与校验口径}{30}{appendix.C}\protected@file@percent }
-\newlabel{app:proof-scope}{{C}{30}{证明依赖与校验口径}{appendix.C}{}}
+\newlabel{tab:baseline-results}{{1}{24}{基准参数下的解析公式数值评价}{table.caption.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {16.1}相平面结构}{25}{subsection.16.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces 常接触率下的相平面几何。虚线为无隔离轨道，点线为最大安全轨道，实细线为切换曲线，粗线为最优轨道。最优轨道先自然到达容量，沿 $i=K$ 运行，再转入 $q=1$，最后在安全边界解除隔离。}}{25}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:phase}{{1}{25}{常接触率下的相平面几何。虚线为无隔离轨道，点线为最大安全轨道，实细线为切换曲线，粗线为最优轨道。最优轨道先自然到达容量，沿 $i=K$ 运行，再转入 $q=1$，最后在安全边界解除隔离。}{figure.caption.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {16.2}状态时间序列}{26}{subsection.16.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces 最优策略下的状态时间序列。感染比例首次达到 $K$ 后保持一段时间，转入完全跟踪后下降，解除隔离以后沿最大安全轨道自然演化。}}{26}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:states}{{2}{26}{最优策略下的状态时间序列。感染比例首次达到 $K$ 后保持一段时间，转入完全跟踪后下降，解除隔离以后沿最大安全轨道自然演化。}{figure.caption.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {16.3}一个控制产生两个不同系数}{27}{subsection.16.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces 最优控制与归一化传播系数。按计数变量记号，应读作 $N\beta _1/c=p+(1-p)q$ 与 $N\beta _2/c=p(1-q)$；前者随 $q$ 上升，后者随 $q$ 下降。}}{27}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:coefficients}{{3}{27}{最优控制与归一化传播系数。按计数变量记号，应读作 $N\beta _1/c=p+(1-p)q$ 与 $N\beta _2/c=p(1-q)$；前者随 $q$ 上升，后者随 $q$ 下降。}{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {16.4}一维成本曲线的数值展示}{27}{subsection.16.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces 容量转完全跟踪位置与总成本的关系。曲线展示一维策略族的严格极小；解析依据为 \eqref  {eq:JB-derivative} 及推论\ref {cor:one-dimensional-min}，图形本身不承担全局最优性证明。}}{27}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:unique-cost}{{4}{27}{容量转完全跟踪位置与总成本的关系。曲线展示一维策略族的严格极小；解析依据为 \eqref {eq:JB-derivative} 及推论\ref {cor:one-dimensional-min}，图形本身不承担全局最优性证明。}{figure.caption.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {16.5}可行策略成本比较}{28}{subsection.16.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces 基准参数下四种可行策略的成本比较。容量边界--完全跟踪组合低于纯容量填充、到容量即完全跟踪和所展示的更早完全跟踪方案。}}{28}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:policy-cost}{{5}{28}{基准参数下四种可行策略的成本比较。容量边界--完全跟踪组合低于纯容量填充、到容量即完全跟踪和所展示的更早完全跟踪方案。}{figure.caption.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {16.6}容量、传播概率与结构区间}{28}{subsection.16.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces 最小成本随医疗容量变化的数值评价。容量增大时可行控制类扩大，所以值函数不增；自然传播安全时成本为零。}}{28}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:capacity}{{6}{28}{最小成本随医疗容量变化的数值评价。容量增大时可行控制类扩大，所以值函数不增；自然传播安全时成本为零。}{figure.caption.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces 配套参数扫描中，相对于纯容量填充的成本节省随传播概率变化的数值结果。该图不构成对所有参数的严格比较静态结论。}}{29}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:p-sensitivity}{{7}{29}{配套参数扫描中，相对于纯容量填充的成本节省随传播概率变化的数值结果。该图不构成对所有参数的严格比较静态结论。}{figure.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces 配套 $p$--$K$ 参数扫描的结构图。一般初值的精确判别应使用定义\ref {def:regions}，并允许初始即处于完全跟踪区。}}{29}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:regime}{{8}{29}{配套 $p$--$K$ 参数扫描的结构图。一般初值的精确判别应使用定义\ref {def:regions}，并允许初始即处于完全跟踪区。}{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {16.7}时变接触率的离散结果}{30}{subsection.16.7}\protected@file@percent }
+\newlabel{eq:contact-surge}{{103}{30}{时变接触率的离散结果}{equation.103}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces 给定时变接触率时，不同 $\varepsilon $ 下由配套离散求解器得到的控制。这里不声称这些离散解全局唯一，也未证明 $\varepsilon \downarrow 0$ 时收敛到原连续问题的最优控制。}}{30}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:time-control}{{9}{30}{给定时变接触率时，不同 $\varepsilon $ 下由配套离散求解器得到的控制。这里不声称这些离散解全局唯一，也未证明 $\varepsilon \downarrow 0$ 时收敛到原连续问题的最优控制。}{figure.caption.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces 时变离散计算中的感染轨道。网格容量误差属于离散检查，不替代连续时间可行性和终端安全延拓的独立验证。}}{31}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:time-states}{{10}{31}{时变离散计算中的感染轨道。网格容量误差属于离散检查，不替代连续时间可行性和终端安全延拓的独立验证。}{figure.caption.12}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {17}模型内的机制解释与理论边界}{31}{section.17}\protected@file@percent }
+\newlabel{sec:limitations}{{17}{31}{模型内的机制解释与理论边界}{section.17}{}}
+\newlabel{rem:unproved-extensions}{{17.1}{31}{本稿未完成、且未用于主定理的扩展证明}{theorem.17.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {18}主要结论}{31}{section.18}\protected@file@percent }
+\newlabel{sec:conclusions}{{18}{31}{主要结论}{section.18}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}完全跟踪成本导数的逐步计算}{32}{appendix.A}\protected@file@percent }
+\newlabel{app:W-derivatives}{{A}{32}{完全跟踪成本导数的逐步计算}{appendix.A}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {B}容量边界成本积分的逐步计算}{32}{appendix.B}\protected@file@percent }
+\newlabel{app:capacity-integral}{{B}{32}{容量边界成本积分的逐步计算}{appendix.B}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {C}证明依赖与校验口径}{32}{appendix.C}\protected@file@percent }
+\newlabel{app:proof-scope}{{C}{32}{证明依赖与校验口径}{appendix.C}{}}
 \bibstyle{plainnat}
 \bibdata{references}
 \bibcite{Liberzon2012}{{1}{2012}{{Liberzon}}{{}}}
 \bibcite{MicloSpiroWeibull2022}{{2}{2022}{{Miclo et~al.}}{{Miclo, Spiro, and Weibull}}}
-\@writefile{toc}{\contentsline {section}{\numberline {D}数值复现说明}{31}{appendix.D}\protected@file@percent }
-\newlabel{LastPage}{{D}{31}{数值复现说明}{page.31}{}}
-\gdef\lastpage@lastpage{31}
-\gdef\lastpage@lastpageHy{31}
-\gdef \@abspage@last{31}
+\@writefile{toc}{\contentsline {section}{\numberline {D}数值复现说明}{33}{appendix.D}\protected@file@percent }
+\newlabel{LastPage}{{D}{33}{数值复现说明}{page.33}{}}
+\gdef\lastpage@lastpage{33}
+\gdef\lastpage@lastpageHy{33}
+\gdef \@abspage@last{33}

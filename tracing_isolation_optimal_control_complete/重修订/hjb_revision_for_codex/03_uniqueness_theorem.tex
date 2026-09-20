@@ -1,0 +1,87 @@
+\begin{theorem}[全时间轴上的几乎处处唯一性]
+\label{thm:unique-q}
+在定理\ref{thm:verification}的基本模型条件下，
+从同一 $x_0\in\Dcal$ 出发的最优状态轨道唯一，
+最优控制 $q^*$ 在 $[0,\infty)$ 上几乎处处唯一。
+平台上不要求 Hamiltonian 的点态极小集为单点。
+\end{theorem}
+
+\begin{proof}
+若 $x_0\in\Acal$，则 $V(x_0)=0$。
+由于 $pc>0$，任意最优控制都满足 $q=0$ 几乎处处；
+状态方程解的唯一性随即给出最优轨道唯一。
+以下设 $x_0\notin\Acal$。
+
+任取最优控制 $q$，记其状态轨道为 $x_q=(s_q,i_q)$，
+首次进入安全集的时间为 $\tau_q$。
+由定理\ref{thm:verification}，该控制成本有限。
+推论\ref{cor:verification-equality}给出
+\[
+R_q=0\quad\text{几乎处处于 }(0,\tau_q),\qquad
+q=0\quad\text{几乎处处于 }(\tau_q,\infty).
+\]
+
+\emph{各分区内的控制选择。}
+在自然等待区的时间集合上，
+引理\ref{lem:waiting-HJB}与普通链式法则给出
+$R_q=q\Sigma_U$，其中 $\Sigma_U>0$，
+故 $q=0$ 几乎处处。
+在 $\mathcal T\cap\{i<K\}$ 的时间集合上，
+命题\ref{prop:all-HJB}给出
+$R_q=(1-q)H_{0,U}$，其中 $H_{0,U}>0$，
+故 $q=1$ 几乎处处。
+
+对于时间集合
+\[
+E_K^-:=\{t\in(0,\tau_q):i_q(t)=K,\ h<s_q(t)<s_B\},
+\]
+引理\ref{lem:trajectory-verification}的容量边界计算给出
+\[
+R_q(t)
+=\bigl(1-q_B(s_q(t))\bigr)H_{0,W}(x_q(t))>0
+\]
+对 $E_K^-$ 中几乎所有时刻成立。
+由于最优控制满足 $R_q=0$ 几乎处处，$E_K^-$ 必为零测集。
+因此，在轨道属于整个 $\mathcal T$ 的时间集合上，
+$q=1$ 几乎处处。
+
+\emph{容量弧上的延续。}
+在容量时间集合 $\{t<\tau_q:i_q(t)=K,\ s_q(t)>h\}$ 上，
+引理\ref{lem:ac-level-set}及状态方程强制
+$q=q_B(s_q)$ 几乎处处。
+当最优轨道到达 $(s_*,K)$ 且 $s_*>s_B$ 时，
+引理\ref{lem:no-early-boundary-exit}进一步保证其沿容量弧运行，
+直至在唯一确定的时间到达 $(s_B,K)$。
+这一步使用轨道可行性，而不使用平台上点态极小元的唯一性。
+
+\emph{切换曲线上的行为。}
+引理\ref{lem:strict-crossing}保证轨道在 $\Gamma_K$ 上的时间集合为零测集。
+若 $x_q(t_0)\in\Gamma_K$，包括 $x_q(t_0)=(s_B,K)$ 的情形，
+可取位于不安全区域且满足 $s>e$ 的相对小邻域。
+式\eqref{eq:strict-crossing-time}给出
+$\chi(x_q(t))>0$ 对充分接近 $t_0$ 的所有 $t>t_0$ 成立。
+结合引理\ref{lem:chi-regions}及可行性 $i_q\le K$，
+可知轨道立即进入 $\mathcal T$。
+因此，切换点处的瞬时控制取值不产生另一条最优延续轨道。
+
+\emph{各阶段轨道的唯一确定。}
+在自然等待阶段，$q=0$ 几乎处处，
+因而状态方程解的唯一性确定轨道，直至其首次到达切换曲线或容量边界。
+两种等待分支的公共界面不改变该向量场。
+首次事件的唯一性由推论\ref{cor:Gamma-labels}和相应触点的定义给出；
+其有限时间达到性已在命题\ref{prop:candidate-attainment}中证明。
+若到达容量平台，则上一段确定其唯一的容量弧延续。
+若到达切换曲线，则轨道立即进入完全跟踪区。
+
+在完全跟踪区，$q=1$ 几乎处处，
+由引理\ref{lem:tracking-region}及状态方程解的唯一性，
+轨道被唯一确定至首次到达 $\Acal$，且此前不会返回等待区。
+初值已在容量平台、切换曲线或完全跟踪区的情形，
+分别从对应阶段开始使用相同论证。
+首次进入安全集后，$q=0$ 几乎处处，
+再次由状态方程解的唯一性确定后续轨道。
+
+因此，从同一初值出发，任意最优控制均生成同一条分段状态轨道，
+各阶段的到达时间也相同。
+上述控制选择条件进而给出所有最优控制在 $[0,\infty)$ 上几乎处处相等。
+\end{proof}
