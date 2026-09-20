@@ -39,5 +39,35 @@
   ],
   "neutral_guess_passed": true,
   "refinement_passed": true,
-  "legacy_interval_cost": 1.5295254516585441
+  "legacy_interval_cost": 1.5295254516585441,
+  "revision": {
+    "neutral_E2_passed": true,
+    "neutral_E2_cost_difference": 5.984102102729594e-13,
+    "neutral_E2_max_control_difference": 1.2996966836098522e-08,
+    "capacity_exit_checks": {
+      "E2": {
+        "status": "single_cell_contains_theory",
+        "interval": [
+          5.849999999999989,
+          5.887499999999989
+        ],
+        "cells": 1,
+        "theory_time": 5.869502535817352,
+        "contains_theory": true,
+        "supported": true
+      },
+      "E4": {
+        "status": "single_cell_contains_theory",
+        "interval": [
+          1.0499999999999998,
+          1.0875
+        ],
+        "cells": 1,
+        "theory_time": 1.080775282923847,
+        "contains_theory": true,
+        "supported": true
+      }
+    },
+    "E4_signed_cost_difference": -3.6827584466436747e-06
+  }
 }

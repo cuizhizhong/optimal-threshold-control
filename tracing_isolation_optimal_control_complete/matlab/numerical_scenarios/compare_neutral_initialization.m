@@ -1,0 +1,26 @@
+function out = compare_neutral_initialization(main,neutral,opts)
+% 初猜复核与主算例验证分开，不由成本接近推断可行性或求解成功。
+out=struct('status','missing','passed',false,'cost_difference',NaN, ...
+    'absolute_cost_difference',NaN,'cost_tolerance',opts.neutral_cost_tolerance, ...
+    'same_problem',false,'initialization_valid',false,'structure_matches',false, ...
+    'numerical_checks_passed',false);
+if isempty(neutral), return; end
+if ~isfield(neutral,'assessment') || ~isfield(neutral,'J_openocl')
+    out.status='incomplete'; return
+end
+a=main.solver_settings; b=neutral.solver_settings;
+a=rmfield(a,'initialization'); b=rmfield(b,'initialization');
+out.same_problem=isequal(a,b) && isequal(main.parameters,neutral.parameters) && ...
+    isequal(main.x0,neutral.x0);
+out.initialization_valid=strcmp(neutral.initialization.type,'constant_control') && ...
+    neutral.initialization.control==opts.neutral_control && ...
+    strcmp(neutral.solver_settings.initialization,'constant_control');
+out.cost_difference=neutral.J_openocl-main.J_openocl;
+out.absolute_cost_difference=abs(out.cost_difference);
+out.structure_matches=strcmp(main.assessment.observed_structure,neutral.assessment.observed_structure);
+out.numerical_checks_passed=neutral.success && neutral.assessment.passed;
+out.passed=out.same_problem && out.initialization_valid && out.structure_matches && ...
+    out.numerical_checks_passed && isfinite(out.cost_difference) && ...
+    out.absolute_cost_difference<=out.cost_tolerance;
+if out.passed, out.status='passed'; else, out.status='failed'; end
+end

@@ -9,7 +9,14 @@
 \providecommand{\NumJOclEThree}{0.433999}
 \providecommand{\NumJOclEFour}{1.268831}
 \providecommand{\NumJOclEFive}{0.536256}
+\providecommand{\NumExitETwoStart}{5.85000000}
+\providecommand{\NumExitETwoEnd}{5.88750000}
+\providecommand{\NumExitEFourStart}{1.05000000}
+\providecommand{\NumExitEFourEnd}{1.08750000}
+\providecommand{\NumNeutralETwoCostDifference}{5.98410210273e-13}
+\providecommand{\NumEFourSignedCostDifference}{-3.68275844664e-06}
+\providecommand{\NumEFourCapacityExcess}{7.70286958773e-07}
 \providecommand{\NumFindingWaiting}{实际控制输出中，E1 和 E2 分别识别出 $0\to 1\to 0$ 与 $0\to q_B\to 1\to 0$。按控制区间识别，E1 的首个完全跟踪区间从 $t\approx 7.050$ 开始，其状态约为 $(0.5072,0.1330)$，感染比例低于容量；E2 则出现正长度容量平台，随后转为完全跟踪。跳跃附近存在有限个过渡单元，因此这里的事件时刻只按当前网格精度解释。}
-\providecommand{\NumFindingTrackingBoundary}{E3、E4、E5 的实际阶段依次为 $1\to 0$、$q_B\to 1\to 0$ 和 $1\to 0$。E3 与 E5 均从初始正长度区间开始完全跟踪；E4 先维持容量平台。E2、E4 的首个完全跟踪区间起点分别约为 $(0.5446,0.1490)$ 和 $(0.5468,0.1499)$，可与共同理论容量退出点 $(s_B,K)$ 对照，二者并不要求在同一时刻离开平台。}
-\providecommand{\NumCheckStatement}{对原始分段常数控制逐区间重积分后，五例最大容量超出量为 $\num{8e-07}$，与配点状态的最大差异为 $\num{8.6e-08}$；末尾 $20$ 个时间单位内最大控制幅值为 $\num{0}$。各例终端状态均通过零控制安全延拓核查。另对 E2 使用 $N=8000$ 加密，并对 E1 使用常值 $q=0.7$ 生成非理论初始猜测，所得解均通过同样核查；这些浮点检查用于排查截断及离散问题，不是连续可行性的严格证明。}
-\providecommand{\NumOverallFinding}{五例成本相对解析参考的最大差异约为 $0.00459\%$。计算结果支持这五个初值下的阶段顺序及切换位置预测；切换位置的偏差应结合控制区间宽度和过渡单元解释。}
+\providecommand{\NumFindingTrackingBoundary}{E3、E4、E5 的实际阶段依次为 $1\to 0$、$q_B\to 1\to 0$ 和 $1\to 0$。E3 与 E5 均从初始正长度区间开始完全跟踪；E4 先维持容量平台。E2、E4 的理论容量退出时刻均位于各自容量段与完全跟踪段之间的单网格过渡区间内，因此不将首个纯完全跟踪单元的起点直接等同于连续切换点。}
+\providecommand{\NumCheckStatement}{对原始分段常数控制逐区间重积分后，五例最大容量超出量为 $\num{8e-07}$，与配点状态的最大差异为 $\num{8.6e-08}$；末尾 $20$ 个时间单位内最大控制幅值为 $\num{0}$。各例终端状态均通过零控制安全延拓核查。另对 E2 使用 $N=8000$ 加密，并对 E1 使用常值 $q=0.7$ 生成非理论初始猜测，所得解均通过同样核查；这些浮点检查用于排查截断及离散问题，不是连续可行性的严格证明。对 E2 另以常值 $q=0.7$ 及其积分状态为初猜重新求解，所得阶段顺序与解析初始化相同，成本绝对差为 $\num{5.98e-13}$，并通过同样的数值核查。}
+\providecommand{\NumOverallFinding}{五例成本相对解析参考的最大差异约为 $0.00459\%$。计算结果支持这五个初值下的阶段顺序及切换位置预测；切换位置的偏差应结合控制区间宽度和过渡单元解释。E4 的离散成本比解析参考低约 $\num{3.68e-06}$，其重积分轨道同时存在约 $\num{7.7e-07}$ 的容量超出；该结果不能视为低于解析最优值的严格连续时间可行控制。}

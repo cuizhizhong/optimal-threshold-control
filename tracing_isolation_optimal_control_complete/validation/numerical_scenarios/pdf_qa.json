@@ -1,8 +1,9 @@
 {
   "status": "passed",
-  "main_pages": 32,
+  "main_pages": 33,
   "theory_only_pages": 25,
   "main_pages_visually_checked": [
+    2,
     24,
     25,
     26,
@@ -11,7 +12,8 @@
     29,
     30,
     31,
-    32
+    32,
+    33
   ],
   "theory_only_pages_visually_checked": [
     23,
@@ -24,7 +26,7 @@
   "figures": {
     "FigN1_regions": {
       "panels": 1,
-      "minimum_font_pt": 9,
+      "minimum_font_pt": 8,
       "visual_check": "passed"
     },
     "FigN2_waiting": {
@@ -38,9 +40,93 @@
       "visual_check": "passed"
     }
   },
+  "figure_style_revision": {
+    "main_pages_visually_checked": [
+      27,
+      28,
+      29
+    ],
+    "ordinary_font": "Times New Roman",
+    "math_interpreter": "MATLAB latex (Computer Modern math fonts)",
+    "main_curve_width": 1.8,
+    "auxiliary_line_width": 1.2,
+    "region_order": [
+      "A",
+      "W_Gamma",
+      "W_K",
+      "T"
+    ],
+    "region_colors": [
+      "pale gray",
+      "pale blue",
+      "pale orange",
+      "pale purple"
+    ],
+    "legend_position": "northeast; first panel only for figures 2 and 3",
+    "source_check": "MATLAB checkcode passed; Python/R source validator is not applicable",
+    "numerical_data_changed": false,
+    "region_color_limits": [
+      0.5,
+      4.5
+    ],
+    "tracking_label_position": [
+      0.43,
+      0.14
+    ],
+    "threshold_and_population_line_rgb": [
+      0.6,
+      0.6,
+      0.6
+    ],
+    "E4_rgb": [
+      0.68,
+      0.52,
+      0.02
+    ]
+  },
   "implementation_commit": "e08b0bab4cb81bc1e950ae936c0a36d3834ab687",
   "pdf_sha256": {
-    "main": "3dd70c2ada8d5e1be303b4898efee9ce80f40a70cb4a37bb1d247ffc03b28420",
-    "theory_only": "d18f594c281954d411685c2fcb7b6e2076743fb644a37f552be2c913108d27fc"
+    "main": "27c8f696f1e5ba9478de62c829cf62cf0c94fe3fb4a859bf3b48c9ded9b6ae90",
+    "theory_only": "861f80ba54546870a80276e04eba16be3cf0b1929af708e670f587ab08b238a6"
+  },
+  "minimal_revision": {
+    "main_pages_checked": [
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32
+    ],
+    "main_pages": 32,
+    "cost_difference": 5.984102102729594E-13,
+    "neutral_E2_passed": true,
+    "theory_only_pages": 25,
+    "main_output": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+    "theory_only_output": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf"
+  },
+  "chapter_reorder": {
+    "status": "passed",
+    "numerical_pages": [
+      24,
+      25,
+      26,
+      27,
+      28
+    ],
+    "section_order": [
+      "constant-contact-rate theory",
+      "numerical methods",
+      "numerical results",
+      "time-varying contact",
+      "joint control",
+      "limitations"
+    ],
+    "main_pages": 33,
+    "theory_only_pages": 25,
+    "theory_content_changed": false,
+    "reproduction_and_bibliography_pagination_checked": true
   }
 }

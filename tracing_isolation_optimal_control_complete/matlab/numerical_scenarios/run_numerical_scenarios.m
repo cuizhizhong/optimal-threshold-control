@@ -1,12 +1,12 @@
 function results = run_numerical_scenarios(mode,force)
-% 默认运行五例及两项独立复核；可传 'main'、'checks' 或单个算例 ID。
+% 默认运行五例及附加复核；'neutral_E2' 只运行 E2 常值初猜。
 if nargin<1, mode='all'; end
 if nargin<2, force=false; end
 cfg=numerical_cases_config(); addpath(cfg.paths.openocl_root); ocl;
 if ~isfolder(cfg.paths.data), mkdir(cfg.paths.data); end
 geom=build_theory_geometry(cfg.parameters); verify_numerical_reference();
 results=struct();
-if ~strcmp(mode,'checks')
+if ~ismember(mode,{'checks','neutral_E2'})
     ids=cfg.run_order;
     if ~ismember(mode,{'all','main'}), ids={mode}; end
     for j=1:numel(ids)
@@ -20,7 +20,15 @@ if ismember(mode,{'all','checks'})
     results.neutral=runone(cfg.check.neutral_guess_case_id,cfg.solve, ...
         struct('type','constant_control','control',cfg.check.neutral_control),folder);
 end
+if ismember(mode,{'all','checks','neutral_E2'})
+    folder=fullfile(cfg.paths.data,'checks','neutral_E2');
+    if ~isfolder(folder), mkdir(folder); end
+    opts=cfg.solve; opts.N=cfg.check.refine_N;
+    results.neutral_E2=runone('E2',opts, ...
+        struct('type','constant_control','control',cfg.check.neutral_control),folder);
+end
     function run=runone(id,opts,guess,folder)
+        opts.initialization=guess.type;
         ix=find(strcmp({cfg.cases.id},id)); assert(isscalar(ix),'Unknown case ID.');
         x0=cfg.cases(ix).x0;
         fprintf('START %s N=%d guess=%s\n',id,opts.N,guess.type);
@@ -33,7 +41,15 @@ end
             if cached, run=d.run; end
         end
         if ~cached
-            run=solve_openocl_case(cfg.parameters,x0,opts,guess); run.case_id=id;
+            try
+                run=solve_openocl_case(cfg.parameters,x0,opts,guess); run.case_id=id;
+            catch exception
+                failure=struct('case_id',id,'parameters',cfg.parameters,'x0',x0, ...
+                    'solver_settings',opts,'initialization',guess,'success',false, ...
+                    'message',exception.message,'identifier',exception.identifier);
+                save(fullfile(folder,[id '_failure.mat']),'failure','-v7');
+                rethrow(exception);
+            end
         end
         [~,sha]=system(sprintf('git -C "%s" rev-parse HEAD',cfg.paths.repo_root));
         run.source_commit=strtrim(sha);

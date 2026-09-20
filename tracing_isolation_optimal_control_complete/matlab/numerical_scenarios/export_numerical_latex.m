@@ -17,9 +17,28 @@ end
 checksOK=isfield(checks,'E1') && isfield(checks,'E2');
 if checksOK, checksOK=checks.E1.assessment.passed && checks.E2.assessment.passed; end
 verified=all(passed) && checksOK;
+neutral=[]; f=fullfile(cfg.paths.data,'checks','neutral_E2','E2.mat');
+if isfile(f)
+    d=load(f,'run'); neutral=d.run;
+    if isfield(neutral,'assessment') && isfield(neutral,'reference')
+        checks.neutral_E2=compact(neutral);
+    end
+end
+neutralCheck=compare_neutral_initialization(runs{2},neutral,cfg.check);
+failurePath=fullfile(cfg.paths.data,'checks','neutral_E2','E2_failure.mat');
+if isempty(neutral) && isfile(failurePath)
+    d=load(failurePath,'failure'); neutralCheck.status='error';
+    neutralCheck.failure=d.failure;
+end
+exitChecks=struct();
+for k=[2 4]
+    exitChecks.(sprintf('E%d',k))=capacity_exit_transition( ...
+        runs{k}.assessment.arcs,runs{k}.reference.events.full_start);
+end
 summary=repmat(compact(runs{1}),1,5);
 for k=1:5, summary(k)=compact(runs{k}); end
-out=struct('verified',verified,'cases',summary,'additional_checks',checks);
+out=struct('verified',verified,'cases',summary,'additional_checks',checks, ...
+    'neutral_E2_check',neutralCheck,'capacity_exit_checks',exitChecks);
 writefile(fullfile(cfg.paths.data,'numerical_checks.json'),jsonencode(out,PrettyPrint=true));
 rows=cell(5,10);
 for k=1:5
@@ -62,7 +81,7 @@ reference{end+1}=macro('NumSBRef',sprintf('%.8f',g.s_B));
 reference{end+1}=macro('NumSwitchSEOneRef',sprintf('%.8f',e.full_state(1)));
 reference{end+1}=macro('NumSwitchIEOneRef',sprintf('%.8f',e.full_state(2)));
 reference{end+1}=macro('NumMaxReleaseRef',sprintf('%.8f',max(cellfun(@(r) r.reference.events.release,runs))));
-e1=runs{1}.assessment.events; e2=runs{2}.assessment.events; e4=runs{4}.assessment.events;
+e1=runs{1}.assessment.events;
 waiting=sprintf(['实际控制输出中，E1 和 E2 分别识别出 $%s$ 与 $%s$。' ...
     '按控制区间识别，E1 的首个完全跟踪区间从 $t\\approx %.3f$ 开始，' ...
     '其状态约为 $(%.4f,%.4f)$，感染比例低于容量；' ...
@@ -71,11 +90,23 @@ waiting=sprintf(['实际控制输出中，E1 和 E2 分别识别出 $%s$ 与 $%s
     texstructure(runs{1}.assessment.observed_structure),texstructure(runs{2}.assessment.observed_structure), ...
     e1.full_start,e1.full_state(1),e1.full_state(2));
 boundary=sprintf(['E3、E4、E5 的实际阶段依次为 $%s$、$%s$ 和 $%s$。' ...
-    'E3 与 E5 均从初始正长度区间开始完全跟踪；E4 先维持容量平台。' ...
-    'E2、E4 的首个完全跟踪区间起点分别约为 $(%.4f,%.4f)$ 和 $(%.4f,%.4f)$，' ...
-    '可与共同理论容量退出点 $(s_B,K)$ 对照，二者并不要求在同一时刻离开平台。'], ...
+    'E3 与 E5 均从初始正长度区间开始完全跟踪；E4 先维持容量平台。'], ...
     texstructure(runs{3}.assessment.observed_structure),texstructure(runs{4}.assessment.observed_structure), ...
-    texstructure(runs{5}.assessment.observed_structure),e2.full_state(1),e2.full_state(2),e4.full_state(1),e4.full_state(2));
+    texstructure(runs{5}.assessment.observed_structure));
+if exitChecks.E2.supported && exitChecks.E4.supported
+    boundary=[boundary 'E2、E4 的理论容量退出时刻均位于各自容量段与完全跟踪段之间的单网格过渡区间内，' ...
+        '因此不将首个纯完全跟踪单元的起点直接等同于连续切换点。'];
+else
+    boundary=[boundary sprintf(['容量退出过渡区间的自动核查未全部支持单网格包含结论（E2: %s；E4: %s），' ...
+        '不能据首个纯完全跟踪单元确定连续切换点。'], ...
+        strrep(exitChecks.E2.status,'_','-'),strrep(exitChecks.E4.status,'_','-'))];
+end
+for k=[2 4]
+    e=exitChecks.(sprintf('E%d',k));
+    pending{end+1}=macro(sprintf('NumExitE%sStart',suffix{k}),sprintf('%.8f',e.interval(1))); %#ok<AGROW>
+    pending{end+1}=macro(sprintf('NumExitE%sEnd',suffix{k}),sprintf('%.8f',e.interval(2))); %#ok<AGROW>
+    reference{end+1}=macro(sprintf('NumExitE%sTheory',suffix{k}),sprintf('%.8f',e.theory_time)); %#ok<AGROW>
+end
 cap=max(cellfun(@(r) r.assessment.capacity_excess,runs));
 state=max(cellfun(@(r) r.assessment.state_discrepancy,runs));
 tail=max(cellfun(@(r) r.assessment.tail_max_q,runs));
@@ -93,6 +124,26 @@ else
     checktext=[checktext '尚有核查未通过或附加实验未完成，当前结果不标记为已验证；具体状态见配套核查文件。'];
     finding='当前数值验证尚未全部通过；成本列为实际求解输出，不以解析值填补或替换。';
 end
+if neutralCheck.passed
+    checktext=[checktext sprintf(['对 E2 另以常值 $q=0.7$ 及其积分状态为初猜重新求解，' ...
+        '所得阶段顺序与解析初始化相同，成本绝对差为 $\\num{%.3g}$，并通过同样的数值核查。'], ...
+        neutralCheck.absolute_cost_difference)];
+elseif strcmp(neutralCheck.status,'missing')
+    checktext=[checktext 'E2 的非解析初猜复核尚无可用结果，当前不作初猜一致性结论。'];
+else
+    checktext=[checktext 'E2 的非解析初猜复核未通过预定的一致性与数值核查，具体结果见复核记录；' ...
+        '五个主算例的通过状态不代替这项独立复核。'];
+end
+pending{end+1}=macro('NumNeutralETwoCostDifference',sprintf('%.12g',neutralCheck.absolute_cost_difference));
+gap=runs{4}.J_openocl-runs{4}.reference.J_reference;
+pending{end+1}=macro('NumEFourSignedCostDifference',sprintf('%.12g',gap));
+pending{end+1}=macro('NumEFourCapacityExcess',sprintf('%.12g',runs{4}.assessment.capacity_excess));
+if gap<0
+    finding=[finding sprintf(['E4 的离散成本比解析参考低约 $\\num{%.3g}$，' ...
+        '其重积分轨道同时存在约 $\\num{%.3g}$ 的容量超出；' ...
+        '该结果不能视为低于解析最优值的严格连续时间可行控制。'], ...
+        -gap,runs{4}.assessment.capacity_excess)];
+end
 pending{end+1}=macro('NumFindingWaiting',waiting);
 pending{end+1}=macro('NumFindingTrackingBoundary',boundary);
 pending{end+1}=macro('NumCheckStatement',checktext);
@@ -106,7 +157,8 @@ function c=compact(r)
 c=struct('case_id',r.case_id,'x0',r.x0,'parameters',r.parameters, ...
     'solver_settings',r.solver_settings,'initialization',r.initialization, ...
     'success',r.success,'return_status',r.return_status,'J_reference',r.reference.J_reference, ...
-    'J_openocl',r.J_openocl,'assessment',rmfield(r.assessment,'reintegration'));
+    'J_openocl',r.J_openocl,'reference_events',r.reference.events, ...
+    'assessment',rmfield(r.assessment,'reintegration'));
 end
 function s=texstructure(s)
 s=strrep(s,' -> ','\to ');

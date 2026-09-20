@@ -1,5 +1,6 @@
 function run = solve_openocl_case(par,x0,opts,guess)
 % 独立直接配点问题。理论仅提供可选初猜，不进入目标或约束。
+opts.initialization=guess.type;
 problem=ocl.Problem(opts.T,@varsfun,@daefun,@pathcosts, ...
     'N',opts.N,'d',opts.d,'controls_regularization',false, ...
     'casadi_options',opts.casadi_options,'verbose',false);
@@ -14,11 +15,13 @@ if strcmp(guess.type,'analytic_reference')
     rs=analytic_reference(par,x0,geom,ts); ri=analytic_reference(par,x0,geom,ti);
     rc=analytic_reference(par,x0,geom,tc);
     xs=[rs.s rs.i]; xi=[ri.s ri.i]; uc=rc.q;
-else
+elseif strcmp(guess.type,'constant_control')
     q0=guess.control;
     rhs=@(~,x) dynamics(x,q0,par);
     sol=ode45(rhs,[0 opts.T],x0,odeset('RelTol',2e-10,'AbsTol',1e-13));
     xs=deval(sol,ts')'; xi=deval(sol,ti')'; uc=q0*ones(size(tc));
+else
+    error('Unknown initialization type: %s',guess.type);
 end
 ig.states.S.set(xs(:,1)'); ig.states.I.set(xs(:,2)');
 ig.integrator.states.S.set(xi(:,1)'); ig.integrator.states.I.set(xi(:,2)');
@@ -33,6 +36,8 @@ run.dt_control=diff([run.t_control;run.t_state(end)]);
 assert(numel(run.q_control)==numel(run.dt_control) && all(run.dt_control>0));
 run.J_openocl=par.p*par.c*sum(run.q_control.*run.dt_control);
 run.environment=struct('matlab',version,'openocl',which('ocl'),'casadi',which('casadi.MX'));
+run.initial_guess=struct('t_state',ts,'states',xs,'t_integrator',ti, ...
+    'integrator_states',xi,'t_control',tc,'control',uc);
     function varsfun(svh)
         svh.addState('S','lb',0,'ub',1);
         svh.addState('I','lb',0,'ub',par.K);

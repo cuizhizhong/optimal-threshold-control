@@ -1690,6 +1690,8 @@ q&=\frac{\beta_1-\beta_2}{\beta_1+\frac{1-p}{p}\beta_2}.\label{eq:q-inversion}
 这些是模型内的代数反演，并非从观测数据自动获得统计可识别性的结论。
 
 \ifdefined\TheoryOnly\else
+\input{numerical_scenarios.tex}
+
 \section{\texorpdfstring{时变接触率 $c(t)$：条件性结论}{时变接触率：条件性结论}}
 \label{sec:time-varying}
 现在令 $c(t)>0$ 为给定的可测、局部本质有界函数。
@@ -1783,8 +1785,6 @@ q_\varepsilon^*(t,s,i)=\proj_{[0,1]}
 该示例中的权重须另行保证非负性或所需凸性；即使运行成本严格凸，
 动力学中的 $cq$ 项以及非线性状态约束也不会自动给出整个问题的严格凸性。
 本稿不为此扩展声称全局唯一性。
-
-\input{numerical_scenarios.tex}
 
 \section{模型内的机制解释与理论边界}
 \label{sec:limitations}
@@ -1900,7 +1900,6 @@ A=\frac1{1-p},\qquad B=-\frac p{1-p}.
 后面三类检查可发现错误，但均不等价于对所有可行控制的解析证明，也不是形式化证明系统的验证。
 
 \ifdefined\TheoryOnly\else
-\clearpage
 \section{数值复现说明}
 主数值实验使用 MATLAB/OpenOCL，入口位于
 \path{matlab/numerical_scenarios/}。从仓库根目录运行：
@@ -1921,6 +1920,7 @@ figures/numerical_scenarios/
 旧 Python/MATLAB 绘图代码和原数据保留，供既往数值材料追溯。
 图形和 CSV 的复现应与所使用的源码版本、参数及求解器设置一并记录。
 符号恒等式、有限样本和编译检查的作用是发现计算或实现错误，不替代本稿的解析证明。
+\clearpage
 \fi
 \bibliographystyle{plainnat}
 \bibliography{references}

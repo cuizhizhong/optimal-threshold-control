@@ -73,9 +73,11 @@ $q=0$ 时的未来无控制峰值是否不超过 $K$。该检查不进入优化�
 \else
 计算拟采用
 \fi
-MATLAB/OpenOCL 直接配点方法，基准网格将 $[0,T]$ 划分为
+MATLAB/OpenOCL 直接配点方法\citep{Koenemann2019OpenOCL}，
+通过 CasADi\citep{Andersson2019CasADi} 构造离散问题，基准网格将 $[0,T]$ 划分为
 $N=\NumIntervals$ 个控制区间，设置 $T=\NumHorizon$、$d=\NumDegree$，
-控制在各区间内为常数，离散非线性规划由 IPOPT 求解。
+控制在各区间内为常数，离散非线性规划由 IPOPT 采用局部优化方法求解\citep{WachterBiegler2006}。
+数值收敛用于复核解析结构，不承担连续问题全局最优性的证明。
 \NumMeshDetails
 解析轨道按正文的自然段、容量段和完全跟踪段公式独立生成；
 用作初始猜测时仍不固定其阶段结构。

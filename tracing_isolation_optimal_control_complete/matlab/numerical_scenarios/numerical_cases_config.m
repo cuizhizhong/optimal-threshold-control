@@ -48,6 +48,7 @@ cfg.check.refine_case_id = 'E2';
 cfg.check.refine_N = 8000;
 cfg.check.neutral_guess_case_id = 'E1';
 cfg.check.neutral_control = 0.7;
+cfg.check.neutral_cost_tolerance = 1e-5;
 
 cfg.cases = [ ...
     makeCase('E1', [0.75; 0.01], 'W_Gamma', '0 -> 1 -> 0', true), ...

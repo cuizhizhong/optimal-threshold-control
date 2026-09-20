@@ -36,6 +36,24 @@
       "return_status": "Solve_Succeeded",
       "J_reference": 0.41618591477600209,
       "J_openocl": 0.41620500909728464,
+      "reference_events": {
+        "capacity_start": null,
+        "capacity_end": null,
+        "full_start": 7.0312831354584864,
+        "release": 7.4474690502344885,
+        "capacity_state": [
+          null,
+          null
+        ],
+        "full_state": [
+          0.510171685547013,
+          0.13423054471264412
+        ],
+        "release_state": [
+          0.4593034862478495,
+          0.11847512585123424
+        ]
+      },
       "assessment": {
         "capacity_excess": 2.9680482563354538E-7,
         "state_discrepancy": 6.7520285806921265E-8,
@@ -143,6 +161,24 @@
       "return_status": "Solve_Succeeded",
       "J_reference": 1.5295111601514726,
       "J_openocl": 1.5295233613984434,
+      "reference_events": {
+        "capacity_start": 4.349191557719978,
+        "capacity_end": 5.869502535817352,
+        "full_start": 5.869502535817352,
+        "release": 6.5833689655066889,
+        "capacity_state": [
+          0.77752216103864369,
+          0.15
+        ],
+        "full_state": [
+          0.54769512467955783,
+          0.15
+        ],
+        "release_state": [
+          0.45166378624555381,
+          0.12108289155035767
+        ]
+      },
       "assessment": {
         "capacity_excess": 7.9910605466082529E-7,
         "state_discrepancy": 8.57058412018219E-8,
@@ -262,6 +298,24 @@
       "return_status": "Solve_Succeeded",
       "J_reference": 0.43398100732253919,
       "J_openocl": 0.43399851635235542,
+      "reference_events": {
+        "capacity_start": null,
+        "capacity_end": null,
+        "full_start": 0,
+        "release": 0.43398100732253919,
+        "capacity_state": [
+          null,
+          null
+        ],
+        "full_state": [
+          0.5,
+          0.14
+        ],
+        "release_state": [
+          0.44615716355713092,
+          0.1229094764273338
+        ]
+      },
       "assessment": {
         "capacity_excess": 4.8023851589862332E-8,
         "state_discrepancy": 1.7337208169099227E-8,
@@ -357,6 +411,24 @@
       "return_status": "Solve_Succeeded",
       "J_reference": 1.2688347783424891,
       "J_openocl": 1.2688310955840425,
+      "reference_events": {
+        "capacity_start": 0,
+        "capacity_end": 1.0807752829238471,
+        "full_start": 1.0807752829238471,
+        "release": 1.7946417126131842,
+        "capacity_state": [
+          0.7,
+          0.15
+        ],
+        "full_state": [
+          0.54769512467955783,
+          0.15
+        ],
+        "release_state": [
+          0.45166378624555381,
+          0.12108289155035767
+        ]
+      },
       "assessment": {
         "capacity_excess": 7.7028695877334741E-7,
         "state_discrepancy": 4.1252984916972935E-9,
@@ -464,6 +536,24 @@
       "return_status": "Solve_Succeeded",
       "J_reference": 0.53623319670501668,
       "J_openocl": 0.53625636159160439,
+      "reference_events": {
+        "capacity_start": null,
+        "capacity_end": null,
+        "full_start": 0,
+        "release": 0.53623319670501668,
+        "capacity_state": [
+          null,
+          null
+        ],
+        "full_state": [
+          0.5,
+          0.15
+        ],
+        "release_state": [
+          0.43095810430497361,
+          0.12771041717517639
+        ]
+      },
       "assessment": {
         "capacity_excess": 5.5710069973846643E-8,
         "state_discrepancy": 2.5027230232677056E-8,
@@ -561,6 +651,24 @@
       "return_status": "Solve_Succeeded",
       "J_reference": 1.5295111601514726,
       "J_openocl": 1.5295233613984434,
+      "reference_events": {
+        "capacity_start": 4.349191557719978,
+        "capacity_end": 5.869502535817352,
+        "full_start": 5.869502535817352,
+        "release": 6.5833689655066889,
+        "capacity_state": [
+          0.77752216103864369,
+          0.15
+        ],
+        "full_state": [
+          0.54769512467955783,
+          0.15
+        ],
+        "release_state": [
+          0.45166378624555381,
+          0.12108289155035767
+        ]
+      },
       "assessment": {
         "capacity_excess": 7.9910605466082529E-7,
         "state_discrepancy": 8.57058412018219E-8,
@@ -681,6 +789,24 @@
       "return_status": "Solve_Succeeded",
       "J_reference": 0.41618591477600209,
       "J_openocl": 0.41620500909728475,
+      "reference_events": {
+        "capacity_start": null,
+        "capacity_end": null,
+        "full_start": 7.0312831354584864,
+        "release": 7.4474690502344885,
+        "capacity_state": [
+          null,
+          null
+        ],
+        "full_state": [
+          0.510171685547013,
+          0.13423054471264412
+        ],
+        "release_state": [
+          0.4593034862478495,
+          0.11847512585123424
+        ]
+      },
       "assessment": {
         "capacity_excess": 2.9680482568905653E-7,
         "state_discrepancy": 6.752028558487666E-8,
@@ -752,6 +878,179 @@
         "passed": true,
         "notes": "阶段由原始控制及容量接近程度识别；过渡单元保留，事件精度受网格限制。"
       }
+    },
+    "neutral_E2": {
+      "case_id": "E2",
+      "x0": [
+        0.99,
+        0.01
+      ],
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "solver_settings": {
+        "T": 300,
+        "N": 8000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "constant_control",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "constant_control",
+        "control": 0.7
+      },
+      "success": true,
+      "return_status": "Solve_Succeeded",
+      "J_reference": 1.5295111601514726,
+      "J_openocl": 1.5295233613978449,
+      "reference_events": {
+        "capacity_start": 4.349191557719978,
+        "capacity_end": 5.869502535817352,
+        "full_start": 5.869502535817352,
+        "release": 6.5833689655066889,
+        "capacity_state": [
+          0.77752216103864369,
+          0.15
+        ],
+        "full_state": [
+          0.54769512467955783,
+          0.15
+        ],
+        "release_state": [
+          0.45166378624555381,
+          0.12108289155035767
+        ]
+      },
+      "assessment": {
+        "capacity_excess": 7.99120408845333E-7,
+        "state_discrepancy": 8.5705747832065526E-8,
+        "initial_error": 0,
+        "control_violation": 0,
+        "state_violation": 0,
+        "tail_max_q": 0,
+        "terminal_peak": 1.403642883855412E-27,
+        "terminal_safe": true,
+        "reintegrated_terminal_peak": 1.4036357308611383E-27,
+        "tail": {
+          "tail_start_time": 279.99999999999932,
+          "max_abs_q_on_tail": 0,
+          "control_returned_to_zero": true,
+          "zero_control_future_peak": 1.403642883855412E-27,
+          "zero_control_continuation_safe": true,
+          "capacity": 0.15,
+          "tolerance": 1E-6
+        },
+        "arcs": [
+          {
+            "type": "0",
+            "t_start": 0,
+            "t_end": 4.3125000000000036,
+            "cells": 115
+          },
+          {
+            "type": "transition",
+            "t_start": 4.3125000000000036,
+            "t_end": 4.3500000000000032,
+            "cells": 1
+          },
+          {
+            "type": "q_B",
+            "t_start": 4.3500000000000032,
+            "t_end": 5.849999999999989,
+            "cells": 40
+          },
+          {
+            "type": "transition",
+            "t_start": 5.849999999999989,
+            "t_end": 5.8874999999999886,
+            "cells": 1
+          },
+          {
+            "type": "1",
+            "t_start": 5.8874999999999886,
+            "t_end": 6.5624999999999822,
+            "cells": 18
+          },
+          {
+            "type": "transition",
+            "t_start": 6.5624999999999822,
+            "t_end": 6.5999999999999819,
+            "cells": 1
+          },
+          {
+            "type": "0",
+            "t_start": 6.5999999999999819,
+            "t_end": 299.99999999999932,
+            "cells": 7824
+          }
+        ],
+        "observed_structure": "0 -> q_B -> 1 -> 0",
+        "transition_cells": 3,
+        "events": {
+          "capacity_start": 4.3500000000000032,
+          "capacity_end": 5.849999999999989,
+          "full_start": 5.8874999999999886,
+          "release": 6.5999999999999819,
+          "full_state": [
+            0.54459900713316645,
+            0.14902369768252544
+          ],
+          "release_state": [
+            0.45082582232491558,
+            0.12136383612076379
+          ]
+        },
+        "relative_cost_difference": 7.9772195785404359E-6,
+        "passed": true,
+        "notes": "阶段由原始控制及容量接近程度识别；过渡单元保留，事件精度受网格限制。"
+      }
+    }
+  },
+  "neutral_E2_check": {
+    "status": "passed",
+    "passed": true,
+    "cost_difference": -5.9841021027295938E-13,
+    "absolute_cost_difference": 5.9841021027295938E-13,
+    "cost_tolerance": 1E-5,
+    "same_problem": true,
+    "initialization_valid": true,
+    "structure_matches": true,
+    "numerical_checks_passed": true
+  },
+  "capacity_exit_checks": {
+    "E2": {
+      "status": "single_cell_contains_theory",
+      "interval": [
+        5.849999999999989,
+        5.8874999999999886
+      ],
+      "cells": 1,
+      "theory_time": 5.869502535817352,
+      "contains_theory": true,
+      "supported": true
+    },
+    "E4": {
+      "status": "single_cell_contains_theory",
+      "interval": [
+        1.0499999999999998,
+        1.0875
+      ],
+      "cells": 1,
+      "theory_time": 1.0807752829238471,
+      "contains_theory": true,
+      "supported": true
     }
   }
 }
