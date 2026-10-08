@@ -1,0 +1,173 @@
+{
+  "scope": "steps_6_to_7",
+  "step6_status": "completed",
+  "step7_status": "completed",
+  "code_freeze_commit": "be43bc6ccc5d280e9b0287a00554df1590518bea",
+  "solve_code_hash": "cd7e6297bb05f11028fe6f8f543ae8a9f5bd8c41d4f98346a0dc7b7cd09cff49",
+  "solve_dirty": true,
+  "solve_dirty_reason": "preexisting and generated untracked files; tracked solve source hashes match frozen code",
+  "protocol_hash": "537248f24a972508866e476433ab446a2cdda0f553fc70b66a32edb73f657a3b",
+  "default_distinct_configurations": 35,
+  "executed_distinct_configurations": 5,
+  "default_matrix_executed_fraction": "5/35",
+  "default_matrix_consistency_pass_fraction": "5/35",
+  "remaining_distinct_configurations": 30,
+  "remaining_execution_status": "not_started",
+  "executed_modes": [
+    "unit",
+    "main"
+  ],
+  "scientific_solver_calls": 5,
+  "scientific_successes": 5,
+  "scientific_failures": 0,
+  "scientific_cache_hits": 0,
+  "scientific_assessment_calls": 5,
+  "unit_group_count": 12,
+  "scheduler_test_count": 19,
+  "unit_actual_optimizer_calls": 0,
+  "blockers": [],
+  "unresolved_discrepancies": [],
+  "cases": [
+    {
+      "case_id": "E1",
+      "run_id": "run_1fe903238ec8428ebe33758d0860ba94",
+      "solve_fingerprint": "93b2027d362a7138f8726c3d11f2fe3f49a71646148c1a6d5e0dca36609c4d20",
+      "J_openocl": 0.41620500909728464,
+      "J_reference": 0.4161859147760021,
+      "signed_cost_difference": 1.9094321282553395e-05,
+      "relative_cost_difference": 4.5879306830530925e-05,
+      "capacity_excess": 2.968048256335454e-07,
+      "state_discrepancy": 6.752028580692127e-08,
+      "tail_max_q": 0,
+      "observed_structure": "0 -> 1 -> 0",
+      "numeric_pass": true,
+      "agreement_pass": true,
+      "return_status": "Solve_Succeeded",
+      "iterations": 1828,
+      "solver_elapsed_seconds": 137.9417394
+    },
+    {
+      "case_id": "E2",
+      "run_id": "run_95f03cda21434451998723ad26c1a1b9",
+      "solve_fingerprint": "98b639fdefaca791a15d10641aeeabd1a378674d0da388191d12c36fd1f58dcf",
+      "J_openocl": 1.5295233613984434,
+      "J_reference": 1.5295111601514726,
+      "signed_cost_difference": 1.2201246970766633e-05,
+      "relative_cost_difference": 7.977219969783223e-06,
+      "capacity_excess": 7.991060546608253e-07,
+      "state_discrepancy": 8.57058412018219e-08,
+      "tail_max_q": 0,
+      "observed_structure": "0 -> q_B -> 1 -> 0",
+      "numeric_pass": true,
+      "agreement_pass": true,
+      "return_status": "Solve_Succeeded",
+      "iterations": 912,
+      "solver_elapsed_seconds": 131.563623
+    },
+    {
+      "case_id": "E3",
+      "run_id": "run_bd09cff659c14ab7960b447ff0f4f0b0",
+      "solve_fingerprint": "bb8f0c1550c05b0f17dfdff131f870359de93ac4d8e45f2248b6dbe64d50b1f6",
+      "J_openocl": 0.4339985163523554,
+      "J_reference": 0.4339810073225392,
+      "signed_cost_difference": 1.7509029816231703e-05,
+      "relative_cost_difference": 4.0345152255058964e-05,
+      "capacity_excess": 4.802385158986233e-08,
+      "state_discrepancy": 1.7337208169099227e-08,
+      "tail_max_q": 0,
+      "observed_structure": "1 -> 0",
+      "numeric_pass": true,
+      "agreement_pass": true,
+      "return_status": "Solve_Succeeded",
+      "iterations": 117,
+      "solver_elapsed_seconds": 39.8784663
+    },
+    {
+      "case_id": "E4",
+      "run_id": "run_139836e6273441e7bef91b3cce70193f",
+      "solve_fingerprint": "b09e5674b10efbb7d2e71fa775ef7bc7f6635c939649ca97f3d8399ffeb089be",
+      "J_openocl": 1.2688310955840425,
+      "J_reference": 1.2688347783424891,
+      "signed_cost_difference": -3.6827584466436747e-06,
+      "relative_cost_difference": -2.9024728116725762e-06,
+      "capacity_excess": 7.702869587733474e-07,
+      "state_discrepancy": 4.1252984916972935e-09,
+      "tail_max_q": 0,
+      "observed_structure": "q_B -> 1 -> 0",
+      "numeric_pass": true,
+      "agreement_pass": true,
+      "return_status": "Solve_Succeeded",
+      "iterations": 281,
+      "solver_elapsed_seconds": 40.6271917
+    },
+    {
+      "case_id": "E5",
+      "run_id": "run_a07493968ce542b2b057ce11232f695c",
+      "solve_fingerprint": "77d7e0acd05f07c385996b57f8df3e52874b79bd4f1eb6feb941be29f2c62a41",
+      "J_openocl": 0.5362563615916044,
+      "J_reference": 0.5362331967050167,
+      "signed_cost_difference": 2.3164886587712097e-05,
+      "relative_cost_difference": 4.319927734808847e-05,
+      "capacity_excess": 5.571006997384664e-08,
+      "state_discrepancy": 2.5027230232677056e-08,
+      "tail_max_q": 0,
+      "observed_structure": "1 -> 0",
+      "numeric_pass": true,
+      "agreement_pass": true,
+      "return_status": "Solve_Succeeded",
+      "iterations": 111,
+      "solver_elapsed_seconds": 9.510836
+    }
+  ],
+  "measured_maxima": {
+    "capacity_excess": 7.991060546608253e-07,
+    "state_discrepancy": 8.57058412018219e-08,
+    "absolute_relative_cost_difference": 4.5879306830530925e-05,
+    "tail_max_q": 0
+  },
+  "E4_interpretation": "成本低于解析值的差异及重积分容量超出均在预定诊断容差内；不能声称严格可行或优于解析解，小容量超出不提供成本影响的严格上界。",
+  "selection_published": true,
+  "historical_main_archives": [
+    {
+      "original_file": "E1.mat",
+      "archive_file": "legacy_results/E1_aaa71096179643e9bd782c8112badaf003620ff22a0d42f62383b4e97e29293d.mat",
+      "sha256": "aaa71096179643e9bd782c8112badaf003620ff22a0d42f62383b4e97e29293d",
+      "source_status": "legacy_unverified"
+    },
+    {
+      "original_file": "E2.mat",
+      "archive_file": "legacy_results/E2_8ff1383e49343b8ebdcd56e9776b1b8adf8deda9d5af101a31d0dcaff1d3967f.mat",
+      "sha256": "8ff1383e49343b8ebdcd56e9776b1b8adf8deda9d5af101a31d0dcaff1d3967f",
+      "source_status": "legacy_unverified"
+    },
+    {
+      "original_file": "E3.mat",
+      "archive_file": "legacy_results/E3_1a589f516bcb05f9bed122ab1aa85c5e36f32c531a77aa2504f2ebc946708f3a.mat",
+      "sha256": "1a589f516bcb05f9bed122ab1aa85c5e36f32c531a77aa2504f2ebc946708f3a",
+      "source_status": "legacy_unverified"
+    },
+    {
+      "original_file": "E4.mat",
+      "archive_file": "legacy_results/E4_bc779b996122adac481e4e712b1f1d0b0bed555929c22e4af51a38442dccc733.mat",
+      "sha256": "bc779b996122adac481e4e712b1f1d0b0bed555929c22e4af51a38442dccc733",
+      "source_status": "legacy_unverified"
+    },
+    {
+      "original_file": "E5.mat",
+      "archive_file": "legacy_results/E5_9a6b5badf7a7d83c8efd8816ada22064b55ab7935f74b763310828e0c533a9fd.mat",
+      "sha256": "9a6b5badf7a7d83c8efd8816ada22064b55ab7935f74b763310828e0c533a9fd",
+      "source_status": "legacy_unverified"
+    }
+  ],
+  "main_pdf_compiled_this_batch": false,
+  "main_tex_and_pdfs_unchanged": true,
+  "theory_changes_this_batch": [],
+  "executed_commands": [
+    "run_revision_validation('unit',false)",
+    "run_revision_validation('main',false)",
+    "generate_analytic_checkpoints.py --check",
+    "python -m unittest discover -s tracing_isolation_optimal_control_complete/validation/numerical_scenarios -p test_analytic_checkpoints.py -v",
+    "checkcode(filename,'-id') for 54 MATLAB files"
+  ],
+  "limits": "浮点接受与理论计算一致性诊断；局部求解器收敛不构成连续时间严格可行性或全局最优性证明。"
+}

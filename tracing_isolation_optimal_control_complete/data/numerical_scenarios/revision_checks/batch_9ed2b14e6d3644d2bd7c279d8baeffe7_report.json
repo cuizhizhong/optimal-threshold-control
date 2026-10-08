@@ -1,0 +1,290 @@
+{
+  "schema_version": 1,
+  "batch_id": "batch_9ed2b14e6d3644d2bd7c279d8baeffe7",
+  "mode": "unit",
+  "force": false,
+  "status": "tested",
+  "started_utc": "2026-10-08T08:46:25.781Z",
+  "finished_utc": "2026-10-08T08:46:37.923Z",
+  "manifest_file": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\data\\numerical_scenarios\\revision_checks\\batch_9ed2b14e6d3644d2bd7c279d8baeffe7_manifest.json",
+  "report_file": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\data\\numerical_scenarios\\revision_checks\\batch_9ed2b14e6d3644d2bd7c279d8baeffe7_report.json",
+  "protocol_hash": "537248f24a972508866e476433ab446a2cdda0f553fc70b66a32edb73f657a3b",
+  "solve_code_hash": "cd7e6297bb05f11028fe6f8f543ae8a9f5bd8c41d4f98346a0dc7b7cd09cff49",
+  "default_unique_count": 35,
+  "requested_unique_count": 0,
+  "attempted_count": 0,
+  "solver_calls": 0,
+  "cache_hits": 0,
+  "assessment_calls": 0,
+  "successful_count": 0,
+  "failed_count": 0,
+  "duplicate_reference_count": 0,
+  "numeric_pass_count": 0,
+  "agreement_pass_count": 0,
+  "selection_published": false,
+  "protocol_complete": true,
+  "consistency_pass": true,
+  "rows": [],
+  "blockers": [],
+  "unit": {
+    "passed": true,
+    "status": "tested",
+    "group_count": 12,
+    "groups": [
+      {
+        "name": "verify_numerical_reference",
+        "passed": true,
+        "report": {
+          "verified": true,
+          "fixture_path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerical_scenarios\\analytic_checkpoints.json",
+          "case_count": 6,
+          "max_cost_error": 1.5543122344752192E-15,
+          "max_release_time_error": 5.9729998724833422E-14,
+          "optimizer_executions": 0
+        }
+      },
+      {
+        "name": "verify_reference_dependency_tests",
+        "passed": true,
+        "report": {
+          "passed": true,
+          "test_count": 6,
+          "optimizer_executions": 0,
+          "max_cost_error": 1.5543122344752192E-15,
+          "max_release_time_error": 5.9729998724833422E-14
+        }
+      },
+      {
+        "name": "verify_numerical_cache",
+        "passed": true,
+        "report": {
+          "passed": true,
+          "tests": [
+            "same_fingerprint_preserves_solve_provenance",
+            "solve_dependencies_and_actual_request_invalidate_cache",
+            "assessment_change_only_reassesses",
+            "paper_and_figure_do_not_invalidate_solve",
+            "legacy_result_never_reused_as_new_evidence",
+            "failed_attempt_retained_and_retry_has_new_run_id"
+          ],
+          "required_tests_passed": 6,
+          "mock_solver_calls": 18,
+          "mock_assessment_calls": 18,
+          "actual_optimizer_calls": 0,
+          "checked_utc": "2026-10-08T08:46:28.633Z",
+          "matlab": "25.2.0.2998904 (R2025b)"
+        }
+      },
+      {
+        "name": "verify_solver_diagnostics",
+        "passed": true,
+        "report": {
+          "passed": true,
+          "tests": [
+            "known_return_fields_and_final_iteration",
+            "raw_info_unmodified",
+            "barrier_and_step_lengths_not_residuals",
+            "missing_values_json_null_with_reason",
+            "absent_or_nonfinite_final_iteration_not_fabricated",
+            "nonuniform_interval_cost_and_output_grid_check",
+            "invalid_output_retains_original_arrays_and_info",
+            "solver_exception_retains_available_info_snapshot",
+            "diagnostic_sidecar_and_cache_preserve_original_timing",
+            "thrown_callable_saved_with_elapsed_time_before_rethrow"
+          ],
+          "tests_passed": 10,
+          "actual_optimizer_calls": 0,
+          "mock_callable_calls": 1,
+          "checked_utc": "2026-10-08T08:46:28.948Z",
+          "matlab": "25.2.0.2998904 (R2025b)"
+        }
+      },
+      {
+        "name": "verify_numerical_assessment",
+        "passed": true,
+        "report": {
+          "passed": true,
+          "tests": [
+            "safe_zero_cost_absolute_test",
+            "numeric_acceptance_independent_of_theory_and_weighted_cost",
+            "lower_cost_unresolved_is_retained",
+            "actual_grid_and_array_dimensions_checked_before_reintegration",
+            "trapezoidal_cost_across_jumps_rejected",
+            "legacy_and_problem_mismatch_cannot_pass",
+            "raw_bounds_and_solver_failure_are_not_repaired",
+            "collocation_discrepancy_and_reintegrated_terminal_state",
+            "original_control_capacity_peak_including_interval_interior",
+            "tail_checks_overlap_with_whole_actual_intervals",
+            "main_verification_requires_all_new_flags_and_five_cases",
+            "current_inputs_assessment_and_additional_request_must_match"
+          ],
+          "required_tests_passed": 12,
+          "neutral_tests": {
+            "passed": true,
+            "tests": [
+              "matching_problem_and_accepted_synthetic_outputs",
+              "missing_and_legacy_assessments_rejected",
+              "both_outputs_need_numeric_acceptance",
+              "predeclared_absolute_cost_tolerance",
+              "actual_options_grid_and_requested_settings_compared",
+              "neutral_guess_definition_checked",
+              "theory_disagreement_is_independent_of_initialization_numeric_comparison"
+            ],
+            "required_tests_passed": 7,
+            "actual_optimizer_calls": 0
+          },
+          "actual_optimizer_calls": 0,
+          "checked_utc": "2026-10-08T08:46:29.397Z",
+          "matlab": "25.2.0.2998904 (R2025b)"
+        }
+      },
+      {
+        "name": "verify_capacity_exit_transition",
+        "passed": true,
+        "report": {
+          "test": "verify_capacity_exit_transition",
+          "passed": true,
+          "case_count": 13,
+          "checks": [
+            "single_cell_containment",
+            "closed_interval_endpoints",
+            "outside_interval_within_one_cell_without_expansion",
+            "outside_one_cell_distance",
+            "two_cells_accepted_without_single_cell_claim",
+            "more_than_two_cells_rejected",
+            "missing_capacity_exit",
+            "all_ambiguous_candidates_retained",
+            "nonadjacent_interval_rejected",
+            "direct_jump_shared_endpoint",
+            "theory_independent_detection",
+            "absent_theoretical_stage_not_fake_time_pass",
+            "zero_control_capacity_contact_not_paid_capacity"
+          ],
+          "execution_type": "synthetic_unit_tests_no_optimizer"
+        }
+      },
+      {
+        "name": "verify_numerical_events",
+        "passed": true,
+        "report": {
+          "test": "verify_numerical_events",
+          "passed": true,
+          "case_count": 14,
+          "checks": [
+            "all_primary_events_and_actual_transition_intervals",
+            "expected_structure_cannot_change_detector",
+            "initial_full_control_and_absent_capacity_stage",
+            "initial_capacity_and_direct_exit",
+            "late_uncontrolled_capacity_recontact",
+            "multiple_candidates_and_repeated_boundary_visits",
+            "long_intermediate_control_preserved_and_rejected",
+            "missing_full_event_and_unclassified_control_bout",
+            "direct_jump_distance_without_false_containment",
+            "nonuniform_local_cell_distance",
+            "safe_zero_control_without_fabricated_events",
+            "dense_output_capacity_interval_average_and_state_segment_distance",
+            "explicit_node_interpolation_fallback_and_endpoint_span",
+            "mismatched_actual_control_interval_rejected"
+          ],
+          "execution_type": "synthetic_unit_tests_no_optimizer"
+        }
+      },
+      {
+        "name": "verify_reference_boundaries",
+        "passed": true,
+        "report": {
+          "passed": true,
+          "tests": [
+            "safe_E0_exact_zero_cost_and_control",
+            "Gamma_interior_has_no_zero_length_capacity_platform",
+            "s_B_K_allows_zero_length_capacity_stage",
+            "waiting_public_interface_Phi_equals_Phi_B_no_fake_platform",
+            "case_names_and_order_do_not_determine_regions",
+            "small_positive_i_below_h_is_not_cancelled_to_zero",
+            "r_equals_h_minus_ell_outside_p_one_half"
+          ],
+          "test_count": 7,
+          "actual_optimizer_calls": 0
+        }
+      },
+      {
+        "name": "verify_original_dynamics",
+        "passed": true,
+        "report": {
+          "passed": true,
+          "tests": [
+            "q_zero_natural_invariant_and_positive_monotone_total",
+            "interior_control_original_flow_identity_and_positive_monotone_total",
+            "q_one_full_tracking_invariant_and_positive_monotone_total"
+          ],
+          "test_count": 3,
+          "actual_optimizer_calls": 0
+        }
+      },
+      {
+        "name": "verify_complete_control_cost",
+        "passed": true,
+        "report": {
+          "passed": true,
+          "tests": [
+            "nonuniform_piecewise_constant_full_horizon_cost_not_trapezoid"
+          ],
+          "test_count": 1,
+          "actual_optimizer_calls": 0
+        }
+      },
+      {
+        "name": "verify_revision_exporter",
+        "passed": true,
+        "report": {
+          "passed": true,
+          "tests": [
+            "export_failure_clears_stale_pass_missing",
+            "export_failure_clears_stale_pass_failed",
+            "export_failure_clears_stale_pass_provenance_changed"
+          ],
+          "test_count": 3,
+          "actual_optimizer_calls": 0,
+          "formal_tex_modified": false
+        }
+      },
+      {
+        "name": "verify_revision_scheduler",
+        "passed": true,
+        "report": {
+          "passed": true,
+          "tests": [
+            "35_unique_predeclared_configs_and_group_references",
+            "configuration_is_deterministic_and_preserves_global_rng",
+            "actual_constant_point_seven_input_array",
+            "random_seed_knots_values_reconstruction_and_rng_preservation",
+            "state_node_and_integrator_guesses_follow_actual_piecewise_control",
+            "tampered_random_definition_rejected",
+            "infeasible_initial_guess_capacity_excess_recorded_without_clipping",
+            "all_order_full_manifest_first_force_unique_execution_and_main_publication",
+            "force_deduplicates_identical_actual_fingerprints_with_distinct_ids",
+            "failed_fingerprint_is_not_retried_in_the_same_force_batch",
+            "all_cannot_pass_after_threshold_completed_disagreement",
+            "all_cannot_pass_after_threshold_blocked_disagreement",
+            "NLP_failure_preserved_and_remaining_main_cases_continue",
+            "code_error_stops_immediately_with_saved_failure_report",
+            "production_execute_reconciles_saved_raw_run_after_assessment_exception",
+            "missing_environment_is_blocked_and_never_prepare_or_execute",
+            "threshold_mode_does_not_call_optimizer_or_preparation",
+            "production_threshold_missing_data_stays_blocked_without_optimizer",
+            "unit_mode_never_starts_optimizer"
+          ],
+          "test_count": 19,
+          "default_unique_configuration_count": 35,
+          "mock_all_execute_calls": 35,
+          "actual_optimizer_calls": 0,
+          "checked_utc": "2026-10-08T08:46:37.740Z"
+        }
+      }
+    ],
+    "actual_optimizer_calls": 0,
+    "checked_utc": "2026-10-08T08:46:37.921Z",
+    "matlab": "25.2.0.2998904 (R2025b)",
+    "execution_type": "unit_tests_no_optimizer"
+  }
+}

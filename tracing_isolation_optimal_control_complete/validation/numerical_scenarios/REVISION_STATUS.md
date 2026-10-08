@@ -11,7 +11,7 @@
 | 4：独立事件区间识别 | completed | `step4_unit_tests.json`；13 项容量退出及 14 项总体事件测试通过 |
 | 5：理论片段合并及编译 | completed | `step5_validation_report.json`、`step5_theory_protection.json`；main 34 页、TheoryOnly 26 页及变更页/图表渲染通过 |
 | 6：冻结配置与调度器 | completed | `step67_protocol_manifest.json`：35 配置；最终 12 组单元测试通过，调度回归 19 项 |
-| 7：单元测试及五例主算例 | tested | 单元测试已通过：`step67_unit_report.json`；五例主算例等待本次代码冻结提交后启动 |
+| 7：单元测试及五例主算例 | completed | `step67_unit_report.json`、`step67_main_report.json`；五例真实求解成功，双旗标全通过 |
 
 ## 第 6–7 步本批状态
 
@@ -24,6 +24,26 @@
 最终 MATLAB 单元入口 `run_revision_validation('unit',false)` 已真实退出 0，12 组全部通过，调度回归 19 项。包括原参考/依赖/缓存/求解诊断/评估/事件、E0及退化阶段、极小正感染量、原动力学不变量、完整非均匀网格计价、导出防陈旧、随机初猜重建、force 指纹去重、普通失败继续、持久化后异常计数、缺环境 blocked 和 threshold 不求解。模拟调度的 35 次执行不计为科学优化。初次 exporter 测试夹具 struct 初始化错误的失败日志为 `step67_unit_attempt1.log`，修复后完整回归通过；第二次通过日志另存 `step67_unit_attempt2.log`。
 
 54 个 MATLAB 文件已实际执行 `checkcode(...,'-id')`，报告为 `step67_matlab_code_analyzer.json`。冻结协议哈希为 `537248f24a972508866e476433ab446a2cdda0f553fc70b66a32edb73f657a3b`；求解源码原字节哈希为 `cd7e6297bb05f11028fe6f8f543ae8a9f5bd8c41d4f98346a0dc7b7cd09cff49`，明细见 `step67_source_fingerprints.json`。本条记录只证明配置和测试，不表示科学优化已经完成。
+
+代码冻结提交为 `be43bc6ccc5d280e9b0287a00554df1590518bea`，在此提交之后实际执行 `run_revision_validation('main',false)`，MATLAB 退出码为 0。主批次为 `batch_cb8bb06aaa314668a9e553522232368f`，实际求解 5 次、成功 5 次、失败 0 次、缓存命中 0 次、评估 5 次。MATLAB/OpenOCL 环境可用，无当前 blocked 项。默认 35 配置实际执行并通过 5/35，其余 30 配置及第 8–11 步为 `not_started`；初猜/网格/时域/阈值调度与摘要代码仅实现，不宣称科学复核已完成。
+
+| 案例 | 实测 J_openocl | numeric_pass | agreement_pass | 数值识别结构 |
+|---|---:|---|---|---|
+| E1 | 0.41620500909728464 | true | true | 0 → 1 → 0 |
+| E2 | 1.5295233613984434 | true | true | 0 → q_B → 1 → 0 |
+| E3 | 0.43399851635235542 | true | true | 1 → 0 |
+| E4 | 1.2688310955840425 | true | true | q_B → 1 → 0 |
+| E5 | 0.53625636159160439 | true | true | 1 → 0 |
+
+最大重积分容量超出为 `7.991060546608253e-7`，最大配点节点与重积分状态差为 `8.57058412018219e-8`，最大成本相对差绝对值为 `4.5879306830530925e-5`；五例尾段控制幅值均为 0。这些是实际运行的浮点诊断，不是严格可行性或误差上界。E1 完全跟踪过渡段的 i 两端约为 0.132638/0.133049，小于 K；E2 检测到正长度容量段；E3/E5 完全跟踪从 0 开始；E4 容量段从 0 开始。详细原始区间和稠密状态距离见每例 assessment。
+
+E4 实测成本比解析值低 `3.6827584466436747e-6`，相对差为 `-2.9024728116725762e-6`，重积分容量超出为 `7.702869587733474e-7`。差异均在预定诊断容差内，没有超过预定尺度的 `unresolved_discrepancy`；不能据此声称严格可行或优于解析解，小容量超出也不提供成本影响的严格上界。原始输出完整保留，没有剪裁、平滑或替换。
+
+原始 `.mat`、`.solver.json`、独立评估 sidecar、五例 `main_summary.csv/json`、完整 batch/request manifest 及主选择 manifest 已保存。所有新 raw 的来源提交为冻结提交，求解源码哈希与冻结版本一致；`solve_dirty=true` 准确反映既有及新生成的未跟踪材料，不声称工作区完全干净。旧五例兼容副本按原字节归档，映射为 `data/numerical_scenarios/legacy_results/archive_manifest.json`；旧 inventory 保留为历史快照。
+
+`verify_stage67_integrity.py` 已实际通过：21 个历史数据/图/文献文件保留（其中旧 E1–E5 改为同哈希归档），四个受保护的正文/编译文件保持原字节；新 raw、compatibility、selection 和默认 35 配置 manifest 全部核对通过。源码检查无解析错误，保留 36 条可读性等提示；完整 Git 空白检查只在原始失败日志尾部发现 MATLAB 自带空白，原始日志保留，非日志暂存路径检查通过。
+
+本批没有理论修改，没有运行正文导出、作图或 LaTeX 构建；`main.pdf` 本次未重新编译，原第 5 步编译产物不作为本次新增编译证据。最终汇总见 `step67_validation_report.json`，完整性证据为 `step67_integrity_report.json`。
 
 正文、图和已编译 PDF 本批不导出或构建；原字节基准为 `step67_protected_files.json`。历史结果只允许在兼容主文件替换前按原字节归档；原始 runs 永不修改。完整性入口为 `verify_stage67_integrity.py`。
 

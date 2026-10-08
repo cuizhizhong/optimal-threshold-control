@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "batch_id": "batch_58610f302b6446ffbae3cf4e985b5e1b",
+  "mode": "unit",
+  "force": false,
+  "status": "failed",
+  "started_utc": "2026-10-08T08:40:56.916Z",
+  "finished_utc": "2026-10-08T08:41:01.242Z",
+  "manifest_file": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\data\\numerical_scenarios\\revision_checks\\batch_58610f302b6446ffbae3cf4e985b5e1b_manifest.json",
+  "report_file": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\data\\numerical_scenarios\\revision_checks\\batch_58610f302b6446ffbae3cf4e985b5e1b_report.json",
+  "protocol_hash": "537248f24a972508866e476433ab446a2cdda0f553fc70b66a32edb73f657a3b",
+  "solve_code_hash": "cd7e6297bb05f11028fe6f8f543ae8a9f5bd8c41d4f98346a0dc7b7cd09cff49",
+  "default_unique_count": 35,
+  "requested_unique_count": 0,
+  "attempted_count": 0,
+  "solver_calls": 0,
+  "cache_hits": 0,
+  "assessment_calls": 0,
+  "successful_count": 0,
+  "failed_count": 0,
+  "duplicate_reference_count": 0,
+  "numeric_pass_count": 0,
+  "agreement_pass_count": 0,
+  "selection_published": false,
+  "protocol_complete": false,
+  "consistency_pass": false,
+  "rows": [],
+  "blockers": [],
+  "failure": {
+    "identifier": "MATLAB:heterogeneousStrucAssignment",
+    "message": "在不同结构体之间进行下标赋值。",
+    "stack": [
+      {
+        "file": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\matlab\\numerical_scenarios\\verify_revision_exporter.m",
+        "name": "write_selection",
+        "line": 59
+      },
+      {
+        "file": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\matlab\\numerical_scenarios\\verify_revision_exporter.m",
+        "name": "verify_revision_exporter",
+        "line": 10
+      },
+      {
+        "file": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\matlab\\numerical_scenarios\\verify_revision_validation_unit.m",
+        "name": "verify_revision_validation_unit",
+        "line": 10
+      },
+      {
+        "file": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\matlab\\numerical_scenarios\\revision_validation_dispatch.m",
+        "name": "@()verify_revision_validation_unit()",
+        "line": 182
+      },
+      {
+        "file": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\matlab\\numerical_scenarios\\revision_validation_dispatch.m",
+        "name": "revision_validation_dispatch",
+        "line": 39
+      },
+      {
+        "file": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\matlab\\numerical_scenarios\\run_revision_validation.m",
+        "name": "run_revision_validation",
+        "line": 5
+      }
+    ],
+    "report": "在不同结构体之间进行下标赋值。\n\n出错 verify_revision_exporter>write_selection (第 59 行)\n    entries(k)=struct('case_id',id,'run_id',run.run_id, ...\n    ^^^^^^^^^^\n出错 verify_revision_exporter (第 10 行)\n    if ~strcmp(scenario{1},'missing'), write_selection(cfg.paths.data,scenario{1}); end\n                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n出错 verify_revision_validation_unit (第 10 行)\n    result=checks{k}();\n           ^^^^^^^^^^^\n出错 revision_validation_dispatch>@()verify_revision_validation_unit() (第 182 行)\nfallback=struct('unit',@() verify_revision_validation_unit(), ...\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n出错 revision_validation_dispatch (第 39 行)\n        report.unit=hooks.unit();\n                    ^^^^^^^^^^^^\n出错 run_revision_validation (第 5 行)\nreport=revision_validation_dispatch(revision_validation_config(),mode,force);\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+  }
+}

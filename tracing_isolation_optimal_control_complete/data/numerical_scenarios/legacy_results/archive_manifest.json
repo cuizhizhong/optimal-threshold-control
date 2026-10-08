@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "purpose": "byte_exact_pre_revision_main_results",
+  "entries": [
+    {
+      "original_file": "E1.mat",
+      "archive_file": "legacy_results/E1_aaa71096179643e9bd782c8112badaf003620ff22a0d42f62383b4e97e29293d.mat",
+      "sha256": "aaa71096179643e9bd782c8112badaf003620ff22a0d42f62383b4e97e29293d",
+      "source_status": "legacy_unverified"
+    },
+    {
+      "original_file": "E2.mat",
+      "archive_file": "legacy_results/E2_8ff1383e49343b8ebdcd56e9776b1b8adf8deda9d5af101a31d0dcaff1d3967f.mat",
+      "sha256": "8ff1383e49343b8ebdcd56e9776b1b8adf8deda9d5af101a31d0dcaff1d3967f",
+      "source_status": "legacy_unverified"
+    },
+    {
+      "original_file": "E3.mat",
+      "archive_file": "legacy_results/E3_1a589f516bcb05f9bed122ab1aa85c5e36f32c531a77aa2504f2ebc946708f3a.mat",
+      "sha256": "1a589f516bcb05f9bed122ab1aa85c5e36f32c531a77aa2504f2ebc946708f3a",
+      "source_status": "legacy_unverified"
+    },
+    {
+      "original_file": "E4.mat",
+      "archive_file": "legacy_results/E4_bc779b996122adac481e4e712b1f1d0b0bed555929c22e4af51a38442dccc733.mat",
+      "sha256": "bc779b996122adac481e4e712b1f1d0b0bed555929c22e4af51a38442dccc733",
+      "source_status": "legacy_unverified"
+    },
+    {
+      "original_file": "E5.mat",
+      "archive_file": "legacy_results/E5_9a6b5badf7a7d83c8efd8816ada22064b55ab7935f74b763310828e0c533a9fd.mat",
+      "sha256": "9a6b5badf7a7d83c8efd8816ada22064b55ab7935f74b763310828e0c533a9fd",
+      "source_status": "legacy_unverified"
+    }
+  ]
+}

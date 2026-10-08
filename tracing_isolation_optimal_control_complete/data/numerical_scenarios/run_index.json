@@ -1,4 +1,60 @@
 {
   "schema_version": 1,
-  "entries": []
+  "entries": [
+    {
+      "run_id": "run_1fe903238ec8428ebe33758d0860ba94",
+      "attempt": 1,
+      "case_id": "E1",
+      "solve_fingerprint": "93b2027d362a7138f8726c3d11f2fe3f49a71646148c1a6d5e0dca36609c4d20",
+      "success": true,
+      "source_status": "verified_record",
+      "raw_file": "runs/run_1fe903238ec8428ebe33758d0860ba94.mat",
+      "raw_sha256": "34c4c30b1f16310a5474126fadf39a6d7dba3db6ef76467a0ac6fa402d3627ba",
+      "solve_started_utc": "2026-10-08T08:49:50.325Z"
+    },
+    {
+      "run_id": "run_95f03cda21434451998723ad26c1a1b9",
+      "attempt": 1,
+      "case_id": "E2",
+      "solve_fingerprint": "98b639fdefaca791a15d10641aeeabd1a378674d0da388191d12c36fd1f58dcf",
+      "success": true,
+      "source_status": "verified_record",
+      "raw_file": "runs/run_95f03cda21434451998723ad26c1a1b9.mat",
+      "raw_sha256": "8d832c3fa9185b51bb88b4a0a606d810b980c2c95e181085b47717a28adfb493",
+      "solve_started_utc": "2026-10-08T08:52:55.377Z"
+    },
+    {
+      "run_id": "run_bd09cff659c14ab7960b447ff0f4f0b0",
+      "attempt": 1,
+      "case_id": "E3",
+      "solve_fingerprint": "bb8f0c1550c05b0f17dfdff131f870359de93ac4d8e45f2248b6dbe64d50b1f6",
+      "success": true,
+      "source_status": "verified_record",
+      "raw_file": "runs/run_bd09cff659c14ab7960b447ff0f4f0b0.mat",
+      "raw_sha256": "d3506c6e984e21a05b21c0ac7f41acc32f5638a914356c0b4fb07d594f3ea065",
+      "solve_started_utc": "2026-10-08T08:55:34.886Z"
+    },
+    {
+      "run_id": "run_139836e6273441e7bef91b3cce70193f",
+      "attempt": 1,
+      "case_id": "E4",
+      "solve_fingerprint": "b09e5674b10efbb7d2e71fa775ef7bc7f6635c939649ca97f3d8399ffeb089be",
+      "success": true,
+      "source_status": "verified_record",
+      "raw_file": "runs/run_139836e6273441e7bef91b3cce70193f.mat",
+      "raw_sha256": "51940fda48b02673f50f6d3b9402e9d3d1570dcad5b236917a6ccb0004b2e8f8",
+      "solve_started_utc": "2026-10-08T08:57:00.293Z"
+    },
+    {
+      "run_id": "run_a07493968ce542b2b057ce11232f695c",
+      "attempt": 1,
+      "case_id": "E5",
+      "solve_fingerprint": "77d7e0acd05f07c385996b57f8df3e52874b79bd4f1eb6feb941be29f2c62a41",
+      "success": true,
+      "source_status": "verified_record",
+      "raw_file": "runs/run_a07493968ce542b2b057ce11232f695c.mat",
+      "raw_sha256": "2e7f6447daba5ddca621fba68c4f65e28a3430c1a81ff05d5b5282710bcd5399",
+      "solve_started_utc": "2026-10-08T08:58:09.662Z"
+    }
+  ]
 }
