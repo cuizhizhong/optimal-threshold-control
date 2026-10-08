@@ -148,8 +148,13 @@ pending{end+1}=macro('NumFindingWaiting',waiting);
 pending{end+1}=macro('NumFindingTrackingBoundary',boundary);
 pending{end+1}=macro('NumCheckStatement',checktext);
 pending{end+1}=macro('NumOverallFinding',finding);
-writefile(fullfile(cfg.paths.latex,'numerical_reference_values.tex'),strjoin(reference,newline));
-writefile(fullfile(cfg.paths.latex,'numerical_pending.tex'),strjoin(pending,newline));
+mainPath=fullfile(cfg.paths.latex,'main.tex');
+replace_generated_block(mainPath, ...
+    '% BEGIN AUTO-GENERATED NUMERICAL REFERENCE VALUES', ...
+    '% END AUTO-GENERATED NUMERICAL REFERENCE VALUES',strjoin(reference,newline));
+replace_generated_block(mainPath, ...
+    '% BEGIN AUTO-GENERATED NUMERICAL RESULTS', ...
+    '% END AUTO-GENERATED NUMERICAL RESULTS',strjoin(pending,newline));
 fprintf('NUMERICAL_LATEX_EXPORTED verified=%d\n',verified);
 end
 
@@ -169,4 +174,24 @@ end
 function writefile(path,text)
 fid=fopen(path,'w','n','UTF-8'); assert(fid>=0); cleaner=onCleanup(@() fclose(fid));
 fprintf(fid,'%s\n',text);
+end
+
+function replace_generated_block(path,beginMarker,endMarker,body)
+% 只更新 main.tex 内的生成块，避免重新产生拆分的 TeX 文件。
+text=fileread(path);
+begins=strfind(text,beginMarker); ends=strfind(text,endMarker);
+assert(isscalar(begins) && isscalar(ends) && begins<ends, ...
+    'Generated block markers are missing or duplicated: %s',beginMarker);
+if contains(text,sprintf('\r\n'))
+    nl=sprintf('\r\n');
+else
+    nl=sprintf('\n');
+end
+body=strrep(body,sprintf('\r\n'),sprintf('\n'));
+body=strrep(body,sprintf('\n'),nl);
+replacement=[beginMarker nl body nl endMarker];
+text=[text(1:begins-1) replacement text(ends+length(endMarker):end)];
+fid=fopen(path,'w','n','UTF-8'); assert(fid>=0);
+cleaner=onCleanup(@() fclose(fid)); %#ok<NASGU>
+fprintf(fid,'%s',text);
 end

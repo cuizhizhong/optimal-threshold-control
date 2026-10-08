@@ -8,7 +8,6 @@
 addpath(fullfile(pwd, 'tracing_isolation_optimal_control_complete', ...
     'matlab', 'numerical_scenarios'));
 verify_numerical_reference();
-run_legacy_baseline();                 % 独立保存旧 E2 基准
 run_numerical_scenarios();             % 五例、E2 加密、E1/E2 常值初猜复核
 make_numerical_figures();              % 只读已保存结果
 export_numerical_latex();              % 只读已保存结果
@@ -26,14 +25,12 @@ export_numerical_latex();              % 只读已保存结果
 
 ## 结果与追溯
 
-`data/numerical_scenarios/E1.mat` 至 `E5.mat` 保存普通数值数组、求解设置、初始化、求解状态、解析参考、数值事件及重积分。`checks/` 保存附加复核，`legacy_baseline/` 保存原脚本回归。`scenario_summary.csv` 和 `numerical_checks.json` 提供简明汇总。
+`data/numerical_scenarios/E1.mat` 至 `E5.mat` 保存普通数值数组、求解设置、初始化、求解状态、解析参考、数值事件及重积分。`checks/` 保存附加复核，`coarse/` 和 `diagnostics/` 保存最终设置所需的网格及边界诊断。`scenario_summary.csv` 和 `numerical_checks.json` 提供简明汇总。
 
-`figures/numerical_scenarios/` 保存三张 PDF 和 PNG。`latex/numerical_scenarios.tex` 是正文；两个数值宏文件由导出器生成。正文的阶段、有效位数及误差解释仍须结合图形和原始数据核对。
+`figures/numerical_scenarios/` 保存三张 PDF 和 PNG。数值正文及数值宏均位于 `latex/main.tex`；导出器只更新其中带有 `AUTO-GENERATED NUMERICAL` 标记的两个块，不再生成拆分的 TeX 文件。正文的阶段、有效位数及误差解释仍须结合图形和原始数据核对。
 
 五例及原有 E1 初猜/E2 加密核查通过后，导出器标记 `NumResultsVerifiedtrue`；新增 E2 初猜复核单独记录为 `neutral_E2_check`，不由主算例状态代替。其近似一致标准为原数值核查通过、阶段顺序相同、问题设置相同且两次成本绝对差不超过 `1e-5`。失败或缺失时正文不生成通过结论。算法按原始分段常数控制逐区间重积分，不裁剪感染比例；区间内峰值由常值控制下的 `s=gamma/[pc(1-q)]` 条件定位。持续容量弧同时要求非零内部控制与接近容量，后期零控制下的容量接触不会被算作容量控制阶段。
 
 `capacity_exit_transition` 只提取相邻 `q_B -> transition -> 1` 的过渡区间。缺失、多个候选、多网格单元、不连续或理论时刻落在区间外时输出诊断，不能导出单网格包含结论；回归检查入口为 `verify_capacity_exit_transition()`。
 
-解析回归检查包括独立 Python 检查点、自然与完全跟踪不变量、安全初值、切换曲线、零长度阶段和不规则采样。检查点重算入口为 `validation/numerical_scenarios/verify_analytic_checkpoints.py`（依赖 SciPy）。
-
-原 MATLAB/Python 数值代码、数据、十张图和 `CUI_q.m` 保留。旧正文可通过 Git 历史查阅，不另存重复副本。
+第一版 MATLAB/Python 绘图代码、CSV 数据、十张图和旧 E2 基准已统一移至 `archive/first_version/`。旧正文及已删除的审查记录仍可通过 Git 历史追溯。
