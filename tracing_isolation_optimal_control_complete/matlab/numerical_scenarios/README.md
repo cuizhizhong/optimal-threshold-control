@@ -1,6 +1,6 @@
 # 长时域数值验证
 
-本轮已执行范围为修改计划第 0–2 步：独立解析检查点、环境预检、求解来源及缓存修复。未运行新增优化，未更新论文或历史数值。当前科学结果文件保留为 `legacy_unverified`，见 `data/numerical_scenarios/legacy_inventory.json`；它们不自动命中新缓存。
+当前已完成修改计划第 0–5 步：独立解析检查点、来源缓存修复、求解信息保存、数值接受与理论比较分离、事件区间识别及理论正文增补。本批未运行新增优化，历史数值和图原样保留为 `legacy_unverified`；它们不自动命中新缓存。第 6–11 步及默认 35 个科学求解配置仍未执行。
 
 固定 `p=0.5, c=2, gamma=0.3, K=0.15`，使用 MATLAB/OpenOCL 对五个初值求解同一个单阶段最优控制问题。`expected_structure` 只用于结果比较，不进入优化约束。
 
@@ -14,6 +14,11 @@ verify_revision_preflight();
 verify_numerical_reference();
 verify_reference_dependency_tests();
 verify_numerical_cache();              % mock 六项缓存测试，真实优化调用为 0
+verify_solver_diagnostics();          % 真实接口字段与 mock 保存路径回归
+verify_numerical_assessment();         % 原控制合成轨道、双旗标及导出门槛回归
+verify_neutral_initialization();       % 初猜比较与理论一致性分开
+verify_capacity_exit_transition();     % 原始单单元包含与网格尺度一致分开
+verify_numerical_events();             % 数值检测不接收理论参考
 ```
 
 OpenOCL 根目录可作为 `revision_preflight(openoclRoot)` 参数或 `OPENOCL_ROOT` 环境变量提供；显式参数优先，默认仍为仓库的 `optimal/OpenOCL-master 0104`。MATLAB、CasADi 版本取实际接口；无法查询的 OpenOCL/IPOPT 版本记为 `unknown`，另保存实际依赖文件哈希。
@@ -37,7 +42,17 @@ export_numerical_latex();              % 只读已保存结果
 
 评估使用独立 `assessment_fingerprint` 与 sidecar，更新评估器不重新求解。图和正文导出各保存独立来源记录。主模式按共享输入中预定的 `main_N` 选择结果并生成 `selection_manifest.json`；`E1.mat`–`E5.mat` 只是其兼容副本。作图和导出核对 manifest、原始文件哈希、run_id、指纹与来源。没有新 manifest 时严格报错；本批保留的旧图和正文可以继续查看，但不冒充新来源复核。
 
-第 6/10 步尚未把附加检查汇总接入新索引；现有导出器拒绝旧 `checks/` 作为新增通过证据，因此当前不能据主结果单独生成整体 verified 结论。此限制留待对应批次处理。
+五例主旗标要求每例 `numeric_pass` 与 `agreement_pass` 均通过，且输入、预定求解请求和当前评估指纹匹配。附加检查有独立状态，不合并进主旗标，也不由主旗标代替。第 6/10 步尚未把完整实验组汇总接入新索引；旧 `checks/` 不作为新增通过证据。本批不运行导出器，正文两组历史数值生成块保持原样。
+
+## 第 3–4 步评估口径
+
+`numeric_pass` 检查求解成功、记录来源及原问题一致、完整时域加权成本、原控制重积分容量峰值、状态/控制界、初值、配点节点与重积分状态差、尾段和重积分终点的零控制安全延拓。`passed` 仅为该字段的兼容别名。带符号极值另存，不通过裁剪修正原输出。
+
+`agreement_pass` 独立比较成本、实际识别结构、事件区间及容量单元平均 `q_B`。成本相对差目标为 `1e-4`，安全集零成本用绝对误差 `1e-6`；容量控制平均误差目标为 `2e-3`。这些都是预先固定的浮点诊断目标，不是严格误差界。
+
+`detect_numerical_events` 只接收数值时间、原控制、重积分状态和阈值；`compare_numerical_events` 才接收解析参考。事件保留原始过渡区间、全部候选、端点状态及跨度。时间距离为解析时刻至真实区间的距离，主门槛为至多两过渡单元且距离不超过邻近一个最大单元宽度。只有真实一个过渡单元包含解析时刻，才标记 `single_cell_contains_theory`。稠密 ODE 输出用于容量区间积分和参考状态至过渡轨道段的浮点最短距离，后者不机械套用 `1e-6` 状态差门槛。
+
+每次新求解保留原始 `solver_info`，另存不可覆盖的 `runs/<run_id>.solver.json`。迭代数、计时、最后迭代的 `inf_pr/inf_du` 只从真实返回字段提取；取不到时保存 JSON `null`、`not_available` 与原因。barrier 参数和步长不代替互补残差，当前接口不提供 KKT 证书。异常记录和显著较低成本的 `unresolved_discrepancy` 均保留。
 
 ## 模型与独立性
 
@@ -49,14 +64,14 @@ export_numerical_latex();              % 只读已保存结果
 
 ## 结果与追溯
 
-下述五例结果及已有核查说明对应本轮修订前的历史材料，不表示本轮重算或第 3–11 步已验收。新记录目录当前为空，状态和真实测试证据见 `validation/numerical_scenarios/REVISION_STATUS.md`。
+下述五例结果及已有核查说明对应本轮修订前的历史材料，不表示本轮重算。新科学记录目录当前为空，步骤状态和真实测试证据见 `validation/numerical_scenarios/REVISION_STATUS.md`。
 
 `data/numerical_scenarios/E1.mat` 至 `E5.mat` 保存普通数值数组、求解设置、初始化、求解状态、解析参考、数值事件及重积分。`checks/` 保存附加复核，`coarse/` 和 `diagnostics/` 保存最终设置所需的网格及边界诊断。`scenario_summary.csv` 和 `numerical_checks.json` 提供简明汇总。
 
 `figures/numerical_scenarios/` 保存三张 PDF 和 PNG。数值正文及数值宏均位于 `latex/main.tex`；导出器只更新其中带有 `AUTO-GENERATED NUMERICAL` 标记的两个块，不再生成拆分的 TeX 文件。正文的阶段、有效位数及误差解释仍须结合图形和原始数据核对。
 
-五例及原有 E1 初猜/E2 加密核查通过后，导出器标记 `NumResultsVerifiedtrue`；新增 E2 初猜复核单独记录为 `neutral_E2_check`，不由主算例状态代替。其近似一致标准为原数值核查通过、阶段顺序相同、问题设置相同且两次成本绝对差不超过 `1e-5`。失败或缺失时正文不生成通过结论。算法按原始分段常数控制逐区间重积分，不裁剪感染比例；区间内峰值由常值控制下的 `s=gamma/[pc(1-q)]` 条件定位。持续容量弧同时要求非零内部控制与接近容量，后期零控制下的容量接触不会被算作容量控制阶段。
+五例主结果均通过独立数值接受和理论比较后，导出器才标记 `NumResultsVerifiedtrue`。初猜比较要求两次输出数值可接受、实际问题设置与网格相同、成本绝对差不超过 `1e-5`；阶段和理论一致性另记为 `agreement_pass`。失败或缺失时不生成通过结论。算法按原始分段常数控制逐区间重积分，不裁剪感染比例；区间内峰值由常值控制下的 `s=gamma/[pc(1-q)]` 条件定位。持续容量弧同时要求正长度、内部正控制与接近容量，后期零控制下的容量接触不会被算作容量控制阶段。
 
-`capacity_exit_transition` 只提取相邻 `q_B -> transition -> 1` 的过渡区间。缺失、多个候选、多网格单元、不连续或理论时刻落在区间外时输出诊断，不能导出单网格包含结论；回归检查入口为 `verify_capacity_exit_transition()`。
+`capacity_exit_transition` 保留兼容接口，可检测 `q_B -> transition -> 1` 和纯阶段直接相邻的共享端点。`supported` 仅表示真实单单元包含，`grid_scale_pass` 单独表示新的网格尺度诊断；区间不因解析时刻改变。接口与异常说明见 `validation/numerical_scenarios/step4_event_contract.md`。
 
 第一版 MATLAB/Python 绘图代码、CSV 数据、十张图和旧 E2 基准已统一移至 `archive/first_version/`。旧正文及已删除的审查记录仍可通过 Git 历史追溯。

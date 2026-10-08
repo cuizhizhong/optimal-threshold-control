@@ -1,0 +1,47 @@
+{
+  "capacity_exit": {
+    "test": "verify_capacity_exit_transition",
+    "passed": true,
+    "case_count": 13,
+    "checks": [
+      "single_cell_containment",
+      "closed_interval_endpoints",
+      "outside_interval_within_one_cell_without_expansion",
+      "outside_one_cell_distance",
+      "two_cells_accepted_without_single_cell_claim",
+      "more_than_two_cells_rejected",
+      "missing_capacity_exit",
+      "all_ambiguous_candidates_retained",
+      "nonadjacent_interval_rejected",
+      "direct_jump_shared_endpoint",
+      "theory_independent_detection",
+      "absent_theoretical_stage_not_fake_time_pass",
+      "zero_control_capacity_contact_not_paid_capacity"
+    ],
+    "execution_type": "synthetic_unit_tests_no_optimizer"
+  },
+  "events": {
+    "test": "verify_numerical_events",
+    "passed": true,
+    "case_count": 14,
+    "checks": [
+      "all_primary_events_and_actual_transition_intervals",
+      "expected_structure_cannot_change_detector",
+      "initial_full_control_and_absent_capacity_stage",
+      "initial_capacity_and_direct_exit",
+      "late_uncontrolled_capacity_recontact",
+      "multiple_candidates_and_repeated_boundary_visits",
+      "long_intermediate_control_preserved_and_rejected",
+      "missing_full_event_and_unclassified_control_bout",
+      "direct_jump_distance_without_false_containment",
+      "nonuniform_local_cell_distance",
+      "safe_zero_control_without_fabricated_events",
+      "dense_output_capacity_interval_average_and_state_segment_distance",
+      "explicit_node_interpolation_fallback_and_endpoint_span",
+      "mismatched_actual_control_interval_rejected"
+    ],
+    "execution_type": "synthetic_unit_tests_no_optimizer"
+  },
+  "actual_optimizer_calls": 0,
+  "checked_utc": "2026-10-08T08:19:26.989Z"
+}

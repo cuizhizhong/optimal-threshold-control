@@ -1,12 +1,49 @@
-# 第 0–2 步执行状态
+# 第 0–5 步执行状态
 
-本批仅执行 `ai/codex_revision_plan/CODEX_EXECUTION_PLAN.md` 的第 0–2 步。第 3–11 步为 `not_started`。
+已分两批执行 `ai/codex_revision_plan/CODEX_EXECUTION_PLAN.md` 的第 0–2 步及第 3–5 步。当前第 0–5 步为 `completed`，第 6–11 步为 `not_started`。本次仅完成第 3–5 步，没有启动新的科学优化或更新历史数值生成块。
 
 | 步骤 | 状态 | 证据 |
 |---|---|---|
 | 0：冻结基准、环境预检 | completed | `BASELINE.json`、`preflight_report.json`、`preflight_tests.json`；四项回归通过 |
 | 1：恢复独立解析检查点 | completed | `step1_python_tests.json`、`step1_matlab_tests.json`；Python/MATLAB 各六项通过 |
 | 2：缓存与来源修复 | completed | `cache_unit_report.json`、`preparation_unit_report.json`；六项 mock 与构建接口通过 |
+| 3：求解信息及分离评估 | completed | `step3_solver_tests.json`、`step3_assessment_tests.json`；10 项求解接口、12 项评估和 7 项初猜比较通过 |
+| 4：独立事件区间识别 | completed | `step4_unit_tests.json`；13 项容量退出及 14 项总体事件测试通过 |
+| 5：理论片段合并及编译 | completed | `step5_validation_report.json`、`step5_theory_protection.json`；main 34 页、TheoryOnly 26 页及变更页/图表渲染通过 |
+
+## 第 3–5 步本批证据
+
+本批起始提交为 `fa9dc05229bfdcde079624fc4fe5118b97e288cf`，沿用 `codex/numerical-reproducibility-revision`。起始无已跟踪修改，既有未跟踪材料未覆盖或纳入提交。
+
+求解入口保留原始 info、真实成功状态、return_status、迭代数及计时，可读取的最终 `inf_pr/inf_du` 按原字段口径保存。互补和 KKT 量不可取得时保存 JSON null、not_available 和原因；不以 barrier 参数或步长代替。异常与无效网格输出先保留，再标失败；每个新 attempt 另存 `.solver.json`。真实返回字段盘点见 `step3_solver_interface_fields.json`，历史 MAT 仅读取，不冒充新运行。
+
+`numeric_pass`、`agreement_pass` 与 `provenance_pass` 分开。原控制在实际区间上重积分并加权计价，尾段安全使用重积分终点；state_discrepancy 明确指配点节点与重积分状态差。事件先独立检测，再用解析参考比较；真实区间不扩张，所有候选与长中间控制保留。容量控制按对应重积分状态求区间平均 q_B，状态段距离只作浮点诊断。显著更低且现有数值核查不能解释的成本标为 unresolved_discrepancy，原记录保留。
+
+导出主旗标核对五例的新双旗标、当前参数/初值、预定求解请求及当前评估指纹。附加检查分别匹配自己的请求，不由主旗标代替。结果文字只从数值检测的真实事件生成，不无条件填入预期阶段。本批没有运行 `export_numerical_latex()`，原论文两组数值生成块及科学结果数值未改。
+
+实际 MATLAB 回归合计 62 项：求解接口 10、评估 12、初猜比较 7、缓存 6、容量退出 13、总体事件 14。均已通过，日志为 `step35_matlab_tests.log` 和 `step4_matlab_tests.log`。测试使用 mock 或合成原控制轨道，真实优化执行/成功/失败/缓存命中均为 0；科学 runs 索引为空，默认矩阵仍为 0/35。缓存回归有 18 次 mock solver 调用，接口保存测试另有 1 次 mock callable 调用，均不计为科学优化。
+
+MATLAB 首次受限启动未产生测试输出，已中止；随后在本机获准环境执行，两批测试退出码均为 0。实际版本仍为 `25.2.0.2998904 (R2025b)`。对 45 个 MATLAB 文件实际执行 checkcode，未见解析错误；仍有 24 条可读性、抑制或未使用变量等提示，原文见 `step35_matlab_code_analyzer.json`，不称零警告。
+
+Python 独立 fixture `--check` 与 6 项 unittest 已实际通过。`verify_stage35_integrity.py` 核对 21 个历史数据、图及文献文件的原字节不变，168 个 label 无重名，仅新增 `lem:ac-composition`；10 个保护区块和原数值生成块保持，见 `step35_integrity_report.json`。本批授权变更 main.tex/main.pdf/main.bbl，旧第 0–2 步完整性报告不覆盖重写。
+
+理论增补分别位于模型记账、thm:wellposed 的全局导数界、lem:ac-level-set 后的复合引理、lem:trajectory-verification 证明开头、sec:HJB 的 Soner 适用范围及 sec:numerical-method 的 Avram 目标约束澄清。主假设、控制类、U/V、切换曲线、反馈、验证证明后半、主定理和唯一性结论保留。main 与 TheoryOnly 均真实完成 XeLaTeX→BibTeX→XeLaTeX→XeLaTeX，最终日志无引用、重复标签、缺字或溢出警告。TheoryOnly 首次 BibTeX 输出路径被 openout_any=p 拒绝，切换到输出目录后成功，原失败日志保留；未更改 TeX 安全设置。已渲染核对所有变更页及主文三图一表，未见裁切、重叠或分页异常。
+
+本批真实命令：
+
+```powershell
+python tracing_isolation_optimal_control_complete/validation/numerical_scenarios/generate_analytic_checkpoints.py --check
+python -m unittest discover -s tracing_isolation_optimal_control_complete/validation/numerical_scenarios -p test_analytic_checkpoints.py -v
+python tracing_isolation_optimal_control_complete/validation/numerical_scenarios/verify_stage35_integrity.py
+```
+
+MATLAB -batch 实际调用 `verify_solver_diagnostics()`、`verify_numerical_assessment()`（包含 `verify_neutral_initialization()`）、`verify_numerical_cache()`、`verify_capacity_exit_transition()`、`verify_numerical_events()` 和 `checkcode(...,'-id')`。完整构建入口和 TheoryOnly 命令见 `step5_validation_report.json`。
+
+本批求解源码原字节指纹为 `24218f1d4b7e54d605dd5f4c0eeef1505d107a02bfbcca2abdd119c38238ed00`；评估为 `908dc50df401fe346160ba65bf290c0ecde8bcecd5d53c1b45ed505d830cc6b8`；导出为 `b5f90422b521ecfaf48857c38637a728ec0fd7e647f48bf63135e3c13d3caea6`。明细见 `step35_source_fingerprints.json`。这些只表示实际源码，不表示产生了新优化结果。
+
+暂无由本批新增科学优化产生的未解决不一致，因为优化未执行。unresolved_discrepancy 的保留路径已用合成反例实际测试；历史 E4 与其余科学结果保持原样，正式重新评估留待后续授权步骤。
+
+## 以下为第 0–2 步历史执行记录
 
 基准提交：`f078f41fda1a7e4b0fb495916210862a0f136558`。基础分支：`codex/integrate-theory-revision`。工作分支：`codex/numerical-reproducibility-revision`。
 
@@ -62,4 +99,4 @@ runner 不再在缓存命中时改写来源，也不按结果自动加密主网�
 
 Git 的 `core.autocrlf=true` 在新检出时把四个历史文本文件及四个未改动 MATLAB 源文件从 LF 转为 CRLF。原工作区仍按原字节核对 24 个历史文件；跨检出核对只对文本规范 CRLF/LF，二进制仍按原字节比较，24 个文件内容一致。独立检出的求解源码原字节哈希为 `519f44278cd65db38e36b6545531d447a10ac6cc47f90c96c0b47bd4732a7592`，与工作区哈希分开记录，不把不同原字节来源当作同一次求解。
 
-相关文件完整列表见 `CHANGED_FILES.txt`。第 0–2 步完成；第 3–11 步未开始。
+第 0–2 步相关文件列表见 `CHANGED_FILES.txt`；本批第 3–5 步文件列表见 `CHANGED_FILES_STAGE35.txt`。第 6–11 步尚未开始。

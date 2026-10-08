@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "commands": [
+    "python generate_analytic_checkpoints.py --check",
+    "python -m unittest discover -s validation/numerical_scenarios -p test_analytic_checkpoints.py -v"
+  ],
+  "unittest_count": 6,
+  "exit_code": 0,
+  "actual_optimizer_calls": 0,
+  "fixture_sha256": "bfd2bae1eeb3cf7b73059f18d1eb36f9cdc2187e0ca5cf591880c032455e34f0",
+  "fixture_update_executed": false
+}

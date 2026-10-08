@@ -2,26 +2,27 @@ function export_numerical_latex()
 % 从实际保存数据生成成本、汇总及简短结果说明，不运行优化。
 cfg=numerical_cases_config();
 [runs,selectionManifest]=load_selected_numerical_runs(cfg.paths.data);
-passed=false(1,5);
-for k=1:5
-    d=struct('run',runs{k});
-    assert(isfield(d.run,'assessment'),'Missing numerical assessment.');
-    passed(k)=d.run.success && d.run.assessment.passed && ...
-        strcmp(d.run.assessment.observed_structure,cfg.cases(k).expected_structure);
-end
+assessmentSpec=numerical_assessment_spec(cfg);
+mainVerification=numerical_main_verification(runs,cfg.cases,cfg.parameters,cfg.solve,assessmentSpec);
 checks=struct();
 for id={'E2','E1'}
     f=fullfile(cfg.paths.data,'checks',[id{1} '.mat']);
     if isfile(f)
         d=load(f,'run');
         if isfield(d.run,'source_status') && strcmp(d.run.source_status,'verified_record')
-            checks.(id{1})=compact(d.run);
+            checks.(id{1})=d.run;
         end
     end
 end
 checksOK=isfield(checks,'E1') && isfield(checks,'E2');
-if checksOK, checksOK=checks.E1.assessment.passed && checks.E2.assessment.passed; end
-verified=all(passed) && checksOK;
+if checksOK
+    checksOK=numerical_additional_verification(checks.E1,cfg,'neutral',assessmentSpec) && ...
+        numerical_additional_verification(checks.E2,cfg,'grid',assessmentSpec);
+end
+for id=fieldnames(checks)'
+    checks.(id{1})=compact(checks.(id{1}));
+end
+verified=mainVerification.verified;
 neutral=[]; f=fullfile(cfg.paths.data,'checks','neutral_E2','E2.mat');
 if isfile(f)
     d=load(f,'run');
@@ -45,17 +46,19 @@ for k=[2 4]
 end
 summary=repmat(compact(runs{1}),1,5);
 for k=1:5, summary(k)=compact(runs{k}); end
-out=struct('verified',verified,'cases',summary,'additional_checks',checks, ...
+out=struct('verified',verified,'main_verification',mainVerification, ...
+    'additional_checks_complete',checksOK,'cases',summary,'additional_checks',checks, ...
     'neutral_E2_check',neutralCheck,'capacity_exit_checks',exitChecks);
 writefile(fullfile(cfg.paths.data,'numerical_checks.json'),jsonencode(out,PrettyPrint=true));
-rows=cell(5,10);
+rows=cell(5,12);
 for k=1:5
     r=runs{k}; rows(k,:)={r.case_id,r.x0(1),r.x0(2),r.reference.region, ...
         cfg.cases(k).expected_structure,r.assessment.observed_structure, ...
-        r.reference.J_reference,r.J_openocl,r.solver_settings.N,r.assessment.passed};
+        r.reference.J_reference,r.J_openocl,r.solver_settings.N, ...
+        r.assessment.numeric_pass,r.assessment.agreement_pass,r.assessment.provenance_pass};
 end
 tab=cell2table(rows,'VariableNames',{'case_id','s0','i0','region','expected_structure', ...
-    'observed_structure','J_reference','J_openocl','N','checks_passed'});
+    'observed_structure','J_reference','J_openocl','N','numeric_pass','agreement_pass','provenance_pass'});
 writetable(tab,fullfile(cfg.paths.data,'scenario_summary.csv'));
 suffix={'One','Two','Three','Four','Five'};
 reference={'% MATLAB 解析公式评价；不含优化器结果。'};
@@ -89,18 +92,13 @@ reference{end+1}=macro('NumSBRef',sprintf('%.8f',g.s_B));
 reference{end+1}=macro('NumSwitchSEOneRef',sprintf('%.8f',e.full_state(1)));
 reference{end+1}=macro('NumSwitchIEOneRef',sprintf('%.8f',e.full_state(2)));
 reference{end+1}=macro('NumMaxReleaseRef',sprintf('%.8f',max(cellfun(@(r) r.reference.events.release,runs))));
-e1=runs{1}.assessment.events;
-waiting=sprintf(['实际控制输出中，E1 和 E2 分别识别出 $%s$ 与 $%s$。' ...
-    '按控制区间识别，E1 的首个完全跟踪区间从 $t\\approx %.3f$ 开始，' ...
-    '其状态约为 $(%.4f,%.4f)$，感染比例低于容量；' ...
-    'E2 则出现正长度容量平台，随后转为完全跟踪。' ...
-    '跳跃附近存在有限个过渡单元，因此这里的事件时刻只按当前网格精度解释。'], ...
-    texstructure(runs{1}.assessment.observed_structure),texstructure(runs{2}.assessment.observed_structure), ...
-    e1.full_start,e1.full_state(1),e1.full_state(2));
-boundary=sprintf(['E3、E4、E5 的实际阶段依次为 $%s$、$%s$ 和 $%s$。' ...
-    'E3 与 E5 均从初始正长度区间开始完全跟踪；E4 先维持容量平台。'], ...
+waiting=sprintf('实际控制输出中，E1 和 E2 分别识别出 $%s$ 与 $%s$。', ...
+    texstructure(runs{1}.assessment.observed_structure),texstructure(runs{2}.assessment.observed_structure));
+waiting=[waiting event_summary(runs{1}) event_summary(runs{2})];
+boundary=sprintf('E3、E4、E5 的实际阶段依次为 $%s$、$%s$ 和 $%s$。', ...
     texstructure(runs{3}.assessment.observed_structure),texstructure(runs{4}.assessment.observed_structure), ...
     texstructure(runs{5}.assessment.observed_structure));
+boundary=[boundary event_summary(runs{3}) event_summary(runs{4}) event_summary(runs{5})];
 if exitChecks.E2.supported && exitChecks.E4.supported
     boundary=[boundary 'E2、E4 的理论容量退出时刻均位于各自容量段与完全跟踪段之间的单网格过渡区间内，' ...
         '因此不将首个纯完全跟踪单元的起点直接等同于连续切换点。'];
@@ -122,17 +120,21 @@ checktext=sprintf(['对原始分段常数控制逐区间重积分后，五例最
     '与配点状态的最大差异为 $\\num{%.2g}$；末尾 $20$ 个时间单位内最大控制幅值为 $\\num{%.2g}$。'],cap,state,tail);
 if verified
     checktext=[checktext '各例终端状态均通过零控制安全延拓核查。' ...
-        '另对 E2 使用 $N=8000$ 加密，并对 E1 使用常值 $q=0.7$ 生成非理论初始猜测，' ...
-        '所得解均通过同样核查；这些浮点检查用于排查截断及离散问题，不是连续可行性的严格证明。'];
+        '这些浮点检查用于排查截断及离散问题，不是连续可行性的严格证明。'];
     finding=sprintf(['五例成本相对解析参考的最大差异约为 $%.3g\\%%$。' ...
         '计算结果支持这五个初值下的阶段顺序及切换位置预测；' ...
         '切换位置的偏差应结合控制区间宽度和过渡单元解释。'], ...
         100*max(cellfun(@(r) abs(r.assessment.relative_cost_difference),runs)));
 else
-    checktext=[checktext '尚有核查未通过或附加实验未完成，当前结果不标记为已验证；具体状态见配套核查文件。'];
+    checktext=[checktext '五例主结果尚有数值接受或理论比较未通过，当前结果不标记为已验证；具体状态见配套核查文件。'];
     finding='当前数值验证尚未全部通过；成本列为实际求解输出，不以解析值填补或替换。';
 end
-if neutralCheck.passed
+if checksOK
+    checktext=[checktext '现存附加网格及初猜记录分别通过其独立数值与理论比较；更完整的复核状态见配套文件。'];
+else
+    checktext=[checktext '附加网格及初猜复核尚未全部完成，五例主结果的状态不代替这些独立检查。'];
+end
+if neutralCheck.passed && neutralCheck.agreement_pass
     checktext=[checktext sprintf(['对 E2 另以常值 $q=0.7$ 及其积分状态为初猜重新求解，' ...
         '所得阶段顺序与解析初始化相同，成本绝对差为 $\\num{%.3g}$，并通过同样的数值核查。'], ...
         neutralCheck.absolute_cost_difference)];
@@ -146,13 +148,16 @@ pending{end+1}=macro('NumNeutralETwoCostDifference',sprintf('%.12g',neutralCheck
 gap=runs{4}.J_openocl-runs{4}.reference.J_reference;
 pending{end+1}=macro('NumEFourSignedCostDifference',sprintf('%.12g',gap));
 pending{end+1}=macro('NumEFourCapacityExcess',sprintf('%.12g',runs{4}.assessment.capacity_excess));
-if gap<0
+if gap<0 && ~runs{4}.assessment.numeric_pass && runs{4}.assessment.capacity_excess>0
     finding=[finding sprintf(['E4 的离散成本比解析参考低约 $\\num{%.3g}$，' ...
         '其重积分轨道同时存在约 $\\num{%.3g}$ 的容量超出；' ...
         '该结果不能视为低于解析最优值的严格连续时间可行控制。'], ...
         -gap,runs{4}.assessment.capacity_excess)];
 end
 pending{end+1}=macro('NumFindingWaiting',waiting);
+if strcmp(runs{4}.assessment.status,'unresolved_discrepancy')
+    finding=[finding 'E4 的成本差超过预定比较尺度且现有数值检查未能解释，标为 unresolved-discrepancy，保留原记录待进一步检查。'];
+end
 pending{end+1}=macro('NumFindingTrackingBoundary',boundary);
 pending{end+1}=macro('NumCheckStatement',checktext);
 pending{end+1}=macro('NumOverallFinding',finding);
@@ -176,6 +181,23 @@ c=struct('case_id',r.case_id,'x0',r.x0,'parameters',r.parameters, ...
 end
 function s=texstructure(s)
 s=strrep(s,' -> ','\to ');
+end
+function text=event_summary(run)
+% 每句话取自唯一数值候选；缺失/多个候选不输出预期阶段或NaN时刻。
+events=run.assessment.structured_events;
+names={'intervention','capacity_enter','capacity_exit','full_start','release'};
+titles={'初次干预','容量进入','容量退出','完全跟踪开始','解除'};
+parts={};
+for k=1:numel(names)
+    e=events.(names{k});
+    if e.candidate_count==1 && all(isfinite(e.interval))
+        parts{end+1}=sprintf('%s的检测区间为 $[%.6g,%.6g]$',titles{k},e.interval(1),e.interval(2)); %#ok<AGROW>
+    elseif e.candidate_count>1
+        parts{end+1}=sprintf('%s存在 %d 个候选，尚不能唯一定位',titles{k},e.candidate_count); %#ok<AGROW>
+    end
+end
+if isempty(parts), text=[run.case_id ' 未检测到付费阶段事件。'];
+else, text=[run.case_id '：' strjoin(parts,'；') '。']; end
 end
 function s=macro(name,value)
 s=['\providecommand{\' name '}{' value '}'];

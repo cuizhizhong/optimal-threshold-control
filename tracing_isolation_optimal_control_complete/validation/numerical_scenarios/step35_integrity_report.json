@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "scope": "steps_3_to_5",
+  "historical_files_unchanged": 21,
+  "historical_file_sha256": {
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/E1.mat": "aaa71096179643e9bd782c8112badaf003620ff22a0d42f62383b4e97e29293d",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/E2.mat": "8ff1383e49343b8ebdcd56e9776b1b8adf8deda9d5af101a31d0dcaff1d3967f",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/E3.mat": "1a589f516bcb05f9bed122ab1aa85c5e36f32c531a77aa2504f2ebc946708f3a",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/E4.mat": "bc779b996122adac481e4e712b1f1d0b0bed555929c22e4af51a38442dccc733",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/E5.mat": "9a6b5badf7a7d83c8efd8816ada22064b55ab7935f74b763310828e0c533a9fd",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/checks/E1.mat": "41ce1e98fd5df1f05b648bf6a14746b77c145675792d46570b9dd23ee45f81f3",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/checks/E2.mat": "ee97482e585dfc11cbc5effd689f3cee7a696c53222061e9c814ab99c8346c38",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/checks/neutral_E2/E2.mat": "7cc916d4a872629c647336aedf960b1fc81ceb6ec6c9baf580f2b80d3e38a86c",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/coarse/E2.mat": "051a727ef64473a476ea57a1f14b62781ab506ab86d98fa2a9fbc57f36fc31f7",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/coarse/E4.mat": "5b0af713f79ecb8800c37815eeb4a94308efaadb14febebc5fc475a0b35fc95d",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/diagnostics/E2_adaptive.mat": "1bc59b2d4440264de156614957a463ec9afb4f6655f404e4f757323efa7ce7b2",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/diagnostics/E2_standard_bounds.mat": "2d77e268c1440528e677f980bebfc5524d8c9645a30d74c366549eac76cd00e8",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/numerical_checks.json": "89983adf83fce822baccdf084b4cfe9fcbc0bbf2a91fbacf603d70514d2f0c73",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/scenario_summary.csv": "6b6d752622abcab4b93e195bdb358bf3027f3a9ef0b971671951ee485897a5a6",
+    "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_regions.pdf": "8054c086139261e0e4bd8d9acf7d8b14c5f346489455525b1b3eaa7e62f3b93a",
+    "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_regions.png": "f78917388c940c54dc6b390e78b5521c45460c1a9c5310c3e6280fd85d56baab",
+    "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN2_waiting.pdf": "97bce4311ed72a99e58e56c2730e12faa81ff3f88c6f9dfcc5b99c49afa76e68",
+    "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN2_waiting.png": "4b9816fd2b0db625767827d5809cf8ae218b9831d5084c65096c135da5c7fb35",
+    "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN3_boundary_tracking.pdf": "3b50bc7794c65cfc657d31e220d8b5d3e72d5c678a67325a1f25aaab9b5272bf",
+    "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN3_boundary_tracking.png": "244c920b005bb3e954ad5757063e30c8dc7223b3eaf4549006210960d0f69726",
+    "tracing_isolation_optimal_control_complete/latex/references.bib": "b755bb6673a62b010b3dc612927aef407bf325eea5371f8778292c6eadbf8f30"
+  },
+  "label_count": 168,
+  "added_labels": [
+    "lem:ac-composition"
+  ],
+  "protected_theory_blocks_unchanged": 10,
+  "numerical_generated_blocks_unchanged": true,
+  "actual_optimizer_calls": 0,
+  "scientific_run_index_entries": 0,
+  "default_matrix_completed": "0/35"
+}

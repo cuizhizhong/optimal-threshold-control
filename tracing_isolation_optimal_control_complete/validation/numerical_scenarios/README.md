@@ -52,3 +52,5 @@ MATLAB 核查参数、全部几何量、初值、等待/容量/完全跟踪时�
 本轮测试记录及步骤状态见 `REVISION_STATUS.md`，求解来源与缓存测试见 MATLAB 目录说明。
 
 `verify_stage02_integrity.py` 默认比较原工作区受保护文件的原字节。跨目录检出时 Git 可能转换文本换行，使用 `--root <检出目录> --normalized-text` 只对文本规范 CRLF/LF 后核对；二进制仍按原字节。该检查不改变源码哈希或原始求解来源。
+
+第 3–5 步授权改动后的隔离检查使用 `python tracing_isolation_optimal_control_complete/validation/numerical_scenarios/verify_stage35_integrity.py`，旧第 0–2 步报告保持原样。新入口核对 21 个历史数据、图和文献文件、168 个标签、受保护理论段及原数值生成块，并确认科学 runs 索引仍为空。具体单元回归、编译与页面检查证据见 `REVISION_STATUS.md`。

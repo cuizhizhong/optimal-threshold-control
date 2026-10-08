@@ -1,9 +1,34 @@
-\begin{thebibliography}{2}
+\begin{thebibliography}{7}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Andersson et~al.(2019)Andersson, Gillis, Horn, Rawlings, and
+  Diehl]{Andersson2019CasADi}
+Joel A.~E. Andersson, Joris Gillis, Greg Horn, James~B. Rawlings, and Moritz
+  Diehl.
+\newblock {CasADi} -- a software framework for nonlinear optimization and
+  optimal control.
+\newblock \emph{Mathematical Programming Computation}, 11\penalty0
+  (1):\penalty0 1--36, 2019.
+\newblock \doi{10.1007/s12532-018-0139-4}.
+
+\bibitem[Avram et~al.(2022)Avram, Freddi, and Goreac]{AvramFreddiGoreac2022}
+Florin Avram, Lorenzo Freddi, and Dan Goreac.
+\newblock Optimal control of a {SIR} epidemic with {ICU} constraints and target
+  objectives.
+\newblock \emph{Applied Mathematics and Computation}, 418:\penalty0 126816,
+  2022.
+\newblock \doi{10.1016/j.amc.2021.126816}.
+
+\bibitem[Koenemann et~al.(2019)Koenemann, Licitra, Alp, and
+  Diehl]{Koenemann2019OpenOCL}
+Jonas Koenemann, Giovanni Licitra, Mustafa Alp, and Moritz Diehl.
+\newblock {OpenOCL} -- open optimal control library, June 2019.
+\newblock URL \url{https://openocl.github.io/publications/}.
+\newblock Robotics Science and Systems, workshop submission, extended abstract.
 
 \bibitem[Liberzon(2012)]{Liberzon2012}
 Daniel Liberzon.
@@ -17,5 +42,19 @@ Laurent Miclo, Daniel Spiro, and J{\"o}rgen Weibull.
   solution.
 \newblock \emph{Journal of Mathematical Economics}, 101:\penalty0 102669, 2022.
 \newblock \doi{10.1016/j.jmateco.2022.102669}.
+
+\bibitem[Soner(1986)]{Soner1986}
+Halil~Mete Soner.
+\newblock Optimal control with state-space constraint. i.
+\newblock \emph{SIAM Journal on Control and Optimization}, 24\penalty0
+  (3):\penalty0 552--561, 1986.
+
+\bibitem[W{\"a}chter and Biegler(2006)]{WachterBiegler2006}
+Andreas W{\"a}chter and Lorenz~T. Biegler.
+\newblock On the implementation of a primal-dual interior point filter line
+  search algorithm for large-scale nonlinear programming.
+\newblock \emph{Mathematical Programming}, 106\penalty0 (1):\penalty0 25--57,
+  2006.
+\newblock \doi{10.1007/s10107-004-0559-y}.
 
 \end{thebibliography}

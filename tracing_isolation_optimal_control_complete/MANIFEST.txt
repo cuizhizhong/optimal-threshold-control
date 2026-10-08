@@ -4,6 +4,7 @@ build.bat
 build.sh
 latex/main.tex
 latex/main.pdf
+latex/theory_only.pdf
 latex/main.bbl
 latex/references.bib
 matlab/numerical_scenarios/
@@ -20,6 +21,11 @@ matlab/numerical_scenarios/revision_preflight.m
 matlab/numerical_scenarios/verify_reference_dependency_tests.m
 matlab/numerical_scenarios/verify_revision_preflight.m
 matlab/numerical_scenarios/verify_numerical_cache.m
+matlab/numerical_scenarios/verify_solver_diagnostics.m
+matlab/numerical_scenarios/verify_numerical_assessment.m
+matlab/numerical_scenarios/verify_capacity_exit_transition.m
+matlab/numerical_scenarios/verify_numerical_events.m
+validation/numerical_scenarios/verify_stage35_integrity.py
 data/numerical_scenarios/
 data/numerical_scenarios/runs/
 data/numerical_scenarios/run_index.json

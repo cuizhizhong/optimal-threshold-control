@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "tests": [
+    "known_return_fields_and_final_iteration",
+    "raw_info_unmodified",
+    "barrier_and_step_lengths_not_residuals",
+    "missing_values_json_null_with_reason",
+    "absent_or_nonfinite_final_iteration_not_fabricated",
+    "nonuniform_interval_cost_and_output_grid_check",
+    "invalid_output_retains_original_arrays_and_info",
+    "solver_exception_retains_available_info_snapshot",
+    "diagnostic_sidecar_and_cache_preserve_original_timing",
+    "thrown_callable_saved_with_elapsed_time_before_rethrow"
+  ],
+  "tests_passed": 10,
+  "actual_optimizer_calls": 0,
+  "mock_callable_calls": 1,
+  "checked_utc": "2026-10-08T08:13:10.807Z",
+  "matlab": "25.2.0.2998904 (R2025b)"
+}

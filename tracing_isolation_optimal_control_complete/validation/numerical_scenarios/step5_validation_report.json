@@ -1,0 +1,82 @@
+{
+  "status": "completed",
+  "scope": "revision plan step 5A--5F",
+  "label_count": 168,
+  "added_labels": [
+    "lem:ac-composition"
+  ],
+  "all_labels_unique": true,
+  "missing_live_cross_references": [],
+  "outputs": {
+    "main": {
+      "page_count": 34,
+      "pdf_sha256": "a719cf46df508ebaeace7e30f1f727a450084e7c9677024d4ca262eddef47950",
+      "final_log": "step5_main_final.log",
+      "final_log_warnings": [],
+      "rendered_and_visually_checked_pages": [
+        3,
+        4,
+        5,
+        9,
+        19,
+        20,
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "visual_result": "中文、公式、交叉引用、分页、三张图和一个表未见裁切、重叠、缺字或未解析引用"
+    },
+    "theory_only": {
+      "page_count": 26,
+      "pdf_sha256": "30e93167c9295d0486b4ebf06c7cb59ee70fb35fd7560c90778891686b985f5b",
+      "final_log": "step5_theory_final.log",
+      "final_log_warnings": [],
+      "rendered_and_visually_checked_pages": [
+        3,
+        4,
+        5,
+        9,
+        19,
+        20
+      ],
+      "visual_result": "中文、公式、交叉引用、分页、三张图和一个表未见裁切、重叠、缺字或未解析引用"
+    }
+  },
+  "build_commands": [
+    "build.bat (XeLaTeX -> BibTeX -> XeLaTeX -> XeLaTeX)",
+    "xelatex -interaction=nonstopmode -halt-on-error -output-directory=../tmp/step5_theory -jobname=theory_only \\def\\TheoryOnly{1}\\input{main.tex}",
+    "bibtex theory_only (cwd=tmp/step5_theory, copied unchanged references.bib)",
+    "same TheoryOnly XeLaTeX command repeated twice"
+  ],
+  "recovered_build_issue": {
+    "error": "Not writing to ../tmp/step5_theory/theory_only.blg (openout_any = p; no extended check).",
+    "resolution": "在输出目录运行 BibTeX，未更改 TeX 安全设置，后续两轮成功",
+    "raw_log": "step5_theory_build.log"
+  },
+  "source_checks": [
+    {
+      "key": "Soner1986",
+      "source": "ref/Optimal Control with State-Space Constraint I_soner.pdf",
+      "pdf_pages": [
+        1,
+        2
+      ],
+      "checked": "带折现成本，边界信息由状态约束诱导；未直接调用其比较定理"
+    },
+    {
+      "key": "AvramFreddiGoreac2022",
+      "source": "ref/Optimal control of a SIR epidemic with ICU constraints and target objectives.pdf",
+      "locators": [
+        "Problem 3.1",
+        "Problem 3.2",
+        "Section 6"
+      ],
+      "checked": "固定有限时域问题含终端目标约束，不能支持本文无终端约束截断等价性"
+    }
+  ],
+  "numerical_result_changes": "none; protected byte-identical AUTO-GENERATED blocks",
+  "new_optimization_runs": 0,
+  "future_steps_executed": []
+}

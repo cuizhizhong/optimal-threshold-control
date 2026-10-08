@@ -1,0 +1,4 @@
+SOLVER_DIAGNOSTIC_TESTS_OK tests=10 actual_optimizer=0
+NEUTRAL_INITIALIZATION_CHECKS_OK tests=7 actual_optimizer=0
+NUMERICAL_ASSESSMENT_TESTS_OK tests=11 actual_optimizer=0
+NUMERICAL_CACHE_TESTS_OK tests=6 mock_solver=18 actual_optimizer=0

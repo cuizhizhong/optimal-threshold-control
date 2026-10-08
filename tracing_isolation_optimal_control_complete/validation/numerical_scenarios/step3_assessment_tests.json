@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "tests": [
+    "safe_zero_cost_absolute_test",
+    "numeric_acceptance_independent_of_theory_and_weighted_cost",
+    "lower_cost_unresolved_is_retained",
+    "actual_grid_and_array_dimensions_checked_before_reintegration",
+    "trapezoidal_cost_across_jumps_rejected",
+    "legacy_and_problem_mismatch_cannot_pass",
+    "raw_bounds_and_solver_failure_are_not_repaired",
+    "collocation_discrepancy_and_reintegrated_terminal_state",
+    "original_control_capacity_peak_including_interval_interior",
+    "tail_checks_overlap_with_whole_actual_intervals",
+    "main_verification_requires_all_new_flags_and_five_cases",
+    "current_inputs_assessment_and_additional_request_must_match"
+  ],
+  "required_tests_passed": 12,
+  "neutral_tests": {
+    "passed": true,
+    "tests": [
+      "matching_problem_and_accepted_synthetic_outputs",
+      "missing_and_legacy_assessments_rejected",
+      "both_outputs_need_numeric_acceptance",
+      "predeclared_absolute_cost_tolerance",
+      "actual_options_grid_and_requested_settings_compared",
+      "neutral_guess_definition_checked",
+      "theory_disagreement_is_independent_of_initialization_numeric_comparison"
+    ],
+    "required_tests_passed": 7,
+    "actual_optimizer_calls": 0
+  },
+  "actual_optimizer_calls": 0,
+  "checked_utc": "2026-10-08T08:19:28.273Z",
+  "matlab": "25.2.0.2998904 (R2025b)"
+}

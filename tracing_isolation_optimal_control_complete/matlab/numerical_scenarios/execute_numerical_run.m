@@ -36,13 +36,30 @@ if ~activity.cache_hit
     runId=['run_' strrep(char(java.util.UUID.randomUUID()),'-','')];
     provenance.solve_started_utc=numerical_utc();
     thrown=[]; activity.solver_called=true;
+    executionClock=tic;
     try
         run=solver(request);
     catch exception
         thrown=exception;
         run=struct('success',false,'return_status','exception','solver_info',[], ...
             'failure',struct('message',exception.message,'identifier',exception.identifier, ...
-            'stack',exception.stack));
+            'stack',exception.stack,'report',getReport(exception,'extended','hyperlinks','off')));
+    end
+    % 失败同样保存实际调用耗时；缓存命中不改写原始计时或诊断。
+    run.execution_elapsed_seconds=toc(executionClock);
+    if ~isfield(run,'solver_elapsed_seconds')
+        run.solver_elapsed_seconds=run.execution_elapsed_seconds;
+    end
+    if ~isfield(run,'solver_info_origin')
+        run.solver_info_origin='solver_callable_returned';
+        if ~isempty(thrown), run.solver_info_origin='not_returned'; end
+    end
+    if ~isfield(run,'solver_diagnostics')
+        reason='solver callable 未返回对应真实字段；原始返回值保留于 solver_info。';
+        if ~isempty(thrown), reason='solver callable 抛出异常，未返回 info；见 failure 原始异常。'; end
+        run.solver_diagnostics=numerical_solver_diagnostics(run.solver_info,run.solver_elapsed_seconds,reason);
+        run.solver_diagnostics.elapsed_seconds.source='tic/toc around solver callable';
+        run.solver_diagnostics.elapsed_seconds.definition='实际 solver callable 调用的墙钟耗时，单位为秒。';
     end
     % 这些字段来自实际求解请求，不能由solver或后处理改写来源。
     fields={'case_id','parameters','x0','solver_settings','actual_solver_settings', ...
@@ -55,6 +72,19 @@ if ~activity.cache_hit
     run.environment=provenance.environment;
     rawFile=fullfile('runs',[runId '.mat']); filename=fullfile(dataRoot,rawFile);
     assert(~isfile(filename),'numerical:RunCollision','Refusing to overwrite raw run: %s',filename);
+    diagnosticFile=fullfile('runs',[runId '.solver.json']);
+    diagnosticPath=fullfile(dataRoot,diagnosticFile);
+    assert(~isfile(diagnosticPath),'numerical:RunCollision', ...
+        'Refusing to overwrite solver diagnostics: %s',diagnosticPath);
+    run.solver_diagnostics_file=strrep(diagnosticFile,'\','/');
+    diagnosticRecord=struct('schema_version',1,'run_id',runId,'case_id',request.case_id, ...
+        'success',logical(run.success),'return_status',run.return_status, ...
+        'solver_info_origin',run.solver_info_origin, ...
+        'execution_elapsed_seconds',run.execution_elapsed_seconds, ...
+        'solver_diagnostics',run.solver_diagnostics);
+    if isfield(run,'failure'), diagnosticRecord.failure=run.failure; end
+    if isfield(run,'output_validation'), diagnosticRecord.output_validation=run.output_validation; end
+    numerical_write_json(diagnosticPath,diagnosticRecord);
     save(filename,'run','-v7');
     entry=struct('run_id',runId,'attempt',attempt,'case_id',request.case_id, ...
         'solve_fingerprint',fingerprint,'success',logical(run.success), ...

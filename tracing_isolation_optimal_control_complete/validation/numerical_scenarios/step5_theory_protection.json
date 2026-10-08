@@ -1,0 +1,76 @@
+{
+  "before_sha256": "c26e5a3dada5044a6041b5b30f1b17e73ec878d87a697892d83fb4ac574ea272",
+  "after_sha256": "6ec4ada3e9f4aa433059423a52bc057ae560a05ac5ed54624512055f6fed6418",
+  "protected_blocks": [
+    {
+      "name": "normalized_dynamics",
+      "sha256": "ba7442be60549d6f62ff677b7bda9812cea8bd0640ae8c9e5aab705956430637",
+      "byte_count": 106,
+      "unchanged": true
+    },
+    {
+      "name": "admissible_control_class",
+      "sha256": "de0248d9768f8c8ea4f2d61e19a6a9506085d552ba03d74558066ab722c35c8a",
+      "byte_count": 905,
+      "unchanged": true
+    },
+    {
+      "name": "wellposed_theorem_hypotheses",
+      "sha256": "a4dcc23d010598f9607b660ee877ded3d5d8dab0af701760e407934f0664d9d9",
+      "byte_count": 781,
+      "unchanged": true
+    },
+    {
+      "name": "constant_assumptions_value_definition_and_first_arrival",
+      "sha256": "fc0c41a2398f53df25859093a7a321bf370dd488300d56d2e85196f80554d8e3",
+      "byte_count": 8692,
+      "unchanged": true
+    },
+    {
+      "name": "bangbang_switching_curves_candidate_feedback_U_and_HJB",
+      "sha256": "aace44b3112c7a24eb013aa8eae50068146c1929db647822cf51022dc0142966",
+      "byte_count": 33883,
+      "unchanged": true
+    },
+    {
+      "name": "verification_capacity_safe_time_sets_main_theorems_and_uniqueness",
+      "sha256": "8c41113df179c0d541d5b36ed021954476a8bef2ea3fe2598ebf6db4931d86c5",
+      "byte_count": 22586,
+      "unchanged": true
+    },
+    {
+      "name": "numerical_reference_values",
+      "sha256": "bafdc53a2b3e36fc0e088d45e3b7f7ab734aa6169dc54950e4f55d3b04130e5c",
+      "byte_count": 601,
+      "unchanged": true
+    },
+    {
+      "name": "numerical_results",
+      "sha256": "81de1cb93998aa804d976931f2adb4437c61c354cf67ca72847dd068df64f15a",
+      "byte_count": 3065,
+      "unchanged": true
+    },
+    {
+      "name": "numerical_ocp_equations",
+      "sha256": "9119dfc9f658143fb33037010a0cb0a526a1e00f416666b2495410661bc520bb",
+      "byte_count": 606,
+      "unchanged": true
+    },
+    {
+      "name": "numerical_results_appendices_and_references",
+      "sha256": "7d8cd437083e23543bd5af7cbbbbafb067707dddd221d10b8b24e8884995dedf",
+      "byte_count": 19091,
+      "unchanged": true
+    }
+  ],
+  "old_label_count": 167,
+  "new_label_count": 168,
+  "added_labels": [
+    "lem:ac-composition"
+  ],
+  "removed_labels": [],
+  "new_crlf_count": 2273,
+  "old_crlf_count": 2200,
+  "new_standalone_lf_count": 2,
+  "old_standalone_lf_count": 2
+}
