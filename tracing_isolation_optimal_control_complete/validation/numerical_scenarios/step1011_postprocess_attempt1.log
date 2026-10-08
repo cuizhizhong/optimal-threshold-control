@@ -1,0 +1,15 @@
+[警告: 名称不存在或不是目录:
+E:\work\optimal-threshold-control\tracing_isolation_optimal_control_complete\validation\numerical_scenarios\tracing_isolation_optimal_control_complete\matlab\numerical_scenarios] 
+[> 位置：path (第 109 行)
+位置: addpath (第 96 行)
+位置: execute_stage1011 (第 5 行)
+位置: run (第 112 行)] 
+{函数或变量 'numerical_cases_config' 无法识别。
+
+出错 execute_stage1011 (第 6 行)
+cfg=numerical_cases_config();
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+出错 run (第 112 行)
+evalin('caller', strcat(scriptStem, ';'));
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+} 

@@ -1,0 +1,31 @@
+% 定位：lem:ac-level-set 的证明结束后、sec:constant-problem 之前。
+% 新增引理；编号使用自动交叉引用，不手工写“引理2.3”。
+\begin{lemma}[相对局部 Lipschitz 函数沿绝对连续轨道的复合]
+\label{lem:ac-composition}
+设 $E\subset\mathbb R^m$，$F:E\to\mathbb R$ 相对局部 Lipschitz，
+$x:[0,T]\to E$ 绝对连续，其中 $T<\infty$。
+则 $F\circ x$ 在 $[0,T]$ 上绝对连续。
+在 $F$ 具有 $C^1$ 局部表达式的状态点所对应的时间集合上，
+通常的链式法则
+\[
+ \frac{\dd}{\dd t}F(x(t))=\nabla F(x(t))\cdot\dot x(t)
+\]
+几乎处处成立。
+\end{lemma}
+\begin{proof}
+轨道像集 $x([0,T])$ 紧。
+相对局部 Lipschitz 邻域给出该像集的一个有限相对开覆盖。
+由 Lebesgue 数引理及 $x$ 的一致连续性，可将 $[0,T]$
+分成有限个闭子区间，使每个子区间的轨道像均包含在某个
+Lipschitz 邻域中。
+在这样的子区间上，对任意有限个互不相交的时间区间 $(a_k,b_k)$，
+存在与这些区间无关的常数 $L$，使
+\[
+ \sum_k |F(x(b_k))-F(x(a_k))|
+ \le L\sum_k\|x(b_k)-x(a_k)\|.
+\]
+由 $x$ 的绝对连续性，得到该子区间上 $F\circ x$ 的绝对连续性。
+有限拼接给出整个区间上的结论。
+在具有 $C^1$ 局部表达式的部分，普通链式法则在 $x$ 可微的时刻成立，
+而 $x$ 不可微的时刻构成零测集。
+\end{proof}

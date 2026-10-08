@@ -1,0 +1,118 @@
+{
+  "snapshot_commit": "e701f69a1f6a59e3b4456417777b829323566bd0",
+  "main_tex_byte_identical": true,
+  "raw_solver_fixture_and_inputs_byte_unchanged": true,
+  "protected_candidate_artifacts_checked": 73,
+  "protected_assessment_files_byte_unchanged": 35,
+  "current_sources_match_candidate": true,
+  "source_files_checked": [
+    "export_numerical_latex.m",
+    "make_numerical_figures.m",
+    "verify_revision_exporter.m",
+    "verify_saved_result_exporter.m",
+    "verify_pending_result_exporter.m",
+    "execute_stage1011_clean.m",
+    "build_stage1011.py"
+  ],
+  "compatibility_scientific_content_identical": true,
+  "compatibility_metadata_differences": [
+    {
+      "case_id": "E1",
+      "only_different_fields": [
+        ".run.selection_provenance.selected_utc"
+      ],
+      "root_sha256": "61a09a631b95bf79a654f6d88365d340ab913bd8d09d8f870c99ae377471f97b",
+      "candidate_sha256": "c77d9acf33a6f9d9282d6d82d5951fa0846883d1ec58ce70cef7d1d380569021"
+    },
+    {
+      "case_id": "E2",
+      "only_different_fields": [
+        ".run.selection_provenance.selected_utc"
+      ],
+      "root_sha256": "874186c365ac887bbd1871d10157d763d7e7fcd942018ef4400f973c17049542",
+      "candidate_sha256": "c79b7b86385e09199b6fe315408ba5c80a7f695fbafef29b89c19f7d651f6ff5"
+    },
+    {
+      "case_id": "E3",
+      "only_different_fields": [
+        ".run.selection_provenance.selected_utc"
+      ],
+      "root_sha256": "22872ee59354f207728772627016e3e2be94c4de45786c01937988169674ea4a",
+      "candidate_sha256": "d3e7e193134e58c2d7fe01d65ada940696676dcdb84b2c2a038ca199132feabe"
+    },
+    {
+      "case_id": "E4",
+      "only_different_fields": [
+        ".run.selection_provenance.selected_utc"
+      ],
+      "root_sha256": "87f1d06d875a293e2cf9c06e5e39db94cad79d78171c5b90073f2cfc5b8e4ce7",
+      "candidate_sha256": "b22a5fc24696be0d04f19867729f22f8ba7bfecb8a6d36b62a24898f438cea41"
+    },
+    {
+      "case_id": "E5",
+      "only_different_fields": [
+        ".run.selection_provenance.selected_utc"
+      ],
+      "root_sha256": "d20e32dd387e6ee2d06aa3e0a52ada6a7f528e857c310ff948529f85860eb79e",
+      "candidate_sha256": "5db44f62c24827df97ba41952181dbc697930478e4766fd0fd1599d8c3733954"
+    }
+  ],
+  "selection_manifest_different_fields": [
+    ".entries[0].compatibility_sha256",
+    ".entries[1].compatibility_sha256",
+    ".entries[2].compatibility_sha256",
+    ".entries[3].compatibility_sha256",
+    ".entries[4].compatibility_sha256",
+    ".selected_utc"
+  ],
+  "figure_render_differences": [
+    {
+      "name": "FigN1_regions",
+      "size": [
+        1798,
+        1208
+      ],
+      "changed_pixels": 3,
+      "total_pixels": 2171984,
+      "max_channel_delta": 22,
+      "root_creation_time": "08-Oct-2026 19:44:53",
+      "candidate_creation_time": "08-Oct-2026 20:17:08",
+      "root_sha256": "f63096152c979685e44b4efb7532788113b95d206744ef35d42ac02d95c1ef34",
+      "candidate_sha256": "de5c00d1ed7ebff7854bfcee15df84f676dbe9f307f509e30bca3c157c15e84f"
+    },
+    {
+      "name": "FigN2_waiting",
+      "size": [
+        1986,
+        1218
+      ],
+      "changed_pixels": 1,
+      "total_pixels": 2418948,
+      "max_channel_delta": 21,
+      "root_creation_time": "08-Oct-2026 19:45:00",
+      "candidate_creation_time": "08-Oct-2026 20:17:14",
+      "root_sha256": "c19e05373ae2f247f366ea6504cbb53aac8f367550e7e147af7e88946360f26e",
+      "candidate_sha256": "5831f2bc0076ea884db51d713ed84af5467a4243659ea97f718707eec3318382"
+    },
+    {
+      "name": "FigN3_boundary_tracking",
+      "size": [
+        1993,
+        1218
+      ],
+      "changed_pixels": 0,
+      "total_pixels": 2427474,
+      "max_channel_delta": 0,
+      "root_creation_time": "08-Oct-2026 19:45:06",
+      "candidate_creation_time": "08-Oct-2026 20:17:19",
+      "root_sha256": "bc3b40875b517a5dcbb91b7236dea7dfdabdcb08b31c5341fa2439c27ecc92aa",
+      "candidate_sha256": "6c0f8d493beb3f8a75909924a9e28345e317e7b4b9aa16a28cf9f85a12a58f26"
+    }
+  ],
+  "candidate_figures_visual_review": {
+    "reviewed_all_three": true,
+    "defects": [],
+    "observation": "未见曲线、阶梯、物理域、Phi边界或布局的实际差别；灰色虚线穿透明图例背景的轻微现象两份都保留且可读。"
+  },
+  "limits": "图像时间戳和少量渲染像素变化保留，不声称PNG逐字节或全像素相同。"
+}

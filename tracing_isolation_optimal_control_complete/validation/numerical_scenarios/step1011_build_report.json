@@ -1,0 +1,102 @@
+{
+  "main": {
+    "success": true,
+    "commands": [
+      {
+        "command": [
+          "xelatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit_code": 0,
+        "log": "step1011_main_build_1.log",
+        "issues": []
+      },
+      {
+        "command": [
+          "bibtex",
+          "main"
+        ],
+        "exit_code": 0,
+        "log": "step1011_main_build_2.log",
+        "issues": []
+      },
+      {
+        "command": [
+          "xelatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit_code": 0,
+        "log": "step1011_main_build_3.log",
+        "issues": []
+      },
+      {
+        "command": [
+          "xelatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit_code": 0,
+        "log": "step1011_main_build_4.log",
+        "issues": []
+      }
+    ],
+    "final_log_issues": [],
+    "pages": 34,
+    "pdfinfo": "Title:           跟踪隔离模型中双传播系数的最优控制与唯一性\nAuthor:          Technical report\nCreator:         LaTeX with hyperref\nProducer:        xdvipdfmx (20260113)\nCreationDate:    Thu Oct  8 19:47:40 2026 �й���׼ʱ��\nCustom Metadata: no\nMetadata Stream: no\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           34\nEncrypted:       no\nPage size:       595.28 x 841.89 pts (A4)\nPage rot:        0\nFile size:       694881 bytes\nOptimized:       no\nPDF version:     1.7\n"
+  },
+  "theory_only": {
+    "success": true,
+    "commands": [
+      {
+        "command": [
+          "xelatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "theory_only.tex"
+        ],
+        "exit_code": 0,
+        "log": "step1011_theory_only_build_1.log",
+        "issues": []
+      },
+      {
+        "command": [
+          "bibtex",
+          "theory_only"
+        ],
+        "exit_code": 0,
+        "log": "step1011_theory_only_build_2.log",
+        "issues": []
+      },
+      {
+        "command": [
+          "xelatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "theory_only.tex"
+        ],
+        "exit_code": 0,
+        "log": "step1011_theory_only_build_3.log",
+        "issues": []
+      },
+      {
+        "command": [
+          "xelatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "theory_only.tex"
+        ],
+        "exit_code": 0,
+        "log": "step1011_theory_only_build_4.log",
+        "issues": []
+      }
+    ],
+    "final_log_issues": [],
+    "pages": 26,
+    "pdfinfo": "Title:           跟踪隔离模型中双传播系数的最优控制与唯一性\nAuthor:          Technical report\nCreator:         LaTeX with hyperref\nProducer:        xdvipdfmx (20260113)\nCreationDate:    Thu Oct  8 19:47:48 2026 �й���׼ʱ��\nCustom Metadata: no\nMetadata Stream: no\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           26\nEncrypted:       no\nPage size:       595.28 x 841.89 pts (A4)\nPage rot:        0\nFile size:       377764 bytes\nOptimized:       no\nPDF version:     1.7\n"
+  }
+}

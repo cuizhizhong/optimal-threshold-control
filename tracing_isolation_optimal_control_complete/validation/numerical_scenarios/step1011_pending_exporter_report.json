@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "tests": [
+    "missing_additional_results",
+    "blocked_empty_additional_rows"
+  ],
+  "test_count": 2,
+  "actual_optimizer_calls": 0,
+  "formal_tex_modified": false,
+  "fixture_kind": "synthetic_pending_only"
+}

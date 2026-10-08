@@ -1,0 +1,1686 @@
+{
+  "candidate_path": "E:\\work\\optimal-threshold-control\\tmp\\s12",
+  "base_head": "c23a5d6bdc7fd97ea53e32a485ca03996789831b",
+  "snapshot_commit": "e701f69a1f6a59e3b4456417777b829323566bd0",
+  "initial_status": "",
+  "overlay_files": [
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/E1.mat",
+      "sha256": "61a09a631b95bf79a654f6d88365d340ab913bd8d09d8f870c99ae377471f97b"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/E2.mat",
+      "sha256": "874186c365ac887bbd1871d10157d763d7e7fcd942018ef4400f973c17049542"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/E3.mat",
+      "sha256": "22872ee59354f207728772627016e3e2be94c4de45786c01937988169674ea4a"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/E4.mat",
+      "sha256": "87f1d06d875a293e2cf9c06e5e39db94cad79d78171c5b90073f2cfc5b8e4ce7"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/E5.mat",
+      "sha256": "d20e32dd387e6ee2d06aa3e0a52ada6a7f528e857c310ff948529f85860eb79e"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/export_provenance.json",
+      "sha256": "3c9a51c4fd6e2c55dd5991f16a2924c7935ab9d278d2a4487ae6ea2fa7862503"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/figure_provenance.json",
+      "sha256": "aa25b069156d486824e3f306e9fc5ac68a29d29da786547d9918bea95eda8d44"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/legacy_inventory.json",
+      "sha256": "91b89209216db03169a7df1db6eabb632999e14745c830f85a6c33356832c7eb"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/numerical_checks.json",
+      "sha256": "c4498a35918b0cfd23a596a2e0145c207b12a9394fbf2f9da2121cddd2e81037"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/run_index.json",
+      "sha256": "5c411b398dd465278d71b49fee637a4a15408e2b674fa653625280ad91833163"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/scenario_summary.csv",
+      "sha256": "c4b78e600bff402c8672ae79577d66bc1dbee3f85f276b11ce1f12117a84f353"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/selection_manifest.json",
+      "sha256": "9de51bee1fa75c6253cca6f148c4f716b0b4dfca0af71194450a7b06ff50b2d7"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/checks/E1.mat",
+      "sha256": "41ce1e98fd5df1f05b648bf6a14746b77c145675792d46570b9dd23ee45f81f3"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/checks/E2.mat",
+      "sha256": "ee97482e585dfc11cbc5effd689f3cee7a696c53222061e9c814ab99c8346c38"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/coarse/E2.mat",
+      "sha256": "051a727ef64473a476ea57a1f14b62781ab506ab86d98fa2a9fbc57f36fc31f7"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/coarse/E4.mat",
+      "sha256": "5b0af713f79ecb8800c37815eeb4a94308efaadb14febebc5fc475a0b35fc95d"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/diagnostics/E2_adaptive.mat",
+      "sha256": "1bc59b2d4440264de156614957a463ec9afb4f6655f404e4f757323efa7ce7b2"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/diagnostics/E2_standard_bounds.mat",
+      "sha256": "2d77e268c1440528e677f980bebfc5524d8c9645a30d74c366549eac76cd00e8"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/legacy_results/archive_manifest.json",
+      "sha256": "36f97f4eb08f23b0da57e6a58096ad375034281caad56031ab3c9e08f839a1b0"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/legacy_results/E1_aaa71096179643e9bd782c8112badaf003620ff22a0d42f62383b4e97e29293d.mat",
+      "sha256": "aaa71096179643e9bd782c8112badaf003620ff22a0d42f62383b4e97e29293d"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/legacy_results/E2_8ff1383e49343b8ebdcd56e9776b1b8adf8deda9d5af101a31d0dcaff1d3967f.mat",
+      "sha256": "8ff1383e49343b8ebdcd56e9776b1b8adf8deda9d5af101a31d0dcaff1d3967f"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/legacy_results/E3_1a589f516bcb05f9bed122ab1aa85c5e36f32c531a77aa2504f2ebc946708f3a.mat",
+      "sha256": "1a589f516bcb05f9bed122ab1aa85c5e36f32c531a77aa2504f2ebc946708f3a"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/legacy_results/E4_bc779b996122adac481e4e712b1f1d0b0bed555929c22e4af51a38442dccc733.mat",
+      "sha256": "bc779b996122adac481e4e712b1f1d0b0bed555929c22e4af51a38442dccc733"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/legacy_results/E5_9a6b5badf7a7d83c8efd8816ada22064b55ab7935f74b763310828e0c533a9fd.mat",
+      "sha256": "9a6b5badf7a7d83c8efd8816ada22064b55ab7935f74b763310828e0c533a9fd"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4454468110a2474899e18044727d08de_C06_request.json",
+      "sha256": "9ff3cf08350fee4c312d5c3c1b6cee81c3c1be73135d546cccc515117df6ce22"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4454468110a2474899e18044727d08de_C07_request.json",
+      "sha256": "a2e83e721cbbcd3770f0fbfeee9c494b06f87a166f61d3703f5667c1c67b2fa1"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4454468110a2474899e18044727d08de_C08_request.json",
+      "sha256": "c6f513f708b6ba240e4930f95afad90878d43892434055b24b4fe509966efe65"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4454468110a2474899e18044727d08de_C09_request.json",
+      "sha256": "b9d9d650261029562eabd164d37cfe59a03d4fb1965e6123901e9727952815e1"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4454468110a2474899e18044727d08de_C10_request.json",
+      "sha256": "ca7e525d534452b8c799f64f7d3204afb884e92b45ab300d0dcffd229092f233"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4454468110a2474899e18044727d08de_C11_request.json",
+      "sha256": "ae70541584b51d27ec7d00c83b0c347a93effd2663fcda727b14a02ad476d320"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4454468110a2474899e18044727d08de_C12_request.json",
+      "sha256": "ed7733f8b3c328731bb9af144484759ed9ba7979200702a9ab4597f917f82205"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4454468110a2474899e18044727d08de_C13_request.json",
+      "sha256": "43ec671e62ca1e1021b26d56fb7229c94ec837e2c1d32ee35ab753342fdbc28f"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4454468110a2474899e18044727d08de_C14_request.json",
+      "sha256": "85163c0912ce77dc4b5da85aa11f38c51c2ac2f6409dcd032b2a24edf4779041"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4454468110a2474899e18044727d08de_C15_request.json",
+      "sha256": "a469d0857c50171e0eb6cdbd34beb6b241efa41938bdba990da5fc6294f1122f"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4454468110a2474899e18044727d08de_manifest.json",
+      "sha256": "74962f38dfd5092084e105b90d7bac7968516c8a3b6188a43ec9650d70626bd8"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4454468110a2474899e18044727d08de_report.json",
+      "sha256": "d975eecf3b82127c3a7b62d4d303671e87ca1a3f45a1d12a34ba851f43d95e5c"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4b4c07a554e54e92a76c6704e4d5a1a7_C02_request.json",
+      "sha256": "f7b093f9dc74ba633d657edcf036d7c943b6a5bc210ba0c45f18d9bc8de50a06"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4b4c07a554e54e92a76c6704e4d5a1a7_C04_request.json",
+      "sha256": "28779451855495f3d83d6cc52d2e9e814b6dacc830db6d38bf726b6293a9881c"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4b4c07a554e54e92a76c6704e4d5a1a7_C17_request.json",
+      "sha256": "6e95e68c228907ecac43a67906d649e0ab3cc0ee7ddfc4fdfc27eb30ad71b7b7"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4b4c07a554e54e92a76c6704e4d5a1a7_C21_request.json",
+      "sha256": "fe0589859244639487be68a27795f166c3033249d47a18cedd31477133bdc368"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4b4c07a554e54e92a76c6704e4d5a1a7_C25_request.json",
+      "sha256": "f97be3e94471f4039ac5a40fe7dc4298d00015f4234739526d08947c3c9aaeac"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4b4c07a554e54e92a76c6704e4d5a1a7_C26_request.json",
+      "sha256": "a808837c8360a5e16ed29e46711ac9066be95ba155aa90fd8959b56f2c0d2b78"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4b4c07a554e54e92a76c6704e4d5a1a7_C27_request.json",
+      "sha256": "7b75791b5fe3004bf5c598475ab92d288c20269f6010054aaf7276c43fc2a89d"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4b4c07a554e54e92a76c6704e4d5a1a7_C28_request.json",
+      "sha256": "e8f6d2f76015f8084f34e5d6e50fd9d9092bb92ec5f68ea08715e6af625c7b73"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4b4c07a554e54e92a76c6704e4d5a1a7_C29_request.json",
+      "sha256": "6978773106fcd0061d52b7cb0acb5925bb2666ad2280ba254e554d83e1e94b57"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4b4c07a554e54e92a76c6704e4d5a1a7_C30_request.json",
+      "sha256": "bfa80fa0f3efe1d91964b6ed49ec635ee6baf34a0d0f1f790ae8b68adcb43e25"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4b4c07a554e54e92a76c6704e4d5a1a7_C31_request.json",
+      "sha256": "97222940e1635b902f4212ad9012a54353a8d922e42915f8447b5e503be65ca5"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4b4c07a554e54e92a76c6704e4d5a1a7_C32_request.json",
+      "sha256": "3c9c251edd88ead6a648917f59f84e60118b71ed9ad447e93fbfa4135ba32833"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4b4c07a554e54e92a76c6704e4d5a1a7_C33_request.json",
+      "sha256": "fa45bbcc7e59c032f887ffeeae3f7df9206ba208fa068c313c6c55fd4d9b0d7f"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4b4c07a554e54e92a76c6704e4d5a1a7_C34_request.json",
+      "sha256": "445e99c90b9209719a72cebf0b71d8fc181dcdb3cbfdbd877b03ebc8fb80defc"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4b4c07a554e54e92a76c6704e4d5a1a7_C35_request.json",
+      "sha256": "dca77a8777b62f293ab1dc72e1aefc563eee270aac5070a946b955437ee31245"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4b4c07a554e54e92a76c6704e4d5a1a7_manifest.json",
+      "sha256": "36ad1caf5f3647a8e3c89d3342cfae2fefe103dfaeb166a83a58b1bc474ce33e"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4b4c07a554e54e92a76c6704e4d5a1a7_report.json",
+      "sha256": "0d52dd229599a5262a10c63fd1995da2f97fad0300cc7ac6b33d96c5f788ae82"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_529aecb8208541c08a16acaae26e8a40_C01_request.json",
+      "sha256": "8fc9a4fd83629c9c810ee6becd76cdb76804ee5fd34f879c6e904eec087ca7e8"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_529aecb8208541c08a16acaae26e8a40_C02_request.json",
+      "sha256": "f7b093f9dc74ba633d657edcf036d7c943b6a5bc210ba0c45f18d9bc8de50a06"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_529aecb8208541c08a16acaae26e8a40_C03_request.json",
+      "sha256": "8b4e2f8bad42ba5d35d04c26b6b413a14bffe55964f99b2bd6785498d3a0b50f"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_529aecb8208541c08a16acaae26e8a40_C04_request.json",
+      "sha256": "28779451855495f3d83d6cc52d2e9e814b6dacc830db6d38bf726b6293a9881c"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_529aecb8208541c08a16acaae26e8a40_C05_request.json",
+      "sha256": "ca5ff49fb757ae8c392fa27fab80db648bdff95970039ae8d04ecc02d56d1961"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_529aecb8208541c08a16acaae26e8a40_C16_request.json",
+      "sha256": "dc642c1c5f29e641fb02650faeb38d05d537833590ec8115fddcc883121f8432"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_529aecb8208541c08a16acaae26e8a40_C17_request.json",
+      "sha256": "6e95e68c228907ecac43a67906d649e0ab3cc0ee7ddfc4fdfc27eb30ad71b7b7"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_529aecb8208541c08a16acaae26e8a40_C18_request.json",
+      "sha256": "60124f041e9e8b9a305d0a87aca1660eca14d017431c9e37210d4dbb3d9d9a4c"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_529aecb8208541c08a16acaae26e8a40_C19_request.json",
+      "sha256": "6f3858181538ee350bbd26e092fd2d8a84702244e3479e2d40afa9e9d865362f"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_529aecb8208541c08a16acaae26e8a40_C20_request.json",
+      "sha256": "45d476235a1f6b7c3eb465abdcd32a00b63c91d26201a72151055af53eb08afb"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_529aecb8208541c08a16acaae26e8a40_C21_request.json",
+      "sha256": "fe0589859244639487be68a27795f166c3033249d47a18cedd31477133bdc368"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_529aecb8208541c08a16acaae26e8a40_C22_request.json",
+      "sha256": "558a2226a203c76447786ef6090c3f305baa1a47103b8e71462a14cc541099d2"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_529aecb8208541c08a16acaae26e8a40_C23_request.json",
+      "sha256": "0ab5adb2198b5e297bbfbbfb08a09c85f287faacc8a4bbf8a45e26ccc5167031"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_529aecb8208541c08a16acaae26e8a40_C24_request.json",
+      "sha256": "f25f9af2bafa7ee0157956cda1eec31863ed7cd6a014d3b6d66dd77fe8865c3e"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_529aecb8208541c08a16acaae26e8a40_C25_request.json",
+      "sha256": "f97be3e94471f4039ac5a40fe7dc4298d00015f4234739526d08947c3c9aaeac"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_529aecb8208541c08a16acaae26e8a40_manifest.json",
+      "sha256": "f4c82885f18687e20ef3164ef39da7ef121ed0c1d494020072faa17e78605197"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_529aecb8208541c08a16acaae26e8a40_report.json",
+      "sha256": "911f9cbb17d0c19b47b99ef5c649194852f1ceeff31b89c865081c0333705dd8"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_58610f302b6446ffbae3cf4e985b5e1b_manifest.json",
+      "sha256": "e0e2d876eaf8f8b70e075694380049ae93b5269d189328b2306c21a579150fca"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_58610f302b6446ffbae3cf4e985b5e1b_report.json",
+      "sha256": "10062bfb1464cc736c22dabb20868366c2177306d565076a2a5b0eba134123e7"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_7e8655caa5bc40b78106effeb0d99857_manifest.json",
+      "sha256": "a844d41a05ca4b9b68e4d397f7f1cb102e1f9b39fdf2ed56209fc3f6c6157591"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_7e8655caa5bc40b78106effeb0d99857_report.json",
+      "sha256": "914fbe7140863e9dece45ac26057b06aaeedd48d870eb0812a7ed6863ca26d04"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_9ed2b14e6d3644d2bd7c279d8baeffe7_manifest.json",
+      "sha256": "8b04ecee7e8a0defb7f7207c0afd2908b9bf4d2577aed79b2aa0b7f4d759c3fb"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_9ed2b14e6d3644d2bd7c279d8baeffe7_report.json",
+      "sha256": "abe72577c11d4ae3015143b8f91bb1d4179b49810f62807f28d5ab9d407396f6"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_c304196dae5a40cdb6b3151c15e0f68b_manifest.json",
+      "sha256": "0f697932d32216e3b7b14e4830cee3321f0b09b2a82a2e15b550c23f36bf79be"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_c304196dae5a40cdb6b3151c15e0f68b_report.json",
+      "sha256": "94a8ddcc4b7bb5de24b6b099291db74bb694f548497d1c922678fe42bdaf4189"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_cb8bb06aaa314668a9e553522232368f_C01_request.json",
+      "sha256": "8fc9a4fd83629c9c810ee6becd76cdb76804ee5fd34f879c6e904eec087ca7e8"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_cb8bb06aaa314668a9e553522232368f_C02_request.json",
+      "sha256": "f7b093f9dc74ba633d657edcf036d7c943b6a5bc210ba0c45f18d9bc8de50a06"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_cb8bb06aaa314668a9e553522232368f_C03_request.json",
+      "sha256": "8b4e2f8bad42ba5d35d04c26b6b413a14bffe55964f99b2bd6785498d3a0b50f"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_cb8bb06aaa314668a9e553522232368f_C04_request.json",
+      "sha256": "28779451855495f3d83d6cc52d2e9e814b6dacc830db6d38bf726b6293a9881c"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_cb8bb06aaa314668a9e553522232368f_C05_request.json",
+      "sha256": "ca5ff49fb757ae8c392fa27fab80db648bdff95970039ae8d04ecc02d56d1961"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_cb8bb06aaa314668a9e553522232368f_main_summary.json",
+      "sha256": "571db06b61cde821ec4c78926b8b9dd4bbf666b72c33cfbda2ae8fe4deb9a450"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_cb8bb06aaa314668a9e553522232368f_manifest.json",
+      "sha256": "7a93bf092a03fad8d57c8cdfc0f0a9a50f6f87557905ca8bcb025d66d4b53aff"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_cb8bb06aaa314668a9e553522232368f_report.json",
+      "sha256": "d7ea78f7b2aa5c915c59a2b2c5157b413f4a438c4f2e2ff5a3b5f4dbd977daac"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/grid_detailed_summary.csv",
+      "sha256": "9c8fa5fe9d61403ed0d95866efe232ee8130798f4db28499f4421c360d8be236"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/grid_summary.csv",
+      "sha256": "4de9187a3151ebcff9046cbc148b9decca1eee30ffe492e6523203f0cda598c4"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/grid_summary.json",
+      "sha256": "4c5fc11d12bed6a7477b3dbd91fa6af7134ba1a2fc4e81d63b7504d7a84b0268"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/horizon_detailed_summary.csv",
+      "sha256": "a7e668629a8dd8cd668c4891cd06cfd5fa3d286057fa7800768e77e02a09e23d"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/horizon_summary.csv",
+      "sha256": "f5488c86bd42c3fe2717187459736d7246698235804529d09bb0cc7462bbed76"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/horizon_summary.json",
+      "sha256": "e6bb1580dbac679ac8f8e47c1ede2cd7c77439b5940d6a049198d5c349847ba9"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/initialization_detailed_summary.csv",
+      "sha256": "a6d9015da92c65a1c38552cce7089958b107879b61fdeaace06552f937f58c7b"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/initialization_summary.csv",
+      "sha256": "bead19400086658abbcbbdab52cc0a67d8b55e67f4aaddab1148fed6d62c1636"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/initialization_summary.json",
+      "sha256": "024ee546607b36d5a49e60a27922e30459e568d4902a88664789b46584ee15df"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/latest_grid_report.json",
+      "sha256": "911f9cbb17d0c19b47b99ef5c649194852f1ceeff31b89c865081c0333705dd8"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/latest_horizon_report.json",
+      "sha256": "0d52dd229599a5262a10c63fd1995da2f97fad0300cc7ac6b33d96c5f788ae82"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/latest_initialization_report.json",
+      "sha256": "d975eecf3b82127c3a7b62d4d303671e87ca1a3f45a1d12a34ba851f43d95e5c"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/latest_main_report.json",
+      "sha256": "d7ea78f7b2aa5c915c59a2b2c5157b413f4a438c4f2e2ff5a3b5f4dbd977daac"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/latest_threshold_report.json",
+      "sha256": "94a8ddcc4b7bb5de24b6b099291db74bb694f548497d1c922678fe42bdaf4189"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/latest_unit_report.json",
+      "sha256": "abe72577c11d4ae3015143b8f91bb1d4179b49810f62807f28d5ab9d407396f6"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/main_summary.csv",
+      "sha256": "3b203c947d907fcb7a83bb71887b99e2121000a52adfb2a144959221410989f8"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/main_summary.json",
+      "sha256": "571db06b61cde821ec4c78926b8b9dd4bbf666b72c33cfbda2ae8fe4deb9a450"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/README.md",
+      "sha256": "bcd2f0e87c88f29ddcd880d52599f10504f298e1384561c38955e081d00b4db3"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/threshold_detailed_summary.csv",
+      "sha256": "288a7806348b47810026c10fba9fa65ee4f321fec5094b7d2ad6d43c0493c1e1"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/threshold_summary.csv",
+      "sha256": "626eae398b4847803349d4097dc6e5d6a7c8fa2e75314559d52103aaf0644ff3"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/threshold_summary.json",
+      "sha256": "dc5b02ae22e0adbb0c2a7d4c1ca879b34edcd5d527eaf4304bf6824fdcf38f86"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/README.md",
+      "sha256": "e51386f640aee3e4d95cc10549ed808499db0e4027c250b1ca79389141024808"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_02a89c2481494a1493fe489ad382279f.mat",
+      "sha256": "087f5f39908243ada3155756774ca4e9db6193902f46185875aa5bec5b64f6e2"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_02a89c2481494a1493fe489ad382279f.solver.json",
+      "sha256": "4ea7026d0d9ee9594fb2d646535b6e86226c8f3d365c67bebdb1f917763e4365"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_135928be76eb447ba619aeac74710e77.mat",
+      "sha256": "1d52d747fb904aad5c39ac1f418a9d6de0501f2ac17b945c94c048079baf836d"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_135928be76eb447ba619aeac74710e77.solver.json",
+      "sha256": "ff258ca12f8f040b1c7c35ede8f13cdb7ad3577c6ed7ac5e862f36d3847ec372"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_139836e6273441e7bef91b3cce70193f.mat",
+      "sha256": "51940fda48b02673f50f6d3b9402e9d3d1570dcad5b236917a6ccb0004b2e8f8"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_139836e6273441e7bef91b3cce70193f.solver.json",
+      "sha256": "c503f7e643fe034e006b19a2d9ff456e6384a4d8de42dbc74cba3c094caaf5e6"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_1fe903238ec8428ebe33758d0860ba94.mat",
+      "sha256": "34c4c30b1f16310a5474126fadf39a6d7dba3db6ef76467a0ac6fa402d3627ba"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_1fe903238ec8428ebe33758d0860ba94.solver.json",
+      "sha256": "16fac06070b4381346162089c83901dc9327c8f2fb3a463ad8db830a68d9a3d0"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_23330a48e0454d94b7522ecfdc6c93ec.mat",
+      "sha256": "8029abf5aad592cf1555d658984956adcaeeb41eb82e190f0e8156b0a2effc1e"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_23330a48e0454d94b7522ecfdc6c93ec.solver.json",
+      "sha256": "c70a78b001744488e52a6d67f6e617057de1146e083e4ae5b9647f903f926bb1"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_28e85e5b6d0d487fa978a53cd9062641.mat",
+      "sha256": "1e3be02194d1f49fca8fd0abcc9679b40b0787770be6760dbbeb603ab356af17"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_28e85e5b6d0d487fa978a53cd9062641.solver.json",
+      "sha256": "3b12d428dd901604bd52eba494db99bdc5ff7d5b6c38d7194c2cb0827c6d6bb2"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_2c79e1d8828f49a99532a0130b717305.mat",
+      "sha256": "6ea1a0e64062e77dfa8e10344b4d36edec4322c32e31e675583bcf8b98937b30"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_2c79e1d8828f49a99532a0130b717305.solver.json",
+      "sha256": "4306bb0cd9c56bcf2281751f0e3af7f7423298567cab62efe9287b2969c3c62b"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_30ba0304ab67442db4b06441eee8c2c2.mat",
+      "sha256": "5a41f2ac81b760f8afda93056267b56c1b30886a47ff1cc6ad8d9af492c69213"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_30ba0304ab67442db4b06441eee8c2c2.solver.json",
+      "sha256": "8a649d2f870a1b2e5c74ae41db43cbdd3e1900b24f4e4f11b86d3628914390cc"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_36191f6a7fa94ceb8eae02265a87dc8b.mat",
+      "sha256": "ac29e5331cbcee3cd6c63c778403f27a59b4377905bc0989b7fd57e2c2b223db"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_36191f6a7fa94ceb8eae02265a87dc8b.solver.json",
+      "sha256": "decd8d7b6d82ca5a48bac2fdce971518743429baa217701ce86e70c234210bf4"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_4b85125caa404a28b57e0a9d6cbd7cbc.mat",
+      "sha256": "e9a1f8e72ac4c2e794c03d9a60189bf577480bbc77391670e53ee60390229077"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_4b85125caa404a28b57e0a9d6cbd7cbc.solver.json",
+      "sha256": "ee5a6d9c47a16270a630d95a3c00f3dd17ce6ba38823d7a1b0adad86c2c364e4"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_4dfaa3539e6241ae8d3d7cd4028c667a.mat",
+      "sha256": "b26940a4b7df8855dafc6cf703aaae9cf7d3964bc78f923a542e0ef3bca51836"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_4dfaa3539e6241ae8d3d7cd4028c667a.solver.json",
+      "sha256": "b5e5cf968812f8fa66ca141a24939c5d914939b535c4131e3e18b6c3693f3f56"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_514dfb58d0b14edc8f57506e2cc5c220.mat",
+      "sha256": "a32a9585bea94798ae1bc2e34e8d8b0e581b29aa62f4495e1e6ae90e1ca2f5ec"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_514dfb58d0b14edc8f57506e2cc5c220.solver.json",
+      "sha256": "7f09f59921148a2e48d367a86c704371b44da7993788dbf147efced304fecb8e"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_54024cb1a950459e8007f63ef5e9c6ff.mat",
+      "sha256": "c9f11b061e86507a0fa58329c33b3c9e79edf988b8097365a7fb14da51d67ddc"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_54024cb1a950459e8007f63ef5e9c6ff.solver.json",
+      "sha256": "30666be64c7e96dc92a0f40d83757cc7466ead6d39937642852f56ca2851c8e1"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_5477bb073e5044e8a80f65515d160ce6.mat",
+      "sha256": "289f8e4c276dec8d07f11c36eaa61afa4ffb39c71b150da79b678e04794553aa"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_5477bb073e5044e8a80f65515d160ce6.solver.json",
+      "sha256": "0f6652bdf7255f9611d1e56d63955e0d8d593716f54e70dda1fd203449b96ae2"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_602fcbcd0e5d45d8bb6051901d300aa5.mat",
+      "sha256": "5903b60532443ee74b7aa11eac79011a882d8f0f6edbef65047d080eb8aa9667"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_602fcbcd0e5d45d8bb6051901d300aa5.solver.json",
+      "sha256": "de5f663991090f83ffa588d5db9390865d2ad60027dd70555b92f680c9c044f8"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_66965445718a41b09cfa189b83d09a5f.mat",
+      "sha256": "c0f7973273e39eb61e5950401f764043803cd5aee2a4ce8cc3b36d1df151c984"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_66965445718a41b09cfa189b83d09a5f.solver.json",
+      "sha256": "3b8ed29619d1f3d2b382836abce13470770e79a5974040d8eeebc7654b2f4bf5"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_70efe89f465f49298d3823770cc82ae0.mat",
+      "sha256": "db4b4a536671d18764e8686f9099b1e6bf9c00af66e2aa255ec9244305bde2cb"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_70efe89f465f49298d3823770cc82ae0.solver.json",
+      "sha256": "f83117d2bea78bf4e7c39c7cf48604473eac1ff7fa66fa2fce22a2a82885f6a8"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_8121aea0a10b4a1b8198398b97d5dd50.mat",
+      "sha256": "619414b50f39e916e2a5250b4c882498775bfe0ba92d9269e617f208eb2d3c0b"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_8121aea0a10b4a1b8198398b97d5dd50.solver.json",
+      "sha256": "e8991c1498871a6a0c469efb22f67e53e1f96137eaafab1522ae845ef34fed5d"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_91fb58bb25ea47d29212281a89b7e3bb.mat",
+      "sha256": "8b240ae65a1537c60f4edfbd3d5eed91678acc5f841073c071b631bbd23db5f9"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_91fb58bb25ea47d29212281a89b7e3bb.solver.json",
+      "sha256": "53384609a4930d813e921b88f18a4cff523d9b863ffda822e94aaba2eade0aa9"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_92300dbeb73841b3afa940c8ec99ae44.mat",
+      "sha256": "e6e7e2d6807469026d3c50579b350d1f3214f689c931b3966b0e04bd8a2d5737"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_92300dbeb73841b3afa940c8ec99ae44.solver.json",
+      "sha256": "db97d301ed14025feb1263ba2719951b1ccbe505c4cdd5526fa6452f1640e88d"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_95f03cda21434451998723ad26c1a1b9.mat",
+      "sha256": "8d832c3fa9185b51bb88b4a0a606d810b980c2c95e181085b47717a28adfb493"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_95f03cda21434451998723ad26c1a1b9.solver.json",
+      "sha256": "7ad3e70b467962ada701a37b77ae090867b9c852e698f3eb906623084d351b6e"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_a07493968ce542b2b057ce11232f695c.mat",
+      "sha256": "2e7f6447daba5ddca621fba68c4f65e28a3430c1a81ff05d5b5282710bcd5399"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_a07493968ce542b2b057ce11232f695c.solver.json",
+      "sha256": "b81c6aeaf3a7e4a210cc34e2f4b6baad6bdc327bedaae6c193d39c3d9e4a95bb"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_a8816fb3375943dd85b0a49b8c01b519.mat",
+      "sha256": "0fa2965b85dbd20c26190c72928aa0f594cc6735c17197d7edf96da667a95368"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_a8816fb3375943dd85b0a49b8c01b519.solver.json",
+      "sha256": "ce92b6f6275d12b981767f084913dd6dd2762792966ab9e335f6e071d4e4e794"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_b528f398fabb4b61b08540c668d36825.mat",
+      "sha256": "4cf36be86088abf187952b79db024cac23c8f8d240cc8de68841994e8bf370b0"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_b528f398fabb4b61b08540c668d36825.solver.json",
+      "sha256": "585e55e353c58c3c6283d3df41e3f793ac3ffe5ae165f0382d72d13431d02cb3"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_b9f75da0ecd04d8288f7624bc7a44e49.mat",
+      "sha256": "74a4045f0bcfbfea67a2467fce2ad037cf7b70dda741c1a7e5cad5547012c98a"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_b9f75da0ecd04d8288f7624bc7a44e49.solver.json",
+      "sha256": "7d792a83979bbc182c00dbdd353971a36326344c7fd37bd1543f66c78365bb65"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_bd09cff659c14ab7960b447ff0f4f0b0.mat",
+      "sha256": "d3506c6e984e21a05b21c0ac7f41acc32f5638a914356c0b4fb07d594f3ea065"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_bd09cff659c14ab7960b447ff0f4f0b0.solver.json",
+      "sha256": "442be731a46a6205a15aec28a25625793042f88278f5edcaad9169b9e3f9129b"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_be8c0645aca04eb38d172896cee33450.mat",
+      "sha256": "962e29f85150f38341988a4ce7884c78d06440e3fb8478d5ee49ba1c4373479e"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_be8c0645aca04eb38d172896cee33450.solver.json",
+      "sha256": "66c41cf61d76ebefb9dee9991e3e0c09c1449c38452920c6a2d7e6f2bec5aefc"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_bed1c525aeff4468bda80a9d09ebd92f.mat",
+      "sha256": "4660ba9f61eb1c3ea2796e0ee9fc4893d8eff6dfbe8514f77e47d5be281301d9"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_bed1c525aeff4468bda80a9d09ebd92f.solver.json",
+      "sha256": "91bcca8bb8eb85768b2d9e4b637c2bda935cbb8856399d40d83733c7e3d4dd76"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_d7d94922d84947b3adbce5fd4fc3b513.mat",
+      "sha256": "d75fdfde16e8ef578b368f0bf0ede37d4f7b88c1279a5fbcd4fb5257f32ab4d2"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_d7d94922d84947b3adbce5fd4fc3b513.solver.json",
+      "sha256": "66b063309d12f674a0d1f4b7afb9b412824654bf5bed88a28f967a1c368e7514"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_ef82c05c9b2f4113a4f5b28c4a6c0041.mat",
+      "sha256": "373da39c1c3c403e902c9c2dddac6d5ccad10dedbd9fee7d1dcad8a8c9f08b08"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_ef82c05c9b2f4113a4f5b28c4a6c0041.solver.json",
+      "sha256": "92862f7d19e18c58d4608de6cdbc3d6cedf84389e19876c9278bddd5b0bbcf70"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_f252211996384585aa8272e641829d39.mat",
+      "sha256": "1388d8bb28aeea7af4fa07b8d69ecbba4a535c4988d46b4da13f77311805263e"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_f252211996384585aa8272e641829d39.solver.json",
+      "sha256": "756cbcf40b34ded0d89254e5e8f42cd5010e638e3f96c06837bcddeb23a278a4"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_f4d2a395a778413eb76763244b7de2ea.mat",
+      "sha256": "588e96742b9285b44fb5d1abe38b6682ec0b59f0b66b83613dc0927f59bf2cef"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_f4d2a395a778413eb76763244b7de2ea.solver.json",
+      "sha256": "056d23c77cd412405d5814c6a9852213ea38c6010982d8ed06c4d66d7fce9e41"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_facb197e0b9e43aba7bf82de013f3fd6.mat",
+      "sha256": "dbf128d5fb117771312af5a4b2ba9c566eb3ae658e7990be095f49eb473383e1"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_facb197e0b9e43aba7bf82de013f3fd6.solver.json",
+      "sha256": "5521053ce7054f108c9cee19fcc384ed37a7f08a87bbf31caf7551b14d3ec23d"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_fb6d128aedb84204ba5d18ed3afb5828.mat",
+      "sha256": "d86462fa0d51fd5ec8742d93f615b55545e74fdb5a4b53450a78f799f25b7431"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_fb6d128aedb84204ba5d18ed3afb5828.solver.json",
+      "sha256": "7d5c7c2a83b0cfc6e3de01d7626d9c5dce0a1271ccfe4816b1b8b4eb9cc5324f"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_fd387f5267674b82b5ce57f5b1bd3f55.mat",
+      "sha256": "938a282f76a73c54866c7914378b3d62fdd50582d53577ca1366d6e15ca9fe86"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/run_fd387f5267674b82b5ce57f5b1bd3f55.solver.json",
+      "sha256": "89685f9c348ef0dac329b96599416124753904861c3cff57b5d176b4a572a637"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/checks/neutral_E2/E2.mat",
+      "sha256": "7cc916d4a872629c647336aedf960b1fc81ceb6ec6c9baf580f2b80d3e38a86c"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_02a89c2481494a1493fe489ad382279f_2e00583ee20eb77503204d3bfddb441139bc474f455e3bcea55fd8237b397f2a_8f97d970837046ac9624944cc21267ee.mat",
+      "sha256": "24840122e9bc91fcfd3a5b773019596f0ab3483de3613b6f0173eb453b785539"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_135928be76eb447ba619aeac74710e77_d7c693868a1337732f81629e7848fbf284b58ba1137e214b536aac1d0d60e1e8_84d4174b42e446bfbcee9eb850507d4a.mat",
+      "sha256": "16c9a40afe09b50bf18c836c79c401230f6e6fe0e763c34b8f437ad2191fffa9"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_139836e6273441e7bef91b3cce70193f_c5a16c3b0b8b8c8320857ea6910fe7640b2cb29f051c9838601334bfadd0245e_ead72f97a7fb46dea5fbae3b6ddc6606.mat",
+      "sha256": "b1ca3ff7b5f24256bd45ebd8bfe11b1dc3829e47dec9a41035b06c9d61eeb002"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_1fe903238ec8428ebe33758d0860ba94_a508f650fb9a8686cf7eac706998c2604299180b37d6867049960016d48d7c3b_6f1b6fa36b824e56b8bf4d325c85be7f.mat",
+      "sha256": "8451a9c0d7b5223516dbe6c2303102eea2ea4a9766c540492372eefa904c3371"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_23330a48e0454d94b7522ecfdc6c93ec_24ed7894881ea1deeb424cc8ed31fdb107e849ed2dbe4abf35db42378c7bf214_1c2fd0e503f14dd19ce8ff42cfd2f682.mat",
+      "sha256": "8de7f09262ab0b242670d068e265079e6e5618eb6ff8a6605d43ab2d248173ba"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_28e85e5b6d0d487fa978a53cd9062641_f9fa7e3655259e6354b097036a35dbe59db7410b90b4eaab21a529734c81304f_eec2ba46c7bf4d0e801ee876393ea30d.mat",
+      "sha256": "e31813a3a58e22a496c606be485a4b6e8fb623a08b37e23c8a4459cdd532bdb2"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_2c79e1d8828f49a99532a0130b717305_1de0f93977555982f43925a5dc62a66db2260d0a08d067e4fa537c215e4be071_41a484962e7442419afc52b7ed286ea9.mat",
+      "sha256": "5b3c6803698fee7e05261772f026d74f7f149bf2d778421d9258e65ce9107d10"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_30ba0304ab67442db4b06441eee8c2c2_2170d3dde3359d1ca72911b704810cca3fdd5e8717c195692005612d17cec670_021b078f3e4a4ad2aae33071d2d5139c.mat",
+      "sha256": "ecc19aae2ca5abe30a681e6ea2323fd4bd7e503661957b3416ac86b6425e9ef2"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_36191f6a7fa94ceb8eae02265a87dc8b_2f335e32e4cbc897c08ddbd9bc1818c710394b4c05307836ffae061f2a01c8ce_32c3c8184c034a9eaab35547fd24231a.mat",
+      "sha256": "9e9ee0fad0ba5611b58348f2cd90ed4c2ef3e86d8b7124158e4efb00ba0efa12"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_4b85125caa404a28b57e0a9d6cbd7cbc_8598f1971ed30efd5c5d57e0edd3e708141dd93174a41e8c09c8a90aeeafe6db_dd5ac07d218b43efb3ee7054cbb40414.mat",
+      "sha256": "150fc9ac976589d675bc3bc642c6af4aae038c29f71abbbff4373901992badd2"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_4dfaa3539e6241ae8d3d7cd4028c667a_7ee49d2657cbd056a2f73cd7cc44e0a84315a45a6e1c47710b661a3e68a46201_78d7af2c28954a3d948a3d2d8f3048c1.mat",
+      "sha256": "ed4624f35947438d33a31170fb4c29ce62dd7446469396fe9406d2702f30629f"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_514dfb58d0b14edc8f57506e2cc5c220_08c677e6f3fed853dd08e205e8724c49040870fb09e99aadeedf99d370be5bb4_4b0b1fda48d240d09972aff81ed19aff.mat",
+      "sha256": "de2b03a74b8cca39f182de8d7eef5dcedf45ee42a0c19a91c1d7cbbf80c2123a"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_54024cb1a950459e8007f63ef5e9c6ff_68a25a8805f2867938b15d3fc532ab3cfc38ffed14c683977d4890788360e9a2_9f00059979d34f62ac1027dedb678317.mat",
+      "sha256": "ed80876b38641b0cb4b0b4750246adb3cc00a2e8780a29718031c41638122c69"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_5477bb073e5044e8a80f65515d160ce6_08422375bd534d4c43a5328bdc5c6f1fa48dabe227b421569ca56f465e19c152_301b1d5d636d4981ae899c7ef7038ca8.mat",
+      "sha256": "21499e227b3d42a2ebee4f4485a29d2e13a01ef7d34598885a5a5ac91730d617"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_602fcbcd0e5d45d8bb6051901d300aa5_aaec504c797e76b906a4b773bfcdca44ab16bc4f21b01e421364cd9185ce6701_0cee31fc859a4db99096bd4310525936.mat",
+      "sha256": "a8d3bf6a63db564fd7c482100007dfa671e1db619b954520f2913cec281c3aab"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_66965445718a41b09cfa189b83d09a5f_5bccb72b4efe5b6f4137428d52bf500bb9bf22ca4a0b0f21a293b414d7f15204_f5652f1255554b5d93209405ad2858b7.mat",
+      "sha256": "6a5c71dff106a4b58f1cc9de8f525162d8863105694933029ef16015e7b7af13"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_70efe89f465f49298d3823770cc82ae0_4510c28c9730149c8dfa64e24c341129a595035126d0104bb73d9b7977f5822f_15e1770bc54243269ae271f6efa6f341.mat",
+      "sha256": "178c465cbec5baf0518bc20c4dd5b44d11447882e179cd5fb4b9b8fd1778f399"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_8121aea0a10b4a1b8198398b97d5dd50_461c98ea6859489cafb61cb1588185dacd766f60338cb71ad333d8817823b95f_5315f6e1702b4e14896714987ecac39f.mat",
+      "sha256": "3a3489f98425887ecd8c43da6456273d3ae4b130eebe9cbdbde59d6b8dc933c4"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_91fb58bb25ea47d29212281a89b7e3bb_12369284791534c7375714a41fc400a07cee57e55c7d8753720b767e60e51b2e_7e629208211e4f28a60a2c5917b71085.mat",
+      "sha256": "d0c00a3d39c37edda1bf1e680a5b134317980a8667ea7ca29501ceff7b97d0d3"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_92300dbeb73841b3afa940c8ec99ae44_40f14348737defc7301a0100b5055a9e765de6c030266005b2f447b7b398796a_0e048da22a144672acd83e9e53a16bf0.mat",
+      "sha256": "8f0684747bf1b84fcc8bce8aac70f88aca231163bd9a0a7791ca7313eb9080fc"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_95f03cda21434451998723ad26c1a1b9_98270ef24f0571a3c1c811b65534274e4821ae3d94db3130d769000250c5105a_2627d846e9ee4172b7c858b11dfa4831.mat",
+      "sha256": "94e447980bd578a9b02f5c1fc3eff4892e2fcab6911422ad19e3b0dee8602e7f"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_a07493968ce542b2b057ce11232f695c_fae1e5232f45f5d5cfd9ab2a525aa5f5fb0f8eccae11c0904befb29cbbdf1bc8_a43523d2c7d74322a9e141369319996e.mat",
+      "sha256": "582fb4bbf5e58e31dc6bd2344d20be31d470f01cc1479fdfe1aeed16c26a37f3"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_a8816fb3375943dd85b0a49b8c01b519_e50edd92fb32ec00e551179f4366a6fd4f958c90925cad116f5051b56f1610ad_fe9c07a2bfee4d3391dc3e795fa8bd46.mat",
+      "sha256": "16422482b66d211699f782f84c04dcdc25881f34c46b9152f204e75bb6bb8004"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_b528f398fabb4b61b08540c668d36825_2e24eedda3b1d221c4114bc9521f76a338480a75c218ccac613451322df89e56_02284ae944ab408182b86c90aa85185d.mat",
+      "sha256": "05cd2a5790b9c54e64c19490b88ffd4951d671faa06cf7b5a09827a298762656"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_b9f75da0ecd04d8288f7624bc7a44e49_97809a58d617d48a12509b80d6d4f58f5f9b95da6ffc78295e256e25cadc9b20_b20476578fd34292946345bf490cec60.mat",
+      "sha256": "82e8c43c1603bbd42ecfdaa6f67552964428e70d3ea57524b2bfd94dd75feece"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_bd09cff659c14ab7960b447ff0f4f0b0_cea92b9ea60bcf59803529934986932a4f271b0e6273cdd23f67832928da19df_6db8bc568b32495dab34a815c0460bee.mat",
+      "sha256": "0de8093e9b2b46b2cd8cb9b9ce2708c2f18918dd9f6666dfc8ad8d8596fa367b"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_be8c0645aca04eb38d172896cee33450_eda8d7d4f2e8088b5e23b7aa99aa9abe2b24fb82ae38fde473ad32ce90bf6a0f_78cf37c3af8b4160be414ef0a1ac8107.mat",
+      "sha256": "ddb31b5ebf798d74e64696589acde17e65f97cbd9a951a99f3a7d1bb18755c18"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_bed1c525aeff4468bda80a9d09ebd92f_e0764589bbb992dbc206e89c5372b0ea59e864b5c3b299f44461200031ab2ea1_8320a6be268b4b65b963d168e4aaec05.mat",
+      "sha256": "60f85eeca118397f3ea04b26b75efa2c7c91dd1fcb4533de81ca359641b7a887"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_d7d94922d84947b3adbce5fd4fc3b513_ab73667b9dfa01a2a067f36006b4ceabb8f5914510643b1f6c54b543cea8ef44_c0c3acffa8b34375bca1a2abaa44bfcf.mat",
+      "sha256": "f5691c7634811b80377988482a871b711c76d82261ccb5c98c0994f750a9dbd3"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_ef82c05c9b2f4113a4f5b28c4a6c0041_60d418bfffaeae62438fa95620937aa1cfb6a0516eb3a7013eaca816c39b32a8_9f7458720b9d4a95b9583e195233a87b.mat",
+      "sha256": "1674c99542014862b361722ed2f4436a8db285fb6412e58102ec8164c9ba3db9"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_f252211996384585aa8272e641829d39_00eb406b1c0faf4f3d2cd3e772973db7e868d1a8e7e08402c120a0e775b6e25d_014b5ffed36344e1b807be62f0a85edc.mat",
+      "sha256": "cea0ec0e147c2c8b822480a810a773a12a1b37db48d68c5139006db900cc24e2"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_f4d2a395a778413eb76763244b7de2ea_d1bb8a8e25da9245b9a0f48f07680b1cfa09d17574fb37a6cd22a6cbe2dc2866_53124fbd6b94403ebeb5c3c01f1b6a3a.mat",
+      "sha256": "df7b9b398632f2d83289395d5395080f0bc60601cc82fc40f9c5eb23b54af594"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_facb197e0b9e43aba7bf82de013f3fd6_aca87b7252a83d46a45b1af64d3919da86b34150375dc7ead5fff33a26d5dcae_8ec064c0dd3f4586ad4a0f82230714ad.mat",
+      "sha256": "8308672a46c7a8cca4298881ba083b56b0c2cad04675f9b70bbad1013fd7ddec"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_fb6d128aedb84204ba5d18ed3afb5828_fe4ba9cf430ca725090674d4423d8d6845f489b53e0e5b055c41f6848b1e6c09_23ff91b3b8af418491b5e823bd4df65b.mat",
+      "sha256": "58ae413474a0fba0208786c5ec1d51ad9d26c508fa93effa5b2152d3596de30c"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/assessments/run_fd387f5267674b82b5ce57f5b1bd3f55_2fdec69831a0ca13c6c3bc80f1e55f213825f7974009091976520736dcbbeab3_e8b08d901cda44a996ac9a59a96ae737.mat",
+      "sha256": "f2cfeb5baf96284cf5d0d97525a18b200ae8d26f39329ac89c2577dc8b3253c0"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/analytic_reference.m",
+      "sha256": "80dad0df64d702eda96a745d195891ca878c33569e59835c5684b659c83ae721"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/assess_numerical_case.m",
+      "sha256": "a90a9202dbb597e4991bba57bb5e953fceb73cacf72deebf4b969bdcc7776400"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/assess_saved_numerical_run.m",
+      "sha256": "f9a14bbe522315be5a3902890053aa7d26da7fef92ccf2a2b6fb3db5502e2ac8"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/build_theory_geometry.m",
+      "sha256": "3750c6188aa9ddd40e3cb3a84fccd154274a5fb681d647c25b8f065e5c5f9fcc"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/capacity_exit_transition.m",
+      "sha256": "eb01395da3d72a7e12e892ae5b1fe00a3dc36d9d2a863718eee2039df999de45"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/classify_initial_state.m",
+      "sha256": "4933779acb62342f75bf874fef8e06c543f859c1d1f880575a3c5766e9e3f629"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/compare_neutral_initialization.m",
+      "sha256": "d2e123a6c9da9a26e02fd293041d9a5685329d696f681886c05e2780595e350b"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/compare_numerical_events.m",
+      "sha256": "7b0d1268e94a12a47290a9603771b4f0d073dc22e7511cd9dc67c672e174c4aa"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/detect_numerical_events.m",
+      "sha256": "b6bcd721a68acd668cbd1c4687e5fa390b2ba15b71134825893c5112639d53a3"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/execute_numerical_run.m",
+      "sha256": "65171defbda05a7d6ae45e69135d57d1fd99424a048f2208242c14f22f4ad042"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/export_numerical_latex.m",
+      "sha256": "04d461ff65463de494afb58eca7a85642c0712da30e8a1ce5647133d476beec3"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/load_selected_numerical_runs.m",
+      "sha256": "f39078b83e3f0bb9b57f80f153261bef35869cfe39c5af090440aa55fa9c5291"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/make_numerical_figures.m",
+      "sha256": "2737468fa469bf41c4260299c7b1ae64cab71f5c071a962226a295ba14d83e69"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/numerical_additional_verification.m",
+      "sha256": "baefbb344fd23c7291a3a271fe8e5f419d43d882e0096562c2e22c9fd562ecd2"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/numerical_assessment_spec.m",
+      "sha256": "08799bcb0d12824b8a64ea90e11eea8fd0d68c3a9e5b3136121b103d62b8d49b"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/numerical_assessment_view.m",
+      "sha256": "b43cb3c87bc08a1dd7e3a1600da3140accab4736af74c297241e0000b8131c0b"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/numerical_cases_config.m",
+      "sha256": "b85beb50ccbb797200869b8a732ed5cb86753c04241274ddd8ac7f51074b601f"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/numerical_code_hash.m",
+      "sha256": "5236590444eb1f1c81c1b9574c3b9402eca8317d2c0f7a0ad9f725d48d180551"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/numerical_export_provenance.m",
+      "sha256": "eaee03c829c560d9a06942285113545d9ef29f8c6f94cb0085d264dfe09535d9"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/numerical_main_verification.m",
+      "sha256": "e6fb0cc548324d6625f710be7f4108e9308b03d7f54226d057f306940572ad42"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/numerical_run_consistency.m",
+      "sha256": "7c00a5b0e256263fcfd99bbc758332902243ee41ff998cfd5030ed3f8a879d4a"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/numerical_sha256.m",
+      "sha256": "a162d6e3e7439b66346321193feaf3e011f637cace13af914c8336bb67a597a4"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/numerical_solver_diagnostics.m",
+      "sha256": "bc498c58ed80a8d317a4ec32b516526084d0b4aa64852ea21d088548401fa799"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/numerical_solve_provenance.m",
+      "sha256": "b084ea981a3ab561b3784b15c5238577b69b4023bee82e6405dcce45e051338e"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/numerical_utc.m",
+      "sha256": "0a69b4b75a7db48b1e0d620ba5befbacabaaa301a8637c12a5f1bc00d217c7bf"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/numerical_write_json.m",
+      "sha256": "f6add9659e5de396cd4678b7d68bb7d83660044422761a1ac501475196f0bd07"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/prepare_openocl_case.m",
+      "sha256": "c0a0683d9aa18860e6a090e8cf8e35437a8bec7406f23addeb3ffea8f478fc28"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/publish_numerical_selection.m",
+      "sha256": "e898ac2b8a9d78c0fb932e3796b584a5d27d4414b378292db79b1068ad3c580f"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/README.md",
+      "sha256": "cd985ddb638aaaf1d3d36b8f3a209caf36f861d0890b671aca4a82b8071cb8ab"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/refresh_numerical_assessments.m",
+      "sha256": "95a73d433e109c5c86b5e5c412c6c6a24ea718178bffb53d0f0a185bf9f8474a"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/revision_group_summary.m",
+      "sha256": "1e053a585ab138e19fd66d16d3702f52607651d0c75c93fdcf0a58df2098f4f2"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/revision_initial_guess.m",
+      "sha256": "103bb1840e491c8c247385ec6fee2ebdeecb5441560db7e7f8ffe02de35f2d34"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/revision_preflight.m",
+      "sha256": "a445b72def0f4dbc2776dd94d5f56c20e3c43e039c121a773646b59ec6cd26ff"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/revision_threshold_saved.m",
+      "sha256": "18276257de9e6c79263192026f69aded8467ef54b882e3660f08aa0404cd213b"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/revision_validation_config.m",
+      "sha256": "429777b5839c953ff5893c24f40d14b1637855170837ed21287f9b68fc996639"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/revision_validation_dispatch.m",
+      "sha256": "b31b9300d98a31535b7f89de80c43a6194fd50907364c5f7172573dbb3f04051"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/run_numerical_scenarios.m",
+      "sha256": "bafdc23e54c53cc880ea57952cdeb43f253ac68d59afb344cbf6492cc66fcf15"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/run_revision_validation.m",
+      "sha256": "f1f628d158b009ddbe35a209f733a414cae4c25126acf0633a22e9260badb205"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/safe_peak.m",
+      "sha256": "c813849393aad2470f2216eb78a90ddefdc514a5c63e48312fa9845c2a130a08"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/solve_openocl_case.m",
+      "sha256": "2d6eb9bcc7766be66af9eec450560579af8217b340e9fe11faf03b16a82257e0"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/tail_diagnostic.m",
+      "sha256": "e18257889211a327fa175d5da941b51da96c9c6421d3d38de5f816e5c7fc2094"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/validate_numerical_run_grid.m",
+      "sha256": "70489fabe7f517e15f32dfed3df733b5dccdebda38c5835e377fb110dd8e57dd"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/verify_capacity_exit_transition.m",
+      "sha256": "2a000ebea8da01fefc229ec7a0593f58075765f0d4d7f4abac857402e7493bd5"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/verify_neutral_initialization.m",
+      "sha256": "b6145d776b5c87adfc71694a12e6992f2ec62bae2f757a0f4442acfc840144ee"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/verify_numerical_assessment.m",
+      "sha256": "b6baaffe0b5f58bd9274e4dbc1c35065d43a5e1657f92e21dbb69d2830328f04"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/verify_numerical_cache.m",
+      "sha256": "28fa694e77f1c9c07ac6bc0c610ead35dc36ee6d552e56408218163bba669bf5"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/verify_numerical_events.m",
+      "sha256": "954f135e4555846afddf8868c67f92a647fc92bb5e579722a748c2c1a2852b16"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/verify_numerical_preparation.m",
+      "sha256": "59ca40b99f06884d68b9bfe32febe75d2742065056b3615eb1b796ce7acf0f72"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/verify_numerical_reference.m",
+      "sha256": "d011e57ee1f63f7c64691278297fc816f8c2256166bff79d8a31d44bcc07bee8"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/verify_pending_result_exporter.m",
+      "sha256": "f2665df0aa2d742221b4e33a4ddc0db355040428bcf34c0e1e8c9b117bc71c63"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/verify_reference_dependency_tests.m",
+      "sha256": "dd2729fe052a9c425fe74cef6cac2de72f0091a65446770b7dbae01d7fd4d2d1"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/verify_revision_exporter.m",
+      "sha256": "659ef219de93bc71416df7c1a2451e3ba11fddaa3deeb4bb266c17021de3a79e"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/verify_revision_preflight.m",
+      "sha256": "284bfe1e6169bbf5c2cbfbc08954aa870df178d7756ab8039c0a49ec3a06d132"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/verify_revision_scheduler.m",
+      "sha256": "fcb5bec39efb8b5701b10347ef3c605df00b7232257b2b9b2ec78017ba846a9e"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/verify_revision_validation_unit.m",
+      "sha256": "0ebeb9921dda882707b2cff2833837511923b5b458ef55ac66f42fe582abf7c8"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/verify_saved_result_exporter.m",
+      "sha256": "1e690d795794a317c87af6baab8cf811dbcb008439efd8c99a86986817f2f5b2"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/verify_solver_diagnostics.m",
+      "sha256": "49bbecd3f089ebe4dfde298a98cb1f3a8254db9014c333985695028ebe62b451"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/analytic_checkpoints.json",
+      "sha256": "bfd2bae1eeb3cf7b73059f18d1eb36f9cdc2187e0ca5cf591880c032455e34f0"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/BASELINE.json",
+      "sha256": "0d3fd7f15e63dc5bd02acbaa88d68d06db8c579217deda1b96abdbd8f2dfca33"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/build_stage1011.py",
+      "sha256": "e0d73442663b06ca687b8497d34f18ca839fbed6a5cd62aee01e08acd8cf8f51"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/cache_unit_report.json",
+      "sha256": "b6ce347b497446ff9eaef5adcda627a71e3659a5a2621d96b74b2d4576e99f8d"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/cache_unit_test.log",
+      "sha256": "5e9fe2608067b98ba2eab2df4239c71f13f5092f87eef1c24392e52cbac63c9e"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/CHANGED_FILES.txt",
+      "sha256": "248438665ff87ea981b81482e683b5b12abd6c95fc334bfc87ec1799f0aea618"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/CHANGED_FILES_STAGE35.txt",
+      "sha256": "2c96cf2cf254916618a8cfc3cfbecb0e73695d765b52cce1d67769b978ecd69f"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/CHANGED_FILES_STAGE67_CODE.txt",
+      "sha256": "dc0eddfdd80a2d536ec5a5eab9ef6b5c059556213c0b2310bc191fe6600aebfe"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/CHANGED_FILES_STAGE67_RESULTS.txt",
+      "sha256": "eb8df408b41fa93af53941844ce8c73ac8f7c8bd113a46b60d6eebda62399a30"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/CHANGED_FILES_STAGE89.txt",
+      "sha256": "cdbe220ca82293ab5ff897738fc99ef45c08509968ba0f6a70b7dc29a8610419"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/clean_checkout_matlab.log",
+      "sha256": "9b63a1dcbebfb57aa3ae41572b0049e2b5f29e2de35a5b4f8557dd05eed8163f"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/clean_checkout_matlab_tests.json",
+      "sha256": "8523ddf6db4f2079fb4c2562f611d854d0b2aa472eb22912c4e257c2503c5224"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/clean_checkout_python.log",
+      "sha256": "8e626c1878925eeba8b2918d8bc467cbafef05984ce50eb33a05afdea413dc67"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/clean_checkout_report.json",
+      "sha256": "845352c0cc0a8f00386174dbd695bff1afa9327e369e50d527f563d89926266e"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/execute_stage1011.m",
+      "sha256": "ab6823b7bbdd72a7438d70cfb57b3bd43f563bbeb56a5b1c2f1a753ddae30d3e"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/execute_stage1011_clean.m",
+      "sha256": "eba2744f2971857feeca6f2cf7fa46216187abd9c82342bbd8cb8fa50bf69dbf"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/execute_stage89.m",
+      "sha256": "fee2adec583e031faf65f89e469ec7c50cec97aa2b60ea923aec90013a2cd092"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/execute_stage89_initialization_check.m",
+      "sha256": "a2e8accae4f46361cb14e635660eee93afd256718504291fab3df39aa8958cc7"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/finalize_stage1011_export.m",
+      "sha256": "a07f83e4be630e8a79d4cdbf102efdb69e0b2c227e78e85d12399d1e19b67d5f"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/generate_analytic_checkpoints.py",
+      "sha256": "a36bfeddfd771ad0b5cad77c59ce619f3c5c8cc7fba3ff161f8111828ba5591b"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/integrity_report.json",
+      "sha256": "73d54e8696f059780c7f55959edecc0604aff0fc325d7fa1b35d9987a9a960de"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/matlab_code_analyzer.json",
+      "sha256": "86fa920a714dc0d8844c4396371cf6cb2594a2f0b9037b57a391f0b89066e36b"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/preflight.log",
+      "sha256": "b4b6de5f67f42aa90785a8abf6775244d000ff89eda172cbad33880f78e3ed0c"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/preflight_report.json",
+      "sha256": "5f93afdbfd530757336e3f1714bf5207f0c79e8533b4bba15c876d28fc830035"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/preflight_tests.json",
+      "sha256": "68fd028b656510a0a58d71705f906eb1108a9bc4fedc86699c2843c32a0913d1"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/preparation_unit_report.json",
+      "sha256": "720deb0d90d9e3c14e803259b2129692b12781802a2f2a69eee0bba70c3ed31d"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/preparation_unit_test.log",
+      "sha256": "17a8fadbc2ca1c6d2c9d46a736a21a22ffecb72b448f5b6b52846c3906dfd727"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/prepare_stage1011.py",
+      "sha256": "834285daae80c77a4f39656d8d2abcb74ede121df8e8d2666e83d71ec02e13be"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/prepare_stage1011_checkout.py",
+      "sha256": "8e117079ff62822527c9c947785a8ae600a7a206e86d5a700b1aea2623ff6491"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/README.md",
+      "sha256": "e03cd18fbff097fe1ee2f57354dbe7837a91cdf8144fccaad32ffc32ba06c4f9"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/requirements.txt",
+      "sha256": "a699f46ed76bd216f1081b6b2330e4fb45d7c8c5a5354b208694d6590a5a8645"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/REVISION_STATUS.md",
+      "sha256": "989c910c92e6488dc8f57b1906d46fcba69db6c3cf724688f5882bb679ed90c3"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/scenario_inputs.json",
+      "sha256": "0d72f9cfe12e296cabbeefbe48b9d6a56b6a1ddcdece3d35f221540eade0965b"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/source_fingerprints.json",
+      "sha256": "5dbefa2f338422754d0e77bbfaaa8156658298d7b878538b57aa11b62cc88eb4"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_baseline.json",
+      "sha256": "4229383971dab7d827da11dbcdc206c1663f98e0e4d4c7dd4ebb90318a29e3bd"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_build_attempt1_report.json",
+      "sha256": "787c499312f1ef29e89f986aa291da9f3b4ec079686f694fbc0185447d7149a5"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_build_report.json",
+      "sha256": "6642f0a021b94347dfe77d5bc153cb418d065cace64375cd789547258a006c9b"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_checkout_attempt1_manifest.json",
+      "sha256": "be107b7a5fb783606ffcf6c5598dde7e83d8bb4307ca62991bb612da54c9ca57"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_checkout_manifest.json",
+      "sha256": "be107b7a5fb783606ffcf6c5598dde7e83d8bb4307ca62991bb612da54c9ca57"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_clean_attempt1.log",
+      "sha256": "2f7acbb91bf2bf39a4b6a64d302f0febba7c069405ff0462afa725bfec7f8a42"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_clean_execution.log",
+      "sha256": "2f7acbb91bf2bf39a4b6a64d302f0febba7c069405ff0462afa725bfec7f8a42"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_exporter_report.json",
+      "sha256": "a13f83de8bad074cea6baa5960a3db7d7b501963f64f258dc07bfe60b9247900"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_final_export.log",
+      "sha256": "2cb2520a43e8e09e62234444a9d8b0cd5fd168575adf80efb485ea6ff807c4d1"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_final_export_report.json",
+      "sha256": "8529e4af8d59b8b291bc62f59708fd6f2c328df95e87607191e25dd23a46f60e"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_main_attempt1_final.log",
+      "sha256": "82d4cb260cc446123f5f318d9a43709d16ecfb8b702063063abfcad86183d812"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_main_build_1.log",
+      "sha256": "6fa3a0031d6b222dd9fd0c7594908fea62a9fd425e61e41f6264f91087ebf35c"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_main_build_2.log",
+      "sha256": "263d0b537b0490b240c4f89544794d5121b1674a6187091278c1cb4d2cc53122"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_main_build_3.log",
+      "sha256": "6fa3a0031d6b222dd9fd0c7594908fea62a9fd425e61e41f6264f91087ebf35c"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_main_build_4.log",
+      "sha256": "6fa3a0031d6b222dd9fd0c7594908fea62a9fd425e61e41f6264f91087ebf35c"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_main_final.log",
+      "sha256": "0b3b0e4c947571c45b4408a336102cca5bf978af407e1ad14083cbe624272c41"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_pdf_qa.json",
+      "sha256": "8af2b296635489be66a396d18f1a7dfd153194b9651723dc2f8f93560b7dd918"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_pending_exporter.log",
+      "sha256": "7922e1db6c4deefbaa318b2ebf950e4f2e93159c4513c46c967d0136b272e952"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_pending_exporter_report.json",
+      "sha256": "0fc18bcd07015046b403aa8aafd894878be5fde5c01107e554bebefd04935c98"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_postprocess.log",
+      "sha256": "bb23d5a690aec903c26b6b5ea09380f12dcc102dd69cdc232112e84bf50dfb9b"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_postprocess_attempt1.log",
+      "sha256": "2e38bb273371dc97405e60f9a6b7ced8ace7115b5a5b78ba0e5cedbbe43261d3"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_postprocess_report.json",
+      "sha256": "1cc0fa938634bd422cda703ca5ceb8cbfff4fbc80e5ffa5bd74468b7094da7c6"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_preflight.json",
+      "sha256": "79a202b46780bc539d5822475f3cfd5d65789c69180f9c8953f956a988466af9"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_saved_exporter_report.json",
+      "sha256": "1d665f67026fc5471ff50b691415a2c40004143638d2cdd466b8d892b6b82d49"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_source_fingerprints.json",
+      "sha256": "c401ff8e01ed726ca43ae634c66893165809dcaea78d51b6d5b778e6ce8584d3"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_theory_only_build_1.log",
+      "sha256": "ad95ba6a4d49b864c0a4dea3740787c9323c594499db6946d071d0f6e958d21b"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_theory_only_build_2.log",
+      "sha256": "219e4f074bf48d187f38184983b62dbf82b81c1e2e214e995d63d75dad0e2184"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_theory_only_build_3.log",
+      "sha256": "ad95ba6a4d49b864c0a4dea3740787c9323c594499db6946d071d0f6e958d21b"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_theory_only_build_4.log",
+      "sha256": "ad95ba6a4d49b864c0a4dea3740787c9323c594499db6946d071d0f6e958d21b"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_theory_only_final.log",
+      "sha256": "1931a43810c820693aa746dc4af546179225205dd528af9e0c1150a7b55e7845"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_unit_report.json",
+      "sha256": "9377479eb22c454e8e75345b1f3a929e027d63b51939ac5e5208deef4dfec44e"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1_matlab_tests.json",
+      "sha256": "40fe9bb465a025762a05ce56c1b22a0d6fd645bc557977fa8bdb7eb81d462b68"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1_python_tests.json",
+      "sha256": "d8138762e040d849b8d306a990d00cb94aabe8b3205fdd054b1163cf00dde87c"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step35_cache_regression.json",
+      "sha256": "009dba4d1d913649f36ef99d027f36928e8e9d55007f08ae6384e3f8199ac57e"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step35_integrity_report.json",
+      "sha256": "460ab0cb62022d895418c67ab1c0878e84f2f0b6d56638a91b20efcbd7addfe6"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step35_matlab_code_analyzer.json",
+      "sha256": "7d2d42b2e403457b3c940c5c7082550a2a8eb553d9504f432e1e7d7c7c732aa1"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step35_matlab_tests.log",
+      "sha256": "552e43aba34c75d9fc76a2f1762e75bb9145033820fcc914e923d26d1c0162bb"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step35_python_regression.json",
+      "sha256": "2758f66ba7f648dd22267472adaf57afc09d6f6e7a67298b21ad1c30695f72ac"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step35_source_fingerprints.json",
+      "sha256": "e012ebd4e9f93502807a6d1b84710ec0e0e52cfd94a4516f7350ea73ecdaf519"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step3_assessment_tests.json",
+      "sha256": "12daa1146547272b0cc899c204e67c884dc6dbb0d3634d3e2c33d4298d8d0068"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step3_solver_interface_fields.json",
+      "sha256": "1a36a0540a9067f30a4b6176d0ae2e6bbcce4947ae150e59b77f28a7eb6f9050"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step3_solver_tests.json",
+      "sha256": "b8a9122a9ca1f66002e3353c69033698afa7f11ce2c42e15fd47a34efc74b629"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step4_event_contract.md",
+      "sha256": "746de1d81f5828a1358a4d90531353b27d8407dd695fbeaabd7a12f228075f44"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step4_matlab_tests.log",
+      "sha256": "ff2b7b2787a53133adfa66f841cf6387a4e929afe5de9b72b7643dc60f09d48a"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step4_unit_tests.json",
+      "sha256": "f9a211ef269b7576321fc6d33db0bd86fb11b0feff1732503f384681f29a3751"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step5_main_build.log",
+      "sha256": "dc15d3d2f5dd9647ad1b8a32bc1c4da79ab607376b35bf4597e8b7148bc9a18d"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step5_main_final.log",
+      "sha256": "1baa88b34c1722eb190edb9d8c48992674ee07c51b09d9bcb0b6a833cf6da31c"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step5_theory_build.log",
+      "sha256": "7f25648a706c00d206520874f83bd8e1734ed98169b938bf828aaf950bc13910"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step5_theory_diff.patch",
+      "sha256": "ff4dab5ab29e24c62bd853e25b4ea623293292e19927706cf97ed29165f0bb80"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step5_theory_final.log",
+      "sha256": "0afa79c9a7c7419f5530e3cb0dca1c032c37994381b1defb421216e3e04810e7"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step5_theory_protection.json",
+      "sha256": "bb185cd7340d88d00a4fd599a99211f59db54763cf4978f2167550bcb51f194c"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step5_validation_report.json",
+      "sha256": "2bc8013b88b24286a6c54a9870f301450422a648a90a3c1faacf684760e45755"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step67_baseline.json",
+      "sha256": "878e743eff31449dd4b12c8becf86d50ba40fa94882ac198f8c018eea8702bb6"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step67_freeze_checks.log",
+      "sha256": "021f5581020d57ec44471da43193cccf3257f3aaf0f435d9adb50aecf03b40fe"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step67_integrity_report.json",
+      "sha256": "8e5d14c99b3dcc630deb37162d6f4a287c365663bbcfbeaec091cae13f9eedfd"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step67_main.log",
+      "sha256": "a1c404964788d63f53d546c469a6061f73bb245d09c9939e2d0dd565b7505563"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step67_main_report.json",
+      "sha256": "d7ea78f7b2aa5c915c59a2b2c5157b413f4a438c4f2e2ff5a3b5f4dbd977daac"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step67_matlab_code_analyzer.json",
+      "sha256": "4a3db5b601944a41539d5bec78645b395a6892d7826833bb5e98b05fefb9e425"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step67_preflight.json",
+      "sha256": "1d9eb086c0a992ebe8a8191058dc664ffae2460d5905f335d108760f58ad0dca"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step67_preflight.log",
+      "sha256": "25c938f4aa575d906d9978d128f95c63994730bdceedd81fea868a9fddddd71a"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step67_protected_files.json",
+      "sha256": "a205ff598b88ac8b72ae8040b26a6188423630705b22fb5fc2f94fcfb7b4b70d"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step67_protocol_manifest.json",
+      "sha256": "8e5310563bf38095364b3deccca46219e42a4e29f71c2a1b080a8ffc47555ba4"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step67_python_regression.json",
+      "sha256": "a58f2dc366cc915fc2cfea28f191d1b5b499bbb23f90d82943b461fd0158e810"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step67_source_fingerprints.json",
+      "sha256": "64ff3442fa9e930c579ea1afccee682029de2713da1fb3984ea9d647f0067300"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step67_unit.log",
+      "sha256": "09bff23511e7aa31cc390b68dee5f4642cff1ea256930f78e62f19f49599248e"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step67_unit_attempt1.log",
+      "sha256": "1ed1cc3d306404dbf8f9ccdd37a310b74fef27e8310e44bef7e95bbb1d9372fc"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step67_unit_attempt2.log",
+      "sha256": "bdea19cae16e1a1d953f8659fb29f5436653a9216d25628d8d475b5e087e8f10"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step67_unit_report.json",
+      "sha256": "abe72577c11d4ae3015143b8f91bb1d4179b49810f62807f28d5ab9d407396f6"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step67_validation_report.json",
+      "sha256": "527e48d2bb1a6591f7268137672041f8f1bcd78f6394b55cff6ab5e3b8d0f6a0"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_baseline.json",
+      "sha256": "248a9719a821baff54a73833ced3c2394fe41519dab312e55eecacbc1d9032aa"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_commands.md",
+      "sha256": "8184d6e2e19a12f0999c2064987ef3bffd656f8bc44f4a71b52c1989ac73f733"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_execution.log",
+      "sha256": "5b6d77c47313264ff8125da8c479a0eba23ab8947de37ccf1faf5d4410b02e88"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_execution_attempt1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_grid_report.json",
+      "sha256": "911f9cbb17d0c19b47b99ef5c649194852f1ceeff31b89c865081c0333705dd8"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_horizon_report.json",
+      "sha256": "0d52dd229599a5262a10c63fd1995da2f97fad0300cc7ac6b33d96c5f788ae82"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_initialization_report.json",
+      "sha256": "d975eecf3b82127c3a7b62d4d303671e87ca1a3f45a1d12a34ba851f43d95e5c"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_initialization_validation.json",
+      "sha256": "c8e601563512d953fe512213757544df20313521e38216ae665ef09cedb35898"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_initialization_validation.log",
+      "sha256": "63b5bed882fa58ea05c461b8d6e551d9f40b0f5722e00cacce095ab079e4d426"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_integrity_attempt1.log",
+      "sha256": "cbaabb570e00ab81c096289e04ceda699a84f97349380503d9c2a7a6d7f34200"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_integrity_report.json",
+      "sha256": "22f375d4dddb0c1950cb3b9bc9f3edd25a3f722c209c14c61c2edf26d0fbdd23"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_preflight.json",
+      "sha256": "702a1574bb33b3c23925376e7805c911d607d88037151f813dab47903dcad687"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_results.md",
+      "sha256": "e38e211bf9fbab1e1999ebd5744551902d4b97d3fcb2175287e18b637742b4a7"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_source_fingerprints.json",
+      "sha256": "0a7feb7e7d96e61195960d977f2e74a7c2fb2a5c399ee2402d587006fa68123f"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_startup_attempts.json",
+      "sha256": "8f2efe6dc48b1b7243170bd61a79b84effd590ae02439daf573c74d0bca27260"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_summary.log",
+      "sha256": "301c140945f2fcc70d06dd11bf1f7d0ff4f86b4b737fc99d6031fffbd51b58c9"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_summary_artifact_check.log",
+      "sha256": "ce13055166e52cb220c2be78da1ae24c8a774d584a2ddf6aeb467b95169e41eb"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_summary_first.log",
+      "sha256": "301c140945f2fcc70d06dd11bf1f7d0ff4f86b4b737fc99d6031fffbd51b58c9"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_threshold_report.json",
+      "sha256": "94a8ddcc4b7bb5de24b6b099291db74bb694f548497d1c922678fe42bdaf4189"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_validation_report.json",
+      "sha256": "1a90a1bdbece069d7f3ce05c94a04370aed4c1c57e15dc7c6b1d705ef29c2d82"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/summarize_stage89.py",
+      "sha256": "13885ae037565ac0a813f6f80215ae5b0bc1429ec9280f84f93659a010ba10be"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/test_analytic_checkpoints.py",
+      "sha256": "7fbee38c7f56515861c70603bfbb3fb52a2da2abf6e8386d1e20cfcc7967b2f7"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/verify_stage02_integrity.py",
+      "sha256": "3980abeba7b902181e62b3da4d3ee3fba04cf54281201af21e9e5701dc051854"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/verify_stage1011.py",
+      "sha256": "36d1c659ad6e0ba46732f4e40b04954f08bf4efb2262d1cb1e7eb1fcb4f108a4"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/verify_stage35_integrity.py",
+      "sha256": "85a9e3c7ad98cb51e88e8ddc3b2d6545be8aad61a46c6c0acf255b521460a6bd"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/verify_stage67_integrity.py",
+      "sha256": "840456a0ee65adb9d5a1cd66ce094f268d81c55cba581f74562c64637fbcb5b1"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/verify_stage89_initializations.m",
+      "sha256": "b423d93c68d8f4818a66113538ad4ccd3c8627a59d4480ea1c23c9758b460b56"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/verify_stage89_integrity.py",
+      "sha256": "9e89f94d2bf678216ad4fde389963e6a0a41a495e1f8904ee440753577521b7d"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/latex/main.pdf",
+      "sha256": "a820b199741e3cf6b19eb0574c304f67ea6da37fdcb03c57627605e102cba4f3"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/latex/main.tex",
+      "sha256": "a7f42602cff987a05db66212ead90064124e4512a6f02ecc6bafbf79180c76ba"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/latex/references.bib",
+      "sha256": "b755bb6673a62b010b3dc612927aef407bf325eea5371f8778292c6eadbf8f30"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/latex/theory_only.pdf",
+      "sha256": "56e37b31429cb109931e9411aa88ce33a5e57b886e4716ea6a0d150be81c64f0"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/latex/theory_only.tex",
+      "sha256": "bc87e137e4cbe11a76dc8b3cb39d45d0ec7de1783bad31dc632335981f149fb5"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_regions.pdf",
+      "sha256": "9677b9a39214ba6530c2e530246d954ef63a6c84df715c55dc0aa794910b1f6a"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_regions.png",
+      "sha256": "f63096152c979685e44b4efb7532788113b95d206744ef35d42ac02d95c1ef34"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN2_waiting.pdf",
+      "sha256": "6fe9a90ce29c0cac7c0589b1333fafb7729cbd22e89ad597526ea23d5d805bfe"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN2_waiting.png",
+      "sha256": "c19e05373ae2f247f366ea6504cbb53aac8f367550e7e147af7e88946360f26e"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN3_boundary_tracking.pdf",
+      "sha256": "60767b70eb57dd694c086004dda05010c51d16841742aa0362f32581550e1766"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN3_boundary_tracking.png",
+      "sha256": "bc3b40875b517a5dcbb91b7236dea7dfdabdcb08b31c5341fa2439c27ecc92aa"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/README.md",
+      "sha256": "52d7b8e2f7dcf572ab9c6089b935a2841513769365c1dd4f1cd4f4983fdf4c84"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/MANIFEST.txt",
+      "sha256": "0fbdcc191f44a3c3e0e9507ff483952474a6b3ef80bd80ff3f37fc0f54531b22"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/build.bat",
+      "sha256": "74662c1bfa934bffec4675b6ae2a87d5212d856271d377cd7c1d5383dc2883a5"
+    },
+    {
+      "path": "tracing_isolation_optimal_control_complete/build.sh",
+      "sha256": "ae4bf777f7d47d14d4ed13d81ee9a7349edbc5024e6351acbd712a0e6b5cef18"
+    }
+  ],
+  "assessment_files_copied": 35,
+  "excluded_local_residue": [
+    "ai/",
+    "archive/pending_deletion/",
+    "tmp/",
+    "__pycache__/",
+    "build intermediates"
+  ],
+  "openocl_root": "E:\\work\\optimal-threshold-control\\optimal\\OpenOCL-master 0104",
+  "dependency_policy": "Explicit OPENOCL_ROOT keeps the recorded environment fingerprint; dependency files are checked against tracked source and saved hashes."
+}

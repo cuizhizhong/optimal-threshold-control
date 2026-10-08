@@ -1,0 +1,8 @@
+functions.exec 返回的首次临时候选比较输出摘录：
+Traceback (most recent call last):
+  File "<stdin>", line 16, in <module>
+AssertionError
+
+失败检查：把 selection_manifest 与原候选overlay快照要求逐字节相同。
+后续实际逐字段核对：selected_utc 及重新保存兼容文件的SHA更新，所有科学字段、数组和原始求解/评估不变。
+实际复核与像素差异详见 step1011_candidate_source_match.json。

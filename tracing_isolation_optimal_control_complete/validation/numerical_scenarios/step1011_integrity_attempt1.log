@@ -1,0 +1,12 @@
+functions.exec 返回的首次完整性检查输出摘录：
+Traceback (most recent call last):
+  File "E:\work\optimal-threshold-control\tracing_isolation_optimal_control_complete\validation\numerical_scenarios\verify_stage1011.py", line 138, in <module>
+    check()
+  File "E:\work\optimal-threshold-control\tracing_isolation_optimal_control_complete\validation\numerical_scenarios\verify_stage1011.py", line 42, in check
+    assert not set(references) - set(labels) - {"LastPage"}
+AssertionError
+
+实际缺失集合仅为 ['#1']：main.tex 第1774行 \providecommand{\NumTheoryRef}[2]{#2~\ref{#1}}。
+修正仅排除合法宏参数#[1-9]后重新执行，stdout为：
+STAGE1011_INTEGRITY_OK protected=93 raw=35 both=28/35 cache=35 smoke=1
+两份实际最终LaTeX日志无未定义引用。

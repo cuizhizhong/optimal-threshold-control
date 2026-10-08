@@ -1,0 +1,13 @@
+{
+  "generator_check_passed": true,
+  "python_tests_passed": 6,
+  "fixture_unchanged": true,
+  "optimizer_calls": 0,
+  "commands": [
+    "python generate_analytic_checkpoints.py --check",
+    "python -m unittest discover -s validation/numerical_scenarios -p test_analytic_checkpoints.py"
+  ],
+  "actual_test_seconds": 13.092,
+  "generator_exit_code": 0,
+  "unittest_exit_code": 0
+}

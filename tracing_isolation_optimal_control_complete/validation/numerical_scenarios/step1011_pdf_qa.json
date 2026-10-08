@@ -1,0 +1,32 @@
+{
+  "main_pdf_sha256": "a820b199741e3cf6b19eb0574c304f67ea6da37fdcb03c57627605e102cba4f3",
+  "pages_rendered_and_visually_reviewed": [
+    5,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    33
+  ],
+  "main_figures_reviewed": [
+    "FigN1_regions",
+    "FigN2_waiting",
+    "FigN3_boundary_tracking"
+  ],
+  "checked_content": [
+    "Chinese glyphs",
+    "equations",
+    "legend",
+    "three figures",
+    "cost table",
+    "failure statements",
+    "reproducibility commands",
+    "page breaks"
+  ],
+  "visual_defects": [],
+  "minor_observation": "FigN1: s+i=1 gray guide passes through transparent legend background; labels remain readable and trajectories are not covered.",
+  "render_command": "pdftoppm -f PAGE -l PAGE -r 110 -png -singlefile main.pdf PREFIX",
+  "review_method": "Actual rendered PNG inspection by root and independent figure reviewer"
+}

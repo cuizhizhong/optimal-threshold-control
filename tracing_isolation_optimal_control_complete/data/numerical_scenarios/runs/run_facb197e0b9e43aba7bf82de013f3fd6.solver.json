@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "run_id": "run_facb197e0b9e43aba7bf82de013f3fd6",
+  "case_id": "E3",
+  "success": true,
+  "return_status": "Solve_Succeeded",
+  "solver_info_origin": "returned",
+  "execution_elapsed_seconds": 0.8553446,
+  "solver_diagnostics": {
+    "schema_version": 1,
+    "raw_info_fields": [
+      "timeMeasures",
+      "success",
+      "ipopt_stats"
+    ],
+    "ipopt_stats_fields": [
+      "iter_count",
+      "iterations",
+      "n_call_callback_fun",
+      "n_call_my_solver",
+      "n_call_nlp_f",
+      "n_call_nlp_g",
+      "n_call_nlp_grad",
+      "n_call_nlp_grad_f",
+      "n_call_nlp_hess_l",
+      "n_call_nlp_jac_g",
+      "return_status",
+      "success",
+      "t_proc_callback_fun",
+      "t_proc_my_solver",
+      "t_proc_nlp_f",
+      "t_proc_nlp_g",
+      "t_proc_nlp_grad",
+      "t_proc_nlp_grad_f",
+      "t_proc_nlp_hess_l",
+      "t_proc_nlp_jac_g",
+      "t_wall_callback_fun",
+      "t_wall_my_solver",
+      "t_wall_nlp_f",
+      "t_wall_nlp_g",
+      "t_wall_nlp_grad",
+      "t_wall_nlp_grad_f",
+      "t_wall_nlp_hess_l",
+      "t_wall_nlp_jac_g"
+    ],
+    "iteration_fields": [
+      "alpha_du",
+      "alpha_pr",
+      "d_norm",
+      "inf_du",
+      "inf_pr",
+      "mu",
+      "obj",
+      "regularization_size"
+    ],
+    "success": {
+      "value": true,
+      "status": "available",
+      "source": "info.success",
+      "reason": "",
+      "definition": "求解器返回的成功状态。"
+    },
+    "return_status": {
+      "value": "Solve_Succeeded",
+      "status": "available",
+      "source": "info.ipopt_stats.return_status",
+      "reason": "",
+      "definition": "求解器返回的原始状态字符串。"
+    },
+    "iteration_count": {
+      "value": 58,
+      "status": "available",
+      "source": "info.ipopt_stats.iter_count",
+      "reason": "",
+      "definition": "求解器报告的迭代数。"
+    },
+    "elapsed_seconds": {
+      "value": 0.8520851,
+      "status": "available",
+      "source": "tic/toc around problem.solve",
+      "reason": "",
+      "definition": "OpenOCL solve 调用的墙钟耗时，单位为秒；不包含问题构建。"
+    },
+    "openocl_solve_total_seconds": {
+      "value": 0.8517705,
+      "status": "available",
+      "source": "info.timeMeasures.solveTotal",
+      "reason": "",
+      "definition": "OpenOCL 报告的总求解墙钟耗时，单位为秒。"
+    },
+    "openocl_casadi_solve_seconds": {
+      "value": 0.8021091,
+      "status": "available",
+      "source": "info.timeMeasures.solveCasadi",
+      "reason": "",
+      "definition": "OpenOCL 报告的 CasADi 调用墙钟耗时，单位为秒。"
+    },
+    "plugin_wall_seconds": {
+      "value": 0.800379,
+      "status": "available",
+      "source": "info.ipopt_stats.t_wall_my_solver",
+      "reason": "",
+      "definition": "CasADi 记录的 NLP 插件墙钟耗时，单位为秒。"
+    },
+    "primal_infeasibility": {
+      "value": 3.155915199309911E-13,
+      "status": "available",
+      "source": "info.ipopt_stats.iterations.inf_pr(end)",
+      "reason": "",
+      "definition": "IPOPT 最后一次迭代报告的 inf_pr；保留插件原口径，不作为连续时间可行性证明。"
+    },
+    "dual_infeasibility": {
+      "value": 2.4249322345115419E-11,
+      "status": "available",
+      "source": "info.ipopt_stats.iterations.inf_du(end)",
+      "reason": "",
+      "definition": "IPOPT 最后一次迭代报告的 inf_du；当前返回接口不提供完整缩放定义。"
+    },
+    "complementarity": {
+      "value": null,
+      "status": "not_available",
+      "source": "",
+      "reason": "已核对的 OpenOCL info/CasADi stats 未返回互补残差；iterations.mu 是 barrier 参数。",
+      "definition": "未由 barrier 参数、步长或无定义的乘子运算构造互补残差。"
+    },
+    "kkt_residual": {
+      "value": null,
+      "status": "not_available",
+      "source": "",
+      "reason": "当前返回接口缺少真实乘子及明确的缩放定义，无法取得 KKT 残差。",
+      "definition": "不由 inf_pr、inf_du、mu 或迭代步长拼出 KKT 证书。"
+    },
+    "kkt_certificate_status": "not_available"
+  },
+  "output_validation": {
+    "passed": true,
+    "status": "passed",
+    "reason": ""
+  }
+}

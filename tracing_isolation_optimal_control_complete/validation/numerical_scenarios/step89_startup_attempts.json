@@ -1,0 +1,18 @@
+{
+  "scope": "steps_8_to_9",
+  "restricted_attempt": {
+    "command": "matlab -wait -nosplash -nodesktop -batch execute_stage89",
+    "prefdir": "tracing_isolation_optimal_control_complete/tmp/step89_matlab_prefs",
+    "log": "step89_execution_attempt1.log",
+    "log_bytes": 0,
+    "entered_script": false,
+    "solver_calls": 0,
+    "termination": "interrupted after startup produced no script/preflight/run output",
+    "exit_code": 1
+  },
+  "authorized_retry": {
+    "log": "step89_execution.log",
+    "preflight": "step89_preflight.json",
+    "status": "entered actual script"
+  }
+}

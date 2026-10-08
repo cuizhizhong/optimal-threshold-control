@@ -47,6 +47,13 @@
 \newcommand{\argmin}{\operatorname*{arg\,min}}
 % 在 TheoryOnly 跳过数值输入时也保持条件命令已定义。
 \newif\ifNumResultsVerified
+% 放入导言区，紧接原有 \newif\ifNumResultsVerified 之后。
+% 此处只定义新宏；不得在这里为空定义原本由 providecommand 生成的旧宏。
+\newif\ifNumRobustnessComplete
+\NumRobustnessCompletefalse
+\newcommand{\NumRobustnessStatement}{}
+
+
 \lstset{basicstyle=\ttfamily\small,frame=single,breaklines=true,columns=fullflexible,showstringspaces=false}
 \title{\bfseries 跟踪隔离模型中双传播系数的最优控制与唯一性\\[2mm]
 \large 常接触率的全域 HJB 验证、轨道唯一性与数值分析}
@@ -1783,10 +1790,12 @@ q&=\frac{\beta_1-\beta_2}{\beta_1+\frac{1-p}{p}\beta_2}.\label{eq:q-inversion}
 % BEGIN AUTO-GENERATED NUMERICAL RESULTS
 % 从 data/numerical_scenarios 的真实结果生成；条件开关由 main.tex 定义。
 \NumResultsVerifiedtrue
+\NumRobustnessCompletetrue
+\renewcommand{\NumRobustnessStatement}{默认协议已记录 35/35 个不同配置，其中 28 个同时通过数值接受与理论比较。协议是否完成与比较是否一致分别记录。五例常值和固定种子随机初猜的阶段一致，成本最大绝对差为 $\num{6.1e-13}$。固定时域网格比较通过 E1、E3、E5；E2、E4 未通过预定数值及事件比较，不能作五例整体网格稳定结论。固定步长时域复核五例通过。阈值复核通过。全部记录见配套文件；有限样本与浮点诊断不替代解析证明。}
 \providecommand{\NumHorizon}{300}
 \providecommand{\NumIntervals}{4000}
 \providecommand{\NumDegree}{2}
-\providecommand{\NumMeshDetails}{容量重积分核查后，E2 使用 $N=8000$，E4 使用 $N=8000$；其余算例保留基准网格。图表均采用各例最终保存的结果。}
+\providecommand{\NumMeshDetails}{按预先指定设置，E2 使用 $N=8000$，E4 使用 $N=8000$；其余算例保留基准网格。图表均采用各例最终保存的结果。}
 \providecommand{\NumJOclEOne}{0.416205}
 \providecommand{\NumJOclETwo}{1.529523}
 \providecommand{\NumJOclEThree}{0.433999}
@@ -1796,13 +1805,13 @@ q&=\frac{\beta_1-\beta_2}{\beta_1+\frac{1-p}{p}\beta_2}.\label{eq:q-inversion}
 \providecommand{\NumExitETwoEnd}{5.88750000}
 \providecommand{\NumExitEFourStart}{1.05000000}
 \providecommand{\NumExitEFourEnd}{1.08750000}
-\providecommand{\NumNeutralETwoCostDifference}{5.98410210273e-13}
+\providecommand{\NumNeutralETwoCostDifference}{5.78648240435e-13}
 \providecommand{\NumEFourSignedCostDifference}{-3.68275844664e-06}
 \providecommand{\NumEFourCapacityExcess}{7.70286958773e-07}
-\providecommand{\NumFindingWaiting}{实际控制输出中，E1 和 E2 分别识别出 $0\to 1\to 0$ 与 $0\to q_B\to 1\to 0$。按控制区间识别，E1 的首个完全跟踪区间从 $t\approx 7.050$ 开始，其状态约为 $(0.5072,0.1330)$，感染比例低于容量；E2 则出现正长度容量平台，随后转为完全跟踪。跳跃附近存在有限个过渡单元，因此这里的事件时刻只按当前网格精度解释。}
-\providecommand{\NumFindingTrackingBoundary}{E3、E4、E5 的实际阶段依次为 $1\to 0$、$q_B\to 1\to 0$ 和 $1\to 0$。E3 与 E5 均从初始正长度区间开始完全跟踪；E4 先维持容量平台。E2、E4 的理论容量退出时刻均位于各自容量段与完全跟踪段之间的单网格过渡区间内，因此不将首个纯完全跟踪单元的起点直接等同于连续切换点。}
-\providecommand{\NumCheckStatement}{对原始分段常数控制逐区间重积分后，五例最大容量超出量为 $\num{8e-07}$，与配点状态的最大差异为 $\num{8.6e-08}$；末尾 $20$ 个时间单位内最大控制幅值为 $\num{0}$。各例终端状态均通过零控制安全延拓核查。另对 E2 使用 $N=8000$ 加密，并对 E1 使用常值 $q=0.7$ 生成非理论初始猜测，所得解均通过同样核查；这些浮点检查用于排查截断及离散问题，不是连续可行性的严格证明。对 E2 另以常值 $q=0.7$ 及其积分状态为初猜重新求解，所得阶段顺序与解析初始化相同，成本绝对差为 $\num{5.98e-13}$，并通过同样的数值核查。}
-\providecommand{\NumOverallFinding}{五例成本相对解析参考的最大差异约为 $0.00459\%$。计算结果支持这五个初值下的阶段顺序及切换位置预测；切换位置的偏差应结合控制区间宽度和过渡单元解释。E4 的离散成本比解析参考低约 $\num{3.68e-06}$，其重积分轨道同时存在约 $\num{7.7e-07}$ 的容量超出；该结果不能视为低于解析最优值的严格连续时间可行控制。}
+\providecommand{\NumFindingWaiting}{实际控制输出中，E1 和 E2 分别识别出 $0\to 1\to 0$ 与 $0\to q_B\to 1\to 0$。E1：初次干预的检测区间为 $[6.975,7.05]$；完全跟踪开始的检测区间为 $[6.975,7.05]$；解除的检测区间为 $[7.425,7.5]$。E2：初次干预的检测区间为 $[4.3125,4.35]$；容量进入的检测区间为 $[4.3125,4.35]$；容量退出的检测区间为 $[5.85,5.8875]$；完全跟踪开始的检测区间为 $[5.85,5.8875]$；解除的检测区间为 $[6.5625,6.6]$。}
+\providecommand{\NumFindingTrackingBoundary}{E3、E4、E5 的实际阶段依次为 $1\to 0$、$q_B\to 1\to 0$ 和 $1\to 0$。E3：初次干预的检测区间为 $[0,0]$；完全跟踪开始的检测区间为 $[0,0]$；解除的检测区间为 $[0.375,0.45]$。E4：初次干预的检测区间为 $[0,0]$；容量进入的检测区间为 $[0,0]$；容量退出的检测区间为 $[1.05,1.0875]$；完全跟踪开始的检测区间为 $[1.05,1.0875]$；解除的检测区间为 $[1.7625,1.8]$。E5：初次干预的检测区间为 $[0,0]$；完全跟踪开始的检测区间为 $[0,0]$；解除的检测区间为 $[0.525,0.6]$。E2、E4 的理论容量退出时刻均位于各自容量段与完全跟踪段之间的单网格过渡区间内，因此不将首个纯完全跟踪单元的起点直接等同于连续切换点。}
+\providecommand{\NumCheckStatement}{对原始分段常数控制逐区间重积分后，五例最大容量超出量为 $\num{8e-07}$，与配点状态的最大差异为 $\num{8.6e-08}$；末尾 $20$ 个时间单位内最大控制幅值为 $\num{0}$。各例终端状态均通过零控制安全延拓核查。这些浮点检查用于排查截断及离散问题，不是连续可行性的严格证明。}
+\providecommand{\NumOverallFinding}{五例成本相对解析参考的最大差异约为 $0.00459\%$。计算结果支持这五个初值下的阶段顺序及切换位置预测；切换位置的偏差应结合控制区间宽度和过渡单元解释。E4 的离散成本比解析参考低 $\num{3.68e-06}$，重积分轨道仍有 $\num{7.7e-07}$ 的容量超出；即使满足浮点接受容差，也不能称为低于解析最优值的严格连续时间可行控制。}
 % END AUTO-GENERATED NUMERICAL RESULTS
 \providecommand{\NumMeshDetails}{}
 
@@ -1819,75 +1828,86 @@ q&=\frac{\beta_1-\beta_2}{\beta_1+\frac{1-p}{p}\beta_2}.\label{eq:q-inversion}
 \section{数值方法与实验设置}
 \label{sec:numerical-method}
 
-本节通过不同初值区域下的代表性算例，比较解析最优策略与直接配点求解结果，
-重点考察等待阶段、容量弧和完全跟踪阶段的出现顺序及其切换位置。
+本节围绕不同初值区域，比较解析最优策略与直接配点输出，
+重点考察等待阶段、容量弧和完全跟踪阶段的出现顺序及其连接位置。
 算例组织借鉴 \citet[第6节]{AvramFreddiGoreac2022} 的区域相关情景设计，
-但使用本模型的状态方程、控制成本及
-\NumTheoryRef{def:regions}{分区定义}，不移用其控制结构。
-全局最优性由\NumTheoryRef{thm:verification}{验证定理}给出；
-数值计算用于检验解析结构的计算一致性。
+但使用本文的状态方程、控制成本及
+\NumTheoryRef{def:regions}{分区定义}。
+该文献的有限时域问题包含目标约束，
+本文仅借鉴其几何展示方式，不将其结果作为下述无终端约束截断的等价性依据。
+全局最优性与几乎处处唯一性分别由
+\NumTheoryRef{thm:verification}{验证定理}和
+\NumTheoryRef{thm:unique-q}{唯一性定理}给出；
+数值实验用于检验这些解析结论的计算一致性。
 
-所有主算例采用相同参数
+五个主算例采用相同参数
 \begin{equation}
- p=0.5,\qquad c=2,\qquad \gamma=0.3,\qquad K=0.15,
+ p=0.5,\qquad c=2,\qquad\gamma=0.3,\qquad K=0.15,
  \label{eq:numerical-common-parameters}
 \end{equation}
-仅改变初始状态。状态 $s,i$ 均为相对于初始总量的比例，允许 $s_0+i_0<1$。
-相应地，$h=\gamma/(pc)=0.3$，$\ell=r=0.15$。
-这些参数用于说明理论结构，不视为对某一具体疫情的参数标定。
+仅改变初始状态。
+$s,i$ 为相对于初始总量的比例，允许 $s_0+i_0<1$；
+此时 $h=0.3$、$\ell=r=0.15$。
+这些参数用于展示理论结构，不作为特定疫情的参数标定。
 
-数值优化保持原动力学和线性目标：
+直接配点处理如下固定时域问题：
 \begin{equation}
 \begin{aligned}
- \min_{q}\quad &J_T(q)=\int_0^T pcq(t)\,\mathrm dt,\\
+ \min_q\quad &J_T(q)=\int_0^T pcq(t)\,\mathrm dt,\\
  \text{满足}\quad
  &\dot s=-c[p+(1-p)q]si,\qquad
  \dot i=[pc(1-q)s-\gamma]i,\\
- &q\in[0,1],\quad 0\le s\le1,\quad 0\le i\le K,\quad
- (s(0),i(0))=(s_0,i_0).
+ &0\le q\le1,\quad 0\le s\le1,\quad0\le i\le K,\\
+ &(s(0),i(0))=(s_0,i_0).
 \end{aligned}
 \label{eq:numerical-ocp}
 \end{equation}
-不添加二次控制正则化，也不预设阶段数、切换时刻或容量段控制。
-因此，容量控制 $q_B(s)=1-h/s$ 及其离开位置是待与优化输出比较的理论预测，
-而不是数值优化中的额外阶段约束。
+该问题不增加终端状态约束、终端成本或二次控制正则化，
+也不固定阶段数、切换时刻或容量控制。
+解析策略可用于初始化，但不进入数值优化的目标或额外约束。
 
-理论控制问题定义在无限时间区间上，而直接配点计算采用一个足够长的固定时域
-$[0,T]$ 进行截断近似。数值问题不增加终端状态约束或终端成本，
-也不要求终点预先落入解析构造的某个区域。
-\citet[问题3.1--3.2及第6节]{AvramFreddiGoreac2022} 的有限时域问题含目标约束；
-本文仅借鉴其区域相关的几何展示方式，不以该文献作为上述无终端约束截断的等价性依据。
-这里选取较长的固定时域，使主要控制阶段在终止时刻之前结束，
-再比较有限时域数值解与解析结构，不把“$T$ 足够大”解释为
-有限时域问题与无限时域问题在一般意义下的严格等价性。
-
-作为截断效应的轻量后处理，每个被报告的算例在求解后检查两点：
-控制是否已在终点前的一段时间内回到 $q\approx0$，以及终端状态从此继续取
-$q=0$ 时的未来无控制峰值是否不超过 $K$。该检查不进入优化约束，
-不预设解除状态或解除时刻，也不单独设置图表。
-
-\ifNumResultsVerified
-计算采用
-\else
-计算拟采用
-\fi
-MATLAB/OpenOCL 直接配点方法\citep{Koenemann2019OpenOCL}，
-通过 CasADi\citep{Andersson2019CasADi} 构造离散问题，基准网格将 $[0,T]$ 划分为
-$N=\NumIntervals$ 个控制区间，设置 $T=\NumHorizon$、$d=\NumDegree$，
-控制在各区间内为常数，离散非线性规划由 IPOPT 采用局部优化方法求解\citep{WachterBiegler2006}。
-数值收敛用于复核解析结构，不承担连续问题全局最优性的证明。
+计算方法为 MATLAB/OpenOCL 直接配点\citep{Koenemann2019OpenOCL}，
+通过 CasADi\citep{Andersson2019CasADi} 构造离散问题，
+由 IPOPT 求解非线性规划\citep{WachterBiegler2006}。
+基准设置为 $T=\NumHorizon$、$N=\NumIntervals$、$d=\NumDegree$；
+控制在每个网格区间内为常数。
 \NumMeshDetails
-解析轨道按正文的自然段、容量段和完全跟踪段公式独立生成；
-用作初始猜测时仍不固定其阶段结构。
-数值控制成本按完整求解时域计算为
+控制成本在完整求解时域上按实际区间长度计算：
 \begin{equation}
- J_{\mathrm{OCL}}=pc\sum_{k=1}^{N}q_k\Delta t_k,
+ J_{\mathrm{OCL}}=pc\sum_{k=1}^{N}q_k\Delta t_k.
  \label{eq:numerical-cost-sum}
 \end{equation}
-不以绘图窗口作为积分范围。
-优化输出的容量约束、长时域尾段及终端无控制延拓在结果采用前另行核查。
-% Fill from actual checks only. Empty until the experiments have run.
+绘图窗口不作为成本积分范围，求解输出不通过平滑或裁剪替换。
+
+对于每个待报告结果，用原始分段常数控制重新积分状态方程，
+检查区间内部的容量峰值、与配点状态的偏差以及终端零控制延拓。
+对正状态，未来无控制峰值为
+\[
+ P_0(s,i)=
+ \begin{cases}
+  i,&s\le h,\\
+  i+s-h-h\ln(s/h),&s>h.
+ \end{cases}
+\]
+终端延拓检查对重积分得到的状态使用 $P_0(s(T),i(T))$，
+同时检查终点前一段时间内的控制是否已接近零。
+这些是求解后的浮点诊断，不进入问题\eqref{eq:numerical-ocp}。
+它们不单独证明连续时间严格可行性，
+也不将有限时域离散问题与原无穷时域问题视为严格等价。
+
+阶段和过渡区间首先依据数值控制及容量接近程度识别，
+再与解析事件比较。
+跳跃附近按过渡网格区间报告位置，
+不以首个纯控制单元的起点代替连续切换时刻。
+附加复核分别改变初始猜测、网格和终止时刻；
+网格比较固定 $T$，时域比较固定控制区间宽度，
+以区分离散误差和截断效应。
+详细复核保留在配套结果文件中，正文仅保留与阶段结构判断相关的摘要。
+局部求解器的重复收敛及有限样本复核均不替代解析证明。
+
+% 下列宏由实际保存数据生成；未完成时保持为空。
 \NumFindingParagraph{\NumCheckStatement}
+\NumFindingParagraph{\NumRobustnessStatement}
 
 \section{不同初值区域下的数值验证}
 \label{sec:numerical-results}
@@ -2028,14 +2048,21 @@ E4 属于容量等待弧 $\mathcal B$，理论上先采用 $q_B$ 保持容量，
 
 \subsection{成本对照与结构总结}
 
-表\ref{tab:numerical-scenarios}同时保留解析成本与直接配点成本，
-用少量定量信息补充策略结构的比较。
-其中解析成本依据各段显式成本求得，而数值成本依据式
-\eqref{eq:numerical-cost-sum}计算。
-比较不要求孤立切换时刻的控制代表值一致，
-重点是各正长度阶段及其连接状态是否与理论预测相符。
+表\ref{tab:numerical-scenarios}中的 $J_{\mathrm{ref}}$
+为解析公式的数值评价，$J_{\mathrm{OCL}}$
+为数值优化返回控制按式\eqref{eq:numerical-cost-sum}计算的成本。
+成本接近、阶段顺序一致和切换位置接近是相互补充的比较指标，
+其中任一项都不能单独替代其余指标。
+数值一致性不要求孤立切换瞬间的控制代表值相同。
 
-% EXPERIMENT_REQUIRED: summarize supported structures only after all runs.
+数值控制允许存在与网格尺度相关的过渡单元，
+故切换误差应与相应网格宽度一并解释。
+配点状态与重积分状态之间的偏差反映动力学离散的一致性，
+并不等同于数值状态与解析最优轨道之间的误差。
+若离散成本略低于解析成本，应同时检查原控制的重积分容量约束，
+不能将存在容量超出的离散结果称为优于解析最优策略的严格可行控制。
+
+% 只允许实际结果驱动；不得从预期结构拼出“识别结构”。
 \NumFindingParagraph{\NumOverallFinding}
 \FloatBarrier
 
@@ -2248,26 +2275,35 @@ A=\frac1{1-p},\qquad B=-\frac p{1-p}.
 
 \ifdefined\TheoryOnly\else
 \section{数值复现说明}
-主数值实验使用 MATLAB/OpenOCL，入口位于
-\path{matlab/numerical_scenarios/}。从仓库根目录运行：
+\label{app:numerical-reproducibility}
+
+数值代码位于 \path{matlab/numerical_scenarios/}。
+
+独立解析检查点及其生成程序位于
+\path{validation/numerical_scenarios/}；
+检查点只评价正文中的解析构造，不调用数值优化器。
+具体环境准备及检查点生成命令见该目录和数值目录的说明文件。
+从仓库根目录启动 MATLAB 后运行：
 \begin{lstlisting}
 addpath(fullfile(pwd, ...
  'tracing_isolation_optimal_control_complete', ...
  'matlab', 'numerical_scenarios'));
-run_numerical_scenarios();
+revision_preflight();
+run_revision_validation('unit', false);
+run_revision_validation('all', false);
 make_numerical_figures();
 export_numerical_latex();
 \end{lstlisting}
-原始数组、实际设置及求解状态与图形分别保存于以下目录：
-\begin{lstlisting}
-data/numerical_scenarios/
-figures/numerical_scenarios/
-\end{lstlisting}
-作图和数值宏导出只读取保存结果；结果分析文字与原始轨道一并核对。
-旧 Python/MATLAB 绘图代码和原数据统一保存在
-\path{archive/first_version/}，供既往数值材料追溯。
-图形和 CSV 的复现应与所使用的源码版本、参数及求解器设置一并记录。
-符号恒等式、有限样本和编译检查的作用是发现计算或实现错误，不替代本稿的解析证明。
+
+\texttt{all} 运行预先规定的主算例和附加复核。
+各次求解分别保存初值、参数、网格、初始化、求解状态和原始控制数组，
+并记录求解时的源码指纹与环境信息。
+重做后处理不改写原求解的来源信息。
+作图和正文数据导出只读取已保存且来源明确的结果，
+不在缺少结果时以解析参考代替数值优化输出。
+更详细的初猜、网格、时域及阈值复核见
+\path{data/numerical_scenarios/revision_checks/}。
+正文中的数值摘要与所选结果文件保持一一对应。
 \clearpage
 \fi
 \bibliographystyle{plainnat}

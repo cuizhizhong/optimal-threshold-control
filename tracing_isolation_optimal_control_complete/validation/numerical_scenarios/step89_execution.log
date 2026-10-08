@@ -1,0 +1,56 @@
+STAGE89 MODE START initialization
+REVISION START C06 E1 T=300 N=4000 initialization=constant_control
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit http://projects.coin-or.org/Ipopt
+******************************************************************************
+
+REVISION START C07 E2 T=300 N=8000 initialization=constant_control
+REVISION START C08 E3 T=300 N=4000 initialization=constant_control
+REVISION START C09 E4 T=300 N=8000 initialization=constant_control
+REVISION START C10 E5 T=300 N=4000 initialization=constant_control
+REVISION START C11 E1 T=300 N=4000 initialization=seeded_random
+REVISION START C12 E2 T=300 N=8000 initialization=seeded_random
+REVISION START C13 E3 T=300 N=4000 initialization=seeded_random
+REVISION START C14 E4 T=300 N=8000 initialization=seeded_random
+REVISION START C15 E5 T=300 N=4000 initialization=seeded_random
+STAGE89 MODE END initialization status=completed calls=10 cache=0 success=10 failed=0 numeric=10 agreement=10
+STAGE89 MODE START grid
+REVISION START C01 E1 T=300 N=4000 initialization=analytic_reference
+REVISION START C02 E2 T=300 N=8000 initialization=analytic_reference
+REVISION START C03 E3 T=300 N=4000 initialization=analytic_reference
+REVISION START C04 E4 T=300 N=8000 initialization=analytic_reference
+REVISION START C05 E5 T=300 N=4000 initialization=analytic_reference
+REVISION START C16 E1 T=300 N=2000 initialization=analytic_reference
+REVISION START C17 E1 T=300 N=8000 initialization=analytic_reference
+REVISION START C18 E2 T=300 N=2000 initialization=analytic_reference
+REVISION START C19 E2 T=300 N=4000 initialization=analytic_reference
+REVISION START C20 E3 T=300 N=2000 initialization=analytic_reference
+REVISION START C21 E3 T=300 N=8000 initialization=analytic_reference
+REVISION START C22 E4 T=300 N=2000 initialization=analytic_reference
+REVISION START C23 E4 T=300 N=4000 initialization=analytic_reference
+REVISION START C24 E5 T=300 N=2000 initialization=analytic_reference
+REVISION START C25 E5 T=300 N=8000 initialization=analytic_reference
+STAGE89 MODE END grid status=failed calls=10 cache=5 success=15 failed=0 numeric=9 agreement=9
+STAGE89 MODE START horizon
+REVISION START C02 E2 T=300 N=8000 initialization=analytic_reference
+REVISION START C04 E4 T=300 N=8000 initialization=analytic_reference
+REVISION START C17 E1 T=300 N=8000 initialization=analytic_reference
+REVISION START C21 E3 T=300 N=8000 initialization=analytic_reference
+REVISION START C25 E5 T=300 N=8000 initialization=analytic_reference
+REVISION START C26 E1 T=60 N=1600 initialization=analytic_reference
+REVISION START C27 E1 T=120 N=3200 initialization=analytic_reference
+REVISION START C28 E2 T=60 N=1600 initialization=analytic_reference
+REVISION START C29 E2 T=120 N=3200 initialization=analytic_reference
+REVISION START C30 E3 T=60 N=1600 initialization=analytic_reference
+REVISION START C31 E3 T=120 N=3200 initialization=analytic_reference
+REVISION START C32 E4 T=60 N=1600 initialization=analytic_reference
+REVISION START C33 E4 T=120 N=3200 initialization=analytic_reference
+REVISION START C34 E5 T=60 N=1600 initialization=analytic_reference
+REVISION START C35 E5 T=120 N=3200 initialization=analytic_reference
+STAGE89 MODE END horizon status=completed calls=10 cache=5 success=15 failed=0 numeric=15 agreement=15
+STAGE89 MODE START threshold
+STAGE89 MODE END threshold status=completed calls=0 cache=0 success=0 failed=0 numeric=0 agreement=0
+STAGE89 DEFAULT EXECUTION FINISHED

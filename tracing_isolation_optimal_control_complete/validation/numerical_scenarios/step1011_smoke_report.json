@@ -1,0 +1,15 @@
+{
+  "success": true,
+  "return_status": "Solve_Succeeded",
+  "output_validation": {
+    "passed": true,
+    "status": "passed",
+    "reason": ""
+  },
+  "T": 1,
+  "N": 4,
+  "d": 2,
+  "optimizer_executions": 1,
+  "scientific_evidence": false,
+  "purpose": "Small interface smoke only; excluded from the 35 scientific configurations."
+}

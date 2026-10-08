@@ -1,6 +1,6 @@
-# 第 0–7 步执行状态
+# 第 0–11 步执行状态
 
-当前批次仅执行计划第 6–7 步：实现默认 35 配置调度，先运行无优化器单元测试，再执行五例主算例。第 8–11 步仍为 `not_started`。下面第 0–5 步内容保留为历史证据，本批状态使用独立 `step67_*` 与 `revision_checks/` 文件。
+本批仅执行第10–11步；第0–9步记录保持历史证据。计划不作为结果，科学优化0次；候选检出35次可信缓存、1次独立接口smoke。原严格grid一致性失败保留。
 
 | 步骤 | 状态 | 证据 |
 |---|---|---|
@@ -12,6 +12,47 @@
 | 5：理论片段合并及编译 | completed | `step5_validation_report.json`、`step5_theory_protection.json`；main 34 页、TheoryOnly 26 页及变更页/图表渲染通过 |
 | 6：冻结配置与调度器 | completed | `step67_protocol_manifest.json`：35 配置；最终 12 组单元测试通过，调度回归 19 项 |
 | 7：单元测试及五例主算例 | completed | `step67_unit_report.json`、`step67_main_report.json`；五例真实求解成功，双旗标全通过 |
+| 8：五例常值及固定种子随机初猜 | completed | `step89_initialization_report.json`：10 次成功，两旗标及逐例比较全通过；保存初猜复核 10/10 |
+| 9：固定 T 网格、固定步长时域、阈值复核 | completed | 三组协议均实际执行完整；原 grid 一致性失败，horizon/threshold 通过，失败记录保留 |
+| 10：正文、结果宏及图表更新 | completed | `step1011_postprocess_report.json`、`step1011_final_export_report.json`、`step1011_pdf_qa.json`；主结果true、协议完成true、一致性false |
+| 11：干净复现与最终编译 | completed | `step1011_validation_report.json`；候选缓存35、科学重求解0、独立smoke1成功，双版本编译及渲染通过；所有先前异常保留 |
+
+## 第 8–9 步本批状态
+
+起始提交为 `c23a5d6bdc7fd97ea53e32a485ca03996789831b`，沿用当前分支。起始 5 条科学原始记录和 37 个受保护文件的字节基准见 `step89_baseline.json`。执行入口为 `execute_stage89.m`，逐组调用 `run_revision_validation('initialization',false)`、`grid`、`horizon` 和 `threshold`。五例主选择保持原有记录，重复配置仅在可信缓存匹配时复用。
+
+受限启动更换了本批独立偏好目录，但未进入 MATLAB 脚本、日志为空，已终止；该环境启动尝试不计为优化失败，保存为 `step89_startup_attempts.json`。随后在获准本机环境实际启动，预检与源码/协议哈希保存为 `step89_preflight.json`、`step89_source_fingerprints.json`。默认执行入口与只读 MATLAB 初猜复核均真实退出 0。
+
+本批新增优化 30 次，成功 30 次，求解失败 0 次，可信缓存引用 10 次。与前批五条主记录一起，默认 35 个不同配置已全部实际执行或可信复用。`completed` 表示实验执行和记录完成，不表示每条记录数值可接受：35 条中 `numeric_pass` 为 29/35，`agreement_pass` 为 29/35，两者同时通过为 28/35。
+
+| 组 | 配置或识别数 | 本批优化 | 缓存 | 求解成功 | numeric / agreement | 原汇总一致性 |
+|---|---:|---:|---:|---:|---|---|
+| initialization | 10 | 10 | 0 | 10 | 10 / 10 | true |
+| grid | 15 | 10 | 5 | 15 | 9 / 9 | false |
+| horizon | 15 | 10 | 5 | 15 | 15 / 15 | true |
+| threshold | 45 | 0 | 0 | 不适用 | 不适用 | true |
+
+五例常值控制均确为 0.7；随机种子为 20261009–20261013。保存控制、节点及内部配点状态的 MATLAB 重建复核 10/10 通过，误差均为 0，优化调用为 0，见 `step89_initialization_validation.json` 与日志。独立 SciPy 实现另复核全部初猜和求解输出。E4 随机初猜的采样容量超出为 `0.05681958182745708`，保留原状态，不压平到 K；初猜超出不等于求解后不可行。非理论初猜与同一离散主例的最大成本绝对差为 `6.10178574333986e-13`。
+
+以下七条求解成功但至少一类诊断未通过，全部原始输入、控制、状态、solver info 与评估保留：
+
+| 案例与网格 | numeric_pass | agreement_pass | 实测未通过项 |
+|---|---|---|---|
+| E1，N=2000 | true | false | 成本相对差 `+1.0345232426e-4` 超过 1e-4 |
+| E2，N=2000 | false | false | 容量超出 `1.446128092e-5`；状态差 `5.873068225e-6`；长混合控制，容量事件缺失 |
+| E2，N=4000 | false | true | 容量超出 `3.339275208e-6` |
+| E3，N=2000 | false | false | 容量超出 `7.830067991e-6`；成本相对差 `-1.5566093353e-4` |
+| E4，N=2000 | false | false | 容量超出 `1.240625140e-5`；长混合控制，容量事件缺失 |
+| E4，N=4000 | false | false | 容量超出 `3.090839865e-6`；容量段平均 q_B 差 `0.0025306491159656774` 超过 0.002 |
+| E5，N=2000 | false | false | 容量超出 `2.568463678e-6`；成本相对差 `+2.7126962818e-4` |
+
+原 grid 汇总要求最细与次细均 `numeric_pass`，故 E2/E4 未作比较，原 `status=failed` 和 null 差值保留。独立按计划第 9A 建议口径复核：只要求最细数值接受、最细两级实际结构/事件可比较且主要事件在网格尺度上接近，五例均满足，最细两级成本相对差最大为 `3.557214836644053e-5`。次细不可接受的旗标不改变，也未放宽阈值；据此未追加 N=16000。
+
+固定 dt=0.0375 的三个时域全部通过，五例成本绝对跨度最大为 `1.767075374914384e-11`。比较窗口 [0,18] 的实际节点状态与控制差及所有事件、最后 20 时间单位控制、重积分终端 P0 均保存在 horizon 摘要。阈值 3×3×5 共 45 组合全部通过；同一五条主源只重识别，优化调用为 0。无需追加 T=600；没有超过预定尺度且数值可接受的 `unresolved_discrepancy`。
+
+新 raw 来源提交为本批起始提交，求解源码原字节哈希仍为 `cd7e6297bb05f11028fe6f8f543ae8a9f5bd8c41d4f98346a0dc7b7cd09cff49`，协议哈希仍为 `537248f24a972508866e476433ab446a2cdda0f553fc70b66a32edb73f657a3b`。`solve_dirty=true` 如实反映工作区材料，旧缓存的 solve commit、时间和原字节不改写。本批没有更改求解源码、OCP、接受阈值、主选择、理论正文或图表，没有重编 `main.pdf`，不执行第 10–11 步。
+
+汇总入口为 `summarize_stage89.py`；JSON/CSV、批次 manifest 和请求均位于 `data/numerical_scenarios/revision_checks/`。最终独立完整性复核实际退出 0，37 项受保护文件、35 条原始记录、四组 JSON/CSV 和全部检测输出通过，证据为 `step89_integrity_report.json`、`step89_integrity_attempt1.log`。SciPy 独立初猜重积分最大状态差为 `4.451994328746878e-14`，独立原控制重积分最大节点差为 `1.1157741397482823e-14`。结果摘要保存为 `step89_validation_report.json`、`step89_results.md`。数值接受、有限网格/时域比较与重复局部收敛均不构成连续可行性或全局最优性的新增证明。
 
 ## 第 6–7 步本批状态
 
@@ -136,3 +177,8 @@ runner 不再在缓存命中时改写来源，也不按结果自动加密主网�
 Git 的 `core.autocrlf=true` 在新检出时把四个历史文本文件及四个未改动 MATLAB 源文件从 LF 转为 CRLF。原工作区仍按原字节核对 24 个历史文件；跨检出核对只对文本规范 CRLF/LF，二进制仍按原字节比较，24 个文件内容一致。独立检出的求解源码原字节哈希为 `519f44278cd65db38e36b6545531d447a10ac6cc47f90c96c0b47bd4732a7592`，与工作区哈希分开记录，不把不同原字节来源当作同一次求解。
 
 第 0–2 步相关文件列表见 `CHANGED_FILES.txt`；本批第 3–5 步文件列表见 `CHANGED_FILES_STAGE35.txt`。第 6–11 步尚未开始。
+
+
+## 第10–11步当前交付
+
+详见 `step1011_results.md`、`step1011_validation_report.json`。当前科学主结果/源码来源与原始字节未改变，三图一表保留；N=16000、T=600及额外初猜未运行。完成表示本批复现与导出执行完成，不代表原严格grid一致性全通过。

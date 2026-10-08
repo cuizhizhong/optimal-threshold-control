@@ -1,0 +1,6 @@
+initialization rows 10 source/event fields checked
+grid rows 15 source/event fields checked
+horizon rows 15 source/event fields checked
+threshold rows 45 source/event fields checked
+saved input hashes unchanged; original strict failure and seven diagnostic-failed records retained
+wording corrected; summary first log preserved; solve source hash unchanged

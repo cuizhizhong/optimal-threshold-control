@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "tests": [
+    "export_failure_clears_stale_pass_missing",
+    "export_failure_clears_stale_pass_failed",
+    "export_failure_clears_stale_pass_provenance_changed"
+  ],
+  "test_count": 3,
+  "actual_optimizer_calls": 0,
+  "formal_tex_modified": false
+}

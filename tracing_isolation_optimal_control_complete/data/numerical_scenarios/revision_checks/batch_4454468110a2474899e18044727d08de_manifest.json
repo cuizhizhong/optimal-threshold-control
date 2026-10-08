@@ -1,0 +1,3204 @@
+{
+  "schema_version": 1,
+  "batch_id": "batch_4454468110a2474899e18044727d08de",
+  "created_utc": "2026-10-08T09:14:07.836Z",
+  "mode": "initialization",
+  "force": false,
+  "status": "running",
+  "protocol_version": "2026-10-08-step6-v1",
+  "protocol_hash": "537248f24a972508866e476433ab446a2cdda0f553fc70b66a32edb73f657a3b",
+  "solve_code_hash": "cd7e6297bb05f11028fe6f8f543ae8a9f5bd8c41d4f98346a0dc7b7cd09cff49",
+  "solve_source_files": [
+    {
+      "path": "prepare_openocl_case.m",
+      "sha256": "c0a0683d9aa18860e6a090e8cf8e35437a8bec7406f23addeb3ffea8f478fc28"
+    },
+    {
+      "path": "revision_initial_guess.m",
+      "sha256": "103bb1840e491c8c247385ec6fee2ebdeecb5441560db7e7f8ffe02de35f2d34"
+    },
+    {
+      "path": "solve_openocl_case.m",
+      "sha256": "2d6eb9bcc7766be66af9eec450560579af8217b340e9fe11faf03b16a82257e0"
+    },
+    {
+      "path": "validate_numerical_run_grid.m",
+      "sha256": "70489fabe7f517e15f32dfed3df733b5dccdebda38c5835e377fb110dd8e57dd"
+    },
+    {
+      "path": "numerical_solver_diagnostics.m",
+      "sha256": "bc498c58ed80a8d317a4ec32b516526084d0b4aa64852ea21d088548401fa799"
+    },
+    {
+      "path": "build_theory_geometry.m",
+      "sha256": "3750c6188aa9ddd40e3cb3a84fccd154274a5fb681d647c25b8f065e5c5f9fcc"
+    },
+    {
+      "path": "analytic_reference.m",
+      "sha256": "80dad0df64d702eda96a745d195891ca878c33569e59835c5684b659c83ae721"
+    },
+    {
+      "path": "classify_initial_state.m",
+      "sha256": "4933779acb62342f75bf874fef8e06c543f859c1d1f880575a3c5766e9e3f629"
+    },
+    {
+      "path": "safe_peak.m",
+      "sha256": "c813849393aad2470f2216eb78a90ddefdc514a5c63e48312fa9845c2a130a08"
+    }
+  ],
+  "default_unique_count": 35,
+  "default_experiments": [
+    {
+      "case_id": "E1",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.75,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 4000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C01",
+      "configuration_fingerprint": "f03f5bf857171df69c584514d1cdb3f734257a639af0bee20f72c709ab24da09",
+      "groups": [
+        "main",
+        "grid"
+      ],
+      "expected_region": "W_Gamma",
+      "expected_structure": "0 -> 1 -> 0"
+    },
+    {
+      "case_id": "E2",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.99,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 8000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C02",
+      "configuration_fingerprint": "90faec106c906fcbceb7bede6b329cba04e6e910b5bb3194455fe5a6fd80d8ef",
+      "groups": [
+        "main",
+        "grid",
+        "horizon"
+      ],
+      "expected_region": "W_K",
+      "expected_structure": "0 -> q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E3",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.14
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 4000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C03",
+      "configuration_fingerprint": "4aad7876c2ed1b7db4400aa256f5d76a1956f3cfbffd26ee7394e0d28f6fff8a",
+      "groups": [
+        "main",
+        "grid"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    },
+    {
+      "case_id": "E4",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.7,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 8000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C04",
+      "configuration_fingerprint": "6fe9241c101c883e0bcd13252efa21cfa5ef94bfacf769dbec8532e1948b3deb",
+      "groups": [
+        "main",
+        "grid",
+        "horizon"
+      ],
+      "expected_region": "B",
+      "expected_structure": "q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E5",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 4000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C05",
+      "configuration_fingerprint": "6c3d0eb12bbc8f3fe0b971a6f7fdc09e2c09b959fc45f29effbf9e51a25f0377",
+      "groups": [
+        "main",
+        "grid"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    },
+    {
+      "case_id": "E1",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.75,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 4000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "constant_control",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "constant_control",
+        "control": 0.7
+      },
+      "configuration_id": "C06",
+      "configuration_fingerprint": "ccf7bb65bfcc571c9dbc00dc2a26aa20cd031aa7ce6f30168549a006b67fec0b",
+      "groups": [
+        "initialization-constant"
+      ],
+      "expected_region": "W_Gamma",
+      "expected_structure": "0 -> 1 -> 0"
+    },
+    {
+      "case_id": "E2",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.99,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 8000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "constant_control",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "constant_control",
+        "control": 0.7
+      },
+      "configuration_id": "C07",
+      "configuration_fingerprint": "61cae506b9cd349d90821a42e232424917c9cf75166c37f3018e3b772fefb180",
+      "groups": [
+        "initialization-constant"
+      ],
+      "expected_region": "W_K",
+      "expected_structure": "0 -> q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E3",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.14
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 4000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "constant_control",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "constant_control",
+        "control": 0.7
+      },
+      "configuration_id": "C08",
+      "configuration_fingerprint": "77094b00da460d3413fa385fa8a7b2bd7b0c780aa59f0335afcd10119e84a12c",
+      "groups": [
+        "initialization-constant"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    },
+    {
+      "case_id": "E4",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.7,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 8000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "constant_control",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "constant_control",
+        "control": 0.7
+      },
+      "configuration_id": "C09",
+      "configuration_fingerprint": "593b16172afc60e77fa928aed7ec220adbefd77a63aeb3cbdd5afd373e7e77ac",
+      "groups": [
+        "initialization-constant"
+      ],
+      "expected_region": "B",
+      "expected_structure": "q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E5",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 4000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "constant_control",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "constant_control",
+        "control": 0.7
+      },
+      "configuration_id": "C10",
+      "configuration_fingerprint": "71bf1d7bf514d786c85f9428583c96ab001d40573a0de3fd60dfb1bf10320057",
+      "groups": [
+        "initialization-constant"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    },
+    {
+      "case_id": "E1",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.75,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 4000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "seeded_random",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "seeded_random",
+        "seed": 2.0261009E+7,
+        "generator": "mt19937ar",
+        "interpolation": "linear",
+        "knot_times": [
+          0,
+          2,
+          4,
+          6,
+          8,
+          10,
+          12,
+          14,
+          16,
+          18,
+          20,
+          300
+        ],
+        "knot_values": [
+          0.271753363541136,
+          0.43447483261677544,
+          0.43676256007236591,
+          0.23117822395687004,
+          0.329865216985304,
+          0.38761778598781127,
+          0.4439942994917111,
+          0.24075200931831497,
+          0.26705228143833337,
+          0.70437076759060757,
+          0.33261462146451026,
+          0.76764136192506338
+        ],
+        "value_bounds": [
+          0.15,
+          0.85
+        ]
+      },
+      "configuration_id": "C11",
+      "configuration_fingerprint": "bce6d1010991bb44728c9d72f83ad00286fd87888acae7cccafa198f9961e09c",
+      "groups": [
+        "initialization-random"
+      ],
+      "expected_region": "W_Gamma",
+      "expected_structure": "0 -> 1 -> 0"
+    },
+    {
+      "case_id": "E2",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.99,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 8000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "seeded_random",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "seeded_random",
+        "seed": 2.026101E+7,
+        "generator": "mt19937ar",
+        "interpolation": "linear",
+        "knot_times": [
+          0,
+          2,
+          4,
+          6,
+          8,
+          10,
+          12,
+          14,
+          16,
+          18,
+          20,
+          300
+        ],
+        "knot_values": [
+          0.30740695181431665,
+          0.69603902182410116,
+          0.43144363850184653,
+          0.77256341045744181,
+          0.686375894790789,
+          0.36060642137774113,
+          0.29813559590064076,
+          0.2632353628888125,
+          0.25415911297732208,
+          0.32107680090165769,
+          0.3102641101622875,
+          0.77134404824274616
+        ],
+        "value_bounds": [
+          0.15,
+          0.85
+        ]
+      },
+      "configuration_id": "C12",
+      "configuration_fingerprint": "f96f9306c8064e78d2553f0fb97a3fa5e2e0692ee7aa889f66797e9dbd7f645d",
+      "groups": [
+        "initialization-random"
+      ],
+      "expected_region": "W_K",
+      "expected_structure": "0 -> q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E3",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.14
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 4000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "seeded_random",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "seeded_random",
+        "seed": 2.0261011E+7,
+        "generator": "mt19937ar",
+        "interpolation": "linear",
+        "knot_times": [
+          0,
+          2,
+          4,
+          6,
+          8,
+          10,
+          12,
+          14,
+          16,
+          18,
+          20,
+          300
+        ],
+        "knot_values": [
+          0.63365010539612676,
+          0.19355251901182202,
+          0.53426619849941182,
+          0.41018681385322631,
+          0.25691166441082608,
+          0.607136147051304,
+          0.64872210774252914,
+          0.19423130288340665,
+          0.75633195912610374,
+          0.21322881185621298,
+          0.63470094091736473,
+          0.25691427479922718
+        ],
+        "value_bounds": [
+          0.15,
+          0.85
+        ]
+      },
+      "configuration_id": "C13",
+      "configuration_fingerprint": "5bfdb0314226adc179a7662696d84d77db569b9b36721a51704658f58433f862",
+      "groups": [
+        "initialization-random"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    },
+    {
+      "case_id": "E4",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.7,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 8000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "seeded_random",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "seeded_random",
+        "seed": 2.0261012E+7,
+        "generator": "mt19937ar",
+        "interpolation": "linear",
+        "knot_times": [
+          0,
+          2,
+          4,
+          6,
+          8,
+          10,
+          12,
+          14,
+          16,
+          18,
+          20,
+          300
+        ],
+        "knot_values": [
+          0.16947031947046373,
+          0.2467409985016622,
+          0.22267332518650154,
+          0.68056487731453319,
+          0.62551919711853132,
+          0.34131504579899352,
+          0.35257825557990274,
+          0.72387277680671469,
+          0.27139139499874981,
+          0.620373920828482,
+          0.6526916358372693,
+          0.62893461823433527
+        ],
+        "value_bounds": [
+          0.15,
+          0.85
+        ]
+      },
+      "configuration_id": "C14",
+      "configuration_fingerprint": "d10d456fe33fd7c6a9d51939bec654dca59d65becacae364f92b962eb219771a",
+      "groups": [
+        "initialization-random"
+      ],
+      "expected_region": "B",
+      "expected_structure": "q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E5",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 4000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "seeded_random",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "seeded_random",
+        "seed": 2.0261013E+7,
+        "generator": "mt19937ar",
+        "interpolation": "linear",
+        "knot_times": [
+          0,
+          2,
+          4,
+          6,
+          8,
+          10,
+          12,
+          14,
+          16,
+          18,
+          20,
+          300
+        ],
+        "knot_values": [
+          0.40099993132991263,
+          0.46202314006780387,
+          0.76429412590651291,
+          0.65007166077510958,
+          0.23573938910046094,
+          0.37938182861771619,
+          0.388334532918003,
+          0.48976963670584373,
+          0.71816581797806212,
+          0.79364761012495944,
+          0.73384941724435038,
+          0.43385047106244323
+        ],
+        "value_bounds": [
+          0.15,
+          0.85
+        ]
+      },
+      "configuration_id": "C15",
+      "configuration_fingerprint": "161251e828f4a0328ecef50e75ed79179c7b9539110bbd640f35c2c4d2aaf522",
+      "groups": [
+        "initialization-random"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    },
+    {
+      "case_id": "E1",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.75,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 2000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C16",
+      "configuration_fingerprint": "c51883ea360345196b0e8e1640f4f2c6e486adc6452110c1c5f6563918b363e1",
+      "groups": [
+        "grid"
+      ],
+      "expected_region": "W_Gamma",
+      "expected_structure": "0 -> 1 -> 0"
+    },
+    {
+      "case_id": "E1",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.75,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 8000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C17",
+      "configuration_fingerprint": "b34d17c1ece6a647c862924ce2d7b18c239b786c870f99691ac65f4e2c7bd466",
+      "groups": [
+        "grid",
+        "horizon"
+      ],
+      "expected_region": "W_Gamma",
+      "expected_structure": "0 -> 1 -> 0"
+    },
+    {
+      "case_id": "E2",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.99,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 2000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C18",
+      "configuration_fingerprint": "0fa23231b198094a2bac0b64a7004821ec77a6822a8dc4319ef1593466f76367",
+      "groups": [
+        "grid"
+      ],
+      "expected_region": "W_K",
+      "expected_structure": "0 -> q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E2",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.99,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 4000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C19",
+      "configuration_fingerprint": "1f89f37f0aed0b4e38f7a748c3d46e7bc201df833a384c517c07325128014f86",
+      "groups": [
+        "grid"
+      ],
+      "expected_region": "W_K",
+      "expected_structure": "0 -> q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E3",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.14
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 2000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C20",
+      "configuration_fingerprint": "dd02288ca5b87d8309f22b14a4af297de9d096ab25cdedf4d2d8284704f71946",
+      "groups": [
+        "grid"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    },
+    {
+      "case_id": "E3",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.14
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 8000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C21",
+      "configuration_fingerprint": "1310fef24568ec4c9cc2a49055f44140635e09ae5ded7d29679652d5fa8a6538",
+      "groups": [
+        "grid",
+        "horizon"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    },
+    {
+      "case_id": "E4",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.7,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 2000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C22",
+      "configuration_fingerprint": "d30f871c8deda46322a7848921d296d24d0999c3e0a2c12a77daf059885bf0f3",
+      "groups": [
+        "grid"
+      ],
+      "expected_region": "B",
+      "expected_structure": "q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E4",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.7,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 4000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C23",
+      "configuration_fingerprint": "2f847e15973f406d51ce1ad22d54cb1c2c27cc76d63097512d9406e6bec2300b",
+      "groups": [
+        "grid"
+      ],
+      "expected_region": "B",
+      "expected_structure": "q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E5",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 2000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C24",
+      "configuration_fingerprint": "57cbfc09cf27252e6d202b299c6a5b2db24cbf6acf839c1cad07cbc3b2c58ad9",
+      "groups": [
+        "grid"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    },
+    {
+      "case_id": "E5",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 8000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C25",
+      "configuration_fingerprint": "9620a43d40aa5583ac4547b390828ac51efbd991ed7b41e07418125b1bd2600f",
+      "groups": [
+        "grid",
+        "horizon"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    },
+    {
+      "case_id": "E1",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.75,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 60,
+        "N": 1600,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C26",
+      "configuration_fingerprint": "367a936841685c6b7972187d08319a4f24a852e18183e48d205c4d08a2090d11",
+      "groups": [
+        "horizon"
+      ],
+      "expected_region": "W_Gamma",
+      "expected_structure": "0 -> 1 -> 0"
+    },
+    {
+      "case_id": "E1",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.75,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 120,
+        "N": 3200,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C27",
+      "configuration_fingerprint": "1a0986941b88fa9d77bef893bfdc86f407ceade0c41857573931b49de48ae3ad",
+      "groups": [
+        "horizon"
+      ],
+      "expected_region": "W_Gamma",
+      "expected_structure": "0 -> 1 -> 0"
+    },
+    {
+      "case_id": "E2",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.99,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 60,
+        "N": 1600,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C28",
+      "configuration_fingerprint": "e747e7ddbc80b03e2ccf13d135e5889e6a909974d3103d631257772e1f7b2e33",
+      "groups": [
+        "horizon"
+      ],
+      "expected_region": "W_K",
+      "expected_structure": "0 -> q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E2",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.99,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 120,
+        "N": 3200,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C29",
+      "configuration_fingerprint": "93bc53a58dcf98eff0e56e747969fabb89b2159d61aefce6210eeca4e7227053",
+      "groups": [
+        "horizon"
+      ],
+      "expected_region": "W_K",
+      "expected_structure": "0 -> q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E3",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.14
+      ],
+      "solver_settings": {
+        "T": 60,
+        "N": 1600,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C30",
+      "configuration_fingerprint": "098253b3c6e804fd244df08dc5b435c5f87bce7625c8278fdd14e91cedbca603",
+      "groups": [
+        "horizon"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    },
+    {
+      "case_id": "E3",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.14
+      ],
+      "solver_settings": {
+        "T": 120,
+        "N": 3200,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C31",
+      "configuration_fingerprint": "b7d4489e4329afe3ca7c70af3cb2477e33637ec8122b85047c0180b14157cda5",
+      "groups": [
+        "horizon"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    },
+    {
+      "case_id": "E4",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.7,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 60,
+        "N": 1600,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C32",
+      "configuration_fingerprint": "3066439cbf6cf8ec64293abaf85c3eafc62460d220112e7eb304c54be0888022",
+      "groups": [
+        "horizon"
+      ],
+      "expected_region": "B",
+      "expected_structure": "q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E4",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.7,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 120,
+        "N": 3200,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C33",
+      "configuration_fingerprint": "0bdcd011e4a9f3112f0578e8419db1f0c7fe8165e2309e5da268a77d8745ffae",
+      "groups": [
+        "horizon"
+      ],
+      "expected_region": "B",
+      "expected_structure": "q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E5",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 60,
+        "N": 1600,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C34",
+      "configuration_fingerprint": "ea05a6146f88b30b940db492a1af71794482d118207552493177bedaa4286f12",
+      "groups": [
+        "horizon"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    },
+    {
+      "case_id": "E5",
+      "parameters": {
+        "p": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 120,
+        "N": 3200,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C35",
+      "configuration_fingerprint": "45c96e30052b3214d4e6f0275d5e63842fb98d98378f084fd7d66417caab7322",
+      "groups": [
+        "horizon"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    }
+  ],
+  "selected_configuration_ids": [
+    "C06",
+    "C07",
+    "C08",
+    "C09",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15"
+  ],
+  "configuration_count": 10,
+  "threshold_control": [
+    0.0005,
+    0.001,
+    0.002
+  ],
+  "threshold_capacity": [
+    1E-5,
+    2E-5,
+    4E-5
+  ],
+  "expected_fields_usage": "comparison_only",
+  "environment_fingerprint": "5528ea2c859277416692e7359cdc64ad9c7a7e33168ea2103996c1d362c60808",
+  "solve_provenance": {
+    "solve_commit": "c23a5d6bdc7fd97ea53e32a485ca03996789831b",
+    "solve_code_hash": "cd7e6297bb05f11028fe6f8f543ae8a9f5bd8c41d4f98346a0dc7b7cd09cff49",
+    "solve_source_files": [
+      {
+        "path": "prepare_openocl_case.m",
+        "sha256": "c0a0683d9aa18860e6a090e8cf8e35437a8bec7406f23addeb3ffea8f478fc28"
+      },
+      {
+        "path": "revision_initial_guess.m",
+        "sha256": "103bb1840e491c8c247385ec6fee2ebdeecb5441560db7e7f8ffe02de35f2d34"
+      },
+      {
+        "path": "solve_openocl_case.m",
+        "sha256": "2d6eb9bcc7766be66af9eec450560579af8217b340e9fe11faf03b16a82257e0"
+      },
+      {
+        "path": "validate_numerical_run_grid.m",
+        "sha256": "70489fabe7f517e15f32dfed3df733b5dccdebda38c5835e377fb110dd8e57dd"
+      },
+      {
+        "path": "numerical_solver_diagnostics.m",
+        "sha256": "bc498c58ed80a8d317a4ec32b516526084d0b4aa64852ea21d088548401fa799"
+      },
+      {
+        "path": "build_theory_geometry.m",
+        "sha256": "3750c6188aa9ddd40e3cb3a84fccd154274a5fb681d647c25b8f065e5c5f9fcc"
+      },
+      {
+        "path": "analytic_reference.m",
+        "sha256": "80dad0df64d702eda96a745d195891ca878c33569e59835c5684b659c83ae721"
+      },
+      {
+        "path": "classify_initial_state.m",
+        "sha256": "4933779acb62342f75bf874fef8e06c543f859c1d1f880575a3c5766e9e3f629"
+      },
+      {
+        "path": "safe_peak.m",
+        "sha256": "c813849393aad2470f2216eb78a90ddefdc514a5c63e48312fa9845c2a130a08"
+      }
+    ],
+    "solve_dirty": true,
+    "solve_dirty_details": "?? tmp/E2_neutral_revision.log\n?? tmp/numerical_revision_build/main/bibtex.txt\n?? tmp/numerical_revision_build/main/e4-gold.txt\n?? tmp/numerical_revision_build/main/final.txt\n?? tmp/numerical_revision_build/main/finalpage-32.png\n?? tmp/numerical_revision_build/main/finalpage-33.png\n?? tmp/numerical_revision_build/main/gray-guides.txt\n?? tmp/numerical_revision_build/main/gray-style.txt\n?? tmp/numerical_revision_build/main/main.aux\n?? tmp/numerical_revision_build/main/main.bbl\n?? tmp/numerical_revision_build/main/main.blg\n?? tmp/numerical_revision_build/main/main.log\n?? tmp/numerical_revision_build/main/main.out\n?? tmp/numerical_revision_build/main/main.pdf\n?? tmp/numerical_revision_build/main/main.toc\n?? tmp/numerical_revision_build/main/minimal-page-25.png\n?? tmp/numerical_revision_build/main/minimal-page-26.png\n?? tmp/numerical_revision_build/main/minimal-page-27.png\n?? tmp/numerical_revision_build/main/minimal-page-28.png\n?? tmp/numerical_revision_build/main/minimal-page-29.png\n?? tmp/numerical_revision_build/main/minimal-page-30.png\n?? tmp/numerical_revision_build/main/minimal-page-31.png\n?? tmp/numerical_revision_build/main/minimal-page-32.png\n?? tmp/numerical_revision_build/main/minimal-revision.txt\n?? tmp/numerical_revision_build/main/pass1.txt\n?? tmp/numerical_revision_build/main/pass2.txt\n?? tmp/numerical_revision_build/main/pass3.txt\n?? tmp/numerical_revision_build/main/region-contrast.txt\n?? tmp/numerical_revision_build/main/reordered-page-24.png\n?? tmp/numerical_revision_build/main/reordered-page-25.png\n?? tmp/numerical_revision_build/main/reordered-page-26.png\n?? tmp/numerical_revision_build/main/reordered-page-27.png\n?? tmp/numerical_revision_build/main/reordered-page-28.png\n?? tmp/numerical_revision_build/main/reordered-page-29.png\n?? tmp/numerical_revision_build/main/reordered-page-30.png\n?? tmp/numerical_revision_build/main/reordered-page-31.png\n?? tmp/numerical_revision_build/main/reordered-page-32.png\n?? tmp/numerical_revision_build/main/reordered-page-33.png\n?? tmp/numerical_revision_build/main/reordered-toc-02.png\n?? tmp/numerical_revision_build/main/reordered.txt\n?? tmp/numerical_revision_build/main/style-page-27.png\n?? tmp/numerical_revision_build/main/style-page-28.png\n?? tmp/numerical_revision_build/main/style-page-29.png\n?? tmp/numerical_revision_build/main/style-pages.txt\n?? tmp/numerical_revision_build/main/style-pass1.txt\n?? tmp/numerical_revision_build/main/style-pass2.txt\n?? tmp/numerical_revision_build/theory_only/bibtex.txt\n?? tmp/numerical_revision_build/theory_only/minimal-page-23.png\n?? tmp/numerical_revision_build/theory_only/minimal-page-24.png\n?? tmp/numerical_revision_build/theory_only/minimal-page-25.png\n?? tmp/numerical_revision_build/theory_only/pass1.txt\n?? tmp/numerical_revision_build/theory_only/pass2.txt\n?? tmp/numerical_revision_build/theory_only/pass3.txt\n?? tmp/numerical_revision_build/theory_only/theory_only.aux\n?? tmp/numerical_revision_build/theory_only/theory_only.bbl\n?? tmp/numerical_revision_build/theory_only/theory_only.blg\n?? tmp/numerical_revision_build/theory_only/theory_only.log\n?? tmp/numerical_revision_build/theory_only/theory_only.out\n?? tmp/numerical_revision_build/theory_only/theory_only.pdf\n?? tmp/numerical_revision_build/theory_only/theory_only.tex\n?? tmp/numerical_revision_build/theory_only/theory_only.toc\n?? tmp/numerical_revision_qa/final-26.png\n?? tmp/numerical_revision_qa/final-27.png\n?? tmp/numerical_revision_qa/final-28.png\n?? tmp/numerical_revision_qa/final-29.png\n?? tmp/numerical_revision_qa/final-30.png\n?? tmp/numerical_revision_qa/final-31.png\n?? tmp/numerical_revision_qa/final-32.png\n?? tmp/numerical_revision_qa/main-24.png\n?? tmp/numerical_revision_qa/main-25.png\n?? tmp/numerical_revision_qa/main-26.png\n?? tmp/numerical_revision_qa/main-27.png\n?? tmp/numerical_revision_qa/main-28.png\n?? tmp/numerical_revision_qa/main-29.png\n?? tmp/numerical_revision_qa/main-30.png\n?? tmp/numerical_revision_qa/main-31.png\n?? tmp/numerical_revision_qa/main-32.png\n?? tmp/numerical_revision_qa/main.txt\n?? tmp/numerical_revision_qa/release-27.png\n?? tmp/numerical_revision_qa/release-28.png\n?? tmp/numerical_revision_qa/release-29.png\n?? tmp/numerical_revision_qa/release-30.png\n?? tmp/numerical_revision_qa/theory-23.png\n?? tmp/numerical_revision_qa/theory-24.png\n?? tmp/numerical_revision_qa/theory-25.png\n?? tmp/project_cleanup_build/bibtex.txt\n?? tmp/project_cleanup_build/main.aux\n?? tmp/project_cleanup_build/main.bbl\n?? tmp/project_cleanup_build/main.blg\n?? tmp/project_cleanup_build/main.log\n?? tmp/project_cleanup_build/main.out\n?? tmp/project_cleanup_build/main.pdf\n?? tmp/project_cleanup_build/main.toc\n?? tmp/project_cleanup_build/page-32.png\n?? tmp/project_cleanup_build/pass1.txt\n?? tmp/project_cleanup_build/pass2.txt\n?? tmp/project_cleanup_build/pass3.txt\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/MANIFEST.txt\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/README.md\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/data/numerical_scenarios/E1.mat\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/data/numerical_scenarios/E2.mat\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/data/numerical_scenarios/E3.mat\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/data/numerical_scenarios/E4.mat\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/data/numerical_scenarios/E5.mat\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/data/numerical_scenarios/checks/E1.mat\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/data/numerical_scenarios/checks/E2.mat\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/data/numerical_scenarios/checks/neutral_E2/E2.mat\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/data/numerical_scenarios/coarse/E2.mat\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/data/numerical_scenarios/coarse/E4.mat\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/data/numerical_scenarios/diagnostics/E2_adaptive.mat\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/data/numerical_scenarios/diagnostics/E2_standard_bounds.mat\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/data/numerical_scenarios/legacy_inventory.json\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/data/numerical_scenarios/numerical_checks.json\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/README.md\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/data/numerical_scenarios/run_index.json\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/data/numerical_scenarios/runs/README.md\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/data/numerical_scenarios/scenario_summary.csv\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_regions.pdf\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_regions.png\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN2_waiting.pdf\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN2_waiting.png\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN3_boundary_tracking.pdf\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN3_boundary_tracking.png\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/latex/main.bbl\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/latex/main.pdf\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/latex/main.tex\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/latex/references.bib\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/README.md\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/analytic_reference.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/assess_numerical_case.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/assess_saved_numerical_run.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/build_theory_geometry.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/capacity_exit_transition.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/classify_initial_state.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/compare_neutral_initialization.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/execute_numerical_run.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/export_numerical_latex.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/load_selected_numerical_runs.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/make_numerical_figures.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/numerical_assessment_spec.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/numerical_assessment_view.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/numerical_cases_config.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/numerical_code_hash.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/numerical_export_provenance.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/numerical_sha256.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/numerical_solve_provenance.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/numerical_utc.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/numerical_write_json.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/prepare_openocl_case.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/publish_numerical_selection.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/refresh_numerical_assessments.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/revision_preflight.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/run_numerical_scenarios.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/safe_peak.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/solve_openocl_case.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/tail_diagnostic.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/verify_capacity_exit_transition.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/verify_neutral_initialization.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/verify_numerical_cache.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/verify_numerical_preparation.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/verify_numerical_reference.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/verify_reference_dependency_tests.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/verify_revision_preflight.m\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/validation/numerical_scenarios/BASELINE.json\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/validation/numerical_scenarios/README.md\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/validation/numerical_scenarios/REVISION_STATUS.md\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/validation/numerical_scenarios/__pycache__/generate_analytic_checkpoints.cpython-312.pyc\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/validation/numerical_scenarios/__pycache__/test_analytic_checkpoints.cpython-312.pyc\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/validation/numerical_scenarios/analytic_checkpoints.json\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/validation/numerical_scenarios/cache_unit_report.json\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/validation/numerical_scenarios/cache_unit_test.log\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/validation/numerical_scenarios/clean_checkout_matlab_tests.json\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/validation/numerical_scenarios/generate_analytic_checkpoints.py\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/validation/numerical_scenarios/integrity_report.json\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/validation/numerical_scenarios/matlab_code_analyzer.json\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/validation/numerical_scenarios/preflight.log\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/validation/numerical_scenarios/preflight_report.json\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/validation/numerical_scenarios/preflight_tests.json\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/validation/numerical_scenarios/preparation_unit_report.json\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/validation/numerical_scenarios/preparation_unit_test.log\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/validation/numerical_scenarios/requirements.txt\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/validation/numerical_scenarios/scenario_inputs.json\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/validation/numerical_scenarios/source_fingerprints.json\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1_matlab_tests.json\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1_python_tests.json\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/validation/numerical_scenarios/test_analytic_checkpoints.py\n?? tmp/revision_stage02_clean_8446e16/tracing_isolation_optimal_control_complete/validation/numerical_scenarios/verify_stage02_integrity.py\n?? tmp/revision_stage02_clean_code.zip\n?? tmp/step35_matlab_pref/MLintDefaultSettings.txt\n?? tmp/step35_matlab_pref/creation.timestamp\n?? tmp/step35_matlab_pref/ddux.mlsettings\n?? tmp/step35_matlab_pref/ddux/dduxR2024b.log\n?? tmp/step35_matlab_pref/migratePref.txt\n?? tmp/step35_matlab_pref/webwindowscale.mlsettings\n?? tmp/step35_matlab_pref/webwindowscale/webwindowscaleR2024b.log\n?? tmp/tex_merge_compare/after.txt\n?? tmp/tex_merge_compare/before.txt\n?? tmp/tex_merge_compare/merged-24.png\n?? tracing_isolation_optimal_control_complete/ai/codex_revision_plan/CODEX_EXECUTION_PLAN.md\n?? tracing_isolation_optimal_control_complete/ai/codex_revision_plan/PLANNED_EXPERIMENT_MATRIX.json\n?? tracing_isolation_optimal_control_complete/ai/codex_revision_plan/START_HERE.md\n?? tracing_isolation_optimal_control_complete/ai/codex_revision_plan/latex_snippets/01_wellposed_bound.tex\n?? tracing_isolation_optimal_control_complete/ai/codex_revision_plan/latex_snippets/02_ac_composition.tex\n?? tracing_isolation_optimal_control_complete/ai/codex_revision_plan/latex_snippets/03_verification_proof_opening.tex\n?? tracing_isolation_optimal_control_complete/ai/codex_revision_plan/latex_snippets/04_state_constraint_background.tex\n?? tracing_isolation_optimal_control_complete/ai/codex_revision_plan/latex_snippets/05_model_accounting.tex\n?? tracing_isolation_optimal_control_complete/ai/codex_revision_plan/latex_snippets/06_numerical_method.tex\n?? tracing_isolation_optimal_control_complete/ai/codex_revision_plan/latex_snippets/07_pending_macros.tex\n?? tracing_isolation_optimal_control_complete/ai/codex_revision_plan/latex_snippets/08_results_interpretation.tex\n?? tracing_isolation_optimal_control_complete/ai/codex_revision_plan/latex_snippets/09_reproducibility_appendix.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/README.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan.zip\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan/ANALYTICAL_CHECKPOINTS.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan/CODEX_EXECUTION_PLAN.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan/CODEX_TASK_PROMPT.txt\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan/MANIFEST.txt\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan/README.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan/payload/tracing_isolation_optimal_control_complete/latex/numerical_pending.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan/payload/tracing_isolation_optimal_control_complete/latex/numerical_reference_values.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan/payload/tracing_isolation_optimal_control_complete/latex/numerical_scenarios.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan/payload/tracing_isolation_optimal_control_complete/latex/references_numerical_additions.bib\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan/payload/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/numerical_cases_config.m\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan/payload/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/safe_peak.m\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan/payload/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/terminal_safe_constraint.m\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan/preview/numerical_preview.pdf\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan/preview/numerical_preview.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan/reference_check/analytic_checkpoints.json\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan/reference_check/verify_analytic_checkpoints.py\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan_long_horizon.zip\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan_long_horizon/ANALYTICAL_CHECKPOINTS.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan_long_horizon/CODEX_EXECUTION_PLAN.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan_long_horizon/CODEX_TASK_PROMPT.txt\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan_long_horizon/MANIFEST.txt\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan_long_horizon/PACKAGE_SHA256SUMS.txt\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan_long_horizon/README.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan_long_horizon/REVISION_NOTES.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan_long_horizon/payload/tracing_isolation_optimal_control_complete/latex/numerical_pending.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan_long_horizon/payload/tracing_isolation_optimal_control_complete/latex/numerical_reference_values.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan_long_horizon/payload/tracing_isolation_optimal_control_complete/latex/numerical_scenarios.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan_long_horizon/payload/tracing_isolation_optimal_control_complete/latex/references_numerical_additions.bib\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan_long_horizon/payload/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/numerical_cases_config.m\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan_long_horizon/payload/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/safe_peak.m\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan_long_horizon/payload/tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/tail_diagnostic.m\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan_long_horizon/preview/numerical_preview.pdf\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan_long_horizon/preview/numerical_preview.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan_long_horizon/reference_check/analytic_checkpoints.json\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/numerical_revision_plan_long_horizon/reference_check/verify_analytic_checkpoints.py\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/假设推导和验证/G1-G4-theory-audit.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/假设推导和验证/G3_G4_residual_slices.png\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/假设推导和验证/G3_G4_scan_map.png\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/假设推导和验证/README_assumptions.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/假设推导和验证/assumptions_to_theorems.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/假设推导和验证/export.py\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/假设推导和验证/figs.py\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/假设推导和验证/figs2.py\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/假设推导和验证/g3_g4_scan.csv\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/假设推导和验证/refine.py\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/假设推导和验证/scan_fast.py\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/假设推导和验证/scan_run2.py\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/假设推导和验证/verify_all.py\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/假设推导和验证/verify_full.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/相空间示意图/phase_portrait_q0_q1.pdf\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/相空间示意图/phase_portrait_q0_q1.png\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/相空间示意图/phase_portrait_q0_q1.py\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/相空间示意图/phase_portrait_q0_q1.svg\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/论文证明补充/7.切换曲线的正则性和单调性版本一.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/论文证明补充/7.切换曲线的正则性和单调性版本二.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/论文证明补充/global_geometry_and_uniqueness.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/论文证明补充/integration_notes.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/论文证明补充/prerequisites_for_verification.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/论文证明补充/switching_curve_monotonicity.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/论文证明补充/transversality_and_verification.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/论文证明补充/verify_supplement.py\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/ai补充/问题定义/HJB问题流程.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/latex_intermediates/main.aux\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/latex_intermediates/main.blg\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/latex_intermediates/main.fdb_latexmk\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/latex_intermediates/main.fls\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/latex_intermediates/main.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/latex_intermediates/main.out\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/latex_intermediates/main.synctex.gz\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/latex_intermediates/main.synctex.gz.sum.synctex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/latex_intermediates/main.toc\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/latex_intermediates/main.xdv\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/latex_intermediates/theory_only.aux\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/latex_intermediates/theory_only.bbl\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/latex_intermediates/theory_only.blg\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/latex_intermediates/theory_only.fdb_latexmk\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/latex_intermediates/theory_only.fls\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/latex_intermediates/theory_only.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/latex_intermediates/theory_only.out\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/latex_intermediates/theory_only.pdf\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/latex_intermediates/theory_only.toc\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/latex_intermediates/theory_only.xdv\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/PACKAGE_COUNTS.txt\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/SHA256SUMS.txt\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/VALIDATION_CHECKLIST.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/bibtex8_final.blg\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/extracted_text.txt\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/figure_metadata.csv\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/hjb_selected_supplement/CHECKS.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/hjb_selected_supplement/build_main.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/hjb_selected_supplement/build_theory.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/hjb_selected_supplement/main_final.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/hjb_selected_supplement/source.diff\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/hjb_selected_supplement/static_checks.json\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/hjb_selected_supplement/theory_only_final.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/hjb_verification_revision/CHECKS.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/hjb_verification_revision/build_main.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/hjb_verification_revision/build_theory.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/hjb_verification_revision/main_final.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/hjb_verification_revision/static_checks.json\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/hjb_verification_revision/theory_only_final.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/latex_final_warning_scan.txt\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/latex_main_final.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/logs/build_sh_test.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/logs/data_generation.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/logs/latex_build.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/logs/pdf_render.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/logs/pdf_render_final.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/logs/python_run.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/logs/python_run_after_data.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/logs/python_run_after_tv.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/logs/time_varying_recompute.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/math_revision_v2/check_report.json\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/math_revision_v2/check_stdout_local.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/math_revision_v2/integration_report.json\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/math_revision_v2/label_locations.json\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/matlab_static_check.txt\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/numerical_scenarios/CHECKS.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/numerical_scenarios/analytic_checkpoints.json\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/numerical_scenarios/build_and_check.ps1\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/numerical_scenarios/pdf_qa.json\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/numerical_scenarios/saved_results_audit.json\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/numerical_scenarios/theory_preservation.json\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/numerical_scenarios/verify_analytic_checkpoints.py\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/numerical_scenarios/verify_saved_results.py\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/numerical_validation.txt\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/pdf_contact_sheet.jpg\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/pdf_inspect.json\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/pdf_inspect.txt\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/pdf_preflight.json\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/pdf_preflight.txt\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/pdffonts.txt\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/pdfinfo.txt\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/validation/python_validation.txt\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/hjb_revision_for_codex/01_verification_equality.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/hjb_revision_for_codex/02_boundary_continuation.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/hjb_revision_for_codex/03_uniqueness_theorem.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/hjb_revision_for_codex/04_boundary_derivative_note.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/hjb_revision_for_codex/05_proof_dependencies.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/hjb_revision_for_codex/README_CODEX.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/hjb_selected_supplement/12_small_edits.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/hjb_selected_supplement/FRAGMENT_STATIC_CHECKS.json\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/hjb_selected_supplement/README_CODEX.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/hjb_selected_supplement/manifest.json\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/hjb_selected_supplement/snippets/01_internal_C1_patching.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/hjb_selected_supplement/snippets/02_relative_local_lipschitz.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/hjb_selected_supplement/snippets/03_implicit_function_domain.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/hjb_selected_supplement/snippets/04_tracking_zero_set_and_normals.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/hjb_selected_supplement/snippets/05_relative_open_regions.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/hjb_selected_supplement/snippets/06_interval_flow_argument.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/hjb_selected_supplement/snippets/07_time_set_coverage.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/hjb_selected_supplement/snippets/08_platform_hamiltonian_clarification.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/hjb_selected_supplement/snippets/09_candidate_integral_equation.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/hjb_selected_supplement/snippets/10_model_comparison.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/hjb_selected_supplement/snippets/11_optimal_synthesis.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_math_revision_v2/MANIFEST.json\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_math_revision_v2/README_MERGE.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_math_revision_v2/SHA256SUMS.txt\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_math_revision_v2/base/main.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_math_revision_v2/base/references.bib\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_math_revision_v2/checks/change_operations.json\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_math_revision_v2/checks/check_report.json\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_math_revision_v2/checks/check_revision.py\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_math_revision_v2/checks/check_stdout.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_math_revision_v2/checks/label_locations.json\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_math_revision_v2/checks/requirements.txt\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_math_revision_v2/checks/verify_revision.py\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_math_revision_v2/math_revision.patch\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_math_revision_v2/revision_notes/CHANGELOG.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_math_revision_v2/revision_notes/CHECKS.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_math_revision_v2/revision_notes/FILE_IDENTITIES.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_math_revision_v2/revision_notes/PROOF_CHECK.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_math_revision_v2/tracing_isolation_optimal_control_complete/latex/main.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_math_revision_v2/tracing_isolation_optimal_control_complete/latex/references.bib\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_revision/PACKAGE_INFO.json\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_revision/README.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_revision/SHA256SUMS.txt\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_revision/checks/build_status.json\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_revision/checks/full_original_attempt.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_revision/checks/full_syntax_build.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_revision/checks/full_syntax_final_xelatex.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_revision/checks/label_locations.json\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_revision/checks/revision_results.json\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_revision/checks/theory_build.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_revision/checks/theory_final_xelatex.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_revision/checks/verification_run.log\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_revision/constant_theory_review.pdf\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_revision/latex/main.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_revision/latex/references.bib\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_revision/latex/theory_only.tex\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_revision/revision_notes/CHANGELOG.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_revision/revision_notes/CHECKS.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_revision/revision_notes/PROOF_AUDIT.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_revision/revision_notes/SOURCE_MAP.md\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_revision/verification/requirements.txt\n?? tracing_isolation_optimal_control_complete/archive/pending_deletion/重修订/threshold_revision/verification/verify_revision.py\n?? tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4454468110a2474899e18044727d08de_manifest.json\n?? tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/batch_4454468110a2474899e18044727d08de_report.json\n?? tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/latest_initialization_report.json\n?? tracing_isolation_optimal_control_complete/latex/main.aux\n?? tracing_isolation_optimal_control_complete/latex/main.blg\n?? tracing_isolation_optimal_control_complete/latex/main.log\n?? tracing_isolation_optimal_control_complete/latex/main.out\n?? tracing_isolation_optimal_control_complete/latex/main.toc\n?? \"tracing_isolation_optimal_control_complete/ref/COVID-19 pandemic control balancing detection policy and lockdown intervention under ICU sustainability.pdf\"\n?? \"tracing_isolation_optimal_control_complete/ref/How Much Testing and Social Distancing is Required to Control COVID-19 Some Insight Based on an Age-Differentiated Compartmental Model.pdf\"\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/avram_source.txt\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/main_before.pdf\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/main_before.tex\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/references.bib\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/render/main_p03.png\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/render/main_p04.png\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/render/main_p05.png\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/render/main_p09.png\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/render/main_p19.png\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/render/main_p20.png\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/render/main_p25.png\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/render/main_p26.png\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/render/main_p27.png\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/render/main_p28.png\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/render/main_p29.png\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/render/theory_only_p03.png\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/render/theory_only_p04.png\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/render/theory_only_p05.png\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/render/theory_only_p09.png\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/render/theory_only_p19.png\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/render/theory_only_p20.png\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/soner_source.txt\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/theory_only.aux\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/theory_only.bbl\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/theory_only.blg\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/theory_only.log\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/theory_only.out\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/theory_only.pdf\n?? tracing_isolation_optimal_control_complete/tmp/step5_theory/theory_only.toc\n?? tracing_isolation_optimal_control_complete/tmp/step89_matlab_prefs/MLintDefaultSettings.txt\n?? tracing_isolation_optimal_control_complete/tmp/step89_matlab_prefs/ddux.mlsettings\n?? tracing_isolation_optimal_control_complete/tmp/step89_matlab_prefs/ddux/dduxR2024b.log\n?? tracing_isolation_optimal_control_complete/tmp/step89_matlab_prefs/webwindowscale.mlsettings\n?? tracing_isolation_optimal_control_complete/tmp/step89_matlab_prefs/webwindowscale/webwindowscaleR2024b.log\n?? tracing_isolation_optimal_control_complete/validation/numerical_scenarios/__pycache__/generate_analytic_checkpoints.cpython-312.pyc\n?? tracing_isolation_optimal_control_complete/validation/numerical_scenarios/__pycache__/test_analytic_checkpoints.cpython-312.pyc\n?? tracing_isolation_optimal_control_complete/validation/numerical_scenarios/execute_stage89.m\n?? tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_baseline.json\n?? tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_execution.log\n?? tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_execution_attempt1.log\n?? tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_preflight.json\n?? tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_source_fingerprints.json",
+    "environment": {
+      "matlab": "25.2.0.2998904 (R2025b)",
+      "matlab_release": "2025b",
+      "platform": "PCWIN64",
+      "openocl": "unknown",
+      "openocl_path": "E:\\work\\optimal-threshold-control\\optimal\\OpenOCL-master 0104\\ocl.m",
+      "casadi": "3.4.5",
+      "casadi_path": "E:\\work\\optimal-threshold-control\\optimal\\OpenOCL-master 0104\\Lib\\casadi\\+casadi\\MX.m",
+      "ipopt": "unknown",
+      "openocl_source_hash": "30c0b8ae8c038194c592fd7e073a25a08d2ca1261009f5ca497e2584f6fbfc41",
+      "openocl_source_files": [
+        {
+          "path": "+ocl/+casadi/CasadiIntegrator.m",
+          "sha256": "3cfb63728b08838821915b14cd821b29de980219251c1b8c6b6d7be51d6aa48b"
+        },
+        {
+          "path": "+ocl/+casadi/CasadiOptions.m",
+          "sha256": "2a2eb3c5e28c5713de1e6a0cbe2fecffbed8d3ded0666bfd397ec38522d3d28a"
+        },
+        {
+          "path": "+ocl/+casadi/CasadiSolver.m",
+          "sha256": "b5cccbbeebbe6babe4bf5178b59b8f72f284c06d8f315844ea575f8e76fb7047"
+        },
+        {
+          "path": "+ocl/+casadi/CasadiVariable.m",
+          "sha256": "c6d3b3fc1b8e900c46a9383a75ab00abac65668fd05f36bd001d395dff115c35"
+        },
+        {
+          "path": "+ocl/+casadi/daefun.m",
+          "sha256": "f6b481c76e3f986a90771e6e7596d146e2fcfe6e54021cb4052fc9cfbeab7290"
+        },
+        {
+          "path": "+ocl/+casadi/pathcostfun.m",
+          "sha256": "a554dca35c36b5bb39aa24ec4e7b207571faaa42ae9ced935a7b347b354bf84a"
+        },
+        {
+          "path": "+ocl/+casadi/structToSym.m",
+          "sha256": "d9014bb8667d9b469a77b358b2eea7f3dc77426067aff57696d872aa1d803c78"
+        },
+        {
+          "path": "+ocl/+collocation/Collocation.m",
+          "sha256": "274c48d108e2614197232ddfa58e05589ee028d4dc239c618a6e7f3b7f02714b"
+        },
+        {
+          "path": "+ocl/+collocation/bounds.m",
+          "sha256": "50ba0b1a5b60bdd3c5262fb7c3e2fe0a1ff89e09291f00d366090c686f17bdee"
+        },
+        {
+          "path": "+ocl/+collocation/coefficients.m",
+          "sha256": "b50c1d400b39f70cac50c6cc0e983e56b8ac5fadb648131bf1c841ed0bb49f23"
+        },
+        {
+          "path": "+ocl/+collocation/collocationPoints.m",
+          "sha256": "f1482c5eb50abf4f055f7d41ac083d02fe07f1c5e36667b67dcde25771fff67f"
+        },
+        {
+          "path": "+ocl/+collocation/equations.m",
+          "sha256": "912483981ec9e503311c0e903ae23c1f9917e3255880f931f45a002b330f1329"
+        },
+        {
+          "path": "+ocl/+collocation/evalCoefficients.m",
+          "sha256": "33d78334551d9e904c8c497b15f8a5de94b5892a0f06bbdd0f401301acb60a7a"
+        },
+        {
+          "path": "+ocl/+collocation/evalCoefficientsDerivative.m",
+          "sha256": "cefa14135586b1e5547ecae2c3942d5dc44c1b40e1d34ad96c573d662cc3833e"
+        },
+        {
+          "path": "+ocl/+collocation/evalCoefficientsIntegral.m",
+          "sha256": "034493722d84e6f75c1a2893218af7ba626faf1d09a768636429ccc01165cc67"
+        },
+        {
+          "path": "+ocl/+collocation/getStateAtPoint.m",
+          "sha256": "75df9bf760b4f5ace9496049b35517aaac00e990e6639d9bf66a4cb4141457ea"
+        },
+        {
+          "path": "+ocl/+collocation/indizes.m",
+          "sha256": "6ab63196463cee0e67c9b2d179e8e1a9f5ebde3c57182010d83e9308ba7890a0"
+        },
+        {
+          "path": "+ocl/+collocation/initialGuess.m",
+          "sha256": "c7fd479cdf423df99870c1d29956da6812edb48dc8fa8635bbf45cf9039e2a14"
+        },
+        {
+          "path": "+ocl/+collocation/times.m",
+          "sha256": "8eb2d48e7bdac5f61b88de3b8b6d86f611956516e1a54a01a88d93da0f2a98b6"
+        },
+        {
+          "path": "+ocl/+collocation/variablesPack.m",
+          "sha256": "ef568f32135d72c5360f47819166def47561e66d43b3ede7d0651d0af0952444"
+        },
+        {
+          "path": "+ocl/+collocation/variablesUnpack.m",
+          "sha256": "554e194d29d8c0b349b440c7efef336c7c35bfe368d8967efa2921da859b3aee"
+        },
+        {
+          "path": "+ocl/+model/bounds.m",
+          "sha256": "2c9f3bb405fababca020e31305bab1dc18721cd535aa8e1b918044169ef60d8d"
+        },
+        {
+          "path": "+ocl/+model/boundsTrajectory.m",
+          "sha256": "4154730c3ff9b3dfe9780f40c7ab31956db7d826ccc0b2da1eeba40e5e13d042"
+        },
+        {
+          "path": "+ocl/+model/dae.m",
+          "sha256": "c79acbe16622724ab381b6596893f58fd68dd277e9a9da4aa693841dc750d954"
+        },
+        {
+          "path": "+ocl/+model/gridconstraints.m",
+          "sha256": "74ec0d96d250a91201b8541aae1f742144f024dcdbd1df229d432b83b9696890"
+        },
+        {
+          "path": "+ocl/+model/gridcosts.m",
+          "sha256": "55536f76636bc12c14c4f12df22c4e3e788b021b4641dd0b51fb8df6c4a9875a"
+        },
+        {
+          "path": "+ocl/+model/ic.m",
+          "sha256": "40aff1d69133ff3ebf2ebdd9cfc6226ed1826729621e53872fb75b1e693dacf4"
+        },
+        {
+          "path": "+ocl/+model/pathcosts.m",
+          "sha256": "9597530b8feccc07f27fdad826cca6a60119d9de17c1e0685be2790fcc16a152"
+        },
+        {
+          "path": "+ocl/+model/terminalcost.m",
+          "sha256": "ffda71f23805cdf90bed8e9b76c358941b807b5af569e0a2bf32f298ac56a19b"
+        },
+        {
+          "path": "+ocl/+model/vars.m",
+          "sha256": "a1149de9157a56f4e5486b42a2ab472e813f880b4209867e4b07d87308f88859"
+        },
+        {
+          "path": "+ocl/+simultaneous/bounds.m",
+          "sha256": "4d9dbeb21a2312dada073a23db339c67b3a28257637006c8135c8854c1bf9c25"
+        },
+        {
+          "path": "+ocl/+simultaneous/equations.m",
+          "sha256": "b1b6ea193237c33e7d2857f8b00f9aa200d06c40b4018ffd25740c4bd87bf3c6"
+        },
+        {
+          "path": "+ocl/+simultaneous/getFirstState.m",
+          "sha256": "2fcd34e38e62afa1bae56946a40b4a846d3be8b7ea22eafcf16e1807f2258419"
+        },
+        {
+          "path": "+ocl/+simultaneous/getInitialGuess.m",
+          "sha256": "61beaca6dd9696cdc55c8249714d9374f9348fce5e1780fab994ea3458514b84"
+        },
+        {
+          "path": "+ocl/+simultaneous/getInitialGuessWithUserData.m",
+          "sha256": "e4a15789b71b8d3fa572949c5c9b4cda14da467911d66b9e20e9fe6d4ff43958"
+        },
+        {
+          "path": "+ocl/+simultaneous/getLastState.m",
+          "sha256": "85b4d8b0141a59bb8db57e389e288926b76d57b41075a74acfc26185a39dc0d0"
+        },
+        {
+          "path": "+ocl/+simultaneous/igFromBounds.m",
+          "sha256": "62afeabb587aeb8f47afe749926d7805e492c8381affe008211b58cecfce2799"
+        },
+        {
+          "path": "+ocl/+simultaneous/indizes.m",
+          "sha256": "d3231e7bbb374386a2c59f9a5301191101ebc8afa68d37558c56e8c5d0cab129"
+        },
+        {
+          "path": "+ocl/+simultaneous/nvars.m",
+          "sha256": "2dd17e531e8a3d0a2af0a00a8b1940c246a04686f42b4bb4496e23370778ccbe"
+        },
+        {
+          "path": "+ocl/+simultaneous/times.m",
+          "sha256": "4a7928efbec83c69f175b135eeacb8af4e522cd20513594a05c9e1dbf152d77c"
+        },
+        {
+          "path": "+ocl/+simultaneous/timesStruct.m",
+          "sha256": "1feedd3bf45690aec2b6b320550e6e5582305c5f5b78e1f5880ec267946e581a"
+        },
+        {
+          "path": "+ocl/+simultaneous/variablesPack.m",
+          "sha256": "038805505f24aa1145a5f640cdbde5aa7d25f195591856f34d81ad033ec40669"
+        },
+        {
+          "path": "+ocl/+simultaneous/variablesStruct.m",
+          "sha256": "8984333f95591c17afaa4c526554a441bb550df4333dfd917d8ee6c7a3a0837d"
+        },
+        {
+          "path": "+ocl/+simultaneous/variablesUnpack.m",
+          "sha256": "1a5be3a90a5462869fd5af590138dcb7f3b5043b9411c58c785195d7ce0491a6"
+        },
+        {
+          "path": "+ocl/+types/Bounds.m",
+          "sha256": "d4ec4bdba79f0684e6b5e103a4f30904ce78a0dc7df9bf9eb0487aa77eeecdf7"
+        },
+        {
+          "path": "+ocl/+types/InitialGuess.m",
+          "sha256": "c10194c9f9d83a9b7ca06ab81eadf0fab106840b706b8a3014f4399480cc881f"
+        },
+        {
+          "path": "+ocl/+types/Matrix.m",
+          "sha256": "a253ecb0e25db2a5b2c99017d67331841bd64006a86b32756e53b7967bfc4f4f"
+        },
+        {
+          "path": "+ocl/+types/Structure.m",
+          "sha256": "c79cd4a03238e45bf68162df8ed9915ea1474fbb9cc476f93e44011ce2986323"
+        },
+        {
+          "path": "+ocl/+types/Value.m",
+          "sha256": "8e2f29f60671ec6d9aa987debef078d9048aa33ccad937eb75d89fd4d003490d"
+        },
+        {
+          "path": "+ocl/+utils/ArgumentParser.m",
+          "sha256": "74f33c20f6f0d79eef849f77e121caaa60a3c2393d0d03ec3c87c179de4ee5d5"
+        },
+        {
+          "path": "+ocl/+utils/Reference.m",
+          "sha256": "c9f843cd2cd07ed679a9d0910f91ddba0e584c00c48e2a6ff8e3af5ac9adf149"
+        },
+        {
+          "path": "+ocl/+utils/argError.m",
+          "sha256": "289d85687f6b8907021c5ac4d68d23478dcf5a1144f77be06de8521cf6c7e13c"
+        },
+        {
+          "path": "+ocl/+utils/assert.m",
+          "sha256": "86598e7b35b1187c0c95e032f6abf2fc10fe9ec809f30eee4cc347d62bc03fe5"
+        },
+        {
+          "path": "+ocl/+utils/assertAlmostEqual.m",
+          "sha256": "75b5df3ffd0a2f6e5379a8a443e7f714c2d5bb39429acea575da57a88ecaf651"
+        },
+        {
+          "path": "+ocl/+utils/assertEqual.m",
+          "sha256": "06c45e5a9dd30229edb5e230509a6511f6c8e4ccad6e7070c119a237dcab6370"
+        },
+        {
+          "path": "+ocl/+utils/assertException.m",
+          "sha256": "419ac95d1bbba00ad1ddd59103b15150fa87f203afaac65c2fbc31e67553ad19"
+        },
+        {
+          "path": "+ocl/+utils/assertSetEqual.m",
+          "sha256": "29c42cc5a91860802c17405907dc00e963eb4cd478f2b83f368ea6b983557170"
+        },
+        {
+          "path": "+ocl/+utils/assertSqueezeEqual.m",
+          "sha256": "c36017dcf20015b0e26e112b13e14181d910e6a9a39dc762fbe81be6a2d1052b"
+        },
+        {
+          "path": "+ocl/+utils/checkStartup.m",
+          "sha256": "1dcf276a26b167bf5a8a2e67942f1f0be65e66d83560a66e390beddc11794a38"
+        },
+        {
+          "path": "+ocl/+utils/clean.m",
+          "sha256": "6518cb79ea585e80cfeddcece1a5d332833c2b74e197af47f30a734d1808bcdc"
+        },
+        {
+          "path": "+ocl/+utils/debug.m",
+          "sha256": "ab6c28740e2f0126c20a1d1bc60b90231fdbc7e1135e5fa22b0f7fcf69e862a9"
+        },
+        {
+          "path": "+ocl/+utils/deprecation.m",
+          "sha256": "a5fa428bca86b43a1b8c3a03da1b80afab5b13f5d898e6a44e625baddcffc4ba"
+        },
+        {
+          "path": "+ocl/+utils/docMessage.m",
+          "sha256": "0f336e51f822ea4b82a6c46121de612d6cd679b912ebdab9e07894cad5b13c4f"
+        },
+        {
+          "path": "+ocl/+utils/emptyfh.m",
+          "sha256": "93e97136cd6cfd5e9b150a4c14f6d5155f31a4d5f4e9a53d5ed201ab255dd07d"
+        },
+        {
+          "path": "+ocl/+utils/emptyfun.m",
+          "sha256": "9702f3c3d221edf8669a9a8690f2ef1421c6d1a5ce0a553f89ebfbf189453017"
+        },
+        {
+          "path": "+ocl/+utils/error.m",
+          "sha256": "c8234cb5aec84fb59cb7e31ab52b08dd355fd8582e6277f1d9c05d7ec15afb37"
+        },
+        {
+          "path": "+ocl/+utils/exception.m",
+          "sha256": "35acdd45a65e264412be51e47195113156da99b1b0f669799385efe8d371297e"
+        },
+        {
+          "path": "+ocl/+utils/fieldnamesContain.m",
+          "sha256": "e80ca62ddf6233b84612eda69bb2c1aca33f73b6786737e27d0f39ce02eceae6"
+        },
+        {
+          "path": "+ocl/+utils/findjobj.m",
+          "sha256": "7a59a441121e29b19709ed4ab90c448bc61d29cc709c0ea0281a0dfc5a48a2ce"
+        },
+        {
+          "path": "+ocl/+utils/getReportOctave.m",
+          "sha256": "20d0ac89537f7d5602bcfa6694fdce485dcef947d70218f6e6aa0316c91a60ea"
+        },
+        {
+          "path": "+ocl/+utils/info.m",
+          "sha256": "a9f51b65a9d5c9da42086c22e62bbc3d6b092dea1c88487caeb5bd8bec07ee1e"
+        },
+        {
+          "path": "+ocl/+utils/isFunHandle.m",
+          "sha256": "b5000721a79cec3cebd849babecf3513627b4e6715b2dba1b3202a601ef257cb"
+        },
+        {
+          "path": "+ocl/+utils/isFunHandleOrEmpty.m",
+          "sha256": "eeb6f35378b2dd1916f59855f6142bb222d883a05c546331c57ec032e5f5cffa"
+        },
+        {
+          "path": "+ocl/+utils/isOctave.m",
+          "sha256": "d209f763ec8d8741fd6fa4144e70da0e634c0673c878dd272f8abb5a8e23efda"
+        },
+        {
+          "path": "+ocl/+utils/isTestRun.m",
+          "sha256": "259d27fdc72b65b745a99753ee629144b028dc8cd04bd4385277bfe4bc644568"
+        },
+        {
+          "path": "+ocl/+utils/newline.m",
+          "sha256": "24671c87cd7146107f463068509b9913daebb8afe901a2809fa354cc8a41d349"
+        },
+        {
+          "path": "+ocl/+utils/setTestRun.m",
+          "sha256": "126e7e4de27a3c9004317e6c310ba50569338abdd17f72f4fd6821d1b300dfac"
+        },
+        {
+          "path": "+ocl/+utils/startup.m",
+          "sha256": "99ed3d0d7fdb64bc065d51f26da4e493f3001d96b36df7dff24149aa50f54ffe"
+        },
+        {
+          "path": "+ocl/+utils/warning.m",
+          "sha256": "fd0f0840f812670dc1e56c317a7a0614eff2d0c6ef9efb9091c16297f6a24a54"
+        },
+        {
+          "path": "+ocl/+utils/warningNotice.m",
+          "sha256": "968d2b6b7341bbedf2494dc0d3c9cfa4b8e76799991f400bdda9dfcff938cd63"
+        },
+        {
+          "path": "+ocl/+utils/workspacePath.m",
+          "sha256": "d1fc413996dbea83ea759fc66e7bc8de715650b89819cb667bcd29f95403be01"
+        },
+        {
+          "path": "+ocl/+utils/zerofh.m",
+          "sha256": "944d88f96c69536fd319688ca3e4524c8e51c179ad0c356e6e00b5dee6db5489"
+        },
+        {
+          "path": "+ocl/+utils/zerofun.m",
+          "sha256": "6947c451a8b67214404884a65b3b541a44d748a3843bdc0d2675ca665db2fd71"
+        },
+        {
+          "path": "+ocl/Constraint.m",
+          "sha256": "27ff2d478620e4f3c110be101216ba0337fed3a173f82bc030bec326dc696ffc"
+        },
+        {
+          "path": "+ocl/Cost.m",
+          "sha256": "558ac412212ed4c75d8713d5b0c9db04ac9bc8fbdc46089ffdfc9e26e5813a87"
+        },
+        {
+          "path": "+ocl/DaeHandler.m",
+          "sha256": "4d071884fedd29f4d37fda362f3eef36c424fad8b4c0683a80ae37748f9ae235"
+        },
+        {
+          "path": "+ocl/Problem.m",
+          "sha256": "4ff3864a84dacd59cdd477c38454a5f7528f6dd00e4c69d1260b06740d1d46d6"
+        },
+        {
+          "path": "+ocl/Stage.m",
+          "sha256": "c6e410af0e5d3eb6e74a7ed28fe9598c9698996904d337792c62b67679738278"
+        },
+        {
+          "path": "+ocl/VarHandler.m",
+          "sha256": "c0a74ff48ead929e0bbbc7f25d26db41e3e2d80f545676a8d474e0c800dae38e"
+        },
+        {
+          "path": "+ocl/Variable.m",
+          "sha256": "6d01ee2efa2d2064b1b04666dffc6ab35e4abcae335e2628f3a07512209fa8f6"
+        },
+        {
+          "path": "ocl.m",
+          "sha256": "7cf0bc8d59fca911b289f165ee14626255afe700defe9622e43c981b366d1a34"
+        }
+      ],
+      "casadi_binary_path": "E:\\work\\optimal-threshold-control\\optimal\\OpenOCL-master 0104\\Lib\\casadi\\casadiMEX.mexw64",
+      "casadi_binary_hash": "fca7f22b580a864c8fe995196aafd1efab962fc0429a59fc39d22eabaf55c0f4",
+      "casadi_runtime_files": [
+        {
+          "path": "+casadi/ALGEBRAIC.m",
+          "sha256": "c335782367695bf4a13bdf08e880b18326775756b87d1ee1518e7c2c1b70d00f"
+        },
+        {
+          "path": "+casadi/ALIAS.m",
+          "sha256": "21ab3ca39e19cf5af234f560548b14f9574e8fe1925d0f268ff11e2c490e19ac"
+        },
+        {
+          "path": "+casadi/CASADI_INT_TYPE_STR.m",
+          "sha256": "c936e58f919e0322a9d5ba14ffad5805a961fd7f859b7e1deec545fab9f174bb"
+        },
+        {
+          "path": "+casadi/CAT_ALGEBRAIC.m",
+          "sha256": "ecf940fa78267580b93e86a4d0d0ea374e06a7cd978bbe3cd9687564be265511"
+        },
+        {
+          "path": "+casadi/CAT_DEPENDENT_CONSTANT.m",
+          "sha256": "6f2f366d3caa505db6e0296c35fde1b2e97e5ce1332b428f7bf175c5ccbb3794"
+        },
+        {
+          "path": "+casadi/CAT_DEPENDENT_PARAMETER.m",
+          "sha256": "d11b0ea983040e73c95740c8445a39a9a4d9fb742d04474f1993b8a3ac0da12f"
+        },
+        {
+          "path": "+casadi/CAT_DERIVATIVE.m",
+          "sha256": "bf035af895751e54a5bfd80933867ecdb7efded01a7a90bb436c129a81605b9b"
+        },
+        {
+          "path": "+casadi/CAT_INDEPENDENT_CONSTANT.m",
+          "sha256": "1043d2490356bca7456c924eb87192ce8b653929e61ba987e5a8612143a8a97b"
+        },
+        {
+          "path": "+casadi/CAT_INDEPENDENT_PARAMETER.m",
+          "sha256": "e52e019b0afc8a9d8dbf0e68aee8f77eaa4101f5cd8c21321955d87355b9d04b"
+        },
+        {
+          "path": "+casadi/CAT_STATE.m",
+          "sha256": "05103964f4665c3de12a54628cb6c8cb975350065d9f0529c9a305ce7856da72"
+        },
+        {
+          "path": "+casadi/CAT_UNKNOWN.m",
+          "sha256": "f37519a776cfd62b6f89ca426858be74e8d6f5be2956fdc25630a9b98428f04c"
+        },
+        {
+          "path": "+casadi/CONSTANT.m",
+          "sha256": "024f40ccf6a773c001d22b9df838e7c4302a903485f9d06aeb802a88d3e048fe"
+        },
+        {
+          "path": "+casadi/CONTINUOUS.m",
+          "sha256": "a67af00d0399eb87a4cc3ca51a4b6388fb6959611ae34c8868a670286e781380"
+        },
+        {
+          "path": "+casadi/Callback.m",
+          "sha256": "8a49c1544335c23409eceac14334267a078721660aec26a1b1126c09417ae0fa"
+        },
+        {
+          "path": "+casadi/CasadiMeta.m",
+          "sha256": "c9ed2021ba487459233968cbd12bfee844daa005f27fbb3b054c19b487e94eec"
+        },
+        {
+          "path": "+casadi/CodeGenerator.m",
+          "sha256": "aa956cb0b99f33bbe06922ba068629af4eff549cf27ecf8110033e67b6696b06"
+        },
+        {
+          "path": "+casadi/DIFFERENTIAL.m",
+          "sha256": "839f00f7ed9dfec969d693a23fa67c0452a78d4eda5492efaffe3e5e7b1fae4e"
+        },
+        {
+          "path": "+casadi/DISCRETE.m",
+          "sha256": "97fef2fa6cf31a1cd6299b32a0c743b9f539f8365f4c45650726f4a0eb43d0fe"
+        },
+        {
+          "path": "+casadi/DM.m",
+          "sha256": "6fb42ab3e61a08d3e3df7527a16f47d5f0448a6c9c349f92ae04f42940ff3c64"
+        },
+        {
+          "path": "+casadi/DaeBuilder.m",
+          "sha256": "587834b128d9cb3dc44927c26bf4efeb3f3020487fc6317da492d56549ef4364"
+        },
+        {
+          "path": "+casadi/FLAG.m",
+          "sha256": "8e0e74a83bc13df5e38110c8700b615039ebf4df0f4bb39d94bac75c10e5bb05"
+        },
+        {
+          "path": "+casadi/Function.m",
+          "sha256": "eac0c8a0f417c1296ec056a1a73efe41397922c1accf7238cc91d5e72ca9f635"
+        },
+        {
+          "path": "+casadi/GenDM.m",
+          "sha256": "25213890a4b5c7415b27428b1df6ced698f2d520bd9512f222e66c935030f766"
+        },
+        {
+          "path": "+casadi/GenIM.m",
+          "sha256": "24900745776648b14928a285dbf09814fd580644f16bc2daf8fa0a93af908ab7"
+        },
+        {
+          "path": "+casadi/GenMX.m",
+          "sha256": "7f2ee70a5207564090cfdaf6cd1a2f716fb3fc31fd2c786f560b932fd3710ebf"
+        },
+        {
+          "path": "+casadi/GenSX.m",
+          "sha256": "31e01a26e0a0c465eb581d9265cae773d112bdf6eb441cd9226dfd61d61a65f1"
+        },
+        {
+          "path": "+casadi/GenericExpressionCommon.m",
+          "sha256": "ee07c0e33cc6ad710ec96ee50299964d5bea81b73ba969329108d5468085840c"
+        },
+        {
+          "path": "+casadi/GenericMatrixCommon.m",
+          "sha256": "bd96ad2afe5b07ef28edbed6dc7e38d2c820a87700b2320b9b7e44055206f61d"
+        },
+        {
+          "path": "+casadi/GenericType.m",
+          "sha256": "a40e33c1deccaf4069da8145931f08828e39618f1cbf594302e6d90e00772b2e"
+        },
+        {
+          "path": "+casadi/GlobalOptions.m",
+          "sha256": "06751fa07ab24631f6f702c6dbd7d0b0e43f29226499cdfdbec8a39d383639d8"
+        },
+        {
+          "path": "+casadi/IM.m",
+          "sha256": "7d82b9ced76a0c1a42dab9e99ac40c130bddceb4654b2a224d7a6e4dddc7e16f"
+        },
+        {
+          "path": "+casadi/INPUT.m",
+          "sha256": "da8d1d0d416d13296e50bf690ef346b9ad9a642aacd47d3a9f1d25d7e6d33280"
+        },
+        {
+          "path": "+casadi/INTERNAL.m",
+          "sha256": "362749dbb62c71a804dbbbf61b83a57dde1eff064d96ad2e90f57ad56bfc81b6"
+        },
+        {
+          "path": "+casadi/IS_DMATRIX.m",
+          "sha256": "f78ee28deb8ae07f2f4e3d5fb167c0aa6d97479cfa77cffbd84f1f39e313da4b"
+        },
+        {
+          "path": "+casadi/IS_DOUBLE.m",
+          "sha256": "5428b7679abe9ba9ccd2bd70148dc6fcb55393a1ebc6f13a475e7c64da57e3f3"
+        },
+        {
+          "path": "+casadi/IS_GLOBAL.m",
+          "sha256": "8ef780025d8973a950d38b98a619bfe43509ef7ca132fb0c00b7248eccc96da8"
+        },
+        {
+          "path": "+casadi/IS_IMATRIX.m",
+          "sha256": "7c756d07b05cec6fe4d23c82aee477bdf9bf8132c0230b5f1c419763e5c09907"
+        },
+        {
+          "path": "+casadi/IS_MEMBER.m",
+          "sha256": "73eb805c22f07ea48954247fe29091d6c4ca24532cad2127ae063f6e42aef96e"
+        },
+        {
+          "path": "+casadi/IS_MX.m",
+          "sha256": "997445be7d113354f55e07b311af9844e63c38f8111d9a37cb2b0544018f5ddf"
+        },
+        {
+          "path": "+casadi/IS_SPARSITY.m",
+          "sha256": "c60373c3b18e8fb94699ed7659bf8656e0bb7075b318c72bd364e4c1699f99e4"
+        },
+        {
+          "path": "+casadi/IS_SX.m",
+          "sha256": "4184276c4123821df65422ea47dd162d25f1b33e27ae35108b90fcccf42c638d"
+        },
+        {
+          "path": "+casadi/Importer.m",
+          "sha256": "2c748a281f493cf3d75b577cc9552343b3bc5405bf6f812886790defbb0c174d"
+        },
+        {
+          "path": "+casadi/IndexAbstraction.m",
+          "sha256": "881f3c035a875c64ea74f7c6286acf73868301b1d278fdab25af8cd949e4bd59"
+        },
+        {
+          "path": "+casadi/LABEL.m",
+          "sha256": "cfac9e8f5da65ad9af1c3603ccf1013e59ab23d04e8cb5c880c52427679435cc"
+        },
+        {
+          "path": "+casadi/LEGENDRE.m",
+          "sha256": "938c8c55db4ebf572ee54de723436847f1d5de4c25b913d873b366b3e622fd9f"
+        },
+        {
+          "path": "+casadi/LL.m",
+          "sha256": "9c08f9f0e20fb27d18d664b50f106ad36e6ff4875f4f297d288724753856a87d"
+        },
+        {
+          "path": "+casadi/LR.m",
+          "sha256": "58034dee7c08432d051ebb9df1274461e22a0c1c73678fb60b4c321c8fd6013e"
+        },
+        {
+          "path": "+casadi/L_BOOL.m",
+          "sha256": "bc317f8a8acc5b16073ec14680db239e128c0ee534e142b57ae5079a1bf2e09b"
+        },
+        {
+          "path": "+casadi/L_DICT.m",
+          "sha256": "77f9dac272335722d57f6b1e17f8807984bcfaef95707e3e5560a3a6b7d027ad"
+        },
+        {
+          "path": "+casadi/L_DOUBLE.m",
+          "sha256": "efc6167b1ec2b2663b34a3f8ddb76af739635f165b01b1c14bb7eb307bed7892"
+        },
+        {
+          "path": "+casadi/L_INT.m",
+          "sha256": "93584566d726b494ef162e2c7d18191e1def2f50f4dfd83f94d63e05d07a00f4"
+        },
+        {
+          "path": "+casadi/L_STR.m",
+          "sha256": "00df9b71c42faa92b6861147a0488cb5d1501f8677523f181122c609e2453fb8"
+        },
+        {
+          "path": "+casadi/Linsol.m",
+          "sha256": "9c3bd6bbe4bf9cba563d079446a5893864f9b180af22b0992b81f1b8c9eabb0c"
+        },
+        {
+          "path": "+casadi/MNAME.m",
+          "sha256": "f1bf0943ca006c3b6611abc233dceaa2b51f7cb9aad9d8f96a946c10e947beaa"
+        },
+        {
+          "path": "+casadi/MX.m",
+          "sha256": "9ef8462d2f086f7daec4a8bc3f43fb8b14c80d82faedcabdaedb9428739c2def"
+        },
+        {
+          "path": "+casadi/MatlabSwigIterator.m",
+          "sha256": "96cb5db2012d9f09dad4c23e0f58e677112c8d87a586075c22b474f4781b92e6"
+        },
+        {
+          "path": "+casadi/MatrixCommon.m",
+          "sha256": "ae354a5a3f6d1242dd0f9e664ddd71dcc951330d1156c8dc8e52d469b4715f6c"
+        },
+        {
+          "path": "+casadi/MetaCon.m",
+          "sha256": "b10c354612140142a843f8a8fd045a54ad2b7cbabf5608debeee55f8160fe092"
+        },
+        {
+          "path": "+casadi/MetaVar.m",
+          "sha256": "df27c26699794ea609725e6c20ed76667c529a10fe07d8540e1613f89c59400f"
+        },
+        {
+          "path": "+casadi/NEGATED_ALIAS.m",
+          "sha256": "19da8dd7b44bccdc4a7083731cd81eb1bb8c8ead48082008ae18f56e299dd73b"
+        },
+        {
+          "path": "+casadi/NO_ALIAS.m",
+          "sha256": "3df82453983cdfb5345cb3127c61bf582626e45a7b28468118baa2271df9015c"
+        },
+        {
+          "path": "+casadi/NlpBuilder.m",
+          "sha256": "a395bb397ca5d0fe7ac337255a61da82b5f4daa7232d7ccad25b6dbfab31bfec"
+        },
+        {
+          "path": "+casadi/OPTI_DOUBLE_INEQUALITY.m",
+          "sha256": "416d40ef47978f184f706422187a33c74b557bae00fb90cd0b8ace94e2625783"
+        },
+        {
+          "path": "+casadi/OPTI_DUAL_G.m",
+          "sha256": "89d6a5eb75b0ef701bff44701cad8ba28ae49b4a1961af53a31dd3f295e24679"
+        },
+        {
+          "path": "+casadi/OPTI_EQUALITY.m",
+          "sha256": "1a03b01e7d2db7116c1fc567c59e3082f7ea900e76c86fb75091f06c6b558a79"
+        },
+        {
+          "path": "+casadi/OPTI_GENERIC_EQUALITY.m",
+          "sha256": "e630abefe52c69176aca79a4e3fabfedac952dac2bff6a1265f70aca74ca5d9a"
+        },
+        {
+          "path": "+casadi/OPTI_GENERIC_INEQUALITY.m",
+          "sha256": "479c8a5a80bb014b29c8931b41d5d4ca594f1f9b76942dc3b1be84fd91b3d40f"
+        },
+        {
+          "path": "+casadi/OPTI_INEQUALITY.m",
+          "sha256": "748281aee6de5031924e280640cd93031894d7b4c05f0e02a2d514b76054582a"
+        },
+        {
+          "path": "+casadi/OPTI_PAR.m",
+          "sha256": "d3153f55f7f90a9e228e779585755a4e4a70a30dcf102fd0e2b7779a03df0493"
+        },
+        {
+          "path": "+casadi/OPTI_PSD.m",
+          "sha256": "596a32060990e7c2ebcf273cbc375b41784ede9d3532b193d0bc96944b9f4d84"
+        },
+        {
+          "path": "+casadi/OPTI_UNKNOWN.m",
+          "sha256": "89752413f4b1f2abeca55961631fd7bd28f6a54696b7ecbed2fb9c8d96d5b000"
+        },
+        {
+          "path": "+casadi/OPTI_VAR.m",
+          "sha256": "8491015bfcad4cb6b8c0dbcb7706013e37d0ddd029033f2691a256cd6b5ce2f4"
+        },
+        {
+          "path": "+casadi/OP_ACOS.m",
+          "sha256": "8b5a940e91a933d047d9619ff8f7fa3e9179854663eef006fb0f10a1454c27b0"
+        },
+        {
+          "path": "+casadi/OP_ACOSH.m",
+          "sha256": "6b34787180f7ed506c4738f2270772ee4fee56d34081b1127f1dd4ad7d222eb2"
+        },
+        {
+          "path": "+casadi/OP_ADD.m",
+          "sha256": "cd17c1a9ba72da5a8dc17614a9edd87372b68f02972dbadfd9a149743816b986"
+        },
+        {
+          "path": "+casadi/OP_ADDNONZEROS.m",
+          "sha256": "e589bed762f6f12bb481295e7ccbd909a876bfe8a6a14a4841bd379353fc70dd"
+        },
+        {
+          "path": "+casadi/OP_ADD_ELEMENTS.m",
+          "sha256": "ca5037b69a9dff2b16dbbcecf8a1677a604fbceca3c2c3f168b80178960d67bb"
+        },
+        {
+          "path": "+casadi/OP_AND.m",
+          "sha256": "fb37db789272d7087404a4e826f20cfc69dc229ce2c0b1315c1424b1d9791d8e"
+        },
+        {
+          "path": "+casadi/OP_ASIN.m",
+          "sha256": "a7c0e76060b02363342043debdeab2be14e9d439bfe8bbc6677346a07ae2b0ae"
+        },
+        {
+          "path": "+casadi/OP_ASINH.m",
+          "sha256": "81508e4357317e3c13063d6ef53d63fde2dcb460e82d8a2ae60ce5ec2e54d7e7"
+        },
+        {
+          "path": "+casadi/OP_ASSERTION.m",
+          "sha256": "38b2e1f343a18eb3701e7494d742ed7ac56e257937ff0a51c3c5ce99dc1ddf1d"
+        },
+        {
+          "path": "+casadi/OP_ASSIGN.m",
+          "sha256": "7d21879f7f8b93753833365da757e2285264e44edbea6e6dee5400b31ad5a623"
+        },
+        {
+          "path": "+casadi/OP_ATAN.m",
+          "sha256": "c1387f05d2e00a4f23c5051b175a63ee67a73d7a2d5e95c40afd75a6169998e3"
+        },
+        {
+          "path": "+casadi/OP_ATAN2.m",
+          "sha256": "685928ec6ce6e662946c5cfd6bcbcf505dedcc355fd43bf6a24bc917685572bc"
+        },
+        {
+          "path": "+casadi/OP_ATANH.m",
+          "sha256": "43a17bd074902750f93d17393704b6883092e2cd4a1e3a6a156acc62abbdae58"
+        },
+        {
+          "path": "+casadi/OP_BILIN.m",
+          "sha256": "b84fd31d5c40d8346f89745397bd5178011bc61f1f4f407d747d97c4cafc8e8c"
+        },
+        {
+          "path": "+casadi/OP_CALL.m",
+          "sha256": "69364d049ed0ac7f9bb877f4db5a41025407f437bba1d7538d6f1849f697b810"
+        },
+        {
+          "path": "+casadi/OP_CEIL.m",
+          "sha256": "862dc03ac26dbe9e6e651267aa96f18a68f0d2204ebbfb88e178fc95f48a5d39"
+        },
+        {
+          "path": "+casadi/OP_CONST.m",
+          "sha256": "eb22327f4f96fb67d86aa9fb907fc73f531fa0949bdcd4a7779abbacae0410eb"
+        },
+        {
+          "path": "+casadi/OP_CONSTPOW.m",
+          "sha256": "f114151c8cc193af5227f5de7ff6c9c7d7be1da76cff7d73cc3fdf09ecdccf29"
+        },
+        {
+          "path": "+casadi/OP_COPYSIGN.m",
+          "sha256": "06c1d29d9ceaf6e9fec0c3fdcf09f12b3e4a7d4fe446632cb68694bc9909d141"
+        },
+        {
+          "path": "+casadi/OP_COS.m",
+          "sha256": "d5395dac654f01fc9819fcaf80b3e421c2835a78cdf6cacf3e1f29045a48b8f6"
+        },
+        {
+          "path": "+casadi/OP_COSH.m",
+          "sha256": "3c5f921cbbcb7f6d32f3a6cc513c3c2bf94d3b313af52988fe965ad5340d6beb"
+        },
+        {
+          "path": "+casadi/OP_DETERMINANT.m",
+          "sha256": "030a809b18ecceb46fff24c4dc605ab8accc11bf498a70b3a31086badd1c88cf"
+        },
+        {
+          "path": "+casadi/OP_DIAGCAT.m",
+          "sha256": "4dc64d677d554391f240517c39120110524aab35c4fe66f8290a42dd4d41f403"
+        },
+        {
+          "path": "+casadi/OP_DIAGSPLIT.m",
+          "sha256": "ed93770862ff660c02b686edd9c7123229025a3a274e7770db3735c3e1e3e97b"
+        },
+        {
+          "path": "+casadi/OP_DIV.m",
+          "sha256": "332a7e806bb59b71b55194d3049eb845a78458aa07d55e845374290c5c800705"
+        },
+        {
+          "path": "+casadi/OP_DOT.m",
+          "sha256": "68eaf13d6d15b2e7b18d86c4324c317b72dc2c013c0a7a6622d88644f150e26d"
+        },
+        {
+          "path": "+casadi/OP_EINSTEIN.m",
+          "sha256": "b83741e7295c84f5ce1df3b9b120a7f296ce9338ebb8b76bf225c8fe02ba1daf"
+        },
+        {
+          "path": "+casadi/OP_EQ.m",
+          "sha256": "283df5468a49562ec6d3798e6e32d0bb941e7b8a48b0c245ad198de4b0cfcb01"
+        },
+        {
+          "path": "+casadi/OP_ERF.m",
+          "sha256": "6682f2405317ff0bb980b1f307ea08a33d330ab7e528caad790ef7e6f44449bb"
+        },
+        {
+          "path": "+casadi/OP_ERFINV.m",
+          "sha256": "ca2a6593ac77f87e3a1f02262c670df1c66b2d73be5a7044cf1ee277c0e4c681"
+        },
+        {
+          "path": "+casadi/OP_EXP.m",
+          "sha256": "d92a20e65c776dec28b7c953a0c3fae02f40b94fb414f78d2397296b815496c0"
+        },
+        {
+          "path": "+casadi/OP_FABS.m",
+          "sha256": "e1d6871d202ea741f2c6a8db31cf0a3404b2d629ae0ef43bea6f18ffb68929a9"
+        },
+        {
+          "path": "+casadi/OP_FIND.m",
+          "sha256": "ca38bdc94752a4b971e2c9a92f2299a14d1fc12742e38a0bb488745d6c8f4dcd"
+        },
+        {
+          "path": "+casadi/OP_FLOOR.m",
+          "sha256": "6d9c053de97a135d53304d9f430cdafa0651198def9d27d832299d8f6f76bec2"
+        },
+        {
+          "path": "+casadi/OP_FMAX.m",
+          "sha256": "313e9f1cfbf2a90a7b19228d6da93f3ebbf437b25cb908464526a17a6e1a9450"
+        },
+        {
+          "path": "+casadi/OP_FMIN.m",
+          "sha256": "20498ba6ec4f8f945e86b1fd570a139d590cb84dd11e2e6a572c71aa2163d648"
+        },
+        {
+          "path": "+casadi/OP_FMOD.m",
+          "sha256": "3e8f9a36ea9618d0568e0fb8c6c1e3209529baed28f8c84407476f0d1bbd4e1a"
+        },
+        {
+          "path": "+casadi/OP_GETNONZEROS.m",
+          "sha256": "a8c476291ddc4b5235e15eb2420f69ef1ce5495c0d50be4327ea17ddef95f5b9"
+        },
+        {
+          "path": "+casadi/OP_GET_ELEMENTS.m",
+          "sha256": "d23eafa2e1905e21238c262545f711ed1b009912c05bfb9c99fe53251e27c415"
+        },
+        {
+          "path": "+casadi/OP_HORZCAT.m",
+          "sha256": "3286ef2c7e2c2fab7b33ca10271fa4b635f926f172926dd487e6cdbc6f1dcd6c"
+        },
+        {
+          "path": "+casadi/OP_HORZREPMAT.m",
+          "sha256": "5089b3ccf212182bbfabc6ba327a767320a575b001fbc234672b4ad23f2eff09"
+        },
+        {
+          "path": "+casadi/OP_HORZREPSUM.m",
+          "sha256": "723f2898348aa854e17f51ba761eadfef60e34888902647abd9b65b4b2330bdf"
+        },
+        {
+          "path": "+casadi/OP_HORZSPLIT.m",
+          "sha256": "6e5c76e918e6f10897cb595486250b1906a4cf30de9c5ff6f6ea077c7b6b7580"
+        },
+        {
+          "path": "+casadi/OP_IF_ELSE_ZERO.m",
+          "sha256": "a45fa9bc1ab1370cb4d79c3f15b612279d6887ef851955c1c27230ce8c710268"
+        },
+        {
+          "path": "+casadi/OP_INPUT.m",
+          "sha256": "9a08119615b16e3a723a2a5b5f1d6e4f48287e8702247aec4739d43c4f96f2b8"
+        },
+        {
+          "path": "+casadi/OP_INV.m",
+          "sha256": "de822cc70fd0ab676308b062b0705d66aa7dca47a390ba258cbb02d52fc958dc"
+        },
+        {
+          "path": "+casadi/OP_INVERSE.m",
+          "sha256": "82ddc060ba88819af660979ac2d7bfbd80bce5fda1d39a3dc10c91f53cc4ca31"
+        },
+        {
+          "path": "+casadi/OP_LE.m",
+          "sha256": "f59763de7606123f8ec42b4b1ff2ccc40e3a85a5b0d071fc3f0ee5f2bdeab6dd"
+        },
+        {
+          "path": "+casadi/OP_LIFT.m",
+          "sha256": "cf02128e861a38af268b3aa3b5e26ce1acae45d66222b8989181e8a1d2386817"
+        },
+        {
+          "path": "+casadi/OP_LOG.m",
+          "sha256": "36b0e3c6f9d6bd8950e13cb64d9eb39d67b2e9f65ade9c5a0225811a810433d9"
+        },
+        {
+          "path": "+casadi/OP_LT.m",
+          "sha256": "55719cd1dc95075a2f22881b68ab0d900cb7d94918f006e02aea98b7dc9c4346"
+        },
+        {
+          "path": "+casadi/OP_MAP.m",
+          "sha256": "3685aa85b96cdd62f2a54827d8b137fc32532dc83ae42800452c10eb12f7fc62"
+        },
+        {
+          "path": "+casadi/OP_MMAX.m",
+          "sha256": "d2704ffee39e7737471b53349a63097fd79577f51e8f344902d8a8b1337c3836"
+        },
+        {
+          "path": "+casadi/OP_MMIN.m",
+          "sha256": "0a790836601052db45dc3035920ab14a621827744a5c9cf8d32fcd67b04f1102"
+        },
+        {
+          "path": "+casadi/OP_MONITOR.m",
+          "sha256": "106d5a3f7285b153a3d37d2add0f34c3935b87cb263059edd9036061655cfa5c"
+        },
+        {
+          "path": "+casadi/OP_MTIMES.m",
+          "sha256": "b9df30caa1812a5ba450ddbee5c678d23c43f08428130dbbd814ab6c11990f88"
+        },
+        {
+          "path": "+casadi/OP_MUL.m",
+          "sha256": "bbdee772096e6afa62c12fcb9c7ce2c0eb70784214acfaf0a99597a93e714f73"
+        },
+        {
+          "path": "+casadi/OP_NE.m",
+          "sha256": "04ff7ad6641a43d6ae032ec6d115b8b32f00abdaafa9add34aa2cb8d5cacd70f"
+        },
+        {
+          "path": "+casadi/OP_NEG.m",
+          "sha256": "9be993322dd3f9957d32796ba8f8667271e4d00093a2e966fb616182d7836fce"
+        },
+        {
+          "path": "+casadi/OP_NORM1.m",
+          "sha256": "74a99f31a35e15cf9414c50d9b7507c4f78f358a062e5873570fd5a3b2ebd34e"
+        },
+        {
+          "path": "+casadi/OP_NORM2.m",
+          "sha256": "8afbde86ce69235be7a93d5bda0b458ead39ab8a41591ff8349773455d3ed880"
+        },
+        {
+          "path": "+casadi/OP_NORMF.m",
+          "sha256": "d1acc4d600cc132c26ff459860916c0f8fa18f2568642afc869bf5c5e8dfdea5"
+        },
+        {
+          "path": "+casadi/OP_NORMINF.m",
+          "sha256": "e9d2c79030f548b088b390277586d2000c76952b3a2a12e52a470d0259b6f1ba"
+        },
+        {
+          "path": "+casadi/OP_NOT.m",
+          "sha256": "25938bda5fc14fa5288ce23b94fc85ae2e464ff5e2fdb351c9782d2fef19270f"
+        },
+        {
+          "path": "+casadi/OP_OR.m",
+          "sha256": "645dbfedb1bc517aa73e841b8f5b48dc9fe3203db7603c76355557181f90ff56"
+        },
+        {
+          "path": "+casadi/OP_OUTPUT.m",
+          "sha256": "65ea2f1f031cdb48494a46e6d352950af89a853f5981e067941c6f81adb267cd"
+        },
+        {
+          "path": "+casadi/OP_PARAMETER.m",
+          "sha256": "24f3576410537db900948dca83f30b3393cf05027bff84fc8026fefd909bdb0e"
+        },
+        {
+          "path": "+casadi/OP_POW.m",
+          "sha256": "8404c55a8acea67dbad20f70d34ead1b1c6e71350bd330cc83091a255d95e49f"
+        },
+        {
+          "path": "+casadi/OP_PRINTME.m",
+          "sha256": "7920209d91e180e9a0ed8eb609a55b47a0da34f5c1e9ecfa33a855ecc2b4812b"
+        },
+        {
+          "path": "+casadi/OP_PROJECT.m",
+          "sha256": "dd5688f4f265e1bc5ab46af1ceb03c9745191a5dadff2dfab34606302abebd43"
+        },
+        {
+          "path": "+casadi/OP_RANK1.m",
+          "sha256": "753410155a0b834cfb94b40c66f2d2038f4f9716e6a1076b83e9fff2def4873d"
+        },
+        {
+          "path": "+casadi/OP_RESHAPE.m",
+          "sha256": "b24ed4f064a42463b7fe4e26a46e461a478b96f69ab3ba960c56385fff6a0a12"
+        },
+        {
+          "path": "+casadi/OP_SETNONZEROS.m",
+          "sha256": "c45b831a1ec1973ed1e222b7768312b32389d0196fabbfb891f7252c5b1eefda"
+        },
+        {
+          "path": "+casadi/OP_SIGN.m",
+          "sha256": "e18005f0bb3daca0ca4c29f044c1f4874225668840eeb3f8d7d4cdc49bd50a87"
+        },
+        {
+          "path": "+casadi/OP_SIN.m",
+          "sha256": "aca179878f3af8f3e3cf191ec9037aaaf1bedff537638f45a8f924f72bb3985e"
+        },
+        {
+          "path": "+casadi/OP_SINH.m",
+          "sha256": "53a0e573467a1af417d3f95b0fb2b9e09e75dcca4bfcf1793447958b9630fbe9"
+        },
+        {
+          "path": "+casadi/OP_SOLVE.m",
+          "sha256": "a21e206f2ae340e3a1f47b22d467832952febfaec446b9016066825452a06914"
+        },
+        {
+          "path": "+casadi/OP_SQ.m",
+          "sha256": "7d76c95cf39f9e7deeccf970c1941f7812c3f87a33a37bc469564549a3c0ec4d"
+        },
+        {
+          "path": "+casadi/OP_SQRT.m",
+          "sha256": "739cd720a78ff35e29a01dc9dc0bdbb6ec1e6d6e17ba64af10cdc8da2261f371"
+        },
+        {
+          "path": "+casadi/OP_SUB.m",
+          "sha256": "0908c57fc97d8e31b5f0b2e8be986543fba6df82b7a0196ca71adc35fe81b92f"
+        },
+        {
+          "path": "+casadi/OP_SUBASSIGN.m",
+          "sha256": "cfe5f993cf0a8773dbc8498e0082dbea0c091bd01fb285cb0ced159d3cfb6b42"
+        },
+        {
+          "path": "+casadi/OP_SUBREF.m",
+          "sha256": "74c6f1a1e3405e3a7ac4ce73e3ae38f7ab5b8df21fc43f8aee4bd6796703b51c"
+        },
+        {
+          "path": "+casadi/OP_TAN.m",
+          "sha256": "004fab38fa8d0b35de557328cd51e3502eb66f734b888a4123b10e7350866c27"
+        },
+        {
+          "path": "+casadi/OP_TANH.m",
+          "sha256": "9588feb7fe0bee02b27758eadb298f47529233966d1a0bf853d5f3b310019888"
+        },
+        {
+          "path": "+casadi/OP_TRANSPOSE.m",
+          "sha256": "671555b0c6e4b73f3c5da0dacfecb89a0f025bda9b035479f094eb067f54925a"
+        },
+        {
+          "path": "+casadi/OP_TWICE.m",
+          "sha256": "b2b1801b0b3ba4aeaf2f2eae834d89945b295ac0b16ef509beacb4beaae78ed7"
+        },
+        {
+          "path": "+casadi/OP_VERTCAT.m",
+          "sha256": "3d9fe8bf25e74335ff657bdec1d70ad300b0e78f867552a15ee696b0dcc34ebf"
+        },
+        {
+          "path": "+casadi/OP_VERTSPLIT.m",
+          "sha256": "e29ced3aef321ea4455253addf3db48afe8380cf8f1feb6a32ce9df211cb9704"
+        },
+        {
+          "path": "+casadi/OUTPUT.m",
+          "sha256": "f1451f67e8e053b5cd7cc7bc2bfa648057a105b158707a3c1c9416257e0731e5"
+        },
+        {
+          "path": "+casadi/Opti.m",
+          "sha256": "4fa918ac3fa5c01406f5f59029666eee1690455ba4bd693a25f1f24657d160ba"
+        },
+        {
+          "path": "+casadi/OptiAdvanced.m",
+          "sha256": "3d1e3b9e4cf3214453de89abf15d936ebfaa8b1ae07b0c77dcceb5466638b1b9"
+        },
+        {
+          "path": "+casadi/OptiCallback.m",
+          "sha256": "628a60a9b890e1d3eb70b657895faa74e535664cfeaa573d909c5762f0ed2561"
+        },
+        {
+          "path": "+casadi/OptiCallbackHelper.m",
+          "sha256": "fa77e6d9a82cefc1141434b9030417bdd61ecfb6df96aa872dab58586908ccd9"
+        },
+        {
+          "path": "+casadi/OptiSol.m",
+          "sha256": "3f98dd7c05b738077baef6d86c9ae6cf0d2f560beab053c12a9a928013b3f37c"
+        },
+        {
+          "path": "+casadi/PARAMETER.m",
+          "sha256": "80a9fdce329ac9a722ba08c665e631d1d36971f22b2f6544a8bd144bb378402d"
+        },
+        {
+          "path": "+casadi/PrintableCommon.m",
+          "sha256": "219bae3192a0414e59280e00c9555557362f544f4bcfba30f08a84d4d0b6dbf1"
+        },
+        {
+          "path": "+casadi/RADAU.m",
+          "sha256": "d5cd57b754f18ed2e7c13f750b1771bdcb21c98e86d39da936ddb3b1f1508316"
+        },
+        {
+          "path": "+casadi/SWIG_IND1.m",
+          "sha256": "595b9ff652c176773e183f5c9a5392d1b8f40c3d191730a5034ac9609efba633"
+        },
+        {
+          "path": "+casadi/SX.m",
+          "sha256": "8b35a8771b8c39a09cbe9898259891ad47cddb420a060d5c0d4ac83f8ec55b58"
+        },
+        {
+          "path": "+casadi/SXElem.m",
+          "sha256": "c9d35025106f2e4374b5b658a3d4a886153a1028f2a5f927c3d87711c52d0604"
+        },
+        {
+          "path": "+casadi/SharedObject.m",
+          "sha256": "8b4708803f5d12a75081365f1b726d9c4c313870d233c3f12a93fc7e7d624d28"
+        },
+        {
+          "path": "+casadi/Slice.m",
+          "sha256": "c1ee3f7a334ae8a0ee1faa9ba65ece38ebf8cb244eb37a39d1dd75ece0ee97e3"
+        },
+        {
+          "path": "+casadi/Sparsity.m",
+          "sha256": "258eaf0f4bd3add1b61e29f77264271b43f74cc61fb8b5977e4faae19e488424"
+        },
+        {
+          "path": "+casadi/SparsityInterfaceCommon.m",
+          "sha256": "21dfffe435708815c6f2f65b2b7a38869e7ccf6389ecb102926ae97310dd1937"
+        },
+        {
+          "path": "+casadi/Variable.m",
+          "sha256": "290083cfd215da52f79737d963a6e05b918078d3322cd18628771bc1ac399f45"
+        },
+        {
+          "path": "+casadi/WeakRef.m",
+          "sha256": "4b353d188ce245acd8c8fad9e4a8136220c8ad535597005a020a80706efa2c94"
+        },
+        {
+          "path": "+casadi/XmlFile.m",
+          "sha256": "b4badad55854b00cc5652bd47c7c1132e2e3e91eea846ede7ced344fdb54a1f6"
+        },
+        {
+          "path": "+casadi/blockcat.m",
+          "sha256": "6887993d6b8dc8ac390a94cd5e359d2e9f90693e47bac5a627a720c294481233"
+        },
+        {
+          "path": "+casadi/collocation_interpolators.m",
+          "sha256": "923c9c6b76c867afd6d82dbb8b74dac9c0f9e2be8ea4d7c5f39d7ede1da86a5f"
+        },
+        {
+          "path": "+casadi/collocation_points.m",
+          "sha256": "6ccc7e150b2acc57ca5b716ac64d728d3aa6b4cf0a8bd56087e3ec719c52e5de"
+        },
+        {
+          "path": "+casadi/complement.m",
+          "sha256": "dfc5895135f6dabf560a173a46322ad59b0dc7fb808c2f2a1e56cbf5fed2458a"
+        },
+        {
+          "path": "+casadi/conic.m",
+          "sha256": "08466044b8f96cb01c6be9c18cc982721424006f51a967cbcbe3446c7d3e50a6"
+        },
+        {
+          "path": "+casadi/conic_debug.m",
+          "sha256": "b6e1956cd0d70d62ea9608adf5ef926f951f9e99aa77f4ece922013832e7c293"
+        },
+        {
+          "path": "+casadi/conic_in.m",
+          "sha256": "519b6b49965a1d361871b142142296ffd6e9611aed12fff733959f9446ae3597"
+        },
+        {
+          "path": "+casadi/conic_n_in.m",
+          "sha256": "9ff9f55ee6d3e7efa081524c29214bf79ce6046c9bb459f675e25b8476fa9cff"
+        },
+        {
+          "path": "+casadi/conic_n_out.m",
+          "sha256": "6d9ebcc887df08bc2cad5e55d91bcc404eced6da1fdf1285e5707024f0588c83"
+        },
+        {
+          "path": "+casadi/conic_option_info.m",
+          "sha256": "bf831d3a59b6d04df009a0d1bfe3cda46b453f44c85c30d772927d4538218743"
+        },
+        {
+          "path": "+casadi/conic_option_type.m",
+          "sha256": "52e28336c3f1ff8a1ac867cd33fc8424650de86ee2b0c421b2f7d3b90d806f25"
+        },
+        {
+          "path": "+casadi/conic_options.m",
+          "sha256": "a161b1901c81cb84f683154b0be57766fcaa6930e3c701840f10e11236f9254f"
+        },
+        {
+          "path": "+casadi/conic_out.m",
+          "sha256": "f4446682a9f39a29bc7a9d852c2921f0345615001f3ebf73ed1ff084548ca700"
+        },
+        {
+          "path": "+casadi/doc_conic.m",
+          "sha256": "e0dd794a3e454c633cac559dd5c671a6da0579902cf77986976d6ac75a7fc0b6"
+        },
+        {
+          "path": "+casadi/doc_dple.m",
+          "sha256": "960d85171e9bad8bf2118cdd971480fdc061fb9e5dd8fa2c99e15d0ea1cae4df"
+        },
+        {
+          "path": "+casadi/doc_expm.m",
+          "sha256": "72a05f23251507094920c12d2bd962ab6a6604cd63c6853cba40338c2f3f4f4b"
+        },
+        {
+          "path": "+casadi/doc_integrator.m",
+          "sha256": "b1cc3990d9fabbd02d31cba19115433ce5ae8a5ad191e00657a3c3276eda410e"
+        },
+        {
+          "path": "+casadi/doc_interpolant.m",
+          "sha256": "ee2f60e06fae491f881be8516c45c0902a42a3e8b332ab096adce88152ecc67e"
+        },
+        {
+          "path": "+casadi/doc_linsol.m",
+          "sha256": "eb31cac1df123a73fd6c29a0123d7ccb1e3f3bbd51c932f22f84119860062775"
+        },
+        {
+          "path": "+casadi/doc_nlpsol.m",
+          "sha256": "ef2309900b2fb578199d573af7c5254a18c7d4ec86be4de880f7a4c5007c124f"
+        },
+        {
+          "path": "+casadi/doc_rootfinder.m",
+          "sha256": "f05014e91d1e5da8bd515bdcd9fa8685586dfbf2cee121f52a1c0333cca4c5b7"
+        },
+        {
+          "path": "+casadi/dple_in.m",
+          "sha256": "a49c15466acbea435dd1278a0bd8f889dc10a8b4932436e0cd06de789f0f216d"
+        },
+        {
+          "path": "+casadi/dple_n_in.m",
+          "sha256": "4be4c9df5839206add302a799a07875feeb28875e0d2e08627350230cea02a4f"
+        },
+        {
+          "path": "+casadi/dple_n_out.m",
+          "sha256": "75bebb5b0a88c3a5750ebd821c6fcf02fa733cdc9ee3b880abb17ef3f423415a"
+        },
+        {
+          "path": "+casadi/dple_out.m",
+          "sha256": "f48fafa06a9f365ec97080ee064efddcb8733091dbc9fda471b0ab649020c271"
+        },
+        {
+          "path": "+casadi/dplesol.m",
+          "sha256": "01c5cf1a93ac7d6f61471237f77710448e006d972ba29cbe2b2f2d213edb809b"
+        },
+        {
+          "path": "+casadi/expm_n_in.m",
+          "sha256": "9d2c138261d32f0465934baeb11808c6370af995f1d73aa8bf35b42e9c619dfe"
+        },
+        {
+          "path": "+casadi/expm_n_out.m",
+          "sha256": "6ef111539a6b8f1470801161ccea4deec83a4e1ed5cdcdc6804fe57afdd47a8f"
+        },
+        {
+          "path": "+casadi/expmsol.m",
+          "sha256": "5af9c365dcc459ea8218534a70d5d225621fcc7ef154e9528241459a8e5913db"
+        },
+        {
+          "path": "+casadi/external.m",
+          "sha256": "774ddb77126e8831a6c8f9b60d82f957389a62ee67f4b533909daa768a3059d6"
+        },
+        {
+          "path": "+casadi/forward.m",
+          "sha256": "acd16fcbbfc0f99fc138dd694120fefeb50866ff047274e282e4580640e760f8"
+        },
+        {
+          "path": "+casadi/graph_substitute.m",
+          "sha256": "1af953f598938d3e4b2a1efaa81a5ea6e1714db8a9b955dc5eb80d22fed15733"
+        },
+        {
+          "path": "+casadi/has_conic.m",
+          "sha256": "c457c0be64cffed425e862a6778e00daeea3b4f6809f7890e474eb5ee77ab46b"
+        },
+        {
+          "path": "+casadi/has_dple.m",
+          "sha256": "40c52da3c9bed60462609cdfb6eab650fe59121528480eb4182b4e59da1a089e"
+        },
+        {
+          "path": "+casadi/has_expm.m",
+          "sha256": "bf24f53b834c48a0ca4803ec96cf45e4b10bdf6bc5faccaa474b9eca1c83bad0"
+        },
+        {
+          "path": "+casadi/has_integrator.m",
+          "sha256": "3d7d89f2690e96cd05f554a4695ea7a5293b5f92dac46ca8842372f45127b35f"
+        },
+        {
+          "path": "+casadi/has_interpolant.m",
+          "sha256": "06adb7c9687930f51f50caeb4cdfa01b1649ce88447225f945e786a9e2fc41f3"
+        },
+        {
+          "path": "+casadi/has_linsol.m",
+          "sha256": "d6808cd082dd8a165f9ff83a9e4d1286c2f1d513a325fa9853d96d083365f9a7"
+        },
+        {
+          "path": "+casadi/has_nlpsol.m",
+          "sha256": "64ef2098b0cff08c7333ea469474e6a3f9adab2dc001adff4105e300e42bf80b"
+        },
+        {
+          "path": "+casadi/has_rootfinder.m",
+          "sha256": "8ff0d0ffb14598225eea0fc74c21f2e1b1390e6c7f6793c16cea514ac4159722"
+        },
+        {
+          "path": "+casadi/hash_combine.m",
+          "sha256": "fd9d21b3c931a128d8daba9f85908e3be1bfe0df9690e8b17076215cff8ce2a7"
+        },
+        {
+          "path": "+casadi/hash_sparsity.m",
+          "sha256": "3108960fb0f99b39a44ec4d34c5d6045cbb45128fd66ba51fddfa601c3682190"
+        },
+        {
+          "path": "+casadi/index_interp1d.m",
+          "sha256": "e394b34084a98aea9951100973f39a3b4006118fa277ca94e67f801eefa802fd"
+        },
+        {
+          "path": "+casadi/integrator.m",
+          "sha256": "6fdac8e1358c1abadae96945b1a9e46859af4f76eb0300f8ef2c962c98c4da60"
+        },
+        {
+          "path": "+casadi/integrator_in.m",
+          "sha256": "61570137b32f7f9a7ea9600d7f73a31a29a0967d2726b9a3529788fe8598c597"
+        },
+        {
+          "path": "+casadi/integrator_n_in.m",
+          "sha256": "438d6af63470689893ec1917eb72ee3f6abb4c53558c55da2ca12f793e9e4568"
+        },
+        {
+          "path": "+casadi/integrator_n_out.m",
+          "sha256": "83e02da860b04cde0da121c3f55400004ed46340abfdc7c3a6eb0c094b57ca12"
+        },
+        {
+          "path": "+casadi/integrator_out.m",
+          "sha256": "451cbfe7d24a7724a6c171c214bfd89db0f47e97fdb68947051e1c094db928e8"
+        },
+        {
+          "path": "+casadi/interpolant.m",
+          "sha256": "006fe815239139d94e8399f296e6744d7fb2446c8fd267dee1c5656bd39809bb"
+        },
+        {
+          "path": "+casadi/is_slice.m",
+          "sha256": "abe3f6582da2b8c1f533bc4d7e77e16e424a04b1426738b18e8aa6bda371ce93"
+        },
+        {
+          "path": "+casadi/is_slice2.m",
+          "sha256": "2a80d2212484c55b65f01d7b24da147b759c188fc33c4d0e2622eb7347f3696e"
+        },
+        {
+          "path": "+casadi/load_conic.m",
+          "sha256": "124ffbbe5dd44a57b4e6b2fc1d37706f0a8fd65c7bcc71e5608178c7efcc3881"
+        },
+        {
+          "path": "+casadi/load_dple.m",
+          "sha256": "27da825a8295c9cce8dbd10da6a0266cb62feca9ab0e29f546a93ee558cadf5d"
+        },
+        {
+          "path": "+casadi/load_expm.m",
+          "sha256": "05cba9131f7b76e3f4849ae2bcb995da4653f98eb0079547e365af5381894d73"
+        },
+        {
+          "path": "+casadi/load_integrator.m",
+          "sha256": "d379557b4cd501975573f1d21b77d1eb7aa1a822fcbeb2f61101defff5a4d282"
+        },
+        {
+          "path": "+casadi/load_interpolant.m",
+          "sha256": "15eb1258bc61e5b6c8af374c24df0dd11273aaf1868f3255fdddbf244482b6cd"
+        },
+        {
+          "path": "+casadi/load_linsol.m",
+          "sha256": "648b7772f0fc3482e4f27d9dddbed60e807d0928ba610f9e5492f677ae20f073"
+        },
+        {
+          "path": "+casadi/load_nlpsol.m",
+          "sha256": "9964f1a492406f333949a49eccb492d6d1dbca8c4bf9520e0fef5337ec1f5647"
+        },
+        {
+          "path": "+casadi/load_rootfinder.m",
+          "sha256": "63b163a4c7a64d00ce38daf1011046c9e69b81da0278479c869e1b60a32d2777"
+        },
+        {
+          "path": "+casadi/lookupvector.m",
+          "sha256": "5570405e39a566c8d99aa9bcf1a630444bec02ecde558d51482397d4a9c6479b"
+        },
+        {
+          "path": "+casadi/matrix_expand.m",
+          "sha256": "f9318eae5418b1d39526050d218970fa63458e3c348567588c7b163b3722ad72"
+        },
+        {
+          "path": "+casadi/nlpsol.m",
+          "sha256": "6c04674be06769f04d702ecbda14ee0d439dbb24e2d13003df823a19d9a87555"
+        },
+        {
+          "path": "+casadi/nlpsol_default_in.m",
+          "sha256": "3b93dff58ae1ffa18dd4fb6f4564217cebd83113c2769d9eab36ea596fc77481"
+        },
+        {
+          "path": "+casadi/nlpsol_in.m",
+          "sha256": "cac22fb2b8ebbc66b7abe352b6876a5c49030407ec3aa13244f50d5ca29f8b66"
+        },
+        {
+          "path": "+casadi/nlpsol_n_in.m",
+          "sha256": "6690a0389d3a2753d48246f2cc9e691eebe29cfce59a13c9827417d19995e8ba"
+        },
+        {
+          "path": "+casadi/nlpsol_n_out.m",
+          "sha256": "0577869db85f0ed166ae05199308c3261e1721903fd3675fcdd529e8d2d6d373"
+        },
+        {
+          "path": "+casadi/nlpsol_option_info.m",
+          "sha256": "bf9b039ba49dad94749f980844bd46c600b6b53fcb9468065be7b9dac4eed7d3"
+        },
+        {
+          "path": "+casadi/nlpsol_option_type.m",
+          "sha256": "6af1e25b46a03dfe9bca4f0db260a7762cb8d5bfcd1b78735217c247f0b112d1"
+        },
+        {
+          "path": "+casadi/nlpsol_options.m",
+          "sha256": "6796234086d6bd352046324905c4de8df106b013d0db0b22de52f0e0924b85e7"
+        },
+        {
+          "path": "+casadi/nlpsol_out.m",
+          "sha256": "f626b36fc2e57837bb2d7881392843608d80ec4034cdd1200506a65c6fbfc974"
+        },
+        {
+          "path": "+casadi/qpsol.m",
+          "sha256": "ed8728fba1c619e7246cf682ee6ecfe64a1fbc193a29ac4e338bf26d1a1ea963"
+        },
+        {
+          "path": "+casadi/reverse.m",
+          "sha256": "c363ae5b6c69c61b1d8bb94b78ac9b00330f25176788b72b781a3abf1e2a423c"
+        },
+        {
+          "path": "+casadi/rootfinder.m",
+          "sha256": "8b91906e379816d32640e61f65623ee26a7b09192472605f70b1f281e2ca1396"
+        },
+        {
+          "path": "+casadi/rootfinder_in.m",
+          "sha256": "055f690d399b413c8e6248f8d1ae37a0ea36832a914eb04a65179111241d5e57"
+        },
+        {
+          "path": "+casadi/rootfinder_n_in.m",
+          "sha256": "976bb34b056bd1ba6134c4377d7791ffb43dacfe49b119f7ab9da0683769760c"
+        },
+        {
+          "path": "+casadi/rootfinder_n_out.m",
+          "sha256": "280fb12b200ed06df9f670b631f7dd1f1f1df122aa593b6a568e6e7926bc1ed2"
+        },
+        {
+          "path": "+casadi/rootfinder_option_info.m",
+          "sha256": "5d748470848491972080d99725c51bf2cbfad867c0fbaca66c37f3c88e4eeb86"
+        },
+        {
+          "path": "+casadi/rootfinder_option_type.m",
+          "sha256": "2f89445154c5c8402b2b1edcf92514952872a0bd753f58f48e7200f832759116"
+        },
+        {
+          "path": "+casadi/rootfinder_options.m",
+          "sha256": "dd732b4a733652431cf1b135c79fcde2389c1c648730930eabb98ae87920281a"
+        },
+        {
+          "path": "+casadi/rootfinder_out.m",
+          "sha256": "9b358b069935f0bdd9281c2fdee39099a81e0388a21f1a0bd0142dc426641b36"
+        },
+        {
+          "path": "+casadi/shared.m",
+          "sha256": "c1bc30eba008839c37c5f482b647a2f6680d282805efce72974a2dfe2f200d4c"
+        },
+        {
+          "path": "+casadi/simpleIRK.m",
+          "sha256": "d313654201c7c53c9fef749478369b1702023e30b4371bf250eef5ae740790c0"
+        },
+        {
+          "path": "+casadi/simpleIntegrator.m",
+          "sha256": "5ad29b59a5660ff1121c25bae2b61dae641e8c5c4e055254a8722598edc3e190"
+        },
+        {
+          "path": "+casadi/simpleRK.m",
+          "sha256": "e8fc0234730a15c6336dc042b542101913585d7195819ec25d39c752a3fca818"
+        },
+        {
+          "path": "+casadi/substitute.m",
+          "sha256": "5e5aeb82c3496722ea0be86ee9237cb542bf116bd9124c168e19d11049385d44"
+        },
+        {
+          "path": "+casadi/substitute_inplace.m",
+          "sha256": "b11ea43167d8d06d4a3df76b4ae166e721d79a382d4118d36f38896e5b65b105"
+        },
+        {
+          "path": "+casadi/temporary_file.m",
+          "sha256": "0d514df47debf59059914e29d866a2b902811639dc8e81897499d536ed13fa7a"
+        },
+        {
+          "path": "+casadi/to_slice.m",
+          "sha256": "88e291338bdb123268f1db8433bb12facba2aa09385dc7ef4eeec3708e46c267"
+        },
+        {
+          "path": "+casadi/to_slice2.m",
+          "sha256": "0d14bc3f999e118ef143a1cdcd272f0ce0879e3edac61832e881d39ec2023225"
+        },
+        {
+          "path": "SwigGet.m",
+          "sha256": "e676d619089a84040c35c6be831b3294d875a188c6d54ec7023b49878e205e8e"
+        },
+        {
+          "path": "SwigMem.m",
+          "sha256": "d799e411438091f93d5140768e7c2de4ce180ae6889d2c956d201b8de1268478"
+        },
+        {
+          "path": "SwigRef.m",
+          "sha256": "3c03668f840e8414f6d51d72dcc027d9b04fdd230462f265ae833a6e39e5cf1d"
+        },
+        {
+          "path": "SwigStorage.m",
+          "sha256": "88f132b40ae69d9732ea6bdefa4bd98e4dc4d52dc74a9fc4d0e483f5878d9a13"
+        },
+        {
+          "path": "SwigType.m",
+          "sha256": "6c387c759a0feb066f2e37aa4abc363f0ce48ad18d411a59ccb621e3bf1acf99"
+        },
+        {
+          "path": "libcasadi.dll",
+          "sha256": "1554f63e80f88348e6658e452ddf1f0a81296b0f0c6644241134f33e6b19e44f"
+        },
+        {
+          "path": "libcasadi_nlpsol_ipopt.dll",
+          "sha256": "a1d27e20ed99f8f62edcf1ee7f250a0a8daba13053adb0b55d9b2f889355d90e"
+        },
+        {
+          "path": "libgcc_s_seh-1.dll",
+          "sha256": "3c8e18829b540547a67c5182bfe18504c5845b59d007f414d8489e9d7098715c"
+        },
+        {
+          "path": "libgfortran-3.dll",
+          "sha256": "9ae13f84612d152084da7983b3b9c3904c889847a16cd3bc92e3491ae1ca5c5e"
+        },
+        {
+          "path": "libgomp-1.dll",
+          "sha256": "7a011d906fc1eb84102eaac71f6a616f526618d2459e6dffbcb9027c1dd84e0f"
+        },
+        {
+          "path": "libquadmath-0.dll",
+          "sha256": "66a04cd2a95cda916951cd2be099ad9ea1934cd0f0ebb4de6bdef1e0cda04800"
+        },
+        {
+          "path": "libssp-0.dll",
+          "sha256": "7e871c7961772ce51c59f68d473bdf9facc5c2e8a7b3eaf4e12d282fc971dcf9"
+        },
+        {
+          "path": "libstdc++-6.dll",
+          "sha256": "caaaa50b424fa02079534d9fcf04054ab1bc2b01c55a3dfa001d45a0539c9060"
+        },
+        {
+          "path": "libwinpthread-1.dll",
+          "sha256": "f59b804babd80131c6f1b83b38bedefe0e3a9dafdd460269a0d7cc5f2317a48f"
+        },
+        {
+          "path": "returntypes.m",
+          "sha256": "6fe6499b76975444e07f83e8a2b01be27c0b6859e06a8ea2413753ce0e2e5536"
+        },
+        {
+          "path": "returntypes_call.m",
+          "sha256": "8eac778b2d17b7e76660896470b78e44ce59b07110d5fcea615686971b1cabf2"
+        },
+        {
+          "path": "swig_typename_convertor_matlab2cpp.m",
+          "sha256": "95885f461654a2cd20d052e9f2c35e0edad498272bcae46b323bd865c0b9f43f"
+        }
+      ],
+      "ipopt_binary_files": {
+        "path": "libcasadi_nlpsol_ipopt.dll",
+        "sha256": "a1d27e20ed99f8f62edcf1ee7f250a0a8daba13053adb0b55d9b2f889355d90e"
+      }
+    },
+    "environment_fingerprint": "5528ea2c859277416692e7359cdc64ad9c7a7e33168ea2103996c1d362c60808",
+    "source_status": "verified_record",
+    "captured_utc": "2026-10-08T09:14:10.497Z"
+  }
+}

@@ -1,0 +1,15 @@
+% 定位：thm:wellposed 的证明。
+% 替换原“若 $c$ 有界，则 ... 非负一致连续且可积的函数趋于零。”两句；
+% 保留后面的反证说明。不要新增 s_0+i_0<=1 假设。
+若 $c$ 全局本质有界，记
+$C=\|c\|_{L^\infty(0,\infty)}$、$M=s_0+i_0$。
+由 $0<s(t),i(t)\le M$ 及状态方程，
+\[
+ |\dot i(t)|
+ \le \bigl(pc(t)s(t)+\gamma\bigr)i(t)
+ \le (pCM+\gamma)M
+ \qquad\text{几乎处处}.
+\]
+由于 $i$ 在每个有限区间上绝对连续，上式说明 $i$ 在整个
+$[0,\infty)$ 上为 Lipschitz 函数，因而一致连续。
+再结合非负性与式\eqref{eq:i-integrable}，得到 $i(t)\to0$。

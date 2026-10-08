@@ -1,0 +1,11 @@
+% 放入导言区，紧接原有 \newif\ifNumResultsVerified 之后。
+% 此处只定义新宏；不得在这里为空定义原本由 providecommand 生成的旧宏。
+\newif\ifNumRobustnessComplete
+\NumRobustnessCompletefalse
+\newcommand{\NumRobustnessStatement}{}
+
+% 导出器必须在现有 AUTO-GENERATED NUMERICAL RESULTS 块内使用：
+% \NumRobustnessCompletetrue 或 \NumRobustnessCompletefalse
+% \renewcommand{\NumRobustnessStatement}{由实际结果生成的摘要}
+% 不可对本文件已定义的新宏再次使用 \providecommand，否则空定义不会被覆盖。
+% 每次导出都重写开关和宏；缺失/失败不能沿用上一次的“通过”文本。

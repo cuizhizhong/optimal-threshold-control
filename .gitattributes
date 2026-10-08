@@ -1,0 +1,3 @@
+# 保留本轮实际运行日志的原始字节，不对其自动转换换行。
+tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_*.log -text
+tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_*.log -text

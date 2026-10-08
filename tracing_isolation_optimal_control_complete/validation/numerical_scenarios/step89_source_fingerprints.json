@@ -1,0 +1,111 @@
+{
+  "solve": {
+    "algorithm": "sha256",
+    "files": [
+      {
+        "path": "prepare_openocl_case.m",
+        "sha256": "c0a0683d9aa18860e6a090e8cf8e35437a8bec7406f23addeb3ffea8f478fc28"
+      },
+      {
+        "path": "revision_initial_guess.m",
+        "sha256": "103bb1840e491c8c247385ec6fee2ebdeecb5441560db7e7f8ffe02de35f2d34"
+      },
+      {
+        "path": "solve_openocl_case.m",
+        "sha256": "2d6eb9bcc7766be66af9eec450560579af8217b340e9fe11faf03b16a82257e0"
+      },
+      {
+        "path": "validate_numerical_run_grid.m",
+        "sha256": "70489fabe7f517e15f32dfed3df733b5dccdebda38c5835e377fb110dd8e57dd"
+      },
+      {
+        "path": "numerical_solver_diagnostics.m",
+        "sha256": "bc498c58ed80a8d317a4ec32b516526084d0b4aa64852ea21d088548401fa799"
+      },
+      {
+        "path": "build_theory_geometry.m",
+        "sha256": "3750c6188aa9ddd40e3cb3a84fccd154274a5fb681d647c25b8f065e5c5f9fcc"
+      },
+      {
+        "path": "analytic_reference.m",
+        "sha256": "80dad0df64d702eda96a745d195891ca878c33569e59835c5684b659c83ae721"
+      },
+      {
+        "path": "classify_initial_state.m",
+        "sha256": "4933779acb62342f75bf874fef8e06c543f859c1d1f880575a3c5766e9e3f629"
+      },
+      {
+        "path": "safe_peak.m",
+        "sha256": "c813849393aad2470f2216eb78a90ddefdc514a5c63e48312fa9845c2a130a08"
+      }
+    ],
+    "hash": "cd7e6297bb05f11028fe6f8f543ae8a9f5bd8c41d4f98346a0dc7b7cd09cff49"
+  },
+  "assessment": {
+    "algorithm": "sha256",
+    "files": [
+      {
+        "path": "assess_numerical_case.m",
+        "sha256": "a90a9202dbb597e4991bba57bb5e953fceb73cacf72deebf4b969bdcc7776400"
+      },
+      {
+        "path": "tail_diagnostic.m",
+        "sha256": "e18257889211a327fa175d5da941b51da96c9c6421d3d38de5f816e5c7fc2094"
+      },
+      {
+        "path": "capacity_exit_transition.m",
+        "sha256": "eb01395da3d72a7e12e892ae5b1fe00a3dc36d9d2a863718eee2039df999de45"
+      },
+      {
+        "path": "detect_numerical_events.m",
+        "sha256": "b6bcd721a68acd668cbd1c4687e5fa390b2ba15b71134825893c5112639d53a3"
+      },
+      {
+        "path": "compare_numerical_events.m",
+        "sha256": "7b0d1268e94a12a47290a9603771b4f0d073dc22e7511cd9dc67c672e174c4aa"
+      },
+      {
+        "path": "validate_numerical_run_grid.m",
+        "sha256": "70489fabe7f517e15f32dfed3df733b5dccdebda38c5835e377fb110dd8e57dd"
+      },
+      {
+        "path": "numerical_run_consistency.m",
+        "sha256": "7c00a5b0e256263fcfd99bbc758332902243ee41ff998cfd5030ed3f8a879d4a"
+      },
+      {
+        "path": "numerical_sha256.m",
+        "sha256": "a162d6e3e7439b66346321193feaf3e011f637cace13af914c8336bb67a597a4"
+      },
+      {
+        "path": "build_theory_geometry.m",
+        "sha256": "3750c6188aa9ddd40e3cb3a84fccd154274a5fb681d647c25b8f065e5c5f9fcc"
+      },
+      {
+        "path": "analytic_reference.m",
+        "sha256": "80dad0df64d702eda96a745d195891ca878c33569e59835c5684b659c83ae721"
+      },
+      {
+        "path": "classify_initial_state.m",
+        "sha256": "4933779acb62342f75bf874fef8e06c543f859c1d1f880575a3c5766e9e3f629"
+      },
+      {
+        "path": "safe_peak.m",
+        "sha256": "c813849393aad2470f2216eb78a90ddefdc514a5c63e48312fa9845c2a130a08"
+      },
+      {
+        "path": "assess_saved_numerical_run.m",
+        "sha256": "f9a14bbe522315be5a3902890053aa7d26da7fef92ccf2a2b6fb3db5502e2ac8"
+      },
+      {
+        "path": "numerical_assessment_spec.m",
+        "sha256": "08799bcb0d12824b8a64ea90e11eea8fd0d68c3a9e5b3136121b103d62b8d49b"
+      },
+      {
+        "path": "numerical_assessment_view.m",
+        "sha256": "b43cb3c87bc08a1dd7e3a1600da3140accab4736af74c297241e0000b8131c0b"
+      }
+    ],
+    "hash": "908dc50df401fe346160ba65bf290c0ecde8bcecd5d53c1b45ed505d830cc6b8"
+  },
+  "protocol_hash": "537248f24a972508866e476433ab446a2cdda0f553fc70b66a32edb73f657a3b"
+}

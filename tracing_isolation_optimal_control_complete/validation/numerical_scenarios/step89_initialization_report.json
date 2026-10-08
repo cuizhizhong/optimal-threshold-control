@@ -1,0 +1,4078 @@
+{
+  "schema_version": 1,
+  "batch_id": "batch_4454468110a2474899e18044727d08de",
+  "mode": "initialization",
+  "force": false,
+  "status": "completed",
+  "started_utc": "2026-10-08T09:14:07.853Z",
+  "finished_utc": "2026-10-08T09:31:26.211Z",
+  "manifest_file": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\data\\numerical_scenarios\\revision_checks\\batch_4454468110a2474899e18044727d08de_manifest.json",
+  "report_file": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\data\\numerical_scenarios\\revision_checks\\batch_4454468110a2474899e18044727d08de_report.json",
+  "protocol_hash": "537248f24a972508866e476433ab446a2cdda0f553fc70b66a32edb73f657a3b",
+  "solve_code_hash": "cd7e6297bb05f11028fe6f8f543ae8a9f5bd8c41d4f98346a0dc7b7cd09cff49",
+  "default_unique_count": 35,
+  "requested_unique_count": 10,
+  "attempted_count": 10,
+  "solver_calls": 10,
+  "cache_hits": 0,
+  "assessment_calls": 10,
+  "successful_count": 10,
+  "failed_count": 0,
+  "duplicate_reference_count": 0,
+  "numeric_pass_count": 10,
+  "agreement_pass_count": 10,
+  "selection_published": false,
+  "protocol_complete": true,
+  "consistency_pass": true,
+  "rows": [
+    {
+      "configuration_id": "C06",
+      "case_id": "E1",
+      "groups": [
+        "initialization-constant"
+      ],
+      "run_id": "run_4dfaa3539e6241ae8d3d7cd4028c667a",
+      "solve_fingerprint": "8fbcd77f99af7bcb19595799df3ed674baa6197eefdda7b8f07700584b1e6650",
+      "status": "completed",
+      "success": true,
+      "return_status": "Solve_Succeeded",
+      "cache_hit": false,
+      "solver_called": true,
+      "numeric_pass": true,
+      "agreement_pass": true,
+      "J_openocl": 0.4162050090972832,
+      "observed_structure": "0 -> 1 -> 0",
+      "assessment_status": "assessed"
+    },
+    {
+      "configuration_id": "C07",
+      "case_id": "E2",
+      "groups": [
+        "initialization-constant"
+      ],
+      "run_id": "run_54024cb1a950459e8007f63ef5e9c6ff",
+      "solve_fingerprint": "d7244332410249cca78a064579e477fb287869c5ee03e49276b7a3d889448331",
+      "status": "completed",
+      "success": true,
+      "return_status": "Solve_Succeeded",
+      "cache_hit": false,
+      "solver_called": true,
+      "numeric_pass": true,
+      "agreement_pass": true,
+      "J_openocl": 1.5295233613978647,
+      "observed_structure": "0 -> q_B -> 1 -> 0",
+      "assessment_status": "assessed"
+    },
+    {
+      "configuration_id": "C08",
+      "case_id": "E3",
+      "groups": [
+        "initialization-constant"
+      ],
+      "run_id": "run_02a89c2481494a1493fe489ad382279f",
+      "solve_fingerprint": "99cd41a2cfc64e334d0490e00a730b4d6c6e5c6ea92c6bfa4252554df4e4689c",
+      "status": "completed",
+      "success": true,
+      "return_status": "Solve_Succeeded",
+      "cache_hit": false,
+      "solver_called": true,
+      "numeric_pass": true,
+      "agreement_pass": true,
+      "J_openocl": 0.43399851635235365,
+      "observed_structure": "1 -> 0",
+      "assessment_status": "assessed"
+    },
+    {
+      "configuration_id": "C09",
+      "case_id": "E4",
+      "groups": [
+        "initialization-constant"
+      ],
+      "run_id": "run_92300dbeb73841b3afa940c8ec99ae44",
+      "solve_fingerprint": "c3bdf53f9fff5f30c47b7ec40739eb132f0a544e5e9e040a678da3d48089fbe1",
+      "status": "completed",
+      "success": true,
+      "return_status": "Solve_Succeeded",
+      "cache_hit": false,
+      "solver_called": true,
+      "numeric_pass": true,
+      "agreement_pass": true,
+      "J_openocl": 1.2688310955840454,
+      "observed_structure": "q_B -> 1 -> 0",
+      "assessment_status": "assessed"
+    },
+    {
+      "configuration_id": "C10",
+      "case_id": "E5",
+      "groups": [
+        "initialization-constant"
+      ],
+      "run_id": "run_514dfb58d0b14edc8f57506e2cc5c220",
+      "solve_fingerprint": "5e6f5bf244b60273bbf00ca49d0d1d1a6e112d3872d500a44b5abd4707537b25",
+      "status": "completed",
+      "success": true,
+      "return_status": "Solve_Succeeded",
+      "cache_hit": false,
+      "solver_called": true,
+      "numeric_pass": true,
+      "agreement_pass": true,
+      "J_openocl": 0.53625636159160528,
+      "observed_structure": "1 -> 0",
+      "assessment_status": "assessed"
+    },
+    {
+      "configuration_id": "C11",
+      "case_id": "E1",
+      "groups": [
+        "initialization-random"
+      ],
+      "run_id": "run_fd387f5267674b82b5ce57f5b1bd3f55",
+      "solve_fingerprint": "5f462af4862ae8623bb4ca0fdc89b0f5b5e52afdbdac0451ce5a80998ea75fb3",
+      "status": "completed",
+      "success": true,
+      "return_status": "Solve_Succeeded",
+      "cache_hit": false,
+      "solver_called": true,
+      "numeric_pass": true,
+      "agreement_pass": true,
+      "J_openocl": 0.41620500909728264,
+      "observed_structure": "0 -> 1 -> 0",
+      "assessment_status": "assessed"
+    },
+    {
+      "configuration_id": "C12",
+      "case_id": "E2",
+      "groups": [
+        "initialization-random"
+      ],
+      "run_id": "run_f4d2a395a778413eb76763244b7de2ea",
+      "solve_fingerprint": "c479bda7285a812ae4e48eb21f905327acb220aabe47de374af69d6c9ba08332",
+      "status": "completed",
+      "success": true,
+      "return_status": "Solve_Succeeded",
+      "cache_hit": false,
+      "solver_called": true,
+      "numeric_pass": true,
+      "agreement_pass": true,
+      "J_openocl": 1.5295233613978332,
+      "observed_structure": "0 -> q_B -> 1 -> 0",
+      "assessment_status": "assessed"
+    },
+    {
+      "configuration_id": "C13",
+      "case_id": "E3",
+      "groups": [
+        "initialization-random"
+      ],
+      "run_id": "run_66965445718a41b09cfa189b83d09a5f",
+      "solve_fingerprint": "ed64bac452a710e4e928ccead846bc6b7d6d44d35b09bc803b4cccdc39ac61bf",
+      "status": "completed",
+      "success": true,
+      "return_status": "Solve_Succeeded",
+      "cache_hit": false,
+      "solver_called": true,
+      "numeric_pass": true,
+      "agreement_pass": true,
+      "J_openocl": 0.43399851635235387,
+      "observed_structure": "1 -> 0",
+      "assessment_status": "assessed"
+    },
+    {
+      "configuration_id": "C14",
+      "case_id": "E4",
+      "groups": [
+        "initialization-random"
+      ],
+      "run_id": "run_4b85125caa404a28b57e0a9d6cbd7cbc",
+      "solve_fingerprint": "ef3d8797311526f770f100fbfefd0af074d3271fb776e250c892c733e6f480fa",
+      "status": "completed",
+      "success": true,
+      "return_status": "Solve_Succeeded",
+      "cache_hit": false,
+      "solver_called": true,
+      "numeric_pass": true,
+      "agreement_pass": true,
+      "J_openocl": 1.2688310955840483,
+      "observed_structure": "q_B -> 1 -> 0",
+      "assessment_status": "assessed"
+    },
+    {
+      "configuration_id": "C15",
+      "case_id": "E5",
+      "groups": [
+        "initialization-random"
+      ],
+      "run_id": "run_ef82c05c9b2f4113a4f5b28c4a6c0041",
+      "solve_fingerprint": "c80c853d4faa8a66d7b1ad23b654170db9027cbb53a1560e8cb0d8b4b6b401cc",
+      "status": "completed",
+      "success": true,
+      "return_status": "Solve_Succeeded",
+      "cache_hit": false,
+      "solver_called": true,
+      "numeric_pass": true,
+      "agreement_pass": true,
+      "J_openocl": 0.53625636159160361,
+      "observed_structure": "1 -> 0",
+      "assessment_status": "assessed"
+    }
+  ],
+  "blockers": [],
+  "preflight": {
+    "schema_version": 1,
+    "status": "completed",
+    "passed": true,
+    "optimization_started": false,
+    "checked_utc": "2026-10-08T09:14:07.871Z",
+    "openocl_root": "E:\\work\\optimal-threshold-control\\optimal\\OpenOCL-master 0104",
+    "checks": {
+      "matlab": {
+        "passed": true,
+        "detail": "25.2.0.2998904 (R2025b)",
+        "identifier": ""
+      },
+      "openocl": {
+        "passed": true,
+        "detail": "E:\\work\\optimal-threshold-control\\optimal\\OpenOCL-master 0104\\ocl.m",
+        "identifier": ""
+      },
+      "casadi": {
+        "passed": true,
+        "detail": "3.4.5",
+        "identifier": ""
+      },
+      "ipopt": {
+        "passed": true,
+        "detail": "casadi.has_nlpsol('ipopt')；未建立或调用求解器。",
+        "identifier": ""
+      },
+      "inputs": {
+        "passed": true,
+        "detail": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerical_scenarios\\scenario_inputs.json",
+        "identifier": ""
+      },
+      "checkpoints": {
+        "passed": true,
+        "detail": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerical_scenarios\\analytic_checkpoints.json",
+        "identifier": ""
+      },
+      "write_access": {
+        "passed": true,
+        "detail": "validation、runs 和 revision_checks 的临时写入测试。",
+        "identifier": ""
+      }
+    },
+    "blockers": [],
+    "environment": {
+      "matlab": "25.2.0.2998904 (R2025b)",
+      "matlab_release": "2025b",
+      "platform": "PCWIN64",
+      "openocl": "unknown",
+      "casadi": "3.4.5",
+      "ipopt": "unknown",
+      "openocl_path": "E:\\work\\optimal-threshold-control\\optimal\\OpenOCL-master 0104\\ocl.m",
+      "casadi_path": "E:\\work\\optimal-threshold-control\\optimal\\OpenOCL-master 0104\\Lib\\casadi\\+casadi\\MX.m",
+      "ipopt_version_note": "当前接口未提供已查询的 IPOPT 版本；不从安装目录名推测。"
+    },
+    "write_checks": [
+      {
+        "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerical_scenarios",
+        "passed": true,
+        "detail": "临时文件写入和删除成功。"
+      },
+      {
+        "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\data\\numerical_scenarios\\runs",
+        "passed": true,
+        "detail": "临时文件写入和删除成功。"
+      },
+      {
+        "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\data\\numerical_scenarios\\revision_checks",
+        "passed": true,
+        "detail": "临时文件写入和删除成功。"
+      }
+    ]
+  },
+  "initialization": {
+    "schema_version": 1,
+    "group": "initialization",
+    "checked_utc": "2026-10-08T09:31:25.198Z",
+    "status": "completed",
+    "protocol_complete": true,
+    "comparison_complete": true,
+    "consistency_pass": true,
+    "rows": [
+      {
+        "case_id": "E1",
+        "configuration_id": "C06",
+        "run_id": "run_4dfaa3539e6241ae8d3d7cd4028c667a",
+        "solve_fingerprint": "8fbcd77f99af7bcb19595799df3ed674baa6197eefdda7b8f07700584b1e6650",
+        "T": 300,
+        "N": 4000,
+        "initialization": "constant_control",
+        "success": true,
+        "return_status": "Solve_Succeeded",
+        "numeric_pass": true,
+        "agreement_pass": true,
+        "J_openocl": 0.4162050090972832,
+        "capacity_excess": 2.9680482599436786E-7,
+        "state_discrepancy": 6.752028558487666E-8,
+        "tail_max_q": 0,
+        "terminal_peak": 1.7325278667593354E-27,
+        "observed_structure": "0 -> 1 -> 0",
+        "event_intervals": {
+          "intervention": {
+            "kind": "intervention",
+            "status": "detected",
+            "interval": [
+              6.9750000000000112,
+              7.0500000000000114
+            ],
+            "transition_cells": 1,
+            "transition_cell_indices": 94,
+            "detected_from_control": true,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                0.51401756237648211,
+                0.50724228334920385
+              ],
+              [
+                0.13263769589716143,
+                0.13304854588197662
+              ]
+            ],
+            "state_span": 0.0067877244793449936,
+            "local_max_cell_width": 0.075000000000000178,
+            "interval_node_indices": [
+              94,
+              95
+            ],
+            "preceding_arc_index": 1,
+            "from_type": "0",
+            "to_type": "1",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "intervention",
+              "status": "detected",
+              "interval": [
+                6.9750000000000112,
+                7.0500000000000114
+              ],
+              "transition_cells": 1,
+              "transition_cell_indices": 94,
+              "detected_from_control": true,
+              "capacity_active": false,
+              "numerical_endpoint_states": [
+                [
+                  0.51401756237648211,
+                  0.50724228334920385
+                ],
+                [
+                  0.13263769589716143,
+                  0.13304854588197662
+                ]
+              ],
+              "state_span": 0.0067877244793449936,
+              "local_max_cell_width": 0.075000000000000178,
+              "interval_node_indices": [
+                94,
+                95
+              ],
+              "preceding_arc_index": 1,
+              "from_type": "0",
+              "to_type": "1"
+            }
+          },
+          "capacity_enter": {
+            "kind": "capacity_enter",
+            "status": "missing_event",
+            "interval": [
+              null,
+              null
+            ],
+            "transition_cells": 0,
+            "transition_cell_indices": [],
+            "detected_from_control": false,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                null,
+                null
+              ],
+              [
+                null,
+                null
+              ]
+            ],
+            "state_span": null,
+            "local_max_cell_width": null,
+            "interval_node_indices": [
+              null,
+              null
+            ],
+            "preceding_arc_index": null,
+            "from_type": "missing",
+            "to_type": "missing",
+            "candidate_count": 0,
+            "candidates": []
+          },
+          "capacity_exit": {
+            "kind": "capacity_exit",
+            "status": "missing_event",
+            "interval": [
+              null,
+              null
+            ],
+            "transition_cells": 0,
+            "transition_cell_indices": [],
+            "detected_from_control": false,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                null,
+                null
+              ],
+              [
+                null,
+                null
+              ]
+            ],
+            "state_span": null,
+            "local_max_cell_width": null,
+            "interval_node_indices": [
+              null,
+              null
+            ],
+            "preceding_arc_index": null,
+            "from_type": "missing",
+            "to_type": "missing",
+            "candidate_count": 0,
+            "candidates": []
+          },
+          "full_start": {
+            "kind": "full_start",
+            "status": "detected",
+            "interval": [
+              6.9750000000000112,
+              7.0500000000000114
+            ],
+            "transition_cells": 1,
+            "transition_cell_indices": 94,
+            "detected_from_control": true,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                0.51401756237648211,
+                0.50724228334920385
+              ],
+              [
+                0.13263769589716143,
+                0.13304854588197662
+              ]
+            ],
+            "state_span": 0.0067877244793449936,
+            "local_max_cell_width": 0.075000000000000178,
+            "interval_node_indices": [
+              94,
+              95
+            ],
+            "preceding_arc_index": 1,
+            "from_type": "0",
+            "to_type": "1",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "full_start",
+              "status": "detected",
+              "interval": [
+                6.9750000000000112,
+                7.0500000000000114
+              ],
+              "transition_cells": 1,
+              "transition_cell_indices": 94,
+              "detected_from_control": true,
+              "capacity_active": false,
+              "numerical_endpoint_states": [
+                [
+                  0.51401756237648211,
+                  0.50724228334920385
+                ],
+                [
+                  0.13263769589716143,
+                  0.13304854588197662
+                ]
+              ],
+              "state_span": 0.0067877244793449936,
+              "local_max_cell_width": 0.075000000000000178,
+              "interval_node_indices": [
+                94,
+                95
+              ],
+              "preceding_arc_index": 1,
+              "from_type": "0",
+              "to_type": "1"
+            }
+          },
+          "release": {
+            "kind": "release",
+            "status": "detected",
+            "interval": [
+              7.4250000000000123,
+              7.5000000000000124
+            ],
+            "transition_cells": 1,
+            "transition_cell_indices": 100,
+            "detected_from_control": true,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                0.46155936141725612,
+                0.45656379012841025
+              ],
+              [
+                0.11889184348232476,
+                0.1194203016296544
+              ]
+            ],
+            "state_span": 0.0050234450843440349,
+            "local_max_cell_width": 0.075000000000000178,
+            "interval_node_indices": [
+              100,
+              101
+            ],
+            "preceding_arc_index": 3,
+            "from_type": "1",
+            "to_type": "0",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "release",
+              "status": "detected",
+              "interval": [
+                7.4250000000000123,
+                7.5000000000000124
+              ],
+              "transition_cells": 1,
+              "transition_cell_indices": 100,
+              "detected_from_control": true,
+              "capacity_active": false,
+              "numerical_endpoint_states": [
+                [
+                  0.46155936141725612,
+                  0.45656379012841025
+                ],
+                [
+                  0.11889184348232476,
+                  0.1194203016296544
+                ]
+              ],
+              "state_span": 0.0050234450843440349,
+              "local_max_cell_width": 0.075000000000000178,
+              "interval_node_indices": [
+                100,
+                101
+              ],
+              "preceding_arc_index": 3,
+              "from_type": "1",
+              "to_type": "0"
+            }
+          }
+        }
+      },
+      {
+        "case_id": "E2",
+        "configuration_id": "C07",
+        "run_id": "run_54024cb1a950459e8007f63ef5e9c6ff",
+        "solve_fingerprint": "d7244332410249cca78a064579e477fb287869c5ee03e49276b7a3d889448331",
+        "T": 300,
+        "N": 8000,
+        "initialization": "constant_control",
+        "success": true,
+        "return_status": "Solve_Succeeded",
+        "numeric_pass": true,
+        "agreement_pass": true,
+        "J_openocl": 1.5295233613978647,
+        "capacity_excess": 7.9912101966228555E-7,
+        "state_discrepancy": 8.5705763153143266E-8,
+        "tail_max_q": 0,
+        "terminal_peak": 1.403635730861077E-27,
+        "observed_structure": "0 -> q_B -> 1 -> 0",
+        "event_intervals": {
+          "intervention": {
+            "kind": "intervention",
+            "status": "detected",
+            "interval": [
+              4.3125000000000036,
+              4.3500000000000032
+            ],
+            "transition_cells": 1,
+            "transition_cell_indices": 116,
+            "detected_from_control": true,
+            "capacity_active": true,
+            "numerical_endpoint_states": [
+              [
+                0.78177564519856535,
+                0.777370018319181
+              ],
+              [
+                0.14738320822225812,
+                0.14999834814152532
+              ]
+            ],
+            "state_span": 0.0051233294836169931,
+            "local_max_cell_width": 0.037499999999999645,
+            "interval_node_indices": [
+              116,
+              117
+            ],
+            "preceding_arc_index": 1,
+            "from_type": "0",
+            "to_type": "q_B",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "intervention",
+              "status": "detected",
+              "interval": [
+                4.3125000000000036,
+                4.3500000000000032
+              ],
+              "transition_cells": 1,
+              "transition_cell_indices": 116,
+              "detected_from_control": true,
+              "capacity_active": true,
+              "numerical_endpoint_states": [
+                [
+                  0.78177564519856535,
+                  0.777370018319181
+                ],
+                [
+                  0.14738320822225812,
+                  0.14999834814152532
+                ]
+              ],
+              "state_span": 0.0051233294836169931,
+              "local_max_cell_width": 0.037499999999999645,
+              "interval_node_indices": [
+                116,
+                117
+              ],
+              "preceding_arc_index": 1,
+              "from_type": "0",
+              "to_type": "q_B"
+            }
+          },
+          "capacity_enter": {
+            "kind": "capacity_enter",
+            "status": "detected",
+            "interval": [
+              4.3125000000000036,
+              4.3500000000000032
+            ],
+            "transition_cells": 1,
+            "transition_cell_indices": 116,
+            "detected_from_control": true,
+            "capacity_active": true,
+            "numerical_endpoint_states": [
+              [
+                0.78177564519856535,
+                0.777370018319181
+              ],
+              [
+                0.14738320822225812,
+                0.14999834814152532
+              ]
+            ],
+            "state_span": 0.0051233294836169931,
+            "local_max_cell_width": 0.037499999999999645,
+            "interval_node_indices": [
+              116,
+              117
+            ],
+            "preceding_arc_index": 1,
+            "from_type": "0",
+            "to_type": "q_B",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "capacity_enter",
+              "status": "detected",
+              "interval": [
+                4.3125000000000036,
+                4.3500000000000032
+              ],
+              "transition_cells": 1,
+              "transition_cell_indices": 116,
+              "detected_from_control": true,
+              "capacity_active": true,
+              "numerical_endpoint_states": [
+                [
+                  0.78177564519856535,
+                  0.777370018319181
+                ],
+                [
+                  0.14738320822225812,
+                  0.14999834814152532
+                ]
+              ],
+              "state_span": 0.0051233294836169931,
+              "local_max_cell_width": 0.037499999999999645,
+              "interval_node_indices": [
+                116,
+                117
+              ],
+              "preceding_arc_index": 1,
+              "from_type": "0",
+              "to_type": "q_B"
+            }
+          },
+          "capacity_exit": {
+            "kind": "capacity_exit",
+            "status": "detected",
+            "interval": [
+              5.849999999999989,
+              5.8874999999999886
+            ],
+            "transition_cells": 1,
+            "transition_cell_indices": 157,
+            "detected_from_control": true,
+            "capacity_active": true,
+            "numerical_endpoint_states": [
+              [
+                0.55003041614913128,
+                0.5445989214274255
+              ],
+              [
+                0.15000002512146676,
+                0.14902372619295112
+              ]
+            ],
+            "state_span": 0.0055185409765388729,
+            "local_max_cell_width": 0.037499999999999645,
+            "interval_node_indices": [
+              157,
+              158
+            ],
+            "preceding_arc_index": 3,
+            "from_type": "q_B",
+            "to_type": "1",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "capacity_exit",
+              "status": "detected",
+              "interval": [
+                5.849999999999989,
+                5.8874999999999886
+              ],
+              "transition_cells": 1,
+              "transition_cell_indices": 157,
+              "detected_from_control": true,
+              "capacity_active": true,
+              "numerical_endpoint_states": [
+                [
+                  0.55003041614913128,
+                  0.5445989214274255
+                ],
+                [
+                  0.15000002512146676,
+                  0.14902372619295112
+                ]
+              ],
+              "state_span": 0.0055185409765388729,
+              "local_max_cell_width": 0.037499999999999645,
+              "interval_node_indices": [
+                157,
+                158
+              ],
+              "preceding_arc_index": 3,
+              "from_type": "q_B",
+              "to_type": "1"
+            }
+          },
+          "full_start": {
+            "kind": "full_start",
+            "status": "detected",
+            "interval": [
+              5.849999999999989,
+              5.8874999999999886
+            ],
+            "transition_cells": 1,
+            "transition_cell_indices": 157,
+            "detected_from_control": true,
+            "capacity_active": true,
+            "numerical_endpoint_states": [
+              [
+                0.55003041614913128,
+                0.5445989214274255
+              ],
+              [
+                0.15000002512146676,
+                0.14902372619295112
+              ]
+            ],
+            "state_span": 0.0055185409765388729,
+            "local_max_cell_width": 0.037499999999999645,
+            "interval_node_indices": [
+              157,
+              158
+            ],
+            "preceding_arc_index": 3,
+            "from_type": "q_B",
+            "to_type": "1",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "full_start",
+              "status": "detected",
+              "interval": [
+                5.849999999999989,
+                5.8874999999999886
+              ],
+              "transition_cells": 1,
+              "transition_cell_indices": 157,
+              "detected_from_control": true,
+              "capacity_active": true,
+              "numerical_endpoint_states": [
+                [
+                  0.55003041614913128,
+                  0.5445989214274255
+                ],
+                [
+                  0.15000002512146676,
+                  0.14902372619295112
+                ]
+              ],
+              "state_span": 0.0055185409765388729,
+              "local_max_cell_width": 0.037499999999999645,
+              "interval_node_indices": [
+                157,
+                158
+              ],
+              "preceding_arc_index": 3,
+              "from_type": "q_B",
+              "to_type": "1"
+            }
+          },
+          "release": {
+            "kind": "release",
+            "status": "detected",
+            "interval": [
+              6.5624999999999822,
+              6.5999999999999819
+            ],
+            "transition_cells": 1,
+            "transition_cell_indices": 176,
+            "detected_from_control": true,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                0.45392374493202137,
+                0.4508257388956462
+              ],
+              [
+                0.12170569183375599,
+                0.12136385961946559
+              ]
+            ],
+            "state_span": 0.0031168077682371823,
+            "local_max_cell_width": 0.037499999999999645,
+            "interval_node_indices": [
+              176,
+              177
+            ],
+            "preceding_arc_index": 5,
+            "from_type": "1",
+            "to_type": "0",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "release",
+              "status": "detected",
+              "interval": [
+                6.5624999999999822,
+                6.5999999999999819
+              ],
+              "transition_cells": 1,
+              "transition_cell_indices": 176,
+              "detected_from_control": true,
+              "capacity_active": false,
+              "numerical_endpoint_states": [
+                [
+                  0.45392374493202137,
+                  0.4508257388956462
+                ],
+                [
+                  0.12170569183375599,
+                  0.12136385961946559
+                ]
+              ],
+              "state_span": 0.0031168077682371823,
+              "local_max_cell_width": 0.037499999999999645,
+              "interval_node_indices": [
+                176,
+                177
+              ],
+              "preceding_arc_index": 5,
+              "from_type": "1",
+              "to_type": "0"
+            }
+          }
+        }
+      },
+      {
+        "case_id": "E3",
+        "configuration_id": "C08",
+        "run_id": "run_02a89c2481494a1493fe489ad382279f",
+        "solve_fingerprint": "99cd41a2cfc64e334d0490e00a730b4d6c6e5c6ea92c6bfa4252554df4e4689c",
+        "T": 300,
+        "N": 4000,
+        "initialization": "constant_control",
+        "success": true,
+        "return_status": "Solve_Succeeded",
+        "numeric_pass": true,
+        "agreement_pass": true,
+        "J_openocl": 0.43399851635235365,
+        "capacity_excess": 4.8023851700884634E-8,
+        "state_discrepancy": 1.7337208502166135E-8,
+        "tail_max_q": 0,
+        "terminal_peak": 3.7887393324957516E-28,
+        "observed_structure": "1 -> 0",
+        "event_intervals": {
+          "intervention": {
+            "kind": "intervention",
+            "status": "initial_event",
+            "interval": [
+              0,
+              0
+            ],
+            "transition_cells": 0,
+            "transition_cell_indices": [],
+            "detected_from_control": true,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                0.5,
+                0.5
+              ],
+              [
+                0.14,
+                0.14
+              ]
+            ],
+            "state_span": 0,
+            "local_max_cell_width": 0.075,
+            "interval_node_indices": [
+              1,
+              1
+            ],
+            "preceding_arc_index": 0,
+            "from_type": "initial",
+            "to_type": "1",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "intervention",
+              "status": "initial_event",
+              "interval": [
+                0,
+                0
+              ],
+              "transition_cells": 0,
+              "transition_cell_indices": [],
+              "detected_from_control": true,
+              "capacity_active": false,
+              "numerical_endpoint_states": [
+                [
+                  0.5,
+                  0.5
+                ],
+                [
+                  0.14,
+                  0.14
+                ]
+              ],
+              "state_span": 0,
+              "local_max_cell_width": 0.075,
+              "interval_node_indices": [
+                1,
+                1
+              ],
+              "preceding_arc_index": 0,
+              "from_type": "initial",
+              "to_type": "1"
+            }
+          },
+          "capacity_enter": {
+            "kind": "capacity_enter",
+            "status": "missing_event",
+            "interval": [
+              null,
+              null
+            ],
+            "transition_cells": 0,
+            "transition_cell_indices": [],
+            "detected_from_control": false,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                null,
+                null
+              ],
+              [
+                null,
+                null
+              ]
+            ],
+            "state_span": null,
+            "local_max_cell_width": null,
+            "interval_node_indices": [
+              null,
+              null
+            ],
+            "preceding_arc_index": null,
+            "from_type": "missing",
+            "to_type": "missing",
+            "candidate_count": 0,
+            "candidates": []
+          },
+          "capacity_exit": {
+            "kind": "capacity_exit",
+            "status": "missing_event",
+            "interval": [
+              null,
+              null
+            ],
+            "transition_cells": 0,
+            "transition_cell_indices": [],
+            "detected_from_control": false,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                null,
+                null
+              ],
+              [
+                null,
+                null
+              ]
+            ],
+            "state_span": null,
+            "local_max_cell_width": null,
+            "interval_node_indices": [
+              null,
+              null
+            ],
+            "preceding_arc_index": null,
+            "from_type": "missing",
+            "to_type": "missing",
+            "candidate_count": 0,
+            "candidates": []
+          },
+          "full_start": {
+            "kind": "full_start",
+            "status": "initial_event",
+            "interval": [
+              0,
+              0
+            ],
+            "transition_cells": 0,
+            "transition_cell_indices": [],
+            "detected_from_control": true,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                0.5,
+                0.5
+              ],
+              [
+                0.14,
+                0.14
+              ]
+            ],
+            "state_span": 0,
+            "local_max_cell_width": 0.075,
+            "interval_node_indices": [
+              1,
+              1
+            ],
+            "preceding_arc_index": 0,
+            "from_type": "initial",
+            "to_type": "1",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "full_start",
+              "status": "initial_event",
+              "interval": [
+                0,
+                0
+              ],
+              "transition_cells": 0,
+              "transition_cell_indices": [],
+              "detected_from_control": true,
+              "capacity_active": false,
+              "numerical_endpoint_states": [
+                [
+                  0.5,
+                  0.5
+                ],
+                [
+                  0.14,
+                  0.14
+                ]
+              ],
+              "state_span": 0,
+              "local_max_cell_width": 0.075,
+              "interval_node_indices": [
+                1,
+                1
+              ],
+              "preceding_arc_index": 0,
+              "from_type": "initial",
+              "to_type": "1"
+            }
+          },
+          "release": {
+            "kind": "release",
+            "status": "detected",
+            "interval": [
+              0.375,
+              0.45
+            ],
+            "transition_cells": 1,
+            "transition_cell_indices": 6,
+            "detected_from_control": true,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                0.45273137791676804,
+                0.44526197537917256
+              ],
+              [
+                0.12510363331987986,
+                0.12320218054268954
+              ]
+            ],
+            "state_span": 0.0077076258946917383,
+            "local_max_cell_width": 0.075000000000000011,
+            "interval_node_indices": [
+              6,
+              7
+            ],
+            "preceding_arc_index": 1,
+            "from_type": "1",
+            "to_type": "0",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "release",
+              "status": "detected",
+              "interval": [
+                0.375,
+                0.45
+              ],
+              "transition_cells": 1,
+              "transition_cell_indices": 6,
+              "detected_from_control": true,
+              "capacity_active": false,
+              "numerical_endpoint_states": [
+                [
+                  0.45273137791676804,
+                  0.44526197537917256
+                ],
+                [
+                  0.12510363331987986,
+                  0.12320218054268954
+                ]
+              ],
+              "state_span": 0.0077076258946917383,
+              "local_max_cell_width": 0.075000000000000011,
+              "interval_node_indices": [
+                6,
+                7
+              ],
+              "preceding_arc_index": 1,
+              "from_type": "1",
+              "to_type": "0"
+            }
+          }
+        }
+      },
+      {
+        "case_id": "E4",
+        "configuration_id": "C09",
+        "run_id": "run_92300dbeb73841b3afa940c8ec99ae44",
+        "solve_fingerprint": "c3bdf53f9fff5f30c47b7ec40739eb132f0a544e5e9e040a678da3d48089fbe1",
+        "T": 300,
+        "N": 8000,
+        "initialization": "constant_control",
+        "success": true,
+        "return_status": "Solve_Succeeded",
+        "numeric_pass": true,
+        "agreement_pass": true,
+        "J_openocl": 1.2688310955840454,
+        "capacity_excess": 7.7028695963377025E-7,
+        "state_discrepancy": 4.1253024885001821E-9,
+        "tail_max_q": 0,
+        "terminal_peak": 5.1438866540104242E-28,
+        "observed_structure": "q_B -> 1 -> 0",
+        "event_intervals": {
+          "intervention": {
+            "kind": "intervention",
+            "status": "initial_event",
+            "interval": [
+              0,
+              0
+            ],
+            "transition_cells": 0,
+            "transition_cell_indices": [],
+            "detected_from_control": true,
+            "capacity_active": true,
+            "numerical_endpoint_states": [
+              [
+                0.7,
+                0.7
+              ],
+              [
+                0.15,
+                0.15
+              ]
+            ],
+            "state_span": 0,
+            "local_max_cell_width": 0.0375,
+            "interval_node_indices": [
+              1,
+              1
+            ],
+            "preceding_arc_index": 0,
+            "from_type": "initial",
+            "to_type": "q_B",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "intervention",
+              "status": "initial_event",
+              "interval": [
+                0,
+                0
+              ],
+              "transition_cells": 0,
+              "transition_cell_indices": [],
+              "detected_from_control": true,
+              "capacity_active": true,
+              "numerical_endpoint_states": [
+                [
+                  0.7,
+                  0.7
+                ],
+                [
+                  0.15,
+                  0.15
+                ]
+              ],
+              "state_span": 0,
+              "local_max_cell_width": 0.0375,
+              "interval_node_indices": [
+                1,
+                1
+              ],
+              "preceding_arc_index": 0,
+              "from_type": "initial",
+              "to_type": "q_B"
+            }
+          },
+          "capacity_enter": {
+            "kind": "capacity_enter",
+            "status": "initial_event",
+            "interval": [
+              0,
+              0
+            ],
+            "transition_cells": 0,
+            "transition_cell_indices": [],
+            "detected_from_control": true,
+            "capacity_active": true,
+            "numerical_endpoint_states": [
+              [
+                0.7,
+                0.7
+              ],
+              [
+                0.15,
+                0.15
+              ]
+            ],
+            "state_span": 0,
+            "local_max_cell_width": 0.0375,
+            "interval_node_indices": [
+              1,
+              1
+            ],
+            "preceding_arc_index": 0,
+            "from_type": "initial",
+            "to_type": "q_B",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "capacity_enter",
+              "status": "initial_event",
+              "interval": [
+                0,
+                0
+              ],
+              "transition_cells": 0,
+              "transition_cell_indices": [],
+              "detected_from_control": true,
+              "capacity_active": true,
+              "numerical_endpoint_states": [
+                [
+                  0.7,
+                  0.7
+                ],
+                [
+                  0.15,
+                  0.15
+                ]
+              ],
+              "state_span": 0,
+              "local_max_cell_width": 0.0375,
+              "interval_node_indices": [
+                1,
+                1
+              ],
+              "preceding_arc_index": 0,
+              "from_type": "initial",
+              "to_type": "q_B"
+            }
+          },
+          "capacity_exit": {
+            "kind": "capacity_exit",
+            "status": "detected",
+            "interval": [
+              1.0499999999999998,
+              1.0875
+            ],
+            "transition_cells": 1,
+            "transition_cell_indices": 29,
+            "detected_from_control": true,
+            "capacity_active": true,
+            "numerical_endpoint_states": [
+              [
+                0.55138439273831064,
+                0.546799204266434
+              ],
+              [
+                0.14999999533106853,
+                0.14990313695549309
+              ]
+            ],
+            "state_span": 0.00458621138496137,
+            "local_max_cell_width": 0.037500000000000089,
+            "interval_node_indices": [
+              29,
+              30
+            ],
+            "preceding_arc_index": 1,
+            "from_type": "q_B",
+            "to_type": "1",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "capacity_exit",
+              "status": "detected",
+              "interval": [
+                1.0499999999999998,
+                1.0875
+              ],
+              "transition_cells": 1,
+              "transition_cell_indices": 29,
+              "detected_from_control": true,
+              "capacity_active": true,
+              "numerical_endpoint_states": [
+                [
+                  0.55138439273831064,
+                  0.546799204266434
+                ],
+                [
+                  0.14999999533106853,
+                  0.14990313695549309
+                ]
+              ],
+              "state_span": 0.00458621138496137,
+              "local_max_cell_width": 0.037500000000000089,
+              "interval_node_indices": [
+                29,
+                30
+              ],
+              "preceding_arc_index": 1,
+              "from_type": "q_B",
+              "to_type": "1"
+            }
+          },
+          "full_start": {
+            "kind": "full_start",
+            "status": "detected",
+            "interval": [
+              1.0499999999999998,
+              1.0875
+            ],
+            "transition_cells": 1,
+            "transition_cell_indices": 29,
+            "detected_from_control": true,
+            "capacity_active": true,
+            "numerical_endpoint_states": [
+              [
+                0.55138439273831064,
+                0.546799204266434
+              ],
+              [
+                0.14999999533106853,
+                0.14990313695549309
+              ]
+            ],
+            "state_span": 0.00458621138496137,
+            "local_max_cell_width": 0.037500000000000089,
+            "interval_node_indices": [
+              29,
+              30
+            ],
+            "preceding_arc_index": 1,
+            "from_type": "q_B",
+            "to_type": "1",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "full_start",
+              "status": "detected",
+              "interval": [
+                1.0499999999999998,
+                1.0875
+              ],
+              "transition_cells": 1,
+              "transition_cell_indices": 29,
+              "detected_from_control": true,
+              "capacity_active": true,
+              "numerical_endpoint_states": [
+                [
+                  0.55138439273831064,
+                  0.546799204266434
+                ],
+                [
+                  0.14999999533106853,
+                  0.14990313695549309
+                ]
+              ],
+              "state_span": 0.00458621138496137,
+              "local_max_cell_width": 0.037500000000000089,
+              "interval_node_indices": [
+                29,
+                30
+              ],
+              "preceding_arc_index": 1,
+              "from_type": "q_B",
+              "to_type": "1"
+            }
+          },
+          "release": {
+            "kind": "release",
+            "status": "detected",
+            "interval": [
+              1.7625000000000015,
+              1.8000000000000016
+            ],
+            "transition_cells": 1,
+            "transition_cell_indices": 48,
+            "detected_from_control": true,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                0.45526813437874231,
+                0.4512842424551366
+              ],
+              [
+                0.12242389474963307,
+                0.12121077820075936
+              ]
+            ],
+            "state_span": 0.004164498363563379,
+            "local_max_cell_width": 0.037500000000000089,
+            "interval_node_indices": [
+              48,
+              49
+            ],
+            "preceding_arc_index": 3,
+            "from_type": "1",
+            "to_type": "0",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "release",
+              "status": "detected",
+              "interval": [
+                1.7625000000000015,
+                1.8000000000000016
+              ],
+              "transition_cells": 1,
+              "transition_cell_indices": 48,
+              "detected_from_control": true,
+              "capacity_active": false,
+              "numerical_endpoint_states": [
+                [
+                  0.45526813437874231,
+                  0.4512842424551366
+                ],
+                [
+                  0.12242389474963307,
+                  0.12121077820075936
+                ]
+              ],
+              "state_span": 0.004164498363563379,
+              "local_max_cell_width": 0.037500000000000089,
+              "interval_node_indices": [
+                48,
+                49
+              ],
+              "preceding_arc_index": 3,
+              "from_type": "1",
+              "to_type": "0"
+            }
+          }
+        }
+      },
+      {
+        "case_id": "E5",
+        "configuration_id": "C10",
+        "run_id": "run_514dfb58d0b14edc8f57506e2cc5c220",
+        "solve_fingerprint": "5e6f5bf244b60273bbf00ca49d0d1d1a6e112d3872d500a44b5abd4707537b25",
+        "T": 300,
+        "N": 4000,
+        "initialization": "constant_control",
+        "success": true,
+        "return_status": "Solve_Succeeded",
+        "numeric_pass": true,
+        "agreement_pass": true,
+        "J_openocl": 0.53625636159160528,
+        "capacity_excess": 5.5710069890579916E-8,
+        "state_discrepancy": 2.5027230288188207E-8,
+        "tail_max_q": 0,
+        "terminal_peak": 3.6529639885422905E-28,
+        "observed_structure": "1 -> 0",
+        "event_intervals": {
+          "intervention": {
+            "kind": "intervention",
+            "status": "initial_event",
+            "interval": [
+              0,
+              0
+            ],
+            "transition_cells": 0,
+            "transition_cell_indices": [],
+            "detected_from_control": true,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                0.5,
+                0.5
+              ],
+              [
+                0.15,
+                0.15
+              ]
+            ],
+            "state_span": 0,
+            "local_max_cell_width": 0.075,
+            "interval_node_indices": [
+              1,
+              1
+            ],
+            "preceding_arc_index": 0,
+            "from_type": "initial",
+            "to_type": "1",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "intervention",
+              "status": "initial_event",
+              "interval": [
+                0,
+                0
+              ],
+              "transition_cells": 0,
+              "transition_cell_indices": [],
+              "detected_from_control": true,
+              "capacity_active": false,
+              "numerical_endpoint_states": [
+                [
+                  0.5,
+                  0.5
+                ],
+                [
+                  0.15,
+                  0.15
+                ]
+              ],
+              "state_span": 0,
+              "local_max_cell_width": 0.075,
+              "interval_node_indices": [
+                1,
+                1
+              ],
+              "preceding_arc_index": 0,
+              "from_type": "initial",
+              "to_type": "1"
+            }
+          },
+          "capacity_enter": {
+            "kind": "capacity_enter",
+            "status": "missing_event",
+            "interval": [
+              null,
+              null
+            ],
+            "transition_cells": 0,
+            "transition_cell_indices": [],
+            "detected_from_control": false,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                null,
+                null
+              ],
+              [
+                null,
+                null
+              ]
+            ],
+            "state_span": null,
+            "local_max_cell_width": null,
+            "interval_node_indices": [
+              null,
+              null
+            ],
+            "preceding_arc_index": null,
+            "from_type": "missing",
+            "to_type": "missing",
+            "candidate_count": 0,
+            "candidates": []
+          },
+          "capacity_exit": {
+            "kind": "capacity_exit",
+            "status": "missing_event",
+            "interval": [
+              null,
+              null
+            ],
+            "transition_cells": 0,
+            "transition_cell_indices": [],
+            "detected_from_control": false,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                null,
+                null
+              ],
+              [
+                null,
+                null
+              ]
+            ],
+            "state_span": null,
+            "local_max_cell_width": null,
+            "interval_node_indices": [
+              null,
+              null
+            ],
+            "preceding_arc_index": null,
+            "from_type": "missing",
+            "to_type": "missing",
+            "candidate_count": 0,
+            "candidates": []
+          },
+          "full_start": {
+            "kind": "full_start",
+            "status": "initial_event",
+            "interval": [
+              0,
+              0
+            ],
+            "transition_cells": 0,
+            "transition_cell_indices": [],
+            "detected_from_control": true,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                0.5,
+                0.5
+              ],
+              [
+                0.15,
+                0.15
+              ]
+            ],
+            "state_span": 0,
+            "local_max_cell_width": 0.075,
+            "interval_node_indices": [
+              1,
+              1
+            ],
+            "preceding_arc_index": 0,
+            "from_type": "initial",
+            "to_type": "1",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "full_start",
+              "status": "initial_event",
+              "interval": [
+                0,
+                0
+              ],
+              "transition_cells": 0,
+              "transition_cell_indices": [],
+              "detected_from_control": true,
+              "capacity_active": false,
+              "numerical_endpoint_states": [
+                [
+                  0.5,
+                  0.5
+                ],
+                [
+                  0.15,
+                  0.15
+                ]
+              ],
+              "state_span": 0,
+              "local_max_cell_width": 0.075,
+              "interval_node_indices": [
+                1,
+                1
+              ],
+              "preceding_arc_index": 0,
+              "from_type": "initial",
+              "to_type": "1"
+            }
+          },
+          "release": {
+            "kind": "release",
+            "status": "detected",
+            "interval": [
+              0.525,
+              0.6
+            ],
+            "transition_cells": 1,
+            "transition_cell_indices": 8,
+            "detected_from_control": true,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                0.43219847568493885,
+                0.42743597091596
+              ],
+              [
+                0.12814152465503981,
+                0.12877069558066889
+              ]
+            ],
+            "state_span": 0.0048038846497603944,
+            "local_max_cell_width": 0.075000000000000011,
+            "interval_node_indices": [
+              8,
+              9
+            ],
+            "preceding_arc_index": 1,
+            "from_type": "1",
+            "to_type": "0",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "release",
+              "status": "detected",
+              "interval": [
+                0.525,
+                0.6
+              ],
+              "transition_cells": 1,
+              "transition_cell_indices": 8,
+              "detected_from_control": true,
+              "capacity_active": false,
+              "numerical_endpoint_states": [
+                [
+                  0.43219847568493885,
+                  0.42743597091596
+                ],
+                [
+                  0.12814152465503981,
+                  0.12877069558066889
+                ]
+              ],
+              "state_span": 0.0048038846497603944,
+              "local_max_cell_width": 0.075000000000000011,
+              "interval_node_indices": [
+                8,
+                9
+              ],
+              "preceding_arc_index": 1,
+              "from_type": "1",
+              "to_type": "0"
+            }
+          }
+        }
+      },
+      {
+        "case_id": "E1",
+        "configuration_id": "C11",
+        "run_id": "run_fd387f5267674b82b5ce57f5b1bd3f55",
+        "solve_fingerprint": "5f462af4862ae8623bb4ca0fdc89b0f5b5e52afdbdac0451ce5a80998ea75fb3",
+        "T": 300,
+        "N": 4000,
+        "initialization": "seeded_random",
+        "success": true,
+        "return_status": "Solve_Succeeded",
+        "numeric_pass": true,
+        "agreement_pass": true,
+        "J_openocl": 0.41620500909728264,
+        "capacity_excess": 2.9680482585559E-7,
+        "state_discrepancy": 6.7520285251809753E-8,
+        "tail_max_q": 0,
+        "terminal_peak": 1.7325278667593354E-27,
+        "observed_structure": "0 -> 1 -> 0",
+        "event_intervals": {
+          "intervention": {
+            "kind": "intervention",
+            "status": "detected",
+            "interval": [
+              6.9750000000000112,
+              7.0500000000000114
+            ],
+            "transition_cells": 1,
+            "transition_cell_indices": 94,
+            "detected_from_control": true,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                0.51401756237648211,
+                0.50724228334920551
+              ],
+              [
+                0.13263769589716143,
+                0.13304854588197815
+              ]
+            ],
+            "state_span": 0.0067877244793434236,
+            "local_max_cell_width": 0.075000000000000178,
+            "interval_node_indices": [
+              94,
+              95
+            ],
+            "preceding_arc_index": 1,
+            "from_type": "0",
+            "to_type": "1",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "intervention",
+              "status": "detected",
+              "interval": [
+                6.9750000000000112,
+                7.0500000000000114
+              ],
+              "transition_cells": 1,
+              "transition_cell_indices": 94,
+              "detected_from_control": true,
+              "capacity_active": false,
+              "numerical_endpoint_states": [
+                [
+                  0.51401756237648211,
+                  0.50724228334920551
+                ],
+                [
+                  0.13263769589716143,
+                  0.13304854588197815
+                ]
+              ],
+              "state_span": 0.0067877244793434236,
+              "local_max_cell_width": 0.075000000000000178,
+              "interval_node_indices": [
+                94,
+                95
+              ],
+              "preceding_arc_index": 1,
+              "from_type": "0",
+              "to_type": "1"
+            }
+          },
+          "capacity_enter": {
+            "kind": "capacity_enter",
+            "status": "missing_event",
+            "interval": [
+              null,
+              null
+            ],
+            "transition_cells": 0,
+            "transition_cell_indices": [],
+            "detected_from_control": false,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                null,
+                null
+              ],
+              [
+                null,
+                null
+              ]
+            ],
+            "state_span": null,
+            "local_max_cell_width": null,
+            "interval_node_indices": [
+              null,
+              null
+            ],
+            "preceding_arc_index": null,
+            "from_type": "missing",
+            "to_type": "missing",
+            "candidate_count": 0,
+            "candidates": []
+          },
+          "capacity_exit": {
+            "kind": "capacity_exit",
+            "status": "missing_event",
+            "interval": [
+              null,
+              null
+            ],
+            "transition_cells": 0,
+            "transition_cell_indices": [],
+            "detected_from_control": false,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                null,
+                null
+              ],
+              [
+                null,
+                null
+              ]
+            ],
+            "state_span": null,
+            "local_max_cell_width": null,
+            "interval_node_indices": [
+              null,
+              null
+            ],
+            "preceding_arc_index": null,
+            "from_type": "missing",
+            "to_type": "missing",
+            "candidate_count": 0,
+            "candidates": []
+          },
+          "full_start": {
+            "kind": "full_start",
+            "status": "detected",
+            "interval": [
+              6.9750000000000112,
+              7.0500000000000114
+            ],
+            "transition_cells": 1,
+            "transition_cell_indices": 94,
+            "detected_from_control": true,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                0.51401756237648211,
+                0.50724228334920551
+              ],
+              [
+                0.13263769589716143,
+                0.13304854588197815
+              ]
+            ],
+            "state_span": 0.0067877244793434236,
+            "local_max_cell_width": 0.075000000000000178,
+            "interval_node_indices": [
+              94,
+              95
+            ],
+            "preceding_arc_index": 1,
+            "from_type": "0",
+            "to_type": "1",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "full_start",
+              "status": "detected",
+              "interval": [
+                6.9750000000000112,
+                7.0500000000000114
+              ],
+              "transition_cells": 1,
+              "transition_cell_indices": 94,
+              "detected_from_control": true,
+              "capacity_active": false,
+              "numerical_endpoint_states": [
+                [
+                  0.51401756237648211,
+                  0.50724228334920551
+                ],
+                [
+                  0.13263769589716143,
+                  0.13304854588197815
+                ]
+              ],
+              "state_span": 0.0067877244793434236,
+              "local_max_cell_width": 0.075000000000000178,
+              "interval_node_indices": [
+                94,
+                95
+              ],
+              "preceding_arc_index": 1,
+              "from_type": "0",
+              "to_type": "1"
+            }
+          },
+          "release": {
+            "kind": "release",
+            "status": "detected",
+            "interval": [
+              7.4250000000000123,
+              7.5000000000000124
+            ],
+            "transition_cells": 1,
+            "transition_cell_indices": 100,
+            "detected_from_control": true,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                0.461559361417257,
+                0.45656379012840981
+              ],
+              [
+                0.11889184348232605,
+                0.11942030162965445
+              ]
+            ],
+            "state_span": 0.0050234450843452284,
+            "local_max_cell_width": 0.075000000000000178,
+            "interval_node_indices": [
+              100,
+              101
+            ],
+            "preceding_arc_index": 3,
+            "from_type": "1",
+            "to_type": "0",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "release",
+              "status": "detected",
+              "interval": [
+                7.4250000000000123,
+                7.5000000000000124
+              ],
+              "transition_cells": 1,
+              "transition_cell_indices": 100,
+              "detected_from_control": true,
+              "capacity_active": false,
+              "numerical_endpoint_states": [
+                [
+                  0.461559361417257,
+                  0.45656379012840981
+                ],
+                [
+                  0.11889184348232605,
+                  0.11942030162965445
+                ]
+              ],
+              "state_span": 0.0050234450843452284,
+              "local_max_cell_width": 0.075000000000000178,
+              "interval_node_indices": [
+                100,
+                101
+              ],
+              "preceding_arc_index": 3,
+              "from_type": "1",
+              "to_type": "0"
+            }
+          }
+        }
+      },
+      {
+        "case_id": "E2",
+        "configuration_id": "C12",
+        "run_id": "run_f4d2a395a778413eb76763244b7de2ea",
+        "solve_fingerprint": "c479bda7285a812ae4e48eb21f905327acb220aabe47de374af69d6c9ba08332",
+        "T": 300,
+        "N": 8000,
+        "initialization": "seeded_random",
+        "success": true,
+        "return_status": "Solve_Succeeded",
+        "numeric_pass": true,
+        "agreement_pass": true,
+        "J_openocl": 1.5295233613978332,
+        "capacity_excess": 7.9911979833369173E-7,
+        "state_discrepancy": 8.5705739616415144E-8,
+        "tail_max_q": 0,
+        "terminal_peak": 1.4036357308610468E-27,
+        "observed_structure": "0 -> q_B -> 1 -> 0",
+        "event_intervals": {
+          "intervention": {
+            "kind": "intervention",
+            "status": "detected",
+            "interval": [
+              4.3125000000000036,
+              4.3500000000000032
+            ],
+            "transition_cells": 1,
+            "transition_cell_indices": 116,
+            "detected_from_control": true,
+            "capacity_active": true,
+            "numerical_endpoint_states": [
+              [
+                0.78177564519856535,
+                0.77737001831916719
+              ],
+              [
+                0.14738320822225812,
+                0.149998348141511
+              ]
+            ],
+            "state_span": 0.0051233294836215216,
+            "local_max_cell_width": 0.037499999999999645,
+            "interval_node_indices": [
+              116,
+              117
+            ],
+            "preceding_arc_index": 1,
+            "from_type": "0",
+            "to_type": "q_B",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "intervention",
+              "status": "detected",
+              "interval": [
+                4.3125000000000036,
+                4.3500000000000032
+              ],
+              "transition_cells": 1,
+              "transition_cell_indices": 116,
+              "detected_from_control": true,
+              "capacity_active": true,
+              "numerical_endpoint_states": [
+                [
+                  0.78177564519856535,
+                  0.77737001831916719
+                ],
+                [
+                  0.14738320822225812,
+                  0.149998348141511
+                ]
+              ],
+              "state_span": 0.0051233294836215216,
+              "local_max_cell_width": 0.037499999999999645,
+              "interval_node_indices": [
+                116,
+                117
+              ],
+              "preceding_arc_index": 1,
+              "from_type": "0",
+              "to_type": "q_B"
+            }
+          },
+          "capacity_enter": {
+            "kind": "capacity_enter",
+            "status": "detected",
+            "interval": [
+              4.3125000000000036,
+              4.3500000000000032
+            ],
+            "transition_cells": 1,
+            "transition_cell_indices": 116,
+            "detected_from_control": true,
+            "capacity_active": true,
+            "numerical_endpoint_states": [
+              [
+                0.78177564519856535,
+                0.77737001831916719
+              ],
+              [
+                0.14738320822225812,
+                0.149998348141511
+              ]
+            ],
+            "state_span": 0.0051233294836215216,
+            "local_max_cell_width": 0.037499999999999645,
+            "interval_node_indices": [
+              116,
+              117
+            ],
+            "preceding_arc_index": 1,
+            "from_type": "0",
+            "to_type": "q_B",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "capacity_enter",
+              "status": "detected",
+              "interval": [
+                4.3125000000000036,
+                4.3500000000000032
+              ],
+              "transition_cells": 1,
+              "transition_cell_indices": 116,
+              "detected_from_control": true,
+              "capacity_active": true,
+              "numerical_endpoint_states": [
+                [
+                  0.78177564519856535,
+                  0.77737001831916719
+                ],
+                [
+                  0.14738320822225812,
+                  0.149998348141511
+                ]
+              ],
+              "state_span": 0.0051233294836215216,
+              "local_max_cell_width": 0.037499999999999645,
+              "interval_node_indices": [
+                116,
+                117
+              ],
+              "preceding_arc_index": 1,
+              "from_type": "0",
+              "to_type": "q_B"
+            }
+          },
+          "capacity_exit": {
+            "kind": "capacity_exit",
+            "status": "detected",
+            "interval": [
+              5.849999999999989,
+              5.8874999999999886
+            ],
+            "transition_cells": 1,
+            "transition_cell_indices": 157,
+            "detected_from_control": true,
+            "capacity_active": true,
+            "numerical_endpoint_states": [
+              [
+                0.550030416148036,
+                0.54459892142742927
+              ],
+              [
+                0.1500000251203743,
+                0.14902372619293477
+              ]
+            ],
+            "state_span": 0.00551854097526682,
+            "local_max_cell_width": 0.037499999999999645,
+            "interval_node_indices": [
+              157,
+              158
+            ],
+            "preceding_arc_index": 3,
+            "from_type": "q_B",
+            "to_type": "1",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "capacity_exit",
+              "status": "detected",
+              "interval": [
+                5.849999999999989,
+                5.8874999999999886
+              ],
+              "transition_cells": 1,
+              "transition_cell_indices": 157,
+              "detected_from_control": true,
+              "capacity_active": true,
+              "numerical_endpoint_states": [
+                [
+                  0.550030416148036,
+                  0.54459892142742927
+                ],
+                [
+                  0.1500000251203743,
+                  0.14902372619293477
+                ]
+              ],
+              "state_span": 0.00551854097526682,
+              "local_max_cell_width": 0.037499999999999645,
+              "interval_node_indices": [
+                157,
+                158
+              ],
+              "preceding_arc_index": 3,
+              "from_type": "q_B",
+              "to_type": "1"
+            }
+          },
+          "full_start": {
+            "kind": "full_start",
+            "status": "detected",
+            "interval": [
+              5.849999999999989,
+              5.8874999999999886
+            ],
+            "transition_cells": 1,
+            "transition_cell_indices": 157,
+            "detected_from_control": true,
+            "capacity_active": true,
+            "numerical_endpoint_states": [
+              [
+                0.550030416148036,
+                0.54459892142742927
+              ],
+              [
+                0.1500000251203743,
+                0.14902372619293477
+              ]
+            ],
+            "state_span": 0.00551854097526682,
+            "local_max_cell_width": 0.037499999999999645,
+            "interval_node_indices": [
+              157,
+              158
+            ],
+            "preceding_arc_index": 3,
+            "from_type": "q_B",
+            "to_type": "1",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "full_start",
+              "status": "detected",
+              "interval": [
+                5.849999999999989,
+                5.8874999999999886
+              ],
+              "transition_cells": 1,
+              "transition_cell_indices": 157,
+              "detected_from_control": true,
+              "capacity_active": true,
+              "numerical_endpoint_states": [
+                [
+                  0.550030416148036,
+                  0.54459892142742927
+                ],
+                [
+                  0.1500000251203743,
+                  0.14902372619293477
+                ]
+              ],
+              "state_span": 0.00551854097526682,
+              "local_max_cell_width": 0.037499999999999645,
+              "interval_node_indices": [
+                157,
+                158
+              ],
+              "preceding_arc_index": 3,
+              "from_type": "q_B",
+              "to_type": "1"
+            }
+          },
+          "release": {
+            "kind": "release",
+            "status": "detected",
+            "interval": [
+              6.5624999999999822,
+              6.5999999999999819
+            ],
+            "transition_cells": 1,
+            "transition_cell_indices": 176,
+            "detected_from_control": true,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                0.45392374493203347,
+                0.45082573889566663
+              ],
+              [
+                0.12170569183374229,
+                0.12136385961946011
+              ]
+            ],
+            "state_span": 0.0031168077682280047,
+            "local_max_cell_width": 0.037499999999999645,
+            "interval_node_indices": [
+              176,
+              177
+            ],
+            "preceding_arc_index": 5,
+            "from_type": "1",
+            "to_type": "0",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "release",
+              "status": "detected",
+              "interval": [
+                6.5624999999999822,
+                6.5999999999999819
+              ],
+              "transition_cells": 1,
+              "transition_cell_indices": 176,
+              "detected_from_control": true,
+              "capacity_active": false,
+              "numerical_endpoint_states": [
+                [
+                  0.45392374493203347,
+                  0.45082573889566663
+                ],
+                [
+                  0.12170569183374229,
+                  0.12136385961946011
+                ]
+              ],
+              "state_span": 0.0031168077682280047,
+              "local_max_cell_width": 0.037499999999999645,
+              "interval_node_indices": [
+                176,
+                177
+              ],
+              "preceding_arc_index": 5,
+              "from_type": "1",
+              "to_type": "0"
+            }
+          }
+        }
+      },
+      {
+        "case_id": "E3",
+        "configuration_id": "C13",
+        "run_id": "run_66965445718a41b09cfa189b83d09a5f",
+        "solve_fingerprint": "ed64bac452a710e4e928ccead846bc6b7d6d44d35b09bc803b4cccdc39ac61bf",
+        "T": 300,
+        "N": 4000,
+        "initialization": "seeded_random",
+        "success": true,
+        "return_status": "Solve_Succeeded",
+        "numeric_pass": true,
+        "agreement_pass": true,
+        "J_openocl": 0.43399851635235387,
+        "capacity_excess": 4.8023851700884634E-8,
+        "state_discrepancy": 1.7337208502166135E-8,
+        "tail_max_q": 0,
+        "terminal_peak": 3.7887393324957377E-28,
+        "observed_structure": "1 -> 0",
+        "event_intervals": {
+          "intervention": {
+            "kind": "intervention",
+            "status": "initial_event",
+            "interval": [
+              0,
+              0
+            ],
+            "transition_cells": 0,
+            "transition_cell_indices": [],
+            "detected_from_control": true,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                0.5,
+                0.5
+              ],
+              [
+                0.14,
+                0.14
+              ]
+            ],
+            "state_span": 0,
+            "local_max_cell_width": 0.075,
+            "interval_node_indices": [
+              1,
+              1
+            ],
+            "preceding_arc_index": 0,
+            "from_type": "initial",
+            "to_type": "1",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "intervention",
+              "status": "initial_event",
+              "interval": [
+                0,
+                0
+              ],
+              "transition_cells": 0,
+              "transition_cell_indices": [],
+              "detected_from_control": true,
+              "capacity_active": false,
+              "numerical_endpoint_states": [
+                [
+                  0.5,
+                  0.5
+                ],
+                [
+                  0.14,
+                  0.14
+                ]
+              ],
+              "state_span": 0,
+              "local_max_cell_width": 0.075,
+              "interval_node_indices": [
+                1,
+                1
+              ],
+              "preceding_arc_index": 0,
+              "from_type": "initial",
+              "to_type": "1"
+            }
+          },
+          "capacity_enter": {
+            "kind": "capacity_enter",
+            "status": "missing_event",
+            "interval": [
+              null,
+              null
+            ],
+            "transition_cells": 0,
+            "transition_cell_indices": [],
+            "detected_from_control": false,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                null,
+                null
+              ],
+              [
+                null,
+                null
+              ]
+            ],
+            "state_span": null,
+            "local_max_cell_width": null,
+            "interval_node_indices": [
+              null,
+              null
+            ],
+            "preceding_arc_index": null,
+            "from_type": "missing",
+            "to_type": "missing",
+            "candidate_count": 0,
+            "candidates": []
+          },
+          "capacity_exit": {
+            "kind": "capacity_exit",
+            "status": "missing_event",
+            "interval": [
+              null,
+              null
+            ],
+            "transition_cells": 0,
+            "transition_cell_indices": [],
+            "detected_from_control": false,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                null,
+                null
+              ],
+              [
+                null,
+                null
+              ]
+            ],
+            "state_span": null,
+            "local_max_cell_width": null,
+            "interval_node_indices": [
+              null,
+              null
+            ],
+            "preceding_arc_index": null,
+            "from_type": "missing",
+            "to_type": "missing",
+            "candidate_count": 0,
+            "candidates": []
+          },
+          "full_start": {
+            "kind": "full_start",
+            "status": "initial_event",
+            "interval": [
+              0,
+              0
+            ],
+            "transition_cells": 0,
+            "transition_cell_indices": [],
+            "detected_from_control": true,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                0.5,
+                0.5
+              ],
+              [
+                0.14,
+                0.14
+              ]
+            ],
+            "state_span": 0,
+            "local_max_cell_width": 0.075,
+            "interval_node_indices": [
+              1,
+              1
+            ],
+            "preceding_arc_index": 0,
+            "from_type": "initial",
+            "to_type": "1",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "full_start",
+              "status": "initial_event",
+              "interval": [
+                0,
+                0
+              ],
+              "transition_cells": 0,
+              "transition_cell_indices": [],
+              "detected_from_control": true,
+              "capacity_active": false,
+              "numerical_endpoint_states": [
+                [
+                  0.5,
+                  0.5
+                ],
+                [
+                  0.14,
+                  0.14
+                ]
+              ],
+              "state_span": 0,
+              "local_max_cell_width": 0.075,
+              "interval_node_indices": [
+                1,
+                1
+              ],
+              "preceding_arc_index": 0,
+              "from_type": "initial",
+              "to_type": "1"
+            }
+          },
+          "release": {
+            "kind": "release",
+            "status": "detected",
+            "interval": [
+              0.375,
+              0.45
+            ],
+            "transition_cells": 1,
+            "transition_cell_indices": 6,
+            "detected_from_control": true,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                0.45273137791676804,
+                0.4452619753791725
+              ],
+              [
+                0.12510363331987986,
+                0.12320218054268954
+              ]
+            ],
+            "state_span": 0.0077076258946917921,
+            "local_max_cell_width": 0.075000000000000011,
+            "interval_node_indices": [
+              6,
+              7
+            ],
+            "preceding_arc_index": 1,
+            "from_type": "1",
+            "to_type": "0",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "release",
+              "status": "detected",
+              "interval": [
+                0.375,
+                0.45
+              ],
+              "transition_cells": 1,
+              "transition_cell_indices": 6,
+              "detected_from_control": true,
+              "capacity_active": false,
+              "numerical_endpoint_states": [
+                [
+                  0.45273137791676804,
+                  0.4452619753791725
+                ],
+                [
+                  0.12510363331987986,
+                  0.12320218054268954
+                ]
+              ],
+              "state_span": 0.0077076258946917921,
+              "local_max_cell_width": 0.075000000000000011,
+              "interval_node_indices": [
+                6,
+                7
+              ],
+              "preceding_arc_index": 1,
+              "from_type": "1",
+              "to_type": "0"
+            }
+          }
+        }
+      },
+      {
+        "case_id": "E4",
+        "configuration_id": "C14",
+        "run_id": "run_4b85125caa404a28b57e0a9d6cbd7cbc",
+        "solve_fingerprint": "ef3d8797311526f770f100fbfefd0af074d3271fb776e250c892c733e6f480fa",
+        "T": 300,
+        "N": 8000,
+        "initialization": "seeded_random",
+        "success": true,
+        "return_status": "Solve_Succeeded",
+        "numeric_pass": true,
+        "agreement_pass": true,
+        "J_openocl": 1.2688310955840483,
+        "capacity_excess": 7.7028695802394687E-7,
+        "state_discrepancy": 4.1253073179703392E-9,
+        "tail_max_q": 0,
+        "terminal_peak": 5.1438866549261434E-28,
+        "observed_structure": "q_B -> 1 -> 0",
+        "event_intervals": {
+          "intervention": {
+            "kind": "intervention",
+            "status": "initial_event",
+            "interval": [
+              0,
+              0
+            ],
+            "transition_cells": 0,
+            "transition_cell_indices": [],
+            "detected_from_control": true,
+            "capacity_active": true,
+            "numerical_endpoint_states": [
+              [
+                0.7,
+                0.7
+              ],
+              [
+                0.15,
+                0.15
+              ]
+            ],
+            "state_span": 0,
+            "local_max_cell_width": 0.0375,
+            "interval_node_indices": [
+              1,
+              1
+            ],
+            "preceding_arc_index": 0,
+            "from_type": "initial",
+            "to_type": "q_B",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "intervention",
+              "status": "initial_event",
+              "interval": [
+                0,
+                0
+              ],
+              "transition_cells": 0,
+              "transition_cell_indices": [],
+              "detected_from_control": true,
+              "capacity_active": true,
+              "numerical_endpoint_states": [
+                [
+                  0.7,
+                  0.7
+                ],
+                [
+                  0.15,
+                  0.15
+                ]
+              ],
+              "state_span": 0,
+              "local_max_cell_width": 0.0375,
+              "interval_node_indices": [
+                1,
+                1
+              ],
+              "preceding_arc_index": 0,
+              "from_type": "initial",
+              "to_type": "q_B"
+            }
+          },
+          "capacity_enter": {
+            "kind": "capacity_enter",
+            "status": "initial_event",
+            "interval": [
+              0,
+              0
+            ],
+            "transition_cells": 0,
+            "transition_cell_indices": [],
+            "detected_from_control": true,
+            "capacity_active": true,
+            "numerical_endpoint_states": [
+              [
+                0.7,
+                0.7
+              ],
+              [
+                0.15,
+                0.15
+              ]
+            ],
+            "state_span": 0,
+            "local_max_cell_width": 0.0375,
+            "interval_node_indices": [
+              1,
+              1
+            ],
+            "preceding_arc_index": 0,
+            "from_type": "initial",
+            "to_type": "q_B",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "capacity_enter",
+              "status": "initial_event",
+              "interval": [
+                0,
+                0
+              ],
+              "transition_cells": 0,
+              "transition_cell_indices": [],
+              "detected_from_control": true,
+              "capacity_active": true,
+              "numerical_endpoint_states": [
+                [
+                  0.7,
+                  0.7
+                ],
+                [
+                  0.15,
+                  0.15
+                ]
+              ],
+              "state_span": 0,
+              "local_max_cell_width": 0.0375,
+              "interval_node_indices": [
+                1,
+                1
+              ],
+              "preceding_arc_index": 0,
+              "from_type": "initial",
+              "to_type": "q_B"
+            }
+          },
+          "capacity_exit": {
+            "kind": "capacity_exit",
+            "status": "detected",
+            "interval": [
+              1.0499999999999998,
+              1.0875
+            ],
+            "transition_cells": 1,
+            "transition_cell_indices": 29,
+            "detected_from_control": true,
+            "capacity_active": true,
+            "numerical_endpoint_states": [
+              [
+                0.55138439273830753,
+                0.54679920415368821
+              ],
+              [
+                0.14999999533106523,
+                0.14990313684038661
+              ]
+            ],
+            "state_span": 0.0045862115001098474,
+            "local_max_cell_width": 0.037500000000000089,
+            "interval_node_indices": [
+              29,
+              30
+            ],
+            "preceding_arc_index": 1,
+            "from_type": "q_B",
+            "to_type": "1",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "capacity_exit",
+              "status": "detected",
+              "interval": [
+                1.0499999999999998,
+                1.0875
+              ],
+              "transition_cells": 1,
+              "transition_cell_indices": 29,
+              "detected_from_control": true,
+              "capacity_active": true,
+              "numerical_endpoint_states": [
+                [
+                  0.55138439273830753,
+                  0.54679920415368821
+                ],
+                [
+                  0.14999999533106523,
+                  0.14990313684038661
+                ]
+              ],
+              "state_span": 0.0045862115001098474,
+              "local_max_cell_width": 0.037500000000000089,
+              "interval_node_indices": [
+                29,
+                30
+              ],
+              "preceding_arc_index": 1,
+              "from_type": "q_B",
+              "to_type": "1"
+            }
+          },
+          "full_start": {
+            "kind": "full_start",
+            "status": "detected",
+            "interval": [
+              1.0499999999999998,
+              1.0875
+            ],
+            "transition_cells": 1,
+            "transition_cell_indices": 29,
+            "detected_from_control": true,
+            "capacity_active": true,
+            "numerical_endpoint_states": [
+              [
+                0.55138439273830753,
+                0.54679920415368821
+              ],
+              [
+                0.14999999533106523,
+                0.14990313684038661
+              ]
+            ],
+            "state_span": 0.0045862115001098474,
+            "local_max_cell_width": 0.037500000000000089,
+            "interval_node_indices": [
+              29,
+              30
+            ],
+            "preceding_arc_index": 1,
+            "from_type": "q_B",
+            "to_type": "1",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "full_start",
+              "status": "detected",
+              "interval": [
+                1.0499999999999998,
+                1.0875
+              ],
+              "transition_cells": 1,
+              "transition_cell_indices": 29,
+              "detected_from_control": true,
+              "capacity_active": true,
+              "numerical_endpoint_states": [
+                [
+                  0.55138439273830753,
+                  0.54679920415368821
+                ],
+                [
+                  0.14999999533106523,
+                  0.14990313684038661
+                ]
+              ],
+              "state_span": 0.0045862115001098474,
+              "local_max_cell_width": 0.037500000000000089,
+              "interval_node_indices": [
+                29,
+                30
+              ],
+              "preceding_arc_index": 1,
+              "from_type": "q_B",
+              "to_type": "1"
+            }
+          },
+          "release": {
+            "kind": "release",
+            "status": "detected",
+            "interval": [
+              1.7625000000000015,
+              1.8000000000000016
+            ],
+            "transition_cells": 1,
+            "transition_cell_indices": 48,
+            "detected_from_control": true,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                0.45526813434891206,
+                0.4512842425041263
+              ],
+              [
+                0.12242389465562747,
+                0.12121077818441135
+              ]
+            ],
+            "state_span": 0.0041644982655400795,
+            "local_max_cell_width": 0.037500000000000089,
+            "interval_node_indices": [
+              48,
+              49
+            ],
+            "preceding_arc_index": 3,
+            "from_type": "1",
+            "to_type": "0",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "release",
+              "status": "detected",
+              "interval": [
+                1.7625000000000015,
+                1.8000000000000016
+              ],
+              "transition_cells": 1,
+              "transition_cell_indices": 48,
+              "detected_from_control": true,
+              "capacity_active": false,
+              "numerical_endpoint_states": [
+                [
+                  0.45526813434891206,
+                  0.4512842425041263
+                ],
+                [
+                  0.12242389465562747,
+                  0.12121077818441135
+                ]
+              ],
+              "state_span": 0.0041644982655400795,
+              "local_max_cell_width": 0.037500000000000089,
+              "interval_node_indices": [
+                48,
+                49
+              ],
+              "preceding_arc_index": 3,
+              "from_type": "1",
+              "to_type": "0"
+            }
+          }
+        }
+      },
+      {
+        "case_id": "E5",
+        "configuration_id": "C15",
+        "run_id": "run_ef82c05c9b2f4113a4f5b28c4a6c0041",
+        "solve_fingerprint": "c80c853d4faa8a66d7b1ad23b654170db9027cbb53a1560e8cb0d8b4b6b401cc",
+        "T": 300,
+        "N": 4000,
+        "initialization": "seeded_random",
+        "success": true,
+        "return_status": "Solve_Succeeded",
+        "numeric_pass": true,
+        "agreement_pass": true,
+        "J_openocl": 0.53625636159160361,
+        "capacity_excess": 5.571007005711337E-8,
+        "state_discrepancy": 2.5027230343699358E-8,
+        "tail_max_q": 0,
+        "terminal_peak": 3.6529639885422071E-28,
+        "observed_structure": "1 -> 0",
+        "event_intervals": {
+          "intervention": {
+            "kind": "intervention",
+            "status": "initial_event",
+            "interval": [
+              0,
+              0
+            ],
+            "transition_cells": 0,
+            "transition_cell_indices": [],
+            "detected_from_control": true,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                0.5,
+                0.5
+              ],
+              [
+                0.15,
+                0.15
+              ]
+            ],
+            "state_span": 0,
+            "local_max_cell_width": 0.075,
+            "interval_node_indices": [
+              1,
+              1
+            ],
+            "preceding_arc_index": 0,
+            "from_type": "initial",
+            "to_type": "1",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "intervention",
+              "status": "initial_event",
+              "interval": [
+                0,
+                0
+              ],
+              "transition_cells": 0,
+              "transition_cell_indices": [],
+              "detected_from_control": true,
+              "capacity_active": false,
+              "numerical_endpoint_states": [
+                [
+                  0.5,
+                  0.5
+                ],
+                [
+                  0.15,
+                  0.15
+                ]
+              ],
+              "state_span": 0,
+              "local_max_cell_width": 0.075,
+              "interval_node_indices": [
+                1,
+                1
+              ],
+              "preceding_arc_index": 0,
+              "from_type": "initial",
+              "to_type": "1"
+            }
+          },
+          "capacity_enter": {
+            "kind": "capacity_enter",
+            "status": "missing_event",
+            "interval": [
+              null,
+              null
+            ],
+            "transition_cells": 0,
+            "transition_cell_indices": [],
+            "detected_from_control": false,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                null,
+                null
+              ],
+              [
+                null,
+                null
+              ]
+            ],
+            "state_span": null,
+            "local_max_cell_width": null,
+            "interval_node_indices": [
+              null,
+              null
+            ],
+            "preceding_arc_index": null,
+            "from_type": "missing",
+            "to_type": "missing",
+            "candidate_count": 0,
+            "candidates": []
+          },
+          "capacity_exit": {
+            "kind": "capacity_exit",
+            "status": "missing_event",
+            "interval": [
+              null,
+              null
+            ],
+            "transition_cells": 0,
+            "transition_cell_indices": [],
+            "detected_from_control": false,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                null,
+                null
+              ],
+              [
+                null,
+                null
+              ]
+            ],
+            "state_span": null,
+            "local_max_cell_width": null,
+            "interval_node_indices": [
+              null,
+              null
+            ],
+            "preceding_arc_index": null,
+            "from_type": "missing",
+            "to_type": "missing",
+            "candidate_count": 0,
+            "candidates": []
+          },
+          "full_start": {
+            "kind": "full_start",
+            "status": "initial_event",
+            "interval": [
+              0,
+              0
+            ],
+            "transition_cells": 0,
+            "transition_cell_indices": [],
+            "detected_from_control": true,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                0.5,
+                0.5
+              ],
+              [
+                0.15,
+                0.15
+              ]
+            ],
+            "state_span": 0,
+            "local_max_cell_width": 0.075,
+            "interval_node_indices": [
+              1,
+              1
+            ],
+            "preceding_arc_index": 0,
+            "from_type": "initial",
+            "to_type": "1",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "full_start",
+              "status": "initial_event",
+              "interval": [
+                0,
+                0
+              ],
+              "transition_cells": 0,
+              "transition_cell_indices": [],
+              "detected_from_control": true,
+              "capacity_active": false,
+              "numerical_endpoint_states": [
+                [
+                  0.5,
+                  0.5
+                ],
+                [
+                  0.15,
+                  0.15
+                ]
+              ],
+              "state_span": 0,
+              "local_max_cell_width": 0.075,
+              "interval_node_indices": [
+                1,
+                1
+              ],
+              "preceding_arc_index": 0,
+              "from_type": "initial",
+              "to_type": "1"
+            }
+          },
+          "release": {
+            "kind": "release",
+            "status": "detected",
+            "interval": [
+              0.525,
+              0.6
+            ],
+            "transition_cells": 1,
+            "transition_cell_indices": 8,
+            "detected_from_control": true,
+            "capacity_active": false,
+            "numerical_endpoint_states": [
+              [
+                0.43219847568493885,
+                0.42743597091596019
+              ],
+              [
+                0.12814152465503981,
+                0.128770695580669
+              ]
+            ],
+            "state_span": 0.0048038846497601888,
+            "local_max_cell_width": 0.075000000000000011,
+            "interval_node_indices": [
+              8,
+              9
+            ],
+            "preceding_arc_index": 1,
+            "from_type": "1",
+            "to_type": "0",
+            "candidate_count": 1,
+            "candidates": {
+              "kind": "release",
+              "status": "detected",
+              "interval": [
+                0.525,
+                0.6
+              ],
+              "transition_cells": 1,
+              "transition_cell_indices": 8,
+              "detected_from_control": true,
+              "capacity_active": false,
+              "numerical_endpoint_states": [
+                [
+                  0.43219847568493885,
+                  0.42743597091596019
+                ],
+                [
+                  0.12814152465503981,
+                  0.128770695580669
+                ]
+              ],
+              "state_span": 0.0048038846497601888,
+              "local_max_cell_width": 0.075000000000000011,
+              "interval_node_indices": [
+                8,
+                9
+              ],
+              "preceding_arc_index": 1,
+              "from_type": "1",
+              "to_type": "0"
+            }
+          }
+        }
+      }
+    ],
+    "case_comparisons": [
+      {
+        "case_id": "E1",
+        "status": "passed",
+        "consistency_pass": true,
+        "source_run_ids": [
+          "run_4dfaa3539e6241ae8d3d7cd4028c667a",
+          "run_fd387f5267674b82b5ce57f5b1bd3f55"
+        ],
+        "reference_run_id": "run_1fe903238ec8428ebe33758d0860ba94",
+        "cost_absolute_difference": [
+          1.4432899320127035E-15,
+          1.9984014443252818E-15
+        ],
+        "finest_relative_cost_difference": null,
+        "cost_absolute_span": null,
+        "event_comparisons": [
+          {
+            "intervention": {
+              "passed": true,
+              "reference_interval": [
+                6.9750000000000112,
+                7.0500000000000114
+              ],
+              "other_interval": [
+                6.9750000000000112,
+                7.0500000000000114
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.075000000000000178
+            },
+            "capacity_enter": {
+              "passed": true,
+              "reference_interval": [
+                null,
+                null
+              ],
+              "other_interval": [
+                null,
+                null
+              ],
+              "distance_between_intervals": null,
+              "allowed_cell_width": null
+            },
+            "capacity_exit": {
+              "passed": true,
+              "reference_interval": [
+                null,
+                null
+              ],
+              "other_interval": [
+                null,
+                null
+              ],
+              "distance_between_intervals": null,
+              "allowed_cell_width": null
+            },
+            "full_start": {
+              "passed": true,
+              "reference_interval": [
+                6.9750000000000112,
+                7.0500000000000114
+              ],
+              "other_interval": [
+                6.9750000000000112,
+                7.0500000000000114
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.075000000000000178
+            },
+            "release": {
+              "passed": true,
+              "reference_interval": [
+                7.4250000000000123,
+                7.5000000000000124
+              ],
+              "other_interval": [
+                7.4250000000000123,
+                7.5000000000000124
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.075000000000000178
+            }
+          },
+          {
+            "intervention": {
+              "passed": true,
+              "reference_interval": [
+                6.9750000000000112,
+                7.0500000000000114
+              ],
+              "other_interval": [
+                6.9750000000000112,
+                7.0500000000000114
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.075000000000000178
+            },
+            "capacity_enter": {
+              "passed": true,
+              "reference_interval": [
+                null,
+                null
+              ],
+              "other_interval": [
+                null,
+                null
+              ],
+              "distance_between_intervals": null,
+              "allowed_cell_width": null
+            },
+            "capacity_exit": {
+              "passed": true,
+              "reference_interval": [
+                null,
+                null
+              ],
+              "other_interval": [
+                null,
+                null
+              ],
+              "distance_between_intervals": null,
+              "allowed_cell_width": null
+            },
+            "full_start": {
+              "passed": true,
+              "reference_interval": [
+                6.9750000000000112,
+                7.0500000000000114
+              ],
+              "other_interval": [
+                6.9750000000000112,
+                7.0500000000000114
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.075000000000000178
+            },
+            "release": {
+              "passed": true,
+              "reference_interval": [
+                7.4250000000000123,
+                7.5000000000000124
+              ],
+              "other_interval": [
+                7.4250000000000123,
+                7.5000000000000124
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.075000000000000178
+            }
+          }
+        ],
+        "common_window_comparisons": [],
+        "reasons": []
+      },
+      {
+        "case_id": "E2",
+        "status": "passed",
+        "consistency_pass": true,
+        "source_run_ids": [
+          "run_54024cb1a950459e8007f63ef5e9c6ff",
+          "run_f4d2a395a778413eb76763244b7de2ea"
+        ],
+        "reference_run_id": "run_95f03cda21434451998723ad26c1a1b9",
+        "cost_absolute_difference": [
+          5.7864824043463159E-13,
+          6.10178574333986E-13
+        ],
+        "finest_relative_cost_difference": null,
+        "cost_absolute_span": null,
+        "event_comparisons": [
+          {
+            "intervention": {
+              "passed": true,
+              "reference_interval": [
+                4.3125000000000036,
+                4.3500000000000032
+              ],
+              "other_interval": [
+                4.3125000000000036,
+                4.3500000000000032
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.037499999999999645
+            },
+            "capacity_enter": {
+              "passed": true,
+              "reference_interval": [
+                4.3125000000000036,
+                4.3500000000000032
+              ],
+              "other_interval": [
+                4.3125000000000036,
+                4.3500000000000032
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.037499999999999645
+            },
+            "capacity_exit": {
+              "passed": true,
+              "reference_interval": [
+                5.849999999999989,
+                5.8874999999999886
+              ],
+              "other_interval": [
+                5.849999999999989,
+                5.8874999999999886
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.037499999999999645
+            },
+            "full_start": {
+              "passed": true,
+              "reference_interval": [
+                5.849999999999989,
+                5.8874999999999886
+              ],
+              "other_interval": [
+                5.849999999999989,
+                5.8874999999999886
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.037499999999999645
+            },
+            "release": {
+              "passed": true,
+              "reference_interval": [
+                6.5624999999999822,
+                6.5999999999999819
+              ],
+              "other_interval": [
+                6.5624999999999822,
+                6.5999999999999819
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.037499999999999645
+            }
+          },
+          {
+            "intervention": {
+              "passed": true,
+              "reference_interval": [
+                4.3125000000000036,
+                4.3500000000000032
+              ],
+              "other_interval": [
+                4.3125000000000036,
+                4.3500000000000032
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.037499999999999645
+            },
+            "capacity_enter": {
+              "passed": true,
+              "reference_interval": [
+                4.3125000000000036,
+                4.3500000000000032
+              ],
+              "other_interval": [
+                4.3125000000000036,
+                4.3500000000000032
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.037499999999999645
+            },
+            "capacity_exit": {
+              "passed": true,
+              "reference_interval": [
+                5.849999999999989,
+                5.8874999999999886
+              ],
+              "other_interval": [
+                5.849999999999989,
+                5.8874999999999886
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.037499999999999645
+            },
+            "full_start": {
+              "passed": true,
+              "reference_interval": [
+                5.849999999999989,
+                5.8874999999999886
+              ],
+              "other_interval": [
+                5.849999999999989,
+                5.8874999999999886
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.037499999999999645
+            },
+            "release": {
+              "passed": true,
+              "reference_interval": [
+                6.5624999999999822,
+                6.5999999999999819
+              ],
+              "other_interval": [
+                6.5624999999999822,
+                6.5999999999999819
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.037499999999999645
+            }
+          }
+        ],
+        "common_window_comparisons": [],
+        "reasons": []
+      },
+      {
+        "case_id": "E3",
+        "status": "passed",
+        "consistency_pass": true,
+        "source_run_ids": [
+          "run_02a89c2481494a1493fe489ad382279f",
+          "run_66965445718a41b09cfa189b83d09a5f"
+        ],
+        "reference_run_id": "run_bd09cff659c14ab7960b447ff0f4f0b0",
+        "cost_absolute_difference": [
+          1.7763568394002505E-15,
+          1.5543122344752192E-15
+        ],
+        "finest_relative_cost_difference": null,
+        "cost_absolute_span": null,
+        "event_comparisons": [
+          {
+            "intervention": {
+              "passed": true,
+              "reference_interval": [
+                0,
+                0
+              ],
+              "other_interval": [
+                0,
+                0
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.075
+            },
+            "capacity_enter": {
+              "passed": true,
+              "reference_interval": [
+                null,
+                null
+              ],
+              "other_interval": [
+                null,
+                null
+              ],
+              "distance_between_intervals": null,
+              "allowed_cell_width": null
+            },
+            "capacity_exit": {
+              "passed": true,
+              "reference_interval": [
+                null,
+                null
+              ],
+              "other_interval": [
+                null,
+                null
+              ],
+              "distance_between_intervals": null,
+              "allowed_cell_width": null
+            },
+            "full_start": {
+              "passed": true,
+              "reference_interval": [
+                0,
+                0
+              ],
+              "other_interval": [
+                0,
+                0
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.075
+            },
+            "release": {
+              "passed": true,
+              "reference_interval": [
+                0.375,
+                0.45
+              ],
+              "other_interval": [
+                0.375,
+                0.45
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.075000000000000011
+            }
+          },
+          {
+            "intervention": {
+              "passed": true,
+              "reference_interval": [
+                0,
+                0
+              ],
+              "other_interval": [
+                0,
+                0
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.075
+            },
+            "capacity_enter": {
+              "passed": true,
+              "reference_interval": [
+                null,
+                null
+              ],
+              "other_interval": [
+                null,
+                null
+              ],
+              "distance_between_intervals": null,
+              "allowed_cell_width": null
+            },
+            "capacity_exit": {
+              "passed": true,
+              "reference_interval": [
+                null,
+                null
+              ],
+              "other_interval": [
+                null,
+                null
+              ],
+              "distance_between_intervals": null,
+              "allowed_cell_width": null
+            },
+            "full_start": {
+              "passed": true,
+              "reference_interval": [
+                0,
+                0
+              ],
+              "other_interval": [
+                0,
+                0
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.075
+            },
+            "release": {
+              "passed": true,
+              "reference_interval": [
+                0.375,
+                0.45
+              ],
+              "other_interval": [
+                0.375,
+                0.45
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.075000000000000011
+            }
+          }
+        ],
+        "common_window_comparisons": [],
+        "reasons": []
+      },
+      {
+        "case_id": "E4",
+        "status": "passed",
+        "consistency_pass": true,
+        "source_run_ids": [
+          "run_92300dbeb73841b3afa940c8ec99ae44",
+          "run_4b85125caa404a28b57e0a9d6cbd7cbc"
+        ],
+        "reference_run_id": "run_139836e6273441e7bef91b3cce70193f",
+        "cost_absolute_difference": [
+          2.886579864025407E-15,
+          5.773159728050814E-15
+        ],
+        "finest_relative_cost_difference": null,
+        "cost_absolute_span": null,
+        "event_comparisons": [
+          {
+            "intervention": {
+              "passed": true,
+              "reference_interval": [
+                0,
+                0
+              ],
+              "other_interval": [
+                0,
+                0
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.0375
+            },
+            "capacity_enter": {
+              "passed": true,
+              "reference_interval": [
+                0,
+                0
+              ],
+              "other_interval": [
+                0,
+                0
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.0375
+            },
+            "capacity_exit": {
+              "passed": true,
+              "reference_interval": [
+                1.0499999999999998,
+                1.0875
+              ],
+              "other_interval": [
+                1.0499999999999998,
+                1.0875
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.037500000000000089
+            },
+            "full_start": {
+              "passed": true,
+              "reference_interval": [
+                1.0499999999999998,
+                1.0875
+              ],
+              "other_interval": [
+                1.0499999999999998,
+                1.0875
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.037500000000000089
+            },
+            "release": {
+              "passed": true,
+              "reference_interval": [
+                1.7625000000000015,
+                1.8000000000000016
+              ],
+              "other_interval": [
+                1.7625000000000015,
+                1.8000000000000016
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.037500000000000089
+            }
+          },
+          {
+            "intervention": {
+              "passed": true,
+              "reference_interval": [
+                0,
+                0
+              ],
+              "other_interval": [
+                0,
+                0
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.0375
+            },
+            "capacity_enter": {
+              "passed": true,
+              "reference_interval": [
+                0,
+                0
+              ],
+              "other_interval": [
+                0,
+                0
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.0375
+            },
+            "capacity_exit": {
+              "passed": true,
+              "reference_interval": [
+                1.0499999999999998,
+                1.0875
+              ],
+              "other_interval": [
+                1.0499999999999998,
+                1.0875
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.037500000000000089
+            },
+            "full_start": {
+              "passed": true,
+              "reference_interval": [
+                1.0499999999999998,
+                1.0875
+              ],
+              "other_interval": [
+                1.0499999999999998,
+                1.0875
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.037500000000000089
+            },
+            "release": {
+              "passed": true,
+              "reference_interval": [
+                1.7625000000000015,
+                1.8000000000000016
+              ],
+              "other_interval": [
+                1.7625000000000015,
+                1.8000000000000016
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.037500000000000089
+            }
+          }
+        ],
+        "common_window_comparisons": [],
+        "reasons": []
+      },
+      {
+        "case_id": "E5",
+        "status": "passed",
+        "consistency_pass": true,
+        "source_run_ids": [
+          "run_514dfb58d0b14edc8f57506e2cc5c220",
+          "run_ef82c05c9b2f4113a4f5b28c4a6c0041"
+        ],
+        "reference_run_id": "run_a07493968ce542b2b057ce11232f695c",
+        "cost_absolute_difference": [
+          8.8817841970012523E-16,
+          7.7715611723760958E-16
+        ],
+        "finest_relative_cost_difference": null,
+        "cost_absolute_span": null,
+        "event_comparisons": [
+          {
+            "intervention": {
+              "passed": true,
+              "reference_interval": [
+                0,
+                0
+              ],
+              "other_interval": [
+                0,
+                0
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.075
+            },
+            "capacity_enter": {
+              "passed": true,
+              "reference_interval": [
+                null,
+                null
+              ],
+              "other_interval": [
+                null,
+                null
+              ],
+              "distance_between_intervals": null,
+              "allowed_cell_width": null
+            },
+            "capacity_exit": {
+              "passed": true,
+              "reference_interval": [
+                null,
+                null
+              ],
+              "other_interval": [
+                null,
+                null
+              ],
+              "distance_between_intervals": null,
+              "allowed_cell_width": null
+            },
+            "full_start": {
+              "passed": true,
+              "reference_interval": [
+                0,
+                0
+              ],
+              "other_interval": [
+                0,
+                0
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.075
+            },
+            "release": {
+              "passed": true,
+              "reference_interval": [
+                0.525,
+                0.6
+              ],
+              "other_interval": [
+                0.525,
+                0.6
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.075000000000000011
+            }
+          },
+          {
+            "intervention": {
+              "passed": true,
+              "reference_interval": [
+                0,
+                0
+              ],
+              "other_interval": [
+                0,
+                0
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.075
+            },
+            "capacity_enter": {
+              "passed": true,
+              "reference_interval": [
+                null,
+                null
+              ],
+              "other_interval": [
+                null,
+                null
+              ],
+              "distance_between_intervals": null,
+              "allowed_cell_width": null
+            },
+            "capacity_exit": {
+              "passed": true,
+              "reference_interval": [
+                null,
+                null
+              ],
+              "other_interval": [
+                null,
+                null
+              ],
+              "distance_between_intervals": null,
+              "allowed_cell_width": null
+            },
+            "full_start": {
+              "passed": true,
+              "reference_interval": [
+                0,
+                0
+              ],
+              "other_interval": [
+                0,
+                0
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.075
+            },
+            "release": {
+              "passed": true,
+              "reference_interval": [
+                0.525,
+                0.6
+              ],
+              "other_interval": [
+                0.525,
+                0.6
+              ],
+              "distance_between_intervals": 0,
+              "allowed_cell_width": 0.075000000000000011
+            }
+          }
+        ],
+        "common_window_comparisons": [],
+        "reasons": []
+      }
+    ],
+    "blockers": []
+  }
+}

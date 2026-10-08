@@ -33,9 +33,10 @@ hK=plot(ax,[.001 1-p.K],[p.K p.K],'k--','LineWidth',auxiliaryWidth);
 % s+i<=1 的边界是 s+i=1；可行侧在直线下方。
 hP=plot(ax,[.75 1],[.25 0],'--','Color',[.6 .6 .6],'LineWidth',auxiliaryWidth);
 hH=xline(ax,g.h,'--','Color',[.6 .6 .6],'LineWidth',auxiliaryWidth,'Alpha',1);
+hNumerical=gobjects(1,5);
 for k=1:5
     rr=r{k}; ix=rr.t_state<=18;
-    plot(ax,rr.s_state(ix),rr.i_state(ix),'Color',colors(k,:),'LineWidth',mainWidth, ...
+    hNumerical(k)=plot(ax,rr.s_state(ix),rr.i_state(ix),'Color',colors(k,:),'LineWidth',mainWidth, ...
         'Marker','none','HandleVisibility','off');
     plot(ax, rr.x0(1), rr.x0(2), 'p', ...
         'Color', colors(k,:), ...
@@ -54,14 +55,14 @@ text(ax,.43,.14,'$\mathcal{T}$','Interpreter','latex','FontSize',12);
 text(ax,g.s_B+.005,p.K+.005,'$s_B$','Interpreter','latex','FontSize',10);
 xlabel(ax,'$s$','Interpreter','latex'); ylabel(ax,'$i$','Interpreter','latex');
 xlim(ax,[.15 1.01]); ylim(ax,[0 .25]);
-lg=legend(ax,[hA hG hW hK hP hH],{'$\partial\mathcal{A}$','$\Gamma_K$', ...
-    '$\Phi=\Phi_B$','$i=K$','$s+i=1$','$s=h$'}, ...
+lg=legend(ax,[hA hG hW hNumerical(1) hK hP hH],{'$\partial\mathcal{A}$ (theory)','$\Gamma_K$ (theory)', ...
+    '$\Phi=\Phi_B$ (theory)','OpenOCL (E1--E5)','$i=K$','$s+i=1$','$s=h$'}, ...
     'Interpreter','latex','Location','northeast','NumColumns',1,'Box','off','FontSize',9);
 lg.ItemTokenSize=[16 10];
 style(ax); export(fig,'FigN1_regions',cfg);
 timepanels(r,[1 2],18,'FigN2_waiting',cfg);
 timepanels(r,[3 4 5],8,'FigN3_boundary_tracking',cfg);
-numerical_export_provenance('figure',manifest,cfg.paths.data);
+record_figure_outputs(r,manifest,cfg);
 fprintf('NUMERICAL_FIGURES_OK\n');
 end
 
@@ -69,18 +70,19 @@ function timepanels(r,ids,tmax,name,cfg)
 n=numel(ids); fig=newfigure(18,10.8);
 layout=tiledlayout(fig,2,n,'TileSpacing','compact','Padding','compact');
 for j=1:n
-    rr=r{ids(j)}; ref=rr.reference;
+    rr=r{ids(j)};
     ax=nexttile(layout,j); hold(ax,'on');
     hn=stairs(ax,[rr.t_control;rr.t_state(end)],[rr.q_control;rr.q_control(end)], ...
         'Color',[.12 .40 .68],'LineWidth',1.3);
-    % 用重复事件时间表达理论左右极限，避免插值斜坡。
-    tt=linspace(0,tmax,2001)'; events=[ref.events.capacity_start ref.events.full_start ref.events.release];
-    for t=events(isfinite(events))
-        tt=[tt;max(0,t-1e-10);t]; %#ok<AGROW>
-    end
-    tt=sort(unique(tt)); g=build_theory_geometry(rr.parameters);
+    % 理论控制在同一事件时刻依次画左右极限，不以极短斜坡代替跳跃。
+    g=build_theory_geometry(rr.parameters);
+    ref=analytic_reference(rr.parameters,rr.x0,g,[0;tmax]);
+    events=[ref.events.capacity_start ref.events.full_start ref.events.release];
+    events=events(isfinite(events) & events>=0 & events<=tmax);
+    tt=sort(unique([linspace(0,tmax,2001)';events(:)]));
     ref=analytic_reference(rr.parameters,rr.x0,g,tt);
-    ha=plot(ax,ref.t,ref.q,'k--','LineWidth',1.15);
+    [tTheory,qTheory]=control_plot_samples(ref,g);
+    ha=plot(ax,tTheory,qTheory,'k--','LineWidth',1.15);
     xlim(ax,[0 tmax]); ylim(ax,[-.035 1.09]); ylabel(ax,'$q(t)$','Interpreter','latex');
     title(ax,sprintf('E%d: (%.2f, %.2f)',ids(j),rr.x0(1),rr.x0(2)), ...
         'FontName','Times New Roman','Interpreter','none','FontWeight','normal');
@@ -99,6 +101,44 @@ for j=1:n
     xlabel(ax,'$t$','Interpreter','latex'); ylabel(ax,'$i(t)$','Interpreter','latex'); style(ax);
 end
 export(fig,name,cfg);
+end
+
+function [tPlot,qPlot]=control_plot_samples(ref,geom)
+% 初始即干预的事件不添加 t<0 的虚构阶段；零长度容量段也不生成平台。
+if ref.tau_boundary>1e-12
+    beforeFull=1-geom.h/ref.events.full_state(1);
+else
+    beforeFull=0;
+end
+jumps=[ref.events.capacity_start 0;ref.events.full_start beforeFull;ref.events.release 1];
+jumps=jumps(isfinite(jumps(:,1)) & jumps(:,1)>0 & jumps(:,1)<=ref.t(end),:);
+assert(all(ismember(jumps(:,1),ref.t)),'A theoretical event is missing from the plotting samples.');
+samples=sortrows([ref.t ref.q ones(numel(ref.t),1);jumps zeros(size(jumps,1),1)],[1 3]);
+tPlot=samples(:,1); qPlot=samples(:,2);
+assert(sum(diff(tPlot)==0)==size(jumps,1),'Theoretical jumps must use repeated event times.');
+end
+
+function record_figure_outputs(r,manifest,cfg)
+% 每张图记录实际使用的所选原始 run_id，并绑定本次 PDF/PNG 输出哈希。
+provenance=numerical_export_provenance('figure',manifest,cfg.paths.data);
+names={'FigN1_regions','FigN2_waiting','FigN3_boundary_tracking'};
+caseIndices={1:5,[1 2],[3 4 5]};
+entries=repmat(struct('name','','case_ids',{{}},'run_ids',{{}},'outputs',[]),1,3);
+for k=1:3
+    selected=r(caseIndices{k});
+    outputs=repmat(struct('file','','sha256',''),1,2);
+    extensions={'.pdf','.png'};
+    for j=1:2
+        filename=[names{k} extensions{j}];
+        outputs(j)=struct('file',['figures/numerical_scenarios/' filename], ...
+            'sha256',numerical_sha256(fullfile(cfg.paths.figures,filename),'file'));
+    end
+    caseIds=cellfun(@(run) run.case_id,selected,'UniformOutput',false);
+    runIds=cellfun(@(run) run.run_id,selected,'UniformOutput',false);
+    entries(k)=struct('name',names{k},'case_ids',{caseIds},'run_ids',{runIds},'outputs',outputs);
+end
+provenance.figures=entries;
+numerical_write_json(fullfile(cfg.paths.data,'figure_provenance.json'),provenance);
 end
 
 function f=newfigure(w,h)

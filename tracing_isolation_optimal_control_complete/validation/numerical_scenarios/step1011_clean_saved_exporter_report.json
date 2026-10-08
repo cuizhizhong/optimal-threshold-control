@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "tests": [
+    "saved_data_reexport_identical",
+    "independent_protocol_and_consistency",
+    "no_NaN_or_legacy_neutral_claim",
+    "non_generated_text_unchanged",
+    "missing_robustness_keeps_main_independent",
+    "failed_summary_removes_old_pass_claim",
+    "changed_summary_origin_clears_stale_success",
+    "blocked_empty_rows_keep_new_results_empty",
+    "changed_raw_hash_clears_stale_success"
+  ],
+  "test_count": 9,
+  "actual_optimizer_calls": 0,
+  "formal_tex_modified": false,
+  "recorded_configurations": 35,
+  "numeric_and_agreement_pass_count": 28
+}

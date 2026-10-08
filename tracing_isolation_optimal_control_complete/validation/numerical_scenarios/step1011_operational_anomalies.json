@@ -1,0 +1,99 @@
+[
+  {
+    "kind": "read_only_navigation",
+    "detail": "仓库根目录 CODEX_EXECUTION_PLAN.md 与 .gitignore 不存在；一次验证函数查找误用 validation 路径。已定位当前 ai/codex_revision_plan 及 matlab/numerical_scenarios 中的实际文件。",
+    "scientific_optimizer_calls": 0
+  },
+  {
+    "kind": "python_encoding",
+    "original_error": "UnicodeDecodeError: 'gbk' codec can't decode byte 0x82",
+    "detail": "JSON 读取改用 encoding='utf-8'；PDF 文本控制台输出改设 PYTHONIOENCODING=utf-8。渲染页面中文正常。",
+    "resolved": true
+  },
+  {
+    "kind": "subagent_matlab_startup",
+    "original_error": "MATLAB::settings::prefdir::PrefdirNotWritable",
+    "detail": "受限环境无法访问 C:/Users/cui/AppData/Roaming/MathWorks/MATLAB/R2025b，退出1；独立临时偏好目录的启动被根代理中断以避免并发，均未产生科学求解。随后根代理在本机环境运行成功。",
+    "scientific_optimizer_calls": 0
+  },
+  {
+    "kind": "matlab_entrypoint",
+    "detail": "run() 临时改变 pwd，首次入口拼出错误目录并无法识别 numerical_cases_config；改用 mfilename('fullpath') 定位并重新运行成功。",
+    "log": "step1011_postprocess_attempt1.log",
+    "scientific_optimizer_calls": 0,
+    "resolved": true
+  },
+  {
+    "kind": "latex_overfull",
+    "detail": "首次主文附录路径段落 Overfull hbox 11.08316pt；只调整换段后重编，最终主文与 TheoryOnly 日志零问题。",
+    "log": "step1011_main_attempt1_final.log",
+    "resolved": true
+  },
+  {
+    "kind": "diagnostic_false_positives",
+    "detail": "首次日志筛选把 infwarerr 包说明和 pdftexcmds Info 当作异常；现改为真正 Warning/Overfull/Underfull/缺字/错误模式。首次报告仍保留。",
+    "report": "step1011_build_attempt1_report.json",
+    "resolved": true
+  },
+  {
+    "kind": "clean_archive_long_path",
+    "original_error": "FileNotFoundError: [Errno 2] No such file or directory",
+    "detail": "首次 tar 展开遇 Windows 长路径限制；改为长路径目标前缀并设置 Git core.longpaths；失败临时目录保留。",
+    "scientific_optimizer_calls": 0,
+    "resolved": true
+  },
+  {
+    "kind": "clean_missing_assessment",
+    "original_error": "No current saved assessment: run_4dfaa3539e6241ae8d3d7cd4028c667a.",
+    "detail": "第一次 clean MATLAB 的12组 unit通过，但保存数据导出回归失败；源文件 is_file 枚举跳过35个长路径 assessment。原工作区数据完整；源枚举也采用长路径前缀，核对评估集合完整后重建并重跑。一次定位诊断的相对路径 stat 亦遇 WinError 3，已使用绝对长路径。",
+    "log": "step1011_clean_attempt1.log",
+    "scientific_optimizer_calls": 0,
+    "resolved": true
+  },
+  {
+    "kind": "vector_export_warning",
+    "identifier": "MATLAB:print:ContentTypeImageSuggested",
+    "detail": "原工作区及干净候选各有三次矢量导出耗时/文件大小提醒，未屏蔽警告；实际输出完成、来源哈希匹配并经视觉检查。",
+    "log": "step1011_postprocess.log",
+    "clean_log": "step1011_clean_execution.log",
+    "scientific_result_failure": false
+  },
+  {
+    "kind": "git_line_endings",
+    "detail": "git diff --check 提示部分文本未来会由 LF 转 CRLF；没有据此改写求解或评估源码，受保护字节及源码指纹已核对。",
+    "scientific_result_failure": false
+  },
+  {
+    "kind": "export_source_snapshot_refresh",
+    "detail": "后处理初次来源快照记录了最终 exporter 修改前的哈希；旧快照保留为 step1011_source_fingerprints_postprocess.json，当前快照仅以实际最终重复导出的来源报告刷新，并逐文件核对四类当前来源。未改写 solve 或 assessment 指纹。",
+    "resolved": true,
+    "scientific_optimizer_calls": 0
+  },
+  {
+    "kind": "candidate_comparison_overstrict",
+    "original_error": "AssertionError",
+    "detail": "首次比较把 all,false 合法重新发布后的 selection_manifest 也要求字节不变，断言失败。实际仅 selected_utc、兼容文件中的同一时间戳和相应兼容哈希更新；五例全部其余字段/数组、35条原始求解和solver、35条assessment、输入和fixture不变。已逐字段核对并保留差异报告，没有把候选字节一致性误称为通过。",
+    "log": "step1011_candidate_compare_attempt1.log",
+    "resolved": true
+  },
+  {
+    "kind": "candidate_png_differences",
+    "detail": "三个PNG的Creation Time均变化；解码后FigN1有3/2171984像素不同、FigN2有1/2418948像素不同、FigN3像素全同。三张候选图经独立逐图视觉复核，未见曲线、阶梯、阴影、边界或布局的实际变化。图像不宣称字节相同；灰色辅助线穿透明图例背景的既有轻微现象两份均保留且可读。",
+    "report": "step1011_candidate_source_match.json",
+    "scientific_result_failure": false
+  },
+  {
+    "kind": "patch_context_retry",
+    "detail": "一次组合补丁因单/双引号上下文不匹配而被 apply_patch 拒绝；未改变科学文件，按实际文本修正后已成功应用。",
+    "resolved": true,
+    "scientific_optimizer_calls": 0
+  },
+  {
+    "kind": "integrity_macro_parameter",
+    "original_error": "AssertionError",
+    "detail": "首次完整性检查把 NumTheoryRef 宏定义的 \\ref{#1} 参数误当成缺失正文标签；已只排除合法宏参数#[1-9]，实际正文引用和两份最终编译日志仍检查。未修改TeX源或科学数据。",
+    "log": "step1011_integrity_attempt1.log",
+    "resolved": true,
+    "scientific_optimizer_calls": 0
+  }
+]

@@ -1,0 +1,87 @@
+% 整节替换 sec:numerical-method，结束位置为 sec:numerical-results 之前。
+% 依赖原有 NumTheoryRef、NumIntervals、NumHorizon、NumDegree、NumMeshDetails、
+% NumFindingParagraph、NumCheckStatement，以及本计划新增的 NumRobustnessStatement。
+% 没有实验时，结果宏为空；不把下面的方法说明变成“检查已通过”的结论。
+\section{数值方法与实验设置}
+\label{sec:numerical-method}
+
+本节围绕不同初值区域，比较解析最优策略与直接配点输出，
+重点考察等待阶段、容量弧和完全跟踪阶段的出现顺序及其连接位置。
+算例组织借鉴 \citet[第6节]{AvramFreddiGoreac2022} 的区域相关情景设计，
+但使用本文的状态方程、控制成本及
+\NumTheoryRef{def:regions}{分区定义}。
+该文献的有限时域问题包含目标约束，
+本文仅借鉴其几何展示方式，不将其结果作为下述无终端约束截断的等价性依据。
+全局最优性与几乎处处唯一性分别由
+\NumTheoryRef{thm:verification}{验证定理}和
+\NumTheoryRef{thm:unique-q}{唯一性定理}给出；
+数值实验用于检验这些解析结论的计算一致性。
+
+五个主算例采用相同参数
+\begin{equation}
+ p=0.5,\qquad c=2,\qquad\gamma=0.3,\qquad K=0.15,
+ \label{eq:numerical-common-parameters}
+\end{equation}
+仅改变初始状态。
+$s,i$ 为相对于初始总量的比例，允许 $s_0+i_0<1$；
+此时 $h=0.3$、$\ell=r=0.15$。
+这些参数用于展示理论结构，不作为特定疫情的参数标定。
+
+直接配点处理如下固定时域问题：
+\begin{equation}
+\begin{aligned}
+ \min_q\quad &J_T(q)=\int_0^T pcq(t)\,\mathrm dt,\\
+ \text{满足}\quad
+ &\dot s=-c[p+(1-p)q]si,\qquad
+ \dot i=[pc(1-q)s-\gamma]i,\\
+ &0\le q\le1,\quad 0\le s\le1,\quad0\le i\le K,\\
+ &(s(0),i(0))=(s_0,i_0).
+\end{aligned}
+\label{eq:numerical-ocp}
+\end{equation}
+该问题不增加终端状态约束、终端成本或二次控制正则化，
+也不固定阶段数、切换时刻或容量控制。
+解析策略可用于初始化，但不进入数值优化的目标或额外约束。
+
+计算方法为 MATLAB/OpenOCL 直接配点\citep{Koenemann2019OpenOCL}，
+通过 CasADi\citep{Andersson2019CasADi} 构造离散问题，
+由 IPOPT 求解非线性规划\citep{WachterBiegler2006}。
+基准设置为 $T=\NumHorizon$、$N=\NumIntervals$、$d=\NumDegree$；
+控制在每个网格区间内为常数。
+\NumMeshDetails
+控制成本在完整求解时域上按实际区间长度计算：
+\begin{equation}
+ J_{\mathrm{OCL}}=pc\sum_{k=1}^{N}q_k\Delta t_k.
+ \label{eq:numerical-cost-sum}
+\end{equation}
+绘图窗口不作为成本积分范围，求解输出不通过平滑或裁剪替换。
+
+对于每个待报告结果，用原始分段常数控制重新积分状态方程，
+检查区间内部的容量峰值、与配点状态的偏差以及终端零控制延拓。
+对正状态，未来无控制峰值为
+\[
+ P_0(s,i)=
+ \begin{cases}
+  i,&s\le h,\\
+  i+s-h-h\ln(s/h),&s>h.
+ \end{cases}
+\]
+终端延拓检查对重积分得到的状态使用 $P_0(s(T),i(T))$，
+同时检查终点前一段时间内的控制是否已接近零。
+这些是求解后的浮点诊断，不进入问题\eqref{eq:numerical-ocp}。
+它们不单独证明连续时间严格可行性，
+也不将有限时域离散问题与原无穷时域问题视为严格等价。
+
+阶段和过渡区间首先依据数值控制及容量接近程度识别，
+再与解析事件比较。
+跳跃附近按过渡网格区间报告位置，
+不以首个纯控制单元的起点代替连续切换时刻。
+附加复核分别改变初始猜测、网格和终止时刻；
+网格比较固定 $T$，时域比较固定控制区间宽度，
+以区分离散误差和截断效应。
+详细复核保留在配套结果文件中，正文仅保留与阶段结构判断相关的摘要。
+局部求解器的重复收敛及有限样本复核均不替代解析证明。
+
+% 下列宏由实际保存数据生成；未完成时保持为空。
+\NumFindingParagraph{\NumCheckStatement}
+\NumFindingParagraph{\NumRobustnessStatement}
