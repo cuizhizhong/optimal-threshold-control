@@ -1,6 +1,15 @@
-function export_numerical_latex()
-% 从实际保存数据生成成本、汇总及简短结果说明，不运行优化。
-cfg=numerical_cases_config();
+function report = export_numerical_latex(cfg)
+% 从实际保存数据导出；临时配置仅用于无优化器回归，失败时清除陈旧通过文本。
+if nargin<1 || isempty(cfg), cfg=numerical_cases_config(); end
+try
+    report=export_selected_results(cfg);
+catch exception
+    invalidate_generated_results(cfg);
+    rethrow(exception);
+end
+end
+
+function report=export_selected_results(cfg)
 [runs,selectionManifest]=load_selected_numerical_runs(cfg.paths.data);
 assessmentSpec=numerical_assessment_spec(cfg);
 mainVerification=numerical_main_verification(runs,cfg.cases,cfg.parameters,cfg.solve,assessmentSpec);
@@ -162,14 +171,42 @@ pending{end+1}=macro('NumFindingTrackingBoundary',boundary);
 pending{end+1}=macro('NumCheckStatement',checktext);
 pending{end+1}=macro('NumOverallFinding',finding);
 mainPath=fullfile(cfg.paths.latex,'main.tex');
-replace_generated_block(mainPath, ...
+text=fileread(mainPath);
+text=replace_generated_block(text, ...
     '% BEGIN AUTO-GENERATED NUMERICAL REFERENCE VALUES', ...
     '% END AUTO-GENERATED NUMERICAL REFERENCE VALUES',strjoin(reference,newline));
-replace_generated_block(mainPath, ...
+text=replace_generated_block(text, ...
     '% BEGIN AUTO-GENERATED NUMERICAL RESULTS', ...
     '% END AUTO-GENERATED NUMERICAL RESULTS',strjoin(pending,newline));
+atomic_write(mainPath,text);
 numerical_export_provenance('export',selectionManifest,cfg.paths.data);
+report=struct('verified',verified,'status',mainVerification.status, ...
+    'optimizer_executions',0,'selection_manifest',selectionManifest);
 fprintf('NUMERICAL_LATEX_EXPORTED verified=%d\n',verified);
+end
+
+function invalidate_generated_results(cfg)
+% 输入缺失、失败或来源不匹配时不能继承上次生成块中的 true 和通过段落。
+filename=fullfile(cfg.paths.latex,'main.tex');
+text=fileread(filename);
+body={'% 当前选定结果不可用；本块不包含新优化结果。', '\NumResultsVerifiedfalse'};
+body{end+1}=macro('NumHorizon',sprintf('%g',cfg.solve.T));
+body{end+1}=macro('NumIntervals',sprintf('%d',cfg.solve.N));
+body{end+1}=macro('NumDegree',sprintf('%d',cfg.solve.d));
+body{end+1}=macro('NumMeshDetails','');
+suffix={'One','Two','Three','Four','Five'};
+for k=1:numel(suffix)
+    body{end+1}=macro(['NumJOclE' suffix{k}],'--'); %#ok<AGROW>
+end
+names={'NumFindingWaiting','NumFindingTrackingBoundary','NumCheckStatement','NumOverallFinding'};
+for k=1:numel(names), body{end+1}=macro(names{k},''); end %#ok<AGROW>
+names={'NumExitETwoStart','NumExitETwoEnd','NumExitEFourStart','NumExitEFourEnd', ...
+    'NumNeutralETwoCostDifference','NumEFourSignedCostDifference','NumEFourCapacityExcess'};
+for k=1:numel(names), body{end+1}=macro(names{k},'--'); end %#ok<AGROW>
+text=replace_generated_block(text, ...
+    '% BEGIN AUTO-GENERATED NUMERICAL RESULTS', ...
+    '% END AUTO-GENERATED NUMERICAL RESULTS',strjoin(body,newline));
+atomic_write(filename,text);
 end
 
 function c=compact(r)
@@ -207,9 +244,8 @@ fid=fopen(path,'w','n','UTF-8'); assert(fid>=0); cleaner=onCleanup(@() fclose(fi
 fprintf(fid,'%s\n',text);
 end
 
-function replace_generated_block(path,beginMarker,endMarker,body)
-% 只更新 main.tex 内的生成块，避免重新产生拆分的 TeX 文件。
-text=fileread(path);
+function text=replace_generated_block(text,beginMarker,endMarker,body)
+% 在内存核对两个完整生成块后一次写入，防止混合导出版本。
 begins=strfind(text,beginMarker); ends=strfind(text,endMarker);
 assert(isscalar(begins) && isscalar(ends) && begins<ends, ...
     'Generated block markers are missing or duplicated: %s',beginMarker);
@@ -222,7 +258,18 @@ body=strrep(body,sprintf('\r\n'),sprintf('\n'));
 body=strrep(body,sprintf('\n'),nl);
 replacement=[beginMarker nl body nl endMarker];
 text=[text(1:begins-1) replacement text(ends+length(endMarker):end)];
-fid=fopen(path,'w','n','UTF-8'); assert(fid>=0);
-cleaner=onCleanup(@() fclose(fid)); %#ok<NASGU>
+end
+
+function atomic_write(filename,text)
+temporary=[tempname(fileparts(filename)) '.tex'];
+cleaner=onCleanup(@() cleanup_file(temporary)); %#ok<NASGU>
+fid=fopen(temporary,'w','n','UTF-8'); assert(fid>=0);
 fprintf(fid,'%s',text);
+assert(fclose(fid)==0,'export_numerical_latex:WriteFailure','Cannot close temporary export.');
+[ok,message]=movefile(temporary,filename,'f');
+assert(ok,'export_numerical_latex:PublishFailure','Cannot publish export: %s',message);
+end
+
+function cleanup_file(filename)
+if isfile(filename), delete(filename); end
 end

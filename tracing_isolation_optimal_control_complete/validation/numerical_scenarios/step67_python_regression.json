@@ -1,0 +1,17 @@
+{
+  "fixture_check": {
+    "command": "python tracing_isolation_optimal_control_complete/validation/numerical_scenarios/generate_analytic_checkpoints.py --check",
+    "exit_code": 0,
+    "passed": true,
+    "read_only": true
+  },
+  "unit_tests": {
+    "command": "python -m unittest discover -s tracing_isolation_optimal_control_complete/validation/numerical_scenarios -p test_analytic_checkpoints.py -v",
+    "exit_code": 0,
+    "passed": true,
+    "test_count": 6,
+    "elapsed_seconds": 9.436
+  },
+  "optimization_executions": 0,
+  "interpretation": "独立解析检查点回归；不是MATLAB/OpenOCL科学优化结果。"
+}

@@ -1,6 +1,6 @@
-# 第 0–5 步执行状态
+# 第 0–7 步执行状态
 
-已分两批执行 `ai/codex_revision_plan/CODEX_EXECUTION_PLAN.md` 的第 0–2 步及第 3–5 步。当前第 0–5 步为 `completed`，第 6–11 步为 `not_started`。本次仅完成第 3–5 步，没有启动新的科学优化或更新历史数值生成块。
+当前批次仅执行计划第 6–7 步：实现默认 35 配置调度，先运行无优化器单元测试，再执行五例主算例。第 8–11 步仍为 `not_started`。下面第 0–5 步内容保留为历史证据，本批状态使用独立 `step67_*` 与 `revision_checks/` 文件。
 
 | 步骤 | 状态 | 证据 |
 |---|---|---|
@@ -10,6 +10,22 @@
 | 3：求解信息及分离评估 | completed | `step3_solver_tests.json`、`step3_assessment_tests.json`；10 项求解接口、12 项评估和 7 项初猜比较通过 |
 | 4：独立事件区间识别 | completed | `step4_unit_tests.json`；13 项容量退出及 14 项总体事件测试通过 |
 | 5：理论片段合并及编译 | completed | `step5_validation_report.json`、`step5_theory_protection.json`；main 34 页、TheoryOnly 26 页及变更页/图表渲染通过 |
+| 6：冻结配置与调度器 | completed | `step67_protocol_manifest.json`：35 配置；最终 12 组单元测试通过，调度回归 19 项 |
+| 7：单元测试及五例主算例 | tested | 单元测试已通过：`step67_unit_report.json`；五例主算例等待本次代码冻结提交后启动 |
+
+## 第 6–7 步本批状态
+
+起始提交为 `fcd02a9365beac6dd6623cf4c699d5a36ebccaa7`，沿用 `codex/numerical-reproducibility-revision`。起始无已跟踪修改，既有未跟踪材料保留。默认矩阵是待执行的 35 个不同配置，不是 35 项实验结果；本次只运行 unit/main，其余模式的科学执行等待后续授权。
+
+首次受限 MATLAB 启动因 `MATLAB::settings::prefdir::PrefdirNotWritable` 失败，随后获准在本机环境预检成功。实际 MATLAB 为 `25.2.0.2998904 (R2025b)`，CasADi 为 `3.4.5`，`has_nlpsol('ipopt')` 可用。OpenOCL/IPOPT 版本无法通过现有接口确认时保持 `unknown`，不从旧记录推测。见 `step67_baseline.json`、`step67_preflight.log` 与 `step67_preflight.json`。
+
+独立 Python fixture `--check` 和六项 unittest 已实际通过，见 `step67_python_regression.json`，真实优化调用为 0。这些是解析实现回归，不能代替五例 MATLAB/OpenOCL 求解。
+
+最终 MATLAB 单元入口 `run_revision_validation('unit',false)` 已真实退出 0，12 组全部通过，调度回归 19 项。包括原参考/依赖/缓存/求解诊断/评估/事件、E0及退化阶段、极小正感染量、原动力学不变量、完整非均匀网格计价、导出防陈旧、随机初猜重建、force 指纹去重、普通失败继续、持久化后异常计数、缺环境 blocked 和 threshold 不求解。模拟调度的 35 次执行不计为科学优化。初次 exporter 测试夹具 struct 初始化错误的失败日志为 `step67_unit_attempt1.log`，修复后完整回归通过；第二次通过日志另存 `step67_unit_attempt2.log`。
+
+54 个 MATLAB 文件已实际执行 `checkcode(...,'-id')`，报告为 `step67_matlab_code_analyzer.json`。冻结协议哈希为 `537248f24a972508866e476433ab446a2cdda0f553fc70b66a32edb73f657a3b`；求解源码原字节哈希为 `cd7e6297bb05f11028fe6f8f543ae8a9f5bd8c41d4f98346a0dc7b7cd09cff49`，明细见 `step67_source_fingerprints.json`。本条记录只证明配置和测试，不表示科学优化已经完成。
+
+正文、图和已编译 PDF 本批不导出或构建；原字节基准为 `step67_protected_files.json`。历史结果只允许在兼容主文件替换前按原字节归档；原始 runs 永不修改。完整性入口为 `verify_stage67_integrity.py`。
 
 ## 第 3–5 步本批证据
 

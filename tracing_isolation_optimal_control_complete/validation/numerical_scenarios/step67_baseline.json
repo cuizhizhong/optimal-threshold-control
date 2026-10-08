@@ -1,0 +1,18 @@
+{
+  "scope": "steps_6_to_7",
+  "starting_commit": "fcd02a9365beac6dd6623cf4c699d5a36ebccaa7",
+  "branch": "codex/numerical-reproducibility-revision",
+  "tracked_changes_at_start": false,
+  "preexisting_untracked_material_preserved": true,
+  "scientific_run_index_entries_at_start": 0,
+  "default_distinct_configurations_planned": 35,
+  "authorized_execution_modes": ["unit", "main"],
+  "unexecuted_modes": ["initialization", "grid", "horizon", "threshold", "all", "extended"],
+  "restricted_matlab_startup": {
+    "exit_code": 1,
+    "error": "MATLAB::settings::prefdir::PrefdirNotWritable",
+    "required_directory": "C:\\Users\\cui\\AppData\\Roaming\\MathWorks\\MATLAB\\R2025b",
+    "authorized_retry": "passed; step67_preflight.json"
+  },
+  "main_tex_and_build_protection": "step67_protected_files.json"
+}

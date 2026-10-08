@@ -1,5 +1,7 @@
 # 独立解析检查点
 
+第 6–7 步的调度及主算例证据使用独立的 `step67_*` 文件和 `data/numerical_scenarios/revision_checks/`，不重写前批报告。入口为 `run_revision_validation('unit',false)` 与 `run_revision_validation('main',false)`；实际状态见 `REVISION_STATUS.md`。`verify_stage67_integrity.py` 按本批原字节基准检查正文/PDF不变、历史原始记录保留及新 runs/selection 哈希。生成配置和解析检查点不构成优化结果。
+
 `scenario_inputs.json` 是 MATLAB 配置和 Python 生成器共享的原始参数、初值和案例定义。
 每条记录通过 `case_id` 匹配；修改 JSON 案例排列顺序不会改变解析量或 MATLAB 主案例配置。
 `main_N` 只记录预先指定的主网格，不参与解析公式。参数与五个主初值保持既有设置。

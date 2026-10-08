@@ -25,6 +25,16 @@ matlab/numerical_scenarios/verify_solver_diagnostics.m
 matlab/numerical_scenarios/verify_numerical_assessment.m
 matlab/numerical_scenarios/verify_capacity_exit_transition.m
 matlab/numerical_scenarios/verify_numerical_events.m
+matlab/numerical_scenarios/revision_validation_config.m
+matlab/numerical_scenarios/run_revision_validation.m
+matlab/numerical_scenarios/revision_validation_dispatch.m
+matlab/numerical_scenarios/revision_initial_guess.m
+matlab/numerical_scenarios/revision_threshold_saved.m
+matlab/numerical_scenarios/revision_group_summary.m
+matlab/numerical_scenarios/verify_revision_validation_unit.m
+matlab/numerical_scenarios/verify_revision_scheduler.m
+matlab/numerical_scenarios/verify_revision_exporter.m
+validation/numerical_scenarios/verify_stage67_integrity.py
 validation/numerical_scenarios/verify_stage35_integrity.py
 data/numerical_scenarios/
 data/numerical_scenarios/runs/

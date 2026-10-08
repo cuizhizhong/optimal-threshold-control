@@ -1,0 +1,31 @@
+ANALYTICAL_REFERENCE_CHECKS_OK cases=6 max_cost_error=1.55e-15 max_release_time_error=5.97e-14
+ANALYTICAL_REFERENCE_CHECKS_OK cases=6 max_cost_error=1.55e-15 max_release_time_error=5.97e-14
+ANALYTICAL_REFERENCE_CHECKS_OK cases=6 max_cost_error=1.55e-15 max_release_time_error=5.97e-14
+REFERENCE_DEPENDENCY_TESTS_OK tests=6 optimizer_executions=0
+NUMERICAL_CACHE_TESTS_OK tests=6 mock_solver=18 actual_optimizer=0
+SOLVER_DIAGNOSTIC_TESTS_OK tests=10 actual_optimizer=0
+NEUTRAL_INITIALIZATION_CHECKS_OK tests=7 actual_optimizer=0
+NUMERICAL_ASSESSMENT_TESTS_OK tests=12 actual_optimizer=0
+CAPACITY_EXIT_TRANSITION_CHECKS_OK cases=13
+NUMERICAL_EVENTS_CHECKS_OK cases=14
+{在不同结构体之间进行下标赋值。
+
+出错 verify_revision_exporter>write_selection (第 59 行)
+    entries(k)=struct('case_id',id,'run_id',run.run_id, ...
+    ^^^^^^^^^^
+出错 verify_revision_exporter (第 10 行)
+    if ~strcmp(scenario{1},'missing'), write_selection(cfg.paths.data,scenario{1}); end
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+出错 verify_revision_validation_unit (第 10 行)
+    result=checks{k}();
+           ^^^^^^^^^^^
+出错 revision_validation_dispatch>@()verify_revision_validation_unit() (第 182 行)
+fallback=struct('unit',@() verify_revision_validation_unit(), ...
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+出错 revision_validation_dispatch (第 39 行)
+        report.unit=hooks.unit();
+                    ^^^^^^^^^^^^
+出错 run_revision_validation (第 5 行)
+report=revision_validation_dispatch(revision_validation_config(),mode,force);
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+} 

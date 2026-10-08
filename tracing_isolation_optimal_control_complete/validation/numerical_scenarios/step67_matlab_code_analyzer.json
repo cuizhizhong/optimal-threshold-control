@@ -1,0 +1,581 @@
+{
+  "checked_utc": "2026-10-08T08:47:23.584Z",
+  "file_count": 54,
+  "files": [
+    {
+      "file": "analytic_reference.m",
+      "issues": []
+    },
+    {
+      "file": "assess_numerical_case.m",
+      "issues": []
+    },
+    {
+      "file": "assess_saved_numerical_run.m",
+      "issues": {
+        "id": "MSNU",
+        "message": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+        "fix": 1,
+        "line": 30,
+        "column": [
+          31,
+          41
+        ]
+      }
+    },
+    {
+      "file": "build_theory_geometry.m",
+      "issues": []
+    },
+    {
+      "file": "capacity_exit_transition.m",
+      "issues": [
+        {
+          "id": "ISCL",
+          "message": "要提高性能，请使用 'isscalar' 而不是长度比较。",
+          "fix": 1,
+          "line": 37,
+          "column": [
+            8,
+            27
+          ]
+        },
+        {
+          "id": "ALIGN",
+          "message": "此关键字可能未与其在第 59 行上的匹配 END 对齐。",
+          "fix": 0,
+          "line": 54,
+          "column": [
+            1,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "file": "classify_initial_state.m",
+      "issues": []
+    },
+    {
+      "file": "compare_neutral_initialization.m",
+      "issues": []
+    },
+    {
+      "file": "compare_numerical_events.m",
+      "issues": []
+    },
+    {
+      "file": "detect_numerical_events.m",
+      "issues": []
+    },
+    {
+      "file": "execute_numerical_run.m",
+      "issues": []
+    },
+    {
+      "file": "export_numerical_latex.m",
+      "issues": [
+        {
+          "id": "SPRINTFN",
+          "message": "为了增强可读性，请考虑使用 'newline' 函数来代替 'sprintf('\\n')'。",
+          "fix": 1,
+          "line": 255,
+          "column": [
+            8,
+            20
+          ]
+        },
+        {
+          "id": "SPRINTFN",
+          "message": "为了增强可读性，请考虑使用 'newline' 函数来代替 'sprintf('\\n')'。",
+          "fix": 1,
+          "line": 257,
+          "column": [
+            34,
+            46
+          ]
+        },
+        {
+          "id": "SPRINTFN",
+          "message": "为了增强可读性，请考虑使用 'newline' 函数来代替 'sprintf('\\n')'。",
+          "fix": 1,
+          "line": 258,
+          "column": [
+            18,
+            30
+          ]
+        },
+        {
+          "id": "MSNU",
+          "message": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+          "fix": 1,
+          "line": 265,
+          "column": [
+            49,
+            59
+          ]
+        }
+      ]
+    },
+    {
+      "file": "load_selected_numerical_runs.m",
+      "issues": []
+    },
+    {
+      "file": "make_numerical_figures.m",
+      "issues": []
+    },
+    {
+      "file": "numerical_additional_verification.m",
+      "issues": []
+    },
+    {
+      "file": "numerical_assessment_spec.m",
+      "issues": []
+    },
+    {
+      "file": "numerical_assessment_view.m",
+      "issues": []
+    },
+    {
+      "file": "numerical_cases_config.m",
+      "issues": {
+        "id": "TRSRT",
+        "message": "转置 'sort' 的输入通常是不必要的。",
+        "fix": 0,
+        "line": 84,
+        "column": [
+          13,
+          16
+        ]
+      }
+    },
+    {
+      "file": "numerical_code_hash.m",
+      "issues": []
+    },
+    {
+      "file": "numerical_export_provenance.m",
+      "issues": []
+    },
+    {
+      "file": "numerical_main_verification.m",
+      "issues": []
+    },
+    {
+      "file": "numerical_run_consistency.m",
+      "issues": []
+    },
+    {
+      "file": "numerical_sha256.m",
+      "issues": []
+    },
+    {
+      "file": "numerical_solve_provenance.m",
+      "issues": {
+        "id": "NOCOMMA",
+        "message": "不必要的额外逗号。",
+        "fix": 1,
+        "line": 7,
+        "column": [
+          4,
+          4
+        ]
+      }
+    },
+    {
+      "file": "numerical_solver_diagnostics.m",
+      "issues": []
+    },
+    {
+      "file": "numerical_utc.m",
+      "issues": []
+    },
+    {
+      "file": "numerical_write_json.m",
+      "issues": {
+        "id": "NOCOMMA",
+        "message": "不必要的额外逗号。",
+        "fix": 1,
+        "line": 10,
+        "column": [
+          19,
+          19
+        ]
+      }
+    },
+    {
+      "file": "prepare_openocl_case.m",
+      "issues": []
+    },
+    {
+      "file": "publish_numerical_selection.m",
+      "issues": []
+    },
+    {
+      "file": "refresh_numerical_assessments.m",
+      "issues": []
+    },
+    {
+      "file": "revision_group_summary.m",
+      "issues": {
+        "id": "NOCOMMA",
+        "message": "不必要的额外逗号。",
+        "fix": 1,
+        "line": 115,
+        "column": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "file": "revision_initial_guess.m",
+      "issues": []
+    },
+    {
+      "file": "revision_preflight.m",
+      "issues": [
+        {
+          "id": "MSNU",
+          "message": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+          "fix": 1,
+          "line": 16,
+          "column": [
+            45,
+            55
+          ]
+        },
+        {
+          "id": "MSNU",
+          "message": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+          "fix": 1,
+          "line": 85,
+          "column": [
+            65,
+            75
+          ]
+        }
+      ]
+    },
+    {
+      "file": "revision_threshold_saved.m",
+      "issues": []
+    },
+    {
+      "file": "revision_validation_config.m",
+      "issues": []
+    },
+    {
+      "file": "revision_validation_dispatch.m",
+      "issues": {
+        "id": "MSNU",
+        "message": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+        "fix": 1,
+        "line": 64,
+        "column": [
+          70,
+          80
+        ]
+      }
+    },
+    {
+      "file": "run_numerical_scenarios.m",
+      "issues": []
+    },
+    {
+      "file": "run_revision_validation.m",
+      "issues": []
+    },
+    {
+      "file": "safe_peak.m",
+      "issues": []
+    },
+    {
+      "file": "solve_openocl_case.m",
+      "issues": []
+    },
+    {
+      "file": "tail_diagnostic.m",
+      "issues": []
+    },
+    {
+      "file": "validate_numerical_run_grid.m",
+      "issues": []
+    },
+    {
+      "file": "verify_capacity_exit_transition.m",
+      "issues": []
+    },
+    {
+      "file": "verify_neutral_initialization.m",
+      "issues": []
+    },
+    {
+      "file": "verify_numerical_assessment.m",
+      "issues": {
+        "id": "NOCOMMA",
+        "message": "不必要的额外逗号。",
+        "fix": 1,
+        "line": 129,
+        "column": [
+          4,
+          4
+        ]
+      }
+    },
+    {
+      "file": "verify_numerical_cache.m",
+      "issues": [
+        {
+          "id": "MSNU",
+          "message": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+          "fix": 1,
+          "line": 72,
+          "column": [
+            109,
+            119
+          ]
+        },
+        {
+          "id": "ALIGN",
+          "message": "此关键字可能未与其在第 94 行上的匹配 END 对齐。",
+          "fix": 0,
+          "line": 91,
+          "column": [
+            1,
+            3
+          ]
+        },
+        {
+          "id": "NOCOMMA",
+          "message": "不必要的额外逗号。",
+          "fix": 1,
+          "line": 110,
+          "column": [
+            4,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "file": "verify_numerical_events.m",
+      "issues": {
+        "id": "NOCOMMA",
+        "message": "不必要的额外逗号。",
+        "fix": 1,
+        "line": 164,
+        "column": [
+          4,
+          4
+        ]
+      }
+    },
+    {
+      "file": "verify_numerical_preparation.m",
+      "issues": [
+        {
+          "id": "NASGU",
+          "message": "赋给变量的值可能未使用。",
+          "fix": 0,
+          "line": 6,
+          "column": [
+            1,
+            5
+          ]
+        },
+        {
+          "id": "MSNU",
+          "message": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+          "fix": 1,
+          "line": 8,
+          "column": [
+            61,
+            71
+          ]
+        }
+      ]
+    },
+    {
+      "file": "verify_numerical_reference.m",
+      "issues": []
+    },
+    {
+      "file": "verify_reference_dependency_tests.m",
+      "issues": [
+        {
+          "id": "MSNU",
+          "message": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+          "fix": 1,
+          "line": 6,
+          "column": [
+            53,
+            63
+          ]
+        },
+        {
+          "id": "MSNU",
+          "message": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+          "fix": 1,
+          "line": 54,
+          "column": [
+            78,
+            88
+          ]
+        }
+      ]
+    },
+    {
+      "file": "verify_revision_exporter.m",
+      "issues": [
+        {
+          "id": "MSNU",
+          "message": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+          "fix": 1,
+          "line": 4,
+          "column": [
+            49,
+            59
+          ]
+        },
+        {
+          "id": "MSNU",
+          "message": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+          "fix": 1,
+          "line": 70,
+          "column": [
+            65,
+            75
+          ]
+        }
+      ]
+    },
+    {
+      "file": "verify_revision_preflight.m",
+      "issues": [
+        {
+          "id": "MSNU",
+          "message": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+          "fix": 1,
+          "line": 6,
+          "column": [
+            65,
+            75
+          ]
+        },
+        {
+          "id": "MSNU",
+          "message": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+          "fix": 1,
+          "line": 27,
+          "column": [
+            76,
+            86
+          ]
+        }
+      ]
+    },
+    {
+      "file": "verify_revision_scheduler.m",
+      "issues": [
+        {
+          "id": "MSNU",
+          "message": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+          "fix": 1,
+          "line": 4,
+          "column": [
+            49,
+            59
+          ]
+        },
+        {
+          "id": "NOCOMMA",
+          "message": "不必要的额外逗号。",
+          "fix": 1,
+          "line": 82,
+          "column": [
+            4,
+            4
+          ]
+        },
+        {
+          "id": "NOCOMMA",
+          "message": "不必要的额外逗号。",
+          "fix": 1,
+          "line": 93,
+          "column": [
+            4,
+            4
+          ]
+        },
+        {
+          "id": "ISCL",
+          "message": "要提高性能，请使用 'isscalar' 而不是长度比较。",
+          "fix": 1,
+          "line": 99,
+          "column": [
+            5,
+            25
+          ]
+        },
+        {
+          "id": "ISCL",
+          "message": "要提高性能，请使用 'isscalar' 而不是长度比较。",
+          "fix": 1,
+          "line": 99,
+          "column": [
+            30,
+            52
+          ]
+        },
+        {
+          "id": "ISCL",
+          "message": "要提高性能，请使用 'isscalar' 而不是长度比较。",
+          "fix": 1,
+          "line": 206,
+          "column": [
+            16,
+            30
+          ]
+        },
+        {
+          "id": "NOCOMMA",
+          "message": "不必要的额外逗号。",
+          "fix": 1,
+          "line": 238,
+          "column": [
+            4,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "file": "verify_revision_validation_unit.m",
+      "issues": {
+        "id": "MSNU",
+        "message": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+        "fix": 1,
+        "line": 15,
+        "column": [
+          81,
+          91
+        ]
+      }
+    },
+    {
+      "file": "verify_solver_diagnostics.m",
+      "issues": {
+        "id": "MSNU",
+        "message": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。",
+        "fix": 1,
+        "line": 66,
+        "column": [
+          57,
+          67
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+ANALYTICAL_REFERENCE_CHECKS_OK cases=6 max_cost_error=1.55e-15 max_release_time_error=5.97e-14
+ANALYTICAL_REFERENCE_CHECKS_OK cases=6 max_cost_error=1.55e-15 max_release_time_error=5.97e-14
+ANALYTICAL_REFERENCE_CHECKS_OK cases=6 max_cost_error=1.55e-15 max_release_time_error=5.97e-14
+REFERENCE_DEPENDENCY_TESTS_OK tests=6 optimizer_executions=0
+NUMERICAL_CACHE_TESTS_OK tests=6 mock_solver=18 actual_optimizer=0
+SOLVER_DIAGNOSTIC_TESTS_OK tests=10 actual_optimizer=0
+NEUTRAL_INITIALIZATION_CHECKS_OK tests=7 actual_optimizer=0
+NUMERICAL_ASSESSMENT_TESTS_OK tests=12 actual_optimizer=0
+CAPACITY_EXIT_TRANSITION_CHECKS_OK cases=13
+NUMERICAL_EVENTS_CHECKS_OK cases=14
+REVISION_EXPORTER_TESTS_OK tests=3 actual_optimizer=0
+REVISION START C01 E1 T=300 N=4000 initialization=analytic_reference
+REVISION START C02 E2 T=300 N=8000 initialization=analytic_reference
+REVISION START C03 E3 T=300 N=4000 initialization=analytic_reference
+REVISION START C04 E4 T=300 N=8000 initialization=analytic_reference
+REVISION START C05 E5 T=300 N=4000 initialization=analytic_reference
+REVISION START C06 E1 T=300 N=4000 initialization=constant_control
+REVISION START C07 E2 T=300 N=8000 initialization=constant_control
+REVISION START C08 E3 T=300 N=4000 initialization=constant_control
+REVISION START C09 E4 T=300 N=8000 initialization=constant_control
+REVISION START C10 E5 T=300 N=4000 initialization=constant_control
+REVISION START C11 E1 T=300 N=4000 initialization=seeded_random
+REVISION START C12 E2 T=300 N=8000 initialization=seeded_random
+REVISION START C13 E3 T=300 N=4000 initialization=seeded_random
+REVISION START C14 E4 T=300 N=8000 initialization=seeded_random
+REVISION START C15 E5 T=300 N=4000 initialization=seeded_random
+REVISION START C16 E1 T=300 N=2000 initialization=analytic_reference
+REVISION START C17 E1 T=300 N=8000 initialization=analytic_reference
+REVISION START C18 E2 T=300 N=2000 initialization=analytic_reference
+REVISION START C19 E2 T=300 N=4000 initialization=analytic_reference
+REVISION START C20 E3 T=300 N=2000 initialization=analytic_reference
+REVISION START C21 E3 T=300 N=8000 initialization=analytic_reference
+REVISION START C22 E4 T=300 N=2000 initialization=analytic_reference
+REVISION START C23 E4 T=300 N=4000 initialization=analytic_reference
+REVISION START C24 E5 T=300 N=2000 initialization=analytic_reference
+REVISION START C25 E5 T=300 N=8000 initialization=analytic_reference
+REVISION START C26 E1 T=60 N=1600 initialization=analytic_reference
+REVISION START C27 E1 T=120 N=3200 initialization=analytic_reference
+REVISION START C28 E2 T=60 N=1600 initialization=analytic_reference
+REVISION START C29 E2 T=120 N=3200 initialization=analytic_reference
+REVISION START C30 E3 T=60 N=1600 initialization=analytic_reference
+REVISION START C31 E3 T=120 N=3200 initialization=analytic_reference
+REVISION START C32 E4 T=60 N=1600 initialization=analytic_reference
+REVISION START C33 E4 T=120 N=3200 initialization=analytic_reference
+REVISION START C34 E5 T=60 N=1600 initialization=analytic_reference
+REVISION START C35 E5 T=120 N=3200 initialization=analytic_reference
+REVISION START C01 E1 T=300 N=4000 initialization=analytic_reference
+REVISION START C02 E2 T=300 N=8000 initialization=analytic_reference
+REVISION START C03 E3 T=300 N=4000 initialization=analytic_reference
+REVISION START C04 E4 T=300 N=8000 initialization=analytic_reference
+REVISION START C05 E5 T=300 N=4000 initialization=analytic_reference
+REVISION START C01 E1 T=300 N=4000 initialization=analytic_reference
+REVISION_SCHEDULER_TESTS_OK tests=14 mock_all_execute=35 actual_optimizer=0
+REVISION_VALIDATION_UNIT_OK groups=12 actual_optimizer=0

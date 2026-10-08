@@ -12,16 +12,18 @@ H=opts.T*problem.stage.H_norm;
 tv=ocl.Variable.create(ocl.simultaneous.timesStruct(numel(H),colloc.num_t), ...
     ocl.simultaneous.times(H,colloc));
 ts=reshape(tv.states.value,[],1); tc=reshape(tv.controls.value,[],1); ti=reshape(tv.integrator.value,[],1);
+grid=struct('t_state',ts,'t_control',tc,'t_integrator',ti, ...
+    'control_interval_edges',[tc;ts(end)],'dt_control',diff([tc;ts(end)]), ...
+    'H_norm',problem.stage.H_norm(:),'collocation_tau',colloc.tau_root(:));
+assert(numel(tc)==numel(H) && all(grid.dt_control>0));
 if strcmp(guess.type,'analytic_reference')
     geom=build_theory_geometry(par);
     rs=analytic_reference(par,x0,geom,ts); ri=analytic_reference(par,x0,geom,ti);
     rc=analytic_reference(par,x0,geom,tc);
     xs=[rs.s rs.i]; xi=[ri.s ri.i]; uc=rc.q;
-elseif strcmp(guess.type,'constant_control')
-    q0=guess.control;
-    rhs=@(~,x) dynamics(x,q0,par);
-    sol=ode45(rhs,[0 opts.T],x0,odeset('RelTol',2e-10,'AbsTol',1e-13));
-    xs=deval(sol,ts')'; xi=deval(sol,ti')'; uc=q0*ones(size(tc));
+elseif ismember(guess.type,{'constant_control','seeded_random'})
+    [guess,generatedInitial]=revision_initial_guess(par,x0,opts.T,grid,guess);
+    xs=generatedInitial.node_states; xi=generatedInitial.integrator_states; uc=generatedInitial.control;
 else
     error('numerical:UnknownInitialization','Unknown initialization type: %s',guess.type);
 end
@@ -39,10 +41,6 @@ settings=struct('T',opts.T,'N',numel(H),'d',colloc.order,'nlp_solver','ipopt', .
     'state_upper_bounds',[1 par.K],'control_lower_bound',0,'control_upper_bound',1, ...
     'initial_state',x0(:),'unspecified_ipopt_options','plugin defaults identified by environment fingerprint', ...
     'initialization_ode_options',struct('RelTol',2e-10,'AbsTol',1e-13));
-grid=struct('t_state',ts,'t_control',tc,'t_integrator',ti, ...
-    'control_interval_edges',[tc;ts(end)],'dt_control',diff([tc;ts(end)]), ...
-    'H_norm',problem.stage.H_norm(:),'collocation_tau',colloc.tau_root(:));
-assert(numel(tc)==numel(H) && all(grid.dt_control>0));
 initial=guess;
 if ~isfield(initial,'seed'), initial.seed=[]; end
 if ~isfield(initial,'knot_times'), initial.knot_times=[]; end
@@ -51,6 +49,7 @@ initial.actual_control_guess=uc;
 initialGuess=struct('t_state',ts,'states',xs,'node_states',xs, ...
     't_integrator',ti,'integrator_states',xi,'t_control',tc,'control',uc, ...
     'capacity_excess',max([0;xs(:,2)-par.K;xi(:,2)-par.K]));
+if exist('generatedInitial','var'), initialGuess=generatedInitial; end
 prepared=struct('problem',problem,'ig',ig,'parameters',par,'x0',x0(:), ...
     'solver_settings',opts,'actual_solver_settings',settings,'actual_grid',grid, ...
     'initialization',initial,'initial_guess',initialGuess);
@@ -66,8 +65,4 @@ prepared=struct('problem',problem,'ig',ig,'parameters',par,'x0',x0(:), ...
     function pathcosts(ch,~,~,u,~)
         ch.add(par.p*par.c*u.q);
     end
-end
-
-function f=dynamics(x,q,p)
-f=[-p.c*(p.p+(1-p.p)*q)*x(1)*x(2);(p.p*p.c*(1-q)*x(1)-p.gamma)*x(2)];
 end

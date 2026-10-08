@@ -1,5 +1,39 @@
 # 长时域数值验证
 
+第 6–7 步新增冻结配置与调度入口。本次执行范围是单元测试和五例主算例；实际状态及失败原因见 `validation/numerical_scenarios/REVISION_STATUS.md`，不能由下面的配置推断实验已经通过。
+
+从仓库根目录启动 MATLAB：
+
+```matlab
+addpath(fullfile(pwd, 'tracing_isolation_optimal_control_complete', ...
+    'matlab', 'numerical_scenarios'));
+revision_preflight();
+run_revision_validation('unit', false);
+run_revision_validation('main', false);
+```
+
+`revision_validation_config()` 仅生成预定配置。`run_revision_validation(mode, force)` 支持 `unit / main / initialization / grid / horizon / threshold / all / extended`，`force` 默认为 `false`。`all` 按 unit → main → initialization → grid → horizon → threshold → 汇总执行。其他模式供后续授权步骤使用，本次不执行第 8–11 步。
+
+默认参数为 `p=0.5, c=2, gamma=0.3, K=0.15, d=2`。以下组别去重后共 35 个配置，重叠组别引用同一记录：
+
+| 组 | 案例 | T | N | 初猜 |
+|---|---|---:|---|---|
+| main | E1–E5 | 300 | E1/E3/E5: 4000；E2/E4: 8000 | analytic_reference |
+| initialization | E1–E5 | 300 | 各例 main_N | 常值 0.7；固定种子随机 |
+| grid | E1–E5 | 300 | 2000、4000、8000 | analytic_reference |
+| horizon | E1–E5 | 60、120、300 | 分别为 1600、3200、8000 | analytic_reference |
+| threshold | 同一主记录 | 不变 | 不变 | 仅重新评估 |
+
+随机初猜使用局部随机流，种子为 `20261008 + case_index`，固定节点为 `unique([0:2:min(20,T),T])`，节点值在 `[0.15,0.85]` 中。控制在实际区间左端点采样；节点及内部配点状态由这条实际分段常数控制积分。初猜容量超出单独保存，不压平状态。
+
+优化前保存完整配置 manifest，包括参数、设置、组别和种子。相同配置在批次内只调用一次执行入口；`force=true` 另存 attempt，仍在批次内去重。普通 NLP 不收敛保留记录并继续独立实验，代码、来源或基础依赖错误使批次立即停止并保存报告。环境缺失时执行记为 `blocked`，不以其他工具替代 MATLAB/OpenOCL 结果。
+
+主结果按预定网格和解析初猜发布。旧 `E1.mat`–`E5.mat` 在替换前按原字节归档至 `legacy_results/`；原始 runs 永不覆盖。数值或理论诊断失败仍如实记录，不按接近理论的程度选择结果。
+
+导出器缺少结果、失败或来源不匹配时清空旧通过文字。本次不运行正式作图/正文导出，正文及已编译 PDF 保持原字节。下方历史说明中的旧优化入口和旧结果不作为本批实验通过证据。
+
+## 第 0–5 步历史说明
+
 当前已完成修改计划第 0–5 步：独立解析检查点、来源缓存修复、求解信息保存、数值接受与理论比较分离、事件区间识别及理论正文增补。本批未运行新增优化，历史数值和图原样保留为 `legacy_unverified`；它们不自动命中新缓存。第 6–11 步及默认 35 个科学求解配置仍未执行。
 
 固定 `p=0.5, c=2, gamma=0.3, K=0.15`，使用 MATLAB/OpenOCL 对五个初值求解同一个单阶段最优控制问题。`expected_structure` 只用于结果比较，不进入优化约束。
