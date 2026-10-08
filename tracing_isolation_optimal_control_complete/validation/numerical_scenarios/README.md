@@ -50,3 +50,5 @@ MATLAB 核查参数、全部几何量、初值、等待/容量/完全跟踪时�
 
 已实际使用 Python `3.12.8`、`mpmath==1.3.0`；后者是唯一固定 Python 依赖。
 本轮测试记录及步骤状态见 `REVISION_STATUS.md`，求解来源与缓存测试见 MATLAB 目录说明。
+
+`verify_stage02_integrity.py` 默认比较原工作区受保护文件的原字节。跨目录检出时 Git 可能转换文本换行，使用 `--root <检出目录> --normalized-text` 只对文本规范 CRLF/LF 后核对；二进制仍按原字节。该检查不改变源码哈希或原始求解来源。

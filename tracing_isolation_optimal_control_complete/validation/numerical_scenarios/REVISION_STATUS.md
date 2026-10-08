@@ -4,9 +4,9 @@
 
 | 步骤 | 状态 | 证据 |
 |---|---|---|
-| 0：冻结基准、环境预检 | tested | `BASELINE.json`、`preflight_report.json`、`preflight_tests.json`；四项回归通过 |
-| 1：恢复独立解析检查点 | tested | `step1_python_tests.json`、`step1_matlab_tests.json`；Python/MATLAB 各六项通过 |
-| 2：缓存与来源修复 | tested | `cache_unit_report.json`、`preparation_unit_report.json`；六项 mock 与构建接口通过 |
+| 0：冻结基准、环境预检 | completed | `BASELINE.json`、`preflight_report.json`、`preflight_tests.json`；四项回归通过 |
+| 1：恢复独立解析检查点 | completed | `step1_python_tests.json`、`step1_matlab_tests.json`；Python/MATLAB 各六项通过 |
+| 2：缓存与来源修复 | completed | `cache_unit_report.json`、`preparation_unit_report.json`；六项 mock 与构建接口通过 |
 
 基准提交：`f078f41fda1a7e4b0fb495916210862a0f136558`。基础分支：`codex/integrate-theory-revision`。工作分支：`codex/numerical-reproducibility-revision`。
 
@@ -54,4 +54,12 @@ runner 不再在缓存命中时改写来源，也不按结果自动加密主网�
 
 附加实验汇总尚未连接新 runs 索引，留待第 6/10 步。现有导出器拒绝历史附加 checks 作为新增通过证据，当前不能生成新的整体 verified 结论。新的评估/事件/调度/正文修改均为 `not_started`。
 
-代码和证据已测试；限定路径提交及干净检出复核尚待记录。
+## 提交与独立检出
+
+代码提交：`8446e1677fc55504d2bff74c5fb0e69b8262c058`。只按显式路径列表提交本批文件，未纳入原有未跟踪材料，也未 push。
+
+从已提交索引通过 `git checkout-index` 导出独立目录，再实际通过 Python `--check`、六项 Python 测试、MATLAB 解析验证、六项依赖测试与六项缓存 mock 测试。fixture 前后字节不变，真实优化为 0。证据为 `clean_checkout_report.json`、`clean_checkout_python.log`、`clean_checkout_matlab_tests.json`、`clean_checkout_matlab.log`。
+
+Git 的 `core.autocrlf=true` 在新检出时把四个历史文本文件及四个未改动 MATLAB 源文件从 LF 转为 CRLF。原工作区仍按原字节核对 24 个历史文件；跨检出核对只对文本规范 CRLF/LF，二进制仍按原字节比较，24 个文件内容一致。独立检出的求解源码原字节哈希为 `519f44278cd65db38e36b6545531d447a10ac6cc47f90c96c0b47bd4732a7592`，与工作区哈希分开记录，不把不同原字节来源当作同一次求解。
+
+相关文件完整列表见 `CHANGED_FILES.txt`。第 0–2 步完成；第 3–11 步未开始。

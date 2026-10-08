@@ -1,5 +1,6 @@
 {
   "status": "tested",
+  "comparison": "original_bytes",
   "protected_files": 24,
   "changed_protected_files": [],
   "labels": 167,

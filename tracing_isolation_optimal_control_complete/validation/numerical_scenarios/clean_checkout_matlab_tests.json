@@ -1,0 +1,38 @@
+{
+  "reference": {
+    "verified": true,
+    "fixture_path": "E:\\work\\optimal-threshold-control\\tmp\\revision_stage02_clean_8446e16\\tracing_isolation_optimal_control_complete\\validation\\numerical_scenarios\\analytic_checkpoints.json",
+    "case_count": 6,
+    "max_cost_error": 1.5543122344752192E-15,
+    "max_release_time_error": 5.9729998724833422E-14,
+    "optimizer_executions": 0
+  },
+  "dependency_tests": {
+    "passed": true,
+    "test_count": 6,
+    "optimizer_executions": 0,
+    "max_cost_error": 1.5543122344752192E-15,
+    "max_release_time_error": 5.9729998724833422E-14
+  },
+  "cache_tests": {
+    "passed": true,
+    "tests": [
+      "same_fingerprint_preserves_solve_provenance",
+      "solve_dependencies_and_actual_request_invalidate_cache",
+      "assessment_change_only_reassesses",
+      "paper_and_figure_do_not_invalidate_solve",
+      "legacy_result_never_reused_as_new_evidence",
+      "failed_attempt_retained_and_retry_has_new_run_id"
+    ],
+    "required_tests_passed": 6,
+    "mock_solver_calls": 18,
+    "mock_assessment_calls": 18,
+    "actual_optimizer_calls": 0,
+    "checked_utc": "2026-10-08T07:56:24.809Z",
+    "matlab": "25.2.0.2998904 (R2025b)"
+  },
+  "solve_source_hash": "519f44278cd65db38e36b6545531d447a10ac6cc47f90c96c0b47bd4732a7592",
+  "actual_optimizer_calls": 0,
+  "export_root": "E:\\work\\optimal-threshold-control\\tmp\\revision_stage02_clean_8446e16",
+  "code_commit": "8446e1677fc55504d2bff74c5fb0e69b8262c058"
+}

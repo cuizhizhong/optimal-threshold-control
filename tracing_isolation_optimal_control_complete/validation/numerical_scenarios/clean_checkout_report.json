@@ -1,0 +1,26 @@
+{
+  "status": "completed",
+  "code_commit": "8446e1677fc55504d2bff74c5fb0e69b8262c058",
+  "export_method": "git checkout-index from committed tracked paths only",
+  "generator_exit_code": 0,
+  "python_unittest_exit_code": 0,
+  "python_tests": 6,
+  "fixture_sha256_before": "bfd2bae1eeb3cf7b73059f18d1eb36f9cdc2187e0ca5cf591880c032455e34f0",
+  "fixture_sha256_after": "bfd2bae1eeb3cf7b73059f18d1eb36f9cdc2187e0ca5cf591880c032455e34f0",
+  "fixture_unchanged": true,
+  "protected_content_check_exit_code": 0,
+  "protected_text_byte_differences_from_git_eol_filters": [
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/numerical_checks.json",
+    "tracing_isolation_optimal_control_complete/latex/main.bbl",
+    "tracing_isolation_optimal_control_complete/latex/main.tex",
+    "tracing_isolation_optimal_control_complete/latex/references.bib"
+  ],
+  "matlab_dependency_tests": 6,
+  "matlab_cache_tests": 6,
+  "mock_solver_calls": 18,
+  "actual_optimizer_calls": 0,
+  "worktree_solve_source_hash": "32ab1ff9f71011b5caffa2e9abf696c15d5d0e4e925244fac76a00d1a7a613fe",
+  "clean_export_solve_source_hash": "519f44278cd65db38e36b6545531d447a10ac6cc47f90c96c0b47bd4732a7592",
+  "source_hash_note": "Git core.autocrlf=true changes four untouched MATLAB source files from LF to CRLF in clean export; normalized source content matches. Raw source hashes remain distinct and are not treated as the same solve provenance.",
+  "passed": true
+}

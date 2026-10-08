@@ -1,0 +1,19 @@
+ANALYTIC_CHECKPOINTS_CHECK_OK (read only; optimizer executions=0)
+E1: W_Gamma J_reference=0.416185914776
+E2: W_K J_reference=1.529511160151
+E3: T J_reference=0.433981007323
+E4: B J_reference=1.268834778342
+E5: T J_reference=0.536233196705
+E0: A J_reference=0.000000000000
+test_changed_initial_condition_and_cost_are_rejected (test_analytic_checkpoints.AnalyticCheckpointTests.test_changed_initial_condition_and_cost_are_rejected) ... ok
+test_check_is_read_only_for_reordered_fixture (test_analytic_checkpoints.AnalyticCheckpointTests.test_check_is_read_only_for_reordered_fixture) ... ok
+test_duplicated_case_id_is_rejected (test_analytic_checkpoints.AnalyticCheckpointTests.test_duplicated_case_id_is_rejected) ... ok
+test_independent_calculation_matches_fixture (test_analytic_checkpoints.AnalyticCheckpointTests.test_independent_calculation_matches_fixture) ... ok
+test_reordered_fixture_matches_by_case_id (test_analytic_checkpoints.AnalyticCheckpointTests.test_reordered_fixture_matches_by_case_id) ... ok
+test_reordered_inputs_have_same_calculation (test_analytic_checkpoints.AnalyticCheckpointTests.test_reordered_inputs_have_same_calculation) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 13.485s
+
+OK
+{"status": "tested", "comparison": "normalized_text", "protected_files": 24, "changed_protected_files": [], "labels": 167, "labels_unchanged": true, "auto_generated_markers_unchanged": true, "optimization_calls": 0, "passed": true}

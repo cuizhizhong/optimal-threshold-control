@@ -1,0 +1,5 @@
+ANALYTICAL_REFERENCE_CHECKS_OK cases=6 max_cost_error=1.55e-15 max_release_time_error=5.97e-14
+ANALYTICAL_REFERENCE_CHECKS_OK cases=6 max_cost_error=1.55e-15 max_release_time_error=5.97e-14
+ANALYTICAL_REFERENCE_CHECKS_OK cases=6 max_cost_error=1.55e-15 max_release_time_error=5.97e-14
+REFERENCE_DEPENDENCY_TESTS_OK tests=6 optimizer_executions=0
+NUMERICAL_CACHE_TESTS_OK tests=6 mock_solver=18 actual_optimizer=0
