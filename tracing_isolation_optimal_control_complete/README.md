@@ -8,12 +8,15 @@
 - `latex/main.pdf`：当前编译稿。
 - `latex/references.bib`：BibTeX 文献库。
 - `matlab/numerical_scenarios/`：五个长时域算例的配置、OpenOCL 求解、作图和 LaTeX 导出代码。
+- `validation/numerical_scenarios/`：共享原始输入、独立 Python 解析检查点、无优化器测试及本轮执行状态。
 - `data/numerical_scenarios/`：五个主算例及必要的网格、初猜和诊断复核结果。
 - `figures/numerical_scenarios/`：论文使用的三张 PDF 图和 PNG 预览。
 - `ref/`：论文引用或理论核对所需的原始文献。
 - `archive/first_version/`：第一版 Python/MATLAB 代码、CSV 数据、十张旧图、旧 PDF 和旧基准结果。
 
 ## 数值实验
+
+修改计划第 0–2 步已恢复独立解析检查点并修复来源和缓存。详细状态见 `validation/numerical_scenarios/REVISION_STATUS.md`。本批未运行优化；现有数据与图、正文均保留，历史数据标为 `legacy_unverified`。新图及正文导出需要后续主算例产生的 selection manifest。
 
 固定参数为
 

@@ -1,0 +1,13 @@
+{
+  "python_version": "3.12.8",
+  "mpmath_version": "1.3.0",
+  "fixture_check_passed": true,
+  "fixture_sha256_before": "bfd2bae1eeb3cf7b73059f18d1eb36f9cdc2187e0ca5cf591880c032455e34f0",
+  "fixture_sha256_after": "bfd2bae1eeb3cf7b73059f18d1eb36f9cdc2187e0ca5cf591880c032455e34f0",
+  "unittest_command": "python -m unittest discover -s tracing_isolation_optimal_control_complete/validation/numerical_scenarios -p test_analytic_checkpoints.py -v",
+  "unittest_tests_run": 6,
+  "unittest_failures": 0,
+  "unittest_errors": 0,
+  "unittest_elapsed_seconds": 13.930,
+  "optimizer_executions": 0
+}

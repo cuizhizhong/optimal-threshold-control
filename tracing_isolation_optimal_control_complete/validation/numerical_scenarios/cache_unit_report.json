@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "tests": [
+    "same_fingerprint_preserves_solve_provenance",
+    "solve_dependencies_and_actual_request_invalidate_cache",
+    "assessment_change_only_reassesses",
+    "paper_and_figure_do_not_invalidate_solve",
+    "legacy_result_never_reused_as_new_evidence",
+    "failed_attempt_retained_and_retry_has_new_run_id"
+  ],
+  "required_tests_passed": 6,
+  "mock_solver_calls": 18,
+  "mock_assessment_calls": 18,
+  "actual_optimizer_calls": 0,
+  "checked_utc": "2026-10-08T07:46:15.186Z",
+  "matlab": "25.2.0.2998904 (R2025b)"
+}

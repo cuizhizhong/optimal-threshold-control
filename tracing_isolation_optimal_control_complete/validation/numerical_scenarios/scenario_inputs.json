@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "parameters": {"p": 0.5, "c": 2.0, "gamma": 0.3, "K": 0.15},
+  "main_case_ids": ["E1", "E2", "E3", "E4", "E5"],
+  "safe_case_id": "E0",
+  "run_order": ["E2", "E1", "E4", "E5", "E3"],
+  "cases": [
+    {"case_id": "E1", "s0": 0.75, "i0": 0.01, "expected_region": "W_Gamma", "expected_structure": "0 -> 1 -> 0", "include_in_main_figures": true, "main_N": 4000},
+    {"case_id": "E2", "s0": 0.99, "i0": 0.01, "expected_region": "W_K", "expected_structure": "0 -> q_B -> 1 -> 0", "include_in_main_figures": true, "main_N": 8000},
+    {"case_id": "E3", "s0": 0.50, "i0": 0.14, "expected_region": "T", "expected_structure": "1 -> 0", "include_in_main_figures": true, "main_N": 4000},
+    {"case_id": "E4", "s0": 0.70, "i0": 0.15, "expected_region": "B", "expected_structure": "q_B -> 1 -> 0", "include_in_main_figures": true, "main_N": 8000},
+    {"case_id": "E5", "s0": 0.50, "i0": 0.15, "expected_region": "T", "expected_structure": "1 -> 0", "include_in_main_figures": true, "main_N": 4000},
+    {"case_id": "E0", "s0": 0.40, "i0": 0.02, "expected_region": "A", "expected_structure": "0", "include_in_main_figures": false, "main_N": 4000}
+  ]
+}

@@ -1,8 +1,10 @@
 function export_numerical_latex()
 % 从实际保存数据生成成本、汇总及简短结果说明，不运行优化。
-cfg=numerical_cases_config(); runs=cell(1,5); passed=false(1,5);
+cfg=numerical_cases_config();
+[runs,selectionManifest]=load_selected_numerical_runs(cfg.paths.data);
+passed=false(1,5);
 for k=1:5
-    d=load(fullfile(cfg.paths.data,sprintf('E%d.mat',k)),'run'); runs{k}=d.run;
+    d=struct('run',runs{k});
     assert(isfield(d.run,'assessment'),'Missing numerical assessment.');
     passed(k)=d.run.success && d.run.assessment.passed && ...
         strcmp(d.run.assessment.observed_structure,cfg.cases(k).expected_structure);
@@ -11,7 +13,10 @@ checks=struct();
 for id={'E2','E1'}
     f=fullfile(cfg.paths.data,'checks',[id{1} '.mat']);
     if isfile(f)
-        d=load(f,'run'); checks.(id{1})=compact(d.run);
+        d=load(f,'run');
+        if isfield(d.run,'source_status') && strcmp(d.run.source_status,'verified_record')
+            checks.(id{1})=compact(d.run);
+        end
     end
 end
 checksOK=isfield(checks,'E1') && isfield(checks,'E2');
@@ -19,11 +24,14 @@ if checksOK, checksOK=checks.E1.assessment.passed && checks.E2.assessment.passed
 verified=all(passed) && checksOK;
 neutral=[]; f=fullfile(cfg.paths.data,'checks','neutral_E2','E2.mat');
 if isfile(f)
-    d=load(f,'run'); neutral=d.run;
+    d=load(f,'run');
+    if isfield(d.run,'source_status') && strcmp(d.run.source_status,'verified_record'), neutral=d.run; end
+    if isempty(neutral), neutral=struct(); end
     if isfield(neutral,'assessment') && isfield(neutral,'reference')
         checks.neutral_E2=compact(neutral);
     end
 end
+if isstruct(neutral) && isempty(fieldnames(neutral)), neutral=[]; end
 neutralCheck=compare_neutral_initialization(runs{2},neutral,cfg.check);
 failurePath=fullfile(cfg.paths.data,'checks','neutral_E2','E2_failure.mat');
 if isempty(neutral) && isfile(failurePath)
@@ -65,7 +73,7 @@ end
 if isempty(mesh)
     pending{end+1}=macro('NumMeshDetails','五个主算例均使用上述网格。');
 else
-    pending{end+1}=macro('NumMeshDetails',['容量重积分核查后，' strjoin(mesh,'，') ...
+    pending{end+1}=macro('NumMeshDetails',['按预先指定设置，' strjoin(mesh,'，') ...
         '；其余算例保留基准网格。图表均采用各例最终保存的结果。']);
 end
 for k=1:5
@@ -155,6 +163,7 @@ replace_generated_block(mainPath, ...
 replace_generated_block(mainPath, ...
     '% BEGIN AUTO-GENERATED NUMERICAL RESULTS', ...
     '% END AUTO-GENERATED NUMERICAL RESULTS',strjoin(pending,newline));
+numerical_export_provenance('export',selectionManifest,cfg.paths.data);
 fprintf('NUMERICAL_LATEX_EXPORTED verified=%d\n',verified);
 end
 

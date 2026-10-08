@@ -1,0 +1,131 @@
+{
+  "solve": {
+    "algorithm": "sha256",
+    "files": [
+      {
+        "path": "prepare_openocl_case.m",
+        "sha256": "bf02a298ccfd029d77d5e41061ef737c51aa2bc32ffb06aaccc1c8204fed6eaa"
+      },
+      {
+        "path": "solve_openocl_case.m",
+        "sha256": "89c16e1ca256465dc42f4c0712d275e114bfa022807d7c24dc8cbb68d3148609"
+      },
+      {
+        "path": "build_theory_geometry.m",
+        "sha256": "3750c6188aa9ddd40e3cb3a84fccd154274a5fb681d647c25b8f065e5c5f9fcc"
+      },
+      {
+        "path": "analytic_reference.m",
+        "sha256": "80dad0df64d702eda96a745d195891ca878c33569e59835c5684b659c83ae721"
+      },
+      {
+        "path": "classify_initial_state.m",
+        "sha256": "4933779acb62342f75bf874fef8e06c543f859c1d1f880575a3c5766e9e3f629"
+      },
+      {
+        "path": "safe_peak.m",
+        "sha256": "c813849393aad2470f2216eb78a90ddefdc514a5c63e48312fa9845c2a130a08"
+      }
+    ],
+    "hash": "32ab1ff9f71011b5caffa2e9abf696c15d5d0e4e925244fac76a00d1a7a613fe"
+  },
+  "assessment": {
+    "algorithm": "sha256",
+    "files": [
+      {
+        "path": "assess_numerical_case.m",
+        "sha256": "187e8d15372ecb6fce4adef93dc716ccb765d5f6266de1cd830ce65d12c90018"
+      },
+      {
+        "path": "tail_diagnostic.m",
+        "sha256": "e54adf95f3ef6a8fd6d75b6cb68a8103148910e3b89f26145bc33300610b2991"
+      },
+      {
+        "path": "capacity_exit_transition.m",
+        "sha256": "6c999fdab12fdf8a3eb273e04b11a2ac5cf336fcfe5459c8b9b79c731df90fdc"
+      },
+      {
+        "path": "build_theory_geometry.m",
+        "sha256": "3750c6188aa9ddd40e3cb3a84fccd154274a5fb681d647c25b8f065e5c5f9fcc"
+      },
+      {
+        "path": "analytic_reference.m",
+        "sha256": "80dad0df64d702eda96a745d195891ca878c33569e59835c5684b659c83ae721"
+      },
+      {
+        "path": "classify_initial_state.m",
+        "sha256": "4933779acb62342f75bf874fef8e06c543f859c1d1f880575a3c5766e9e3f629"
+      },
+      {
+        "path": "safe_peak.m",
+        "sha256": "c813849393aad2470f2216eb78a90ddefdc514a5c63e48312fa9845c2a130a08"
+      },
+      {
+        "path": "assess_saved_numerical_run.m",
+        "sha256": "f9a14bbe522315be5a3902890053aa7d26da7fef92ccf2a2b6fb3db5502e2ac8"
+      },
+      {
+        "path": "numerical_assessment_spec.m",
+        "sha256": "08799bcb0d12824b8a64ea90e11eea8fd0d68c3a9e5b3136121b103d62b8d49b"
+      },
+      {
+        "path": "numerical_assessment_view.m",
+        "sha256": "b43cb3c87bc08a1dd7e3a1600da3140accab4736af74c297241e0000b8131c0b"
+      }
+    ],
+    "hash": "5bf23fc7059b1146c801267f383bb6521c7bedde7f1c7424678706c7924dba51"
+  },
+  "figure": {
+    "algorithm": "sha256",
+    "files": [
+      {
+        "path": "make_numerical_figures.m",
+        "sha256": "ba6f9d18c74a2d30e8f6c25c8ccea8109a13681f050e709142e94fd4d142cd45"
+      },
+      {
+        "path": "build_theory_geometry.m",
+        "sha256": "3750c6188aa9ddd40e3cb3a84fccd154274a5fb681d647c25b8f065e5c5f9fcc"
+      },
+      {
+        "path": "analytic_reference.m",
+        "sha256": "80dad0df64d702eda96a745d195891ca878c33569e59835c5684b659c83ae721"
+      },
+      {
+        "path": "classify_initial_state.m",
+        "sha256": "4933779acb62342f75bf874fef8e06c543f859c1d1f880575a3c5766e9e3f629"
+      },
+      {
+        "path": "safe_peak.m",
+        "sha256": "c813849393aad2470f2216eb78a90ddefdc514a5c63e48312fa9845c2a130a08"
+      },
+      {
+        "path": "load_selected_numerical_runs.m",
+        "sha256": "f39078b83e3f0bb9b57f80f153261bef35869cfe39c5af090440aa55fa9c5291"
+      }
+    ],
+    "hash": "ea97e3b04c9d26140fe63abdddaaf1616662532972cf0ea0e6bcee5c7e0b3e67"
+  },
+  "export": {
+    "algorithm": "sha256",
+    "files": [
+      {
+        "path": "export_numerical_latex.m",
+        "sha256": "542707d5739e37d4091371d83e2b6678130d04b03b7daae907629e9b3ebc2a66"
+      },
+      {
+        "path": "load_selected_numerical_runs.m",
+        "sha256": "f39078b83e3f0bb9b57f80f153261bef35869cfe39c5af090440aa55fa9c5291"
+      },
+      {
+        "path": "compare_neutral_initialization.m",
+        "sha256": "b9ec9df867b7deea07ed3adda206c37ebee4c2a0ee723e89da8d3a582009343e"
+      },
+      {
+        "path": "capacity_exit_transition.m",
+        "sha256": "6c999fdab12fdf8a3eb273e04b11a2ac5cf336fcfe5459c8b9b79c731df90fdc"
+      }
+    ],
+    "hash": "5066a8be1039a25c14946cf88de7eb038859d7eb49fba97f8c5c590e0034d669"
+  },
+  "note": "Source inspection only; no optimization result was produced."
+}

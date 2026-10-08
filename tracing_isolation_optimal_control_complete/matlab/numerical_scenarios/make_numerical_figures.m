@@ -1,12 +1,9 @@
 function make_numerical_figures()
 % 只读取已保存结果。求解器输出不平滑、不截断，也不替换为参考轨道。
-cfg=numerical_cases_config(); p=cfg.parameters; g=build_theory_geometry(p);
+cfg=numerical_cases_config();
+[r,manifest]=load_selected_numerical_runs(cfg.paths.data);
+p=cfg.parameters; g=build_theory_geometry(p);
 if ~isfolder(cfg.paths.figures), mkdir(cfg.paths.figures); end
-r=cell(1,5);
-for k=1:5
-    loaded=load(fullfile(cfg.paths.data,sprintf('E%d.mat',k)),'run'); r{k}=loaded.run;
-    assert(r{k}.success,'Cannot label a failed solver output as a completed numerical result.');
-end
 set(groot,'defaultFigureVisible','off');
 colors=[0.12 .40 .68;.82 .36 .10;.48 .31 .64;.68 .52 .02;.68 .24 .37];
 % 图 1 的样式集中设置：主曲线、辅助线以及仅作背景的低饱和度区域色。
@@ -64,6 +61,7 @@ lg.ItemTokenSize=[16 10];
 style(ax); export(fig,'FigN1_regions',cfg);
 timepanels(r,[1 2],18,'FigN2_waiting',cfg);
 timepanels(r,[3 4 5],8,'FigN3_boundary_tracking',cfg);
+numerical_export_provenance('figure',manifest,cfg.paths.data);
 fprintf('NUMERICAL_FIGURES_OK\n');
 end
 

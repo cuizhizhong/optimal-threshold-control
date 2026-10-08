@@ -1,0 +1,27 @@
+function source = numerical_code_hash(kind,codeRoot)
+% 显式列出依赖；评估、作图、论文和调度器均不属于求解源码。
+if nargin<2, codeRoot=fileparts(mfilename('fullpath')); end
+switch kind
+    case 'solve'
+        names={'prepare_openocl_case.m','solve_openocl_case.m', ...
+            'build_theory_geometry.m','analytic_reference.m','classify_initial_state.m','safe_peak.m'};
+    case 'assessment'
+        names={'assess_numerical_case.m','tail_diagnostic.m','capacity_exit_transition.m', ...
+            'build_theory_geometry.m','analytic_reference.m','classify_initial_state.m', ...
+            'safe_peak.m','assess_saved_numerical_run.m','numerical_assessment_spec.m', ...
+            'numerical_assessment_view.m'};
+    case 'figure'
+        names={'make_numerical_figures.m','build_theory_geometry.m','analytic_reference.m', ...
+            'classify_initial_state.m','safe_peak.m','load_selected_numerical_runs.m'};
+    case 'export'
+        names={'export_numerical_latex.m','load_selected_numerical_runs.m', ...
+            'compare_neutral_initialization.m','capacity_exit_transition.m'};
+    otherwise, error('numerical:UnknownSourceKind','Unknown source kind: %s',kind);
+end
+files=repmat(struct('path','','sha256',''),1,numel(names));
+for k=1:numel(names)
+    filename=fullfile(codeRoot,names{k}); assert(isfile(filename),'Missing source dependency: %s',filename);
+    files(k)=struct('path',names{k},'sha256',numerical_sha256(filename,'file'));
+end
+source=struct('algorithm','sha256','files',files,'hash',numerical_sha256(files));
+end

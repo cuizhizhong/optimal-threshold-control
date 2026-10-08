@@ -1,0 +1,17 @@
+{
+  "status": "tested",
+  "tests": 4,
+  "optimization_calls": 0,
+  "default_environment": {
+    "matlab": "25.2.0.2998904 (R2025b)",
+    "matlab_release": "2025b",
+    "platform": "PCWIN64",
+    "openocl": "unknown",
+    "casadi": "3.4.5",
+    "ipopt": "unknown",
+    "openocl_path": "E:\\work\\optimal-threshold-control\\optimal\\OpenOCL-master 0104\\ocl.m",
+    "casadi_path": "E:\\work\\optimal-threshold-control\\optimal\\OpenOCL-master 0104\\Lib\\casadi\\+casadi\\MX.m",
+    "ipopt_version_note": "当前接口未提供已查询的 IPOPT 版本；不从安装目录名推测。"
+  },
+  "passed": true
+}

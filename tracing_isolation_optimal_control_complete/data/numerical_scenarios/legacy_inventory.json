@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "file": "E1.mat",
+      "sha256": "aaa71096179643e9bd782c8112badaf003620ff22a0d42f62383b4e97e29293d",
+      "source_status": "legacy_unverified",
+      "reason": "本批保留的历史结果；未按新来源/指纹协议重新求解或纳入可信缓存。"
+    },
+    {
+      "file": "E2.mat",
+      "sha256": "8ff1383e49343b8ebdcd56e9776b1b8adf8deda9d5af101a31d0dcaff1d3967f",
+      "source_status": "legacy_unverified",
+      "reason": "本批保留的历史结果；未按新来源/指纹协议重新求解或纳入可信缓存。"
+    },
+    {
+      "file": "E3.mat",
+      "sha256": "1a589f516bcb05f9bed122ab1aa85c5e36f32c531a77aa2504f2ebc946708f3a",
+      "source_status": "legacy_unverified",
+      "reason": "本批保留的历史结果；未按新来源/指纹协议重新求解或纳入可信缓存。"
+    },
+    {
+      "file": "E4.mat",
+      "sha256": "bc779b996122adac481e4e712b1f1d0b0bed555929c22e4af51a38442dccc733",
+      "source_status": "legacy_unverified",
+      "reason": "本批保留的历史结果；未按新来源/指纹协议重新求解或纳入可信缓存。"
+    },
+    {
+      "file": "E5.mat",
+      "sha256": "9a6b5badf7a7d83c8efd8816ada22064b55ab7935f74b763310828e0c533a9fd",
+      "source_status": "legacy_unverified",
+      "reason": "本批保留的历史结果；未按新来源/指纹协议重新求解或纳入可信缓存。"
+    },
+    {
+      "file": "checks/E1.mat",
+      "sha256": "41ce1e98fd5df1f05b648bf6a14746b77c145675792d46570b9dd23ee45f81f3",
+      "source_status": "legacy_unverified",
+      "reason": "本批保留的历史结果；未按新来源/指纹协议重新求解或纳入可信缓存。"
+    },
+    {
+      "file": "checks/E2.mat",
+      "sha256": "ee97482e585dfc11cbc5effd689f3cee7a696c53222061e9c814ab99c8346c38",
+      "source_status": "legacy_unverified",
+      "reason": "本批保留的历史结果；未按新来源/指纹协议重新求解或纳入可信缓存。"
+    },
+    {
+      "file": "checks/neutral_E2/E2.mat",
+      "sha256": "7cc916d4a872629c647336aedf960b1fc81ceb6ec6c9baf580f2b80d3e38a86c",
+      "source_status": "legacy_unverified",
+      "reason": "本批保留的历史结果；未按新来源/指纹协议重新求解或纳入可信缓存。"
+    },
+    {
+      "file": "coarse/E2.mat",
+      "sha256": "051a727ef64473a476ea57a1f14b62781ab506ab86d98fa2a9fbc57f36fc31f7",
+      "source_status": "legacy_unverified",
+      "reason": "本批保留的历史结果；未按新来源/指纹协议重新求解或纳入可信缓存。"
+    },
+    {
+      "file": "coarse/E4.mat",
+      "sha256": "5b0af713f79ecb8800c37815eeb4a94308efaadb14febebc5fc475a0b35fc95d",
+      "source_status": "legacy_unverified",
+      "reason": "本批保留的历史结果；未按新来源/指纹协议重新求解或纳入可信缓存。"
+    },
+    {
+      "file": "diagnostics/E2_adaptive.mat",
+      "sha256": "1bc59b2d4440264de156614957a463ec9afb4f6655f404e4f757323efa7ce7b2",
+      "source_status": "legacy_unverified",
+      "reason": "本批保留的历史结果；未按新来源/指纹协议重新求解或纳入可信缓存。"
+    },
+    {
+      "file": "diagnostics/E2_standard_bounds.mat",
+      "sha256": "2d77e268c1440528e677f980bebfc5524d8c9645a30d74c366549eac76cd00e8",
+      "source_status": "legacy_unverified",
+      "reason": "本批保留的历史结果；未按新来源/指纹协议重新求解或纳入可信缓存。"
+    }
+  ]
+}
