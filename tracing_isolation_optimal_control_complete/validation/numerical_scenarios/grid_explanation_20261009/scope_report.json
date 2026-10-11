@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "protected_file_count": 147,
+  "scientific_rows_unchanged": true,
+  "main_outside_statement_unchanged": true,
+  "strict_grid_consistency_pass": false,
+  "grid_statuses": {
+    "E1": "evaluated_passed",
+    "E2": "not_evaluated_due_to_numeric_failure",
+    "E3": "evaluated_passed",
+    "E4": "not_evaluated_due_to_numeric_failure",
+    "E5": "evaluated_passed"
+  }
+}

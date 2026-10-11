@@ -1,0 +1,160 @@
+{
+  "sources_before": {
+    "main.tex": "795e6bf78a604c3291a01f0a2d9d96bff6511e58911920fcc0e6b1145b40e1ba",
+    "theory_only.tex": "bc87e137e4cbe11a76dc8b3cb39d45d0ec7de1783bad31dc632335981f149fb5",
+    "references.bib": "4bd6ec0bb2a38da7b94fdb7ed444a3743fc161d7f5ed629190b19742b8927a8a"
+  },
+  "sources_after": {
+    "main.tex": "795e6bf78a604c3291a01f0a2d9d96bff6511e58911920fcc0e6b1145b40e1ba",
+    "theory_only.tex": "bc87e137e4cbe11a76dc8b3cb39d45d0ec7de1783bad31dc632335981f149fb5",
+    "references.bib": "4bd6ec0bb2a38da7b94fdb7ed444a3743fc161d7f5ed629190b19742b8927a8a"
+  },
+  "builds": {
+    "main": {
+      "success": true,
+      "commands": [
+        {
+          "command": [
+            "xelatex",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\front_matter_20261010\\compiled",
+            "main.tex"
+          ],
+          "exit_code": 0,
+          "log": "main_build_1.log",
+          "issues": [
+            "Package natbib Warning: Citation `Zhou2024SPCI' on page 3 undefined on input li",
+            "Package natbib Warning: Citation `Angulo2021' on page 3 undefined on input line",
+            "Package natbib Warning: Citation `Zhou2024SPCI' on page 3 undefined on input li",
+            "Package natbib Warning: Citation `Zhou2024SPCI' on page 3 undefined on input li",
+            "Package natbib Warning: Citation `Zhou2024SPCI' on page 34 undefined on input l",
+            "Package natbib Warning: Citation `Baas2021Occupancy' on page 34 undefined on in",
+            "Package natbib Warning: There were undefined citations.",
+            "LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right."
+          ]
+        },
+        {
+          "command": [
+            "bibtex",
+            "main"
+          ],
+          "exit_code": 0,
+          "log": "main_build_2.log",
+          "issues": []
+        },
+        {
+          "command": [
+            "xelatex",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\front_matter_20261010\\compiled",
+            "main.tex"
+          ],
+          "exit_code": 0,
+          "log": "main_build_3.log",
+          "issues": [
+            "Package natbib Warning: Citation `Zhou2024SPCI' on page 3 undefined on input li",
+            "Package natbib Warning: Citation `Angulo2021' on page 3 undefined on input line",
+            "Package natbib Warning: Citation `Zhou2024SPCI' on page 3 undefined on input li",
+            "Package natbib Warning: Citation `Zhou2024SPCI' on page 3 undefined on input li",
+            "Package natbib Warning: Citation `Zhou2024SPCI' on page 34 undefined on input l",
+            "Package natbib Warning: Citation `Baas2021Occupancy' on page 34 undefined on in",
+            "Package natbib Warning: There were undefined citations.",
+            "Package natbib Warning: Citation(s) may have changed."
+          ]
+        },
+        {
+          "command": [
+            "xelatex",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\front_matter_20261010\\compiled",
+            "main.tex"
+          ],
+          "exit_code": 0,
+          "log": "main_build_4.log",
+          "issues": []
+        }
+      ],
+      "final_log_issues": [],
+      "pages": 37,
+      "pdf_sha256": "850861dd9ee14f0635957b8cef6caae3cce5609c9800934983f56a010a43c129"
+    },
+    "theory_only": {
+      "success": true,
+      "commands": [
+        {
+          "command": [
+            "xelatex",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\front_matter_20261010\\compiled",
+            "theory_only.tex"
+          ],
+          "exit_code": 0,
+          "log": "theory_only_build_1.log",
+          "issues": [
+            "Package natbib Warning: Citation `Zhou2024SPCI' on page 3 undefined on input li",
+            "Package natbib Warning: Citation `AvramFreddiGoreac2022' on page 3 undefined on",
+            "Package natbib Warning: Citation `Angulo2021' on page 3 undefined on input line",
+            "Package natbib Warning: Citation `Zhou2024SPCI' on page 3 undefined on input li",
+            "Package natbib Warning: Citation `Zhou2024SPCI' on page 3 undefined on input li",
+            "Package natbib Warning: Citation `Zhou2024SPCI' on page 27 undefined on input l",
+            "Package natbib Warning: Citation `Baas2021Occupancy' on page 28 undefined on in",
+            "Package natbib Warning: There were undefined citations.",
+            "LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right."
+          ]
+        },
+        {
+          "command": [
+            "bibtex",
+            "theory_only"
+          ],
+          "exit_code": 0,
+          "log": "theory_only_build_2.log",
+          "issues": []
+        },
+        {
+          "command": [
+            "xelatex",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\front_matter_20261010\\compiled",
+            "theory_only.tex"
+          ],
+          "exit_code": 0,
+          "log": "theory_only_build_3.log",
+          "issues": [
+            "Package natbib Warning: Citation `Zhou2024SPCI' on page 3 undefined on input li",
+            "Package natbib Warning: Citation `AvramFreddiGoreac2022' on page 3 undefined on",
+            "Package natbib Warning: Citation `Angulo2021' on page 3 undefined on input line",
+            "Package natbib Warning: Citation `Zhou2024SPCI' on page 3 undefined on input li",
+            "Package natbib Warning: Citation `Zhou2024SPCI' on page 3 undefined on input li",
+            "Package natbib Warning: Citation `Zhou2024SPCI' on page 27 undefined on input l",
+            "Package natbib Warning: Citation `Baas2021Occupancy' on page 28 undefined on in",
+            "Package natbib Warning: There were undefined citations.",
+            "Package natbib Warning: Citation(s) may have changed.",
+            "LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right."
+          ]
+        },
+        {
+          "command": [
+            "xelatex",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\front_matter_20261010\\compiled",
+            "theory_only.tex"
+          ],
+          "exit_code": 0,
+          "log": "theory_only_build_4.log",
+          "issues": []
+        }
+      ],
+      "final_log_issues": [],
+      "pages": 29,
+      "pdf_sha256": "f2578fbfd8afe0943d8d608e46f70fbe047cb0202f8cc1b54737e92362af72cc"
+    }
+  },
+  "source_stable_during_build": true
+}

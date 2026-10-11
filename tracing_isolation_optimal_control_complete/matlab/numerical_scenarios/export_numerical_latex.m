@@ -14,7 +14,7 @@ function report=export_selected_results(cfg)
 assessmentSpec=numerical_assessment_spec(cfg);
 mainVerification=numerical_main_verification(runs,cfg.cases,cfg.parameters,cfg.solve,assessmentSpec);
 verified=mainVerification.verified;
-[robustness,robustnessText]=saved_robustness(cfg,runs,assessmentSpec);
+[robustness,robustnessText,reproducibilityDetails]=saved_robustness(cfg,runs,assessmentSpec);
 exitChecks=struct();
 for k=[2 4]
     exitChecks.(sprintf('E%d',k))=capacity_exit_transition( ...
@@ -45,6 +45,7 @@ else
     pending{end+1}='\NumRobustnessCompletefalse';
 end
 pending{end+1}=renewmacro('NumRobustnessStatement',robustnessText);
+pending{end+1}=renewmacro('NumReproducibilityDetails',reproducibilityDetails);
 pending{end+1}=macro('NumHorizon',sprintf('%g',runs{1}.solver_settings.T));
 pending{end+1}=macro('NumIntervals',sprintf('%d',cfg.solve.N));
 pending{end+1}=macro('NumDegree',sprintf('%d',runs{1}.solver_settings.d));
@@ -75,14 +76,21 @@ reference{end+1}=macro('NumSwitchIEOneRef',sprintf('%.8f',e.full_state(2)));
 reference{end+1}=macro('NumMaxReleaseRef',sprintf('%.8f',max(cellfun(@(r) r.reference.events.release,runs))));
 waiting=sprintf('实际控制输出中，E1 和 E2 分别识别出 $%s$ 与 $%s$。', ...
     texstructure(runs{1}.assessment.observed_structure),texstructure(runs{2}.assessment.observed_structure));
-waiting=[waiting event_summary(runs{1}) event_summary(runs{2})];
+waiting=[waiting event_summary(runs{1},'full_start','完全跟踪开始') ...
+    event_summary(runs{2},'capacity_exit','容量退出')];
 boundary=sprintf('E3、E4、E5 的实际阶段依次为 $%s$、$%s$ 和 $%s$。', ...
     texstructure(runs{3}.assessment.observed_structure),texstructure(runs{4}.assessment.observed_structure), ...
     texstructure(runs{5}.assessment.observed_structure));
-boundary=[boundary event_summary(runs{3}) event_summary(runs{4}) event_summary(runs{5})];
+if initial_full_tracking(runs{3}) && initial_full_tracking(runs{5})
+    boundary=[boundary 'E3、E5 均从初始时刻采用完全跟踪。'];
+else
+    boundary=[boundary event_summary(runs{3},'full_start','完全跟踪开始') ...
+        event_summary(runs{5},'full_start','完全跟踪开始')];
+end
+boundary=[boundary event_summary(runs{4},'capacity_exit','容量退出')];
 if exitChecks.E2.supported && exitChecks.E4.supported
-    boundary=[boundary 'E2、E4 的理论容量退出时刻均位于各自容量段与完全跟踪段之间的单网格过渡区间内，' ...
-        '因此不将首个纯完全跟踪单元的起点直接等同于连续切换点。'];
+    boundary=[boundary 'E2、E4 的理论容量退出时刻均落在上述单网格过渡区间内；' ...
+        '首个纯完全跟踪单元的起点仍不等同于连续切换点。'];
 else
     boundary=[boundary sprintf(['容量退出过渡区间的自动核查未全部支持单网格包含结论（E2: %s；E4: %s），' ...
         '不能据首个纯完全跟踪单元确定连续切换点。'], ...
@@ -159,7 +167,8 @@ function invalidate_generated_results(cfg)
 filename=fullfile(cfg.paths.latex,'main.tex');
 text=fileread(filename);
 body={'% 当前选定结果不可用；本块不包含新优化结果。', ...
-    '\NumResultsVerifiedfalse','\NumRobustnessCompletefalse',renewmacro('NumRobustnessStatement','')};
+    '\NumResultsVerifiedfalse','\NumRobustnessCompletefalse', ...
+    renewmacro('NumRobustnessStatement',''),renewmacro('NumReproducibilityDetails','')};
 body{end+1}=macro('NumHorizon',sprintf('%g',cfg.solve.T));
 body{end+1}=macro('NumIntervals',sprintf('%d',cfg.solve.N));
 body{end+1}=macro('NumDegree',sprintf('%d',cfg.solve.d));
@@ -189,22 +198,31 @@ end
 function s=texstructure(s)
 s=strrep(s,' -> ','\to ');
 end
-function text=event_summary(run)
-% 每句话取自唯一数值候选；缺失/多个候选不输出预期阶段或NaN时刻。
-events=run.assessment.structured_events;
-names={'intervention','capacity_enter','capacity_exit','full_start','release'};
-titles={'初次干预','容量进入','容量退出','完全跟踪开始','解除'};
-parts={};
-for k=1:numel(names)
-    e=events.(names{k});
-    if e.candidate_count==1 && all(isfinite(e.interval))
-        parts{end+1}=sprintf('%s的检测区间为 $[%.6g,%.6g]$',titles{k},e.interval(1),e.interval(2)); %#ok<AGROW>
-    elseif e.candidate_count>1
-        parts{end+1}=sprintf('%s存在 %d 个候选，尚不能唯一定位',titles{k},e.candidate_count); %#ok<AGROW>
+function text=event_summary(run,name,title)
+% 正文只取关键事件；完整候选仍保留在 numerical_checks.json。
+% 初始完全跟踪同时依赖唯一初始事件与首个实际阶段，不借助理论补齐。
+e=run.assessment.structured_events.(name);
+if e.candidate_count>1
+    text=sprintf('%s 的%s存在 %d 个候选，尚不能唯一定位。',run.case_id,title,e.candidate_count);
+elseif e.candidate_count~=1 || ~all(isfinite(e.interval))
+    text=[run.case_id ' 未唯一检测到' title '事件。'];
+elseif strcmp(name,'full_start') && initial_full_tracking(run)
+    text=[run.case_id ' 从初始时刻采用完全跟踪。'];
+else
+    text=sprintf('%s 的%s区间为 $[%.6g,%.6g]$。',run.case_id,title,e.interval(1),e.interval(2));
+    if strcmp(name,'full_start') && isfield(e,'capacity_active') && ~e.capacity_active && ...
+            isfield(e,'numerical_endpoint_states') && size(e.numerical_endpoint_states,1)==2 && ...
+            all(isfinite(e.numerical_endpoint_states(2,:))) && ...
+            all(e.numerical_endpoint_states(2,:)<run.parameters.K)
+        text=[text '对应端点的感染比例仍低于容量上限。'];
     end
 end
-if isempty(parts), text=[run.case_id ' 未检测到付费阶段事件。'];
-else, text=[run.case_id '：' strjoin(parts,'；') '。']; end
+end
+function yes=initial_full_tracking(run)
+e=run.assessment.structured_events.full_start;
+yes=e.candidate_count==1 && all(isfinite(e.interval)) && ...
+    isfield(e,'status') && strcmp(e.status,'initial_event') && ...
+    ~isempty(run.assessment.arcs) && strcmp(run.assessment.arcs(1).type,'1');
 end
 function s=macro(name,value)
 s=['\providecommand{\' name '}{' value '}'];
@@ -216,7 +234,7 @@ function s=finite_text(value,format)
 if isscalar(value) && isfinite(value), s=sprintf(format,value); else, s='--'; end
 end
 
-function [out,text]=saved_robustness(cfg,main,spec)
+function [out,text,details]=saved_robustness(cfg,main,spec)
 % 只读新协议摘要、不可覆盖原始记录及已有评估；不重求解、不重新评估。
 if ~isfield(cfg,'revision')
     protocol=revision_validation_config(cfg.paths.scenario_inputs);
@@ -227,11 +245,13 @@ out=struct('protocol_complete',false,'consistency_pass',false,'groups',struct(),
     'recorded_configuration_count',0,'expected_configuration_count',numel(cfg.revision.experiments), ...
     'numeric_and_agreement_pass_count',0,'source_files',[], ...
     'neutral_E2_cost_difference','--');
+out.acceptance_settings=cfg.check;
+if isfield(cfg,'acceptance'), out.acceptance_revision=cfg.acceptance; end
 records=struct('configuration_id',{},'run_id',{},'numeric_pass',{},'agreement_pass',{});
 views=containers.Map('KeyType','char','ValueType','any');
 source=numerical_code_hash('solve'); indexPath=fullfile(cfg.paths.data,'run_index.json');
 hasSummary=any(cellfun(@(g) isfile(fullfile(cfg.paths.data,'revision_checks',[g '_summary.json'])),groups));
-text=''; if ~hasSummary, return; end
+text=''; details=''; if ~hasSummary, return; end
 assert(isfile(indexPath),'numerical:MissingRunIndex','Saved robustness summaries require run_index.json.');
 index=jsondecode(fileread(indexPath));
 for k=1:numel(main)
@@ -302,6 +322,14 @@ for gi=1:numel(groups)
         comparison=summary.case_comparisons;
         assert(numel(comparison)==numel(main) && numel(unique({comparison.case_id}))==numel(main), ...
             'numerical:InvalidRevisionSummary','Missing or duplicated case comparisons in %s.',group);
+        if strcmp(group,'grid')
+            required={'comparison_status','fine_run_id','coarse_run_id','fine_N','coarse_N', ...
+                'fine_numeric_pass','coarse_numeric_pass','event_comparison_evaluated', ...
+                'cost_comparison_evaluated','event_comparison_pass','cost_comparison_pass'};
+            assert(all(isfield(comparison,required)),'numerical:InvalidRevisionSummary', ...
+                'Refresh the saved grid summary to record whether comparisons were evaluated.');
+            status.case_comparisons=comparison;
+        end
         for k=1:numel(main)
             ix=find(strcmp({comparison.case_id},main{k}.case_id)); assert(isscalar(ix)); item=comparison(ix);
             local=rows(strcmp({rows.case_id},item.case_id));
@@ -325,9 +353,16 @@ out.protocol_complete=out.recorded_configuration_count==out.expected_configurati
     all(cellfun(@(g) out.groups.(g).protocol_complete,groups));
 out.consistency_pass=out.protocol_complete && all(cellfun(@(g) out.groups.(g).consistency_pass,groups));
 if ~any(cellfun(@(g) out.groups.(g).available,groups)), return; end
-text=sprintf(['默认协议已记录 %d/%d 个不同配置，其中 %d 个同时通过数值接受与理论比较。' ...
+details=sprintf(['默认协议已记录 %d/%d 个不同配置，其中 %d 个同时通过数值接受与理论比较。' ...
     '协议是否完成与比较是否一致分别记录。'],out.recorded_configuration_count, ...
     out.expected_configuration_count,out.numeric_and_agreement_pass_count);
+if isfield(cfg,'acceptance') && strcmp(cfg.acceptance.revision_timing,'post_solve')
+    text='数值接受及容量控制比较容差于保存求解后调整，取值与原严格记录见复现附录。';
+    details=[details sprintf(['本次在保存求解后调整状态及容量接受容差为 $\\num{%.3g}$、' ...
+        '容量段控制与 $q_B$ 区间均值的绝对误差容差为 $\\num{%.3g}$，并重新评估全部保存结果；' ...
+        '成本相对误差容差 $\\num{%.3g}$ 与事件区间判据保持不变。原严格判据及其未通过记录另行保留。'], ...
+        cfg.check.capacity_tolerance,cfg.check.capacity_control_tolerance,cfg.check.relative_cost_tolerance)];
+end
 init=out.groups.initialization;
 if init.available
     summary=jsondecode(fileread(fullfile(cfg.paths.data,'revision_checks','initialization_summary.json')));
@@ -336,31 +371,43 @@ if init.available
         values=[values; summary.case_comparisons(k).cost_absolute_difference(:)]; %#ok<AGROW>
     end
     if init.consistency_pass
-        text=[text sprintf('五例常值和固定种子随机初猜的阶段一致，成本最大绝对差为 $\\num{%.3g}$。',max(values))];
+        constants=cfg.revision.experiments(arrayfun(@(e) belongs(e,'initialization') && ...
+            strcmp(e.initialization.type,'constant_control'),cfg.revision.experiments));
+        controls=unique(arrayfun(@(e) e.initialization.control,constants));
+        if isscalar(controls) && isfinite(controls)
+            initText=sprintf('五例常值 $q=%g$ 和固定种子随机初猜的阶段一致，成本最大绝对差为 $\\num{%.3g}$。', ...
+                controls,max(values));
+        else
+            initText=sprintf('五例预设常值和固定种子随机初猜的阶段一致，成本最大绝对差为 $\\num{%.3g}$。',max(values));
+        end
     else
-        text=[text '初猜复核未全部支持一致性，未通过案例为 ' strjoin(init.failed_cases,'、') '。'];
+        initText=['初猜复核未全部支持一致性，未通过案例为 ' strjoin(init.failed_cases,'、') '。'];
     end
+    text=[text initText]; details=[details initText];
 end
 grid=out.groups.grid;
 if grid.available
-    text=[text '固定时域网格比较通过 ' strjoin(grid.passed_cases,'、') '；'];
-    if ~isempty(grid.failed_cases)
-        text=[text strjoin(grid.failed_cases,'、') ' 未通过预定数值及事件比较，不能作五例整体网格稳定结论。'];
-    else
-        text=[text '五例主要事件在对应网格尺度内一致。'];
-    end
+    summary=jsondecode(fileread(fullfile(cfg.paths.data,'revision_checks','grid_summary.json')));
+    [gridDetails,gridText]=grid_explanation(summary,cfg,views);
+    text=[text gridText]; details=[details gridDetails];
 end
 if out.groups.horizon.available
-    if out.groups.horizon.consistency_pass, text=[text '固定步长时域复核五例通过。'];
-    else, text=[text '固定步长时域复核未通过案例为 ' strjoin(out.groups.horizon.failed_cases,'、') '。']; end
+    if out.groups.horizon.consistency_pass, horizonText='固定步长时域复核五例通过。';
+    else, horizonText=['固定步长时域复核未通过案例为 ' strjoin(out.groups.horizon.failed_cases,'、') '。']; end
+    text=[text horizonText]; details=[details horizonText];
 end
 if out.groups.threshold.available
-    if out.groups.threshold.consistency_pass, text=[text '阈值复核通过。'];
-    else, text=[text '阈值复核未全部通过。']; end
+    if out.groups.threshold.consistency_pass, thresholdText='阈值复核通过。';
+    else, thresholdText='阈值复核未全部通过。'; end
+    text=[text thresholdText]; details=[details thresholdText];
 end
 missing=groups(~cellfun(@(g) out.groups.(g).available,groups));
-if ~isempty(missing), text=[text '尚无结果的组为 \texttt{' strjoin(missing,', ') '}。']; end
-text=[text '全部记录见配套文件；有限样本与浮点诊断不替代解析证明。'];
+if ~isempty(missing)
+    missingText=['尚无结果的组为 \texttt{' strjoin(missing,', ') '}。'];
+    text=[text missingText]; details=[details missingText];
+end
+text=[text '有限样本与浮点诊断不替代解析证明。'];
+details=[details '全部记录见配套文件；有限样本与浮点诊断不替代解析证明。'];
 
     function add_record(configuration,r)
         ix=find(strcmp({records.configuration_id},configuration));
@@ -417,6 +464,122 @@ text=[text '全部记录见配套文件；有限样本与浮点诊断不替代�
                 'numerical:RevisionSourceMismatch','Summary differs from saved assessment at %s: %s.',names{ni},row.run_id);
         end
     end
+end
+
+function [text,shortText]=grid_explanation(summary,cfg,views)
+% 只解释保存数据与当前接受尺度；不把未执行比较写成实际事件不一致。
+items=summary.case_comparisons; passed={items([items.consistency_pass]).case_id};
+text=''; shortText='';
+if ~isempty(passed)
+    text=['在所列接受容差下，固定时域网格复核的最细两级成本与事件区间比较通过 ' strjoin(passed,'、') '。'];
+    shortText=['在当前接受容差下，最细两级成本与事件区间比较通过 ' strjoin(passed,'、') '。'];
+end
+skipped=items(strcmp({items.comparison_status},'not_evaluated_due_to_numeric_failure'));
+coarse=cell(1,numel(skipped)); capacityFailure=true;
+for k=1:numel(skipped)
+    item=skipped(k);
+    assert(~item.event_comparison_evaluated && ~item.cost_comparison_evaluated, ...
+        'numerical:InvalidRevisionSummary','Skipped grid comparison is marked evaluated.');
+    fine=views(item.fine_run_id); coarse{k}=views(item.coarse_run_id);
+    assert(isequal(item.fine_numeric_pass,fine.assessment.numeric_pass) && ...
+        isequal(item.coarse_numeric_pass,coarse{k}.assessment.numeric_pass), ...
+        'numerical:RevisionSourceMismatch','Grid numeric flags differ from the saved assessments.');
+    capacityFailure=capacityFailure && item.fine_numeric_pass && ~item.coarse_numeric_pass && ...
+        ~coarse{k}.assessment.numeric_checks.capacity;
+end
+if ~isempty(skipped)
+    ids={skipped.case_id}; levels=unique([skipped.coarse_N]);
+    if capacityFailure && isscalar(levels)
+        skippedText=sprintf(['%s 的 $N=%d$ 重积分容量超出未达到 $\\num{%.3g}$ 接受容差，' ...
+            '故最细两级的成本与事件比较未执行。'],strjoin(ids,'、'),levels,cfg.check.capacity_tolerance);
+    else
+        skippedText=[strjoin(ids,'、') ' 因数值接受未通过，最细两级的成本与事件比较未执行。'];
+    end
+    text=[text skippedText]; shortText=[shortText skippedText];
+    for k=1:numel(skipped)
+        item=skipped(k); assessment=coarse{k}.assessment; cmp=assessment.event_comparison;
+        if assessment.agreement_pass
+            text=[text sprintf('%s 的该级解析比较通过。',item.case_id)]; %#ok<AGROW>
+        elseif ~cmp.capacity_control.passed
+            text=[text sprintf('%s 的该级容量控制比较另未通过',item.case_id)]; %#ok<AGROW>
+            shortText=[shortText sprintf('%s 的该级容量控制比较另未通过。',item.case_id)]; %#ok<AGROW>
+            if cmp.event_pass
+                text=[text '，但单项事件时间比较仍通过。']; %#ok<AGROW>
+            else
+                text=[text '，单项事件时间比较也未通过。']; %#ok<AGROW>
+            end
+        else
+            text=[text sprintf('%s 的该级解析比较未通过，具体分量见配套记录。',item.case_id)]; %#ok<AGROW>
+            shortText=[shortText sprintf('%s 的该级解析比较未通过。',item.case_id)]; %#ok<AGROW>
+        end
+    end
+    decreasing=true; accepted=true;
+    for k=1:numel(skipped)
+        rows=summary.rows(strcmp({summary.rows.case_id},skipped(k).case_id));
+        [~,order]=sort([rows.N]); rows=rows(order);
+        decreasing=decreasing && numel(rows)>=2 && all(diff([rows.capacity_excess])<0);
+        accepted=accepted && rows(end).capacity_excess<cfg.check.capacity_tolerance && rows(end).numeric_pass;
+    end
+    finest=unique([skipped.fine_N]);
+    if decreasing && accepted && isscalar(finest)
+        text=[text sprintf(['%s 的容量超出在测试网格上随加密下降，' ...
+            '在 $N=%d$ 时均低于该容差。'],strjoin(ids,'、'),finest)];
+        shortText=[shortText sprintf('%s 在 $N=%d$ 时的容量超出均低于该容差。',strjoin(ids,'、'),finest)];
+    end
+end
+longCases={}; longLevels=[];
+for k=1:numel(summary.rows)
+    row=summary.rows(k); run=views(row.run_id);
+    if any(strcmp(run.assessment.event_detection.diagnostics.issues,'long_intermediate_control'))
+        longCases{end+1}=row.case_id; longLevels(end+1)=row.N; %#ok<AGROW>
+    end
+end
+if ~isempty(longCases) && isscalar(unique(longLevels))
+    text=[text sprintf('%s 的 $N=%d$ 长中间控制块与阶段识别异常仍保留在配套记录中。', ...
+        strjoin(unique(longCases,'stable'),'、'),longLevels(1))];
+    shortText=[shortText sprintf('$N=%d$ 的 %s 存在长中间控制块与阶段识别异常。', ...
+        longLevels(1),strjoin(unique(longCases,'stable'),'、'))];
+end
+for k=1:numel(items)
+    item=items(k);
+    if strcmp(item.comparison_status,'evaluated_failed')
+        if ~item.event_comparison_pass
+            text=[text item.case_id ' 经实际比较发现阶段或事件区间不一致。']; %#ok<AGROW>
+            shortText=[shortText item.case_id ' 经实际比较发现阶段或事件区间不一致。']; %#ok<AGROW>
+        end
+        if ~item.cost_comparison_pass
+            text=[text item.case_id ' 经实际比较发现成本差超过预定容差。']; %#ok<AGROW>
+            shortText=[shortText item.case_id ' 经实际比较发现成本差超过预定容差。']; %#ok<AGROW>
+        end
+    elseif startsWith(item.comparison_status,'not_evaluated') && ...
+            ~strcmp(item.comparison_status,'not_evaluated_due_to_numeric_failure')
+        text=[text item.case_id ' 因记录缺失或比较前提不满足，最细两级比较未执行。']; %#ok<AGROW>
+        shortText=[shortText item.case_id ' 因记录缺失或比较前提不满足，最细两级比较未执行。']; %#ok<AGROW>
+    end
+end
+if ~summary.consistency_pass
+    text=[text '当前接受尺度下的网格组仍未通过，不能作五例整体网格稳定或收敛阶结论。'];
+    shortText=[shortText '网格组仍未整体通过，不能作收敛阶结论。'];
+else
+    text=[text '该结果只支持所测最细两级的一致性，不给出收敛阶。'];
+    shortText=[shortText '该比较不提供收敛阶。'];
+end
+coarseCostFailures={}; unresolved={};
+for k=1:numel(summary.rows)
+    row=summary.rows(k); if row.N~=min([summary.rows.N]) || ~isKey(views,row.run_id), continue; end
+    run=views(row.run_id); a=run.assessment;
+    if ~a.cost_agreement.passed, coarseCostFailures{end+1}=row.case_id; end %#ok<AGROW>
+    if strcmp(a.status,'unresolved_discrepancy'), unresolved{end+1}=row.case_id; end %#ok<AGROW>
+end
+if ~isempty(coarseCostFailures)
+    costText=sprintf('$N=%d$ 的 %s 成本比较仍未通过。',min([summary.rows.N]), ...
+        strjoin(coarseCostFailures,'、'));
+    text=[text costText]; shortText=[shortText costText];
+end
+if ~isempty(unresolved)
+    text=[text strjoin(unresolved,'、') ' 的粗网格负成本差超过比较尺度，保留为待查差异。'];
+    shortText=[shortText strjoin(unresolved,'、') ' 的粗网格负成本差仍为待查差异。'];
+end
 end
 
 function yes=belongs(experiment,group)

@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "visual_inspection": {
+    "main_pages": [
+      27,
+      35,
+      36
+    ],
+    "theory_only_pages": [
+      28
+    ],
+    "overlap": false,
+    "clipped_text": false,
+    "missing_glyphs": false,
+    "tolerance_statistics_and_residual_failures_present": true
+  },
+  "compiled_source_hashes_still_current": true,
+  "current_pdf_hashes": {
+    "main": "e4d7c9fad7fbea2b06ea48e5cf7c6545394fa8d7e258dd8e80b0ca1044bda7aa",
+    "theory_only": "62400fb65c8c8228c909334d6beecde962395969165f85312a095e725e7a42a3"
+  },
+  "latest_concurrent_pdf_render_matches_inspected_pages": {
+    "main27": true,
+    "main35": true,
+    "main36": true,
+    "theory28": true
+  },
+  "shared_exporter_regression": {
+    "source": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerical_scenarios\\prose_compression_20261010\\matlab_report.json",
+    "saved_exporter_tests": 11,
+    "failure_exporter_tests": 3,
+    "pending_exporter_tests": 2,
+    "optimizer_executions": 0
+  },
+  "notes": [
+    "本轮自身两份校样已实际编译并交付，随后正文压缩会话又编译同源文件；当前PDF字节SHA变化，所检页面像素与已视检页面相同，源码指纹保持相同。",
+    "第一次保护核对将容差元数据当作不可变指标；现在仅允许三处已授权容差元数据变化。同期外部非生成正文编辑另有快照，原指标与原记录均保留。"
+  ]
+}

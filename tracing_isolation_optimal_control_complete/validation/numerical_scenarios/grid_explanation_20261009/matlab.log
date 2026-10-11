@@ -1,0 +1,12 @@
+{在不同结构体之间进行下标赋值。
+
+出错 verify_grid_comparison_status>syntheticGrid (第 80 行)
+        experiments(ix)=struct('case_id',id,'configuration_id',sprintf('synthetic_%s_N%d',id,N), ...
+        ^^^^^^^^^^^^^^^
+出错 verify_grid_comparison_status (第 6 行)
+[experiments,runs]=syntheticGrid();
+                   ^^^^^^^^^^^^^^^
+出错 refresh_saved_grid (第 41 行)
+unit=verify_grid_comparison_status();
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+} 

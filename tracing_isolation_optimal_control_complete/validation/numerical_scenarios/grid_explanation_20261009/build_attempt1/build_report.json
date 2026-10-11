@@ -1,0 +1,68 @@
+{
+  "main": {
+    "success": false,
+    "commands": [
+      {
+        "command": [
+          "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit_code": 0,
+        "log": "main_build_1.log"
+      },
+      {
+        "command": [
+          "E:\\software\\texlive\\2026\\bin\\windows\\bibtex.EXE",
+          "main"
+        ],
+        "exit_code": 0,
+        "log": "main_build_2.log"
+      },
+      {
+        "command": [
+          "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit_code": 1,
+        "log": "main_build_3.log"
+      }
+    ]
+  },
+  "theory_only": {
+    "success": false,
+    "commands": [
+      {
+        "command": [
+          "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "theory_only.tex"
+        ],
+        "exit_code": 0,
+        "log": "theory_only_build_1.log"
+      },
+      {
+        "command": [
+          "E:\\software\\texlive\\2026\\bin\\windows\\bibtex.EXE",
+          "theory_only"
+        ],
+        "exit_code": 0,
+        "log": "theory_only_build_2.log"
+      },
+      {
+        "command": [
+          "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "theory_only.tex"
+        ],
+        "exit_code": 1,
+        "log": "theory_only_build_3.log"
+      }
+    ]
+  }
+}

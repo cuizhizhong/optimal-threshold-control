@@ -1,0 +1,159 @@
+{
+  "passed": true,
+  "label_count": 177,
+  "non_generated_source_equals_concurrent_snapshot_plus_appendix_pointers": true,
+  "unchanged_numeric_macros": [
+    "NumJRefEOne",
+    "NumJRefETwo",
+    "NumJRefEThree",
+    "NumJRefEFour",
+    "NumJRefEFive",
+    "NumSwitchSEOneRef",
+    "NumSwitchIEOneRef",
+    "NumExitETwoTheory",
+    "NumExitEFourTheory",
+    "NumJOclEOne",
+    "NumJOclETwo",
+    "NumJOclEThree",
+    "NumJOclEFour",
+    "NumJOclEFive",
+    "NumExitETwoStart",
+    "NumExitETwoEnd",
+    "NumExitEFourStart",
+    "NumExitEFourEnd"
+  ],
+  "unchanged_raw_solver_and_figure_files": [
+    "data/numerical_scenarios/runs/README.md",
+    "data/numerical_scenarios/runs/run_02a89c2481494a1493fe489ad382279f.mat",
+    "data/numerical_scenarios/runs/run_02a89c2481494a1493fe489ad382279f.solver.json",
+    "data/numerical_scenarios/runs/run_135928be76eb447ba619aeac74710e77.mat",
+    "data/numerical_scenarios/runs/run_135928be76eb447ba619aeac74710e77.solver.json",
+    "data/numerical_scenarios/runs/run_139836e6273441e7bef91b3cce70193f.mat",
+    "data/numerical_scenarios/runs/run_139836e6273441e7bef91b3cce70193f.solver.json",
+    "data/numerical_scenarios/runs/run_1fe903238ec8428ebe33758d0860ba94.mat",
+    "data/numerical_scenarios/runs/run_1fe903238ec8428ebe33758d0860ba94.solver.json",
+    "data/numerical_scenarios/runs/run_23330a48e0454d94b7522ecfdc6c93ec.mat",
+    "data/numerical_scenarios/runs/run_23330a48e0454d94b7522ecfdc6c93ec.solver.json",
+    "data/numerical_scenarios/runs/run_28e85e5b6d0d487fa978a53cd9062641.mat",
+    "data/numerical_scenarios/runs/run_28e85e5b6d0d487fa978a53cd9062641.solver.json",
+    "data/numerical_scenarios/runs/run_2c79e1d8828f49a99532a0130b717305.mat",
+    "data/numerical_scenarios/runs/run_2c79e1d8828f49a99532a0130b717305.solver.json",
+    "data/numerical_scenarios/runs/run_30ba0304ab67442db4b06441eee8c2c2.mat",
+    "data/numerical_scenarios/runs/run_30ba0304ab67442db4b06441eee8c2c2.solver.json",
+    "data/numerical_scenarios/runs/run_36191f6a7fa94ceb8eae02265a87dc8b.mat",
+    "data/numerical_scenarios/runs/run_36191f6a7fa94ceb8eae02265a87dc8b.solver.json",
+    "data/numerical_scenarios/runs/run_4b85125caa404a28b57e0a9d6cbd7cbc.mat",
+    "data/numerical_scenarios/runs/run_4b85125caa404a28b57e0a9d6cbd7cbc.solver.json",
+    "data/numerical_scenarios/runs/run_4dfaa3539e6241ae8d3d7cd4028c667a.mat",
+    "data/numerical_scenarios/runs/run_4dfaa3539e6241ae8d3d7cd4028c667a.solver.json",
+    "data/numerical_scenarios/runs/run_514dfb58d0b14edc8f57506e2cc5c220.mat",
+    "data/numerical_scenarios/runs/run_514dfb58d0b14edc8f57506e2cc5c220.solver.json",
+    "data/numerical_scenarios/runs/run_54024cb1a950459e8007f63ef5e9c6ff.mat",
+    "data/numerical_scenarios/runs/run_54024cb1a950459e8007f63ef5e9c6ff.solver.json",
+    "data/numerical_scenarios/runs/run_5477bb073e5044e8a80f65515d160ce6.mat",
+    "data/numerical_scenarios/runs/run_5477bb073e5044e8a80f65515d160ce6.solver.json",
+    "data/numerical_scenarios/runs/run_602fcbcd0e5d45d8bb6051901d300aa5.mat",
+    "data/numerical_scenarios/runs/run_602fcbcd0e5d45d8bb6051901d300aa5.solver.json",
+    "data/numerical_scenarios/runs/run_66965445718a41b09cfa189b83d09a5f.mat",
+    "data/numerical_scenarios/runs/run_66965445718a41b09cfa189b83d09a5f.solver.json",
+    "data/numerical_scenarios/runs/run_70efe89f465f49298d3823770cc82ae0.mat",
+    "data/numerical_scenarios/runs/run_70efe89f465f49298d3823770cc82ae0.solver.json",
+    "data/numerical_scenarios/runs/run_8121aea0a10b4a1b8198398b97d5dd50.mat",
+    "data/numerical_scenarios/runs/run_8121aea0a10b4a1b8198398b97d5dd50.solver.json",
+    "data/numerical_scenarios/runs/run_91fb58bb25ea47d29212281a89b7e3bb.mat",
+    "data/numerical_scenarios/runs/run_91fb58bb25ea47d29212281a89b7e3bb.solver.json",
+    "data/numerical_scenarios/runs/run_92300dbeb73841b3afa940c8ec99ae44.mat",
+    "data/numerical_scenarios/runs/run_92300dbeb73841b3afa940c8ec99ae44.solver.json",
+    "data/numerical_scenarios/runs/run_95f03cda21434451998723ad26c1a1b9.mat",
+    "data/numerical_scenarios/runs/run_95f03cda21434451998723ad26c1a1b9.solver.json",
+    "data/numerical_scenarios/runs/run_a07493968ce542b2b057ce11232f695c.mat",
+    "data/numerical_scenarios/runs/run_a07493968ce542b2b057ce11232f695c.solver.json",
+    "data/numerical_scenarios/runs/run_a8816fb3375943dd85b0a49b8c01b519.mat",
+    "data/numerical_scenarios/runs/run_a8816fb3375943dd85b0a49b8c01b519.solver.json",
+    "data/numerical_scenarios/runs/run_b528f398fabb4b61b08540c668d36825.mat",
+    "data/numerical_scenarios/runs/run_b528f398fabb4b61b08540c668d36825.solver.json",
+    "data/numerical_scenarios/runs/run_b9f75da0ecd04d8288f7624bc7a44e49.mat",
+    "data/numerical_scenarios/runs/run_b9f75da0ecd04d8288f7624bc7a44e49.solver.json",
+    "data/numerical_scenarios/runs/run_bd09cff659c14ab7960b447ff0f4f0b0.mat",
+    "data/numerical_scenarios/runs/run_bd09cff659c14ab7960b447ff0f4f0b0.solver.json",
+    "data/numerical_scenarios/runs/run_be8c0645aca04eb38d172896cee33450.mat",
+    "data/numerical_scenarios/runs/run_be8c0645aca04eb38d172896cee33450.solver.json",
+    "data/numerical_scenarios/runs/run_bed1c525aeff4468bda80a9d09ebd92f.mat",
+    "data/numerical_scenarios/runs/run_bed1c525aeff4468bda80a9d09ebd92f.solver.json",
+    "data/numerical_scenarios/runs/run_d7d94922d84947b3adbce5fd4fc3b513.mat",
+    "data/numerical_scenarios/runs/run_d7d94922d84947b3adbce5fd4fc3b513.solver.json",
+    "data/numerical_scenarios/runs/run_ef82c05c9b2f4113a4f5b28c4a6c0041.mat",
+    "data/numerical_scenarios/runs/run_ef82c05c9b2f4113a4f5b28c4a6c0041.solver.json",
+    "data/numerical_scenarios/runs/run_f252211996384585aa8272e641829d39.mat",
+    "data/numerical_scenarios/runs/run_f252211996384585aa8272e641829d39.solver.json",
+    "data/numerical_scenarios/runs/run_f4d2a395a778413eb76763244b7de2ea.mat",
+    "data/numerical_scenarios/runs/run_f4d2a395a778413eb76763244b7de2ea.solver.json",
+    "data/numerical_scenarios/runs/run_facb197e0b9e43aba7bf82de013f3fd6.mat",
+    "data/numerical_scenarios/runs/run_facb197e0b9e43aba7bf82de013f3fd6.solver.json",
+    "data/numerical_scenarios/runs/run_fb6d128aedb84204ba5d18ed3afb5828.mat",
+    "data/numerical_scenarios/runs/run_fb6d128aedb84204ba5d18ed3afb5828.solver.json",
+    "data/numerical_scenarios/runs/run_fd387f5267674b82b5ce57f5b1bd3f55.mat",
+    "data/numerical_scenarios/runs/run_fd387f5267674b82b5ce57f5b1bd3f55.solver.json",
+    "figures/numerical_scenarios/FigN1_regions.pdf",
+    "figures/numerical_scenarios/FigN1_regions.png",
+    "figures/numerical_scenarios/FigN2_waiting.pdf",
+    "figures/numerical_scenarios/FigN2_waiting.png",
+    "figures/numerical_scenarios/FigN3_boundary_tracking.pdf",
+    "figures/numerical_scenarios/FigN3_boundary_tracking.png"
+  ],
+  "initial_baseline_unchanged_count": 225,
+  "concurrent_reassessment_changed_paths": [
+    "data/numerical_scenarios/E1.mat",
+    "data/numerical_scenarios/E2.mat",
+    "data/numerical_scenarios/E3.mat",
+    "data/numerical_scenarios/E4.mat",
+    "data/numerical_scenarios/E5.mat",
+    "data/numerical_scenarios/selection_manifest.json",
+    "data/numerical_scenarios/revision_checks/grid_summary.csv",
+    "data/numerical_scenarios/revision_checks/grid_summary.json",
+    "data/numerical_scenarios/revision_checks/horizon_summary.json",
+    "data/numerical_scenarios/revision_checks/initialization_summary.json",
+    "data/numerical_scenarios/revision_checks/main_summary.json",
+    "data/numerical_scenarios/revision_checks/threshold_summary.json",
+    "matlab/numerical_scenarios/numerical_cases_config.m"
+  ],
+  "concurrent_reassessment_status": "completed",
+  "optimizer_executions_this_task": 0,
+  "compression_metrics": {
+    "NumRobustnessStatement": {
+      "before": {
+        "nonwhitespace_characters_including_tex": 386,
+        "cjk_characters": 280
+      },
+      "after": {
+        "nonwhitespace_characters_including_tex": 245,
+        "cjk_characters": 165
+      }
+    },
+    "NumFindingWaiting": {
+      "before": {
+        "nonwhitespace_characters_including_tex": 257,
+        "cjk_characters": 94
+      },
+      "after": {
+        "nonwhitespace_characters_including_tex": 118,
+        "cjk_characters": 48
+      }
+    },
+    "NumFindingTrackingBoundary": {
+      "before": {
+        "nonwhitespace_characters_including_tex": 356,
+        "cjk_characters": 179
+      },
+      "after": {
+        "nonwhitespace_characters_including_tex": 141,
+        "cjk_characters": 73
+      }
+    }
+  },
+  "main_prose_totals": {
+    "before": 999,
+    "after": 504
+  },
+  "counting_convention": "非空白字符，包含 LaTeX 公式标记；另列中文字符数。"
+}

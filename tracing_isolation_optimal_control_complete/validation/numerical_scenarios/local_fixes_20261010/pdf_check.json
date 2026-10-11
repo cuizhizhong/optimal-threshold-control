@@ -1,0 +1,18 @@
+{
+  "main": {
+    "pages": 37,
+    "affected_pages": [
+      6
+    ],
+    "log_issues": [],
+    "sha256": "e4d7c9fad7fbea2b06ea48e5cf7c6545394fa8d7e258dd8e80b0ca1044bda7aa"
+  },
+  "theory_only": {
+    "pages": 29,
+    "affected_pages": [
+      6
+    ],
+    "log_issues": [],
+    "sha256": "62400fb65c8c8228c909334d6beecde962395969165f85312a095e725e7a42a3"
+  }
+}

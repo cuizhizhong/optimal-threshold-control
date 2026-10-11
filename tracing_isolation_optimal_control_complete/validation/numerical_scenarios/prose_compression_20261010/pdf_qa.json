@@ -1,0 +1,89 @@
+{
+  "passed": true,
+  "captured_utc": "2026-10-09T16:41:19.790249+00:00",
+  "main_source_sha256": "5d7447d88528caf006ea66301cf29f5fe28e873951525b35e77c68e47bee20d8",
+  "outputs": {
+    "main": {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+      "pages": 37,
+      "current_pdf_sha256": "e4d7c9fad7fbea2b06ea48e5cf7c6545394fa8d7e258dd8e80b0ca1044bda7aa",
+      "this_task_build_report": "build_main_report.json",
+      "this_task_built_pdf_sha256": "762ae09729336a60ec0ce0b6f10bc826c4eb6f5fe99017a20ac5a26f578133e1",
+      "concurrent_build_report": "../tolerance_revision_20261010/build_report.json",
+      "concurrent_recorded_pdf_sha256": "5076537d8f9702af9442842114d83aaee592497d5527934401826dbdbd99f4b0",
+      "current_matches_concurrent_recorded_pdf_bytes": false,
+      "current_source_matches_both_recorded_builds": true,
+      "current_pdf_last_publisher": "unknown_concurrent_session"
+    },
+    "theory_only": {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+      "pages": 29,
+      "current_pdf_sha256": "62400fb65c8c8228c909334d6beecde962395969165f85312a095e725e7a42a3",
+      "this_task_build_report": "build_theory_only_report.json",
+      "this_task_built_pdf_sha256": "0fc97456fc6d99b8ffafcce0b57dd18f2e73f8e380b8add2f202525ade44117a",
+      "concurrent_build_report": "../tolerance_revision_20261010/build_report.json",
+      "concurrent_recorded_pdf_sha256": "99f7bdfbc38da7d06c59f96a0c5f4d47bda3be3149464f49ddb177ebae51a936",
+      "current_matches_concurrent_recorded_pdf_bytes": false,
+      "current_source_matches_both_recorded_builds": true,
+      "current_pdf_last_publisher": "unknown_concurrent_session"
+    }
+  },
+  "visual_inspection": {
+    "document": "main",
+    "actual_pages_inspected": [
+      27,
+      29,
+      30,
+      35,
+      36
+    ],
+    "images": [
+      {
+        "page": 27,
+        "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\prose_compression_20261010_build\\qa_p27.png",
+        "sha256": "3a332e94f48a95103ee557e9e355fa05fe751ed21902e66a4c73e055da95bbdf"
+      },
+      {
+        "page": 29,
+        "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\prose_compression_20261010_build\\qa_events-29.png",
+        "sha256": "e2b838412ff527b61f814d7dc026d35678b5944ff12125749b328c557998c8dc"
+      },
+      {
+        "page": 30,
+        "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\prose_compression_20261010_build\\qa_events-30.png",
+        "sha256": "0d2e9ea9efd21f8882b845dbfb75556acd88f22b205180d7dc6e0c59c022812f"
+      },
+      {
+        "page": 35,
+        "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\prose_compression_20261010_build\\qa_p35.png",
+        "sha256": "77e8f9605c89d0928cdb75801ee1ce83292e1ce7cfb17a9fdb1d2bd16c1e5ee3"
+      },
+      {
+        "page": 36,
+        "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\prose_compression_20261010_build\\qa_p36.png",
+        "sha256": "3a65c237744e18d4b09dbd70ac4e410dfe6b2532bc4d995f9f93cc71fd6b669d"
+      }
+    ],
+    "checks": [
+      "正文摘要与附录指向",
+      "关键事件及数学符号",
+      "图注与正文衔接",
+      "附录路径换行与跨页",
+      "无裁切、重叠或缺字"
+    ],
+    "issues": [],
+    "final_current_pdf_inspected_page_pixels_identical": true,
+    "final_render_prefix": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\prose_compression_20261010_build\\qa_final_p",
+    "all_page_text_comparison_to_this_task_built_pdf": "not_performed_original_pdf_was_atomically_published",
+    "theory_only_all_pages_visually_reinspected_this_task": false
+  },
+  "export_regression_test_count": 16,
+  "optimizer_executions_this_task": 0,
+  "assessment_executions_this_task": 0,
+  "raw_solver_and_figure_files_unchanged": 77,
+  "main_prose_totals": {
+    "before": 999,
+    "after": 504
+  },
+  "concurrent_changes_preserved": true
+}

@@ -1,0 +1,115 @@
+--- baseline/latex/main.tex
++++ local-fixes/latex/main.tex
+@@ -303,10 +303,12 @@
+ 设 $E\subset\mathbb R^m$，$F:E\to\mathbb R$ 相对局部 Lipschitz，
+ $x:[0,T]\to E$ 绝对连续，其中 $T<\infty$。
+ 则 $F\circ x$ 在 $[0,T]$ 上绝对连续。
+-在 $F$ 具有 $C^1$ 局部表达式的状态点所对应的时间集合上，
+-通常的链式法则
+-\[
+- \frac{\dd}{\dd t}F(x(t))=\nabla F(x(t))\cdot\dot x(t)
++这里，$F$ 在 $x_0\in E$ 处具有 $C^1$ 局部表达式，是指存在包含 $x_0$ 的
++环境开邻域 $O\subset\mathbb R^m$ 及 $\widetilde F\in C^1(O)$，
++使 $\widetilde F=F$ 于 $E\cap O$。
++在这些状态点所对应的时间集合上，对任一这样的局部延拓，通常的链式法则
++\[
++ \frac{\dd}{\dd t}F(x(t))=\nabla\widetilde F(x(t))\cdot\dot x(t)
+ \]
+ 几乎处处成立。
+ \end{lemma}
+@@ -324,8 +326,12 @@
+ \]
+ 由 $x$ 的绝对连续性，得到该子区间上 $F\circ x$ 的绝对连续性。
+ 有限拼接给出整个区间上的结论。
+-在具有 $C^1$ 局部表达式的部分，普通链式法则在 $x$ 可微的时刻成立，
++在具有 $C^1$ 局部表达式的状态点附近，由 $x$ 的连续性，
++可在相应时间邻域上将 $F\circ x$ 写为 $\widetilde F\circ x$。
++因此普通链式法则在 $x$ 可微的时刻成立，
+ 而 $x$ 不可微的时刻构成零测集。
++若局部延拓不唯一，其梯度与 $\dot x(t)$ 的内积仍在上述时刻一致，
++因为对应的复合函数在时间邻域上相同。
+ \end{proof}
+ 
+ \section{常接触率问题、自然轨道与安全目标集}
+--- baseline/matlab/numerical_scenarios/numerical_cases_config.m
++++ local-fixes/matlab/numerical_scenarios/numerical_cases_config.m
+@@ -13,9 +13,12 @@
+ inputs = jsondecode(fileread(inputPath));
+ assert(inputs.schema_version == 1, 'Unsupported scenario input schema.');
+ cfg.parameters = inputs.parameters;
+-assert(cfg.parameters.p > 0 && cfg.parameters.p < 1 && ...
+-    all([cfg.parameters.c cfg.parameters.gamma cfg.parameters.K] > 0), ...
+-    'Invalid model parameters in %s.', inputPath);
++v = [cfg.parameters.p cfg.parameters.c cfg.parameters.gamma cfg.parameters.K];
++assert(all(isfinite(v)) && cfg.parameters.p > 0 && cfg.parameters.p < 1 && ...
++    cfg.parameters.c > 0 && cfg.parameters.gamma > 0 && ...
++    cfg.parameters.K > 0 && cfg.parameters.K < 1, ...
++    'numerical_cases_config:InvalidParameters', ...
++    'Model parameters in %s must be finite and satisfy 0<p<1, c>0, gamma>0, and 0<K<1.', inputPath);
+ cfg.paths.repo_root = repoRoot;
+ cfg.paths.report_root = reportRoot;
+ cfg.paths.openocl_root = fullfile(repoRoot, 'optimal', 'OpenOCL-master 0104');
+--- baseline/validation/numerical_scenarios/generate_analytic_checkpoints.py
++++ local-fixes/validation/numerical_scenarios/generate_analytic_checkpoints.py
+@@ -42,8 +42,17 @@
+         self.p, self.c, self.gamma, self.K = (
+             mp.mpf(str(parameters[key])) for key in ("p", "c", "gamma", "K")
+         )
+-        if not (0 < self.p < 1 and min(self.c, self.gamma, self.K) > 0):
+-            raise ValueError("Invalid model parameters")
++        if not (
++            all(mp.isfinite(value) for value in (self.p, self.c, self.gamma, self.K))
++            and 0 < self.p < 1
++            and self.c > 0
++            and self.gamma > 0
++            and 0 < self.K < 1
++        ):
++            raise ValueError(
++                "Model parameters must be finite and satisfy 0 < p < 1, c > 0, "
++                "gamma > 0, and 0 < K < 1"
++            )
+         self.h = self.gamma / (self.p * self.c)
+         self.ell = self.gamma / self.c
+         self.r = self.h - self.ell
+--- baseline/validation/numerical_scenarios/test_analytic_checkpoints.py
++++ local-fixes/validation/numerical_scenarios/test_analytic_checkpoints.py
+@@ -21,6 +21,39 @@
+         generator.compare_fixture(self.actual, self.saved)
+         self.assertFalse(self.actual["openocl_executed"])
+         self.assertEqual(len(self.actual["cases"]), 6)
++
++    def assert_invalid_parameters(self, parameters):
++        with self.assertRaises(ValueError) as error:
++            generator.Geometry(parameters)
++        self.assertEqual(
++            str(error.exception),
++            "Model parameters must be finite and satisfy 0 < p < 1, c > 0, "
++            "gamma > 0, and 0 < K < 1",
++        )
++
++    def test_nonfinite_parameters_are_rejected(self):
++        for field in ("p", "c", "gamma", "K"):
++            for value in (float("nan"), float("inf"), float("-inf")):
++                with self.subTest(field=field, value=value):
++                    bad = copy.deepcopy(self.inputs["parameters"])
++                    bad[field] = value
++                    self.assert_invalid_parameters(bad)
++
++    def test_probability_and_capacity_bounds_are_rejected(self):
++        for field in ("p", "K"):
++            for value in (-0.1, 0, 1, 1.1):
++                with self.subTest(field=field, value=value):
++                    bad = copy.deepcopy(self.inputs["parameters"])
++                    bad[field] = value
++                    self.assert_invalid_parameters(bad)
++
++    def test_nonpositive_rates_are_rejected(self):
++        for field in ("c", "gamma"):
++            for value in (-0.1, 0):
++                with self.subTest(field=field, value=value):
++                    bad = copy.deepcopy(self.inputs["parameters"])
++                    bad[field] = value
++                    self.assert_invalid_parameters(bad)
+ 
+     def test_reordered_fixture_matches_by_case_id(self):
+         reordered = copy.deepcopy(self.saved)

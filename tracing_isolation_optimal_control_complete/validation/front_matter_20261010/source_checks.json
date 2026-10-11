@@ -1,0 +1,112 @@
+{
+  "existing_labels_preserved": true,
+  "labels_before": 169,
+  "labels_after": 177,
+  "new_labels": [
+    "app:medical-capacity",
+    "eq:medical-demand",
+    "eq:medical-demand-bound",
+    "eq:medical-demand-kernel",
+    "eq:medical-incidence-bound",
+    "eq:medical-threshold",
+    "eq:medical-total-incidence",
+    "sec:introduction"
+  ],
+  "duplicate_labels": [],
+  "missing_citation_keys": [],
+  "missing_reference_labels": [],
+  "duplicate_bib_keys": [],
+  "protected_environments": {
+    "theorem": {
+      "before": 3,
+      "after": 3,
+      "identical": true
+    },
+    "proposition": {
+      "before": 10,
+      "after": 10,
+      "identical": true
+    },
+    "lemma": {
+      "before": 14,
+      "after": 14,
+      "identical": false
+    },
+    "corollary": {
+      "before": 4,
+      "after": 4,
+      "identical": true
+    },
+    "definition": {
+      "before": 4,
+      "after": 4,
+      "identical": true
+    },
+    "proof": {
+      "before": 31,
+      "after": 31,
+      "identical": false
+    },
+    "figure": {
+      "before": 3,
+      "after": 3,
+      "identical": true
+    },
+    "table": {
+      "before": 1,
+      "after": 1,
+      "identical": true
+    }
+  },
+  "preexisting_data_code_hashes_equal_baseline": {
+    "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/verify_saved_result_exporter.m": false,
+    "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/export_numerical_latex.m": false,
+    "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/revision_group_summary.m": true,
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/grid_summary.json": true,
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/export_provenance.json": true,
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/numerical_checks.json": true
+  },
+  "ignored_macro_parameter_references": [
+    "#1"
+  ],
+  "concurrent_change_note": "本轮最初逐字检查时全部定理、证明、图表均与基线相同。之后工作区出现并行修改：lem:ac-composition 及其证明补充 C1 局部延拓定义，数值导出器与说明文字也有修改。本轮保留这些内容，未写入数学证明、数值代码或数据。最终编译使用当前源文件，构建期间及交付时源文件哈希一致。",
+  "final_source_sha256": {
+    "main.tex": "795e6bf78a604c3291a01f0a2d9d96bff6511e58911920fcc0e6b1145b40e1ba",
+    "theory_only.tex": "bc87e137e4cbe11a76dc8b3cb39d45d0ec7de1783bad31dc632335981f149fb5",
+    "references.bib": "4bd6ec0bb2a38da7b94fdb7ed444a3743fc161d7f5ed629190b19742b8927a8a"
+  },
+  "concurrent_theory_changes": [
+    {
+      "environment": "lemma",
+      "zero_based_index": 1,
+      "label": [
+        "lem:ac-composition"
+      ]
+    },
+    {
+      "environment": "proof",
+      "zero_based_index": 2,
+      "label": []
+    }
+  ],
+  "inspected_pdf_pages": {
+    "main": [
+      1,
+      3,
+      4,
+      5,
+      34,
+      35,
+      36,
+      37
+    ],
+    "theory_only": [
+      1,
+      3,
+      27,
+      28,
+      29
+    ]
+  },
+  "visual_findings": "所检页面无裁切、重叠、缺字或未解析引用。原有参考文献分页方式保留。"
+}

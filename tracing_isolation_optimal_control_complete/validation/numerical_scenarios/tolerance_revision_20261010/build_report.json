@@ -1,0 +1,137 @@
+{
+  "main": {
+    "success": true,
+    "delivered": true,
+    "commands": [
+      {
+        "command": [
+          "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\tolerance_revision_20261010_build",
+          "main.tex"
+        ],
+        "exit_code": 0,
+        "log": "main_build_1.log"
+      },
+      {
+        "command": [
+          "E:\\software\\texlive\\2026\\bin\\windows\\bibtex.EXE",
+          "main"
+        ],
+        "exit_code": 0,
+        "log": "main_build_2.log"
+      },
+      {
+        "command": [
+          "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\tolerance_revision_20261010_build",
+          "main.tex"
+        ],
+        "exit_code": 0,
+        "log": "main_build_3.log"
+      },
+      {
+        "command": [
+          "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\tolerance_revision_20261010_build",
+          "main.tex"
+        ],
+        "exit_code": 0,
+        "log": "main_build_4.log"
+      }
+    ],
+    "final_log_issues": [],
+    "pages": 37,
+    "pdf_sha256": "5076537d8f9702af9442842114d83aaee592497d5527934401826dbdbd99f4b0",
+    "revised_text_pages": [
+      27,
+      30,
+      35,
+      36
+    ],
+    "tolerance_explanation_pages": [
+      35
+    ],
+    "five_case_or_30_statistic_pages": [
+      27,
+      35,
+      36
+    ],
+    "tolerance_and_result_pages": [
+      35
+    ],
+    "source_hashes_before": "source_hashes_before.json",
+    "synced_auxiliary_files": [
+      "main.aux",
+      "main.bbl",
+      "main.blg",
+      "main.log",
+      "main.out",
+      "main.toc"
+    ]
+  },
+  "theory_only": {
+    "success": true,
+    "delivered": true,
+    "commands": [
+      {
+        "command": [
+          "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\tolerance_revision_20261010_build",
+          "theory_only.tex"
+        ],
+        "exit_code": 0,
+        "log": "theory_only_build_1.log"
+      },
+      {
+        "command": [
+          "E:\\software\\texlive\\2026\\bin\\windows\\bibtex.EXE",
+          "theory_only"
+        ],
+        "exit_code": 0,
+        "log": "theory_only_build_2.log"
+      },
+      {
+        "command": [
+          "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\tolerance_revision_20261010_build",
+          "theory_only.tex"
+        ],
+        "exit_code": 0,
+        "log": "theory_only_build_3.log"
+      },
+      {
+        "command": [
+          "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\tolerance_revision_20261010_build",
+          "theory_only.tex"
+        ],
+        "exit_code": 0,
+        "log": "theory_only_build_4.log"
+      }
+    ],
+    "final_log_issues": [],
+    "pages": 29,
+    "pdf_sha256": "99f7bdfbc38da7d06c59f96a0c5f4d47bda3be3149464f49ddb177ebae51a936",
+    "source_hashes_before": "source_hashes_before.json",
+    "synced_auxiliary_files": [
+      "theory_only.aux",
+      "theory_only.bbl",
+      "theory_only.blg",
+      "theory_only.log",
+      "theory_only.out",
+      "theory_only.toc"
+    ]
+  }
+}

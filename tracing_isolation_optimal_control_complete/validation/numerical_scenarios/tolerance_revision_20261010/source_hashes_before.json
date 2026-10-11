@@ -1,0 +1,41 @@
+{
+  "captured_utc": "2026-10-09T16:29:09.691020+00:00",
+  "sha256": {
+    "figures/numerical_scenarios/FigN1_regions.pdf": "9677b9a39214ba6530c2e530246d954ef63a6c84df715c55dc0aa794910b1f6a",
+    "figures/numerical_scenarios/FigN2_waiting.pdf": "6fe9a90ce29c0cac7c0589b1333fafb7729cbd22e89ad597526ea23d5d805bfe",
+    "figures/numerical_scenarios/FigN3_boundary_tracking.pdf": "60767b70eb57dd694c086004dda05010c51d16841742aa0362f32581550e1766",
+    "latex/main.tex": "5d7447d88528caf006ea66301cf29f5fe28e873951525b35e77c68e47bee20d8",
+    "latex/references.bib": "4bd6ec0bb2a38da7b94fdb7ed444a3743fc161d7f5ed629190b19742b8927a8a",
+    "latex/theory_only.tex": "bc87e137e4cbe11a76dc8b3cb39d45d0ec7de1783bad31dc632335981f149fb5"
+  },
+  "main_revision_locations": [
+    {
+      "line": 54,
+      "text": "\\newcommand{\\NumRobustnessStatement}{}"
+    },
+    {
+      "line": 55,
+      "text": "\\newcommand{\\NumReproducibilityDetails}{}"
+    },
+    {
+      "line": 1834,
+      "text": "\\renewcommand{\\NumRobustnessStatement}{数值接受及容量控制比较容差于保存求解后调整，取值与原严格记录见复现附录。五例常值 $q=0.7$ 和固定种子随机初猜的阶段一致，成本最大绝对差为 $\\num{6.1e-13}$。在当前接受容差下，最细两级成本与事件区间比较通过 E1、E2、E3、E4、E5。$N=2000$ 的 E2、E4 存在长中间控制块与阶段识别异常。该比较不提供收敛阶。$N=2000$ 的 E1、E3、E5 成本比较仍未通过。E3 的粗网格负成本差仍为待查差异。固定步长时域复核五例通过。阈值复核通过。有限样本与浮点诊断不替代解析证明。}"
+    },
+    {
+      "line": 1835,
+      "text": "\\renewcommand{\\NumReproducibilityDetails}{默认协议已记录 35/35 个不同配置，其中 30 个同时通过数值接受与理论比较。协议是否完成与比较是否一致分别记录。本次在保存求解后调整状态及容量接受容差为 $\\num{1e-05}$、容量段控制与 $q_B$ 区间均值的绝对误差容差为 $\\num{0.003}$，并重新评估全部保存结果；成本相对误差容差 $\\num{0.0001}$ 与事件区间判据保持不变。原严格判据及其未通过记录另行保留。五例常值 $q=0.7$ 和固定种子随机初猜的阶段一致，成本最大绝对差为 $\\num{6.1e-13}$。在所列接受容差下，固定时域网格复核的最细两级成本与事件区间比较通过 E1、E2、E3、E4、E5。E2、E4 的 $N=2000$ 长中间控制块与阶段识别异常仍保留在配套记录中。该结果只支持所测最细两级的一致性，不给出收敛阶。$N=2000$ 的 E1、E3、E5 成本比较仍未通过。E3 的粗网格负成本差超过比较尺度，保留为待查差异。固定步长时域复核五例通过。阈值复核通过。全部记录见配套文件；有限样本与浮点诊断不替代解析证明。}"
+    },
+    {
+      "line": 1855,
+      "text": "\\providecommand{\\NumOverallFinding}{五例成本相对解析参考的最大差异约为 $0.00459\\%$。计算结果支持这五个初值下的阶段顺序及切换位置预测；切换位置的偏差应结合控制区间宽度和过渡单元解释。E4 的离散成本比解析参考低 $\\num{3.68e-06}$，重积分轨道仍有 $\\num{7.7e-07}$ 的容量超出；即使满足浮点接受容差，也不能称为低于解析最优值的严格连续时间可行控制。}"
+    },
+    {
+      "line": 1951,
+      "text": "\\NumFindingParagraph{\\NumRobustnessStatement}"
+    },
+    {
+      "line": 2422,
+      "text": "\\NumFindingParagraph{\\NumReproducibilityDetails}"
+    }
+  ]
+}

@@ -42,8 +42,17 @@ class Geometry:
         self.p, self.c, self.gamma, self.K = (
             mp.mpf(str(parameters[key])) for key in ("p", "c", "gamma", "K")
         )
-        if not (0 < self.p < 1 and min(self.c, self.gamma, self.K) > 0):
-            raise ValueError("Invalid model parameters")
+        if not (
+            all(mp.isfinite(value) for value in (self.p, self.c, self.gamma, self.K))
+            and 0 < self.p < 1
+            and self.c > 0
+            and self.gamma > 0
+            and 0 < self.K < 1
+        ):
+            raise ValueError(
+                "Model parameters must be finite and satisfy 0 < p < 1, c > 0, "
+                "gamma > 0, and 0 < K < 1"
+            )
         self.h = self.gamma / (self.p * self.c)
         self.ell = self.gamma / self.c
         self.r = self.h - self.ell

@@ -47,8 +47,20 @@ for k=1:5
         'event_comparisons',[],'common_window_comparisons',[],'reasons',{{}});
     valid=~cellfun(@isempty,chosen);
     out.source_run_ids=cellfun(@(r) r.run_id,chosen(valid),'UniformOutput',false);
+    if strcmp(group,'grid')
+        settings=[experiments(indices).solver_settings]; Ns=[settings.N];
+        [Ns,order]=sort(Ns); chosen=chosen(order);
+        out=gridMetadata(out,chosen,Ns);
+    end
     if ~all(valid)
         out.reasons={'missing scheduled record'}; summary.comparison_complete=false;
+        if strcmp(group,'grid')
+            out.comparison_status='not_evaluated_due_to_missing_record';
+            missing=find(cellfun(@isempty,chosen));
+            for j=missing
+                out.reasons{end+1}=sprintf('scheduled N=%g record is missing',Ns(j));
+            end
+        end
     elseif strcmp(group,'initialization')
         base=main{k};
         if isempty(base)
@@ -67,13 +79,36 @@ for k=1:5
             out.consistency_pass=all(matches) && all(abs(gaps)<=cfg.revision.initialization_cost_absolute_tolerance);
         end
     elseif strcmp(group,'grid')
-        Ns=[experiments(indices).solver_settings]; Ns=[Ns.N];
-        [~,order]=sort(Ns); chosen=chosen(order);
-        if numel(chosen)>=2 && usable(chosen{end}) && usable(chosen{end-1})
-            base=chosen{end}; second=chosen{end-1}; out.reference_run_id=base.run_id;
-            out.finest_relative_cost_difference=abs(base.J_openocl-second.J_openocl)/max(abs(base.J_openocl),1e-12);
-            [pass,comp]=eventsAgree(base,second); out.event_comparisons=comp;
-            out.consistency_pass=pass && out.finest_relative_cost_difference<=cfg.revision.grid_cost_relative_tolerance;
+        if numel(chosen)<2
+            out.reasons={'fewer than two scheduled grid levels'};
+        else
+            base=chosen{end}; second=chosen{end-1};
+            reasons=[gridPrerequisiteReasons(base,'fine',Ns(end)), ...
+                gridPrerequisiteReasons(second,'coarse',Ns(end-1))];
+            numericFailure=isequal(out.fine_numeric_pass,false) || isequal(out.coarse_numeric_pass,false);
+            if numericFailure
+                out.comparison_status='not_evaluated_due_to_numeric_failure';
+                out.reasons=reasons;
+            elseif ~isempty(reasons)
+                out.reasons=reasons;
+            elseif usable(base) && usable(second)
+                out.reference_run_id=base.run_id;
+                out.finest_relative_cost_difference=abs(base.J_openocl-second.J_openocl)/max(abs(base.J_openocl),1e-12);
+                out.cost_comparison_evaluated=true;
+                out.cost_comparison_pass=out.finest_relative_cost_difference<=cfg.revision.grid_cost_relative_tolerance;
+                [pass,comp]=eventsAgree(base,second); out.event_comparisons=comp;
+                out.event_comparison_evaluated=true; out.event_comparison_pass=pass;
+                out.consistency_pass=pass && out.cost_comparison_pass;
+                if out.consistency_pass
+                    out.comparison_status='evaluated_passed';
+                else
+                    out.comparison_status='evaluated_failed';
+                    if ~pass, out.reasons{end+1}='evaluated finest-pair structure or event intervals disagree'; end
+                    if ~out.cost_comparison_pass
+                        out.reasons{end+1}='evaluated finest-pair relative cost difference exceeds the prescribed tolerance';
+                    end
+                end
+            end
         end
     elseif strcmp(group,'horizon')
         settings=[experiments(indices).solver_settings]; [~,order]=sort([settings.T]); chosen=chosen(order);
@@ -102,6 +137,66 @@ folder=fullfile(cfg.paths.data,'revision_checks');
 numerical_write_json(fullfile(folder,[group '_summary.json']),summary);
 table=struct2table(rmfield(summary.rows,'event_intervals'));
 writetable(table,fullfile(folder,[group '_summary.csv']));
+end
+
+function out=gridMetadata(out,chosen,Ns)
+% 未执行与比较后未通过分开；缺记录时不补造数值接受标志。
+out.comparison_status='not_evaluated_due_to_comparison_prerequisite_failure';
+out.fine_run_id=''; out.coarse_run_id=''; out.fine_N=NaN; out.coarse_N=NaN;
+out.fine_numeric_pass=[]; out.coarse_numeric_pass=[];
+out.event_comparison_evaluated=false; out.cost_comparison_evaluated=false;
+out.event_comparison_pass=false; out.cost_comparison_pass=false;
+if ~isempty(chosen)
+    out.fine_N=Ns(end);
+    [out.fine_run_id,out.fine_numeric_pass]=gridRunMetadata(chosen{end});
+end
+if numel(chosen)>=2
+    out.coarse_N=Ns(end-1);
+    [out.coarse_run_id,out.coarse_numeric_pass]=gridRunMetadata(chosen{end-1});
+end
+end
+
+function [id,numeric]=gridRunMetadata(run)
+id=''; numeric=[];
+if isempty(run), return; end
+id=run.run_id;
+if isfield(run,'assessment') && isfield(run.assessment,'numeric_pass')
+    numeric=logical(run.assessment.numeric_pass);
+end
+end
+
+function reasons=gridPrerequisiteReasons(run,level,N)
+% 与 usable 的原门槛对应；此处只解释未执行原因，不放宽门槛。
+prefix=sprintf('%s N=%g',level,N); reasons={};
+if ~run.success, reasons{end+1}=[prefix ' solver success is false']; end
+if ~isfield(run,'J_openocl') || ~isfinite(run.J_openocl)
+    reasons{end+1}=[prefix ' finite J_openocl is unavailable'];
+end
+if ~isfield(run,'assessment')
+    reasons{end+1}=[prefix ' assessment is unavailable']; return;
+end
+a=run.assessment;
+required={'numeric_pass','observed_structure','structured_events','event_detection','event_comparison'};
+for j=1:numel(required)
+    if ~isfield(a,required{j}), reasons{end+1}=[prefix ' assessment.' required{j} ' is unavailable']; end
+end
+if isfield(a,'numeric_pass') && ~a.numeric_pass
+    reasons{end+1}=[prefix ' numeric_pass=false'];
+end
+if isfield(a,'event_detection')
+    if ~isfield(a.event_detection,'diagnostics') || ~isfield(a.event_detection.diagnostics,'passed')
+        reasons{end+1}=[prefix ' event_detection.diagnostics.passed is unavailable'];
+    elseif ~a.event_detection.diagnostics.passed
+        reasons{end+1}=[prefix ' event_detection.diagnostics.passed=false'];
+    end
+end
+if isfield(a,'event_comparison')
+    if ~isfield(a.event_comparison,'diagnostic_pass')
+        reasons{end+1}=[prefix ' event_comparison.diagnostic_pass is unavailable'];
+    elseif ~a.event_comparison.diagnostic_pass
+        reasons{end+1}=[prefix ' event_comparison.diagnostic_pass=false'];
+    end
+end
 end
 
 function main=mainSources(cfg,experiments,runs)

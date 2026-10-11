@@ -1,0 +1,20 @@
+{
+  "checked_files": 188,
+  "all_baseline_drift": [
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/E1.mat",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/E2.mat",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/E3.mat",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/E4.mat",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/E5.mat",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/export_provenance.json",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/numerical_checks.json",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/selection_manifest.json",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/grid_summary.csv",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/grid_summary.json",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/horizon_summary.json",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/initialization_summary.json",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/main_summary.json",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/threshold_summary.json"
+  ],
+  "raw_figure_input_fixture_drift": []
+}

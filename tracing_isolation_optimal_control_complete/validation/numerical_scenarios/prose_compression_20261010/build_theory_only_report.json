@@ -1,0 +1,51 @@
+{
+  "document": "theory_only",
+  "source_sha256": "5d7447d88528caf006ea66301cf29f5fe28e873951525b35e77c68e47bee20d8",
+  "commands": [
+    {
+      "command": [
+        "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\prose_compression_20261010_build",
+        "theory_only.tex"
+      ],
+      "exit_code": 0,
+      "log": "theory_only_build_1.log"
+    },
+    {
+      "command": [
+        "E:\\software\\texlive\\2026\\bin\\windows\\bibtex.EXE",
+        "theory_only"
+      ],
+      "exit_code": 0,
+      "log": "theory_only_build_2.log"
+    },
+    {
+      "command": [
+        "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\prose_compression_20261010_build",
+        "theory_only.tex"
+      ],
+      "exit_code": 0,
+      "log": "theory_only_build_3.log"
+    },
+    {
+      "command": [
+        "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\prose_compression_20261010_build",
+        "theory_only.tex"
+      ],
+      "exit_code": 0,
+      "log": "theory_only_build_4.log"
+    }
+  ],
+  "success": true,
+  "final_log_issues": [],
+  "pages": 29,
+  "pdf_sha256": "0fc97456fc6d99b8ffafcce0b57dd18f2e73f8e380b8add2f202525ade44117a"
+}

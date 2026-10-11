@@ -1,0 +1,56 @@
+{
+  "document": "main",
+  "source_sha256": "5d7447d88528caf006ea66301cf29f5fe28e873951525b35e77c68e47bee20d8",
+  "commands": [
+    {
+      "command": [
+        "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\prose_compression_20261010_build",
+        "main.tex"
+      ],
+      "exit_code": 0,
+      "log": "main_build_1.log"
+    },
+    {
+      "command": [
+        "E:\\software\\texlive\\2026\\bin\\windows\\bibtex.EXE",
+        "main"
+      ],
+      "exit_code": 0,
+      "log": "main_build_2.log"
+    },
+    {
+      "command": [
+        "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\prose_compression_20261010_build",
+        "main.tex"
+      ],
+      "exit_code": 0,
+      "log": "main_build_3.log"
+    },
+    {
+      "command": [
+        "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\prose_compression_20261010_build",
+        "main.tex"
+      ],
+      "exit_code": 0,
+      "log": "main_build_4.log"
+    }
+  ],
+  "success": true,
+  "final_log_issues": [],
+  "pages": 37,
+  "pdf_sha256": "762ae09729336a60ec0ce0b6f10bc826c4eb6f5fe99017a20ac5a26f578133e1",
+  "numerical_and_appendix_pages": [
+    26,
+    29,
+    35
+  ]
+}

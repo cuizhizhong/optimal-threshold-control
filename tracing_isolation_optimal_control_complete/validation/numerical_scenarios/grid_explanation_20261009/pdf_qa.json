@@ -1,0 +1,24 @@
+{
+  "main_pdf_sha256": "bc85d9fd7390246c3b1b2b1808f8da965e72a95ee04971e663231e8c19d6894e",
+  "theory_pdf_sha256": "7db1c4c42f489db4f7bdf269d09cf6db086cf059c663ca2b80572200ff18df31",
+  "pages_rendered_and_visually_reviewed": {
+    "main": [
+      26,
+      27,
+      29
+    ],
+    "theory_only": [
+      25
+    ]
+  },
+  "visual_defects": [],
+  "review_method": "Actual Poppler PNG inspection by root",
+  "checked_content": [
+    "revised grid explanation",
+    "Chinese glyphs",
+    "equations",
+    "cost table",
+    "figures",
+    "page breaks"
+  ]
+}

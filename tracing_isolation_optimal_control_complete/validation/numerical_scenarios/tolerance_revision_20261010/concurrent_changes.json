@@ -1,0 +1,6 @@
+{
+  "reason": "同期外部编辑新增 NumReproducibilityDetails 宏和附录入口，并修改两句方法说明；本轮容差任务尚未写入main.tex。",
+  "main_outside_generated_sha256": "1c40ac6c1ca4c8f8d56a62229080a01955ab7adb5822b9b145d6c28b45605cb7",
+  "subsequent_external_changes": "同期会话另修改引言和数值正文/附录布局；根节点自动导出仅替换生成块，后续重导出用最新非生成正文为基线。",
+  "final_external_changes": "正文压缩会话于附录新增numerical_checks.json及本轮容差重评目录的追溯入口；保留这些非生成内容。"
+}

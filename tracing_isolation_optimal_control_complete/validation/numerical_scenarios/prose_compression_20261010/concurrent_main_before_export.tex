@@ -1,0 +1,2422 @@
+% Mathematical clarification of the constant-contact-rate theory.
+% Merge base: cuizhizhong/optimal-threshold-control@f33f8b591cefb8226e2c4196d739b841c368fb47
+% Base main.tex Git blob: 51aaa6b923b92f22a7039b42bab713cf46264530
+% Compile from this directory with XeLaTeX + BibTeX.
+% Define \TheoryOnly before input to omit the numerical figures and nonautonomous discussion.
+\documentclass[11pt,a4paper,UTF8]{ctexart}
+\usepackage[a4paper,margin=2.25cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{graphicx}
+\usepackage{booktabs,longtable,array,tabularx,multirow}
+\usepackage{enumitem,setspace,caption,subcaption,float,placeins,xcolor}
+\usepackage{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{listings,siunitx,fancyhdr,lastpage}
+\graphicspath{{../figures/}}
+\setstretch{1.16}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.18em}
+\setlist{nosep,leftmargin=2.4em}
+\captionsetup{font=small,labelfont=bf}
+\hypersetup{colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,
+ urlcolor=blue!55!black,pdftitle={跟踪隔离模型中双传播系数的最优控制与唯一性},pdfauthor={Technical report}}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{跟踪隔离模型的最优控制与唯一性}
+\fancyhead[R]{\thepage/\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}[theorem]{命题}
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{corollary}[theorem]{推论}
+\newtheorem{assumption}[theorem]{假设}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{定义}
+\newtheorem{remark}[theorem]{注}
+\newtheorem{example}[theorem]{例}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Acal}{\mathcal A}
+\newcommand{\Dcal}{\mathcal D}
+\newcommand{\Gcal}{\mathcal G}
+\newcommand{\Uad}{\mathcal U_{\mathrm{ad}}}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\e}{\mathrm e}
+\newcommand{\one}{\mathbf 1}
+\newcommand{\proj}{\operatorname{Proj}}
+\newcommand{\ess}{\operatorname*{ess}}
+\newcommand{\argmin}{\operatorname*{arg\,min}}
+% 在 TheoryOnly 跳过数值输入时也保持条件命令已定义。
+\newif\ifNumResultsVerified
+% 放入导言区，紧接原有 \newif\ifNumResultsVerified 之后。
+% 此处只定义新宏；不得在这里为空定义原本由 providecommand 生成的旧宏。
+\newif\ifNumRobustnessComplete
+\NumRobustnessCompletefalse
+\newcommand{\NumRobustnessStatement}{}
+\newcommand{\NumReproducibilityDetails}{}
+
+
+\lstset{basicstyle=\ttfamily\small,frame=single,breaklines=true,columns=fullflexible,showstringspaces=false}
+\title{\bfseries 跟踪隔离模型中双传播系数的最优控制与唯一性\\[2mm]
+\large 常接触率的全域 HJB 验证、轨道唯一性与数值分析}
+\author{技术分析报告}
+\date{2026年9月19日}
+\begin{document}
+\maketitle
+\ifdefined\TheoryOnly
+\begin{center}\small 常接触率理论校样：由同一份 \texttt{main.tex} 编译；省略时变讨论和数值图形章节。\end{center}
+\fi
+\begin{abstract}
+医疗资源承载能力有限时，疫情干预需要兼顾感染规模限制与持续实施的代价。
+本文研究含跟踪隔离的二维传播模型，以与医疗容量相关的非隔离感染者比例阈值为状态约束，
+在接触率固定、跟踪比例取值于 $[0,1]$ 的条件下，最小化无限时域线性干预成本。
+跟踪隔离同时减少非隔离感染者的生成、增加未隔离易感者的移出，
+因而两条状态方程中的控制作用不同。
+通过构造切换曲线和分区反馈，得到两类非平凡最优策略：
+等待后完全跟踪，或等待后先沿感染阈值运行、再完全跟踪；两者均在进入无控制安全集后停止干预，允许部分阶段长度为零。
+当沿阈值运行的阶段具有正长度时，最优轨道在易感比例降至自然感染增长阈值之前就离开容量边界，
+因此始终维持感染阈值直至该临界状态并非最低成本的选择。
+基于沿轨道的 HJB 验证，证明所构造反馈在全部可测可行控制中全局最优，
+并由验证等号条件与分段轨道分析证明最优控制几乎处处唯一。
+\ifdefined\TheoryOnly\else
+五个代表初值在所报告网格上的直接配点结果支持解析预测的阶段顺序、切换位置和成本。
+\fi
+\end{abstract}
+\noindent\textbf{关键词：} 跟踪隔离；最优控制；状态约束；HJB 验证；切换曲线；几乎处处唯一性
+\tableofcontents\newpage
+
+\section{引言}
+\label{sec:introduction}
+
+疫情暴发期间，医疗需求的快速增长与医疗资源承载能力之间的矛盾，是设计非药物干预的重要背景。
+减少接触、病例隔离和密切接触者跟踪可以限制传播，但持续实施这些措施也需要付出代价\citep{Zhou2024SPCI,MicloSpiroWeibull2022}。
+因此，在感染规模受到上限约束时，需要同时确定何时启动干预、采用多大强度以及何时解除措施。
+仅要求感染人数下降，尚不能回答满足全过程感染上限所需的累计干预代价如何达到最小。
+
+标准 SIR 模型中的容量约束最优控制，为分析这些问题提供了明确的基准。
+\citet{MicloSpiroWeibull2022}以感染比例上限表示医疗承载限制，最小化无限时域内传播率低于自然水平的线性代价，
+并通过候选函数验证得到解析最优策略：先保持自然传播，必要时沿感染上限运行，直至易感比例降到自然感染增长阈值。
+\citet{AvramFreddiGoreac2022}则研究控制强度有界、带终端群体免疫目标的有限时域问题，
+利用可行域划分和带状态约束的 Pontryagin 分析刻画最优反馈。
+在这些问题的相应条件下，沿感染上限运行是最优策略的重要阶段，控制强度随易感者减少而逐步降低。
+
+退出目标的改变也会改变最优干预的阶段结构。
+\citet{Angulo2021}以到达无干预安全区的时间最短为目标，
+将安全区定义为恢复自然传播后感染比例始终不超过给定上限的状态集合。
+其最优策略可在容量阶段之后再次采用最大强度干预，以更快进入安全区；
+干预能力不足时，还可能需要在感染达到上限之前启动控制。
+这些结果说明，容量阶段是否出现、持续到何时，须结合具体的控制机制、代价和退出目标判断。
+
+跟踪隔离与直接降低传播率具有不同的状态流量结构。
+在含密切接触者跟踪的模型中，被追踪的接触者按感染状况进入隔离感染或隔离易感状态，
+仍未被隔离的感染者继续参与社区传播\citep{Zhou2024SPCI}。
+因此，加强跟踪既减少进入非隔离感染状态的新病例，也将未感染的接触者移出社区。
+在隔离者不参与传播且研究期间不返回社区易感状态的假设下，易感者与非隔离感染者构成闭合的二维子系统。
+同一跟踪比例使易感者移出系数增加、非隔离感染者生成系数降低，
+而标准 SIR 传播率控制对两条方程中的感染流量使用同一个系数。
+
+本文在这一跟踪隔离模型中研究感染阈值约束下的最小成本控制。
+阈值 $K$ 是与医疗资源承载能力相关的非隔离感染者比例上限，其医疗解释见附录\ref{app:medical-capacity}。
+我们固定接触率，以跟踪比例为唯一控制，并采用与跟踪强度成正比的运行成本。
+控制的启动时机、阶段次序和退出状态均由优化确定。
+由此需要回答：最优干预是否应等到感染达到阈值才启动；
+沿阈值运行后是否应一直维持到自然感染增长阈值；不同初值下的最优切换位置如何确定。
+
+本文的主要结果是给出上述问题的全域分区反馈，并刻画跟踪隔离引起的切换几何。
+对不安全初值，最优策略具有 $0\to1\to0$ 或 $0\to q_B(s)\to1\to0$ 的结构，
+其中 $q_B$ 是维持感染阈值的反馈，初始等待或容量阶段可以退化。
+当容量阶段具有正长度时，轨道在 $s_B>h=\gamma/(pc)$ 处离开容量边界，转入完全跟踪，
+而不是继续维持阈值至 $s=h$；部分初值则在感染尚未达到阈值时开始完全跟踪。
+两类策略都在首次进入无控制安全集时停止干预，此后自然轨道的感染峰值不超过 $K$。
+
+为证明这些策略在全部可测可行控制中最优，本文由自然轨道、容量弧和完全跟踪特征线构造候选成本，
+并沿用候选函数的充分性验证思路\citep[附录 A.1--A.2]{MicloSpiroWeibull2022}\citep[\S5.1.4]{Liberzon2012}。
+有限成本轨道在有限时间进入安全集，因而可将沿轨道的验证不等式积分至各条竞争轨道自己的首次到达时刻。
+容量阶段的 Hamiltonian 极小元并非点态唯一，最优控制的几乎处处唯一性由验证等号条件、容量弧延续及切换界面的横穿另行证明。
+\ifdefined\TheoryOnly\else
+最后，通过五类代表初值的直接配点结果，对照不同区域下的阶段次序、切换位置和成本。
+\fi
+
+\section{模型与控制问题}
+\label{sec:model}
+
+沿用跟踪隔离模型的社区传播流量\citep{Zhou2024SPCI}，计数变量的二维系统为
+\begin{equation}
+\begin{cases}
+\dot S(t)=-\beta_1(t)S(t)I(t),\\
+\dot I(t)=\beta_2(t)S(t)I(t)-\gamma I(t),
+\end{cases}
+\label{eq:count-model}
+\end{equation}
+其中
+\begin{equation}
+\beta_1(t)=\frac{c(t)[p+(1-p)q(t)]}{N},\qquad
+\beta_2(t)=\frac{pc(t)(1-q(t))}{N}.
+\label{eq:beta12}
+\end{equation}
+这里 $p\in(0,1)$ 是单次接触传播概率，$c(t)>0$ 是给定接触率，$q(t)\in[0,1]$ 是跟踪隔离比例。
+$q$ 增大时，非隔离感染者生成系数下降，但未隔离易感者移出的系数上升。
+令 $s=S/N$、$i=I/N$，得到
+\begin{equation}
+\begin{cases}
+\dot s=-c(t)[p+(1-p)q]si,\\
+\dot i=[pc(t)(1-q)s-\gamma]i.
+\end{cases}
+\label{eq:normalized-model}
+\end{equation}
+\paragraph{状态变量与移出流量。}
+本文的 $s$ 表示仍参与传播过程的未隔离易感比例，
+$i$ 表示仍参与社区传播的非隔离感染者比例。
+现有两式满足流量恒等式
+\[
+ c(t)[p+(1-p)q]si=pc(t)(1-q)si+c(t)qsi.
+\]
+因此，易感者的移出并不全部计入 $i$ 的新增项。
+仅为记录二维系统以外的总量，可令 $m(t)=1-s(t)-i(t)$；
+在物理初值下有
+\[
+ \dot m(t)=c(t)q(t)s(t)i(t)+\gamma i(t)\ge0,
+ \qquad s(t)+i(t)+m(t)=1.
+\]
+$m$ 是未显式区分的隔离或其他移出状态的合计，
+不能仅凭这两条方程将其解释为累计康复人数。
+本文不描述这些移出个体的后续分流和回流。
+特别地，$q=1$ 时非隔离感染者的新增项为零，但未隔离易感者仍可继续移出；
+这一性质属于所研究约化模型的假设，而不是一般隔离措施必然满足的机制。
+
+固定非隔离感染者的移出率 $\gamma>0$，要求
+\begin{equation}
+0<i(t)\le K<1,
+\label{eq:capacity}
+\end{equation}
+其中 $K$ 是与医疗容量相关的非隔离感染者比例阈值。
+控制目标为最小化
+\begin{equation}
+J(q)=\int_0^\infty pc(t)q(t)\dd t.
+\label{eq:linear-cost}
+\end{equation}
+运行成本 $pc(t)q$ 表示维持跟踪强度的线性代价，而非按实际隔离人数计费的工作量成本。
+累计成本 $J$ 取值于 $[0,+\infty]$；乘以正常数不改变最优控制。
+
+\begin{definition}[控制类与唯一性的含义]
+\label{def:admissible}
+给定正初值 $x_0=(s_0,i_0)$，其中 $s_0+i_0\le1$、$i_0\le K$。
+允许的控制为所有 Lebesgue 可测的 $q:[0,\infty)\to[0,1]$。
+其 Carath\'eodory 解全程满足 \eqref{eq:capacity} 时，称控制可行，记作 $q\in\Uad(x_0)$。
+控制按几乎处处相等识别。所谓唯一，是指从同一初值出发的任意两个最优控制几乎处处相等，
+而不是规定孤立切换瞬间的控制代表元。
+\end{definition}
+
+\begin{remark}[结果的适用范围]
+本稿常接触率主定理仅讨论 \eqref{eq:normalized-model}、\eqref{eq:linear-cost} 及完整控制区间 $[0,1]$。
+不包含感染成本、隔离者回流、折现、控制变化率惩罚或 $q_{\max}<1$。
+时变接触率和正则化另行讨论，不能通过改写符号直接继承常接触率主定理。
+\end{remark}
+
+\paragraph{与传播率控制的关系。}
+为便于比较，将 \citet[式(1)]{MicloSpiroWeibull2022}
+中的状态和恢复率分别改记为 $s,i,\gamma$，传播控制仍记为 $b$。
+该系统为 $\dot s=-bsi$、$\dot i=(bs-\gamma)i$。
+在本文常接触率情形令 $b=pc(1-q)$、$\beta=pc$，则
+\[
+0\le b\le\beta,\qquad pcq=\beta-b=[\beta-b]_+,
+\]
+两者在线性抑制区间内的运行成本可以对应，而本文的状态方程变为
+\[
+\dot s=-bsi-cqsi,\qquad \dot i=(bs-\gamma)i.
+\]
+额外的移出项 $cqsi$ 使完全跟踪 $q=1$ 时仍有 $\dot s=-csi<0$；
+标准传播率模型在完全抑制 $b=0$ 时则保持易感比例不变。
+这一流量差异改变了完全跟踪特征线及其与安全边界的连接位置。
+此外，原文允许 $b>\beta$ 且运行成本仍为零\citep[式(2)]{MicloSpiroWeibull2022}，
+本文的控制集则使零成本控制唯一对应 $q=0$。
+后文据此针对本模型分别建立全局最优性与控制唯一性。
+
+\section{解的适定性、正性与基本耗散}
+\label{sec:wellposed}
+\begin{theorem}[全局解与正性]
+\label{thm:wellposed}
+设 $c$ 可测且局部本质有界，$c(t)>0$ 几乎处处，$q$ 可测、取值于 $[0,1]$，$s_0,i_0>0$。
+则 \eqref{eq:normalized-model} 存在唯一全局 Carath\'eodory 解，满足
+\begin{align}
+s(t)&=s_0\exp\left[-\int_0^t c(\tau)[p+(1-p)q(\tau)]i(\tau)\dd\tau\right]>0,
+\label{eq:s-positive}\\
+i(t)&=i_0\exp\left[\int_0^t[pc(\tau)(1-q(\tau))s(\tau)-\gamma]\dd\tau\right]>0,
+\label{eq:i-positive}\\
+\frac{\dd}{\dd t}(s+i)&=-c(t)q(t)si-\gamma i\le-\gamma i\quad\text{几乎处处}.
+\label{eq:sum-decay}
+\end{align}
+特别地，$s+i\le s_0+i_0$，且
+\begin{equation}
+\int_0^\infty i(t)\dd t\le\frac{s_0+i_0}{\gamma}.
+\label{eq:i-integrable}
+\end{equation}
+若 $c$ 全局有界，则 $i(t)\to0$。
+\end{theorem}
+\begin{proof}
+右端关于状态局部 Lipschitz，时间相关的局部界可积，故局部解存在唯一。
+对正性公式积分，并将两方程相加，即得以上关系。
+非负状态被限制在 $s+i\le s_0+i_0$ 的有界三角形内，不发生有限时间爆破，解可延拓至所有有限时间。
+若 $c$ 全局本质有界，记
+$C=\|c\|_{L^\infty(0,\infty)}$、$M=s_0+i_0$。
+由 $0<s(t),i(t)\le M$ 及状态方程，
+\[
+ |\dot i(t)|
+ \le \bigl(pc(t)s(t)+\gamma\bigr)i(t)
+ \le (pCM+\gamma)M
+ \qquad\text{几乎处处}.
+\]
+由于 $i$ 在每个有限区间上绝对连续，上式说明 $i$ 在整个
+$[0,\infty)$ 上为 Lipschitz 函数，因而一致连续。
+再结合非负性与式\eqref{eq:i-integrable}，得到 $i(t)\to0$。
+最后一条可直接反证：若存在无穷多个 $i(t_n)\ge\epsilon>0$，一致连续性给出互不相交、长度一致正的区间，
+使 $\int i=\infty$，矛盾。
+\end{proof}
+
+\begin{lemma}[绝对连续函数的水平集性质]
+\label{lem:ac-level-set}
+设 $v:[a,b]\to\R$ 绝对连续，$\alpha\in\R$ 固定。
+则
+\begin{equation}
+v'(t)=0\quad\text{对 }\{t\in[a,b]:v(t)=\alpha\}\text{ 中几乎所有 }t\text{ 成立}.
+\label{eq:ac-level-set}
+\end{equation}
+特别地，若 $u,v$ 均绝对连续，并在可测时间集合 $E\subset[a,b]$ 上满足 $u=v$，
+则 $u'=v'$ 在 $E$ 上几乎处处成立。
+上述结论也适用于开时间区间上的局部绝对连续函数。
+\end{lemma}
+\begin{proof}
+绝对连续函数在 $(a,b)$ 几乎处处可微。
+记 $E_\alpha=\{t:v(t)=\alpha\}$。该集合的孤立点至多可数：
+每个孤立点均可选取一个与 $E_\alpha$ 的交恰为该点的有理端点开区间，且同一区间不能对应两个这样的点。
+若 $t\in E_\alpha\cap(a,b)$ 不是孤立点且 $v'(t)$ 存在，
+可选 $t_n\in E_\alpha\setminus\{t\}$、$t_n\to t$，因而
+\[
+v'(t)=\lim_{n\to\infty}\frac{v(t_n)-v(t)}{t_n-t}=0.
+\]
+不可微点构成零测集，孤立点及区间端点也构成零测集，故 \eqref{eq:ac-level-set} 成立。
+对 $u-v$ 的零水平集应用同一结论，即得第二条。
+局部结论通过用可数个紧子区间覆盖开时间区间得到。
+\end{proof}
+
+\begin{lemma}[相对局部 Lipschitz 函数沿绝对连续轨道的复合]
+\label{lem:ac-composition}
+设 $E\subset\mathbb R^m$，$F:E\to\mathbb R$ 相对局部 Lipschitz，
+$x:[0,T]\to E$ 绝对连续，其中 $T<\infty$。
+则 $F\circ x$ 在 $[0,T]$ 上绝对连续。
+这里，$F$ 在 $x_0\in E$ 处具有 $C^1$ 局部表达式，是指存在包含 $x_0$ 的
+环境开邻域 $O\subset\mathbb R^m$ 及 $\widetilde F\in C^1(O)$，
+使 $\widetilde F=F$ 于 $E\cap O$。
+在这些状态点所对应的时间集合上，对任一这样的局部延拓，通常的链式法则
+\[
+ \frac{\dd}{\dd t}F(x(t))=\nabla\widetilde F(x(t))\cdot\dot x(t)
+\]
+几乎处处成立。
+\end{lemma}
+\begin{proof}
+轨道像集 $x([0,T])$ 紧。
+相对局部 Lipschitz 邻域给出该像集的一个有限相对开覆盖。
+由 Lebesgue 数引理及 $x$ 的一致连续性，可将 $[0,T]$
+分成有限个闭子区间，使每个子区间的轨道像均包含在某个
+Lipschitz 邻域中。
+在这样的子区间上，对任意有限个互不相交的时间区间 $(a_k,b_k)$，
+存在与这些区间无关的常数 $L$，使
+\[
+ \sum_k |F(x(b_k))-F(x(a_k))|
+ \le L\sum_k\|x(b_k)-x(a_k)\|.
+\]
+由 $x$ 的绝对连续性，得到该子区间上 $F\circ x$ 的绝对连续性。
+有限拼接给出整个区间上的结论。
+在具有 $C^1$ 局部表达式的状态点附近，由 $x$ 的连续性，
+可在相应时间邻域上将 $F\circ x$ 写为 $\widetilde F\circ x$。
+因此普通链式法则在 $x$ 可微的时刻成立，
+而 $x$ 不可微的时刻构成零测集。
+若局部延拓不唯一，其梯度与 $\dot x(t)$ 的内积仍在上述时刻一致，
+因为对应的复合函数在时间邻域上相同。
+\end{proof}
+
+\section{常接触率问题、自然轨道与安全目标集}
+\label{sec:constant-problem}
+从本节至第\ref{sec:constant-uniqueness}节固定
+\begin{equation}
+c>0,\quad\gamma>0,\quad0<p<1,\quad0<K<1,
+\qquad h=\frac{\gamma}{pc},\quad\ell=\frac{\gamma}{c}=ph,\quad r=(1-p)h,
+\label{eq:constants}
+\end{equation}
+所以 $h=r+\ell$、$0<r<h$。
+物理可行状态域为
+\begin{equation}
+\Dcal=\{(s,i):s>0,\ 0<i\le K,\ s+i\le1\},\qquad
+V(x)=\inf_{q\in\Uad(x)}J_x(q).
+\label{eq:value-definition}
+\end{equation}
+此处的下确界没有预先限制控制的切换次数或取值结构。
+为方便几何参数化，先在辅助正条带
+$\Omega=\{s>0,\ 0<i\le K\}$ 中定义各曲线和候选函数，再限制到 $\Dcal$。
+超出 $s+i\le1$ 的辅助曲线不是实际允许的状态；实际候选轨道保持 $s+i\le1$，
+这是定理\ref{thm:wellposed}的结论，而非额外假设。
+
+\subsection{自然传播不变量与峰值}
+$q=0$ 时
+\begin{equation}
+\dot s=-pcsi,\qquad \dot i=pc(s-h)i.
+\label{eq:q0-system}
+\end{equation}
+定义
+\begin{equation}
+\Phi(s,i)=i+s-h\ln s.
+\label{eq:Phi}
+\end{equation}
+直接求导得 $\dot\Phi=0$。经过 $(s_0,i_0)$ 的自然轨道为
+\begin{equation}
+i_{\rm nat}(s)=i_0+s_0-s+h\ln\frac{s}{s_0}.
+\label{eq:natural-orbit}
+\end{equation}
+若 $s_0>h$，则自然感染峰值在 $s=h$ 处取得：
+\begin{equation}
+i_{\rm pk}=i_0+s_0-h+h\ln\frac h{s_0}.
+\label{eq:natural-peak}
+\end{equation}
+若 $s_0\le h$，感染从初始时刻起不增。
+
+\subsection{安全集与目标边界}
+记
+\begin{equation}
+\Phi_A=K+h-h\ln h,\qquad
+ a(s)=\Phi_A-s+h\ln s\quad(s\ge h).
+\label{eq:safe-boundary}
+\end{equation}
+辅助条带中的安全集及物理安全集分别为
+\begin{equation}
+\widehat{\Acal}=\Omega\cap\bigl(\{s\le h\}\cup\{s>h,\ \Phi\le\Phi_A\}\bigr),
+\qquad \Acal=\widehat{\Acal}\cap\Dcal.
+\label{eq:safe-set}
+\end{equation}
+以下在辅助几何中使用 $\widehat{\Acal}$，实际控制问题的目标集始终是 $\Acal$。
+
+\begin{proposition}[最大无控制安全集]
+\label{prop:safe-exact}
+对 $x\in\Dcal$，$x\in\Acal$ 当且仅当从 $x$ 出发永久取 $q=0$ 时始终有 $i\le K$。
+因此 $V=0$ 于 $\Acal$，唯一的零成本控制为 $q=0$ 几乎处处。
+\end{proposition}
+\begin{proof}
+由 \eqref{eq:natural-peak} 以及 $s\le h$ 时感染不增，得到安全性的充要条件。
+$q=0$ 的成本为零，非负成本不可能更低；$pc>0$ 保证零成本等价于 $q=0$ 几乎处处。
+\end{proof}
+
+\section{两类控制弧与显式成本}
+\label{sec:arcs}
+\subsection{一般控制下的不变量导数}
+直接代入状态方程得
+\begin{equation}
+\boxed{\dot\Phi=-cqi(s-r).}
+\label{eq:Phi-derivative}
+\end{equation}
+定义 $\Psi(s,i)=i-\ell\ln s$，同样得到
+\begin{equation}
+\dot\Psi=pc(1-q)i(s-r).
+\label{eq:Psi-derivative}
+\end{equation}
+这两个单调性只在 $s>r$ 的区域按所示方向成立；本稿使用它们时均处于 $s>h>r$。
+
+\begin{lemma}[安全集对控制的前向不变性]
+\label{lem:safe-invariant}
+从 $\widehat{\Acal}$ 出发的任意 $[0,1]$ 值控制均保持在 $\widehat{\Acal}$；在物理域中相应保持在 $\Acal$。
+\end{lemma}
+\begin{proof}
+只要 $s>h$，\eqref{eq:Phi-derivative} 保证 $\Phi$ 不增，故 $i\le a(s)\le K$。
+一旦 $s\le h$，因 $s$ 不增，且 $\dot i\le pc(s-h)i\le0$，安全性永久保持。
+物理总量约束由 \eqref{eq:sum-decay} 保持。
+\end{proof}
+
+\subsection{完全跟踪弧}
+$q=1$ 时
+\begin{equation}
+\dot s=-csi,\qquad \dot i=-\gamma i,
+\label{eq:q1-system}
+\end{equation}
+因此
+\begin{equation}
+\boxed{\Psi(s,i)=i-\ell\ln s\quad\text{沿 }q=1\text{ 保持不变}.}
+\label{eq:Psi}
+\end{equation}
+由 $(s_a,i_a)$ 到 $(s_b,i_b)$ 的弧满足
+\begin{align}
+i_b-\ell\ln s_b&=i_a-\ell\ln s_a,
+\label{eq:q1-characteristic}\\
+i(t)&=i_a\e^{-\gamma(t-t_a)},
+\label{eq:q1-i}\\
+s(t)&=s_a\exp[-(i_a-i(t))/\ell].
+\label{eq:q1-s}
+\end{align}
+若终点感染 $i_b>0$，所需时间与成本有限，且
+\begin{equation}
+\int_{t_a}^{t_b}pc\dd t=\frac1h\ln\frac{i_a}{i_b}.
+\label{eq:q1-cost}
+\end{equation}
+
+\subsection{容量弧}
+\label{sec:boundary-arc}
+在 $i=K$ 上，不能向 $i>K$ 运动，故边界允许的瞬时方向对应
+\begin{equation}
+Q_K(s)=\left[\max\{0,1-h/s\},\ 1\right].
+\label{eq:boundary-feasible}
+\end{equation}
+这是边界上内指或切向速度的条件，不是对可测控制在每个孤立时刻的代表值施加限制。
+沿实际可行轨道，状态方程及引理\ref{lem:ac-level-set}共同确定容量时间集合上的几乎处处关系。
+当 $s>h$ 时，唯一切向控制是
+\begin{equation}
+\boxed{q_B(s)=1-h/s.}
+\label{eq:qB}
+\end{equation}
+$q>q_B$ 也可行，但会进入容量下方；不能在问题定义中直接排除它。
+沿 $q_B$ 有
+\begin{align}
+\dot i&=0,\label{eq:boundary-i}\\
+\dot s&=-cK(s-r),\label{eq:boundary-s}\\
+s(t)&=r+(s_a-r)\e^{-cK(t-t_a)}.\label{eq:boundary-s-explicit}
+\end{align}
+对 $s_{\rm hi}\ge s_{\rm lo}\ge h$，
+\begin{equation}
+T_B(s_{\rm hi},s_{\rm lo})=\frac1{cK}\ln\frac{s_{\rm hi}-r}{s_{\rm lo}-r},
+\label{eq:boundary-duration}
+\end{equation}
+\begin{align}
+C_B(s_{\rm hi},s_{\rm lo})
+&=\frac pK\int_{s_{\rm lo}}^{s_{\rm hi}}\frac{s-h}{s(s-r)}\dd s\notag\\
+&=\frac{p}{K(1-p)}\left[\ln\frac{s_{\rm hi}}{s_{\rm lo}}
+-p\ln\frac{s_{\rm hi}-r}{s_{\rm lo}-r}\right].
+\label{eq:boundary-cost}
+\end{align}
+这些式子是指定容量策略的成本计算，尚不是其最优性结论。
+
+\section{有限成本可行性与首次到达问题}
+\label{sec:exit-time}
+\begin{lemma}[有限成本比较策略]
+\label{lem:finite-feasible}
+对每个 $x_0\in\Dcal$，存在有限成本可行控制，因而 $V(x_0)<\infty$。
+\end{lemma}
+\begin{proof}
+安全初值采用 $q=0$。否则 $s_0>h$、$i_{\rm pk}>K$。
+若 $i_0<K$，自然轨道在到达 $s=h$ 之前首次到达容量，触点记为 $(s_1,K)$，其中 $h<s_1<s_0$。
+其时间有限：在到达 $s=h$ 或容量之前 $i\ge i_0$，所以 $\dot s\le-pci_0s$。
+若始终不到达二者，后一估计会使 $s<h$，矛盾；不安全性又排除了先到 $h$ 而未到容量。
+若 $i_0=K$，取 $s_1=s_0$。
+随后沿容量弧运行至 $(h,K)$，再永久采用 $q=0$。
+容量弧时间与成本由 \eqref{eq:boundary-duration}--\eqref{eq:boundary-cost} 有限。
+全程可行，且总量约束保持。自然触点满足
+\begin{equation}
+K=i_0+s_0-s_1+h\ln\frac{s_1}{s_0}.
+\label{eq:s1}
+\end{equation}
+\end{proof}
+
+\begin{lemma}[所有有限成本轨道均在有限时间进入安全集]
+\label{lem:finite-entry}
+若 $q\in\Uad(x_0)$ 且 $J(q)<\infty$，则
+$\tau_{\Acal}(x_0,q):=\inf\{t\ge0:x_q(t)\in\Acal\}<\infty$。
+更强地，从 $s_0>h$ 出发时，存在有限 $T_h$ 使 $s(T_h)\le h$。
+\end{lemma}
+\begin{proof}
+常接触率下 $J(q)<\infty$ 等价于 $\int_0^\infty q\dd t<\infty$。
+假设 $s_0>h$，但对所有有限 $t$ 都有 $s(t)>h$。
+由正性及状态方程，
+\begin{align*}
+\ln\frac{i(t)}{i_0}
+&=pc\int_0^t(s(\tau)-h)\dd\tau-pc\int_0^t s(\tau)q(\tau)\dd\tau\\
+&\ge-pcs_0\int_0^\infty q(\tau)\dd\tau.
+\end{align*}
+于是 $i(t)\ge i_0\exp[-pcs_0\int_0^\infty q\dd t]>0$，与 \eqref{eq:i-integrable} 矛盾。
+故有限 $T_h$ 存在；可行性给出 $i(T_h)\le K$，所以 $x(T_h)\in\Acal$。
+$s_0\le h$ 时初值已经安全。$\Acal$ 在正状态域相对闭，轨道连续，故有限首次到达时刻确实到达目标集。
+\end{proof}
+
+\begin{proposition}[无穷时域与首次到达问题等价]
+\label{prop:exit-equivalence}
+令 $\mathcal U_{\Acal}(x)$ 为有限时间内保持可行并到达 $\Acal$ 的可测控制类，以首次到达为截断时刻。
+则
+\begin{equation}
+V(x)=\inf_{q\in\mathcal U_{\Acal}(x)}
+\int_0^{\tau_{\Acal}(x,q)}pcq(t)\dd t.
+\label{eq:exit-value}
+\end{equation}
+\end{proposition}
+\begin{proof}
+任意有限到达控制可接上 $q=0$，形成相同成本的无穷时域可行控制。
+反之，任意有限成本无穷时域控制由引理\ref{lem:finite-entry}可在首次到达时截断，成本不增加。
+无穷成本控制不会降低已知有限的下确界。两个方向给出等式。
+\end{proof}
+\begin{remark}[终点与停止付费]
+对不安全初值，首次到达必位于 $i=a(s)$ 的正感染部分，且 $s\ge h$。
+这是目标集约束，不是固定终点或固定终止时间；无需 $i=0$，也无需 $s=h$。
+首次到达后，$q=0$ 是零成本可行延拓。若允许在安全集内继续等待再宣布终止，记录的终止时间可不唯一，
+这不属于控制在几乎处处意义下的非唯一性。
+\end{remark}
+
+\section{HJB 方程与验证所需的边界条件}
+\label{sec:HJB}
+记
+\begin{align}
+f_0(s,i)&=(-pcsi,\ pc(s-h)i),\label{eq:f0}\\
+f_1(s,i)&=(-csi,\ -\gamma i),\label{eq:f1}\\
+f_q&=(1-q)f_0+qf_1.\label{eq:control-affine}
+\end{align}
+对可微函数 $Z$ 定义含运行成本的 Hamiltonian
+\begin{equation}
+H_Z(x,q)=\nabla Z(x)\cdot f_q(x)+pcq
+=H_{0,Z}(x)+q\Sigma_Z(x),
+\label{eq:H-affine}
+\end{equation}
+其中
+\begin{align}
+H_{0,Z}&=-pcsiZ_s+pc(s-h)iZ_i,\label{eq:H0}\\
+\Sigma_Z&=pc-csi[(1-p)Z_s+pZ_i].\label{eq:switching-function}
+\end{align}
+在不安全区域内部，动态规划在可微点导出
+\begin{equation}
+\min_{0\le q\le1}\{\nabla V\cdot f_q+pcq\}=0.
+\label{eq:HJB}
+\end{equation}
+目标集上为 $V=0$。在 $i=K,s>h$ 上，若具有适当内侧导数，边界经典形式是
+\begin{equation}
+\min_{q\in Q_K(s)}\{\nabla V(s,K)\cdot f_q(s,K)+pcq\}=0.
+\label{eq:boundary-HJB}
+\end{equation}
+这里不预设 $V(s,K)=0$、$V_i(s,K)=0$ 或 $q=q_B$。
+状态约束 HJB 的边界信息由可行轨道的限制诱导，
+不能等同于另行指定的 Dirichlet 数据；相关黏性解框架可参见
+\citet{Soner1986}。
+该文献在其自身假设下建立的比较与正则性结论，
+不在本文的无折现首次到达问题中直接调用。
+本文不预设 $V$ 的可微性，而是对构造出的 $U$
+证明沿任意可行轨道的积分不等式。
+这一充分性逻辑与 \citet[附录A.1]{MicloSpiroWeibull2022}
+及 \citet[\S5.1.4]{Liberzon2012} 一致，
+但所需的具体分区、非光滑处理及有限时间到达性由本模型单独证明。
+
+\begin{lemma}[仿射 Hamiltonian 的点态极小]
+\label{lem:bangbang}
+内部点若 $\Sigma_Z>0$，唯一极小元为 $q=0$；若 $\Sigma_Z<0$，唯一极小元为 $q=1$。
+若 $\Sigma_Z=0$，整个 $[0,1]$ 都是点态极小集。
+边界上将 $[0,1]$ 换为 $Q_K(s)$。
+\end{lemma}
+\begin{proof}
+由 \eqref{eq:H-affine} 关于 $q$ 的仿射性直接得到。
+这只是固定状态与梯度下的结论，不能单独排除奇异弧或证明轨道唯一。
+\end{proof}
+
+\section{完全跟踪成本的有限可达域及导数}
+\label{sec:q1-value}
+令 $s_K>h$ 为 $a(s_K)=0$ 的唯一根。
+存在唯一性由 $a(h)=K>0$、$a'(s)=(h-s)/s<0$ 和 $a(s)\to-\infty$ 得到。
+
+\begin{proposition}[正感染端点存在的充要条件]
+\label{prop:reachable}
+对 $x=(s,i)\in\Omega\setminus\widehat{\Acal}$，立即取 $q=1$ 能在有限时间进入安全集，当且仅当
+\begin{equation}
+x\in\mathcal E:=\{x\in\Omega\setminus\widehat{\Acal}:s\e^{-i/\ell}<s_K\}
+=\{x\in\Omega\setminus\widehat{\Acal}:i>\ell\ln(s/s_K)\}.
+\label{eq:reachable}
+\end{equation}
+此时唯一首次端点 $(\bar s,\bar i)$ 满足 $h<\bar s<s$、$0<\bar i=a(\bar s)<i$，以及
+\begin{equation}
+\begin{cases}
+\bar i=a(\bar s),\\ i-\ell\ln s=\bar i-\ell\ln\bar s,
+\end{cases}
+\label{eq:endpoint-system}
+\end{equation}
+等价于
+\begin{equation}
+\Phi_A-\bar s+r\ln\bar s=i-\ell\ln s.
+\label{eq:endpoint-root}
+\end{equation}
+\end{proposition}
+\begin{proof}
+完全跟踪轨道的极限为 $(s_\infty,0)$，其中 $s_\infty=s\e^{-i/\ell}$。
+若 $s_\infty\ge s_K$，全程 $s(t)>s_\infty>h$，且
+$\Phi(t)>s_\infty-h\ln s_\infty\ge\Phi_A$，故不到达安全集。
+若 $h\le s_\infty<s_K$，则 $\Phi(t)$ 严格下降至小于 $\Phi_A$ 的极限，有限时间内穿过 $\Phi_A$。
+若 $s_\infty<h$，则有限时间到达 $s=h$，该时 $i<K$，故在此之前已穿过安全边界。
+
+端点必满足 \eqref{eq:endpoint-system}；函数 $G(z):=a(z)-\ell\ln z$ 在 $z>h$ 上有
+$G'(z)=(r-z)/z<0$，从而端点唯一。
+又 $i<K$ 在任何正长度完全跟踪弧的末端严格成立，故首次安全端点不可能是 $(h,K)$，于是 $\bar s>h$。
+\end{proof}
+
+\begin{definition}[指定完全跟踪策略的成本]
+\label{def:W}
+在 $\mathcal E$ 上定义
+\begin{equation}
+W(s,i)=\frac1h\ln\frac{i}{\bar i(s,i)}.
+\label{eq:W}
+\end{equation}
+在不安全但不属于 $\mathcal E$ 的点，将\emph{立即完全跟踪直至安全集这一指定方案}的成本记为 $+\infty$。
+这不表示原问题的 $V=+\infty$；引理\ref{lem:finite-feasible}已经给出有限成本比较策略。
+\end{definition}
+端点映射在 $\mathcal E$ 内光滑，隐式求导得到
+\begin{equation}
+\bar s_s=\frac{\ell\bar s}{s(\bar s-r)},\qquad
+\bar s_i=-\frac{\bar s}{\bar s-r},
+\label{eq:endpoint-derivatives}
+\end{equation}
+从而
+\begin{align}
+W_s&=\frac{\ell(\bar s-h)}{hs(\bar s-r)\bar i}
+=\frac p s\Theta(\bar s,\bar i),\label{eq:Ws}\\
+W_i&=\frac1h\left[\frac1i-\frac{\bar s-h}{(\bar s-r)\bar i}\right]
+=\frac1h\left[\frac1i-\Theta(\bar s,\bar i)\right],\label{eq:Wi}
+\end{align}
+其中
+\begin{equation}
+\Theta(s,i)=\frac{s-h}{i(s-r)},\qquad s>h,
+\label{eq:Theta}
+\end{equation}
+并记
+\begin{equation}
+D(s,i)=\Theta(\bar s,\bar i)-\Theta(s,i)\quad(x\in\mathcal E).
+\label{eq:D-residual}
+\end{equation}
+这里的标量 $D$ 不要与状态域 $\Dcal$ 混淆。
+
+\begin{proposition}[完全跟踪成本的 Hamiltonian 恒等式]
+\label{prop:W-HJB}
+在 $\mathcal E$ 上，
+\begin{align}
+H_W(x,1)&=\nabla W\cdot f_1+pc=0,\label{eq:H1-zero}\\
+H_W(x,0)&=\frac{pc}{h}i(s-r)[\Theta(s,i)-\Theta(\bar s,\bar i)]
+=-\frac{pc}{h}i(s-r)D(s,i).\label{eq:H0-theta}
+\end{align}
+特别地，$D<0$ 时所有 $q$ 均有 $H_W(x,q)\ge0$，等号仅在 $q=1$ 成立。
+\end{proposition}
+\begin{proof}
+将 \eqref{eq:Ws}--\eqref{eq:Wi} 代入 $f_1$，用 $\gamma=pch$、$\ell=ph$ 即得第一式。
+代入 $f_0=pci(-s,s-h)$，并用 $ph+s-h=s-r$，得到第二式。
+因 $H_W(x,q)=(1-q)H_W(x,0)$，最后一条随即成立。
+\end{proof}
+
+\section{切换曲线的存在、单调性及严格横穿}
+\label{sec:switching-curve}
+固定安全端点 $z\in(h,s_K)$，沿反向完全跟踪特征线写成
+\begin{equation}
+I_z(s)=a(z)+\ell\ln(s/z),\qquad s\ge z.
+\label{eq:q1-backward}
+\end{equation}
+定义
+\begin{equation}
+g(s)=\frac{(s-h)(s-r)}s=s-h-r+\frac{hr}{s}.
+\label{eq:g}
+\end{equation}
+
+\begin{lemma}[单峰性及非平凡根的参数域]
+\label{lem:unimodal}
+沿 \eqref{eq:q1-backward} 有
+\begin{align}
+\frac{\dd}{\dd s}\ln\Theta(s,I_z(s))
+&=\ell\left[\frac1{(s-h)(s-r)}-\frac1{sI_z(s)}\right],
+\label{eq:theta-log-derivative}\\
+\frac{\dd}{\dd s}(g(s)-I_z(s))
+&=\frac{(s-h)(s+r)}{s^2}>0.
+\label{eq:g-minus-i}
+\end{align}
+存在唯一 $e\in(h,s_K)$ 使 $a(e)=g(e)$。
+方程
+\begin{equation}
+\Theta(s,I_z(s))=\Theta(z,a(z))
+\label{eq:switch-condition}
+\end{equation}
+具有非平凡根 $s>z$ 当且仅当 $h<z<e$；此时该根唯一，记为 $\sigma(z)$，并有
+$I_z(\sigma(z))<g(\sigma(z))$。
+\end{lemma}
+\begin{proof}
+两条导数由直接求导得到，第一条的符号与 $I_z-g$ 相同。
+$a$ 在 $(h,s_K)$ 严格下降，而 $g$ 严格上升，且
+$a(h)-g(h)=K>0$、$a(s_K)-g(s_K)<0$，故 $e$ 存在唯一。
+若 $z<e$，$I_z(z)>g(z)$，而 $g-I_z$ 严格上升并趋于 $+\infty$，
+所以 $\Theta(s,I_z(s))$ 先严格上升后严格下降，其极限为零。
+由于峰值严格大于初始值，而峰后严格递减段趋于零，
+且 $\Theta(z,a(z))>0$，介值定理与严格单调性给出唯一的返回点，
+且该点严格位于峰点右侧。
+若 $z\ge e$，则在 $s>z$ 上 $I_z<g$，$\Theta$ 严格下降，不可能返回初始值。
+\end{proof}
+
+\begin{proposition}[非平凡切换曲线的全分支]
+\label{prop:Gamma-geometry}
+令 $j(z)=I_z(\sigma(z))$，$h<z<e$。
+则 $\sigma,j$ 在该开区间上光滑，且
+\begin{equation}
+\sigma'(z)<0,\qquad j'(z)<0.
+\label{eq:sigma-monotone}
+\end{equation}
+完整辅助切换曲线
+\begin{equation}
+\Gamma_\infty=\{(\sigma(z),j(z)):h<z<e\}
+=\{(s,I_\Gamma(s)):e<s<\infty\}
+\label{eq:switch-param}
+\end{equation}
+是简单光滑曲线，满足
+\begin{equation}
+I_\Gamma'(s)>\ell/s>0,
+\qquad
+\lim_{s\downarrow e}I_\Gamma(s)=a(e),\quad
+\lim_{s\to\infty}I_\Gamma(s)=\infty.
+\label{eq:Gamma-slope}
+\end{equation}
+在 $z\uparrow e$ 时，$\sigma(z)\to e$、$j(z)\to a(e)$；不在此合并端点直接使用隐函数定理。
+\end{proposition}
+\begin{proof}
+取特征线标号 $\psi=G(z)=a(z)-\ell\ln z$。
+由于 $G'(z)=(r-z)/z<0$，$G$ 将 $(h,e)$ 光滑地一一映到
+$(G(e),G(h))$，其逆映射记为 $z=z(\psi)$。
+在开集
+\[
+\{(s,\psi):s>h,\ G(e)<\psi<G(h),\ \psi+\ell\ln s>0\}
+\]
+上定义光滑函数
+\[
+L(s,\psi)=\ln\frac{s-h}{s-r}-\ln(\psi+\ell\ln s),\qquad
+F(s,\psi)=L(s,\psi)-L(z(\psi),\psi).
+\]
+其中 $\psi+\ell\ln z(\psi)=a(z(\psi))>0$，故第二项有定义。
+每个非平凡根都满足 $s=\sigma(z)>z>h$ 和
+$\psi+\ell\ln s=j(z)>0$，因而位于该开集内；
+隐函数定理只在这些根的局部邻域使用，不在 $z=e$ 的合并端点使用。
+根方程为 $F(s,\psi)=0$。
+
+由引理\ref{lem:unimodal}，非平凡根处 $F_s<0$，端点处 $L_s(z,\psi)>0$。
+又
+\[
+F_\psi=\frac1{a(z)}-\frac1{j(z)}-L_s(z,\psi)z_\psi>0,
+\]
+因为 $j(z)>a(z)>0$、$z_\psi<0$。
+隐函数定理给出 $\sigma_\psi=-F_\psi/F_s>0$，故 $\sigma'(z)<0$；
+$j'(z)=\psi'(z)+(\ell/\sigma)\sigma'(z)<0$。
+因此
+\[
+\frac{\dd j}{\dd\sigma}=\frac{\psi'(z)}{\sigma'(z)}+\frac\ell\sigma>\frac\ell\sigma.
+\]
+
+由单调性，$z\uparrow e$ 时 $\sigma(z)$ 有有限极限 $L\ge e$。
+若 $L>e$，连续性给出端点 $z=e$ 的非平凡根，违反引理\ref{lem:unimodal}，故 $L=e$。
+当 $z\downarrow h$，若 $\sigma$ 有有限极限，它因单调性大于 $e>h$；
+左侧 $\Theta(\sigma,j)$ 将趋于正数，右侧 $\Theta(z,a(z))\to0$，矛盾。
+故 $\sigma\to\infty$，并由 $j=G(z)+\ell\ln\sigma$ 得 $j\to\infty$。
+这证明图像的完整定义域、端点行为及单射性。
+\end{proof}
+
+\begin{corollary}[容量截断与自然轨道标号]
+\label{cor:Gamma-labels}
+存在唯一 $s_B>e$ 满足 $I_\Gamma(s_B)=K$，且 $K<g(s_B)$。
+令
+\begin{equation}
+\Phi_B=\Phi(s_B,K),\qquad \Gamma_K=\Gamma_\infty\cap\Omega.
+\label{eq:PhiB}
+\end{equation}
+$\Phi$ 沿 $\Gamma_\infty$ 随 $s$ 严格增加，其值域为 $(\Phi_A,\infty)$。
+因此对每个 $\phi>\Phi_A$，存在唯一
+\begin{equation}
+y_\Gamma(\phi)=(\eta_\Gamma(\phi),j_\Gamma(\phi))\in\Gamma_\infty,
+\qquad \Phi(y_\Gamma(\phi))=\phi.
+\label{eq:Gamma-hit-map}
+\end{equation}
+当 $\phi\le\Phi_B$ 时 $j_\Gamma(\phi)\le K$；当 $\phi>\Phi_B$ 时 $j_\Gamma(\phi)>K$。
+自然轨道与 $\Gamma_\infty$、容量线与 $\Gamma_\infty$ 均至多相交一次，且相交横截。
+\end{corollary}
+\begin{proof}
+$a(e)<K$ 与 \eqref{eq:Gamma-slope} 给出唯一容量截断。
+$K<g(s_B)$ 来自非平凡根严格位于峰点之后。
+沿曲线有 $\dd\Phi/\dd s=I_\Gamma'(s)+1-h/s>0$，端点极限分别为 $\Phi_A$ 和 $\infty$。
+自然轨道在 $s>h$ 的斜率为 $h/s-1<0$，容量线斜率为零，都与正的 $I_\Gamma'$ 不同。
+\end{proof}
+
+\begin{lemma}[所有允许方向均严格横穿切换曲线]
+\label{lem:strict-crossing}
+在开集 $\{s>e,\ i>0\}$ 上令 $\chi(s,i)=i-I_\Gamma(s)$。
+在 $\Gamma_\infty$ 上，
+\begin{align}
+L_{f_0}\chi&=pci[s-h+sI_\Gamma'(s)]>0,\notag\\
+L_{f_1}\chi&=ci[sI_\Gamma'(s)-\ell]>0.\label{eq:strict-crossing}
+\end{align}
+因此 $L_{f_q}\chi>0$ 对所有 $q\in[0,1]$ 成立。
+任意可行绝对连续轨道在 $\Gamma_K$ 上的时间集合为零测集，且不可能沿该曲线滑行。
+\end{lemma}
+\begin{proof}
+两式由 \eqref{eq:Gamma-slope} 直接得到，任意 $f_q$ 为二者凸组合。
+对每个 $x_*\in\Gamma_K$，由连续性可取闭包位于 $\{s>e,i>0\}$ 的小邻域 $O_*$ 及 $\delta_*>0$，
+使
+\[
+\nabla\chi(x)\cdot f_q(x)\ge\delta_*\qquad(x\in O_*,\ 0\le q\le1).
+\]
+轨道在 $O_*$ 内的每个开时间区间上，$v(t)=\chi(x(t))$ 局部绝对连续，且链式法则几乎处处成立。
+引理\ref{lem:ac-level-set}使 $v'=0$ 在 $\{v=0\}$ 上几乎处处成立，
+而状态方程在该集合上又给出 $v'\ge\delta_*$，所以这部分时间集合为零测集。
+用可数个 $O_*$ 覆盖 $\Gamma_K$，并使用其开时间原像的可数个连通分支，即得整体零测结论。
+若 $x(t_0)=x_*$，轨道连续性保证它在充分短的 $[t_0,t_0+\varepsilon]$ 内保持于 $O_*$。
+积分得到
+\begin{equation}
+\chi(x(t))\ge\delta_*(t-t_0)>0\qquad(t_0<t\le t_0+\varepsilon).
+\label{eq:strict-crossing-time}
+\end{equation}
+因此轨道从切换曲线上出发后立即进入正侧，无需控制的时间连续性。
+\end{proof}
+
+\begin{remark}[几何截断不是额外参数假设]
+$s_B$ 与 $(e,a(e))$ 可在物理三角形外，但只是辅助阈值。
+实际使用的切换曲线为 $\Gamma_K\cap\Dcal$。
+候选函数和辅助曲线在 $\Omega$ 上构造，
+而最优控制问题的比较始终针对 $\Dcal\subset\Omega$ 内的可行轨道。
+状态方程的正性与耗散保证实际轨道保持在物理域中，
+故可将辅助条带上的函数及相应局部计算限制到实际轨道使用。
+辅助曲线的部分点不在物理域内，并不使这些点成为可行状态。
+某些初值不经过容量平台时，相应阶段直接省略。
+上述几何性质由模型条件推出；本论证不涉及对全部 PMP 异常极值的分类。
+\end{remark}
+
+\section{全域候选反馈与候选成本}
+\label{sec:synthesis}
+本节只构造一条可行策略及其成本，不预先宣布它最优。
+对任意不安全 $x=(s,i)\in\Omega\setminus\widehat{\Acal}$，记 $\phi=\Phi(x)>\Phi_A$。
+
+若 $\phi\le\Phi_B$，令 $y_\Gamma(\phi)=(\eta,j)$ 为 \eqref{eq:Gamma-hit-map} 的交点。
+当 $s>\eta$ 时，沿自然轨道向未来等待至 $y_\Gamma$；当 $s<\eta$ 时，交点位于过去，立即完全跟踪；
+当 $s=\eta$ 时，当前即在切换曲线上。
+若 $\phi>\Phi_B$，令 $\eta_K(\phi)>h$ 为唯一解
+\begin{equation}
+K+\eta_K-h\ln\eta_K=\phi.
+\label{eq:capacity-hit-map}
+\end{equation}
+由严格单调性知 $s\ge\eta_K>s_B$，等号 $s=\eta_K$ 当且仅当 $i=K$。
+此时先自然到容量，再沿容量到 $s_B$，最后完全跟踪至安全集。
+
+\begin{definition}[分区]
+\label{def:regions}
+在不安全辅助条带中定义
+\begin{align}
+\mathcal T&=\{\Phi_A<\phi\le\Phi_B,\ s<\eta_\Gamma(\phi)\},\notag\\
+\mathcal W_\Gamma&=\{\Phi_A<\phi\le\Phi_B,\ s>\eta_\Gamma(\phi)\},\notag\\
+\mathcal W_K&=\{\phi>\Phi_B,\ i<K\},\notag\\
+\mathcal B&=\{i=K,\ s>s_B\}.\label{eq:regions}
+\end{align}
+加上 $\Gamma_K$ 与 $\widehat{\Acal}$，这些集合互不重叠并覆盖 $\Omega$。
+所有集合均限制在 $s>0,0<i\le K$ 内；实际使用时再与 $\Dcal$ 相交。
+两种自然等待分支的公共边界为
+$\{\Phi=\Phi_B,\ s>s_B,\ i<K\}$，本定义将该界面归入 $\mathcal W_\Gamma$。
+它不是整条竖线 $s=s_B$。
+该界面上的两种候选成本公式及其梯度具有相同的极限，
+详见命题\ref{prop:regularity}。
+因此将界面归入 $\mathcal W_\Gamma$ 只是记号约定，
+不改变候选成本及实际使用的控制 $q=0$。
+\end{definition}
+
+\begin{lemma}[切换界面两侧与分区的对应]
+\label{lem:chi-regions}
+记 $\phi_\Gamma(s)=\Phi(s,I_\Gamma(s))$，$s>e$。
+在 $x=(s,i)\in\Omega\setminus\widehat{\Acal}$、$s>e$、$\Phi_A<\phi:=\Phi(x)\le\Phi_B$ 时，
+\begin{align}
+x\in\mathcal T&\iff s<\eta_\Gamma(\phi)\iff\chi(s,i)>0,\notag\\
+x\in\mathcal W_\Gamma&\iff s>\eta_\Gamma(\phi)\iff\chi(s,i)<0,\notag\\
+x\in\Gamma_K&\iff s=\eta_\Gamma(\phi)\iff\chi(s,i)=0.
+\label{eq:chi-regions}
+\end{align}
+此外，对任意不安全 $x\in\Omega$，若 $s>e$ 且 $\chi(x)>0$，则自动有
+$s<s_B$、$\Phi(x)<\Phi_B$，从而 $x\in\mathcal T$，不必另加 $\Phi(x)\le\Phi_B$。
+若 $h<s\le e$，不安全状态同样属于 $\mathcal T$，但不在该区域使用 $I_\Gamma$ 或 $\chi$。
+\end{lemma}
+\begin{proof}
+推论\ref{cor:Gamma-labels}给出 $\phi_\Gamma$ 严格递增，且
+$\phi_\Gamma(\eta_\Gamma(\phi))=\phi$。
+因此
+\[
+s<\eta_\Gamma(\phi)
+\iff \phi>\phi_\Gamma(s)
+\iff i>I_\Gamma(s)
+\iff \chi(s,i)>0.
+\]
+反向严格不等式及等号同理；结合定义\ref{def:regions}得到 \eqref{eq:chi-regions}。
+若仅已知 $\chi(s,i)>0$，则 $I_\Gamma(s)<i\le K=I_\Gamma(s_B)$，
+由 $I_\Gamma$ 严格递增知 $s<s_B$。又 $s>e>h$，而 $s-h\ln s$ 在 $s>h$ 严格递增，所以
+\[
+\Phi(x)=i+s-h\ln s\le K+s-h\ln s<\Phi_B.
+\]
+这使第一条的适用条件自动成立。
+最后，若 $h<s\le e$，则
+\[
+\Phi_A<\Phi(x)\le K+e-h\ln e<\Phi_B,
+\qquad s\le e<\eta_\Gamma(\Phi(x)),
+\]
+故 $x\in\mathcal T$。此处没有把仅定义于 $s>e$ 的切换图像延拓到其端点左侧。
+\end{proof}
+
+\begin{remark}[控制分区的相对开放性]
+\label{rem:relative-open-control-regions}
+记 $\mathcal W:=\mathcal W_\Gamma\cup\mathcal W_K$。
+由引理\ref{lem:chi-regions}及分区定义，
+\[
+\mathcal W
+=\{x=(s,i)\in\Omega\setminus\widehat{\Acal}:
+  i<K,\ s>e,\ \chi(s,i)<0\}.
+\]
+事实上，当 $\Phi\le\Phi_B$ 时使用该引理；当 $\Phi>\Phi_B$ 且 $i<K$ 时，
+$s\ge\eta_K(\Phi)>s_B$，故 $I_\Gamma(s)>K>i$。
+反向包含由按 $\Phi\le\Phi_B$ 或 $\Phi>\Phi_B$ 分类得到。
+由于安全集在 $\Omega$ 中相对闭，上式表明 $\mathcal W$ 在 $\Omega$ 中相对开。
+
+在 $\mathcal T$ 中实际上有 $\Phi<\Phi_B$。
+若 $\Phi=\Phi_B$，则 $i\le K$ 以及 $s>h$ 给出
+\[
+s-h\ln s\ge s_B-h\ln s_B,
+\]
+从而 $s\ge s_B=\eta_\Gamma(\Phi_B)$，与 $\mathcal T$ 的定义矛盾。
+因此 $\mathcal T$ 也可由
+\[
+s>h,\qquad \Phi_A<\Phi<\Phi_B,\qquad
+s<\eta_\Gamma(\Phi)
+\]
+这些连续严格不等式在 $\Omega$ 中刻画，故亦相对开。
+将上述集合限制到 $\Dcal$ 后，相对开放性仍成立。
+\end{remark}
+
+\begin{lemma}[完全跟踪分区的可达性及不再返回等待区]
+\label{lem:tracking-region}
+$\mathcal T\cup\Gamma_K\subset\mathcal E$。
+在 $\mathcal T$ 中 $D<0$，而在 $\Gamma_K$ 上 $D=0$。
+从 $\mathcal T\cup\Gamma_K$ 出发取 $q=1$，立即进入或保持在 $\mathcal T$，直到有限时间到达安全集。
+\end{lemma}
+\begin{proof}
+非平凡切换点由正安全端点反向生成，故属于 $\mathcal E$。
+对 $x\in\mathcal T$，在同一自然轨道上 $s<\eta$，且
+\[
+\Psi(s,i)=\phi-s+r\ln s>\phi-\eta+r\ln\eta=\Psi(y_\Gamma)>-\ell\ln s_K,
+\]
+因为 $s\mapsto-s+r\ln s$ 在 $s>h$ 严格下降。由命题\ref{prop:reachable}知 $x\in\mathcal E$。
+从 $x$ 到 $y_\Gamma$ 之间的自然轨道段仍在 $\mathcal E$ 和容量以下。
+
+为确定 $D$ 的符号，先说明其零集。
+任取 $x=(s,i)\in\mathcal E$，记其安全端点的易感坐标为 $z=\bar s(x)$。
+由命题\ref{prop:reachable}，$h<z<s$ 且 $i=I_z(s)$，所以
+\[
+D(x)=0
+\iff \Theta(s,I_z(s))=\Theta(z,a(z)).
+\]
+平凡根 $s=z$ 位于安全边界，不属于这里的不安全状态。
+由引理\ref{lem:unimodal}，上述等式成立当且仅当
+$h<z<e$ 且 $s=\sigma(z)$。
+结合已经证明的切换点可达性以及 $i\le K$，得到
+\[
+\{x\in\mathcal E:D(x)=0\}=\Gamma_K.
+\]
+
+在非平凡切换点 $y=(\sigma(z),j(z))$，
+沿所属的反向完全跟踪特征线有
+\[
+\left.\frac{\mathrm d}{\mathrm d s}D(s,I_z(s))\right|_{s=\sigma(z)}
+=-\left.\frac{\mathrm d}{\mathrm d s}\Theta(s,I_z(s))\right|_{s=\sigma(z)}>0,
+\]
+其中严格符号来自非平凡根位于单峰函数的严格下降段。
+由于 $q=1$ 时 $\dot s=-csi<0$，故 $L_{f_1}D(y)<0$，特别地
+$\nabla D(y)\ne0$。
+端点映射的光滑性给出 $D$ 在各有关点附近的光滑性；
+在容量切换点，$a(z)>0$ 及 $G'(z)\ne0$ 还给出环境开邻域上的光滑延拓，
+这里只将其用于求导。
+
+另一方面，$\chi(s,i)=i-I_\Gamma(s)$ 满足
+$\nabla\chi=(-I_\Gamma'(s),1)\ne0$。
+沿 $\Gamma_K$ 上的恒等式 $D(s,I_\Gamma(s))=0$ 求导，
+得到 $\nabla D\cdot(1,I_\Gamma')=0$；
+在容量端点通过 $s\uparrow s_B$ 取极限，关系同样成立。
+因此存在标量 $\lambda(y)$，使
+\[
+\nabla D(y)=\lambda(y)\nabla\chi(y),\qquad
+\lambda(y)=\frac{L_{f_1}D(y)}{L_{f_1}\chi(y)}<0.
+\]
+再由引理\ref{lem:strict-crossing}知 $L_{f_0}D(y)<0$。
+沿自然轨道的时间方向有 $\dot s<0$，所以在触点 $s=\eta$ 处，
+$D$ 沿该轨道关于 $s$ 的导数严格为正。
+向未来即向较小 $s$ 移动时，$D$ 因而先变为负值。
+从 $y_\Gamma$ 到 $x$ 的自然轨道段已知保持在 $\mathcal E$ 内，
+而该轨道没有第二个非平凡切换交点。
+由零集刻画和连续性，到 $x$ 为止始终有 $D<0$。
+
+设 $x$ 的安全端点为 $z$。$D(x)<0$ 意味着 $\Theta(s,I_z(s))>\Theta(z,a(z))$，
+由单峰性必有 $z<e$ 且 $z<s<\sigma(z)$。
+在从 $s$ 降至 $z$ 的完全跟踪弧上，$D<0$ 始终保持。
+同时 $\Phi$ 严格下降，故到达安全集之前始终满足 $\Phi_A<\Phi\le\Phi_B$。
+当 $s>e$ 时，引理\ref{lem:chi-regions}表明离开 $\mathcal T$ 进入等待分支必须先经过 $\chi=0$，
+而在该界面 $D=0$，与沿弧的 $D<0$ 矛盾；当 $h<s\le e$ 时，不安全状态本身即属于 $\mathcal T$。
+从切换点出发时，由 \eqref{eq:strict-crossing-time}及引理\ref{lem:chi-regions}立即进入 $\mathcal T$，
+之后适用同一论证。
+正端点保证到达时间有限，而 $i$ 严格下降保证容量可行性。
+\end{proof}
+
+\begin{definition}[候选反馈和成本]
+\label{def:candidate}
+在 $\Omega$ 上定义
+\begin{equation}
+Q^*(x)=
+\begin{cases}
+0,&x\in\widehat{\Acal}\cup\mathcal W_\Gamma\cup\mathcal W_K,\\
+1,&x\in\mathcal T\cup\Gamma_K,\\
+1-h/s,&x\in\mathcal B,
+\end{cases}
+\label{eq:candidate-feedback}
+\end{equation}
+并定义
+\begin{equation}
+U(x)=
+\begin{cases}
+0,&x\in\widehat{\Acal},\\
+W(x),&x\in\mathcal T\cup\Gamma_K,\\
+W(y_\Gamma(\Phi(x))),&x\in\mathcal W_\Gamma,\\
+C_B(\eta_K(\Phi(x)),s_B)+W(s_B,K),&x\in\mathcal W_K\cup\mathcal B.
+\end{cases}
+\label{eq:candidate-U}
+\end{equation}
+容量等待边界上的迹为
+\begin{equation}
+U(s,K)=C_B(s,s_B)+W(s_B,K),\qquad s\ge s_B.
+\label{eq:boundary-value}
+\end{equation}
+\end{definition}
+
+\begin{proposition}[候选策略确实实现其定义成本]
+\label{prop:candidate-attainment}
+对每个 $x_0\in\Dcal$，按上述事件顺序拼接的控制可测、可行，有限时间内进入 $\Acal$，
+其后取 $q=0$，且总成本恰为 $U(x_0)<\infty$。
+它是反馈 \eqref{eq:candidate-feedback} 的一条 Carath\'eodory 轨道。
+\end{proposition}
+\begin{proof}
+安全初值直接采用 $q=0$。
+在 $\mathcal W_\Gamma$ 内，$\phi$ 不变、$s$ 下降、$i$ 上升，第一次事件恰为 $y_\Gamma$；
+因为 $j\le K$，此前不违反容量约束。
+在 $\mathcal W_K$ 内，第一次事件为 $(\eta_K,K)$；之后使用容量弧，有限时间到达 $(s_B,K)$。
+自然等待时间有限：沿等待段 $s>h$、$i\ge i_0>0$，且终点的 $s$ 有严格正下界，
+由 $\dot s\le-pci_0s$ 可得有限上界。
+容量弧时间由 \eqref{eq:boundary-duration} 给出。
+完全跟踪阶段由引理\ref{lem:tracking-region} 可行且有限，之后用安全延拓。
+由 \eqref{eq:sum-decay} 保持物理域。
+各阶段成本正是 \eqref{eq:candidate-U} 的对应项，故总成本为 $U(x_0)$。
+记上述拼接控制及其轨道为 $q^*,x^*$。
+在各阶段的开时间区间上，分区定义给出
+$q^*(t)=Q^*(x^*(t))$；可能例外的孤立切换时刻只有有限个。
+故对每个有限 $t$，状态积分方程可写为
+\[
+x^*(t)=x_0+\int_0^t f_{Q^*(x^*(v))}(x^*(v))\dd v.
+\]
+因此该拼接确为所给反馈的一条 Carath\'eodory 轨道，
+无需规定孤立切换时刻处状态导数的点态值。
+候选构造不需要先使用任何最优性结论。
+\end{proof}
+
+\begin{remark}[候选策略的阶段结构]
+本注记录定义\ref{def:candidate}中的候选阶段结构，
+其最优性由定理\ref{thm:verification}确立；
+各初值分区对应的最优结构汇总见推论\ref{cor:optimal-synthesis}。
+安全初值对应类型 I：$q^*\equiv0$。
+直接切换对应类型 II：
+\begin{equation}
+0\longrightarrow1\longrightarrow0,
+\label{eq:direct-structure}
+\end{equation}
+其中初始在 $\mathcal T\cup\Gamma_K$ 时等待阶段长度为零。
+有正长度平台时对应类型 III：
+\begin{equation}
+0\longrightarrow q_B(s)\longrightarrow1\longrightarrow0.
+\label{eq:capacity-structure}
+\end{equation}
+初始在容量上时第一段可为零；$\Phi=\Phi_B$ 时容量阶段退化为一个点。
+在本稿严格参数条件下 $s_B>e>h$，不把 $s_B=h$ 当作一个实际发生的参数内退化。
+纯容量填充仅先作为比较策略保留。
+\end{remark}
+
+\section{全域梯度、拼接正则性与验证不等式}
+\label{sec:verification-details}
+\subsection{两种等待分支的统一导数}
+\begin{lemma}[等待区的梯度]
+\label{lem:waiting-gradient}
+设 $x=(s,i)$ 位于自然等待区，当前自然等待段的终点为 $y=(\eta,j)$：
+在 $\mathcal W_\Gamma$ 取 $y=y_\Gamma(\Phi(x))$；在 $\mathcal W_K$ 取 $y=(\eta_K(\Phi(x)),K)$。
+则各分支内部
+\begin{equation}
+U_i(s,i)=\frac{p}{j(\eta-r)},\qquad
+U_s(s,i)=\frac{p(s-h)}{s\,j(\eta-r)}.
+\label{eq:waiting-gradient}
+\end{equation}
+\end{lemma}
+\begin{proof}
+在切换点 $y$，$\Theta(y)=\Theta(\bar y)$，由 \eqref{eq:Ws}--\eqref{eq:Wi} 有
+\[
+W_i(y)=\frac p{j(\eta-r)},\qquad
+W_s(y)=W_i(y)(1-h/\eta).
+\]
+所以 $\nabla W(y)=W_i(y)\nabla\Phi(y)$。
+对恒等式 $\Phi(y_\Gamma(\phi))=\phi$ 求导得到
+$\dd W(y_\Gamma(\phi))/\dd\phi=W_i(y_\Gamma(\phi))$。
+结合 $\Phi_i=1$、$\Phi_s=1-h/s$，得到内部切换等待分支的公式。
+容量等待分支中，
+\[
+\eta_K'(\phi)=\frac{\eta_K}{\eta_K-h},\qquad
+\frac{\partial C_B(\eta,s_B)}{\partial\eta}
+=\frac{p(\eta-h)}{K\eta(\eta-r)},
+\]
+相乘并应用链式法则得到同一式，其中 $j=K$。
+\end{proof}
+
+\begin{lemma}[等待区的严格 HJB 符号]
+\label{lem:waiting-HJB}
+在两种自然等待区内，以及其公共界面上，
+\begin{equation}
+H_{0,U}=0,\qquad
+\Sigma_U=pc\left[1-\frac{i(s-r)}{j(\eta-r)}\right]>0.
+\label{eq:waiting-HJB}
+\end{equation}
+因此 $H_U(x,q)=q\Sigma_U\ge0$，等号唯一要求 $q=0$。
+\end{lemma}
+\begin{proof}
+代入 \eqref{eq:waiting-gradient} 得到两个恒等式。
+严格符号需要单独证明。沿自然轨道 $i=\iota(\xi)$，
+\begin{equation}
+\frac{\dd}{\dd\xi}[\iota(\xi)(\xi-r)]=\iota(\xi)-g(\xi).
+\label{eq:Lambda-natural}
+\end{equation}
+若 $y\in\Gamma_K$，引理\ref{lem:unimodal}给出 $j<g(\eta)$。
+若 $y$ 为容量等待起点，则 $\eta>s_B$，所以 $j=K<g(s_B)<g(\eta)$。
+在公共界面 $y=(s_B,K)$ 时仍有 $j<g(\eta)$。
+沿等待段 $\xi\ge\eta$，$\iota(\xi)\le j$，且 $g(\xi)\ge g(\eta)$，
+故 \eqref{eq:Lambda-natural} 严格为负。
+由于当前 $s>\eta$，得到 $i(s-r)<j(\eta-r)$，即所需严格正性。
+\end{proof}
+
+\subsection{内部界面与局部 Lipschitz 性}
+\begin{proposition}[连续性、梯度匹配与相对正则性]
+\label{prop:regularity}
+$U$ 在 $\Omega$ 上连续且相对局部 Lipschitz；在
+$\{s>0,0<i<K\}\setminus\widehat{\Acal}$ 上为 $C^1$。
+非平凡切换界面和两种等待分支的公共界面处，两侧梯度匹配。
+容量边界的内侧梯度在 $s>h$ 存在，平台段为
+\begin{equation}
+U_s(s,K)=\frac{p(s-h)}{Ks(s-r)},\qquad U_i(s,K)=\frac p{K(s-r)}.
+\label{eq:capacity-gradient}
+\end{equation}
+结论限制到 $\Dcal$ 后仍成立；本命题没有声称在 $i=0$ 轴上正则。
+\end{proposition}
+\begin{proof}
+\emph{内部值与梯度匹配。}
+各开分区中的端点和触点映射光滑。
+在 $\Gamma_K\cap\{i<K\}$ 上，等待终点趋于当前点，$U$ 两侧均趋于 $W$；
+由 \eqref{eq:waiting-gradient}，等待侧梯度的极限为
+\[
+\left(\frac{p(s-h)}{si(s-r)},\ \frac{p}{i(s-r)}\right),
+\]
+恰等于切换条件下的 $\nabla W$。
+在 $\Phi=\Phi_B,s>s_B,i<K$ 的界面上，两个等待分支的终点均趋于 $(s_B,K)$；
+由 $C_B(s_B,s_B)=0$，两侧函数值相同，而共同的梯度极限为
+\[
+\left(\frac{p(s-h)}{sK(s_B-r)},\ \frac{p}{K(s_B-r)}\right).
+\]
+上述极限随界面点连续变化。
+在每个固定内部界面点的充分小邻域内，所用端点感染值及导数公式的分母保持为正，
+故这些公式确实给出各侧梯度到该界面的连续延拓。
+
+下面说明局部拼接的可微性。
+两类内部界面分别是 $i=I_\Gamma(s)$ 和
+$i=\Phi_B-s+h\ln s$ 的光滑图像，且在不安全内部不相交。
+固定其中一个点 $x_*=(s_*,k(s_*))$，其中 $k$ 表示对应图像函数。
+缩小邻域后，坐标变换
+\[
+\Xi(y_1,y_2)=(s_*+y_1,k(s_*+y_1)+y_2)
+\]
+将以原点为中心的小矩形 $Q$ 映到该点的不安全内部邻域，
+并把 $y_2=0$ 映到界面。
+该变换及其逆均为 $C^1$。
+令 $v=U\circ\Xi$，则 $v$ 连续，在 $Q\cap\{y_2>0\}$ 和
+$Q\cap\{y_2<0\}$ 内分别为 $C^1$。
+由已证的梯度匹配以及
+$\nabla v(y)=(\mathrm D\Xi(y))^{\mathsf T}\nabla U(\Xi(y))$，
+两侧梯度可连续拼接为 $Q$ 上的向量值函数 $P$。
+当 $y_2\ne0$ 时，从 $\varepsilon y$ 到 $y$ 沿同侧线段积分，
+再令 $\varepsilon\downarrow0$，得到
+\[
+v(y)-v(0)=\int_0^1 P(ty)\cdot y\dd t.
+\]
+当 $y_2=0$ 时，由连续性从任一侧取极限，等式仍成立。
+因此
+\[
+v(y)-v(0)-P(0)\cdot y
+=\int_0^1 [P(ty)-P(0)]\cdot y\dd t
+=o(\lVert y\rVert).
+\]
+这证明 $v$ 在原点可微且导数为 $P(0)$。
+在每个界面点重复此论证，并利用 $P$ 的连续性，得到局部 $C^1$ 拼接。
+变回原坐标，$U$ 在不安全内部为 $C^1$。
+切换曲线的下端点位于安全边界，上端点位于容量边界，
+均不属于此处的不安全内部论域。
+
+\emph{安全边界连续性。}
+设不安全点趋于安全边界的正感染点。
+若这些点属于 $\mathcal T$，$G$ 的连续逆映射保证完全跟踪端点趋于当前安全点，故 $W\to0$；
+在 $(h,K)$ 附近同样成立，因为 $G'(h)=-p\ne0$。
+若属于 $\mathcal W_\Gamma$，则 $\Phi\to\Phi_A$，
+由推论\ref{cor:Gamma-labels}可知 $y_\Gamma\to(e,a(e))$，两端合并使 $W(y_\Gamma)\to0$。
+$\Phi>\Phi_B>\Phi_A$ 的分支不可能趋于安全边界。
+$s<h$ 且 $i\le K$ 的点有相对安全邻域。
+这证明 $U$ 在安全边界连续，没有把外侧梯度误当成零，也没有假定它处处等于 $\nabla W$。
+
+\emph{容量迹与内侧极限。}
+$s>s_B$ 时令 $i\uparrow K$，$\eta_K\to s$，由 \eqref{eq:waiting-gradient} 得到 \eqref{eq:capacity-gradient}。
+$h<s<s_B$ 时容量下方属于 $\mathcal T$，使用 $W$ 的光滑延拓。
+$s=s_B$ 处三个邻接分支的值与梯度都等于切换点的值与梯度；故也有相同的内侧一阶展开。
+
+\emph{一致梯度界与相对局部 Lipschitz 性。}
+等待区内 $j\ge i$、$\eta-r>h-r=\ell$，从而
+\[
+0<U_i\le\frac{1}{hi},\qquad 0\le U_s\le U_i.
+\]
+完全跟踪区内 $0<\Theta(\bar x)<\Theta(x)<1/i$，故
+\[
+0\le W_s\le\frac{p}{si},\qquad 0\le W_i\le\frac{1}{hi}.
+\]
+内部切换界面取相同的梯度极限。
+安全集内部 $U$ 为常数零；沿任何完全位于安全集内的线段，$U$ 的增量亦为零。
+
+固定 $x_*\in\Omega$，取包含 $x_*$ 的一个充分小的闭矩形
+\[
+R=[s_-,s_+]\times[i_-,i_+],\qquad s_->0,\quad i_->0,
+\]
+使 $x_*$ 属于 $R\cap\Omega$ 的相对内部。
+在该集合各光滑分支上，两偏导数的绝对值均不超过
+\[
+M_R:=\max\left\{\frac{1}{hi_-},\frac{p}{s_-i_-}\right\}.
+\]
+不位于 $i=K$ 的水平或竖直线段只可能穿过以下内部界面：
+安全边界 $i=a(s)$ 的有关部分、非平凡切换图像 $i=I_\Gamma(s)$，
+以及等待分支界面 $i=\Phi_B-s+h\ln s$ 的有关部分。
+安全边界在 $s>h$ 严格递减，切换图像严格递增，
+最后一条图像在所用的 $s>s_B>h$ 范围内严格递减。
+故每条水平或竖直线段与各图像至多相交一次。
+在有限个交点之间分段应用一维微积分基本定理，
+再利用已经证明的界面连续性取端点极限，
+可知水平线段上 $U$ 的增量绝对值不超过 $M_R$ 乘以其长度，
+竖直线段上也有相同估计。
+
+若水平线段位于 $i=K$，则使用容量迹 $b(s)=U(s,K)$。
+在 $s\le h$ 上 $b=0$；在 $h<s<s_B$ 上 $b'=W_s(s,K)$；
+在 $s>s_B$ 上由 \eqref{eq:boundary-value} 和 \eqref{eq:boundary-cost}
+得到 $b'=p(s-h)/[Ks(s-r)]$。
+这些导数满足上述局部界；在 $h,s_B$ 处分段并使用容量迹连续性，
+得到同一水平线段估计。
+
+任取 $x=(s_1,i_1),y=(s_2,i_2)\in R\cap\Omega$，
+中间点 $z=(s_2,i_1)$ 以及连接 $x$ 到 $z$、$z$ 到 $y$ 的两条坐标线段
+均属于 $R\cap\Omega$。
+因此
+\[
+|U(x)-U(y)|
+\le M_R\bigl(|s_1-s_2|+|i_1-i_2|\bigr)
+\le\sqrt{2}\,M_R\lVert x-y\rVert.
+\]
+这证明 $U$ 在 $\Omega$ 上相对局部 Lipschitz。
+将该估计限制到 $\Dcal\subset\Omega$ 即得物理域上的结论；
+这里的辅助坐标线段无需满足 $s+i\le1$。
+
+\end{proof}
+
+以下在 $i=K,s>h$ 上使用的 $\nabla U(s,K)$，
+均指由不安全内部 $i<K$ 取得的梯度极限。
+其中 $U_s(s,K)$ 等于容量迹 $s\mapsto U(s,K)$ 的导数，
+而 $U_i(s,K)$ 按内侧导数理解。
+这些记号不要求在不可行区域 $i>K$ 上定义 $U$。
+沿容量时间集合的链式法则另由引理\ref{lem:trajectory-verification}建立。
+
+
+\begin{remark}[安全边界外侧不止一种分支]
+\label{rem:safe-gradient}
+在安全边界的正感染内点，$h<s<e$ 一侧可由完全跟踪梯度取极限；
+当 $e<s<s_K$ 时，不安全侧是内部切换等待分支，其梯度极限为
+\[
+\nabla U_{\rm out}(s,a(s))=
+\frac{p}{a(e)(e-r)}\nabla\Phi(s,a(s)).
+\]
+因此不能在整条安全边界统一使用
+$\partial_C U=\operatorname{conv}\{0,\nabla W\}$。
+下述验证使用引理\ref{lem:ac-level-set}的零水平集性质，不需要这条广义梯度等式。
+\end{remark}
+
+\subsection{容量 Hamiltonian 与沿任意轨道的链式法则}
+\begin{proposition}[不安全各区的 Hamiltonian]
+\label{prop:all-HJB}
+$U$ 在各不安全分区满足：
+\begin{equation}
+\begin{array}{c|c|c}
+\text{位置}&H_U(x,q)&\text{等号条件}\\\hline
+\mathcal W_\Gamma\cup\mathcal W_K&q\Sigma_U,\quad\Sigma_U>0&q=0\\
+\mathcal T&(1-q)H_{0,U},\quad H_{0,U}>0&q=1\\
+\Gamma_K&0&\text{任意瞬时允许 }q\\
+\mathcal B&0&\text{任意 }q\in[q_B(s),1]
+\end{array}
+\label{eq:HJB-table}
+\end{equation}
+容量边界 $h<s<s_B$ 属于完全跟踪区，使用第二行并限制 $q\in Q_K(s)$。
+尤其在整段 $\mathcal B$ 上
+\begin{equation}
+\boxed{H_{0,U}(s,K)=0,\qquad\Sigma_U(s,K)=0.}
+\label{eq:capacity-tie}
+\end{equation}
+\end{proposition}
+\begin{proof}
+等待区由引理\ref{lem:waiting-HJB}；完全跟踪区由引理\ref{lem:tracking-region}及命题\ref{prop:W-HJB}。
+在 $\Gamma_K$ 使用梯度匹配以及 $D=0$。
+容量平台代入 \eqref{eq:capacity-gradient}，利用
+$(1-p)U_s+pU_i=p/(Ks)$，得 \eqref{eq:capacity-tie}。
+因此平台打平是恒等式，不是偶然的数值退化。
+\end{proof}
+
+式\eqref{eq:capacity-tie}表明，平台上的 Hamiltonian 表达式
+$H_U(s,K,q)$ 对每个 $q\in[0,1]$ 均为零。
+表\eqref{eq:HJB-table}的平台行只列出边界允许方向对应的区间
+$Q_K(s)=[q_B(s),1]$；在该区间内，整个区间都是点态极小集。
+这并不把 $q<q_B(s)$ 变为边界允许方向，也不单独确定最优轨道的延续。
+容量时间集合上的控制选择和平台延续由后面的沿轨道及唯一性论证处理。
+
+\begin{lemma}[沿任意可行轨道的验证不等式]
+\label{lem:trajectory-verification}
+对任意 $q\in\Uad(x_0)$ 及任意有限 $T$，$u(t):=U(x_q(t))$ 在 $[0,T]$ 上绝对连续，且
+\begin{equation}
+\frac{\dd}{\dd t}U(x_q(t))+pcq(t)\ge0\quad\text{几乎处处}.
+\label{eq:verification-ineq}
+\end{equation}
+\end{lemma}
+\begin{proof}
+有限时间上轨道连续且正性保持，故其像位于辅助条带中
+$s,i$ 均有正下界的紧集。
+由命题\ref{prop:regularity}的相对局部 Lipschitz 性及
+引理\ref{lem:ac-composition}，$u=U\circ x_q$ 在 $[0,T]$ 上绝对连续。
+在不安全内部 $i<K$，$U$ 为 $C^1$，
+普通链式法则与命题\ref{prop:all-HJB}给出不等式。
+这里包含两种等待区的公共界面和非平凡切换界面。
+上述复合引理仅保证沿轨道的绝对连续性，
+不将二维状态空间中的零测集自动视为零测度的时间集合；
+容量边界及安全边界仍按下述水平集论证处理。
+
+在时间集合 $E_K=\{t\in[0,T]:i(t)=K\}$ 上，引理\ref{lem:ac-level-set}给出 $\dot i=0$ 几乎处处。
+若同时 $s>h$，状态方程强制 $q=q_B(s)$，进而 $\dot s=-cK(s-r)$。
+对所有 $s>0$ 令 $b(s)=U(s,K)$。由命题\ref{prop:regularity}，$b$ 局部 Lipschitz，且在 $s>h$ 为 $C^1$，
+所以 $b(s(t))$ 在 $[0,T]$ 绝对连续。
+由于 $u(t)=b(s(t))$ 于 $E_K$，引理\ref{lem:ac-level-set}的第二条使两者导数在 $E_K$ 上几乎处处相等；
+再在 $s>h$ 的部分使用普通链式法则，得到 $u'=b'(s)\dot s$。
+$s>s_B$ 时，由 \eqref{eq:boundary-cost} 恰有 $u'+pcq_B=0$；
+$h<s<s_B$ 时，$b'=W_s$，残差为 $H_W(x,q_B)=(1-q_B)H_{0,W}>0$。
+在 $s=s_B$ 处残差为零；也可由 $s(t)$ 严格下降知该水平集至多含一个时刻。
+
+在 $E_A=\{t\in[0,T]:x(t)\in\Acal\}$ 上 $u=0$，
+由引理\ref{lem:ac-level-set}得 $u'=0$ 几乎处处，残差为 $pcq\ge0$。
+这同时处理安全边界及 $(h,K)$。
+由于 $\{t:i(t)=K,\ s(t)\le h\}\subset E_A$，且不安全状态必有 $s>h$，
+上述三类时间集合确实覆盖全部时刻：
+\[
+[0,T]
+=\{t\in[0,T]:x_q(t)\notin\Acal,\ i(t)<K\}
+\cup\{t\in[0,T]:i(t)=K,\ s(t)>h\}
+\cup E_A.
+\]
+物理斜边 $s+i=1$ 不产生额外困难：候选函数在辅助条带已经定义，
+且正感染时 $s+i$ 严格下降，实际轨道立即进入斜边内侧。
+\end{proof}
+
+\section{全局最优性验证}
+\label{sec:global-verification}
+\begin{theorem}[常接触率下的全局最优性与达到性]
+\label{thm:verification}
+设 \eqref{eq:constants} 成立，$x_0\in\Dcal$，控制类如定义\ref{def:admissible}。
+候选函数 \eqref{eq:candidate-U} 限制到 $\Dcal$ 后等于值函数 \eqref{eq:value-definition}：
+\begin{equation}
+U(x_0)=V(x_0)=J_{x_0}(q^*),\qquad
+J_{x_0}(q)\ge U(x_0)\quad(\forall q\in\Uad(x_0)),
+\label{eq:global-optimality}
+\end{equation}
+其中 $q^*$ 为命题\ref{prop:candidate-attainment}构造的控制。
+所需候选达到性、正则性及终端处理分别由命题\ref{prop:candidate-attainment}、\ref{prop:regularity}和引理\ref{lem:finite-entry}给出。
+\end{theorem}
+\begin{proof}
+命题\ref{prop:candidate-attainment}给出 $J(q^*)=U(x_0)<\infty$，所以 $V\le U$。
+任取竞争控制 $q$。$J(q)=\infty$ 时比较平凡成立。
+若 $J(q)<\infty$，引理\ref{lem:finite-entry}保证其自己的首次入安全集时间 $\tau_A$ 有限。
+将引理\ref{lem:trajectory-verification}积分至 $\tau_A$，得到
+\[
+J(q)\ge\int_0^{\tau_A}pcq(t)\dd t
+\ge U(x_0)-U(x_q(\tau_A))=U(x_0).
+\]
+第一步只用到了后续成本非负，不要求竞争控制进入安全集后关闭控制。
+取下确界得 $V\ge U$，与另一方向合并即得结论。
+候选控制在等待区、平台、完全跟踪区逐段实现验证等号，到达安全集后成本为零。
+\end{proof}
+
+下面记录验证证明中的等号条件，以用于下一节的唯一性分析。
+
+\begin{corollary}[验证等号条件]
+\label{cor:verification-equality}
+在定理\ref{thm:verification}的条件下，固定 $x_0\in\Dcal$。
+对任意满足 $J_{x_0}(q)<\infty$ 的可行控制 $q\in\Uad(x_0)$，记
+\[
+\tau_q:=\tau_{\Acal}(x_0,q).
+\]
+在 $(0,\tau_q)$ 上几乎处处定义
+\begin{equation}
+R_q(t):=\frac{\mathrm d}{\mathrm d t}U(x_q(t))+pcq(t).
+\label{eq:trajectory-verification-residual}
+\end{equation}
+则 $\tau_q<\infty$，$R_q\in L^1(0,\tau_q)$，且 $R_q\ge0$ 几乎处处。
+此外，
+\begin{equation}
+J_{x_0}(q)-V(x_0)
+=
+\int_0^{\tau_q}R_q(t)\dd t
++
+\int_{\tau_q}^{\infty}pcq(t)\dd t.
+\label{eq:verification-gap}
+\end{equation}
+因此，在上述有限成本可行控制类中，$q$ 最优当且仅当
+\begin{equation}
+\begin{cases}
+R_q(t)=0 & \text{几乎处处于 }(0,\tau_q),\\
+q(t)=0 & \text{几乎处处于 }(\tau_q,\infty).
+\end{cases}
+\label{eq:verification-equality-conditions}
+\end{equation}
+当 $x_0\in\Acal$ 时，取 $\tau_q=0$，并将第一个积分理解为零。
+\end{corollary}
+
+\begin{proof}
+由引理\ref{lem:finite-entry}，$\tau_q<\infty$，且
+$x_q(\tau_q)\in\Acal$，故 $U(x_q(\tau_q))=0$。
+若 $\tau_q>0$，引理\ref{lem:trajectory-verification}保证
+$U\circ x_q$ 在 $[0,\tau_q]$ 上绝对连续，且 $R_q\ge0$ 几乎处处。
+绝对连续函数的导数可积，而 $q$ 有界，所以
+$R_q\in L^1(0,\tau_q)$。
+由微积分基本定理，
+\begin{align*}
+\int_0^{\tau_q}R_q(t)\dd t
+&=U(x_q(\tau_q))-U(x_0)
+  +\int_0^{\tau_q}pcq(t)\dd t\\
+&=-U(x_0)+\int_0^{\tau_q}pcq(t)\dd t.
+\end{align*}
+将成本积分在 $\tau_q$ 处分开，并使用
+定理\ref{thm:verification}中的 $U(x_0)=V(x_0)$，
+即得 \eqref{eq:verification-gap}。
+当 $\tau_q=0$ 时，$U(x_0)=V(x_0)=0$，该恒等式同样成立。
+
+式\eqref{eq:verification-gap}右端两项均非负。
+非负可积函数的积分为零，当且仅当该函数几乎处处为零；
+又因 $pc>0$，第二项为零当且仅当 $q=0$ 几乎处处于
+$(\tau_q,\infty)$。
+结合最优性的定义，得到 \eqref{eq:verification-equality-conditions}。
+\end{proof}
+
+\begin{remark}[等号条件与唯一性]
+\label{rem:verification-equality-uniqueness}
+在 $U$ 可微的不安全内部，普通链式法则给出
+\[
+R_q(t)=H_U(x_q(t),q(t))
+\]
+几乎处处成立。
+在状态约束边界上，仍使用引理\ref{lem:trajectory-verification}
+所建立的沿轨道导数关系。
+推论\ref{cor:verification-equality}刻画最优控制的等号条件，
+但不单独蕴含最优控制唯一。
+唯一性还需结合状态约束、切换曲线的横穿性质及状态方程解的唯一性。
+\end{remark}
+
+
+\section{常接触率下控制与轨道的唯一性}
+\label{sec:constant-uniqueness}
+\begin{lemma}[最优轨道在容量弧上的延续]
+\label{lem:no-early-boundary-exit}
+在定理\ref{thm:verification}的条件下，设 $q\in\Uad(x_0)$ 为最优控制，
+其状态轨道为 $x_q=(s_q,i_q)$，首次进入安全集的时间为 $\tau_q$。
+若某个 $t_0\in[0,\tau_q)$ 满足
+\[
+x_q(t_0)=(s_*,K),\qquad s_*>s_B,
+\]
+令
+\[
+t_B:=t_0+T_B(s_*,s_B)
+=t_0+\frac1{cK}\ln\frac{s_*-r}{s_B-r}.
+\]
+则 $t_B<\tau_q$，并且
+\begin{equation}
+i_q(t)=K,\qquad
+s_q(t)=r+(s_*-r)\e^{-cK(t-t_0)}
+\quad(t_0\le t\le t_B).
+\label{eq:optimal-boundary-continuation}
+\end{equation}
+在 $(t_0,t_B)$ 上，$q(t)=q_B(s_q(t))$ 几乎处处。
+特别地，最优轨道不能在 $s>s_B$ 时离开容量边界。
+\end{lemma}
+
+\begin{proof}
+先证明局部结论。
+由 $\Phi(s_*,K)>\Phi_B$ 及连续性，
+可取 $(s_*,K)$ 在 $\Dcal$ 中的一个相对邻域 $O$，
+使其中 $s>s_B$、$\Phi>\Phi_B$，且
+\[
+O\cap\{i<K\}\subset\mathcal W_K.
+\]
+轨道连续性给出 $\delta>0$，使
+$t_0+\delta<\min\{\tau_q,t_B\}$ 且
+$x_q([t_0,t_0+\delta])\subset O$。
+
+若开时间集合
+\[
+E:=\{t\in(t_0,t_0+\delta):i_q(t)<K\}
+\]
+非空，取其任一连通分支 $(a,b)$。
+由连续性及 $i_q(t_0)=K$，有 $a\ge t_0$ 和 $i_q(a)=K$。
+在 $(a,b)$ 上轨道属于 $\mathcal W_K$。
+推论\ref{cor:verification-equality}与
+引理\ref{lem:waiting-HJB}因此给出 $q=0$ 几乎处处于 $(a,b)$。
+于是对每个 $t\in(a,b)$，
+\[
+i_q(t)-K
+=\int_a^t pc\bigl(s_q(v)-h\bigr)i_q(v)\dd v>0,
+\]
+因为 $s_q(v)>s_B>h$ 且 $i_q(v)>0$。
+这与 $i_q<K$ 矛盾，故 $E$ 为空。
+因此 $i_q=K$ 在 $[t_0,t_0+\delta]$ 上成立。
+
+在任何保持 $i_q=K$ 的时间区间上，
+引理\ref{lem:ac-level-set}与状态方程给出
+\[
+q(t)=1-\frac{h}{s_q(t)},\qquad
+\dot s_q(t)=-cK(s_q(t)-r)
+\]
+几乎处处成立，从而得到 \eqref{eq:optimal-boundary-continuation} 中的显式解。
+
+为将局部结论延续至 $t_B$，令
+\[
+t_*:=\sup\{T\in[t_0,t_B]:
+ i_q(t)=K\text{ 对所有 }t\in[t_0,T]\text{ 成立}\}.
+\]
+由局部结论，$t_*>t_0$；由连续性，$i_q=K$ 在 $[t_0,t_*]$ 上成立。
+若 $t_*<t_B$，上述显式解给出 $s_q(t_*)>s_B$。
+同时，该段轨道始终位于安全集外，故 $t_*<\tau_q$。
+在 $t_*$ 处重新应用局部结论，可将 $i_q=K$ 的区间继续向右延长，
+与 $t_*$ 的定义矛盾。
+因此 $t_*=t_B$，所述状态公式与控制公式在整个容量阶段成立。
+最后，$x_q(t_B)=(s_B,K)$，且
+$\Phi(s_B,K)=\Phi_B>\Phi_A$，所以 $t_B<\tau_q$。
+\end{proof}
+
+\begin{theorem}[全时间轴上的几乎处处唯一性]
+\label{thm:unique-q}
+在定理\ref{thm:verification}的基本模型条件下，
+从同一 $x_0\in\Dcal$ 出发的最优状态轨道唯一，
+最优控制 $q^*$ 在 $[0,\infty)$ 上几乎处处唯一。
+平台上不要求 Hamiltonian 的点态极小集为单点。
+\end{theorem}
+
+\begin{proof}
+若 $x_0\in\Acal$，则 $V(x_0)=0$。
+由于 $pc>0$，任意最优控制都满足 $q=0$ 几乎处处；
+状态方程解的唯一性随即给出最优轨道唯一。
+以下设 $x_0\notin\Acal$。
+
+任取最优控制 $q$，记其状态轨道为 $x_q=(s_q,i_q)$，
+首次进入安全集的时间为 $\tau_q$。
+由定理\ref{thm:verification}，该控制成本有限。
+推论\ref{cor:verification-equality}给出
+\[
+R_q=0\quad\text{几乎处处于 }(0,\tau_q),\qquad
+q=0\quad\text{几乎处处于 }(\tau_q,\infty).
+\]
+
+\emph{各分区内的控制选择。}
+在自然等待区的时间集合上，
+引理\ref{lem:waiting-HJB}与普通链式法则给出
+$R_q=q\Sigma_U$，其中 $\Sigma_U>0$，
+故 $q=0$ 几乎处处。
+在 $\mathcal T\cap\{i<K\}$ 的时间集合上，
+命题\ref{prop:all-HJB}给出
+$R_q=(1-q)H_{0,U}$，其中 $H_{0,U}>0$，
+故 $q=1$ 几乎处处。
+
+对于时间集合
+\[
+E_K^-:=\{t\in(0,\tau_q):i_q(t)=K,\ h<s_q(t)<s_B\},
+\]
+引理\ref{lem:trajectory-verification}的容量边界计算给出
+\[
+R_q(t)
+=\bigl(1-q_B(s_q(t))\bigr)H_{0,W}(x_q(t))>0
+\]
+对 $E_K^-$ 中几乎所有时刻成立。
+由于最优控制满足 $R_q=0$ 几乎处处，$E_K^-$ 必为零测集。
+因此，在轨道属于整个 $\mathcal T$ 的时间集合上，
+$q=1$ 几乎处处。
+
+由注\ref{rem:relative-open-control-regions}及轨道连续性，
+$\{t\in[0,\tau_q):x_q(t)\in\mathcal W\}$ 与
+$\{t\in[0,\tau_q):x_q(t)\in\mathcal T\}$
+均为 $[0,\tau_q)$ 中的相对开集，因而各自是至多可数个相对开区间的并。
+在任一等待区间内，对该区间中的 $t_1<t_2$ 有
+\[
+x_q(t_2)-x_q(t_1)=\int_{t_1}^{t_2}f_0(x_q(v))\dd v;
+\]
+在任一完全跟踪区间内，相同等式将 $f_0$ 换为 $f_1$。
+这由状态轨道的绝对连续性及上述几乎处处的控制选择得到。
+在有限区间端点，通过连续性取极限，积分关系仍成立。
+因此，给定每段的起始状态后，由 $f_0,f_1$ 的局部 Lipschitz 性，
+该段轨道分别等于对应的唯一自然流或完全跟踪流，直至首次离开相应分区。
+这里并未预先假设最优控制只有有限个切换；
+各阶段的实际顺序由下面的边界延续与横穿论证确定。
+
+\emph{容量弧上的延续。}
+在容量时间集合 $\{t<\tau_q:i_q(t)=K,\ s_q(t)>h\}$ 上，
+引理\ref{lem:ac-level-set}及状态方程强制
+$q=q_B(s_q)$ 几乎处处。
+当最优轨道到达 $(s_*,K)$ 且 $s_*>s_B$ 时，
+引理\ref{lem:no-early-boundary-exit}进一步保证其沿容量弧运行，
+直至在唯一确定的时间到达 $(s_B,K)$。
+这一步使用轨道可行性，而不使用平台上点态极小元的唯一性。
+
+\emph{切换曲线上的行为。}
+引理\ref{lem:strict-crossing}保证轨道在 $\Gamma_K$ 上的时间集合为零测集。
+若 $x_q(t_0)\in\Gamma_K$，包括 $x_q(t_0)=(s_B,K)$ 的情形，
+可取位于不安全区域且满足 $s>e$ 的相对小邻域。
+式\eqref{eq:strict-crossing-time}给出
+$\chi(x_q(t))>0$ 对充分接近 $t_0$ 的所有 $t>t_0$ 成立。
+结合引理\ref{lem:chi-regions}及可行性 $i_q\le K$，
+可知轨道立即进入 $\mathcal T$。
+因此，切换点处的瞬时控制取值不产生另一条最优延续轨道。
+
+\emph{各阶段轨道的唯一确定。}
+在自然等待阶段，$q=0$ 几乎处处，
+因而状态方程解的唯一性确定轨道，直至其首次到达切换曲线或容量边界。
+两种等待分支的公共界面不改变该向量场。
+首次事件的唯一性由推论\ref{cor:Gamma-labels}和相应触点的定义给出；
+其有限时间达到性已在命题\ref{prop:candidate-attainment}中证明。
+若到达容量平台，则上一段确定其唯一的容量弧延续。
+若到达切换曲线，则轨道立即进入完全跟踪区。
+
+在完全跟踪区，$q=1$ 几乎处处，
+由引理\ref{lem:tracking-region}及状态方程解的唯一性，
+轨道被唯一确定至首次到达 $\Acal$，且此前不会返回等待区。
+初值已在容量平台、切换曲线或完全跟踪区的情形，
+分别从对应阶段开始使用相同论证。
+首次进入安全集后，$q=0$ 几乎处处，
+再次由状态方程解的唯一性确定后续轨道。
+
+因此，从同一初值出发，任意最优控制均生成同一条分段状态轨道，
+各阶段的到达时间也相同。
+上述控制选择条件进而给出所有最优控制在 $[0,\infty)$ 上几乎处处相等。
+\end{proof}
+
+\begin{corollary}[最优策略的分区表述]
+\label{cor:optimal-synthesis}
+在定理\ref{thm:verification}和定理\ref{thm:unique-q}的条件下，
+固定 $x_0\in\Dcal$。
+下述辅助分区均与物理域 $\Dcal$ 取交。
+最优控制按几乎处处相等识别，其阶段顺序由初值唯一确定如下。
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item 若 $x_0\in\Acal$，则永久取 $q=0$。
+\item 若 $x_0\in\mathcal T\cup\Gamma_K$，则立即取 $q=1$，
+直至首次进入 $\Acal$，随后永久取 $q=0$。
+\item 若 $x_0\in\mathcal W_\Gamma$，则先取 $q=0$，
+直至到达 $y_\Gamma(\Phi(x_0))$；随后取 $q=1$ 至首次进入 $\Acal$，
+再永久取 $q=0$。
+\item 若 $x_0\in\mathcal W_K\cup\mathcal B$，则先取 $q=0$ 至容量触点
+$(\eta_K(\Phi(x_0)),K)$；初值位于 $\mathcal B$ 时该等待阶段长度为零。
+此后沿 $q=q_B(s)$ 的容量弧运行至 $(s_B,K)$，
+再取 $q=1$ 至首次进入 $\Acal$，最后永久取 $q=0$。
+\end{enumerate}
+特别地，不安全初值的最优控制具有式\eqref{eq:direct-structure}
+或式\eqref{eq:capacity-structure}的结构。
+正长度容量阶段恰对应于 $x_0\in\mathcal W_K\cup\mathcal B$；
+对不安全初值，$\Phi(x_0)=\Phi_B$ 时不产生正长度容量阶段。
+上述结构不规定孤立切换时刻的控制代表值。
+\end{corollary}
+
+\begin{proof}
+定义\ref{def:candidate}给出各分区的候选控制及事件顺序，
+命题\ref{prop:candidate-attainment}证明其可行性和有限时间达到性。
+定理\ref{thm:verification}证明这些控制实现值函数，
+定理\ref{thm:unique-q}排除同一初值下其他不同的最优控制轨道。
+在 $\mathcal W_K\cup\mathcal B$ 中，$\Phi(x_0)>\Phi_B$，
+故容量阶段从严格大于 $s_B$ 的易感坐标开始，持续时间严格为正。
+对不安全初值，若 $\Phi(x_0)=\Phi_B$，则
+$x_0\in\mathcal W_\Gamma\cup\{(s_B,K)\}$。
+初值为 $(s_B,K)$ 时立即完全跟踪；其余情形先自然到达该点，再立即完全跟踪。
+因此不会出现正长度容量阶段。
+\end{proof}
+
+
+\subsection{一维切换成本与全局结论的关系}
+从不安全初值出发，令 $s_1$ 为自然容量触点，并定义候选等待路径
+\[
+i_w(\sigma)=
+\begin{cases}
+K,&h\le\sigma<s_1,\\
+i_0+s_0-\sigma+h\ln(\sigma/s_0),&s_1\le\sigma\le s_0.
+\end{cases}
+\]
+在有限可达点定义
+\begin{align}
+\mathcal J_D(\sigma)&=W(\sigma,i_w(\sigma)),\quad s_1\le\sigma\le s_0,
+\label{eq:JD}\\
+\mathcal J_B(\sigma)&=C_B(s_1,\sigma)+W(\sigma,K),\quad h<\sigma\le s_1.
+\label{eq:JB}
+\end{align}
+其导数为
+\begin{align}
+\mathcal J_D'(\sigma)&=\frac{\sigma-r}{h\sigma}
+[\Theta(\bar s,\bar i)-\Theta(\sigma,i_w(\sigma))],\label{eq:JD-derivative}\\
+\mathcal J_B'(\sigma)&=\frac p\sigma
+[\Theta(\bar s,\bar i)-\Theta(\sigma,K)].\label{eq:JB-derivative}
+\end{align}
+第一式由 $i_w'=(h-\sigma)/\sigma$ 与 $W_s,W_i$ 得到；第二式对容量成本下限和 $W$ 求导得到。
+驻点条件与切换曲线相同，但驻点计算本身没有替代定理\ref{thm:verification}的全控制类比较。
+
+\begin{corollary}[候选策略族中的唯一全局极小]
+\label{cor:one-dimensional-min}
+将两类成本合并为 $F_{x_0}(\sigma)$，在不可立即完全跟踪点置为 $+\infty$，
+在 $\sigma=h$ 置为 $C_B(s_1,h)$。
+则 $F_{x_0}$ 在 $[h,s_0]$ 上存在唯一全局极小点，最小值为 $V(x_0)$。
+极小点可以是初值端点 $\sigma=s_0$；对不安全初值，它不是 $\sigma=h$。
+\end{corollary}
+\begin{proof}
+定义\ref{def:candidate}给出的最优策略属于这个策略族，故极小值达到且等于 $V(x_0)$。
+不同的有限成本 $\sigma$ 沿同一条自然--容量等待路径在不同时间首次开始完全跟踪。
+因为 $s$ 严格下降，且此前控制为 $0$ 或严格小于 $1$ 的 $q_B$，
+两个不同的 $\sigma$ 会在正长度时间区间内给出不同控制。
+定理\ref{thm:unique-q}排除二者同时最优。
+不安全初值的候选最优策略有一段正长度的完全跟踪弧，故纯容量填充 $\sigma=h$ 与它不同，不可能最优。
+该推论在验证和唯一性之后使用，因而没有以候选族极小性循环证明全局最优性。
+\end{proof}
+
+\subsection{从控制到两个传播系数}
+当 $c>0$ 已知时，映射
+\begin{equation}
+q\mapsto\left(\frac{c[p+(1-p)q]}N,\frac{pc(1-q)}N\right)
+\label{eq:q-to-betas}
+\end{equation}
+是单射，故最优 $q$ 的几乎处处唯一性等价于最优系数对的几乎处处唯一性。
+反演公式为
+\begin{equation}
+q=1-\frac{N\beta_2}{pc}=\frac{N(\beta_1-\beta_2)}c.
+\label{eq:q-inversion-known-c}
+\end{equation}
+即使 $c$ 未知，只要给定 $p,N$ 且两个系数同时可识别，也有代数关系
+\begin{align}
+c&=N\left[\beta_1+\frac{1-p}{p}\beta_2\right],\label{eq:c-inversion}\\
+q&=\frac{\beta_1-\beta_2}{\beta_1+\frac{1-p}{p}\beta_2}.\label{eq:q-inversion}
+\end{align}
+这些是模型内的代数反演，并非从观测数据自动获得统计可识别性的结论。
+
+\ifdefined\TheoryOnly\else
+% 数值章节已内联；下方两个标记块由数值导出程序定点更新。
+\providecommand{\NumFigureRoot}{../figures/numerical_scenarios}
+\providecommand{\NumTheoryRef}[2]{#2~\ref{#1}}
+% BEGIN AUTO-GENERATED NUMERICAL REFERENCE VALUES
+% MATLAB 解析公式评价；不含优化器结果。
+\providecommand{\NumJRefEOne}{0.416186}
+\providecommand{\NumJRefETwo}{1.529511}
+\providecommand{\NumJRefEThree}{0.433981}
+\providecommand{\NumJRefEFour}{1.268835}
+\providecommand{\NumJRefEFive}{0.536233}
+\providecommand{\NumSBRef}{0.54769512}
+\providecommand{\NumSwitchSEOneRef}{0.51017169}
+\providecommand{\NumSwitchIEOneRef}{0.13423054}
+\providecommand{\NumMaxReleaseRef}{7.44746905}
+\providecommand{\NumExitETwoTheory}{5.86950254}
+\providecommand{\NumExitEFourTheory}{1.08077528}
+% END AUTO-GENERATED NUMERICAL REFERENCE VALUES
+
+% BEGIN AUTO-GENERATED NUMERICAL RESULTS
+% 从 data/numerical_scenarios 的真实结果生成；条件开关由 main.tex 定义。
+\NumResultsVerifiedtrue
+\NumRobustnessCompletetrue
+\renewcommand{\NumRobustnessStatement}{默认协议已记录 35/35 个不同配置，其中 28 个同时通过数值接受与理论比较。协议是否完成与比较是否一致分别记录。五例常值和固定种子随机初猜的阶段一致，成本最大绝对差为 $\num{6.1e-13}$。固定时域网格复核的原严格最细两级成本与事件区间判据通过 E1、E3、E5。E2、E4 的 $N=4000$ 重积分容量超出未达到 $\num{1e-06}$ 接受容差，故最细两级的成本与事件比较未执行。E2 的该级解析比较通过。E4 的该级容量控制比较另未通过，但单项事件时间比较仍通过。E2、E4 的容量超出在测试网格上随加密下降，在 $N=8000$ 时均低于该容差。E2、E4 的 $N=2000$ 长中间控制块与阶段识别异常仍保留在配套记录中。原严格网格组仍未通过，不能作五例整体网格稳定或收敛阶结论。固定步长时域复核五例通过。阈值复核通过。全部记录见配套文件；有限样本与浮点诊断不替代解析证明。}
+\providecommand{\NumHorizon}{300}
+\providecommand{\NumIntervals}{4000}
+\providecommand{\NumDegree}{2}
+\providecommand{\NumMeshDetails}{按预先指定设置，E2 使用 $N=8000$，E4 使用 $N=8000$；其余算例保留基准网格。图表均采用各例最终保存的结果。}
+\providecommand{\NumJOclEOne}{0.416205}
+\providecommand{\NumJOclETwo}{1.529523}
+\providecommand{\NumJOclEThree}{0.433999}
+\providecommand{\NumJOclEFour}{1.268831}
+\providecommand{\NumJOclEFive}{0.536256}
+\providecommand{\NumExitETwoStart}{5.85000000}
+\providecommand{\NumExitETwoEnd}{5.88750000}
+\providecommand{\NumExitEFourStart}{1.05000000}
+\providecommand{\NumExitEFourEnd}{1.08750000}
+\providecommand{\NumNeutralETwoCostDifference}{5.78648240435e-13}
+\providecommand{\NumEFourSignedCostDifference}{-3.68275844664e-06}
+\providecommand{\NumEFourCapacityExcess}{7.70286958773e-07}
+\providecommand{\NumFindingWaiting}{实际控制输出中，E1 和 E2 分别识别出 $0\to 1\to 0$ 与 $0\to q_B\to 1\to 0$。E1：初次干预的检测区间为 $[6.975,7.05]$；完全跟踪开始的检测区间为 $[6.975,7.05]$；解除的检测区间为 $[7.425,7.5]$。E2：初次干预的检测区间为 $[4.3125,4.35]$；容量进入的检测区间为 $[4.3125,4.35]$；容量退出的检测区间为 $[5.85,5.8875]$；完全跟踪开始的检测区间为 $[5.85,5.8875]$；解除的检测区间为 $[6.5625,6.6]$。}
+\providecommand{\NumFindingTrackingBoundary}{E3、E4、E5 的实际阶段依次为 $1\to 0$、$q_B\to 1\to 0$ 和 $1\to 0$。E3：初次干预的检测区间为 $[0,0]$；完全跟踪开始的检测区间为 $[0,0]$；解除的检测区间为 $[0.375,0.45]$。E4：初次干预的检测区间为 $[0,0]$；容量进入的检测区间为 $[0,0]$；容量退出的检测区间为 $[1.05,1.0875]$；完全跟踪开始的检测区间为 $[1.05,1.0875]$；解除的检测区间为 $[1.7625,1.8]$。E5：初次干预的检测区间为 $[0,0]$；完全跟踪开始的检测区间为 $[0,0]$；解除的检测区间为 $[0.525,0.6]$。E2、E4 的理论容量退出时刻均位于各自容量段与完全跟踪段之间的单网格过渡区间内，因此不将首个纯完全跟踪单元的起点直接等同于连续切换点。}
+\providecommand{\NumCheckStatement}{对原始分段常数控制逐区间重积分后，五例最大容量超出量为 $\num{8e-07}$，与配点状态的最大差异为 $\num{8.6e-08}$；末尾 $20$ 个时间单位内最大控制幅值为 $\num{0}$。各例终端状态均通过零控制安全延拓核查。这些浮点检查用于排查截断及离散问题，不是连续可行性的严格证明。}
+\providecommand{\NumOverallFinding}{五例成本相对解析参考的最大差异约为 $0.00459\%$。计算结果支持这五个初值下的阶段顺序及切换位置预测；切换位置的偏差应结合控制区间宽度和过渡单元解释。E4 的离散成本比解析参考低 $\num{3.68e-06}$，重积分轨道仍有 $\num{7.7e-07}$ 的容量超出；即使满足浮点接受容差，也不能称为低于解析最优值的严格连续时间可行控制。}
+% END AUTO-GENERATED NUMERICAL RESULTS
+\providecommand{\NumMeshDetails}{}
+
+% Missing actual figures remain blank. Never substitute predicted OCP plots.
+\newcommand{\NumFigureOrBlank}[2]{%
+  \IfFileExists{\NumFigureRoot/#1}{%
+    \includegraphics[width=0.97\linewidth]{\NumFigureRoot/#1}%
+  }{%
+    \fbox{\parbox[c][#2][c]{0.93\linewidth}{\mbox{}}}%
+  }%
+}
+\newcommand{\NumFindingParagraph}[1]{\par\smallskip #1\par\smallskip}
+
+\section{数值方法与实验设置}
+\label{sec:numerical-method}
+
+本节围绕不同初值区域，比较解析最优策略与直接配点输出，
+重点考察等待阶段、容量弧和完全跟踪阶段的出现顺序及其连接位置。
+算例组织借鉴 \citet[第6节]{AvramFreddiGoreac2022} 的区域相关情景设计，
+但使用本文的状态方程、控制成本及
+\NumTheoryRef{def:regions}{分区定义}。
+该文献的有限时域问题包含目标约束，
+本文仅借鉴其几何展示方式，不将其结果作为下述无终端约束截断的等价性依据。
+全局最优性与几乎处处唯一性分别由
+\NumTheoryRef{thm:verification}{验证定理}和
+\NumTheoryRef{thm:unique-q}{唯一性定理}给出；
+数值实验用于检验这些解析结论的计算一致性。
+
+五个主算例采用相同参数
+\begin{equation}
+ p=0.5,\qquad c=2,\qquad\gamma=0.3,\qquad K=0.15,
+ \label{eq:numerical-common-parameters}
+\end{equation}
+仅改变初始状态。
+$s,i$ 为相对于初始总量的比例，允许 $s_0+i_0<1$；
+此时 $h=0.3$、$\ell=r=0.15$。
+这些参数用于展示理论结构，不作为特定疫情的参数标定。
+
+直接配点处理如下固定时域问题：
+\begin{equation}
+\begin{aligned}
+ \min_q\quad &J_T(q)=\int_0^T pcq(t)\,\mathrm dt,\\
+ \text{满足}\quad
+ &\dot s=-c[p+(1-p)q]si,\qquad
+ \dot i=[pc(1-q)s-\gamma]i,\\
+ &0\le q\le1,\quad 0\le s\le1,\quad0\le i\le K,\\
+ &(s(0),i(0))=(s_0,i_0).
+\end{aligned}
+\label{eq:numerical-ocp}
+\end{equation}
+该问题不增加终端状态约束、终端成本或二次控制正则化，
+也不固定阶段数、切换时刻或容量控制。
+解析策略可用于初始化，但不进入数值优化的目标或额外约束。
+
+计算方法为 MATLAB/OpenOCL 直接配点\citep{Koenemann2019OpenOCL}，
+通过 CasADi\citep{Andersson2019CasADi} 构造离散问题，
+由 IPOPT 求解非线性规划\citep{WachterBiegler2006}。
+基准设置为 $T=\NumHorizon$、$N=\NumIntervals$、$d=\NumDegree$；
+控制在每个网格区间内为常数。
+\NumMeshDetails
+控制成本在完整求解时域上按实际区间长度计算：
+\begin{equation}
+ J_{\mathrm{OCL}}=pc\sum_{k=1}^{N}q_k\Delta t_k.
+ \label{eq:numerical-cost-sum}
+\end{equation}
+绘图窗口不作为成本积分范围，求解输出不通过平滑或裁剪替换。
+
+对于每个待报告结果，用原始分段常数控制重新积分状态方程，
+检查区间内部的容量峰值、与配点状态的偏差以及终端零控制延拓。
+对正状态，未来无控制峰值为
+\[
+ P_0(s,i)=
+ \begin{cases}
+  i,&s\le h,\\
+  i+s-h-h\ln(s/h),&s>h.
+ \end{cases}
+\]
+终端延拓检查对重积分得到的状态使用 $P_0(s(T),i(T))$，
+同时检查终点前一段时间内的控制是否已接近零。
+这些是求解后的浮点诊断，不进入问题\eqref{eq:numerical-ocp}。
+它们不单独证明连续时间严格可行性，
+也不将有限时域离散问题与原无穷时域问题视为严格等价。
+
+阶段和过渡区间首先依据数值控制及容量接近程度识别，
+再与解析事件比较。
+跳跃附近按过渡网格区间报告位置，
+不以首个纯控制单元的起点代替连续切换时刻。
+附加复核分别改变初始猜测、网格、终止时刻及阶段识别阈值；
+网格比较固定 $T$，时域比较固定控制区间宽度，
+以区分离散误差和截断效应。
+正文保留与阶段结构相关的摘要，配置统计和诊断分类见附录\ref{app:numerical-reproducibility}。
+局部求解器的重复收敛及有限样本复核均不替代解析证明。
+
+% 下列宏由实际保存数据生成；未完成时保持为空。
+\NumFindingParagraph{\NumCheckStatement}
+\NumFindingParagraph{\NumRobustnessStatement}
+
+\section{不同初值区域下的数值验证}
+\label{sec:numerical-results}
+
+\subsection{代表初值与相平面分区}
+
+选取表\ref{tab:numerical-scenarios}中的五个初值，分别覆盖两种等待区、
+内部立即完全跟踪区以及容量线上内生阈值两侧的状态。
+算例 E1 与 E2 保持 $i_0$ 相同，用来区分两种等待方式；
+算例 E4 与 E5 保持 $i_0=K$，用来检验容量初值是否需要先维持平台。
+算例 E3 补充了 $i_0<K$ 时直接采用完全跟踪的情形。
+
+由安全边界和切换条件的数值评价得
+\begin{equation}
+ s_B\approx\NumSBRef,
+ \label{eq:numerical-sB}
+\end{equation}
+其中 $(s_B,K)$ 为切换曲线与容量线的交点。
+图\ref{fig:numerical-regions}用同一相平面标记初值、区域和相应轨道。
+两种等待分支之间的边界使用正文定义的自然轨道标号
+$\Phi=\Phi_B$，不是整条竖线 $s=s_B$。
+所有区域均限制在 $s>0$、$0<i\le K$、$s+i\le1$ 的物理域内。
+
+\begin{table}[H]
+\centering
+\small
+\setlength{\tabcolsep}{4.2pt}
+\caption{代表初值、理论控制结构与控制成本。$J_{\mathrm{ref}}$ 为解析公式的数值评价，
+$J_{\mathrm{OCL}}$ 为直接配点返回控制在完整求解时域内的成本。}
+\label{tab:numerical-scenarios}
+\begin{tabular}{@{}clclrr@{}}
+\toprule
+算例 & $(s_0,i_0)$ & 区域 & 理论结构 & $J_{\mathrm{ref}}$ & $J_{\mathrm{OCL}}$\\
+\midrule
+E1 & $(0.75,0.01)$ & $\mathcal W_\Gamma$ & $0\to1\to0$ & \NumJRefEOne & \NumJOclEOne\\
+E2 & $(0.99,0.01)$ & $\mathcal W_K$ & $0\to q_B\to1\to0$ & \NumJRefETwo & \NumJOclETwo\\
+E3 & $(0.50,0.14)$ & $\mathcal T$ & $1\to0$ & \NumJRefEThree & \NumJOclEThree\\
+E4 & $(0.70,0.15)$ & $\mathcal B$ & $q_B\to1\to0$ & \NumJRefEFour & \NumJOclEFour\\
+E5 & $(0.50,0.15)$ & $\mathcal T\cap\{i=K\}$ & $1\to0$ & \NumJRefEFive & \NumJOclEFive\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\NumFigureOrBlank{FigN1_regions.pdf}{4.2cm}
+\caption{不同初值区域及代表轨道的相平面对照。
+图中标出安全边界、切换曲线 $\Gamma_K$、容量线 $i=K$、两种等待区的公共边界，
+以及 E1--E5 的初始状态。理论几何与直接配点轨道采用不同线型或标记。}
+\label{fig:numerical-regions}
+\end{figure}
+
+\subsection{两种等待区域的对照}
+
+算例 E1 的初值 $(0.75,0.01)$ 属于 $\mathcal W_\Gamma$。
+根据\NumTheoryRef{def:candidate}{反馈构造}，先取 $q=0$，
+沿自然轨道到达 $\Gamma_K$ 后采用完全跟踪，并在进入安全集后解除。
+理论结构为
+\[
+ 0\longrightarrow1\longrightarrow0.
+\]
+解析公式给出的完全跟踪起点约为
+\[
+ (s_\Gamma,i_\Gamma)
+ \approx(\NumSwitchSEOneRef,\NumSwitchIEOneRef),
+ \qquad i_\Gamma<K.
+\]
+因此，本例的关键检验是数值优化是否在容量尚未达到时开始完全跟踪，
+以及是否没有出现正长度容量平台。
+
+算例 E2 的初值 $(0.99,0.01)$ 属于 $\mathcal W_K$。
+理论预测先自然达到容量，再采用 $q_B(s)=1-h/s$，
+沿 $i=K$ 运行至 $(s_B,K)$，之后转入完全跟踪并在安全边界解除。
+其结构为
+\[
+ 0\longrightarrow q_B(s)\longrightarrow1\longrightarrow0.
+\]
+图\ref{fig:numerical-waiting}并列比较这两种等待方式。
+平台是否出现、完全跟踪开始时的感染比例及切换点的位置，
+共同构成本组情景的比较内容。
+
+\begin{figure}[H]
+\centering
+\NumFigureOrBlank{FigN2_waiting.pdf}{5.0cm}
+\caption{两种等待区域下的控制与感染比例：左列为 E1，右列为 E2；
+上排为 $q(t)$，下排为 $i(t)$。
+每幅图比较解析参考与 OpenOCL 结果，数值控制按分段常数形式显示，
+感染图中的水平线表示容量 $K$。}
+\label{fig:numerical-waiting}
+\end{figure}
+
+% EXPERIMENT_REQUIRED: actual E1/E2 observations and a few useful event values.
+\NumFindingParagraph{\NumFindingWaiting}
+
+不存在容量平台与全时域内不接触容量并非同一命题。
+解析策略在安全边界解除后，感染比例可以沿无控制轨道再次上升至 $K$，
+但不超过它；此时 $q=0$，不应将这种后续接触误判为容量控制弧。
+
+\subsection{立即完全跟踪与容量边界初值}
+
+算例 E3 的初值 $(0.50,0.14)$ 位于 $\mathcal T$ 的内部，且 $i_0<K$。
+理论策略从初始正长度阶段起即采用 $q=1$，到达安全集后取 $q=0$。
+本例检验没有初始等待阶段的 $1\to0$ 结构，
+而不是等待感染达到容量后才开始控制。
+
+算例 E4 和 E5 均从容量线出发，但 $s_0$ 分别位于 $s_B$ 两侧：
+\[
+ 0.70>s_B,\qquad 0.50<s_B.
+\]
+E4 属于容量等待弧 $\mathcal B$，理论上先采用 $q_B$ 保持容量，
+在 $s=s_B$ 时转为完全跟踪；E5 则属于立即完全跟踪区，
+理论上应直接采用 $q=1$ 并离开容量线。
+因此，两者对应
+\[
+ \mathrm{E4}:\quad q_B\to1\to0,
+ \qquad
+ \mathrm{E5}:\quad 1\to0.
+\]
+这组对照说明，是否维持容量不能仅由 $i_0=K$ 决定，
+还取决于状态在内生切换阈值两侧的位置。
+
+另一个比较是 E2 与 E4 在容量退出时的状态。
+两例到达该事件的时间不同，但理论上均经过同一状态 $(s_B,K)$；
+从该点起的后续解析轨道相同。
+因此可以在相平面中比较其数值退出位置，而不要求不同算例的时间序列重合。
+
+\begin{figure}[H]
+\centering
+\NumFigureOrBlank{FigN3_boundary_tracking.pdf}{5.0cm}
+\caption{立即完全跟踪与容量边界初值的对照。
+从左到右为 E3、E4、E5，上排为 $q(t)$，下排为 $i(t)$。
+解析参考与 OpenOCL 结果的比较重点为初始控制阶段、容量平台是否出现，以及解除位置。}
+\label{fig:numerical-boundary-tracking}
+\end{figure}
+
+% EXPERIMENT_REQUIRED: observed initial stages and E2/E4 numerical exit states.
+\NumFindingParagraph{\NumFindingTrackingBoundary}
+
+\subsection{成本对照与结构总结}
+
+表\ref{tab:numerical-scenarios}中的 $J_{\mathrm{ref}}$
+为解析公式的数值评价，$J_{\mathrm{OCL}}$
+为数值优化返回控制按式\eqref{eq:numerical-cost-sum}计算的成本。
+成本接近、阶段顺序一致和切换位置接近是相互补充的比较指标，
+其中任一项都不能单独替代其余指标。
+数值一致性不要求孤立切换瞬间的控制代表值相同。
+
+数值控制允许存在与网格尺度相关的过渡单元，
+故切换误差应与相应网格宽度一并解释。
+配点状态与重积分状态之间的偏差反映动力学离散的一致性，
+并不等同于数值状态与解析最优轨道之间的误差。
+若离散成本略低于解析成本，应同时检查原控制的重积分容量约束，
+不能将存在容量超出的离散结果称为优于解析最优策略的严格可行控制。
+
+% 只允许实际结果驱动；不得从预期结构拼出“识别结构”。
+\NumFindingParagraph{\NumOverallFinding}
+\FloatBarrier
+
+\section{\texorpdfstring{时变接触率 $c(t)$：条件性结论}{时变接触率：条件性结论}}
+\label{sec:time-varying}
+现在令 $c(t)>0$ 为给定的可测、局部本质有界函数。
+由于恢复率 $\gamma$ 不随时间缩放，令 $\tau(t)=\int_0^t c(v)\dd v$ 后，
+在该时间变换的值域内仍按几乎处处意义有
+\[
+\frac{\dd i}{\dd\tau}=p(1-q)si-\frac{\gamma}{c(t(\tau))}i.
+\]
+因此一般不能化为本稿的常系数问题。
+本节仅陈述在另行建立值函数和验证条件后适用的公式与充分条件；
+不声称已经解决任意时变 $c$ 的存在性、全局验证或唯一性。
+
+\subsection{非自治 HJB 方程}
+对具体定义的时变问题，在值函数 $V(t,s,i)$ 具备所需正则性、动态规划可作微分化的点，
+内部 HJB 的条件性微分形式为
+\begin{equation}
+\begin{aligned}
+0=V_t+\min_{q\in Q(t,s,i)}\Big\{&-c(t)[p+(1-p)q]siV_s\\
+&+[pc(t)(1-q)s-\gamma]iV_i+pc(t)q\Big\}.
+\end{aligned}
+\label{eq:time-HJB}
+\end{equation}
+当 $c$ 仅可测时，上式至多按时间几乎处处理解：在相应的 Lebesgue 点和所需值函数导数存在处使用，
+不要求它在每个指定时刻都是经典等式。
+若进一步用于验证，仍须针对每条被比较的轨道建立复合函数的链式法则和沿轨道的几乎处处不等式；
+仅有状态--时间空间中几乎处处的等式，不自动保证它沿任意轨道成立。
+内部取 $Q=[0,1]$；容量边界在上述几乎处处时间意义下的内指或切向速度条件对应
+\begin{equation}
+Q(t,s,K)=\left[\max\left\{0,1-\frac{\gamma}{pc(t)s}\right\},1\right].
+\label{eq:time-boundary-set}
+\end{equation}
+切换系数为
+\begin{equation}
+\Sigma(t,s,i)=pc(t)-c(t)si[(1-p)V_s+pV_i].
+\label{eq:time-switch}
+\end{equation}
+式 \eqref{eq:time-boundary-set}--\eqref{eq:time-switch} 不把时间零测集上的 $c,q$ 代表值作为额外的点态轨道约束。
+若在时间 $t$ 定义无控制安全集，它必须使用从 $t$ 开始的\emph{完整未来接触率路径}，
+不能仅把常系数安全集中的 $c$ 换成当前 $c(t)$。
+
+\begin{proposition}[条件性的时变唯一性充分条件]
+\label{prop:time-conditional}
+对某个已经明确定义的时变问题，假设最优解存在，且已经证明对任意最优轨道的验证等式。
+进一步假设：在所有可能被最优轨道经过的状态--时间点，验证等式使控制几乎处处等于同一单值反馈 $Q(t,x)$；
+该反馈从给定初值生成的可行 Carath\'eodory 解唯一。
+则最优控制几乎处处唯一。
+\end{proposition}
+\begin{proof}
+任意最优控制均须沿自己的轨道满足 $q(t)=Q(t,x(t))$ 几乎处处。
+所有最优状态轨道因此满足同一闭环方程与初值，由闭环唯一性得轨道一致，进而控制几乎处处一致。
+\end{proof}
+内部 $\Sigma\ne0$、容量上受限极小元单值，是控制选择单值的充分途径，
+但仅在一条候选轨道上检查这些性质不足以排除所有其他最优轨道。
+常接触率平台的唯一性反而说明点态单值不是最优控制唯一的必要条件。
+
+\subsection{有限时域严格凸正则化}
+另取固定 $T<\infty$ 及明确的终端数据，可研究不同于原无穷时域问题的正则化目标
+\begin{equation}
+J_\varepsilon(q)=\int_0^T\left[pc(t)q(t)+\frac\varepsilon2q(t)^2\right]\dd t,
+\qquad\varepsilon>0.
+\label{eq:regularized-cost}
+\end{equation}
+\begin{proposition}[唯一的点态正则化极小元]
+\label{prop:regularized-pointwise}
+若相应的有限时域值函数 $V_\varepsilon^T$ 在所考虑的点可微，
+则固定满足上述时间约定的 $(t,s,i)$ 及其值梯度时，Hamiltonian 的内部极小元唯一，形式为
+\begin{equation}
+q_\varepsilon^*(t,s,i)=\proj_{[0,1]}
+\left(\frac{c(t)si[(1-p)\partial_sV_\varepsilon^T+p\partial_iV_\varepsilon^T]-pc(t)}\varepsilon\right).
+\label{eq:projection-feedback}
+\end{equation}
+容量边界上将投影区间换为 \eqref{eq:time-boundary-set}。
+\end{proposition}
+\begin{proof}
+关于 $q$ 的二阶导数为 $\varepsilon>0$，无约束一阶条件给出括号中的值，
+加入区间约束后取投影。
+该计算只证明点态严格凸性；只有另行完成验证、达到性和可行闭环唯一性，才能进一步推出整个控制问题的唯一最优解。
+\end{proof}
+若需控制变化惩罚，可在离散目标中加入相邻控制差的平方，或在连续问题中把 $q$ 作为状态。
+这些都是不同的控制问题，不能不经证明就视为原线性成本问题的等价改写。
+
+\section{同时控制接触率与跟踪比例时的限制}
+若把 $c$ 也作为控制并允许 $c=0$，而仍仅使用 \eqref{eq:linear-cost}，
+则 $c=0,q=0$ 给出零成本可行方案，问题退化。
+联合控制需另行定义接触减少和跟踪成本，例如
+\begin{equation}
+\int_0^T[\alpha_c(c_0-c)^2+\alpha_q q^2+\alpha_{cq}cq]\dd t,
+\label{eq:joint-cost}
+\end{equation}
+并明确控制约束。
+该示例中的权重须另行保证非负性或所需凸性；即使运行成本严格凸，
+动力学中的 $cq$ 项以及非线性状态约束也不会自动给出整个问题的严格凸性。
+本稿不为此扩展声称全局唯一性。
+
+\section{模型内的机制解释与理论边界}
+\label{sec:limitations}
+完全跟踪同时使非隔离感染者的新增项归零、使未隔离易感者继续移出。
+因此从内生阈值开始短时完全跟踪，比始终维持容量直至 $s=h$ 更节省本稿定义的成本。
+这只是既定动力学与成本下的数学结论，不自动适用于含其他健康损失或资源约束的实际决策。
+非隔离感染者阈值 $K$、自然感染增长阈值 $h$、以及出现在不变量中的 $r$ 是不同的量；切换点由特征线上的 $\Theta$ 匹配确定。
+
+\begin{remark}[本稿未完成、且未用于主定理的扩展证明]
+\label{rem:unproved-extensions}
+任意时变 $c(t)$ 的全域值函数构造、无穷时域终端处理和无条件唯一性未在本稿证明。
+离散网格加密和 $\varepsilon\downarrow0$ 的收敛、时变高峰后的真实安全延拓也未证明。
+$q_{\max}<1$、完全跟踪后残余感染生成、隔离者回流、联合控制以及参数不确定的情形需重新建立可行域和验证函数。
+特别地，$q_{\max}<1$ 时，容量边界还必须满足 $q_{\max}\ge1-h/s$；
+不能只把本稿的 $1$ 替换成 $q_{\max}$ 后沿用最优结构定理。
+\end{remark}
+\fi
+
+\section{主要结论}
+\label{sec:conclusions}
+两个传播系数由同一跟踪比例耦合，但易感者移出与感染者生成对控制的响应方向不同。
+在常接触率、线性成本、完整控制区间及正感染初值下，
+本稿从有限可达域、非平凡切换曲线的完整参数化和全域分区出发，构造可行候选成本 $U$。
+两种等待分支的统一梯度、内部匹配和容量水平集论证，给出对所有可测可行控制成立的验证不等式。
+有限成本轨道的有限时间入安全集引理消除了额外终端假设，从而定理\ref{thm:verification}证明 $U=V$。
+
+最优性与唯一性分别证明。平台上 Hamiltonian 的打平是结构性事实，
+定理\ref{thm:unique-q}通过禁止提前离边、切换界面严格横穿及各段状态方程唯一性，
+证明最优控制在全时间轴上几乎处处唯一。
+允许零长度阶段后，非平凡结构为 $0\to1\to0$ 或 $0\to q_B\to1\to0$；
+安全初值唯一采用 $q=0$。
+基准初值的解析公式数值评价为 $J^*\approx1.52951116$，相对纯容量填充节省约 $3.10\%$。
+数值计算只评价或核对解析构造，不承担全局充分性证明。
+\ifdefined\TheoryOnly\else
+\ifNumResultsVerified
+五个代表初值的直接配点结果再现了两种等待方式、内部立即完全跟踪，
+以及容量线上切换阈值两侧的不同初始阶段。
+该比较支持所选算例的结构一致性，不构成全域最优性或唯一性的额外证明。
+\fi
+\fi
+
+\ifdefined\TheoryOnly\else
+时变接触率仅保留条件性的验证与唯一性讨论。
+严格凸正则化给出的是固定状态和梯度下的唯一点态极小元，不能单凭此推出整个非线性控制问题全局唯一。
+本稿未完成的扩展证明已在注\ref{rem:unproved-extensions}中列明，不作为常接触率主定理的结论。
+\fi
+
+\appendix
+\section{完全跟踪成本导数的逐步计算}
+\label{app:W-derivatives}
+由
+\[
+G_0(s,i,\bar s)=i-\ell\ln s-a(\bar s)+\ell\ln\bar s=0
+\]
+及 $a'(\bar s)=(h-\bar s)/\bar s$，有
+\[
+\partial_{\bar s}G_0=-a'(\bar s)+\frac\ell{\bar s}
+=\frac{\bar s-r}{\bar s}.
+\]
+于是
+\[
+-\frac\ell s+(\partial_{\bar s}G_0)\bar s_s=0,\qquad
+1+(\partial_{\bar s}G_0)\bar s_i=0,
+\]
+从而得到 \eqref{eq:endpoint-derivatives}。
+又 $\bar i_s=a'(\bar s)\bar s_s$、$\bar i_i=a'(\bar s)\bar s_i$。
+对 $W=(\ln i-\ln\bar i)/h$ 求导即得
+\[
+W_s=-\frac1h\frac{a'(\bar s)\bar s_s}{\bar i}
+=\frac{\ell(\bar s-h)}{hs(\bar s-r)\bar i},
+\]
+\[
+W_i=\frac1h\left[\frac1i-\frac{a'(\bar s)\bar s_i}{\bar i}\right]
+=\frac1h\left[\frac1i-\frac{\bar s-h}{(\bar s-r)\bar i}\right].
+\]
+这些导数首先属于指定策略成本 $W$，只有在完全跟踪分区完成验证后才同时是值函数的相应导数。
+
+\section{容量边界成本积分的逐步计算}
+\label{app:capacity-integral}
+由 $\dot s=-cK(s-r)$，$\dd t=-\dd s/[cK(s-r)]$，得到
+\[
+C_B=\frac pK\int_{s_{\rm lo}}^{s_{\rm hi}}\frac{s-h}{s(s-r)}\dd s.
+\]
+作部分分式 $(s-h)/[s(s-r)]=A/s+B/(s-r)$。
+比较系数得 $A+B=1$、$Ar=h$，所以
+\[
+A=\frac1{1-p},\qquad B=-\frac p{1-p}.
+\]
+代回并积分即得 \eqref{eq:boundary-cost}。
+
+\section{证明依赖与校验口径}
+\label{app:proof-scope}
+常接触率证明的依赖顺序为：
+状态正性和耗散；安全集及有限成本比较策略；有限成本入安全集；
+完全跟踪可达域和成本；切换曲线几何；全域候选及达到性；梯度与拼接正则性；
+沿任意轨道的验证；全局最优性；最后另证唯一性。
+推论\ref{cor:one-dimensional-min}在全局验证之后陈述，不用候选策略族内的极小性替代全控制类比较。
+全局最优性确立后，推论\ref{cor:verification-equality}
+由沿轨道验证不等式积分得到最优控制的等号条件。
+引理\ref{lem:no-early-boundary-exit}据此证明容量弧上的延续性质，
+再由定理\ref{thm:unique-q}完成控制与状态轨道的唯一性证明。
+上述推论和引理均不依赖定理\ref{thm:unique-q}。
+
+
+端点存在性由命题\ref{prop:reachable}及引理\ref{lem:tracking-region}处理；
+曲线正则性和横截性由命题\ref{prop:Gamma-geometry}、推论\ref{cor:Gamma-labels}处理；
+不滑行由引理\ref{lem:strict-crossing}处理，横穿方向与实际分区的衔接由引理\ref{lem:chi-regions}处理。
+容量和安全时间集合上的导数关系统一使用引理\ref{lem:ac-level-set}。
+局部 Lipschitz 性和终端处理分别由命题\ref{prop:regularity}及引理\ref{lem:finite-entry}证明。
+任何一个数值扫描都不被用于证明这些全称命题。
+
+本稿区分解析证明、符号恒等式检查、有限样本数值检查及排版编译检查。
+后面三类检查可发现错误，但均不等价于对所有可行控制的解析证明，也不是形式化证明系统的验证。
+
+\section{感染阈值与医疗需求}
+\label{app:medical-capacity}
+
+阈值 $K$ 可以结合医疗资源承载能力选取。
+本附录在正文状态方程之外补充病例流量与医疗需求的联系，给出由可用容量确定 $K$ 的一个充分条件。
+这一解释采用额外的医疗需求假设，不改变二维系统、控制类和主定理。
+
+按跟踪隔离模型的仓室解释\citep{Zhou2024SPCI}，新感染者分别进入非隔离和隔离感染状态，
+其人数流入率为
+\[
+\Lambda_{\mathrm u}(t)=Npc(1-q(t))s(t)i(t),\qquad
+\Lambda_{\mathrm q}(t)=Npcq(t)s(t)i(t).
+\]
+两者之和为全部新增感染流量
+\begin{equation}
+\Lambda(t)=\Lambda_{\mathrm u}(t)+\Lambda_{\mathrm q}(t)
+=Npc\,s(t)i(t).
+\label{eq:medical-total-incidence}
+\end{equation}
+这里 $N$ 为固定人口规模，$c$ 为常接触率，$p$ 为单次接触传播概率。
+$q=1$ 时进入非隔离感染状态的新增流入为零，进入隔离感染状态的新增流入仍可为正。
+由 $s(t)\le s_0$ 和 $i(t)\le K$，得到
+\begin{equation}
+0\le\Lambda(t)\le Npc\,s_0K,\qquad t\ge0.
+\label{eq:medical-incidence-bound}
+\end{equation}
+虽然 $q$ 在式\eqref{eq:medical-total-incidence}中直接消去，状态 $s,i$ 仍依赖于控制。
+
+医疗占用取决于病例流入及其后续停留过程\citep{Baas2021Occupancy}。
+设非负可测函数 $\kappa(a)$ 表示一例新感染者在感染后第 $a$ 个时间单位所需的平均 ICU 床位数，
+并假定它对两类病例、不同感染时点及所比较的控制共同适用。
+允许 $\kappa$ 包含感染至入院的延迟，并设
+\begin{equation}
+\int_0^\infty\kappa(a)\dd a=\pi_{\mathrm{ICU}}L<\infty,
+\qquad 0<\pi_{\mathrm{ICU}}\le1,\quad L>0,
+\label{eq:medical-demand-kernel}
+\end{equation}
+其中 $\pi_{\mathrm{ICU}}$ 是需要 ICU 的概率，$L$ 是需要 ICU 者累计占用时长的均值。
+初始时刻及此前已经感染者的后续平均需求记为 $D_0(t)$，
+假定各策略均满足 $0\le D_0(t)\le D_{\mathrm{init}}<\infty$。
+该项包括初始病例以后才发生的入院，以及已退出传播状态但仍需救治者的后续占用。
+在这些假设下，不受容量拒收限制的平均需求为
+\begin{equation}
+D(t)=D_0(t)+\int_0^t\kappa(t-u)\Lambda(u)\dd u.
+\label{eq:medical-demand}
+\end{equation}
+由非负性与式\eqref{eq:medical-incidence-bound}，有
+\begin{equation}
+\begin{aligned}
+D(t)&\le D_{\mathrm{init}}+Npc\,s_0K\int_0^t\kappa(a)\dd a\\
+&\le D_{\mathrm{init}}+Npc\,s_0K\pi_{\mathrm{ICU}}L.
+\end{aligned}
+\label{eq:medical-demand-bound}
+\end{equation}
+
+设 $C>D_{\mathrm{init}}$ 为全过程固定的本病可用容量，已扣除其他病种占用和预留床位；
+初始本病病例的未来负担由 $D_{\mathrm{init}}$ 单独计入。
+于是
+\begin{equation}
+i_0\le K<1,\qquad
+K\le K_{\mathrm{med}}:=
+\frac{C-D_{\mathrm{init}}}{Npc\,s_0\pi_{\mathrm{ICU}}L}
+\label{eq:medical-threshold}
+\end{equation}
+是所有满足感染阈值约束的控制均有 $D(t)\le C$ 的充分条件。
+该估计使用整个轨道的统一流入上界，可能偏保守；若 $K_{\mathrm{med}}<i_0$，
+只能说明这一充分条件不能用于当前初值，不能据此判定实际医疗需求必然超过容量。
+条件\eqref{eq:medical-threshold}约束模型中的平均需求，不给出随机超载概率。
+将其用于具体地区时，需要估计病例需求核、初始病例的未来负担和可用容量；本文的数值算例未进行这一医疗标定。
+
+\ifdefined\TheoryOnly\else
+\section{数值复现说明}
+\label{app:numerical-reproducibility}
+
+数值代码位于 \path{matlab/numerical_scenarios/}。
+
+独立解析检查点及其生成程序位于
+\path{validation/numerical_scenarios/}；
+检查点只评价正文中的解析构造，不调用数值优化器。
+具体环境准备及检查点生成命令见该目录和数值目录的说明文件。
+从仓库根目录启动 MATLAB 后运行：
+\begin{lstlisting}
+addpath(fullfile(pwd, ...
+ 'tracing_isolation_optimal_control_complete', ...
+ 'matlab', 'numerical_scenarios'));
+revision_preflight();
+run_revision_validation('unit', false);
+run_revision_validation('all', false);
+make_numerical_figures();
+export_numerical_latex();
+\end{lstlisting}
+
+\texttt{all} 运行预先规定的主算例和附加复核。
+各次求解分别保存初值、参数、网格、初始化、求解状态和原始控制数组，
+并记录求解时的源码指纹与环境信息。
+重做后处理不改写原求解的来源信息。
+作图和正文数据导出只读取已保存且来源明确的结果，
+不在缺少结果时以解析参考代替数值优化输出。
+更详细的初猜、网格、时域及阈值复核见
+\path{data/numerical_scenarios/revision_checks/}。
+正文中的数值摘要与所选结果文件保持一一对应。
+\NumFindingParagraph{\NumReproducibilityDetails}
+\clearpage
+\fi
+\bibliographystyle{plainnat}
+\bibliography{references}
+\end{document}

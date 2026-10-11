@@ -1,0 +1,38 @@
+ M tracing_isolation_optimal_control_complete/data/numerical_scenarios/export_provenance.json
+ M tracing_isolation_optimal_control_complete/data/numerical_scenarios/numerical_checks.json
+ M tracing_isolation_optimal_control_complete/data/numerical_scenarios/revision_checks/grid_summary.json
+ M tracing_isolation_optimal_control_complete/latex/main.pdf
+ M tracing_isolation_optimal_control_complete/latex/main.tex
+ M tracing_isolation_optimal_control_complete/latex/references.bib
+ M tracing_isolation_optimal_control_complete/latex/theory_only.pdf
+ M tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/export_numerical_latex.m
+ M tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/revision_group_summary.m
+ M tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/verify_saved_result_exporter.m
+?? tmp/
+?? tracing_isolation_optimal_control_complete/ai/codex_revision_plan/PLANNED_EXPERIMENT_MATRIX.json
+?? tracing_isolation_optimal_control_complete/ai/codex_revision_plan/START_HERE.md
+?? tracing_isolation_optimal_control_complete/archive/pending_deletion/
+?? tracing_isolation_optimal_control_complete/latex/main.aux
+?? tracing_isolation_optimal_control_complete/latex/main.blg
+?? tracing_isolation_optimal_control_complete/latex/main.log
+?? tracing_isolation_optimal_control_complete/latex/main.out
+?? tracing_isolation_optimal_control_complete/latex/main.toc
+?? tracing_isolation_optimal_control_complete/latex/theory_only.aux
+?? tracing_isolation_optimal_control_complete/latex/theory_only.bbl
+?? tracing_isolation_optimal_control_complete/latex/theory_only.blg
+?? tracing_isolation_optimal_control_complete/latex/theory_only.log
+?? tracing_isolation_optimal_control_complete/latex/theory_only.out
+?? tracing_isolation_optimal_control_complete/latex/theory_only.toc
+?? tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/verify_grid_comparison_status.m
+?? "tracing_isolation_optimal_control_complete/ref/COVID-19 pandemic control balancing detection policy and lockdown intervention under ICU sustainability.pdf"
+?? "tracing_isolation_optimal_control_complete/ref/Estimation of the Transmission Risk of the 2019-nCoV and Its Implication for Public Health Interventions.pdf"
+?? "tracing_isolation_optimal_control_complete/ref/How Much Testing and Social Distancing is Required to Control COVID-19 Some Insight Based on an Age-Differentiated Compartmental Model.pdf"
+?? "tracing_isolation_optimal_control_complete/ref/Optimal epidemic suppression under an ICU constraint An analytical.pdf"
+?? tracing_isolation_optimal_control_complete/ref/Tang_Zhou_2024_JMB.pdf
+?? "tracing_isolation_optimal_control_complete/ref/Timing social distancing to avert unmanageableCOVID-19 hospital surges.pdf"
+?? tracing_isolation_optimal_control_complete/ref/一种自适应测试策略，有助于在疫情期间有效利用医疗资源.pdf
+?? tracing_isolation_optimal_control_complete/tmp/
+?? tracing_isolation_optimal_control_complete/validation/numerical_scenarios/__pycache__/
+?? tracing_isolation_optimal_control_complete/validation/numerical_scenarios/grid_explanation_20261009/
+?? tracing_isolation_optimal_control_complete/validation/numerical_scenarios/prose_compression_20261010/
+?? tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_main_before.tex

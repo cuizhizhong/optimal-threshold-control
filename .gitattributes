@@ -1,3 +1,11 @@
 # 保留本轮实际运行日志的原始字节，不对其自动转换换行。
 tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step89_*.log -text
 tracing_isolation_optimal_control_complete/validation/numerical_scenarios/step1011_*.log -text
+# 保留新增验证记录、失败日志和基线快照的原始字节，便于核对记录中的哈希。
+tracing_isolation_optimal_control_complete/validation/front_matter_20261010/** -text
+tracing_isolation_optimal_control_complete/validation/numerical_scenarios/grid_explanation_20261009/** -text
+tracing_isolation_optimal_control_complete/validation/numerical_scenarios/local_fixes_20261010/** -text
+tracing_isolation_optimal_control_complete/validation/numerical_scenarios/prose_compression_20261010/** -text
+tracing_isolation_optimal_control_complete/validation/numerical_scenarios/tolerance_revision_20261010/** -text
+# 此 PDF 不含 NUL 字节，显式按二进制保存以避免换行转换。
+tracing_isolation_optimal_control_complete/ref/Tang_Zhou_2024_JMB.pdf binary

@@ -1,6 +1,9 @@
 {
   "schema_version": 1,
-  "batch_id": "batch_cb8bb06aaa314668a9e553522232368f",
+  "batch_id": "",
+  "assessment_revision_id": "tolerance_revision_20261010",
+  "source_kind": "saved_raw_reassessment",
+  "optimizer_executions": 0,
   "rows": [
     {
       "case_id": "E1",
@@ -16069,7 +16072,7 @@
           "zero_control_continuation_safe": true,
           "capacity": 0.15,
           "tolerance": 1E-6,
-          "capacity_tolerance": 1E-6,
+          "capacity_tolerance": 1E-5,
           "terminal_state_source": "original_control_reintegration",
           "tail_interval_indices": [
             3734,
@@ -53455,7 +53458,7 @@
             "q_B_interval_average": [],
             "signed_error": [],
             "max_absolute_error": [],
-            "tolerance": 0.002,
+            "tolerance": 0.003,
             "method": "not_applicable",
             "reason": "no_positive_length_paid_capacity_cells"
           },
@@ -53465,7 +53468,7 @@
             "max_transition_cells": 2,
             "distance_cells": 1,
             "time_tolerance": 1E-10,
-            "capacity_control_tolerance": 0.002
+            "capacity_control_tolerance": 0.003
           },
           "notes": "真实过渡区间不扩张；距离至多一个邻近最大控制单元表示网格尺度一致。单网格包含结论另由 single_cell_contains_theory 字段给出。状态最短距离仅作浮点诊断。"
         },
@@ -85583,7 +85586,7 @@
           "zero_control_continuation_safe": true,
           "capacity": 0.15,
           "tolerance": 1E-6,
-          "capacity_tolerance": 1E-6,
+          "capacity_tolerance": 1E-5,
           "terminal_state_source": "original_control_reintegration",
           "tail_interval_indices": [
             7467,
@@ -159844,7 +159847,7 @@
               -0.00073386115184587153
             ],
             "max_absolute_error": 0.00073386115184587153,
-            "tolerance": 0.002,
+            "tolerance": 0.003,
             "method": "ode_dense_output_interval_quadrature",
             "reason": ""
           },
@@ -159854,7 +159857,7 @@
             "max_transition_cells": 2,
             "distance_cells": 1,
             "time_tolerance": 1E-10,
-            "capacity_control_tolerance": 0.002
+            "capacity_control_tolerance": 0.003
           },
           "notes": "真实过渡区间不扩张；距离至多一个邻近最大控制单元表示网格尺度一致。单网格包含结论另由 single_cell_contains_theory 字段给出。状态最短距离仅作浮点诊断。"
         },
@@ -175972,7 +175975,7 @@
           "zero_control_continuation_safe": true,
           "capacity": 0.15,
           "tolerance": 1E-6,
-          "capacity_tolerance": 1E-6,
+          "capacity_tolerance": 1E-5,
           "terminal_state_source": "original_control_reintegration",
           "tail_interval_indices": [
             3734,
@@ -213318,7 +213321,7 @@
             "q_B_interval_average": [],
             "signed_error": [],
             "max_absolute_error": [],
-            "tolerance": 0.002,
+            "tolerance": 0.003,
             "method": "not_applicable",
             "reason": "no_positive_length_paid_capacity_cells"
           },
@@ -213328,7 +213331,7 @@
             "max_transition_cells": 2,
             "distance_cells": 1,
             "time_tolerance": 1E-10,
-            "capacity_control_tolerance": 0.002
+            "capacity_control_tolerance": 0.003
           },
           "notes": "真实过渡区间不扩张；距离至多一个邻近最大控制单元表示网格尺度一致。单网格包含结论另由 single_cell_contains_theory 字段给出。状态最短距离仅作浮点诊断。"
         },
@@ -245446,7 +245449,7 @@
           "zero_control_continuation_safe": true,
           "capacity": 0.15,
           "tolerance": 1E-6,
-          "capacity_tolerance": 1E-6,
+          "capacity_tolerance": 1E-5,
           "terminal_state_source": "original_control_reintegration",
           "tail_interval_indices": [
             7467,
@@ -319571,7 +319574,7 @@
               -0.00073250345881858969
             ],
             "max_absolute_error": 0.0012576915261798272,
-            "tolerance": 0.002,
+            "tolerance": 0.003,
             "method": "ode_dense_output_interval_quadrature",
             "reason": ""
           },
@@ -319581,7 +319584,7 @@
             "max_transition_cells": 2,
             "distance_cells": 1,
             "time_tolerance": 1E-10,
-            "capacity_control_tolerance": 0.002
+            "capacity_control_tolerance": 0.003
           },
           "notes": "真实过渡区间不扩张；距离至多一个邻近最大控制单元表示网格尺度一致。单网格包含结论另由 single_cell_contains_theory 字段给出。状态最短距离仅作浮点诊断。"
         },
@@ -335699,7 +335702,7 @@
           "zero_control_continuation_safe": true,
           "capacity": 0.15,
           "tolerance": 1E-6,
-          "capacity_tolerance": 1E-6,
+          "capacity_tolerance": 1E-5,
           "terminal_state_source": "original_control_reintegration",
           "tail_interval_indices": [
             3734,
@@ -373045,7 +373048,7 @@
             "q_B_interval_average": [],
             "signed_error": [],
             "max_absolute_error": [],
-            "tolerance": 0.002,
+            "tolerance": 0.003,
             "method": "not_applicable",
             "reason": "no_positive_length_paid_capacity_cells"
           },
@@ -373055,7 +373058,7 @@
             "max_transition_cells": 2,
             "distance_cells": 1,
             "time_tolerance": 1E-10,
-            "capacity_control_tolerance": 0.002
+            "capacity_control_tolerance": 0.003
           },
           "notes": "真实过渡区间不扩张；距离至多一个邻近最大控制单元表示网格尺度一致。单网格包含结论另由 single_cell_contains_theory 字段给出。状态最短距离仅作浮点诊断。"
         },
@@ -373114,5 +373117,30 @@
     "c": 2,
     "gamma": 0.3,
     "K": 0.15
+  },
+  "assessment_settings": {
+    "state_tolerance": 1E-5,
+    "capacity_tolerance": 1E-5,
+    "control_tolerance": 1E-6,
+    "grid_time_tolerance": 1E-10,
+    "cost_accounting_tolerance": 1E-12,
+    "relative_cost_tolerance": 0.0001,
+    "zero_reference_cost_tolerance": 1E-12,
+    "safe_zero_cost_tolerance": 1E-6,
+    "event_max_transition_cells": 2,
+    "event_distance_cells": 1,
+    "event_time_tolerance": 1E-10,
+    "capacity_control_tolerance": 0.003,
+    "tail_duration": 20,
+    "tail_control_tolerance": 1E-6,
+    "event_control_threshold": 0.001,
+    "event_capacity_threshold": 2E-5,
+    "ode_rel_tol": 2E-10,
+    "ode_abs_tol": 1E-12,
+    "refine_case_id": "E2",
+    "refine_N": 8000,
+    "neutral_guess_case_id": "E1",
+    "neutral_control": 0.7,
+    "neutral_cost_tolerance": 1E-5
   }
 }

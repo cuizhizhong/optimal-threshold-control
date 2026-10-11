@@ -1,0 +1,14 @@
+test_changed_initial_condition_and_cost_are_rejected (test_analytic_checkpoints.AnalyticCheckpointTests.test_changed_initial_condition_and_cost_are_rejected) ... ok
+test_check_is_read_only_for_reordered_fixture (test_analytic_checkpoints.AnalyticCheckpointTests.test_check_is_read_only_for_reordered_fixture) ... ok
+test_duplicated_case_id_is_rejected (test_analytic_checkpoints.AnalyticCheckpointTests.test_duplicated_case_id_is_rejected) ... ok
+test_independent_calculation_matches_fixture (test_analytic_checkpoints.AnalyticCheckpointTests.test_independent_calculation_matches_fixture) ... ok
+test_nonfinite_parameters_are_rejected (test_analytic_checkpoints.AnalyticCheckpointTests.test_nonfinite_parameters_are_rejected) ... ok
+test_nonpositive_rates_are_rejected (test_analytic_checkpoints.AnalyticCheckpointTests.test_nonpositive_rates_are_rejected) ... ok
+test_probability_and_capacity_bounds_are_rejected (test_analytic_checkpoints.AnalyticCheckpointTests.test_probability_and_capacity_bounds_are_rejected) ... ok
+test_reordered_fixture_matches_by_case_id (test_analytic_checkpoints.AnalyticCheckpointTests.test_reordered_fixture_matches_by_case_id) ... ok
+test_reordered_inputs_have_same_calculation (test_analytic_checkpoints.AnalyticCheckpointTests.test_reordered_inputs_have_same_calculation) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 14.256s
+
+OK

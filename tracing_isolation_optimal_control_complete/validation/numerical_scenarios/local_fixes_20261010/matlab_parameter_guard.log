@@ -1,0 +1,32 @@
+PASS: current shared configuration loads without optimization.
+JSON token for NaN: NaN
+JSON token for positive_Inf: Infinity
+JSON token for negative_Inf: -Infinity
+PASS: p=NaN -> numerical_cases_config:InvalidParameters
+PASS: p=Infinity -> numerical_cases_config:InvalidParameters
+PASS: p=-Infinity -> numerical_cases_config:InvalidParameters
+PASS: c=NaN -> numerical_cases_config:InvalidParameters
+PASS: c=Infinity -> numerical_cases_config:InvalidParameters
+PASS: c=-Infinity -> numerical_cases_config:InvalidParameters
+PASS: gamma=NaN -> numerical_cases_config:InvalidParameters
+PASS: gamma=Infinity -> numerical_cases_config:InvalidParameters
+PASS: gamma=-Infinity -> numerical_cases_config:InvalidParameters
+PASS: K=NaN -> numerical_cases_config:InvalidParameters
+PASS: K=Infinity -> numerical_cases_config:InvalidParameters
+PASS: K=-Infinity -> numerical_cases_config:InvalidParameters
+PASS: p=0 -> numerical_cases_config:InvalidParameters
+PASS: p=1 -> numerical_cases_config:InvalidParameters
+PASS: p=-0.1 -> numerical_cases_config:InvalidParameters
+PASS: p=1.1 -> numerical_cases_config:InvalidParameters
+PASS: c=0 -> numerical_cases_config:InvalidParameters
+PASS: c=-1 -> numerical_cases_config:InvalidParameters
+PASS: gamma=0 -> numerical_cases_config:InvalidParameters
+PASS: gamma=-1 -> numerical_cases_config:InvalidParameters
+PASS: K=0 -> numerical_cases_config:InvalidParameters
+PASS: K=1 -> numerical_cases_config:InvalidParameters
+PASS: K=-0.1 -> numerical_cases_config:InvalidParameters
+PASS: K=1.1 -> numerical_cases_config:InvalidParameters
+PASS: all 24 invalid parameter inputs rejected with numerical_cases_config:InvalidParameters.
+CHECKCODE: 1 message(s).
+line 91: 转置 'sort' 的输入通常是不必要的。
+PASS: CHECKCODE message text is unchanged from the pre-edit baseline (1 message(s)).

@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "protected_file_count": 208,
+  "original_solve_and_old_assessment_bytes_unchanged": true,
+  "main_selection_run_ids_unchanged": true,
+  "main_outside_generated_unchanged": true,
+  "new_assessment_count": 35,
+  "new_finest_grid_comparison_pass_count": 5,
+  "numeric_and_agreement_pass_count": 30
+}

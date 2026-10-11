@@ -1,0 +1,8 @@
+GRID_COMPARISON_STATUS_OK tests=7 actual_optimizer=0
+{错误使用 assert
+断言失败。
+
+出错 refresh_saved_grid (第 44 行)
+assert(strcmp(jsonencode(old.rows),jsonencode(summary.rows)) && ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+} 

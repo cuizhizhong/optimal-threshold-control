@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "optimizer_executions": 0,
+  "assessment_executions_this_task": 0,
+  "compatibility_publications_this_task": 0,
+  "main_verified": true,
+  "recorded_configurations": 35,
+  "numeric_and_agreement_pass_count": 30,
+  "saved_exporter": {
+    "passed": true,
+    "tests": [
+      "saved_data_reexport_identical",
+      "independent_protocol_and_consistency",
+      "no_NaN_or_legacy_neutral_claim",
+      "concise_main_and_complete_reproduction_appendix",
+      "key_events_without_repeated_fields",
+      "non_generated_text_unchanged",
+      "missing_robustness_keeps_main_independent",
+      "failed_summary_removes_old_pass_claim",
+      "changed_summary_origin_clears_stale_success",
+      "blocked_empty_rows_keep_new_results_empty",
+      "changed_raw_hash_clears_stale_success"
+    ],
+    "test_count": 11,
+    "actual_optimizer_calls": 0,
+    "formal_tex_modified": false,
+    "recorded_configurations": 35,
+    "numeric_and_agreement_pass_count": 30
+  },
+  "failure_exporter": {
+    "passed": true,
+    "tests": [
+      "export_failure_clears_stale_pass_missing",
+      "export_failure_clears_stale_pass_failed",
+      "export_failure_clears_stale_pass_provenance_changed"
+    ],
+    "test_count": 3,
+    "actual_optimizer_calls": 0,
+    "formal_tex_modified": false
+  },
+  "pending_exporter": {
+    "passed": true,
+    "tests": [
+      "missing_additional_results",
+      "blocked_empty_additional_rows"
+    ],
+    "test_count": 2,
+    "actual_optimizer_calls": 0,
+    "formal_tex_modified": false,
+    "fixture_kind": "synthetic_pending_only"
+  }
+}

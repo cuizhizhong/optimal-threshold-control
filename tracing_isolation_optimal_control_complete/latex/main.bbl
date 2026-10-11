@@ -1,4 +1,4 @@
-\begin{thebibliography}{7}
+\begin{thebibliography}{10}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -15,6 +15,16 @@ Joel A.~E. Andersson, Joris Gillis, Greg Horn, James~B. Rawlings, and Moritz
   (1):\penalty0 1--36, 2019.
 \newblock \doi{10.1007/s12532-018-0139-4}.
 
+\bibitem[Angulo et~al.(2021)Angulo, Casta{\~n}os, Moreno-Morton,
+  Velasco-Hern{\'a}ndez, and Moreno]{Angulo2021}
+Marco~Tulio Angulo, Fernando Casta{\~n}os, Rodrigo Moreno-Morton, Jorge~X.
+  Velasco-Hern{\'a}ndez, and Jaime~A. Moreno.
+\newblock A simple criterion to design optimal non-pharmaceutical interventions
+  for mitigating epidemic outbreaks.
+\newblock \emph{Journal of the Royal Society Interface}, 18:\penalty0 20200803,
+  2021.
+\newblock \doi{10.1098/rsif.2020.0803}.
+
 \bibitem[Avram et~al.(2022)Avram, Freddi, and Goreac]{AvramFreddiGoreac2022}
 Florin Avram, Lorenzo Freddi, and Dan Goreac.
 \newblock Optimal control of a {SIR} epidemic with {ICU} constraints and target
@@ -22,6 +32,15 @@ Florin Avram, Lorenzo Freddi, and Dan Goreac.
 \newblock \emph{Applied Mathematics and Computation}, 418:\penalty0 126816,
   2022.
 \newblock \doi{10.1016/j.amc.2021.126816}.
+
+\bibitem[Baas et~al.(2021)Baas, Dijkstra, Braaksma, {van Rooij}, Snijders,
+  Tiemessen, and Boucherie]{Baas2021Occupancy}
+Stef Baas, Sander Dijkstra, Aleida Braaksma, Plom {van Rooij}, Fieke~J.
+  Snijders, Lars Tiemessen, and Richard~J. Boucherie.
+\newblock Real-time forecasting of {COVID-19} bed occupancy in wards and
+  intensive care units.
+\newblock \emph{Health Care Management Science}, 24:\penalty0 402--419, 2021.
+\newblock \doi{10.1007/s10729-021-09553-5}.
 
 \bibitem[Koenemann et~al.(2019)Koenemann, Licitra, Alp, and
   Diehl]{Koenemann2019OpenOCL}
@@ -56,5 +75,12 @@ Andreas W{\"a}chter and Lorenz~T. Biegler.
 \newblock \emph{Mathematical Programming}, 106\penalty0 (1):\penalty0 25--57,
   2006.
 \newblock \doi{10.1007/s10107-004-0559-y}.
+
+\bibitem[Zhou et~al.(2024)Zhou, Sha, Cheke, and Tang]{Zhou2024SPCI}
+Hao Zhou, He~Sha, Robert~A. Cheke, and Sanyi Tang.
+\newblock Model analysis and data validation of structured prevention and
+  control interruptions of emerging infectious diseases.
+\newblock \emph{Journal of Mathematical Biology}, 88:\penalty0 62, 2024.
+\newblock \doi{10.1007/s00285-024-02083-y}.
 
 \end{thebibliography}

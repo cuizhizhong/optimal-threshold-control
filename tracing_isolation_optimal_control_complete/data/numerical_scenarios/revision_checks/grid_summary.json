@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "group": "grid",
-  "checked_utc": "2026-10-08T09:42:29.096Z",
-  "status": "failed",
+  "checked_utc": "2026-10-09T16:21:19.358Z",
+  "status": "completed",
   "protocol_complete": true,
   "comparison_complete": true,
-  "consistency_pass": false,
+  "consistency_pass": true,
   "rows": [
     {
       "case_id": "E1",
@@ -2393,7 +2393,7 @@
       "initialization": "analytic_reference",
       "success": true,
       "return_status": "Solve_Succeeded",
-      "numeric_pass": false,
+      "numeric_pass": true,
       "agreement_pass": true,
       "J_openocl": 1.5295183756713318,
       "capacity_excess": 3.3392752083194477E-6,
@@ -2729,7 +2729,7 @@
       "initialization": "analytic_reference",
       "success": true,
       "return_status": "Solve_Succeeded",
-      "numeric_pass": false,
+      "numeric_pass": true,
       "agreement_pass": false,
       "J_openocl": 0.43391345343380611,
       "capacity_excess": 7.8300679912657323E-6,
@@ -3575,8 +3575,8 @@
       "initialization": "analytic_reference",
       "success": true,
       "return_status": "Solve_Succeeded",
-      "numeric_pass": false,
-      "agreement_pass": false,
+      "numeric_pass": true,
+      "agreement_pass": true,
       "J_openocl": 1.2688464638630395,
       "capacity_excess": 3.0908398651607882E-6,
       "state_discrepancy": 3.1874593853231659E-8,
@@ -3911,7 +3911,7 @@
       "initialization": "analytic_reference",
       "success": true,
       "return_status": "Solve_Succeeded",
-      "numeric_pass": false,
+      "numeric_pass": true,
       "agreement_pass": false,
       "J_openocl": 0.53637866048490568,
       "capacity_excess": 2.5684636780765047E-6,
@@ -4536,26 +4536,112 @@
         }
       },
       "common_window_comparisons": [],
-      "reasons": []
+      "reasons": [],
+      "comparison_status": "evaluated_passed",
+      "fine_run_id": "run_30ba0304ab67442db4b06441eee8c2c2",
+      "coarse_run_id": "run_1fe903238ec8428ebe33758d0860ba94",
+      "fine_N": 8000,
+      "coarse_N": 4000,
+      "fine_numeric_pass": true,
+      "coarse_numeric_pass": true,
+      "event_comparison_evaluated": true,
+      "cost_comparison_evaluated": true,
+      "event_comparison_pass": true,
+      "cost_comparison_pass": true
     },
     {
       "case_id": "E2",
-      "status": "failed_or_incomplete",
-      "consistency_pass": false,
+      "status": "passed",
+      "consistency_pass": true,
       "source_run_ids": [
         "run_95f03cda21434451998723ad26c1a1b9",
         "run_23330a48e0454d94b7522ecfdc6c93ec",
         "run_b9f75da0ecd04d8288f7624bc7a44e49"
       ],
-      "reference_run_id": "",
+      "reference_run_id": "run_95f03cda21434451998723ad26c1a1b9",
       "cost_absolute_difference": [],
-      "finest_relative_cost_difference": null,
+      "finest_relative_cost_difference": 3.2596606481692455E-6,
       "cost_absolute_span": null,
-      "event_comparisons": [],
+      "event_comparisons": {
+        "intervention": {
+          "passed": true,
+          "reference_interval": [
+            4.3125000000000036,
+            4.3500000000000032
+          ],
+          "other_interval": [
+            4.2750000000000048,
+            4.350000000000005
+          ],
+          "distance_between_intervals": 0,
+          "allowed_cell_width": 0.075000000000000178
+        },
+        "capacity_enter": {
+          "passed": true,
+          "reference_interval": [
+            4.3125000000000036,
+            4.3500000000000032
+          ],
+          "other_interval": [
+            4.2750000000000048,
+            4.350000000000005
+          ],
+          "distance_between_intervals": 0,
+          "allowed_cell_width": 0.075000000000000178
+        },
+        "capacity_exit": {
+          "passed": true,
+          "reference_interval": [
+            5.849999999999989,
+            5.8874999999999886
+          ],
+          "other_interval": [
+            5.8500000000000085,
+            5.9250000000000087
+          ],
+          "distance_between_intervals": 0,
+          "allowed_cell_width": 0.075000000000000178
+        },
+        "full_start": {
+          "passed": true,
+          "reference_interval": [
+            5.849999999999989,
+            5.8874999999999886
+          ],
+          "other_interval": [
+            5.8500000000000085,
+            5.9250000000000087
+          ],
+          "distance_between_intervals": 0,
+          "allowed_cell_width": 0.075000000000000178
+        },
+        "release": {
+          "passed": true,
+          "reference_interval": [
+            6.5624999999999822,
+            6.5999999999999819
+          ],
+          "other_interval": [
+            6.52500000000001,
+            6.60000000000001
+          ],
+          "distance_between_intervals": 0,
+          "allowed_cell_width": 0.075000000000000178
+        }
+      },
       "common_window_comparisons": [],
-      "reasons": [
-        "numeric diagnostics, structure, event comparison or cost tolerance not satisfied"
-      ]
+      "reasons": [],
+      "comparison_status": "evaluated_passed",
+      "fine_run_id": "run_95f03cda21434451998723ad26c1a1b9",
+      "coarse_run_id": "run_b9f75da0ecd04d8288f7624bc7a44e49",
+      "fine_N": 8000,
+      "coarse_N": 4000,
+      "fine_numeric_pass": true,
+      "coarse_numeric_pass": true,
+      "event_comparison_evaluated": true,
+      "cost_comparison_evaluated": true,
+      "event_comparison_pass": true,
+      "cost_comparison_pass": true
     },
     {
       "case_id": "E3",
@@ -4638,26 +4724,112 @@
         }
       },
       "common_window_comparisons": [],
-      "reasons": []
+      "reasons": [],
+      "comparison_status": "evaluated_passed",
+      "fine_run_id": "run_2c79e1d8828f49a99532a0130b717305",
+      "coarse_run_id": "run_bd09cff659c14ab7960b447ff0f4f0b0",
+      "fine_N": 8000,
+      "coarse_N": 4000,
+      "fine_numeric_pass": true,
+      "coarse_numeric_pass": true,
+      "event_comparison_evaluated": true,
+      "cost_comparison_evaluated": true,
+      "event_comparison_pass": true,
+      "cost_comparison_pass": true
     },
     {
       "case_id": "E4",
-      "status": "failed_or_incomplete",
-      "consistency_pass": false,
+      "status": "passed",
+      "consistency_pass": true,
       "source_run_ids": [
         "run_139836e6273441e7bef91b3cce70193f",
         "run_70efe89f465f49298d3823770cc82ae0",
         "run_fb6d128aedb84204ba5d18ed3afb5828"
       ],
-      "reference_run_id": "",
+      "reference_run_id": "run_139836e6273441e7bef91b3cce70193f",
       "cost_absolute_difference": [],
-      "finest_relative_cost_difference": null,
+      "finest_relative_cost_difference": 1.2112155077566288E-5,
       "cost_absolute_span": null,
-      "event_comparisons": [],
+      "event_comparisons": {
+        "intervention": {
+          "passed": true,
+          "reference_interval": [
+            0,
+            0
+          ],
+          "other_interval": [
+            0,
+            0
+          ],
+          "distance_between_intervals": 0,
+          "allowed_cell_width": 0.075
+        },
+        "capacity_enter": {
+          "passed": true,
+          "reference_interval": [
+            0,
+            0
+          ],
+          "other_interval": [
+            0,
+            0
+          ],
+          "distance_between_intervals": 0,
+          "allowed_cell_width": 0.075
+        },
+        "capacity_exit": {
+          "passed": true,
+          "reference_interval": [
+            1.0499999999999998,
+            1.0875
+          ],
+          "other_interval": [
+            1.0499999999999998,
+            1.1249999999999998
+          ],
+          "distance_between_intervals": 0,
+          "allowed_cell_width": 0.075000000000000067
+        },
+        "full_start": {
+          "passed": true,
+          "reference_interval": [
+            1.0499999999999998,
+            1.0875
+          ],
+          "other_interval": [
+            1.0499999999999998,
+            1.1249999999999998
+          ],
+          "distance_between_intervals": 0,
+          "allowed_cell_width": 0.075000000000000067
+        },
+        "release": {
+          "passed": true,
+          "reference_interval": [
+            1.7625000000000015,
+            1.8000000000000016
+          ],
+          "other_interval": [
+            1.7999999999999994,
+            1.7999999999999994
+          ],
+          "distance_between_intervals": 0,
+          "allowed_cell_width": 0.074999999999999956
+        }
+      },
       "common_window_comparisons": [],
-      "reasons": [
-        "numeric diagnostics, structure, event comparison or cost tolerance not satisfied"
-      ]
+      "reasons": [],
+      "comparison_status": "evaluated_passed",
+      "fine_run_id": "run_139836e6273441e7bef91b3cce70193f",
+      "coarse_run_id": "run_fb6d128aedb84204ba5d18ed3afb5828",
+      "fine_N": 8000,
+      "coarse_N": 4000,
+      "fine_numeric_pass": true,
+      "coarse_numeric_pass": true,
+      "event_comparison_evaluated": true,
+      "cost_comparison_evaluated": true,
+      "event_comparison_pass": true,
+      "cost_comparison_pass": true
     },
     {
       "case_id": "E5",
@@ -4740,7 +4912,18 @@
         }
       },
       "common_window_comparisons": [],
-      "reasons": []
+      "reasons": [],
+      "comparison_status": "evaluated_passed",
+      "fine_run_id": "run_bed1c525aeff4468bda80a9d09ebd92f",
+      "coarse_run_id": "run_a07493968ce542b2b057ce11232f695c",
+      "fine_N": 8000,
+      "coarse_N": 4000,
+      "fine_numeric_pass": true,
+      "coarse_numeric_pass": true,
+      "event_comparison_evaluated": true,
+      "cost_comparison_evaluated": true,
+      "event_comparison_pass": true,
+      "cost_comparison_pass": true
     }
   ],
   "blockers": []

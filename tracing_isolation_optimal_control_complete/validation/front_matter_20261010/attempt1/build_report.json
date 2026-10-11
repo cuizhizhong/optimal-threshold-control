@@ -1,0 +1,54 @@
+{
+  "sources_before": {
+    "main.tex": "55477bbd356f00548529f5813bb14a1cd9c63ea496308bb411449c7e590c30b9",
+    "theory_only.tex": "bc87e137e4cbe11a76dc8b3cb39d45d0ec7de1783bad31dc632335981f149fb5",
+    "references.bib": "4bd6ec0bb2a38da7b94fdb7ed444a3743fc161d7f5ed629190b19742b8927a8a"
+  },
+  "sources_after": {
+    "main.tex": "55477bbd356f00548529f5813bb14a1cd9c63ea496308bb411449c7e590c30b9",
+    "theory_only.tex": "bc87e137e4cbe11a76dc8b3cb39d45d0ec7de1783bad31dc632335981f149fb5",
+    "references.bib": "4bd6ec0bb2a38da7b94fdb7ed444a3743fc161d7f5ed629190b19742b8927a8a"
+  },
+  "builds": {
+    "main": {
+      "success": false,
+      "commands": [
+        {
+          "command": [
+            "xelatex",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "main.tex"
+          ],
+          "exit_code": 1,
+          "log": "main_build_1.log",
+          "issues": []
+        }
+      ]
+    },
+    "theory_only": {
+      "success": false,
+      "commands": [
+        {
+          "command": [
+            "xelatex",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "theory_only.tex"
+          ],
+          "exit_code": 1,
+          "log": "theory_only_build_1.log",
+          "issues": [
+            "Package natbib Warning: Citation `Zhou2024SPCI' on page 3 undefined on input li",
+            "Package natbib Warning: Citation `AvramFreddiGoreac2022' on page 3 undefined on",
+            "Package natbib Warning: Citation `Angulo2021' on page 3 undefined on input line",
+            "Package natbib Warning: Citation `Zhou2024SPCI' on page 3 undefined on input li",
+            "LaTeX Warning: Reference `app:medical-capacity' on page 3 undefined on input li",
+            "Package natbib Warning: Citation `Zhou2024SPCI' on page 3 undefined on input li"
+          ]
+        }
+      ]
+    }
+  },
+  "source_stable_during_build": true
+}

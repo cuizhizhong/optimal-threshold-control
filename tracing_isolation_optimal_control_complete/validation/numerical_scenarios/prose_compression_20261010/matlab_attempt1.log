@@ -1,0 +1,17 @@
+NUMERICAL_LATEX_EXPORTED verified=1
+{错误使用 fileread (第 10 行)
+无法打开文件 C:\Users\cui\AppData\Local\Packages\sandbox.{c075f1a6-a851-40a9-9a12-84bb0f70f0e9}\AC\Temp\tpbb0d6c7b_7f6f_48d8_b307_369d99393b55\latex\main.tex。没有这样的文件或目录。
+
+出错 export_numerical_latex>invalidate_generated_results (第 168 行)
+text=fileread(filename);
+     ^^^^^^^^^^^^^^^^^^
+出错 export_numerical_latex (第 7 行)
+    invalidate_generated_results(cfg);
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+出错 verify_saved_result_exporter (第 8 行)
+before=fileread(tex); report1=export_numerical_latex(cfg); first=fileread(tex);
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+出错 refresh_compressed_prose (第 10 行)
+saved=verify_saved_result_exporter();
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+} 

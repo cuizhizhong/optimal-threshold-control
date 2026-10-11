@@ -1,0 +1,40 @@
+[
+  {
+    "log": "E:\\work\\optimal-threshold-control\\tmp\\local_fixes_20261010\\theory_only_pass1_xelatex.log",
+    "command": "xelatex",
+    "exit_code": 0,
+    "arguments": [
+      "-interaction=nonstopmode",
+      "-halt-on-error",
+      "theory_only.tex"
+    ]
+  },
+  {
+    "log": "E:\\work\\optimal-threshold-control\\tmp\\local_fixes_20261010\\theory_only_pass2_bibtex.log",
+    "command": "bibtex",
+    "exit_code": 0,
+    "arguments": [
+      "theory_only"
+    ]
+  },
+  {
+    "log": "E:\\work\\optimal-threshold-control\\tmp\\local_fixes_20261010\\theory_only_pass3_xelatex.log",
+    "command": "xelatex",
+    "exit_code": 0,
+    "arguments": [
+      "-interaction=nonstopmode",
+      "-halt-on-error",
+      "theory_only.tex"
+    ]
+  },
+  {
+    "log": "E:\\work\\optimal-threshold-control\\tmp\\local_fixes_20261010\\theory_only_pass4_xelatex.log",
+    "command": "xelatex",
+    "exit_code": 0,
+    "arguments": [
+      "-interaction=nonstopmode",
+      "-halt-on-error",
+      "theory_only.tex"
+    ]
+  }
+]

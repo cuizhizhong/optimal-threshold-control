@@ -1,0 +1,6 @@
+{
+  "user_confirmed_other_chat_active": true,
+  "other_task": "tolerance_revision_20261010",
+  "policy": "保留同期容差重评与主稿修改，本轮只压缩正文和同步导出器。原始求解与图形仍逐文件核对，外部新增评估和兼容视图更新另行列出。",
+  "source_before_export_sha256": "094c3a0457dc5cc66806e3103cf16786edd3f46187a6105d2107d527bf3d8787"
+}
