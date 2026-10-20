@@ -1,0 +1,19 @@
+{
+  "numeric_fields": 105,
+  "zero_fields": 16,
+  "largest_relative_difference": "0",
+  "largest_relative_difference_path": null,
+  "skipped_metadata": [
+    {
+      "path": "fixture.generator.input_sha256",
+      "old": "a8f121c0d61053cf3757237580afbcb3dd92a8629720ca12d943fddcc5d172b7",
+      "new": "9f8d641beea0cb887f95ec8c8cc047218dffb41d7725d8bb4666b95507c09c1b"
+    }
+  ],
+  "status": "pass",
+  "relative_tolerance": "1E-12",
+  "baseline_ref": "pre-code-rename",
+  "baseline_commit": "051099fba63cd6d326f2344d2bf4322c1f651282",
+  "current_fixture": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerical_scenarios\\analytic_checkpoints.json",
+  "optimizer_executions": 0
+}

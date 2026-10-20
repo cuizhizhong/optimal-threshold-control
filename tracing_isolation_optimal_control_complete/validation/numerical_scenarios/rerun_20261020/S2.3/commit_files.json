@@ -1,0 +1,20 @@
+{
+  "step": "S2.3",
+  "files": [
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/analytic_checkpoints.json",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.3/README.md",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.3/build_report.json",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.3/checkpoint_migration_report.json",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.3/commit_files.json",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.3/generate_check.log",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.3/generate_write.log",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.3/main_1.log",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.3/main_2.log",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.3/main_3.log",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.3/main_4.log",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.3/preservation_report.json",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.3/python_tests.log",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.3/python_tests_corrected.log",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/verify_checkpoint_migration.py"
+  ]
+}
