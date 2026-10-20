@@ -1,0 +1,41 @@
+{
+  "base_commit": "420bcc7",
+  "passed": true,
+  "existing_data_files": 184,
+  "unchanged_data_files": 183,
+  "changed_data_files": [
+    "export_provenance.json"
+  ],
+  "added_data_files": [],
+  "generated_blocks_identical_after_inverse_notation": {
+    "NUMERICAL REFERENCE VALUES": true,
+    "NUMERICAL RESULTS": true
+  },
+  "handwritten_source_matches_scoped_migration": true,
+  "migration_counts": {
+    "#11": 13,
+    "#10": 54,
+    "#20": 40,
+    "#22": 1,
+    "#15": 12,
+    "#21": 8,
+    "#18": 15,
+    "#12": 5,
+    "#4": 38,
+    "#14": 10,
+    "#14-layout": 3,
+    "#3": 3,
+    "#17": 4,
+    "#7": 22,
+    "#25": 10,
+    "#27": 30,
+    "#16": 32,
+    "#8": 2,
+    "#9": 2,
+    "#26": 7,
+    "#24": 6
+  },
+  "exporter_only_display_strings_changed": true,
+  "optimizer_calls": 0,
+  "scientific_solves": 0
+}

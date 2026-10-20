@@ -1,9 +1,13 @@
 """Inventory of math symbols in latex/main.tex (body only, auto-generated blocks excluded).
 Collects letter-like tokens with their sub/superscripts, Greek and calligraphic symbols,
-and reports count and first line.  Usage: python -I symbol_inventory.py main.tex"""
+and reports count and first line.  Usage: python -I symbol_inventory.py main.tex [--check-s1]
+The S1 audit includes generated blocks and checks the 20 scoped decisions;
+it complements the algebra checks and is not a proof checker."""
 import re
 import sys
 import bisect
+from pathlib import Path
+import runpy
 from collections import OrderedDict
 
 GREEK = ('alpha beta gamma delta epsilon varepsilon zeta eta theta vartheta iota kappa lambda mu nu xi pi rho '
@@ -13,21 +17,22 @@ SKIP_ARGS = ('label', 'ref', 'eqref', 'text', 'textup', 'mathrm', 'operatorname'
              'citep', 'citet', 'NumTheoryRef', 'hspace', 'tag')
 
 
-def math_segments(text):
-    body_start = text.index(r'\begin{document}')
+def math_segments(text, include_generated=False):
+    body_start = text.find(r'\begin{document}')
+    body_start = max(body_start, 0)
     # blank out auto-generated blocks and comments
     t = text
-    for a, b in [('% BEGIN AUTO-GENERATED', '% END AUTO-GENERATED')]:
-        while a in t:
-            i = t.index(a); j = t.index(b, i); j = t.index('\n', j)
-            t = t[:i] + ' ' * (j - i) + t[j:]
+    blank = lambda m: re.sub(r'[^\n]', ' ', m.group(0))
+    if not include_generated:
+        t = re.sub(r'% BEGIN AUTO-GENERATED[^\n]*\n.*?% END AUTO-GENERATED[^\n]*', blank, t, flags=re.S)
+    t = re.sub(r'\\begin\{lstlisting\}.*?\\end\{lstlisting\}', blank, t, flags=re.S)
     t = re.sub(r'(?<!\\)%[^\n]*', lambda m: ' ' * len(m.group(0)), t)
     segs = []
-    pat = re.compile(r'\$(.+?)\$|\\\[(.+?)\\\]|\\begin\{(equation\*?|align\*?)\}(.+?)\\end\{\3\}', re.S)
+    pat = re.compile(r'(?<!\\)\$(.+?)(?<!\\)\$|\\\[(.+?)\\\]|\\\((.+?)\\\)|'
+                     r'\\begin\{(equation\*?|align\*?|gather\*?|multline\*?|displaymath)\}(.+?)\\end\{\4\}', re.S)
     for m in pat.finditer(t, body_start):
-        g = m.group(1) or m.group(2) or m.group(4)
-        start = m.start(1) if m.group(1) else (m.start(2) if m.group(2) else m.start(4))
-        segs.append((start, g))
+        group = next(g for g in (1, 2, 3, 5) if m.group(g) is not None)
+        segs.append((m.start(group), m.group(group)))
     return segs
 
 
@@ -49,8 +54,12 @@ def tokens(seg):
                         elif seg[j] == '}':
                             d -= 1
                             if d == 0: k = j + 1; break
+                elif name == 'mathrm' and k < n:
+                    # TeX also permits the unbraced form \mathrm D.
+                    mm = re.match(r'\\[A-Za-z]+|.', seg[k:])
+                    k += len(mm.group(0))
                 continue
-            if name in ('mathcal', 'mathbb', 'bar', 'hat', 'tilde', 'widehat'):
+            if name in ('mathcal', 'mathbb', 'mathbf', 'bm', 'bar', 'hat', 'tilde', 'widehat'):
                 while k < n and seg[k] == ' ': k += 1
                 arg = seg[k] if k < n else ''
                 if arg == '{':
@@ -68,9 +77,10 @@ def tokens(seg):
             base = ch; k += 1
         else:
             k += 1; continue
-        # attach immediate subscript (one token or braced group)
-        sub = ''
-        if k < n and seg[k] == '_':
+        # Attach subscript and superscript; keep q in rho^q distinguishable.
+        scripts = {}
+        while k < n and seg[k] in '_^':
+            kind = seg[k]
             k += 1
             if k < n and seg[k] == '{':
                 d = 0
@@ -78,16 +88,19 @@ def tokens(seg):
                     if seg[j] == '{': d += 1
                     elif seg[j] == '}':
                         d -= 1
-                        if d == 0: sub = seg[k + 1:j]; k = j + 1; break
+                        if d == 0: scripts[kind] = seg[k + 1:j]; k = j + 1; break
             elif k < n and seg[k] == '\\':
-                mm = re.match(r'\\[A-Za-z]+', seg[k:]); sub = mm.group(0); k += len(mm.group(0))
+                mm = re.match(r'\\[A-Za-z]+|\\.', seg[k:]); scripts[kind] = mm.group(0); k += len(mm.group(0))
             elif k < n:
-                sub = seg[k]; k += 1
-        yield base + ('_{' + sub + '}' if sub else '')
+                scripts[kind] = seg[k]; k += 1
+        yield base + ''.join(kind + '{' + scripts[kind] + '}' for kind in '_^' if kind in scripts)
 
 
 if __name__ == '__main__':
     text = open(sys.argv[1], encoding='utf-8').read()
+    if '--check-s1' in sys.argv[2:]:
+        audit = runpy.run_path(str(Path(__file__).with_name('s1_source_audit.py')))
+        raise SystemExit(0 if audit['check_s1'](text, math_segments, tokens) else 1)
     starts = [0] + [i + 1 for i, c in enumerate(text) if c == '\n']
     seen = OrderedDict()
     for pos, seg in math_segments(text):

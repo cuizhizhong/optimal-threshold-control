@@ -1,0 +1,38 @@
+{
+  "pdf": "latex/main.pdf",
+  "pages": [
+    7,
+    10,
+    13,
+    18,
+    19,
+    20,
+    25,
+    28,
+    29,
+    31,
+    34,
+    35
+  ],
+  "images": [
+    "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\notation_s1_20261020\\visual\\page_07.png",
+    "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\notation_s1_20261020\\visual\\page_10.png",
+    "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\notation_s1_20261020\\visual\\page_13.png",
+    "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\notation_s1_20261020\\visual\\page_18.png",
+    "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\notation_s1_20261020\\visual\\page_19.png",
+    "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\notation_s1_20261020\\visual\\page_20.png",
+    "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\notation_s1_20261020\\visual\\page_25.png",
+    "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\notation_s1_20261020\\visual\\page_28.png",
+    "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\notation_s1_20261020\\visual\\page_29.png",
+    "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\notation_s1_20261020\\visual\\page_31.png",
+    "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\notation_s1_20261020\\visual\\page_34.png",
+    "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\notation_s1_20261020\\visual\\page_35.png"
+  ],
+  "contact_sheets": [
+    "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\notation_s1_20261020\\visual\\sheet_1.png",
+    "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\notation_s1_20261020\\visual\\sheet_2.png",
+    "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\notation_s1_20261020\\visual\\sheet_3.png"
+  ],
+  "status": "visually_reviewed",
+  "result": "12 representative pages inspected: no clipping, overlap, missing glyphs or broken formulas observed"
+}

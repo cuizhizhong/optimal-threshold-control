@@ -1,0 +1,239 @@
+  118  168  K
+  125   26  q_{B}
+  125  477  s
+  127   75  s_{B}
+  127  199  h
+  127   27  \gamma
+  127  132  \beta
+  127  132  c
+  143    4  S
+  143  250  t
+  143    6  \beta_{1}
+  143    5  I
+  143    7  \beta_{2}
+  151  188  q
+  151   18  N
+  158  228  i
+  174    4  m
+  193    8  J
+  202   51  x_{0}
+  202   40  s_{0}
+  202   32  i_{0}
+  204    7  \mathcal U_{ad}
+  211    5  q_{\max}
+  217   20  b
+  219    5  b_{0}
+  240   44  v
+  260    2  \bar c
+  260    1  L^{\infty}
+  260    4  M
+  271    5  t_{n}
+  271   10  \varepsilon
+  277   52  a
+  277    3  \mathbb R
+  277    3  \alpha
+  283   14  u
+  283    9  E
+  289    4  E_{\alpha}
+  293    3  n
+  303    2  \mathbb R^{m}
+  303   15  F
+  304  108  x
+  304   25  T
+  306   10  C^{1}
+  307    6  O
+  321    3  a_{k}
+  321    3  b_{k}
+  322    5  L
+  323    6  k
+  340   43  \ell
+  340   72  p
+  347   20  \mathcal D
+  347   21  V
+  347    1  J_{x}
+  354   24  \Omega
+  365   51  \Phi
+  370    5  i_{\rm nat}
+  375    2  i_{\rm pk}
+  383   20  \Phi_{A}
+  389   15  \widehat \Acal
+  389   21  \mathcal A
+  414    5  \Psi
+  442    4  s_{a}
+  442    5  i_{a}
+  442    2  s_{b}
+  442    4  i_{b}
+  443    3  t_{a}
+  452    1  t_{b}
+  460    5  \mathcal Q_{K}
+  478    8  s_{\rm hi}
+  478    8  s_{\rm lo}
+  479    2  T_{B}
+  483    8  C_{B}
+  500   14  s_{1}
+  516    3  \tau_{\Acal}
+  516   26  x^{q}
+  517    5  T_{h}
+  523    7  \tau
+  535    2  \mathcal U_{\Acal}
+  558    6  f_{0}
+  558    6  f_{1}
+  558    7  f
+  563    2  Z
+  564    1  H_{Z}
+  564    2  H_{0,Z}
+  564    5  \Sigma_{Z}
+  570    2  Z_{s}
+  570    2  Z_{i}
+  584    3  V_{i}
+  590   47  U
+  609   13  s_{A}
+  615   13  \mathcal E
+  620   44  \bar s
+  620   18  \bar i
+  634    8  s_{\infty}
+  640   13  G
+  640   94  z
+  648   20  W
+  656    4  \bar s_{s}
+  656    4  \bar s_{i}
+  662    7  W_{s}
+  662   34  \Theta
+  662    8  W_{i}
+  674   26  \Delta_{\Theta}
+  683    6  H_{W}
+  699   17  \mathcal I_{z}
+  704   20  g
+  712    1  s^{2}
+  720   54  s_{e}
+  726   26  \sigma
+  743   28  j
+  750    7  \Gamma_{\infty}
+  750   23  \mathcal I_{\Gamma}
+  766   21  \psi
+  786    2  F_{s}
+  788    2  F_{\psi}
+  788    2  z_{\psi}
+  792    1  \sigma_{\psi}
+  811   35  \Phi_{B}
+  811   24  \Gamma_{K}
+  816   38  \phi
+  817   16  y_{\Gamma}
+  817   11  \eta_{\Gamma}
+  817    3  j_{\Gamma}
+  834   21  \chi
+  836    2  L_{f_0}
+  836    4  L_{f_1}
+  840    1  L_{f(\cdot,q)}
+  845    6  x_{*}
+  845    5  O_{*}
+  845    4  \delta_{*}
+  854   30  t_{0}
+  880   28  \eta
+  883   14  \eta_{K}
+  894   30  \mathcal T
+  894   15  \mathcal W_{\Gamma}
+  894   14  \mathcal W_{K}
+  894   11  \mathcal B
+  913    4  \phi_{\Gamma}
+  952    4  \mathcal W
+ 1009   29  y
+ 1027    3  \mu
+ 1054    3  Q^{*}
+ 1098    7  q^{*}
+ 1098    5  x^{*}
+ 1139    6  U_{i}
+ 1139    5  U_{s}
+ 1146    1  \bar y
+ 1154    1  \Phi_{i}
+ 1154    1  \Phi_{s}
+ 1167    6  H_{0,U}
+ 1167    7  \Sigma_{U}
+ 1172    4  H_{U}
+ 1176    9  \xi
+ 1223   13  s_{*}
+ 1225    4  \Xi
+ 1225    3  \zeta_{1}
+ 1225    7  \zeta_{2}
+ 1228    4  \Pi_{0}
+ 1234   13  \zeta
+ 1235    7  \mathbf P
+ 1243    1  o
+ 1274    1  \bar x
+ 1282    4  \Pi
+ 1282    3  s_{-}
+ 1282    1  s_{+}
+ 1282    4  i_{-}
+ 1282    1  i_{+}
+ 1287    4  M_{\Pi}
+ 1301   10  U_{K}
+ 1308    3  i_{1}
+ 1308    3  s_{2}
+ 1308    2  i_{2}
+ 1335    1  U_{\rm out}
+ 1340    1  C
+ 1400    3  E_{K}
+ 1407    2  H_{0,W}
+ 1410    3  E_{A}
+ 1431    4  J_{x_0}
+ 1442    4  \tau_{\mathcal A}
+ 1459   36  \tau^{q}
+ 1463   14  \rho^{q}
+ 1467    2  L^{1}
+ 1534   14  s^{q}
+ 1534   18  i^{q}
+ 1540   11  t_{B}
+ 1563    5  \delta
+ 1577    1  a^{t}
+ 1594    9  t_{*}
+ 1642    3  E_{K}^{-}
+ 1659    3  t_{1}
+ 1659    3  t_{2}
+ 1753    4  i_{w}
+ 1753   30  s_{c}
+ 1761    2  \mathcal J_{D}
+ 1761    2  \mathcal J_{B}
+ 1779    2  \mathcal J_{x_0}
+ 1897    1  J_{T}
+ 1915    1  d
+ 1919    4  J_{\mathrm{OCL}}
+ 1919    1  q_{k}
+ 1919    1  \Delta
+ 1919    1  t_{k}
+ 1928    2  P_{0}
+ 1981    3  J_{\mathrm{ref}}
+ 2016    1  s_{\Gamma}
+ 2016    2  i_{\Gamma}
+ 2105    2  \varepsilon_{K}
+ 2116    3  \vartheta
+ 2128    1  V_{t}
+ 2128    3  \mathcal Q
+ 2128    2  V_{s}
+ 2145    2  \Sigma
+ 2156    2  Q
+ 2170    1  J_{\varepsilon}
+ 2177    3  V_{\varepsilon}^{T}
+ 2179    1  q_{\varepsilon}^{*}
+ 2198    1  \alpha_{c}
+ 2198    1  c_{0}
+ 2198    1  \alpha_{q}
+ 2198    1  q^{2}
+ 2198    1  \alpha_{cq}
+ 2237    1  J^{*}
+ 2257    4  G_{0}
+ 2271    1  \bar i_{s}
+ 2271    1  \bar i_{i}
+ 2289    4  A_{1}
+ 2289    3  A_{2}
+ 2329    2  \Lambda_{\mathrm u}
+ 2329    2  \Lambda_{\mathrm q}
+ 2334    3  \Lambda
+ 2349    5  \kappa
+ 2349    6  \theta
+ 2352    5  \pi_{\mathrm{ICU}}
+ 2352    5  L_{\rm ICU}
+ 2358    3  D_{{\rm ICU},0}
+ 2359    6  D_{\mathrm{ICU,init}}
+ 2362    3  D_{\rm ICU}
+ 2375    3  C_{\rm ICU}
+ 2378    2  K_{\mathrm{med}}

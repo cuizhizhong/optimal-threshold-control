@@ -1,0 +1,22 @@
+True   S1 #3: scoped notation
+True   S1 #4: scoped notation
+True   S1 #7: scoped notation
+True   S1 #8: scoped notation
+True   S1 #9: scoped notation
+True   S1 #10: scoped notation
+True   S1 #11: scoped notation
+True   S1 #12: scoped notation
+True   S1 #14: scoped notation
+True   S1 #15: scoped notation
+True   S1 #16: scoped notation
+True   S1 #17: scoped notation
+True   S1 #18: scoped notation
+True   S1 #20: scoped notation
+True   S1 #21: scoped notation
+True   S1 #22: scoped notation
+True   S1 #24: scoped notation
+True   S1 #25: scoped notation
+True   S1 #26: scoped notation
+True   S1 #27: scoped notation
+S1 source checks: 20/20
+ALL OK

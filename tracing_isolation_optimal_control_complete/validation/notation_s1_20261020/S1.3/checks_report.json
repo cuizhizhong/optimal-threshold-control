@@ -1,0 +1,56 @@
+{
+  "commands": [
+    {
+      "name": "formulas",
+      "argv": [
+        "E:\\anaconda\\python.exe",
+        "-I",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\ai\\claude_revision_plan\\checks\\verify_new_notation.py"
+      ],
+      "cwd": "E:\\work\\optimal-threshold-control",
+      "exit_code": 0,
+      "log": "formulas.txt"
+    },
+    {
+      "name": "inventory",
+      "argv": [
+        "E:\\anaconda\\python.exe",
+        "-I",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\ai\\claude_revision_plan\\checks\\symbol_inventory.py",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.tex"
+      ],
+      "cwd": "E:\\work\\optimal-threshold-control",
+      "exit_code": 0,
+      "log": "inventory.txt"
+    },
+    {
+      "name": "scoped_symbols",
+      "argv": [
+        "E:\\anaconda\\python.exe",
+        "-I",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\ai\\claude_revision_plan\\checks\\symbol_inventory.py",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.tex",
+        "--check-s1"
+      ],
+      "cwd": "E:\\work\\optimal-threshold-control",
+      "exit_code": 0,
+      "log": "scoped_symbols.txt"
+    },
+    {
+      "name": "preservation",
+      "argv": [
+        "E:\\anaconda\\python.exe",
+        "-I",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\notation_s1_20261020\\verify_preservation.py"
+      ],
+      "cwd": "E:\\work\\optimal-threshold-control",
+      "exit_code": 0,
+      "log": "preservation.txt"
+    }
+  ],
+  "optimizer_calls": 0,
+  "scientific_solves": 0,
+  "passed": true,
+  "formula_checks": 28,
+  "scoped_symbol_items": 20
+}
