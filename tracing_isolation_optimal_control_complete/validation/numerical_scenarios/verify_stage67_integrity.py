@@ -1,3 +1,4 @@
+# 只针对标签 `pre-code-rename` 运行；历史基线与输出不得刷新。
 """第6--7步隔离检查：历史记录保留、正文不变、35配置及新记录可追溯。"""
 import hashlib
 import json

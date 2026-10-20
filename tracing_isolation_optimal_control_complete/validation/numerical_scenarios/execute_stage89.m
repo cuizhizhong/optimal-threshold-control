@@ -1,3 +1,4 @@
+% 只针对标签 `pre-code-rename` 运行；历史基线与输出不得刷新。
 % 第 8–9 步真实执行入口；不导出正文、图表，不替换主选择。
 repoRoot=fileparts(fileparts(fileparts(fileparts(mfilename('fullpath')))));
 addpath(fullfile(repoRoot,'tracing_isolation_optimal_control_complete','matlab','numerical_scenarios'));

@@ -1,3 +1,4 @@
+% 只针对标签 `pre-code-rename` 运行；历史基线与输出不得刷新。
 % 保存数据复核，不构建 OCP 或调用优化器。
 evidenceRoot=fileparts(mfilename('fullpath'));
 projectRoot=fileparts(fileparts(evidenceRoot));

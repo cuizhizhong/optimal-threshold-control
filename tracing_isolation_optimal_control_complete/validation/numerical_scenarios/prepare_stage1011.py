@@ -1,3 +1,4 @@
+# 只针对标签 `pre-code-rename` 运行；历史基线与输出不得刷新。
 """冻结本批字节基准，并按语义锚点合并第 10 步的四段正文。"""
 from pathlib import Path
 import hashlib

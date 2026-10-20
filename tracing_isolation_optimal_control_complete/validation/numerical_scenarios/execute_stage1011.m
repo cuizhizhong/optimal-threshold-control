@@ -1,3 +1,4 @@
+% 只针对标签 `pre-code-rename` 运行；历史基线与输出不得刷新。
 % 第10--11步：只重新测试、后处理、导出，不重新优化科学结果。
 v=fileparts(mfilename('fullpath'));
 project=fileparts(fileparts(v));

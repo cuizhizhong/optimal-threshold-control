@@ -1,3 +1,4 @@
+% 只针对标签 `pre-code-rename` 运行；历史基线与输出不得刷新。
 % 在候选临时检出内复核缓存、后处理与一个接口smoke；不把smoke计入科学结果。
 v=fileparts(mfilename('fullpath'));
 project=fileparts(fileparts(v));

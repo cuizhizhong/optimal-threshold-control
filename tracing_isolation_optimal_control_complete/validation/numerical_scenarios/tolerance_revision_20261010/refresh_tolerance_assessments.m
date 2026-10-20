@@ -1,4 +1,5 @@
 function report = refresh_tolerance_assessments()
+% 只针对标签 `pre-code-rename` 运行；历史基线与输出不得刷新。
 % 仅重评基线中的35个保存结果；不进入调度、优化或结果再选择流程。
 here=fileparts(mfilename('fullpath'));
 reportRoot=fileparts(fileparts(fileparts(here)));

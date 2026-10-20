@@ -1,3 +1,4 @@
+# 只针对标签 `pre-code-rename` 运行；历史基线与输出不得刷新。
 """实际执行 XeLaTeX/BibTeX，并保留每个命令和最终日志诊断。"""
 from pathlib import Path
 import json

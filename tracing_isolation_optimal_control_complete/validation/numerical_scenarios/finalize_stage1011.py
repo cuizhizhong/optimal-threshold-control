@@ -1,3 +1,4 @@
+# 只针对标签 `pre-code-rename` 运行；历史基线与输出不得刷新。
 """仅依据已经存在并通过核对的报告登记第 10--11 步交付。"""
 from pathlib import Path
 import hashlib

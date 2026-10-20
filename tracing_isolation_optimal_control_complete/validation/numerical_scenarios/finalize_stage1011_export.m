@@ -1,3 +1,4 @@
+% 只针对标签 `pre-code-rename` 运行；历史基线与输出不得刷新。
 % 对最终冻结的导出源码重导出；核对正文一致并更新导出指纹，不重跑已通过测试。
 v=fileparts(mfilename('fullpath')); project=fileparts(fileparts(v));
 addpath(fullfile(project,'matlab','numerical_scenarios'));

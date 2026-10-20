@@ -1,3 +1,4 @@
+# 只针对标签 `pre-code-rename` 运行；历史基线与输出不得刷新。
 """核对候选缓存复现，明确区分数据相同、元数据更新和渲染差异。"""
 from pathlib import Path
 import hashlib

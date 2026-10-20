@@ -1,3 +1,4 @@
+# 只针对标签 `pre-code-rename` 运行；历史基线与输出不得刷新。
 """从 Git 基准与明确成果目录制作候选临时检出，排除本机残留。"""
 from pathlib import Path
 import hashlib

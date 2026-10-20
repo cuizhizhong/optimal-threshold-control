@@ -1,3 +1,4 @@
+# 只针对标签 `pre-code-rename` 运行；历史基线与输出不得刷新。
 """隔离编译本轮校样；源码变化或修订文字缺失时拒绝替换交付文件。"""
 import argparse
 import hashlib

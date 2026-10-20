@@ -1,0 +1,162 @@
+{
+  "step": "S2.1",
+  "optimizer_calls": 0,
+  "scientific_solves": 0,
+  "source_sha256": "35b27dd0cfd529070a328f1ebd49bdba9965e083449d3cb35c4f788d2158bdb6",
+  "published_pdfs_unchanged": true,
+  "documents": [
+    {
+      "name": "main",
+      "commands": [
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\code_rename_s21_20261020\\final",
+            "main.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "log": "build_final\\main_1.log"
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\bibtex.EXE",
+            "main"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\code_rename_s21_20261020\\final",
+          "exit_code": 0,
+          "log": "build_final\\main_2.log"
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\code_rename_s21_20261020\\final",
+            "main.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "log": "build_final\\main_3.log"
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\code_rename_s21_20261020\\final",
+            "main.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "log": "build_final\\main_4.log"
+        }
+      ],
+      "success": true,
+      "final_log_issues": [],
+      "pages": 37,
+      "pdf_sha256": "a1fe79e4a695173d3ad5d6f13256982cdefe612a16a8ecf52e974ca3c19fdc08",
+      "text_commands": [
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\pdftotext.EXE",
+            "-layout",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\code_rename_s21_20261020\\final\\main_existing.txt"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\pdftotext.EXE",
+            "-layout",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\code_rename_s21_20261020\\final\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\code_rename_s21_20261020\\final\\main_compiled.txt"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "pdf_text_identical_to_existing": true,
+      "published_pdf_sha256_unchanged": true
+    },
+    {
+      "name": "theory_only",
+      "commands": [
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\code_rename_s21_20261020\\final",
+            "theory_only.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "log": "build_final\\theory_only_1.log"
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\bibtex.EXE",
+            "theory_only"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\code_rename_s21_20261020\\final",
+          "exit_code": 0,
+          "log": "build_final\\theory_only_2.log"
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\code_rename_s21_20261020\\final",
+            "theory_only.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "log": "build_final\\theory_only_3.log"
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\code_rename_s21_20261020\\final",
+            "theory_only.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "log": "build_final\\theory_only_4.log"
+        }
+      ],
+      "success": true,
+      "final_log_issues": [],
+      "pages": 29,
+      "pdf_sha256": "78a0ed52477640dd0e4fc9e794da412a502a9c429c63ecfa90fa1bdd36f26c33",
+      "text_commands": [
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\pdftotext.EXE",
+            "-layout",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\code_rename_s21_20261020\\final\\theory_only_existing.txt"
+          ],
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\pdftotext.EXE",
+            "-layout",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\code_rename_s21_20261020\\final\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\code_rename_s21_20261020\\final\\theory_only_compiled.txt"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "pdf_text_identical_to_existing": true,
+      "published_pdf_sha256_unchanged": true
+    }
+  ],
+  "success": true
+}

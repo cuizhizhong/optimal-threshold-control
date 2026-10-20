@@ -1,4 +1,5 @@
 function report = verify_stage89_initializations(summaryPath,outputPath)
+% 只针对标签 `pre-code-rename` 运行；历史基线与输出不得刷新。
 % 只读取第8步真实原始记录并重建初猜；不构建OCP，不调用优化器。
 % 调用前须将 matlab/numerical_scenarios 加入 MATLAB 路径。
 cfg=numerical_cases_config();

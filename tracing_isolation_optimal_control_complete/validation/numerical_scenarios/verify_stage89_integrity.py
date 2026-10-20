@@ -1,3 +1,4 @@
+# 只针对标签 `pre-code-rename` 运行；历史基线与输出不得刷新。
 """第8--9步独立核验；只读原始记录，以实际数组重新计算，不调用优化器。"""
 import csv
 import hashlib

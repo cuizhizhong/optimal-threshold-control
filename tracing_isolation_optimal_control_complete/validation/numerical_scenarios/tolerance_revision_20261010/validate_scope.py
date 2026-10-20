@@ -1,3 +1,4 @@
+# 只针对标签 `pre-code-rename` 运行；历史基线与输出不得刷新。
 """保存旧判据证据，核对容差重评没有改写求解结果或论文数学内容。"""
 import argparse
 import hashlib

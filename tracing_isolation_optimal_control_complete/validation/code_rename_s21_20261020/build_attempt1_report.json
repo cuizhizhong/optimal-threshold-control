@@ -1,0 +1,60 @@
+{
+  "step": "S2.1",
+  "optimizer_calls": 0,
+  "scientific_solves": 0,
+  "source_sha256": "35b27dd0cfd529070a328f1ebd49bdba9965e083449d3cb35c4f788d2158bdb6",
+  "published_pdfs_unchanged": true,
+  "documents": [
+    {
+      "name": "main",
+      "commands": [
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\code_rename_s21_20261020",
+            "main.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "log": "build\\main_1.log"
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\bibtex.EXE",
+            "main"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\code_rename_s21_20261020",
+          "exit_code": 0,
+          "log": "build\\main_2.log"
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\code_rename_s21_20261020",
+            "main.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "log": "build\\main_3.log"
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\code_rename_s21_20261020",
+            "main.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "log": "build\\main_4.log"
+        }
+      ],
+      "success": false
+    }
+  ]
+}

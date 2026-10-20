@@ -1,3 +1,4 @@
+# 只针对标签 `pre-code-rename` 运行；历史基线与输出不得刷新。
 """核对本批保护字节、科学数据、生成宏与实际运行报告。"""
 from pathlib import Path
 import hashlib
