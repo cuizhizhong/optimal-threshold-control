@@ -19,7 +19,7 @@ end
 if abs(phi-geom.Phi_B)<=tol
     z=geom.z_B;
 else
-    z=fzero(@(v) switch_label(v,geom)-phi,[geom.z_B geom.e]);
+    z=fzero(@(v) switch_label(v,geom)-phi,[geom.z_B geom.s_e]);
 end
 [sg,ig]=geom.switch_point(z); hit=[sg;ig];
 if abs(s-sg)<=tol

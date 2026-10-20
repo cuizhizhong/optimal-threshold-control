@@ -13,16 +13,16 @@ assert(expected.schema_version == 2 && ...
     strcmp(expected.status, 'analytical_formula_evaluation_only') && ...
     isequal(expected.openocl_executed, false), ...
     'verify_numerical_reference:FixtureMetadata', 'Invalid analytic fixture metadata.');
-names = {'p','c','gamma','K'};
+names = {'beta','c','gamma','K'};
 for k = 1:numel(names)
     assertNear(p.(names{k}), expected.parameters.(names{k}), 1e-14, names{k});
 end
 g = build_theory_geometry(p);
-names = {'h','ell','r','s_K','e','z_B','s_B','Phi_A','Phi_B'};
+names = {'h','ell','p','s_A','s_e','z_B','s_B','Phi_A','Phi_B'};
 for k = 1:numel(names)
     assertNear(g.(names{k}), expected.geometry.(names{k}), 1e-9, names{k});
 end
-peakB = fzero(@(s) g.a(g.z_B)+g.ell*log(s/g.z_B)-(s-g.h)*(s-g.r)/s, [g.z_B g.s_B]);
+peakB = fzero(@(s) g.a(g.z_B)+g.ell*log(s/g.z_B)-(s-g.h)*(s-g.p)/s, [g.z_B g.s_B]);
 assertNear(peakB,expected.geometry.theta_peak_s_at_z_B,1e-9,'Theta peak');
 records = expected.cases;
 if iscell(records), records = [records{:}]; end
@@ -58,7 +58,7 @@ for k = 1:numel(cfg.cases)
     er = ref.events.release_state; fs = ref.events.full_state;
     assertNear(safe_peak(er(1), er(2), g.h), p.K, 1e-10, [item.id ' safe endpoint']);
     assertNear(fs(2)-g.ell*log(fs(1)), er(2)-g.ell*log(er(1)), 1e-10, [item.id ' q=1 invariant']);
-    assertNear(ref.J_reference, check.J_boundary+p.p*p.c*ref.tau_full, 1e-9, [item.id ' cost accounting']);
+    assertNear(ref.J_reference, check.J_boundary+p.beta*p.c*ref.tau_full, 1e-9, [item.id ' cost accounting']);
     peakTime = ref.events.release+naturalPeakTime(er,p,g);
     assertNear(peakTime,check.t_natural_peak,1e-8,[item.id ' natural peak time']);
     if ref.tau_wait > 0
@@ -89,13 +89,13 @@ assertNear(naturalPeakTime(cfg.safe_check.x0,p,g),check.t_natural_peak,1e-8,'saf
 assert(max(r0.s+r0.i) <= sum(cfg.safe_check.x0)+1e-10 && max(r0.i) <= p.K+1e-9);
 assert(safe_peak(.1,1e-25,g.h) == 1e-25);
 % 原始 Theta 等式与 MATLAB 已消去平凡根的方程交叉核查。
-for z = linspace(g.z_B,g.e-1e-5,30)
+for z = linspace(g.z_B,g.s_e-1e-5,30)
     [s,i] = g.switch_point(z);
     assert(s > z);
-    assertNear((s-g.h)/(i*(s-g.r)), (z-g.h)/(g.a(z)*(z-g.r)), 1e-8, 'original Theta equation');
-    assert(i < (s-g.h)*(s-g.r)/s);  % 非平凡根在峰点右侧。
+    assertNear((s-g.h)/(i*(s-g.p)), (z-g.h)/(g.a(z)*(z-g.p)), 1e-8, 'original Theta equation');
+    assert(i < (s-g.h)*(s-g.p)/s);  % 非平凡根在峰点右侧。
 end
-[sg,ig] = g.switch_point((g.z_B+g.e)/2);
+[sg,ig] = g.switch_point((g.z_B+g.s_e)/2);
 rg = analytic_reference(p,[sg;ig],g,[0;1]); assert(rg.tau_wait == 0 && rg.tau_boundary == 0);
 rb = analytic_reference(p,[g.s_B;p.K],g,[0;1]); assert(rb.tau_boundary == 0);
 sb = g.s_B+0.02; ib = g.Phi_B-sb+g.h*log(sb);
@@ -109,7 +109,7 @@ end
 function value = naturalPeakTime(x0,p,g)
 if x0(1) <= g.h, value = 0; return; end
 phi = g.phi(x0(1),x0(2));
-value = integral(@(s) 1./(p.p*p.c*s.*(phi-s+g.h*log(s))), ...
+value = integral(@(s) 1./(p.beta*p.c*s.*(phi-s+g.h*log(s))), ...
     g.h,x0(1),'AbsTol',1e-11,'RelTol',1e-11);
 end
 

@@ -6,15 +6,15 @@ odeopts=odeset('RelTol',opts.ode_rel_tol,'AbsTol',opts.ode_abs_tol);
 y=zeros(n+1,2); y(1,:)=run.x0(:)'; peak=y(1,2); peakTime=t(1);
 solutions=cell(n,1); minima=y(1,:); maxima=y(1,:);
 for k=1:n
-    rhs=@(~,x) [-par.c*(par.p+(1-par.p)*q(k))*x(1)*x(2); ...
-        (par.p*par.c*(1-q(k))*x(1)-par.gamma)*x(2)];
+    rhs=@(~,x) [-par.c*(par.beta+(1-par.beta)*q(k))*x(1)*x(2); ...
+        (par.beta*par.c*(1-q(k))*x(1)-par.gamma)*x(2)];
     sol=ode45(rhs,grid.edges(k:k+1),y(k,:)',odeopts); solutions{k}=sol;
     y(k+1,:)=deval(sol,t(k+1))';
     minima=min(minima,min(sol.y,[],2)'); maxima=max(maxima,max(sol.y,[],2)');
     [pk,ix]=max(sol.y(2,:)); pt=sol.x(ix);
-    % 常控制区间的感染峰值发生在 s=gamma/[pc(1-q)]。
+    % 常控制区间的感染峰值发生在 s=gamma/[beta c(1-q)]。
     if q(k)<1
-        hq=par.gamma/(par.p*par.c*(1-q(k)));
+        hq=par.gamma/(par.beta*par.c*(1-q(k)));
         if y(k,1)>hq && y(k+1,1)<hq
             tp=fzero(@(v) susceptible(sol,v)-hq,grid.edges(k:k+1));
             yp=deval(sol,tp); pk=yp(2); pt=tp;
@@ -37,7 +37,7 @@ assessment.signed_extrema=struct('q_min',min(q),'q_max',max(q), ...
     'reintegration_i_min',minima(2),'reintegration_capacity_excess',peak-par.K, ...
     'initial_state_difference',[s(1);i(1)]-run.x0(:));
 assessment.control_interval_lengths=grid.dt;
-assessment.J_reintegrated_control=par.p*par.c*sum(q.*grid.dt);
+assessment.J_reintegrated_control=par.beta*par.c*sum(q.*grid.dt);
 assessment.cost_accounting_error=abs(run.J_openocl-assessment.J_reintegrated_control);
 assessment.cost_accounting_pass=isfinite(run.J_openocl) && ...
     assessment.cost_accounting_error<=opts.cost_accounting_tolerance*max(1,abs(assessment.J_reintegrated_control));
@@ -47,7 +47,7 @@ assessment.tail_max_q=tail.max_abs_q_on_tail;
 assessment.terminal_peak=tail.zero_control_future_peak;
 assessment.terminal_safe=tail.zero_control_continuation_safe;
 assessment.reintegrated_terminal_peak=tail.zero_control_future_peak;
-assessment.node_terminal_peak=safe_peak(s(end),i(end),par.gamma/(par.p*par.c));
+assessment.node_terminal_peak=safe_peak(s(end),i(end),par.gamma/(par.beta*par.c));
 assessment.tail=tail;
 consistency=numerical_run_consistency(run,par,opts.grid_time_tolerance);
 assessment.provenance_pass=consistency.provenance_pass; assessment.problem_pass=consistency.problem_pass;

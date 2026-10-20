@@ -36,6 +36,8 @@ if isfield(run,'actual_solver_settings')
             isequal(a.initial_state(:),run.x0(:)) && abs(a.T-run.t_state(end))<=tol && a.N==numel(run.q_control);
     end
 end
-out.problem_pass=consistent && settingsOK && isequal(run.parameters,par);
+% raw与payload上面的原结构比较保留；这里只比较规范化后的计算参数。
+out.problem_pass=consistent && settingsOK && ...
+    isequal(numerical_normalize_parameters(run.parameters),numerical_normalize_parameters(par));
 if ~out.problem_pass, out.reasons{end+1}='problem_parameters_bounds_or_horizon_mismatch'; end
 end

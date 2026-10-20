@@ -15,8 +15,8 @@ validateattributes(tol, {'numeric'}, {'real','finite','scalar','nonnegative'}, m
 if nargin<9, capacity_tol=tol; end
 validateattributes(capacity_tol,{'numeric'},{'real','finite','scalar','nonnegative'});
 
-p = par.p; c = par.c; gamma = par.gamma; K = par.K;
-h = gamma / (p*c);
+beta = par.beta; c = par.c; gamma = par.gamma; K = par.K;
+h = gamma / (beta*c);
 
 left = max(0, T - tail_duration);
 t_control = t_control(:);

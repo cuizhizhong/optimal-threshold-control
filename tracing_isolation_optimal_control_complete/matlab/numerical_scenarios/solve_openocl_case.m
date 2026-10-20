@@ -39,7 +39,7 @@ try
     % 与重积分评估器共用同一网格断言，检查时间值及完整数组而非只比较长度。
     grid=validate_numerical_run_grid(run);
     run.dt_control=grid.dt;
-    run.J_openocl=par.p*par.c*sum(run.q_control.*grid.dt);
+    run.J_openocl=par.beta*par.c*sum(run.q_control.*grid.dt);
     run.output_validation=struct('passed',true,'status','passed','reason','');
 catch exception
     % 已返回的原控制、状态、info 均保留；验证失败不能丢失求解输出。

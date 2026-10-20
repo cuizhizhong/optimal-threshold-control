@@ -39,33 +39,33 @@ def bracket_root(fun, lo, hi):
 
 class Geometry:
     def __init__(self, parameters):
-        self.p, self.c, self.gamma, self.K = (
-            mp.mpf(str(parameters[key])) for key in ("p", "c", "gamma", "K")
+        self.beta, self.c, self.gamma, self.K = (
+            mp.mpf(str(parameters[key])) for key in ("beta", "c", "gamma", "K")
         )
         if not (
-            all(mp.isfinite(value) for value in (self.p, self.c, self.gamma, self.K))
-            and 0 < self.p < 1
+            all(mp.isfinite(value) for value in (self.beta, self.c, self.gamma, self.K))
+            and 0 < self.beta < 1
             and self.c > 0
             and self.gamma > 0
             and 0 < self.K < 1
         ):
             raise ValueError(
-                "Model parameters must be finite and satisfy 0 < p < 1, c > 0, "
+                "Model parameters must be finite and satisfy 0 < beta < 1, c > 0, "
                 "gamma > 0, and 0 < K < 1"
             )
-        self.h = self.gamma / (self.p * self.c)
+        self.h = self.gamma / (self.beta * self.c)
         self.ell = self.gamma / self.c
-        self.r = self.h - self.ell
+        self.p = self.h - self.ell
         self.Phi_A = self.K + self.h - self.h * mp.log(self.h)
         hi = max(mp.mpf(1), 2 * self.h)
         while self.a(hi) > 0:
             hi *= 2
-        self.s_K = bracket_root(self.a, self.h, hi)
-        self.e = bracket_root(lambda s: self.a(s) - self.g(s), self.h, self.s_K)
-        lo = (self.h + self.e) / 2
+        self.s_A = bracket_root(self.a, self.h, hi)
+        self.s_e = bracket_root(lambda s: self.a(s) - self.g(s), self.h, self.s_A)
+        lo = (self.h + self.s_e) / 2
         while self.switch_point(lo)[1] < self.K:
             lo = self.h + (lo - self.h) / 10
-        self.z_B = bracket_root(lambda z: self.switch_point(z)[1] - self.K, lo, self.e)
+        self.z_B = bracket_root(lambda z: self.switch_point(z)[1] - self.K, lo, self.s_e)
         self.s_B, i_B, self.peak_B = self.switch_point(self.z_B)
         assert abs(i_B - self.K) < mp.mpf("1e-35")
         self.Phi_B = self.phi(self.s_B, self.K)
@@ -77,23 +77,23 @@ class Geometry:
         return self.Phi_A - s + self.h * mp.log(s)
 
     def g(self, s):
-        return (s - self.h) * (s - self.r) / s
+        return (s - self.h) * (s - self.p) / s
 
     def G(self, s):
         return self.a(s) - self.ell * mp.log(s)
 
     def theta(self, s, i):
-        return (s - self.h) / (i * (s - self.r))
+        return (s - self.h) / (i * (s - self.p))
 
     def switch_point(self, z):
         """先解 I_z=g 定位峰点，再解峰点右侧的正文原始 Theta 方程。"""
-        if z == self.e:
+        if z == self.s_e:
             return z, self.a(z), z  # 已知合并极限，不作为非平凡根。
-        if not self.h < z < self.e:
-            raise ValueError("Nontrivial switch requires h < z < e")
+        if not self.h < z < self.s_e:
+            raise ValueError("Nontrivial switch requires h < z < s_e")
         az = self.a(z)
         iz = lambda s: az + self.ell * mp.log(s / z)
-        hi = max(2 * z, self.e)
+        hi = max(2 * z, self.s_e)
         while iz(hi) - self.g(hi) > 0:
             hi *= 2
         peak = bracket_root(lambda s: iz(s) - self.g(s), z, hi)
@@ -110,17 +110,17 @@ class Geometry:
         return s, i, peak
 
     def endpoint(self, s, i):
-        if not s * mp.exp(-i / self.ell) < self.s_K:
+        if not s * mp.exp(-i / self.ell) < self.s_A:
             raise ValueError("Full tracing has no reachable positive safe endpoint")
         psi = i - self.ell * mp.log(s)
-        z = bracket_root(lambda v: self.G(v) - psi, self.h, min(s, self.s_K))
+        z = bracket_root(lambda v: self.G(v) - psi, self.h, min(s, self.s_A))
         return z, self.a(z)
 
     def waiting_time(self, s0, i0, s_end):
         if s0 == s_end:
             return mp.mpf(0)
         label = self.phi(s0, i0)
-        integrand = lambda s: 1 / (self.p * self.c * s * (label - s + self.h * mp.log(s)))
+        integrand = lambda s: 1 / (self.beta * self.c * s * (label - s + self.h * mp.log(s)))
         # 两级独立精度评价确认自适应积分收敛。
         value = mp.quad(integrand, [s_end, (s0 + s_end) / 2, s0])
         with mp.workdps(DPS + 15):
@@ -152,12 +152,12 @@ def evaluate_case(row, geo):
                 capacity = bracket_root(lambda s: geo.phi(s, geo.K) - label, geo.h, s0)
                 tw = geo.waiting_time(s0, i0, capacity)
             sf, iff = geo.s_B, geo.K
-            tb = mp.log((capacity - geo.r) / (sf - geo.r)) / (geo.c * geo.K)
-            cb = geo.p / (geo.K * (1 - geo.p)) * (
-                mp.log(capacity / sf) - geo.p * mp.log((capacity - geo.r) / (sf - geo.r))
+            tb = mp.log((capacity - geo.p) / (sf - geo.p)) / (geo.c * geo.K)
+            cb = geo.beta / (geo.K * (1 - geo.beta)) * (
+                mp.log(capacity / sf) - geo.beta * mp.log((capacity - geo.p) / (sf - geo.p))
             )
         else:
-            z = bracket_root(lambda v: geo.phi(*geo.switch_point(v)[:2]) - label, geo.z_B, geo.e)
+            z = bracket_root(lambda v: geo.phi(*geo.switch_point(v)[:2]) - label, geo.z_B, geo.s_e)
             sg, ig, _ = geo.switch_point(z)
             if s0 > sg:
                 region, sf, iff = "W_Gamma", sg, ig
@@ -181,7 +181,7 @@ def evaluate_case(row, geo):
                s_capacity=capacity, s_full=sf, i_full=iff, s_release=sr, i_release=ir,
                tau_wait=tw, tau_boundary=tb, tau_full=tf, t_full_start=t_full,
                t_release=t_release, t_natural_peak=peak_time, J_boundary=cb,
-               J_reference=cb + geo.p * geo.c * tf)
+               J_reference=cb + geo.beta * geo.c * tf)
     return {key: float(value) if isinstance(value, mp.mpf) else value for key, value in out.items()}
 
 
@@ -204,7 +204,7 @@ def calculate(inputs):
         indexed = {row["case_id"]: row for row in inputs["cases"]}
         cases = [evaluate_case(indexed[key], geo) for key in inputs["main_case_ids"] + [inputs["safe_case_id"]]]
         geometry = {key: float(getattr(geo, key)) for key in (
-            "h", "ell", "r", "s_K", "e", "z_B", "s_B", "Phi_A", "Phi_B"
+            "h", "ell", "p", "s_A", "s_e", "z_B", "s_B", "Phi_A", "Phi_B"
         )}
         geometry["theta_peak_s_at_z_B"] = float(geo.peak_B)
     canonical = dict(inputs, cases=sorted(inputs["cases"], key=lambda row: row["case_id"]))

@@ -30,8 +30,8 @@ xs=NaN(numel(ts),2); xi=NaN(numel(ti),2); y=x0(:);
 maxI=y(2); odeopts=odeset('RelTol',2e-10,'AbsTol',1e-13);
 for k=1:numel(tc)
     left=edges(k); right=edges(k+1); q=uc(k);
-    rhs=@(~,x) [-par.c*(par.p+(1-par.p)*q)*x(1)*x(2); ...
-        (par.p*par.c*(1-q)*x(1)-par.gamma)*x(2)];
+    rhs=@(~,x) [-par.c*(par.beta+(1-par.beta)*q)*x(1)*x(2); ...
+        (par.beta*par.c*(1-q)*x(1)-par.gamma)*x(2)];
     sol=ode45(rhs,[left right],y,odeopts);
     ns=find(ts>=left & ts<=right); ni=find(ti>=left & ti<=right);
     if ~isempty(ns), xs(ns,:)=deval(sol,ts(ns)')'; end

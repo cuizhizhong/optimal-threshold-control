@@ -252,8 +252,8 @@ end
 function out=reconstruct(par,x0,grid,q)
 ns=nan(numel(grid.t_state),2); ni=nan(numel(grid.t_integrator),2); y=x0;
 for k=1:numel(q)
-    rhs=@(~,x) [-par.c*(par.p+(1-par.p)*q(k))*x(1)*x(2); ...
-        (par.p*par.c*(1-q(k))*x(1)-par.gamma)*x(2)];
+    rhs=@(~,x) [-par.c*(par.beta+(1-par.beta)*q(k))*x(1)*x(2); ...
+        (par.beta*par.c*(1-q(k))*x(1)-par.gamma)*x(2)];
     span=grid.control_interval_edges(k:k+1);
     sol=ode45(rhs,span,y,odeset('RelTol',2e-10,'AbsTol',1e-13));
     j=find(grid.t_state>=span(1) & grid.t_state<=span(2));

@@ -31,7 +31,7 @@ last=numerical_solver_diagnostics(badInfo,0.15);
 assert(isnan(last.primal_infeasibility.value));
 tests{end+1}='absent_or_nonfinite_final_iteration_not_fabricated';
 
-par=struct('p',.5,'c',2,'gamma',.3,'K',.15);
+par=struct('beta',.5,'c',2,'gamma',.3,'K',.15);
 settings=struct('T',1,'N',2,'d',2);
 grid=struct('t_state',[0;.2;1],'t_control',[0;.2], ...
     'control_interval_edges',[0;.2;1],'dt_control',[.2;.8]);

@@ -4,7 +4,8 @@ checks={@verify_numerical_reference,@verify_reference_dependency_tests, ...
     @verify_numerical_cache,@verify_solver_diagnostics,@verify_numerical_assessment, ...
     @verify_capacity_exit_transition,@verify_numerical_events, ...
     @verify_reference_boundaries,@verify_original_dynamics, ...
-    @verify_complete_control_cost,@verify_revision_exporter,@verify_revision_scheduler};
+    @verify_complete_control_cost,@verify_revision_exporter,@verify_revision_scheduler, ...
+    @verify_numerical_parameters};
 groups=struct('name',{},'passed',{},'report',{});
 for k=1:numel(checks)
     result=checks{k}();
@@ -27,7 +28,7 @@ assert(strcmp(ref.region,'A') && ref.J_reference==0 && all(ref.q==0));
 assert(all([ref.tau_wait ref.tau_boundary ref.tau_full]==0));
 tests{end+1}='safe_E0_exact_zero_cost_and_control';
 
-[sg,ig]=g.switch_point((g.z_B+g.e)/2);
+[sg,ig]=g.switch_point((g.z_B+g.s_e)/2);
 ref=analytic_reference(p,[sg;ig],g,[0;.01;.1]);
 assert(strcmp(ref.region,'Gamma') && ref.tau_wait==0 && ref.tau_boundary==0);
 assert(ref.events.full_start==0 && isnan(ref.events.capacity_start) && ...
@@ -62,10 +63,10 @@ assert(strcmp(ref.region,'A') && all(ref.i>0) && all(ref.q==0) && ref.i(1)==1e-2
 assert(safe_peak(.1,1e-25,g.h)==1e-25 && ref.J_reference==0);
 tests{end+1}='small_positive_i_below_h_is_not_cancelled_to_zero';
 
-other=p; other.p=.4; gp=build_theory_geometry(other);
-assert(abs(gp.r-(gp.h-gp.ell))<1e-14 && abs(gp.r-gp.ell)>1e-3);
-assert(abs(gp.r-other.gamma*(1-other.p)/(other.p*other.c))<1e-14);
-tests{end+1}='r_equals_h_minus_ell_outside_p_one_half';
+other=p; other.beta=.4; gp=build_theory_geometry(other);
+assert(abs(gp.p-(gp.h-gp.ell))<1e-14 && abs(gp.p-gp.ell)>1e-3);
+assert(abs(gp.p-other.gamma*(1-other.beta)/(other.beta*other.c))<1e-14);
+tests{end+1}='p_equals_h_minus_ell_outside_beta_one_half';
 report=unit_report(tests);
 end
 
@@ -73,8 +74,8 @@ function report=verify_original_dynamics()
 cfg=numerical_cases_config(); p=cfg.parameters; g=build_theory_geometry(p);
 x0=[.6;.02]; t=linspace(0,3,101); tests={};
 for q=[0 .35 1]
-    rhs=@(~,x) [-p.c*(p.p+(1-p.p)*q)*x(1)*x(2); ...
-        (p.p*p.c*(1-q)*x(1)-p.gamma)*x(2)];
+    rhs=@(~,x) [-p.c*(p.beta+(1-p.beta)*q)*x(1)*x(2); ...
+        (p.beta*p.c*(1-q)*x(1)-p.gamma)*x(2)];
     sol=ode45(rhs,[0 t(end)],x0,odeset('RelTol',1e-11,'AbsTol',1e-14));
     x=deval(sol,t); total=sum(x,1);
     assert(all(x(:)>0) && max(diff(total))<=1e-12 && max(total)<=sum(x0)+1e-12);
@@ -104,10 +105,10 @@ prepared=struct('problem',struct('solve',@output),'ig',[], ...
     'initialization',struct('type','synthetic_cost_test'), ...
     'initial_guess',struct('control',q));
 run=solve_openocl_case(p,prepared.x0,settings,prepared.initialization,prepared);
-hand=p.p*p.c*(.2*.25+.8*.5+.4*1.25);
-assert(run.success && abs(run.J_openocl-hand)<1e-14 && abs(hand-p.p*p.c*.95)<1e-14);
+hand=p.beta*p.c*(.2*.25+.8*.5+.4*1.25);
+assert(run.success && abs(run.J_openocl-hand)<1e-14 && abs(hand-p.beta*p.c*.95)<1e-14);
 assert(isequal(run.dt_control,[.25;.5;1.25]) && run.t_state(end)==2);
-assert(abs(run.J_openocl-p.p*p.c*trapz(t(1:end-1),q))>.1);
+assert(abs(run.J_openocl-p.beta*p.c*trapz(t(1:end-1),q))>.1);
 report=unit_report({'nonuniform_piecewise_constant_full_horizon_cost_not_trapezoid'});
     function [sol,times,info]=output(~)
         sol=struct('states',struct('S',struct('value',[.4 .39 .38 .37]), ...

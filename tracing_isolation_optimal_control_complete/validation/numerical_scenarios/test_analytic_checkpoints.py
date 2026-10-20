@@ -27,12 +27,12 @@ class AnalyticCheckpointTests(unittest.TestCase):
             generator.Geometry(parameters)
         self.assertEqual(
             str(error.exception),
-            "Model parameters must be finite and satisfy 0 < p < 1, c > 0, "
+            "Model parameters must be finite and satisfy 0 < beta < 1, c > 0, "
             "gamma > 0, and 0 < K < 1",
         )
 
     def test_nonfinite_parameters_are_rejected(self):
-        for field in ("p", "c", "gamma", "K"):
+        for field in ("beta", "c", "gamma", "K"):
             for value in (float("nan"), float("inf"), float("-inf")):
                 with self.subTest(field=field, value=value):
                     bad = copy.deepcopy(self.inputs["parameters"])
@@ -40,7 +40,7 @@ class AnalyticCheckpointTests(unittest.TestCase):
                     self.assert_invalid_parameters(bad)
 
     def test_probability_and_capacity_bounds_are_rejected(self):
-        for field in ("p", "K"):
+        for field in ("beta", "K"):
             for value in (-0.1, 0, 1, 1.1):
                 with self.subTest(field=field, value=value):
                     bad = copy.deepcopy(self.inputs["parameters"])

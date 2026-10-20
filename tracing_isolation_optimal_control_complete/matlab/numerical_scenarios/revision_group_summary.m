@@ -220,7 +220,8 @@ for k=1:5
     required={'provenance','solver_settings','initialization','parameters','x0'};
     if ~all(isfield(r,required)) || ~strcmp(r.provenance.solve_code_hash,source.hash) || ...
             ~isequaln(r.solver_settings,opts) || ~strcmp(r.initialization.type,'analytic_reference') || ...
-            ~isequal(r.parameters,cfg.parameters) || ~isequal(r.x0(:),cfg.cases(ix).x0(:))
+            ~isequal(numerical_normalize_parameters(r.parameters),numerical_normalize_parameters(cfg.parameters)) || ...
+            ~isequal(r.x0(:),cfg.cases(ix).x0(:))
         main{k}=[];
         continue;
     end

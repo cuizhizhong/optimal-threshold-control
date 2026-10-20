@@ -4,7 +4,7 @@ if nargin<1, cfg=numerical_cases_config(); else, cfg=numerical_cases_config(inpu
 ids={'E1','E2','E3','E4','E5'};
 x0=[0.75 0.99 0.50 0.70 0.50;0.01 0.01 0.14 0.15 0.15];
 mainN=[4000 8000 4000 8000 4000];
-assert(isequal(cfg.parameters,struct('p',0.5,'c',2,'gamma',0.3,'K',0.15)), ...
+assert(isequal(cfg.parameters,struct('beta',0.5,'c',2,'gamma',0.3,'K',0.15)), ...
     'revision:ChangedProtocol','Shared parameters differ from the approved revision protocol.');
 for k=1:5
     ix=find(strcmp({cfg.cases.id},ids{k}));

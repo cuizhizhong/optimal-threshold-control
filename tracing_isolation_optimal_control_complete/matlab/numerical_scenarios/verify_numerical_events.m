@@ -3,7 +3,7 @@ function report = verify_numerical_events()
 opts=struct('event_control_threshold',1e-3,'event_capacity_threshold',2e-5, ...
     'event_max_transition_cells',2,'event_distance_cells',1, ...
     'event_time_tolerance',1e-10,'capacity_control_tolerance',2e-3);
-par=struct('p',0.5,'c',2,'gamma',0.3,'K',0.15); checks={};
+par=struct('beta',0.5,'c',2,'gamma',0.3,'K',0.15); checks={};
 
 % 等待、真实容量弧、单单元退出、完全跟踪及单单元解除。
 t=(0:9)'; s=0.8-0.04*t;
@@ -139,14 +139,14 @@ for k=1:4
         odeset('RelTol',1e-11,'AbsTol',1e-13));
     x(k+1,:)=deval(dense{k},t(k+1))';
 end
-qbar=1-(par.gamma/(par.p*par.c*x(1,1)))*(exp(0.2)-1)/0.2;
+qbar=1-(par.gamma/(par.beta*par.c*x(1,1)))*(exp(0.2)-1)/0.2;
 q=[qbar;0.8;1;0];
 trajectory=struct('dense_solutions',{dense},'t',t,'s',x(:,1),'i',x(:,2));
 det=detect_numerical_events(t(1:end-1),q,t,x,par.K,opts);
 ref=reference(0,1.4,3.2,x(1,:)',deval(dense{2},1.4),deval(dense{4},3.2));
 cmp=compare_numerical_events(det,ref,par,opts,trajectory);
 assert(cmp.agreement_pass && cmp.capacity_control.max_absolute_error<1e-9 && ...
-    abs(qbar-(1-par.gamma/(par.p*par.c*x(1,1))))>0.01);
+    abs(qbar-(1-par.gamma/(par.beta*par.c*x(1,1))))>0.01);
 assert(strcmp(cmp.capacity_control.method,'ode_dense_output_interval_quadrature') && ...
     cmp.events.full_start.state_distance_available && ...
     cmp.events.full_start.reference_state_distance_to_event_segment<1e-7 && ...
@@ -171,7 +171,7 @@ fprintf('NUMERICAL_EVENTS_CHECKS_OK cases=%d\n',numel(checks));
 
     function record(name), checks{end+1}=name; end
     function out=linearAverage(left,right)
-        out=1-(par.gamma/(par.p*par.c))*log(right/left)/(right-left);
+        out=1-(par.gamma/(par.beta*par.c))*log(right/left)/(right-left);
     end
 end
 

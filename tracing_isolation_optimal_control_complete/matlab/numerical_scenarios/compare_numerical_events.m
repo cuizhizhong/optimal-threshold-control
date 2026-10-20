@@ -190,7 +190,7 @@ if isempty(indices), return; end
 assert(isfinite(out.tolerance) && out.tolerance>=0,'Invalid q_B comparison tolerance.');
 hasDense=isfield(trajectory,'dense_solutions') && ...
     numel(trajectory.dense_solutions)==numel(detected.q);
-averages=zeros(size(indices)); h=par.gamma/(par.p*par.c);
+averages=zeros(size(indices)); h=par.gamma/(par.beta*par.c);
 for j=1:numel(indices)
     k=indices(j); left=detected.t(k); right=detected.t(k+1);
     if hasDense

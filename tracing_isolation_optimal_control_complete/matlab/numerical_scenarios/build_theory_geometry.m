@@ -1,23 +1,23 @@
 function geom = build_theory_geometry(par)
 % 按正文定义构造几何；函数句柄只用于解析计算，不进入 OCP。
-h = par.gamma/(par.p*par.c); ell = par.gamma/par.c; r = h-ell;
-assert(par.p>0 && par.p<1 && par.c>0 && par.gamma>0 && par.K>0);
+h = par.gamma/(par.beta*par.c); ell = par.gamma/par.c; p = h-ell;
+assert(par.beta>0 && par.beta<1 && par.c>0 && par.gamma>0 && par.K>0);
 phiA = par.K+h-h*log(h);
 a = @(s) phiA-s+h*log(s);
-g = @(s) (s-h).*(s-r)./s;
+g = @(s) (s-h).*(s-p)./s;
 hi = max(1,2*h);
 while a(hi)>0, hi=2*hi; end
-sk = fzero(a,[h hi]);
-e = fzero(@(s) a(s)-g(s),[h sk]);
-geom = struct('h',h,'ell',ell,'r',r,'Phi_A',phiA,'s_K',sk,'e',e);
+s_A = fzero(a,[h hi]);
+s_e = fzero(@(s) a(s)-g(s),[h s_A]);
+geom = struct('h',h,'ell',ell,'p',p,'Phi_A',phiA,'s_A',s_A,'s_e',s_e);
 geom.a = a;
 geom.phi = @(s,i) i+s-h*log(s);
 geom.G = @(s) a(s)-ell*log(s);
 % 除去平凡根后的等价切换方程，在合并端点附近也保持稳定。
-geom.switch_point = @(z) switch_point(z,h,r,ell,e,a);
-lo=h+0.5*(e-h);
+geom.switch_point = @(z) switch_point(z,h,p,ell,s_e,a);
+lo=h+0.5*(s_e-h);
 while capacity_at(lo,geom)<par.K, lo=h+(lo-h)/10; end
-zB=fzero(@(z) capacity_at(z,geom)-par.K,[lo e]);
+zB=fzero(@(z) capacity_at(z,geom)-par.K,[lo s_e]);
 [sB,iB]=geom.switch_point(zB);
 assert(abs(iB-par.K)<1e-9);
 geom.z_B=zB; geom.s_B=sB; geom.Phi_B=geom.phi(sB,par.K);
@@ -27,14 +27,14 @@ function i=capacity_at(z,geom)
 [~,i]=geom.switch_point(z);
 end
 
-function [s,i]=switch_point(z,h,r,ell,e,a)
-assert(z>h && z<=e);
-if z==e
-    s=e; i=a(e); return % 已知合并极限，不当作非平凡曲线内点。
+function [s,i]=switch_point(z,h,p,ell,s_e,a)
+assert(z>h && z<=s_e);
+if z==s_e
+    s=s_e; i=a(s_e); return % 已知合并极限，不当作非平凡曲线内点。
 end
 az=a(z);
-fun=@(d) az-(z-h)*(z+d-r)*log_ratio(d,z);
-hi=max(e-z,0.01);
+fun=@(d) az-(z-h)*(z+d-p)*log_ratio(d,z);
+hi=max(s_e-z,0.01);
 while fun(hi)>0, hi=2*hi; end
 d=fzero(fun,[0 hi],optimset('TolX',1e-13));
 s=z+d; i=az+ell*log1p(d/z);

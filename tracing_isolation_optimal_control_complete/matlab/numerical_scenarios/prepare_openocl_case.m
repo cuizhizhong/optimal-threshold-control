@@ -59,10 +59,10 @@ prepared=struct('problem',problem,'ig',ig,'parameters',par,'x0',x0(:), ...
         svh.addControl('q','lb',0,'ub',1);
     end
     function daefun(daeh,x,~,u,~)
-        daeh.setODE('S',-par.c*(par.p+(1-par.p)*u.q)*x.S*x.I);
-        daeh.setODE('I',(par.p*par.c*(1-u.q)*x.S-par.gamma)*x.I);
+        daeh.setODE('S',-par.c*(par.beta+(1-par.beta)*u.q)*x.S*x.I);
+        daeh.setODE('I',(par.beta*par.c*(1-u.q)*x.S-par.gamma)*x.I);
     end
     function pathcosts(ch,~,~,u,~)
-        ch.add(par.p*par.c*u.q);
+        ch.add(par.beta*par.c*u.q);
     end
 end
