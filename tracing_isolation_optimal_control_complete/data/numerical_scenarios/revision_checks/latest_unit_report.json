@@ -1,15 +1,15 @@
 {
   "schema_version": 1,
-  "batch_id": "batch_9ed2b14e6d3644d2bd7c279d8baeffe7",
+  "batch_id": "batch_f7ae4a0606434525b3c719c21683ebd2",
   "mode": "unit",
   "force": false,
   "status": "tested",
-  "started_utc": "2026-10-08T08:46:25.781Z",
-  "finished_utc": "2026-10-08T08:46:37.923Z",
-  "manifest_file": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\data\\numerical_scenarios\\revision_checks\\batch_9ed2b14e6d3644d2bd7c279d8baeffe7_manifest.json",
-  "report_file": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\data\\numerical_scenarios\\revision_checks\\batch_9ed2b14e6d3644d2bd7c279d8baeffe7_report.json",
-  "protocol_hash": "537248f24a972508866e476433ab446a2cdda0f553fc70b66a32edb73f657a3b",
-  "solve_code_hash": "cd7e6297bb05f11028fe6f8f543ae8a9f5bd8c41d4f98346a0dc7b7cd09cff49",
+  "started_utc": "2026-10-20T12:51:38.066Z",
+  "finished_utc": "2026-10-20T12:51:57.954Z",
+  "manifest_file": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\data\\numerical_scenarios\\revision_checks\\batch_f7ae4a0606434525b3c719c21683ebd2_manifest.json",
+  "report_file": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\data\\numerical_scenarios\\revision_checks\\batch_f7ae4a0606434525b3c719c21683ebd2_report.json",
+  "protocol_hash": "07ac38dd4202becfb8b79e3feec574ce6f72d914ed8e12728757936f037bfa42",
+  "solve_code_hash": "03a41992ada09ad013dece4349e7eaef6018b6ac987b067d21909b1f4c6b6dfa",
   "default_unique_count": 35,
   "requested_unique_count": 0,
   "attempted_count": 0,
@@ -29,7 +29,7 @@
   "unit": {
     "passed": true,
     "status": "tested",
-    "group_count": 12,
+    "group_count": 13,
     "groups": [
       {
         "name": "verify_numerical_reference",
@@ -71,7 +71,7 @@
           "mock_solver_calls": 18,
           "mock_assessment_calls": 18,
           "actual_optimizer_calls": 0,
-          "checked_utc": "2026-10-08T08:46:28.633Z",
+          "checked_utc": "2026-10-20T12:51:43.045Z",
           "matlab": "25.2.0.2998904 (R2025b)"
         }
       },
@@ -95,7 +95,7 @@
           "tests_passed": 10,
           "actual_optimizer_calls": 0,
           "mock_callable_calls": 1,
-          "checked_utc": "2026-10-08T08:46:28.948Z",
+          "checked_utc": "2026-10-20T12:51:43.444Z",
           "matlab": "25.2.0.2998904 (R2025b)"
         }
       },
@@ -134,7 +134,7 @@
             "actual_optimizer_calls": 0
           },
           "actual_optimizer_calls": 0,
-          "checked_utc": "2026-10-08T08:46:29.397Z",
+          "checked_utc": "2026-10-20T12:51:44.411Z",
           "matlab": "25.2.0.2998904 (R2025b)"
         }
       },
@@ -201,7 +201,7 @@
             "waiting_public_interface_Phi_equals_Phi_B_no_fake_platform",
             "case_names_and_order_do_not_determine_regions",
             "small_positive_i_below_h_is_not_cancelled_to_zero",
-            "r_equals_h_minus_ell_outside_p_one_half"
+            "p_equals_h_minus_ell_outside_beta_one_half"
           ],
           "test_count": 7,
           "actual_optimizer_calls": 0
@@ -278,12 +278,21 @@
           "default_unique_configuration_count": 35,
           "mock_all_execute_calls": 35,
           "actual_optimizer_calls": 0,
-          "checked_utc": "2026-10-08T08:46:37.740Z"
+          "checked_utc": "2026-10-20T12:51:54.382Z"
+        }
+      },
+      {
+        "name": "verify_numerical_parameters",
+        "passed": true,
+        "report": {
+          "passed": true,
+          "tests": 9,
+          "optimizer_calls": 0
         }
       }
     ],
     "actual_optimizer_calls": 0,
-    "checked_utc": "2026-10-08T08:46:37.921Z",
+    "checked_utc": "2026-10-20T12:51:57.950Z",
     "matlab": "25.2.0.2998904 (R2025b)",
     "execution_type": "unit_tests_no_optimizer"
   }

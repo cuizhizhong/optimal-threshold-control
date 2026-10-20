@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "group": "horizon",
-  "checked_utc": "2026-10-09T16:21:19.488Z",
+  "checked_utc": "2026-10-20T13:27:47.803Z",
   "status": "completed",
   "protocol_complete": true,
   "comparison_complete": true,
@@ -10,8 +10,8 @@
     {
       "case_id": "E2",
       "configuration_id": "C02",
-      "run_id": "run_95f03cda21434451998723ad26c1a1b9",
-      "solve_fingerprint": "98b639fdefaca791a15d10641aeeabd1a378674d0da388191d12c36fd1f58dcf",
+      "run_id": "run_be88a14b0f1a4a80a12ea40d2e9e18db",
+      "solve_fingerprint": "3300fbeae921af24930ed5f64c2c87ad9d1b4bfc3c0fb3986bd3ed3202215e9f",
       "T": 300,
       "N": 8000,
       "initialization": "analytic_reference",
@@ -346,8 +346,8 @@
     {
       "case_id": "E4",
       "configuration_id": "C04",
-      "run_id": "run_139836e6273441e7bef91b3cce70193f",
-      "solve_fingerprint": "b09e5674b10efbb7d2e71fa775ef7bc7f6635c939649ca97f3d8399ffeb089be",
+      "run_id": "run_67ce8234939a4f4b81aa86ca7b197b74",
+      "solve_fingerprint": "084141d8cae3f28ad8f2a0d3e0ed5692246595643e1efdca259c2cc3602f9051",
       "T": 300,
       "N": 8000,
       "initialization": "analytic_reference",
@@ -682,8 +682,8 @@
     {
       "case_id": "E1",
       "configuration_id": "C17",
-      "run_id": "run_30ba0304ab67442db4b06441eee8c2c2",
-      "solve_fingerprint": "e93aca929d00f2b597739d91c0954d2d636d1487417221875cb168260c8aca2a",
+      "run_id": "run_cea753c3ddb94614ba8f3d69ee0cccf1",
+      "solve_fingerprint": "6a0eab6be8eaf04070f11554c2bead9e2504eed09089f027422042e4e5cff3df",
       "T": 300,
       "N": 8000,
       "initialization": "analytic_reference",
@@ -958,8 +958,8 @@
     {
       "case_id": "E3",
       "configuration_id": "C21",
-      "run_id": "run_2c79e1d8828f49a99532a0130b717305",
-      "solve_fingerprint": "5f7c06630e6509df2b1254851b94d49630f753e2885fffc947a68ff88cfb8cb9",
+      "run_id": "run_315e2268d0aa4b1caeda3520790bd459",
+      "solve_fingerprint": "fbfd28e581d4fea07128d7b849b0e381382d600f9e1700a2037fd10c6812ac9b",
       "T": 300,
       "N": 8000,
       "initialization": "analytic_reference",
@@ -1234,8 +1234,8 @@
     {
       "case_id": "E5",
       "configuration_id": "C25",
-      "run_id": "run_bed1c525aeff4468bda80a9d09ebd92f",
-      "solve_fingerprint": "7c42597855d6762bd0c11077ac72d88cee48b130604f7170e4b7716c88d2427c",
+      "run_id": "run_9213c1280be242c0ba693ceecf2f59ad",
+      "solve_fingerprint": "628ab7df3628131e63215af259a670cd98e958a6cf7140e385fa305e73cc8c3a",
       "T": 300,
       "N": 8000,
       "initialization": "analytic_reference",
@@ -1510,8 +1510,8 @@
     {
       "case_id": "E1",
       "configuration_id": "C26",
-      "run_id": "run_36191f6a7fa94ceb8eae02265a87dc8b",
-      "solve_fingerprint": "812f0508d1797e8d108146019ff864a481103811d31ef79b4f6504c39e4c59b7",
+      "run_id": "run_3939951ed31e45d28d11a3a17bd837b8",
+      "solve_fingerprint": "39aa8de762b675bfd9604e44f57b079d195497c770d4579a224331d5b132f725",
       "T": 60,
       "N": 1600,
       "initialization": "analytic_reference",
@@ -1786,8 +1786,8 @@
     {
       "case_id": "E1",
       "configuration_id": "C27",
-      "run_id": "run_d7d94922d84947b3adbce5fd4fc3b513",
-      "solve_fingerprint": "0dd2407b89841751a2a2c0a9851329c28845e5198a342155cde7be4e8bf264a2",
+      "run_id": "run_17a06d0cbdb3461591781703c563fb4b",
+      "solve_fingerprint": "de4241e703b530ffd6a588bfd5ce440b016ece870dbb54c3df2efc01df16cdd3",
       "T": 120,
       "N": 3200,
       "initialization": "analytic_reference",
@@ -2062,8 +2062,8 @@
     {
       "case_id": "E2",
       "configuration_id": "C28",
-      "run_id": "run_28e85e5b6d0d487fa978a53cd9062641",
-      "solve_fingerprint": "09080219667b80437605feb373a4ff4b4ad45efebcbfd9e59e31edc020106c42",
+      "run_id": "run_841f06dad3634f5fba838563eef05fc8",
+      "solve_fingerprint": "492b74babfb5613d4b27cd1b81c9e0817bc9ef5d9f69b473d9113ed35a4319a9",
       "T": 60,
       "N": 1600,
       "initialization": "analytic_reference",
@@ -2398,8 +2398,8 @@
     {
       "case_id": "E2",
       "configuration_id": "C29",
-      "run_id": "run_b528f398fabb4b61b08540c668d36825",
-      "solve_fingerprint": "99ce337376c2c50eca8ce46ffe37b34cc1985b987f4f256c0e21bd6bc982de2c",
+      "run_id": "run_94cda1864cf44f1f8d6334a9f247e6ab",
+      "solve_fingerprint": "cdab475632a677f2a538129c2548a7ad94623c8cdbafb74602624100de5431cb",
       "T": 120,
       "N": 3200,
       "initialization": "analytic_reference",
@@ -2734,8 +2734,8 @@
     {
       "case_id": "E3",
       "configuration_id": "C30",
-      "run_id": "run_facb197e0b9e43aba7bf82de013f3fd6",
-      "solve_fingerprint": "73bcf13e8a08ca16baf886ee66b19e7f68e4a3f1e7eddcbe8fd6b65efb1c012c",
+      "run_id": "run_eb056ecfd96341c78098118e3f80179a",
+      "solve_fingerprint": "b951d10f6cf14828082e813f95189614b3d8ac36dc6be23084d87d5c757b6499",
       "T": 60,
       "N": 1600,
       "initialization": "analytic_reference",
@@ -3010,8 +3010,8 @@
     {
       "case_id": "E3",
       "configuration_id": "C31",
-      "run_id": "run_602fcbcd0e5d45d8bb6051901d300aa5",
-      "solve_fingerprint": "2a06eb909cc619291d8511ef02f3a373d47dcbeee12579033b86a76820afa471",
+      "run_id": "run_a38e1c22e0aa41248c537a221b7cbc1d",
+      "solve_fingerprint": "064153958cc44226163cedf63c74a880bb7573b872f409caf98de03b84b0672c",
       "T": 120,
       "N": 3200,
       "initialization": "analytic_reference",
@@ -3286,8 +3286,8 @@
     {
       "case_id": "E4",
       "configuration_id": "C32",
-      "run_id": "run_8121aea0a10b4a1b8198398b97d5dd50",
-      "solve_fingerprint": "e10596bdb446bb564bbb6ae0cfd6a549690b2d33f8c42b12cdea0139f014812e",
+      "run_id": "run_aa894c34cd264dd7929293cf5f40271b",
+      "solve_fingerprint": "03dcce2f42a3a3415989bd5fa90aafde58fab218b07bcc7e779c8885f8386371",
       "T": 60,
       "N": 1600,
       "initialization": "analytic_reference",
@@ -3622,8 +3622,8 @@
     {
       "case_id": "E4",
       "configuration_id": "C33",
-      "run_id": "run_5477bb073e5044e8a80f65515d160ce6",
-      "solve_fingerprint": "45966dc771734283885d0b4c58be9b7d221f18e660c500956339ff9fa7d871c0",
+      "run_id": "run_60c70d4cde13415196afc8b72e51ee23",
+      "solve_fingerprint": "81edd993bdad31317ee8bbddec1b5476f42d381cdb1f38b7ccac01cef5c70cc1",
       "T": 120,
       "N": 3200,
       "initialization": "analytic_reference",
@@ -3958,8 +3958,8 @@
     {
       "case_id": "E5",
       "configuration_id": "C34",
-      "run_id": "run_a8816fb3375943dd85b0a49b8c01b519",
-      "solve_fingerprint": "1d9556d229908f3450aa5c2d29086849ba752011e0d2faa645196a56df5c45bd",
+      "run_id": "run_8cf9b7ed3f674df494d53a980459bbbf",
+      "solve_fingerprint": "7444c9ec39a993bc2c75b03c4830f164dc71abf3224cb396ed4854064486c2f5",
       "T": 60,
       "N": 1600,
       "initialization": "analytic_reference",
@@ -4234,8 +4234,8 @@
     {
       "case_id": "E5",
       "configuration_id": "C35",
-      "run_id": "run_f252211996384585aa8272e641829d39",
-      "solve_fingerprint": "a61c263396d1ffa414fbd93855eb26b0a703bc654358c157dfd7a2f56e8f0e9e",
+      "run_id": "run_58ca79b492e54022bdc0fcecf6c93499",
+      "solve_fingerprint": "ef83b6a25b7930e53e72b960ffd416d0e6a26cb1f044aed7598b7dc449242f7a",
       "T": 120,
       "N": 3200,
       "initialization": "analytic_reference",
@@ -4514,11 +4514,11 @@
       "status": "passed",
       "consistency_pass": true,
       "source_run_ids": [
-        "run_30ba0304ab67442db4b06441eee8c2c2",
-        "run_36191f6a7fa94ceb8eae02265a87dc8b",
-        "run_d7d94922d84947b3adbce5fd4fc3b513"
+        "run_cea753c3ddb94614ba8f3d69ee0cccf1",
+        "run_3939951ed31e45d28d11a3a17bd837b8",
+        "run_17a06d0cbdb3461591781703c563fb4b"
       ],
-      "reference_run_id": "run_30ba0304ab67442db4b06441eee8c2c2",
+      "reference_run_id": "run_cea753c3ddb94614ba8f3d69ee0cccf1",
       "cost_absolute_difference": [],
       "finest_relative_cost_difference": null,
       "cost_absolute_span": 1.0048961662789679E-11,
@@ -4764,11 +4764,11 @@
       "status": "passed",
       "consistency_pass": true,
       "source_run_ids": [
-        "run_95f03cda21434451998723ad26c1a1b9",
-        "run_28e85e5b6d0d487fa978a53cd9062641",
-        "run_b528f398fabb4b61b08540c668d36825"
+        "run_be88a14b0f1a4a80a12ea40d2e9e18db",
+        "run_841f06dad3634f5fba838563eef05fc8",
+        "run_94cda1864cf44f1f8d6334a9f247e6ab"
       ],
-      "reference_run_id": "run_95f03cda21434451998723ad26c1a1b9",
+      "reference_run_id": "run_be88a14b0f1a4a80a12ea40d2e9e18db",
       "cost_absolute_difference": [],
       "finest_relative_cost_difference": null,
       "cost_absolute_span": 1.1006751066133802E-12,
@@ -5014,11 +5014,11 @@
       "status": "passed",
       "consistency_pass": true,
       "source_run_ids": [
-        "run_2c79e1d8828f49a99532a0130b717305",
-        "run_facb197e0b9e43aba7bf82de013f3fd6",
-        "run_602fcbcd0e5d45d8bb6051901d300aa5"
+        "run_315e2268d0aa4b1caeda3520790bd459",
+        "run_eb056ecfd96341c78098118e3f80179a",
+        "run_a38e1c22e0aa41248c537a221b7cbc1d"
       ],
-      "reference_run_id": "run_2c79e1d8828f49a99532a0130b717305",
+      "reference_run_id": "run_315e2268d0aa4b1caeda3520790bd459",
       "cost_absolute_difference": [],
       "finest_relative_cost_difference": null,
       "cost_absolute_span": 4.2620906803847447E-12,
@@ -5264,11 +5264,11 @@
       "status": "passed",
       "consistency_pass": true,
       "source_run_ids": [
-        "run_139836e6273441e7bef91b3cce70193f",
-        "run_8121aea0a10b4a1b8198398b97d5dd50",
-        "run_5477bb073e5044e8a80f65515d160ce6"
+        "run_67ce8234939a4f4b81aa86ca7b197b74",
+        "run_aa894c34cd264dd7929293cf5f40271b",
+        "run_60c70d4cde13415196afc8b72e51ee23"
       ],
-      "reference_run_id": "run_139836e6273441e7bef91b3cce70193f",
+      "reference_run_id": "run_67ce8234939a4f4b81aa86ca7b197b74",
       "cost_absolute_difference": [],
       "finest_relative_cost_difference": null,
       "cost_absolute_span": 3.5971225997855072E-14,
@@ -5514,11 +5514,11 @@
       "status": "passed",
       "consistency_pass": true,
       "source_run_ids": [
-        "run_bed1c525aeff4468bda80a9d09ebd92f",
-        "run_a8816fb3375943dd85b0a49b8c01b519",
-        "run_f252211996384585aa8272e641829d39"
+        "run_9213c1280be242c0ba693ceecf2f59ad",
+        "run_8cf9b7ed3f674df494d53a980459bbbf",
+        "run_58ca79b492e54022bdc0fcecf6c93499"
       ],
-      "reference_run_id": "run_bed1c525aeff4468bda80a9d09ebd92f",
+      "reference_run_id": "run_9213c1280be242c0ba693ceecf2f59ad",
       "cost_absolute_difference": [],
       "finest_relative_cost_difference": null,
       "cost_absolute_span": 1.7670753749143842E-11,

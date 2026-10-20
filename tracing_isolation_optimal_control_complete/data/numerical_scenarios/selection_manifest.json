@@ -1,62 +1,62 @@
 {
   "schema_version": 1,
-  "selected_utc": "2026-10-09T16:21:14.921Z",
-  "selection_reason": "Same five original run IDs and main_N; reassessed acceptance tolerances on 2026-10-10; no new optimization.",
+  "selected_utc": "2026-10-20T13:02:09.091Z",
+  "selection_reason": "Predeclared main_N and analytic_reference; no result-dependent selection.",
   "entries": [
     {
       "case_id": "E1",
-      "run_id": "run_1fe903238ec8428ebe33758d0860ba94",
-      "solve_fingerprint": "93b2027d362a7138f8726c3d11f2fe3f49a71646148c1a6d5e0dca36609c4d20",
-      "raw_file": "runs/run_1fe903238ec8428ebe33758d0860ba94.mat",
-      "raw_sha256": "34c4c30b1f16310a5474126fadf39a6d7dba3db6ef76467a0ac6fa402d3627ba",
-      "assessment_fingerprint": "5b1fdf494407cf7d9fe8b24af88d2f163807d5e2cd786baed8eac33e697cdd8e",
+      "run_id": "run_90557e2d9fa045528eddf70fec1f17cc",
+      "solve_fingerprint": "d4799a404bca7d5687e0908de3c9c44f0d2cb83f2154a52f73409ba9ca791710",
+      "raw_file": "runs/run_90557e2d9fa045528eddf70fec1f17cc.mat",
+      "raw_sha256": "9d03e11b1772b8354a929a7f9a1410838b089342d421c05cd6aa4e9c58d46875",
+      "assessment_fingerprint": "1595de060a6dc43533553aa3e97440ee6dad648a356dfa56671280a7878ac196",
       "compatibility_file": "E1.mat",
-      "compatibility_sha256": "5048df82fa3ceeff14a0fbc1de95fde73b32f7e3a2ecc42bc2e39aa890611b37",
-      "reason": "Same five original run IDs and main_N; reassessed acceptance tolerances on 2026-10-10; no new optimization."
+      "compatibility_sha256": "08b34b55930e3b549b9572edeaaecd8b2dbab1cb80fbc684d02956bffbafda6a",
+      "reason": "Predeclared main_N and analytic_reference; no result-dependent selection."
     },
     {
       "case_id": "E2",
-      "run_id": "run_95f03cda21434451998723ad26c1a1b9",
-      "solve_fingerprint": "98b639fdefaca791a15d10641aeeabd1a378674d0da388191d12c36fd1f58dcf",
-      "raw_file": "runs/run_95f03cda21434451998723ad26c1a1b9.mat",
-      "raw_sha256": "8d832c3fa9185b51bb88b4a0a606d810b980c2c95e181085b47717a28adfb493",
-      "assessment_fingerprint": "8c1d909dd018f46774e7c7a37b107e3977ddfe7683728baeba345e067a1ef0d3",
+      "run_id": "run_be88a14b0f1a4a80a12ea40d2e9e18db",
+      "solve_fingerprint": "3300fbeae921af24930ed5f64c2c87ad9d1b4bfc3c0fb3986bd3ed3202215e9f",
+      "raw_file": "runs/run_be88a14b0f1a4a80a12ea40d2e9e18db.mat",
+      "raw_sha256": "25e43ed01075c4d5494c342d0ee8bb1d78c55f653735edcb86fa2ee7a9bf40cd",
+      "assessment_fingerprint": "59638ce47fc50871a8ccc4fd7145815f9f1b3616be793805f78ccf3a2f369f65",
       "compatibility_file": "E2.mat",
-      "compatibility_sha256": "94098a85166ac26e7f86638acc28b234385fb2a4e6812092f3616ddea82c0321",
-      "reason": "Same five original run IDs and main_N; reassessed acceptance tolerances on 2026-10-10; no new optimization."
+      "compatibility_sha256": "b5f675aa83925f8606ae5fa916a4ae7aa37c4a8766ec42c4ad9a3f5df1fce77f",
+      "reason": "Predeclared main_N and analytic_reference; no result-dependent selection."
     },
     {
       "case_id": "E3",
-      "run_id": "run_bd09cff659c14ab7960b447ff0f4f0b0",
-      "solve_fingerprint": "bb8f0c1550c05b0f17dfdff131f870359de93ac4d8e45f2248b6dbe64d50b1f6",
-      "raw_file": "runs/run_bd09cff659c14ab7960b447ff0f4f0b0.mat",
-      "raw_sha256": "d3506c6e984e21a05b21c0ac7f41acc32f5638a914356c0b4fb07d594f3ea065",
-      "assessment_fingerprint": "99c1b6c8cb0e77d94c69767580e0c7ee37e7969e5251dbfb9377463a18bd535f",
+      "run_id": "run_b5125bf7309e446d9ff6146d257d28c0",
+      "solve_fingerprint": "34df9bf2005652c5ed6fd67a53cdccb0cee2d449dd66aadf8e44a5642ac5e0ad",
+      "raw_file": "runs/run_b5125bf7309e446d9ff6146d257d28c0.mat",
+      "raw_sha256": "b98f7abf9bf99ae4180f3d41d35bd51d6b9c1ddcba53f8e4cb388f04d09bbf27",
+      "assessment_fingerprint": "da65d2fc3dfa2b3192d0df50fd2485ce4fc408077ca0cadc43655ae8caf6ca3a",
       "compatibility_file": "E3.mat",
-      "compatibility_sha256": "ccd340e27ce864d36ebb3d70e51659268c339370947d3734afd80252dcffa661",
-      "reason": "Same five original run IDs and main_N; reassessed acceptance tolerances on 2026-10-10; no new optimization."
+      "compatibility_sha256": "b734413531c4640523eaf889fe9ae805ed95ddcdf2e62ad018942649d3efcbdd",
+      "reason": "Predeclared main_N and analytic_reference; no result-dependent selection."
     },
     {
       "case_id": "E4",
-      "run_id": "run_139836e6273441e7bef91b3cce70193f",
-      "solve_fingerprint": "b09e5674b10efbb7d2e71fa775ef7bc7f6635c939649ca97f3d8399ffeb089be",
-      "raw_file": "runs/run_139836e6273441e7bef91b3cce70193f.mat",
-      "raw_sha256": "51940fda48b02673f50f6d3b9402e9d3d1570dcad5b236917a6ccb0004b2e8f8",
-      "assessment_fingerprint": "6e104fe9f7d6b3a615da1a669f499190c131b2954147add5b8876fdca024f78b",
+      "run_id": "run_67ce8234939a4f4b81aa86ca7b197b74",
+      "solve_fingerprint": "084141d8cae3f28ad8f2a0d3e0ed5692246595643e1efdca259c2cc3602f9051",
+      "raw_file": "runs/run_67ce8234939a4f4b81aa86ca7b197b74.mat",
+      "raw_sha256": "0b622305731d0c2e7bf258cfd5946bc8d98502491e592984cfd3155bbc5a2156",
+      "assessment_fingerprint": "065d9bddfd44d2fb5d797c1641f52395f8ecca52391cc5ff660f28c95572da3a",
       "compatibility_file": "E4.mat",
-      "compatibility_sha256": "0b1e06bd0aa9c9094efa8c8d40addd031e91050aa6966a46982a104514b1fcf3",
-      "reason": "Same five original run IDs and main_N; reassessed acceptance tolerances on 2026-10-10; no new optimization."
+      "compatibility_sha256": "8fb5d5cce1e5bd10d98050b657716cb410ff1c34462690b41d4545985deede64",
+      "reason": "Predeclared main_N and analytic_reference; no result-dependent selection."
     },
     {
       "case_id": "E5",
-      "run_id": "run_a07493968ce542b2b057ce11232f695c",
-      "solve_fingerprint": "77d7e0acd05f07c385996b57f8df3e52874b79bd4f1eb6feb941be29f2c62a41",
-      "raw_file": "runs/run_a07493968ce542b2b057ce11232f695c.mat",
-      "raw_sha256": "2e7f6447daba5ddca621fba68c4f65e28a3430c1a81ff05d5b5282710bcd5399",
-      "assessment_fingerprint": "1bddec9eec7a8a3591db813f3e401562c76ddae69be5d288ea291d40fceefa17",
+      "run_id": "run_3f672e8955914131af6d36a208c67727",
+      "solve_fingerprint": "e321387eebc244ef82dad3ccf9698aaa3be5485d302814cf46cf071bc0e789d2",
+      "raw_file": "runs/run_3f672e8955914131af6d36a208c67727.mat",
+      "raw_sha256": "14b59670f1e598641f9c6a5aaba8aab85623b606bba24226fc8cdc06f7b48f72",
+      "assessment_fingerprint": "e4055271786d3b96fd0135f5dc7f27ce1350e8d14d36ce9e18e9ac10fc998fa3",
       "compatibility_file": "E5.mat",
-      "compatibility_sha256": "91d5d834a7b41930ba9fee0bc74d4468ec86071446f509803030aa35d1fc3bf5",
-      "reason": "Same five original run IDs and main_N; reassessed acceptance tolerances on 2026-10-10; no new optimization."
+      "compatibility_sha256": "1ddcd4c4eacfb33a06dea652dc2e729d957e58bc21831ea5ced1db4c5a875796",
+      "reason": "Predeclared main_N and analytic_reference; no result-dependent selection."
     }
   ]
 }

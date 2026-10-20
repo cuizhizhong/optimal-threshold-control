@@ -1,0 +1,1620 @@
+{
+  "schema_version": 1,
+  "batch_id": "batch_f7ae4a0606434525b3c719c21683ebd2",
+  "created_utc": "2026-10-20T12:51:38.051Z",
+  "mode": "unit",
+  "force": false,
+  "status": "frozen",
+  "protocol_version": "2026-10-08-step6-v1",
+  "protocol_hash": "07ac38dd4202becfb8b79e3feec574ce6f72d914ed8e12728757936f037bfa42",
+  "solve_code_hash": "03a41992ada09ad013dece4349e7eaef6018b6ac987b067d21909b1f4c6b6dfa",
+  "solve_source_files": [
+    {
+      "path": "prepare_openocl_case.m",
+      "sha256": "dde3eb77dc87dd0041a87a4403bda3a79171492860ec9f3db17cecd73f82dcf2"
+    },
+    {
+      "path": "revision_initial_guess.m",
+      "sha256": "25c362706efbb14ed7af858fc8e2cff3a58b93ab8ec26021647488dfea7bbde3"
+    },
+    {
+      "path": "solve_openocl_case.m",
+      "sha256": "51b7eafa398385604d18df491b21910c716b186a1766121a1aeac66b2868c21b"
+    },
+    {
+      "path": "validate_numerical_run_grid.m",
+      "sha256": "70489fabe7f517e15f32dfed3df733b5dccdebda38c5835e377fb110dd8e57dd"
+    },
+    {
+      "path": "numerical_solver_diagnostics.m",
+      "sha256": "bc498c58ed80a8d317a4ec32b516526084d0b4aa64852ea21d088548401fa799"
+    },
+    {
+      "path": "build_theory_geometry.m",
+      "sha256": "eb19409d75472a8c2b237e6b768462b8f0ba2ef1d37db878a130f08d5f881339"
+    },
+    {
+      "path": "analytic_reference.m",
+      "sha256": "d9751e16bc081c984180f1fd9bc4e98a4c1f4b24d7e902de3050f0a87d75c0d5"
+    },
+    {
+      "path": "classify_initial_state.m",
+      "sha256": "aed1cad79ee7da56095315180887145755d6d7039d8a2035a246937e929ebd53"
+    },
+    {
+      "path": "safe_peak.m",
+      "sha256": "c813849393aad2470f2216eb78a90ddefdc514a5c63e48312fa9845c2a130a08"
+    }
+  ],
+  "default_unique_count": 35,
+  "default_experiments": [
+    {
+      "case_id": "E1",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.75,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 4000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C01",
+      "configuration_fingerprint": "c78eb125d69708d80812e7a4ca128763361db970e2be4eb6cfe98c11f2378e68",
+      "groups": [
+        "main",
+        "grid"
+      ],
+      "expected_region": "W_Gamma",
+      "expected_structure": "0 -> 1 -> 0"
+    },
+    {
+      "case_id": "E2",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.99,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 8000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C02",
+      "configuration_fingerprint": "24b16c92a1b884b3d562e885a9ecc0ce23568e52597ab244683ad46ce67c4144",
+      "groups": [
+        "main",
+        "grid",
+        "horizon"
+      ],
+      "expected_region": "W_K",
+      "expected_structure": "0 -> q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E3",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.14
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 4000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C03",
+      "configuration_fingerprint": "d602072c72ff8d83fa4c3909ef623efc652ccfe2ef6b32937b772c56be344be4",
+      "groups": [
+        "main",
+        "grid"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    },
+    {
+      "case_id": "E4",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.7,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 8000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C04",
+      "configuration_fingerprint": "7e66a78cf433db71a4b623ecf00e37b97042bdaa0b28841d6b8cf47489488d7e",
+      "groups": [
+        "main",
+        "grid",
+        "horizon"
+      ],
+      "expected_region": "B",
+      "expected_structure": "q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E5",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 4000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C05",
+      "configuration_fingerprint": "f4b679a4d8986f5d1afac8193750f5d58ba2d9b39e2c8593620e09f59d7c9f13",
+      "groups": [
+        "main",
+        "grid"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    },
+    {
+      "case_id": "E1",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.75,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 4000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "constant_control",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "constant_control",
+        "control": 0.7
+      },
+      "configuration_id": "C06",
+      "configuration_fingerprint": "2ff1b64a1e75310ed94e386eb19c13ea9652d6e19b87b64fb662844880c519a9",
+      "groups": [
+        "initialization-constant"
+      ],
+      "expected_region": "W_Gamma",
+      "expected_structure": "0 -> 1 -> 0"
+    },
+    {
+      "case_id": "E2",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.99,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 8000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "constant_control",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "constant_control",
+        "control": 0.7
+      },
+      "configuration_id": "C07",
+      "configuration_fingerprint": "e52ff00c666409070b39985768371791f6da01a5ad41f3511e01a22f6eb3c2fb",
+      "groups": [
+        "initialization-constant"
+      ],
+      "expected_region": "W_K",
+      "expected_structure": "0 -> q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E3",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.14
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 4000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "constant_control",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "constant_control",
+        "control": 0.7
+      },
+      "configuration_id": "C08",
+      "configuration_fingerprint": "319dd4af02ba681e7358de36c7ec8324bcca25898924a537838304f2baa78f81",
+      "groups": [
+        "initialization-constant"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    },
+    {
+      "case_id": "E4",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.7,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 8000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "constant_control",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "constant_control",
+        "control": 0.7
+      },
+      "configuration_id": "C09",
+      "configuration_fingerprint": "688d7b7b1bb1cc960356c2e31fd4f35d2d807f1ca0d72c01293e1e046452fc78",
+      "groups": [
+        "initialization-constant"
+      ],
+      "expected_region": "B",
+      "expected_structure": "q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E5",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 4000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "constant_control",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "constant_control",
+        "control": 0.7
+      },
+      "configuration_id": "C10",
+      "configuration_fingerprint": "d80d8be4d0e2519eb50d111516dff17410b6676cb97fc4973076927f5457ebe4",
+      "groups": [
+        "initialization-constant"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    },
+    {
+      "case_id": "E1",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.75,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 4000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "seeded_random",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "seeded_random",
+        "seed": 2.0261009E+7,
+        "generator": "mt19937ar",
+        "interpolation": "linear",
+        "knot_times": [
+          0,
+          2,
+          4,
+          6,
+          8,
+          10,
+          12,
+          14,
+          16,
+          18,
+          20,
+          300
+        ],
+        "knot_values": [
+          0.271753363541136,
+          0.43447483261677544,
+          0.43676256007236591,
+          0.23117822395687004,
+          0.329865216985304,
+          0.38761778598781127,
+          0.4439942994917111,
+          0.24075200931831497,
+          0.26705228143833337,
+          0.70437076759060757,
+          0.33261462146451026,
+          0.76764136192506338
+        ],
+        "value_bounds": [
+          0.15,
+          0.85
+        ]
+      },
+      "configuration_id": "C11",
+      "configuration_fingerprint": "9fc5a7651bbe8a02da8e101b1cb367dde66013cc950877d84734f6338c1d9503",
+      "groups": [
+        "initialization-random"
+      ],
+      "expected_region": "W_Gamma",
+      "expected_structure": "0 -> 1 -> 0"
+    },
+    {
+      "case_id": "E2",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.99,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 8000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "seeded_random",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "seeded_random",
+        "seed": 2.026101E+7,
+        "generator": "mt19937ar",
+        "interpolation": "linear",
+        "knot_times": [
+          0,
+          2,
+          4,
+          6,
+          8,
+          10,
+          12,
+          14,
+          16,
+          18,
+          20,
+          300
+        ],
+        "knot_values": [
+          0.30740695181431665,
+          0.69603902182410116,
+          0.43144363850184653,
+          0.77256341045744181,
+          0.686375894790789,
+          0.36060642137774113,
+          0.29813559590064076,
+          0.2632353628888125,
+          0.25415911297732208,
+          0.32107680090165769,
+          0.3102641101622875,
+          0.77134404824274616
+        ],
+        "value_bounds": [
+          0.15,
+          0.85
+        ]
+      },
+      "configuration_id": "C12",
+      "configuration_fingerprint": "8fa0b206a28f7a37b224159ad4d299978d7e26955bd1ffeca5f5b8810b54aafd",
+      "groups": [
+        "initialization-random"
+      ],
+      "expected_region": "W_K",
+      "expected_structure": "0 -> q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E3",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.14
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 4000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "seeded_random",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "seeded_random",
+        "seed": 2.0261011E+7,
+        "generator": "mt19937ar",
+        "interpolation": "linear",
+        "knot_times": [
+          0,
+          2,
+          4,
+          6,
+          8,
+          10,
+          12,
+          14,
+          16,
+          18,
+          20,
+          300
+        ],
+        "knot_values": [
+          0.63365010539612676,
+          0.19355251901182202,
+          0.53426619849941182,
+          0.41018681385322631,
+          0.25691166441082608,
+          0.607136147051304,
+          0.64872210774252914,
+          0.19423130288340665,
+          0.75633195912610374,
+          0.21322881185621298,
+          0.63470094091736473,
+          0.25691427479922718
+        ],
+        "value_bounds": [
+          0.15,
+          0.85
+        ]
+      },
+      "configuration_id": "C13",
+      "configuration_fingerprint": "91de4d6817a922f7012c5fc4799a6dd1b587221fa1bbaf3b37a2b2f6f191ae5f",
+      "groups": [
+        "initialization-random"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    },
+    {
+      "case_id": "E4",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.7,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 8000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "seeded_random",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "seeded_random",
+        "seed": 2.0261012E+7,
+        "generator": "mt19937ar",
+        "interpolation": "linear",
+        "knot_times": [
+          0,
+          2,
+          4,
+          6,
+          8,
+          10,
+          12,
+          14,
+          16,
+          18,
+          20,
+          300
+        ],
+        "knot_values": [
+          0.16947031947046373,
+          0.2467409985016622,
+          0.22267332518650154,
+          0.68056487731453319,
+          0.62551919711853132,
+          0.34131504579899352,
+          0.35257825557990274,
+          0.72387277680671469,
+          0.27139139499874981,
+          0.620373920828482,
+          0.6526916358372693,
+          0.62893461823433527
+        ],
+        "value_bounds": [
+          0.15,
+          0.85
+        ]
+      },
+      "configuration_id": "C14",
+      "configuration_fingerprint": "bfd82a3b15d21ab6c9507ec97ac2201e0346ff0076278aea7b98c7fab17f2550",
+      "groups": [
+        "initialization-random"
+      ],
+      "expected_region": "B",
+      "expected_structure": "q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E5",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 4000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "seeded_random",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "seeded_random",
+        "seed": 2.0261013E+7,
+        "generator": "mt19937ar",
+        "interpolation": "linear",
+        "knot_times": [
+          0,
+          2,
+          4,
+          6,
+          8,
+          10,
+          12,
+          14,
+          16,
+          18,
+          20,
+          300
+        ],
+        "knot_values": [
+          0.40099993132991263,
+          0.46202314006780387,
+          0.76429412590651291,
+          0.65007166077510958,
+          0.23573938910046094,
+          0.37938182861771619,
+          0.388334532918003,
+          0.48976963670584373,
+          0.71816581797806212,
+          0.79364761012495944,
+          0.73384941724435038,
+          0.43385047106244323
+        ],
+        "value_bounds": [
+          0.15,
+          0.85
+        ]
+      },
+      "configuration_id": "C15",
+      "configuration_fingerprint": "6f0850fd98de94cff1d2011c5d17991bfb0a75366581a2f33d89af68f46745da",
+      "groups": [
+        "initialization-random"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    },
+    {
+      "case_id": "E1",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.75,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 2000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C16",
+      "configuration_fingerprint": "290cece66a37329632a3e450ae0af7a2cf9c73e452d63edab83ca9a9f5e8309f",
+      "groups": [
+        "grid"
+      ],
+      "expected_region": "W_Gamma",
+      "expected_structure": "0 -> 1 -> 0"
+    },
+    {
+      "case_id": "E1",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.75,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 8000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C17",
+      "configuration_fingerprint": "8ff6428bcb4932020a50f85bf07d8af205b3cf5d60296ab950186d33b3294a88",
+      "groups": [
+        "grid",
+        "horizon"
+      ],
+      "expected_region": "W_Gamma",
+      "expected_structure": "0 -> 1 -> 0"
+    },
+    {
+      "case_id": "E2",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.99,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 2000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C18",
+      "configuration_fingerprint": "2590345ccf07b4d466fb6631362084063f2f702dbe6b320daaa8cc49fbee5b17",
+      "groups": [
+        "grid"
+      ],
+      "expected_region": "W_K",
+      "expected_structure": "0 -> q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E2",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.99,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 4000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C19",
+      "configuration_fingerprint": "44b3fe70ea47164303ef5ed672be6439e94a87702147b5d9c317ec9fbf7a1e31",
+      "groups": [
+        "grid"
+      ],
+      "expected_region": "W_K",
+      "expected_structure": "0 -> q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E3",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.14
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 2000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C20",
+      "configuration_fingerprint": "f46a881f99066b78e3059f79e52c855c2cf16c812ace95930e5fc39c0c512022",
+      "groups": [
+        "grid"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    },
+    {
+      "case_id": "E3",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.14
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 8000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C21",
+      "configuration_fingerprint": "9c94dbabe048c7900671fa230afe485c4300b62638992f38bc992340f84a6086",
+      "groups": [
+        "grid",
+        "horizon"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    },
+    {
+      "case_id": "E4",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.7,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 2000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C22",
+      "configuration_fingerprint": "0cd34e8af9a5236637940962643e8f88908ecf72a6d62b23a47b3ce047fddad0",
+      "groups": [
+        "grid"
+      ],
+      "expected_region": "B",
+      "expected_structure": "q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E4",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.7,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 4000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C23",
+      "configuration_fingerprint": "ff3ba45e0bbd441207e79f285904a540ee7c139a87c1c80505a6b1972b87dd4a",
+      "groups": [
+        "grid"
+      ],
+      "expected_region": "B",
+      "expected_structure": "q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E5",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 2000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C24",
+      "configuration_fingerprint": "a972f62b74af4f199576075a68037cc4fb9f0f3215537c48be82b2f302ae99c5",
+      "groups": [
+        "grid"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    },
+    {
+      "case_id": "E5",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 300,
+        "N": 8000,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C25",
+      "configuration_fingerprint": "50940d4223b35bfdfd2c1844b7940bfee31b7f9b3c52037b9f928798354e35d6",
+      "groups": [
+        "grid",
+        "horizon"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    },
+    {
+      "case_id": "E1",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.75,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 60,
+        "N": 1600,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C26",
+      "configuration_fingerprint": "5623c2fb285f4399e2f8c8c5dd60bf0625befa967d8df85149a2842624b38e04",
+      "groups": [
+        "horizon"
+      ],
+      "expected_region": "W_Gamma",
+      "expected_structure": "0 -> 1 -> 0"
+    },
+    {
+      "case_id": "E1",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.75,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 120,
+        "N": 3200,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C27",
+      "configuration_fingerprint": "a89fa505691bda78e3b807f5197d74f0d114deae492d4646dd4ddd92e6ac4261",
+      "groups": [
+        "horizon"
+      ],
+      "expected_region": "W_Gamma",
+      "expected_structure": "0 -> 1 -> 0"
+    },
+    {
+      "case_id": "E2",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.99,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 60,
+        "N": 1600,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C28",
+      "configuration_fingerprint": "59409b54f5dd461ac7df3bdefb8ed82142ce5ff6624ed8efefa70d31659cd740",
+      "groups": [
+        "horizon"
+      ],
+      "expected_region": "W_K",
+      "expected_structure": "0 -> q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E2",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.99,
+        0.01
+      ],
+      "solver_settings": {
+        "T": 120,
+        "N": 3200,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C29",
+      "configuration_fingerprint": "3c86d2814603fed58751a5a7b143823604ae04677174f3cc030b2540ded247d9",
+      "groups": [
+        "horizon"
+      ],
+      "expected_region": "W_K",
+      "expected_structure": "0 -> q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E3",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.14
+      ],
+      "solver_settings": {
+        "T": 60,
+        "N": 1600,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C30",
+      "configuration_fingerprint": "ec51ef60b3ef623fd516c6b1190780fa21a13830078a3cce9b8f7f7b78c21f9e",
+      "groups": [
+        "horizon"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    },
+    {
+      "case_id": "E3",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.14
+      ],
+      "solver_settings": {
+        "T": 120,
+        "N": 3200,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C31",
+      "configuration_fingerprint": "d8361199499114e32dad4979c6db862b6fba8af7bf7723d6cddd2b514254d811",
+      "groups": [
+        "horizon"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    },
+    {
+      "case_id": "E4",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.7,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 60,
+        "N": 1600,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C32",
+      "configuration_fingerprint": "057212a3467d90b379b97969eeb6151029ff0e3e052061e00846a77eba0f4de8",
+      "groups": [
+        "horizon"
+      ],
+      "expected_region": "B",
+      "expected_structure": "q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E4",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.7,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 120,
+        "N": 3200,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C33",
+      "configuration_fingerprint": "35db553968e1bbc10c157920de393275072ee64d69ad0b476cb69426dedc9c45",
+      "groups": [
+        "horizon"
+      ],
+      "expected_region": "B",
+      "expected_structure": "q_B -> 1 -> 0"
+    },
+    {
+      "case_id": "E5",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 60,
+        "N": 1600,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C34",
+      "configuration_fingerprint": "cfb340f6f9e1a801610da5d1ba1ddb9bbca306f2cfd8c2d5fbbf5112e886fe21",
+      "groups": [
+        "horizon"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    },
+    {
+      "case_id": "E5",
+      "parameters": {
+        "beta": 0.5,
+        "c": 2,
+        "gamma": 0.3,
+        "K": 0.15
+      },
+      "x0": [
+        0.5,
+        0.15
+      ],
+      "solver_settings": {
+        "T": 120,
+        "N": 3200,
+        "d": 2,
+        "controls_regularization": false,
+        "terminal_constraint": "none",
+        "initialization": "analytic_reference",
+        "casadi_options": {
+          "ipopt": {
+            "tol": 1E-9,
+            "constr_viol_tol": 1E-9,
+            "max_iter": 5000,
+            "bound_relax_factor": 1E-8
+          }
+        }
+      },
+      "initialization": {
+        "type": "analytic_reference"
+      },
+      "configuration_id": "C35",
+      "configuration_fingerprint": "15fa008187e4b4c7697f54c4b42aa047acab5bc26261855be1c7e3c4e5a5681d",
+      "groups": [
+        "horizon"
+      ],
+      "expected_region": "T",
+      "expected_structure": "1 -> 0"
+    }
+  ],
+  "selected_configuration_ids": [],
+  "configuration_count": 0,
+  "threshold_control": [
+    0.0005,
+    0.001,
+    0.002
+  ],
+  "threshold_capacity": [
+    1E-5,
+    2E-5,
+    4E-5
+  ],
+  "expected_fields_usage": "comparison_only"
+}

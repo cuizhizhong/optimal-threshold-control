@@ -1,0 +1,56 @@
+{
+  "step": "S2.4",
+  "source_sha256": "35b27dd0cfd529070a328f1ebd49bdba9965e083449d3cb35c4f788d2158bdb6",
+  "commands": [
+    {
+      "argv": [
+        "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\rerun_20261020\\S2.4",
+        "main.tex"
+      ],
+      "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+      "exit_code": 0,
+      "log": "main_1.log"
+    },
+    {
+      "argv": [
+        "E:\\software\\texlive\\2026\\bin\\windows\\bibtex.EXE",
+        "main"
+      ],
+      "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\rerun_20261020\\S2.4",
+      "exit_code": 0,
+      "log": "main_2.log"
+    },
+    {
+      "argv": [
+        "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\rerun_20261020\\S2.4",
+        "main.tex"
+      ],
+      "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+      "exit_code": 0,
+      "log": "main_3.log"
+    },
+    {
+      "argv": [
+        "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\rerun_20261020\\S2.4",
+        "main.tex"
+      ],
+      "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+      "exit_code": 0,
+      "log": "main_4.log"
+    }
+  ],
+  "success": true,
+  "final_log_issues": [],
+  "pages": 37,
+  "published": false,
+  "pdf_sha256": "8108f87db3b4093623b297c45d74341ea3a617ff4ff92cfd1b5938f136b86636"
+}
