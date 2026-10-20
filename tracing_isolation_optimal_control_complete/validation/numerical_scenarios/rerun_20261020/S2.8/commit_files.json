@@ -1,0 +1,18 @@
+{
+  "step": "S2.8",
+  "files": [
+    "tracing_isolation_optimal_control_complete/ai/claude_revision_plan/code_rename_inventory.md",
+    "tracing_isolation_optimal_control_complete/MANIFEST.txt",
+    "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/README.md",
+    "tracing_isolation_optimal_control_complete/README.md",
+    "tracing_isolation_optimal_control_complete/REVIEW_GUIDE.md",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.8/build_report.json",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.8/commit_files.json",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.8/main_1.log",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.8/main_2.log",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.8/main_3.log",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.8/main_4.log",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.8/preservation_report.json",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.8/README.md"
+  ]
+}
