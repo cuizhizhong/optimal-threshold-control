@@ -1,0 +1,24 @@
+{
+  "step": "A1 author revision",
+  "plan_version": "v5 no-return scope",
+  "base_commit": "e40c8971692a97feba6faea38bef6bae7167b941",
+  "source_sha256": "4d178ba0e6086c668318c8d2c69883c1d9fc8dd2594eccd38a5cc0a9e71b8214",
+  "build_pages": {
+    "main": 37,
+    "theory_only": 29
+  },
+  "model_algebra": "8/8",
+  "existing_notation": "28/28",
+  "source_checks": "35/35",
+  "protected_files": 535,
+  "protected_files_unchanged": true,
+  "generated_blocks_unchanged": true,
+  "section_3_through_before_conclusions_verbatim_unchanged": true,
+  "visual_qa_passed": true,
+  "optimizer_calls": 0,
+  "scientific_solves": 0,
+  "matlab_calls": 0,
+  "push_performed": false,
+  "actual_stop_condition_triggered": false,
+  "awaiting_author_review": "Model section, main PDF pages 4-5; B not started"
+}

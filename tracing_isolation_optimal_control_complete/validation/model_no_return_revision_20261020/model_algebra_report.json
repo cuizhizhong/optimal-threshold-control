@@ -1,0 +1,17 @@
+{
+  "scope": "No-return count-model normalization and algebra; not a new OCP solve",
+  "checks": {
+    "normalize_s": true,
+    "normalize_i": true,
+    "normalize_s_q": true,
+    "normalize_i_q": true,
+    "normalize_r": true,
+    "population_conservation": true,
+    "aggregate_outside_si": true,
+    "removed_flow_gamma_aggregation": true
+  },
+  "passed": 8,
+  "total": 8,
+  "optimizer_calls": 0,
+  "scientific_solves": 0
+}

@@ -1,0 +1,15 @@
+{
+  "base_commit": "e40c8971692a97feba6faea38bef6bae7167b941",
+  "section_3_through_before_conclusions_verbatim_unchanged": true,
+  "v4_archive_matches_base_plan": true,
+  "v4_archive_sha256": "9cbdf3c0b8545526c6572372f5c58666b4ec1c341787cf03920900c914ab5926",
+  "reference_inputs": {
+    "E:\\work\\draft-submission-ready\\paper\\sections\\02_model.tex": "df71ee4ba2d4fcffb2616fbe86605dc9ce9ca51d9bb635244049f1d33ac764ff",
+    "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\ref\\Tang_Zhou_2024_JMB.pdf": "e3ac3540f63137f8ca267e0edd14c86a1cd0a7b5857e556696bfeb364167d9b6"
+  },
+  "reference_inputs_access": "read only",
+  "model_section_character_counts": {
+    "before": 4393,
+    "after": 3262
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "scope": "Selected changed and adjacent rendered pages only",
+  "documents": [
+    {
+      "name": "main",
+      "pdf_sha256": "f5b1a1c24f4dc037dc31f232b885a5fca074d5e78bbeb15221c4c1959bb2a393",
+      "visually_inspected_pages": [
+        1,
+        3,
+        4,
+        5,
+        7,
+        33
+      ],
+      "viewer": "root",
+      "readable": true,
+      "clipping": false,
+      "overlap": false,
+      "missing_glyphs": false,
+      "passed": true
+    },
+    {
+      "name": "theory_only",
+      "pdf_sha256": "9a8226d3de9712d38f7f31498e8f6bf2e906047b38577f55e14dda1f581e10bf",
+      "visually_inspected_pages": [
+        1,
+        4,
+        5,
+        7,
+        26
+      ],
+      "viewer": "independent audit subagent",
+      "readable": true,
+      "clipping": false,
+      "overlap": false,
+      "missing_glyphs": false,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

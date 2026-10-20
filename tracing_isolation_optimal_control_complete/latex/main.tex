@@ -66,8 +66,8 @@
 \fi
 \begin{abstract}
 医疗资源承载能力有限时，疫情干预需要兼顾感染规模限制与持续实施的代价。
-本文研究含跟踪隔离的五仓室传播模型，在隔离易感者不回流时约化为二维系统，
-以社区非隔离感染负荷上限为状态约束，在无回流、接触率固定且跟踪比例取值于 $[0,1]$ 的条件下，
+本文研究无回流五仓室跟踪隔离模型的最优控制。社区易感者与非隔离感染者构成闭合的二维子系统；
+以社区非隔离感染负荷上限为状态约束，在接触率固定且跟踪比例取值于 $[0,1]$ 的条件下，
 最小化无限时域线性干预成本。
 跟踪隔离同时减少非隔离感染者的生成、增加未隔离易感者的移出，
 因而两条状态方程中的控制作用不同。
@@ -139,56 +139,52 @@
 \section{模型与控制问题}
 \label{sec:model}
 
-\paragraph{五仓室与流量假设。}
-设固定人口规模为 $N$，计数变量 $S,S_q,I,I_q,R$ 分别表示未隔离易感者、隔离易感者、
-非隔离感染者、隔离感染者，以及已退出传播过程的移出者。
-令
-\[
- X=(s,s_q,i,i_q,r)=\frac1N(S,S_q,I,I_q,R),\qquad
- \Sigma_5=\{X\in[0,1]^5:s+s_q+i+i_q+r=1\}.
-\]
-这里 $r$ 是聚合的移出比例，包含已确诊并退出社区传播但仍在住院者以及康复者，
-不专指累计康复比例；因此 $i+i_q$ 不包含已经进入 $r$ 的住院者。
-与 \citet[式(2.1)]{Zhou2024SPCI} 的六仓室模型比较，本稿把其住院与康复仓室合并为 $r$。
+\subsection{基本模型}
 
-取接触率 $c>0$、单次接触传播概率 $0<\beta<1$，以及跟踪隔离比例 $q(t)\in[0,1]$。
-假定只有非隔离感染者参与社区传播；被追踪的接触者按感染状况进入 $i_q$ 或 $s_q$，
-隔离易感者以速率 $\lambda\ge0$ 返回 $s$，移出者不再进入易感状态。
-设 $\delta_I\ge0$ 是非隔离感染者确诊后退出社区传播的速率，
-$\gamma_I\ge0$ 是其自然恢复率，$\delta_q>0$ 是隔离感染者的移出率，并记
-\[
- \gamma=\delta_I+\gamma_I>0.
-\]
-沿用上述社区传播流量，并显式加入隔离易感者回流，得到
+考虑具有接触追踪和隔离措施的封闭人群。将总人口 $N$ 分为社区易感者 $S$、隔离易感者 $S_q$、
+非隔离感染者 $I$、隔离感染者 $I_q$ 和移出者 $R$，其中只有非隔离感染者参与社区传播。
+接触率记为 $c(t)$，每次接触的传播概率为 $\beta$，接触者中被追踪并隔离的比例为 $q(t)$。
+被追踪的接触者若已感染则进入 $I_q$，若未感染则进入 $S_q$；未被追踪的新感染者进入 $I$。
+非隔离感染者与隔离感染者分别以速率 $\gamma$ 和 $\delta_q$ 移出。
+沿用 \citet{Zhou2024SPCI} 的社区传播与接触追踪结构，得到五仓室模型
 \begin{equation}
 \begin{cases}
-\dot s=-c[\beta+(1-\beta)q]si+\lambda s_q,\\
-\dot i=\beta c(1-q)si-\gamma i,\\
-\dot s_q=(1-\beta)cqsi-\lambda s_q,\\
-\dot i_q=\beta cqsi-\delta_q i_q,\\
-\dot r=\gamma i+\delta_q i_q.
+\dot S=-\dfrac{c(t)[\beta+(1-\beta)q(t)]}{N}SI,\\[.4em]
+\dot I=\dfrac{\beta c(t)(1-q(t))}{N}SI-\gamma I,\\[.4em]
+\dot S_q=\dfrac{(1-\beta)c(t)q(t)}{N}SI,\\[.4em]
+\dot I_q=\dfrac{\beta c(t)q(t)}{N}SI-\delta_q I_q,\\[.4em]
+\dot R=\gamma I+\delta_q I_q.
 \end{cases}
 \label{eq:five-compartment-model}
 \end{equation}
-五式相加为零，各仓室在自身为零时的流入均非负，故 $\Sigma_5$ 正向不变。
-守恒关系及二维系统以外的总量为
+
+$R$ 聚合了退出传播过程的住院者与康复者。将 \citet[式(2.1)]{Zhou2024SPCI} 中的住院与康复仓室合并后，
+其流入为 $(\delta_I+\gamma_I)I+\delta_q I_q$，故这里取 $\gamma=\delta_I+\gamma_I$，
+其中 $\delta_I$ 和 $\gamma_I$ 分别为非隔离感染者的诊断率与自然恢复率。
+相应地，$I+I_q$ 不包含已移入 $R$ 的住院者。
+
+设 $N>0$、$0<\beta<1$、$\gamma,\delta_q>0$，给定接触率 $c(t)>0$ 局部有界且可测，$q(t)\in[0,1]$ 可测。
+$c,\gamma,\delta_q$ 的单位为时间的倒数，$\beta,q$ 为无量纲比例。
+初始仓室非负，总和为 $N$，且 $S_0,I_0>0$。模型不计人口出生、自然死亡及外来输入，
+隔离者不参与社区传播，隔离易感者不返回 $S$，移出者不再感染。
+五式相加给出人口守恒关系
 \begin{equation}
- \begin{gathered}
- s+s_q+i+i_q+r=1,\qquad s_q+i_q+r=1-s-i,\\
- \frac{\mathrm d}{\mathrm dt}(s_q+i_q+r)=cqsi+\gamma i-\lambda s_q.
- \end{gathered}
+ S(t)+S_q(t)+I(t)+I_q(t)+R(t)=N.
  \label{eq:five-compartment-conservation}
 \end{equation}
-其中 $cqsi$ 同时包含追踪后进入 $s_q$ 与 $i_q$ 的流量，不能全部解释为新增感染。
+各仓室在自身为零时的流入均非负，故非负初值生成非负轨道。
+其中 $q=0$ 表示停止新的接触追踪隔离，既有的隔离易感者仍按模型假设维持隔离。
 
-\paragraph{无回流的解析主问题。}
-本稿的全域最优性与唯一性结论限定于 $\lambda=0$、常数 $c$ 和唯一控制 $q$。
-不回流使已隔离易感者持续退出社区接触，从而 $(s,i)$ 构成闭合子系统；
-这是解析主问题的建模假设，若隔离解除发生在所研究时段内，该闭合不再成立。
-\citet[第5页]{Zhou2024SPCI} 关于波次较短及抗体保护的说明针对康复者不再感染，
-不能作为隔离易感者不回流的依据。
-为同时表述下一节的适定性与后文的时变讨论，允许将给定接触率写为 $c(t)$；
-在 $\lambda=0$ 时，约化系统为
+\subsection{二维约化与控制问题}
+
+式\eqref{eq:five-compartment-model}的前两个方程不含 $S_q,I_q,R$，因此 $(S,I)$ 构成闭合子系统。
+其余三个仓室可在给定 $(S,I)$ 与控制后依次求得，不影响 $(S,I)$ 的演化。
+令
+\[
+ s=\frac SN,\qquad i=\frac IN,\qquad
+ s_q=\frac{S_q}{N},\qquad i_q=\frac{I_q}{N},\qquad r=\frac RN,
+\]
+则归一化的社区传播系统为
 \begin{equation}
 \begin{cases}
 \dot s=-c(t)[\beta+(1-\beta)q]si,\\
@@ -196,74 +192,34 @@ $\gamma_I\ge0$ 是其自然恢复率，$\delta_q>0$ 是隔离感染者的移出�
 \end{cases}
 \label{eq:normalized-model}
 \end{equation}
-$q$ 增大时，非隔离感染者的生成项减小，未隔离易感者的移出项增大。
-特别地，$q=1$ 使前者为零，但后者仍可为正。
+此时 $s+s_q+i+i_q+r=1$。加强跟踪隔离既减少进入 $i$ 的新增感染，又将未感染的接触者移出社区易感仓室。
+特别地，$q=1$ 时非隔离感染者的新增项为零，而社区易感者仍以速率 $c(t)si$ 减少。
 
-回流情形下记总易感比例为 $\tilde s=s+s_q$。由式\eqref{eq:five-compartment-model}，
+本文的解析主问题固定接触率 $c(t)\equiv c>0$，以跟踪比例 $q$ 为唯一控制。
+给定社区非隔离感染负荷上限 $K\in(0,1)$，要求
 \begin{equation}
- \dot{\tilde s}=-\beta csi.
- \label{eq:total-susceptible-return}
+ 0<i(t)\le K,\qquad t\ge0.
+ \label{eq:capacity}
 \end{equation}
-右端依赖社区易感比例 $s$，不能直接以 $\tilde s$ 替换原二维系统中的 $s$ 来闭合动力学。
-$\lambda>0$ 留作回流扩展检验，不属于本文无回流主定理的结论。
+$K$ 约束仍参与社区传播的感染者比例；其与医疗容量的联系需要附加的病例需求假设，见附录\ref{app:medical-capacity}。
+在满足该约束的控制中，最小化无限时域的累计跟踪强度
+\begin{equation}
+ J(q)=\int_0^\infty\beta cq(t)\dd t.
+ \label{eq:linear-cost}
+\end{equation}
+这里 $\beta cq$ 为跟踪强度的线性代价，$J$ 取值于 $[0,+\infty]$。
+该成本衡量控制的强度与持续时间，不按实际隔离人数计费。
 
-固定非隔离感染者的移出率 $\gamma>0$，要求
-\begin{equation}
-0<i(t)\le K<1,
-\label{eq:capacity}
-\end{equation}
-其中 $K$ 是社区非隔离感染负荷上限，不直接等同于 ICU 床位占人口的比例。
-如需按医疗容量选取 $K$，还须给定病例需求核与可用床位等额外信息，见附录\ref{app:medical-capacity}。
-控制目标为最小化
-\begin{equation}
-J(q)=\int_0^\infty \beta c(t)q(t)\dd t.
-\label{eq:linear-cost}
-\end{equation}
-运行成本 $\beta c(t)q$ 表示维持跟踪强度的线性代价，而非按实际隔离人数计费的工作量成本。
-累计成本 $J$ 取值于 $[0,+\infty]$；乘以正常数不改变最优控制。
-
-\begin{definition}[控制类与唯一性的含义]
+\begin{definition}[可行控制]
 \label{def:admissible}
-给定正初值 $x_0=(s_0,i_0)$，其中 $s_0+i_0\le1$、$i_0\le K$。
-允许的控制为所有 Lebesgue 可测的 $q:[0,\infty)\to[0,1]$。
-其 Carath\'eodory 解全程满足 \eqref{eq:capacity} 时，称控制可行，记作 $q\in\Uad(x_0)$。
-控制按几乎处处相等识别。所谓唯一，是指从同一初值出发的任意两个最优控制几乎处处相等，
-而不是规定孤立切换瞬间的控制代表元。
+给定初值 $x_0=(s_0,i_0)$，其中 $s_0,i_0>0$、$s_0+i_0\le1$、$i_0\le K$。
+所有 Lebesgue 可测的 $q:[0,\infty)\to[0,1]$ 中，使系统\eqref{eq:normalized-model}的
+Carath\'eodory 解全程满足式\eqref{eq:capacity}的控制称为可行控制，记其全体为 $\Uad(x_0)$。
+控制按几乎处处相等识别；最优控制唯一是指任意两个最优控制在 $[0,\infty)$ 上几乎处处相等。
 \end{definition}
 
-对完整初值 $X_0\in\Sigma_5$，其投影 $x_0=(s_0,i_0)$ 满足上述正初值条件时，
-记 $\Uad^\lambda(X_0)$ 为使五仓室系统全程满足 $i\le K$ 的可测控制类，并定义
-\begin{equation}
- V_\lambda(X_0)=\inf_{q\in\Uad^\lambda(X_0)}
- \int_0^\infty\beta cq(t)\dd t.
- \label{eq:five-compartment-value}
-\end{equation}
-这里成本不依赖于另外三个仓室，状态约束也只作用于 $i$。
-
-\begin{proposition}[无回流时的二维等价]
-\label{prop:five-compartment-reduction}
-设 $\lambda=0$ 且 $c>0$ 为常数。对任意上述完整初值，
-五仓室与二维系统的可行控制类相同，且
-\begin{equation}
- V_0(s_0,s_{q,0},i_0,i_{q,0},r_0)=V(s_0,i_0)=U(s_0,i_0),
- \label{eq:five-compartment-equivalence}
-\end{equation}
-其中 $V$ 是第\ref{sec:constant-problem}节定义的二维值函数，
-$U$ 是后文构造并由定理\ref{thm:verification}验证的候选成本。
-\end{proposition}
-\begin{proof}
-$\lambda=0$ 时，五仓室轨道的 $(s,i)$ 投影恰好满足式\eqref{eq:normalized-model}。
-反过来，给定该二维系统的任意可行控制与轨道，其余三式依次给出
-$s_q,i_q,r$ 的唯一非负解；五式的守恒关系保证完整轨道仍在 $\Sigma_5$ 内。
-因此两问题的可行控制一一对应，同一控制的成本也相同，得 $V_0=V$。
-最后的 $V=U$ 使用后文独立建立的验证定理，不作为构造 $U$ 的前提。
-\end{proof}
-
-\begin{remark}[结果的适用范围]
-本稿常接触率主定理仅讨论 $\lambda=0$ 下的 \eqref{eq:normalized-model}、\eqref{eq:linear-cost} 及完整控制区间 $[0,1]$。
-不包含感染成本、隔离易感者回流、折现、控制变化率惩罚或跟踪能力上限 $\bar q<1$。
-时变接触率和正则化另行讨论，不能通过改写符号直接继承常接触率主定理。
-\end{remark}
+状态约束和成本均不涉及 $s_q,i_q,r$，因此以下只需研究二维系统\eqref{eq:normalized-model}上的最优控制问题。
+控制的启动时刻、切换次数和退出状态不预先指定，由后文的最优性分析确定。
 
 \paragraph{与传播率控制的关系。}
 为便于比较，将 \citet[式(1)]{MicloSpiroWeibull2022}
@@ -283,6 +239,7 @@ $s_q,i_q,r$ 的唯一非负解；五式的守恒关系保证完整轨道仍在 $
 此外，原文允许 $b>b_0$ 且运行成本仍为零\citep[式(2)]{MicloSpiroWeibull2022}，
 本文的控制集则使零成本控制唯一对应 $q=0$。
 后文据此针对本模型分别建立全局最优性与控制唯一性。
+
 
 \section{解的适定性、正性与基本耗散}
 \label{sec:wellposed}
@@ -2268,7 +2225,7 @@ $\bar q<1$、完全跟踪后残余感染生成、隔离者回流、联合控制�
 
 \section{主要结论}
 \label{sec:conclusions}
-五仓室模型在无回流时约化为二维系统，其中易感者移出与非隔离感染者生成对同一跟踪比例的响应方向不同。
+无回流五仓室模型的社区易感者与非隔离感染者构成闭合二维系统，其中易感者移出与非隔离感染者生成对跟踪比例的响应方向不同。
 在常接触率、线性成本、完整控制区间及正感染初值下，
 本稿从有限可达域、非平凡切换曲线的完整参数化和全域分区出发，构造可行候选成本 $U$。
 两种等待分支的统一梯度、内部匹配和容量水平集论证，给出对所有可测可行控制成立的验证不等式。

@@ -1,0 +1,179 @@
+{
+  "batch": "A1_no_return_revision",
+  "base_commit": "e40c8971692a97feba6faea38bef6bae7167b941",
+  "protected_file_count": 535,
+  "protected_group_counts": {
+    "data/numerical_scenarios/": 440,
+    "figures/": 6,
+    "matlab/": 61
+  },
+  "changed_protected_files": [],
+  "tracked_changes": [
+    "tracing_isolation_optimal_control_complete/README.md",
+    "tracing_isolation_optimal_control_complete/ai/claude_revision_plan/REVISION_PLAN.md",
+    "tracing_isolation_optimal_control_complete/ai/claude_revision_plan/START_HERE_CODEX.md",
+    "tracing_isolation_optimal_control_complete/ai/claude_revision_plan/SYMBOL_TABLE.md",
+    "tracing_isolation_optimal_control_complete/latex/main.pdf",
+    "tracing_isolation_optimal_control_complete/latex/main.tex",
+    "tracing_isolation_optimal_control_complete/latex/theory_only.pdf"
+  ],
+  "outside_allowed_tracked_scope": [],
+  "extra_allowed_tracked": [],
+  "generated_blocks_unchanged": true,
+  "source_checks": [
+    {
+      "name": "model_section_found",
+      "passed": true
+    },
+    {
+      "name": "model_no_lambda",
+      "passed": true
+    },
+    {
+      "name": "model_no_V_lambda",
+      "passed": true
+    },
+    {
+      "name": "model_no_tilde_s",
+      "passed": true
+    },
+    {
+      "name": "model_no_V_0",
+      "passed": true
+    },
+    {
+      "name": "model_no_independent_reduction_proposition",
+      "passed": true
+    },
+    {
+      "name": "model_no_five_compartment_value",
+      "passed": true
+    },
+    {
+      "name": "model_no_five_compartment_equivalence",
+      "passed": true
+    },
+    {
+      "name": "model_no_braced_tilde_s",
+      "passed": true
+    },
+    {
+      "name": "count_model_label_exists",
+      "passed": true,
+      "details": "eq:five-compartment-model"
+    },
+    {
+      "name": "count_model_has_five_equations",
+      "passed": true,
+      "details": 5
+    },
+    {
+      "name": "count_equation_S",
+      "passed": true
+    },
+    {
+      "name": "count_equation_I",
+      "passed": true
+    },
+    {
+      "name": "count_equation_S_q",
+      "passed": true
+    },
+    {
+      "name": "count_equation_I_q",
+      "passed": true
+    },
+    {
+      "name": "count_equation_R",
+      "passed": true
+    },
+    {
+      "name": "normalized_two_equations",
+      "passed": true
+    },
+    {
+      "name": "required_label_eq:five-compartment-conservation",
+      "passed": true
+    },
+    {
+      "name": "required_label_eq:capacity",
+      "passed": true
+    },
+    {
+      "name": "required_label_eq:linear-cost",
+      "passed": true
+    },
+    {
+      "name": "required_label_def:admissible",
+      "passed": true
+    },
+    {
+      "name": "gamma_aggregation",
+      "passed": true
+    },
+    {
+      "name": "title_main",
+      "passed": true
+    },
+    {
+      "name": "title_metadata",
+      "passed": true
+    },
+    {
+      "name": "title_header",
+      "passed": true
+    },
+    {
+      "name": "no_old_beta_1/beta_2",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "no_old_q_max",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "no_old_dual_transmission_wording",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "P0_defined_exactly_once",
+      "passed": true,
+      "details": 1
+    },
+    {
+      "name": "P0_defined_in_section_4",
+      "passed": true
+    },
+    {
+      "name": "P0_defined_before_safe_set",
+      "passed": true
+    },
+    {
+      "name": "safe_set_uses_P0",
+      "passed": true
+    },
+    {
+      "name": "no_duplicate_labels",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "source_references_resolve",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "source_citations_resolve",
+      "passed": true,
+      "details": []
+    }
+  ],
+  "source_check_count": 35,
+  "source_checks_passed": 35,
+  "optimizer_calls": 0,
+  "scientific_solves": 0,
+  "passed": true
+}
