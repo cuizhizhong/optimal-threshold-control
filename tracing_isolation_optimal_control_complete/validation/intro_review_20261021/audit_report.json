@@ -1,0 +1,84 @@
+{
+  "batch": "B_author_review",
+  "base_commit": "80074ec37c0827e38552f3255f46a1a73a223cc4",
+  "checks": [
+    {
+      "name": "only_cost_explanation_added_after_intro",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "preamble_unchanged",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "cost_identity_present_once",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "bibliography_unchanged",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "AFG_uniqueness_acknowledged",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Angulo_early_start_acknowledged",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "own_early_start_explains_cost_mechanism",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "whole_boundary_interval_stated",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "plain_abstract_capacity_conclusion",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "first_paragraph_has_source",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "no_new_return_or_effect_size",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "references_resolve",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "citations_resolve",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "535_protected_records_code_figures_unchanged",
+      "passed": true,
+      "details": {
+        "count": 535,
+        "changed": []
+      }
+    }
+  ],
+  "passed": 14,
+  "total": 14,
+  "success": true,
+  "optimizer_calls": 0,
+  "ocp_solves": 0
+}

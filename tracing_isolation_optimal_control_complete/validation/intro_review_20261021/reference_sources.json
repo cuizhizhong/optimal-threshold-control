@@ -1,0 +1,108 @@
+{
+  "checked_on": "2026-10-21",
+  "timezone": "Asia/Singapore",
+  "mode": "public OA PDF download and metadata checks only; no optimizer/OCP; no commit or push",
+  "references": [
+    {
+      "filename": "Morris2021_epidemic_control.pdf",
+      "download_url": "https://www.nature.com/articles/s42005-021-00570-y.pdf",
+      "landing_url": "https://www.nature.com/articles/s42005-021-00570-y",
+      "doi": "10.1038/s42005-021-00570-y",
+      "title": "Optimal, near-optimal, and robust epidemic control",
+      "authors": [
+        "Dylan H. Morris",
+        "Fernando W. Rossine",
+        "Joshua B. Plotkin",
+        "Simon A. Levin"
+      ],
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "version": "Version of record, publisher PDF",
+      "local_path": "ref/Morris2021_epidemic_control.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 982048,
+      "sha256": "fb848f7dc5c52348c198ec8bb2aaf849ae76e3fdfd629bac4a160882de169ed6",
+      "pdf_header": "%PDF-1.4",
+      "pages": 8,
+      "doi_found_in_pdf": true,
+      "title_found_on_first_page": true,
+      "license_check": "PDF first/last page visually checked; official publisher or Europe PMC licensing agrees",
+      "license_url_found_in_pdf": true,
+      "authors_found_in_pdf": {
+        "Dylan H. Morris": true,
+        "Fernando W. Rossine": true,
+        "Joshua B. Plotkin": true,
+        "Simon A. Levin": true
+      }
+    },
+    {
+      "filename": "Kretzschmar2020_contact_tracing_delays.pdf",
+      "download_url": "https://umfcs.u-bordeaux.fr/documents/informations-covid-19/publications-scientifiques/PIIS2468266720301572.pdf",
+      "landing_url": "https://research-portal.uu.nl/en/publications/impact-of-delays-on-effectiveness-of-contact-tracing-strategies-f/",
+      "doi": "10.1016/S2468-2667(20)30157-2",
+      "title": "Impact of delays on effectiveness of contact tracing strategies for COVID-19: a modelling study",
+      "authors": [
+        "Mirjam E Kretzschmar",
+        "Ganna Rozhnova",
+        "Martin C J Bootsma",
+        "Michiel van Boven",
+        "Janneke H H M van de Wijgert",
+        "Marc J M Bonten"
+      ],
+      "license": "CC BY-NC-ND 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+      "version": "Final published version; public mirror in University of Bordeaux COVID-19 literature collection",
+      "local_path": "ref/Kretzschmar2020_contact_tracing_delays.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "bytes": 630639,
+      "sha256": "0c11e2ea05e658d5b275d68cfe548e7a77b5ac51ff96411914f259487651904a",
+      "pdf_header": "%PDF-1.7",
+      "pages": 8,
+      "doi_found_in_pdf": true,
+      "title_found_on_first_page": true,
+      "license_check": "PDF first/last page visually checked; official publisher or Europe PMC licensing agrees",
+      "license_url_found_in_pdf": false,
+      "authors_found_in_pdf": {
+        "Mirjam E Kretzschmar": true,
+        "Ganna Rozhnova": true,
+        "Martin C J Bootsma": true,
+        "Michiel van Boven": true,
+        "Janneke H H M van de Wijgert": true,
+        "Marc J M Bonten": true
+      }
+    }
+  ],
+  "blocked_endpoints": [
+    {
+      "url": "https://www.thelancet.com/article/S2468266720301572/pdf",
+      "status": 403
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7365652/",
+      "status": 403
+    },
+    {
+      "url": "https://europepmc.org/articles/PMC7365652?pdf=render",
+      "status": 403
+    },
+    {
+      "url": "https://researchinformation.umcutrecht.nl/files/44043071/1_s2.0_S2468266720301572_main.pdf",
+      "status": 403
+    },
+    {
+      "url": "https://research-portal.uu.nl/files/78526695/PIIS2468266720301572.pdf",
+      "status": 403
+    },
+    {
+      "url": "https://www.medrxiv.org/content/10.1101/2020.05.09.20096289v2.full.pdf",
+      "status": 403
+    }
+  ],
+  "Kretzschmar_official_metadata_crosscheck": {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7365652/fullTextXML",
+    "http_status": 200,
+    "verified": "DOI, title, authors, and CC BY-NC-ND 4.0 license"
+  }
+}

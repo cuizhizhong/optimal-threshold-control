@@ -1,0 +1,28 @@
+{
+  "checked_on": "2026-10-21",
+  "timezone": "Asia/Singapore",
+  "origin": "https://github.com/cuizhizhong/optimal-threshold-control.git",
+  "visibility": "public",
+  "visibility_source": "GitHub get_repo live response visibility=public",
+  "local_branch": "codex/numerical-reproducibility-revision",
+  "local_head_at_check": "80074ec37c0827e38552f3255f46a1a73a223cc4",
+  "live_work_branch_sha": "b039bdc1d7c2a6ee1d4664cc497cc131f1bab89d",
+  "ahead": 21,
+  "behind": 0,
+  "live_heads": {
+    "codex/integrate-theory-revision": "f078f41fda1a7e4b0fb495916210862a0f136558",
+    "codex/numerical-reproducibility-revision": "b039bdc1d7c2a6ee1d4664cc497cc131f1bab89d",
+    "main": "496e454b34f7ce6861238041d5bd14b475e37917",
+    "master": "ca6b41984929e7f04f4ea94a9be975f07045451a"
+  },
+  "B_commit_reachable_from_live_heads": false,
+  "B_commit_API_check": {
+    "status": 422,
+    "message": "No commit found for SHA: 80074ec37c0827e38552f3255f46a1a73a223cc4"
+  },
+  "B_source_extractions_published_via_B_commit": false,
+  "scope": "Current advertised remote heads all checked with merge-base --is-ancestor. No tags advertised by ls-remote. B source files first added in B commit; no broader copyright or blob-level redistribution audit performed.",
+  "remote_changed": false,
+  "fetch_performed": false,
+  "push_performed": false
+}
