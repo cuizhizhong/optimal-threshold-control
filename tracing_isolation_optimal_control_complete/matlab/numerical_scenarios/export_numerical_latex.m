@@ -371,7 +371,9 @@ if isfield(cfg,'acceptance') && strcmp(cfg.acceptance.revision_timing,'post_solv
         '容量段控制与 $q_B$ 区间均值的绝对误差容差为 $\\num{%.3g}$，并重新评估全部保存结果；' ...
         '成本相对误差容差 $\\num{%.3g}$ 与事件区间判据保持不变。原严格判据及其未通过记录另行保留。'], ...
         cfg.check.capacity_tolerance,cfg.check.capacity_control_tolerance,cfg.check.relative_cost_tolerance)];
-    details=[details original_criterion_text(cfg,out.recorded_configuration_count)];
+    [originalText,originalSource]=original_criterion_text(cfg,out.recorded_configuration_count,{records.run_id});
+    details=[details originalText];
+    if ~isempty(originalSource), out.original_criterion_source=originalSource; end
 end
 init=out.groups.initialization;
 if init.available
@@ -624,18 +626,31 @@ catch
 end
 end
 
-function text=original_criterion_text(cfg,recordCount)
-% 原判据计数取自容差重评报告；报告缺失或与当前记录数不符时不写该句。
-text='';
+function [text,source]=original_criterion_text(cfg,recordCount,currentRunIds)
+% 原判据取本次新raw的重评报告；记录集合或当前评估指纹不符时不沿用历史计数。
+text=''; source=[];
 if ~(isfield(cfg,'acceptance') && strcmp(cfg.acceptance.revision_timing,'post_solve')), return; end
 root=fileparts(fileparts(fileparts(mfilename('fullpath'))));
-path=fullfile(root,'validation','numerical_scenarios','tolerance_revision_20261010', ...
-    'assessment_revision_report.json');
+relative=fullfile('validation','numerical_scenarios','rerun_20261020','S2.6','assessment_revision_report.json');
+path=fullfile(root,relative);
 if ~isfile(path), return; end
 report=jsondecode(fileread(path));
-if ~(isfield(report,'status') && strcmp(report.status,'completed') && isfield(report,'original_counts')), return; end
+if ~(isfield(report,'status') && strcmp(report.status,'completed') ...
+        && all(isfield(report,{'original_counts','source_run_count','rows','current_spec','original_settings'}))), return; end
 c=report.original_counts;
-if c.records~=recordCount, return; end
+if c.records~=recordCount || report.source_run_count~=recordCount || numel(report.rows)~=recordCount, return; end
+if ~all(isfield(report.rows,'run_id')) || numel(unique(currentRunIds))~=recordCount ...
+        || ~isequal(sort({report.rows.run_id}),sort(currentRunIds)), return; end
+spec=numerical_assessment_spec(cfg); saved=report.current_spec;
+if ~all(isfield(saved,{'code_hash','settings','reference_samples','reference_plot_horizon'})) ...
+        || ~strcmp(saved.code_hash,spec.code_hash) || ~isequaln(saved.settings,spec.settings) ...
+        || saved.reference_samples~=spec.reference_samples ...
+        || saved.reference_plot_horizon~=spec.reference_plot_horizon, return; end
+expected=cfg.check; expected.state_tolerance=cfg.acceptance.original_state_tolerance;
+expected.capacity_tolerance=cfg.acceptance.original_capacity_tolerance;
+expected.capacity_control_tolerance=cfg.acceptance.original_capacity_control_tolerance;
+if ~isequaln(report.original_settings,expected), return; end
+source=struct('project_relative_path',strrep(relative,'\','/'),'sha256',numerical_sha256(path,'file'));
 a=cfg.acceptance;
 text=sprintf(['按保存求解前预定的原判据（状态容差 $\\num{%.3g}$、容量容差 $\\num{%.3g}$、' ...
     '容量段控制容差 $\\num{%.3g}$），数值接受与理论比较分别通过 %d/%d 与 %d/%d，同时通过 %d/%d；' ...
