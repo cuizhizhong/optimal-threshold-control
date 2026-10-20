@@ -1,0 +1,100 @@
+{
+  "base_commit": "420bcc7",
+  "steps": {
+    "S1.1": {
+      "commit": "64defdf",
+      "files": [
+        "tracing_isolation_optimal_control_complete/ai/claude_revision_plan/S1_DECISIONS.md",
+        "tracing_isolation_optimal_control_complete/latex/main.pdf",
+        "tracing_isolation_optimal_control_complete/latex/theory_only.pdf",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.1/build_report.json",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.1/main_1.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.1/main_2.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.1/main_3.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.1/main_4.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.1/theory_only_1.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.1/theory_only_2.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.1/theory_only_3.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.1/theory_only_4.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/build_s1.py",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/data_before.json"
+      ]
+    },
+    "S1.2": {
+      "commit": "c91dbd1",
+      "files": [
+        "tracing_isolation_optimal_control_complete/ai/claude_revision_plan/checks/migrate_s1_notation.py",
+        "tracing_isolation_optimal_control_complete/data/numerical_scenarios/export_provenance.json",
+        "tracing_isolation_optimal_control_complete/latex/main.pdf",
+        "tracing_isolation_optimal_control_complete/latex/main.tex",
+        "tracing_isolation_optimal_control_complete/latex/theory_only.pdf",
+        "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/export_numerical_latex.m",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.2/build_report.json",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.2/main_1.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.2/main_2.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.2/main_3.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.2/main_4.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.2/theory_only_1.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.2/theory_only_2.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.2/theory_only_3.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.2/theory_only_4.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/export_authorized_console.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/export_report.json",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/matlab_startup_attempt1.txt",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/run_s1_export.m"
+      ]
+    },
+    "S1.3": {
+      "commit": "4290366",
+      "files": [
+        "tracing_isolation_optimal_control_complete/ai/claude_revision_plan/checks/s1_source_audit.py",
+        "tracing_isolation_optimal_control_complete/ai/claude_revision_plan/checks/symbol_inventory.py",
+        "tracing_isolation_optimal_control_complete/ai/claude_revision_plan/checks/verify_new_notation.py",
+        "tracing_isolation_optimal_control_complete/data/numerical_scenarios/export_provenance.json",
+        "tracing_isolation_optimal_control_complete/latex/main.pdf",
+        "tracing_isolation_optimal_control_complete/latex/theory_only.pdf",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.3/build_report.json",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.3/checks_report.json",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.3/formulas.txt",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.3/inventory.txt",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.3/main_1.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.3/main_2.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.3/main_3.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.3/main_4.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.3/preservation.txt",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.3/scoped_symbols.txt",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.3/theory_only_1.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.3/theory_only_2.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.3/theory_only_3.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.3/theory_only_4.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/preservation_report.json",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/regression_console.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/regression_report.json",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/render_check.py",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/run_checks.py",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/verify_preservation.py",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/visual_pages.json"
+      ]
+    },
+    "S1.4": {
+      "commit": "commit containing this report",
+      "files": [
+        "tracing_isolation_optimal_control_complete/README.md",
+        "tracing_isolation_optimal_control_complete/REVIEW_GUIDE.md",
+        "tracing_isolation_optimal_control_complete/latex/main.pdf",
+        "tracing_isolation_optimal_control_complete/latex/theory_only.pdf",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/README.md",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/commit_files.json",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.4/build_report.json",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.4/main_1.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.4/main_2.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.4/main_3.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.4/main_4.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.4/theory_only_1.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.4/theory_only_2.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.4/theory_only_3.log",
+        "tracing_isolation_optimal_control_complete/validation/notation_s1_20261020/S1.4/theory_only_4.log"
+      ]
+    }
+  }
+}
