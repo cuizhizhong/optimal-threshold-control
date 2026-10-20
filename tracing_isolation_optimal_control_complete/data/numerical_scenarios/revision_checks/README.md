@@ -6,7 +6,7 @@
 
 `initialization / grid / horizon / threshold` 各有 CSV/JSON 摘要。JSON 保留完整识别和比较；`*_detailed_summary.csv` 逐行列出事件、实际初猜容量超出、种子、成本差与失败分量。原始数组不裁剪、不平滑、不替换为解析参考。
 
-科学矩阵覆盖 35/35；第 6–7 步 5 次主求解、第 8–9 步新增 30 次求解均成功，后批缓存引用 10 次。numeric 和 agreement 各通过 29/35，同时通过为 28/35。七条至少一旗标失败记录为 E1/N2000、E2/N2000/4000、E3/N2000、E4/N2000/4000、E5/N2000（均 T=300、analytic_reference），详见 `../../../validation/numerical_scenarios/step89_results.md`。
+科学矩阵覆盖 35/35；第 6–7 步 5 次主求解、第 8–9 步新增 30 次求解均成功，后批缓存引用 10 次。按原严格判据，numeric 和 agreement 各通过 29/35，同时通过为 28/35；2026-10-10 修订判据下分别为 33/35、30/35，同时通过 30/35，见 `../../../validation/numerical_scenarios/tolerance_revision_20261010/README.md`。原判据下七条至少一旗标失败记录为 E1/N2000、E2/N2000/4000、E3/N2000、E4/N2000/4000、E5/N2000（均 T=300、analytic_reference），详见 `../../../validation/numerical_scenarios/step89_results.md`。
 
 原严格 grid 的 `protocol_complete=true`、`consistency_pass=false`、`status=failed` 保留。另列的最细两级计划建议比较不覆盖它，不使次细级容量违规成为可行控制。E2/E4 的粗网格出现 11/8 单元中间控制块，实际识别结构分别为 `0 -> 1 -> 0` 和 `1 -> 0`；未通过事件/结构诊断如实保存。阈值复核 45/45 次识别全部保留，优化调用 0。
 

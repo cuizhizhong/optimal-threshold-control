@@ -33,7 +33,7 @@ run_revision_validation('unit', false);
 
 第 6–7 步主算例证据为 `step67_*`；第 8–9 步为 `step89_*`。后批科学执行入口 `execute_stage89.m` 实际依次调用 initialization/grid/horizon/threshold；初猜数组重建入口为 `execute_stage89_initialization_check.m`。启动命令和失败启动尝试见 `step89_commands.md`、`step89_startup_attempts.json`。
 
-默认 35 配置全部有真实记录，求解器成功 35/35；numeric 和 agreement 各为 29/35，双通过 28/35。后批新增 30 次求解、缓存引用 10 次，阈值模式对同一主源进行 45 次识别，优化调用 0。七条诊断未通过记录和原严格 grid 的 `failed/consistency_pass=false` 不隐去。`step89_results.md`、`step89_validation_report.json` 和四组详细 CSV 保存容量、成本、事件/结构及容量控制异常。
+默认 35 配置全部有真实记录，求解器成功 35/35；按原严格判据，numeric 和 agreement 各为 29/35，双通过 28/35。2026-10-10 求解后调整的修订判据下分别为 33/35、30/35，双通过 30/35，见 `tolerance_revision_20261010/README.md`；本节以下各报告均为原判据口径。后批新增 30 次求解、缓存引用 10 次，阈值模式对同一主源进行 45 次识别，优化调用 0。七条诊断未通过记录和原严格 grid 的 `failed/consistency_pass=false` 不隐去。`step89_results.md`、`step89_validation_report.json` 和四组详细 CSV 保存容量、成本、事件/结构及容量控制异常。
 
 `step89_validation_report.json` 的 `plan_suggested_consistency_pass=true` 是单独按计划建议的最细级/最细两级口径计算；`original_stricter_execution_consistency_pass=false` 和 `all_default_configurations_numeric_and_agreement_pass=false` 同时保留。它不支持“全部 35 个配置通过”。所有报告中的缺失值保留 null/未完成，不填预期值或零。
 

@@ -129,9 +129,18 @@ for k=1:numel(runs)
     if isfinite(signedGap) && signedGap<0
         finding=[finding sprintf('%s 的离散成本比解析参考低 $\\num{%.3g}$，',r.case_id,-signedGap)]; %#ok<AGROW>
         if r.assessment.capacity_excess>0
-            finding=[finding sprintf(['重积分轨道仍有 $\\num{%.3g}$ 的容量超出；' ...
-                '即使满足浮点接受容差，也不能称为低于解析最优值的严格连续时间可行控制。'], ...
-                r.assessment.capacity_excess)]; %#ok<AGROW>
+            drop=relaxed_capacity_drop(r);
+            if isfinite(drop) && drop>=-signedGap
+                finding=[finding sprintf(['重积分轨道有 $\\delta=\\num{%.3g}$ 的容量超出；' ...
+                    '把容量放宽为 $K+\\delta$ 后，解析最优值下降 $\\num{%.2e}$，大于该负差。' ...
+                    '因此该控制的成本仍不低于放宽容量后的解析最优值，负差可由容量超出解释，' ...
+                    '不构成低于解析最优值的连续时间可行控制。'], ...
+                    r.assessment.capacity_excess,drop)]; %#ok<AGROW>
+            else
+                finding=[finding sprintf(['重积分轨道仍有 $\\num{%.3g}$ 的容量超出；' ...
+                    '即使满足浮点接受容差，也不能称为低于解析最优值的严格连续时间可行控制。'], ...
+                    r.assessment.capacity_excess)]; %#ok<AGROW>
+            end
         else
             finding=[finding '现有浮点诊断不构成严格连续时间可行性证书，该负差需结合离散误差解释。']; %#ok<AGROW>
         end
@@ -362,6 +371,7 @@ if isfield(cfg,'acceptance') && strcmp(cfg.acceptance.revision_timing,'post_solv
         '容量段控制与 $q_B$ 区间均值的绝对误差容差为 $\\num{%.3g}$，并重新评估全部保存结果；' ...
         '成本相对误差容差 $\\num{%.3g}$ 与事件区间判据保持不变。原严格判据及其未通过记录另行保留。'], ...
         cfg.check.capacity_tolerance,cfg.check.capacity_control_tolerance,cfg.check.relative_cost_tolerance)];
+    details=[details original_criterion_text(cfg,out.recorded_configuration_count)];
 end
 init=out.groups.initialization;
 if init.available
@@ -564,22 +574,73 @@ else
     text=[text '该结果只支持所测最细两级的一致性，不给出收敛阶。'];
     shortText=[shortText '该比较不提供收敛阶。'];
 end
-coarseCostFailures={}; unresolved={};
+coarseCostFailures={}; unresolved={}; explained={}; explainedText='';
 for k=1:numel(summary.rows)
     row=summary.rows(k); if row.N~=min([summary.rows.N]) || ~isKey(views,row.run_id), continue; end
     run=views(row.run_id); a=run.assessment;
     if ~a.cost_agreement.passed, coarseCostFailures{end+1}=row.case_id; end %#ok<AGROW>
-    if strcmp(a.status,'unresolved_discrepancy'), unresolved{end+1}=row.case_id; end %#ok<AGROW>
+    if strcmp(a.status,'unresolved_discrepancy')
+        % 负成本差且容量略超时，与容量放宽到 K+delta 的解析最优值比较；仅用解析公式。
+        drop=relaxed_capacity_drop(run); gap=a.signed_cost_difference;
+        if isfinite(drop) && gap<0 && drop>=-gap
+            explained{end+1}=row.case_id; %#ok<AGROW>
+            explainedText=[explainedText sprintf(['%s 的 $N=%d$ 负成本差为 $\\num{%.3g}$，' ...
+                '重积分容量超出 $\\delta=\\num{%.3g}$；把容量放宽为 $K+\\delta$ 后，' ...
+                '解析最优值下降 $\\num{%.2e}$，大于该负差。因此该负差可由容量超出解释，' ...
+                '评估记录中的 unresolved-discrepancy 分类按原样保留。'], ...
+                row.case_id,row.N,gap,a.capacity_excess,drop)]; %#ok<AGROW>
+        else
+            unresolved{end+1}=row.case_id; %#ok<AGROW>
+        end
+    end
 end
 if ~isempty(coarseCostFailures)
     costText=sprintf('$N=%d$ 的 %s 成本比较仍未通过。',min([summary.rows.N]), ...
         strjoin(coarseCostFailures,'、'));
     text=[text costText]; shortText=[shortText costText];
 end
+if ~isempty(explained)
+    text=[text explainedText];
+    shortText=[shortText strjoin(explained,'、') ...
+        ' 的粗网格负成本差小于容量超出所致的解析最优值下降，可由容量超出解释。'];
+end
 if ~isempty(unresolved)
     text=[text strjoin(unresolved,'、') ' 的粗网格负成本差超过比较尺度，保留为待查差异。'];
     shortText=[shortText strjoin(unresolved,'、') ' 的粗网格负成本差仍为待查差异。'];
 end
+end
+
+function drop=relaxed_capacity_drop(run)
+% 只用解析公式：容量放宽为 K+delta（delta 为重积分容量超出）时解析最优值的下降。
+drop=NaN; delta=run.assessment.capacity_excess;
+if ~(isscalar(delta) && isfinite(delta) && delta>0), return; end
+try
+    relaxed=run.parameters; relaxed.K=relaxed.K+delta;
+    wide=analytic_reference(relaxed,run.x0,build_theory_geometry(relaxed),0);
+    drop=run.reference.J_reference-wide.J_reference;
+catch
+    drop=NaN;
+end
+end
+
+function text=original_criterion_text(cfg,recordCount)
+% 原判据计数取自容差重评报告；报告缺失或与当前记录数不符时不写该句。
+text='';
+if ~(isfield(cfg,'acceptance') && strcmp(cfg.acceptance.revision_timing,'post_solve')), return; end
+root=fileparts(fileparts(fileparts(mfilename('fullpath'))));
+path=fullfile(root,'validation','numerical_scenarios','tolerance_revision_20261010', ...
+    'assessment_revision_report.json');
+if ~isfile(path), return; end
+report=jsondecode(fileread(path));
+if ~(isfield(report,'status') && strcmp(report.status,'completed') && isfield(report,'original_counts')), return; end
+c=report.original_counts;
+if c.records~=recordCount, return; end
+a=cfg.acceptance;
+text=sprintf(['按保存求解前预定的原判据（状态容差 $\\num{%.3g}$、容量容差 $\\num{%.3g}$、' ...
+    '容量段控制容差 $\\num{%.3g}$），数值接受与理论比较分别通过 %d/%d 与 %d/%d，同时通过 %d/%d；' ...
+    '修订判据只重新划定浮点接受尺度，不提供新的收敛证据。'], ...
+    a.original_state_tolerance,a.original_capacity_tolerance,a.original_capacity_control_tolerance, ...
+    c.numeric_pass,c.records,c.agreement_pass,c.records,c.both_pass,c.records);
 end
 
 function yes=belongs(experiment,group)
