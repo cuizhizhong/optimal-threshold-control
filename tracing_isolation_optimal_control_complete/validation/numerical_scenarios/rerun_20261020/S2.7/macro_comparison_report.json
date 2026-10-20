@@ -1,0 +1,16 @@
+{
+  "step": "S2.7",
+  "blocks": {
+    "NUMERICAL REFERENCE VALUES": {
+      "identical": true,
+      "diff": []
+    },
+    "NUMERICAL RESULTS": {
+      "identical": true,
+      "diff": []
+    }
+  },
+  "optimizer_calls": 0,
+  "outside_generated_blocks_identical": true,
+  "passed": true
+}

@@ -1,0 +1,33 @@
+{
+  "figure_count": 3,
+  "figure_output_hashes_verified": 6,
+  "figure_run_ids_match_selection": true,
+  "visual_pngs_checked": [
+    "FigN1_regions",
+    "FigN2_waiting",
+    "FigN3_boundary_tracking"
+  ],
+  "visual_notes": "已检查坐标、轨道、容量线和控制跳跃，沿用原图布局。",
+  "original_criterion_report_source_hash_verified": true,
+  "rendered_main_pages": [
+    {
+      "page": 28,
+      "image_path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\rerun_20261020\\S2.7\\page_28.png",
+      "sha256": "1a03f493eea7a990dfd57bb705ef35d40e1f2069c0e32ea87890339da57463b5",
+      "visually_checked": true
+    },
+    {
+      "page": 29,
+      "image_path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\rerun_20261020\\S2.7\\page_29.png",
+      "sha256": "d8bd58917011b0b3222a5c850eba4b22e41c17895931e23f2e6bd3307e50002f",
+      "visually_checked": true
+    },
+    {
+      "page": 30,
+      "image_path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\rerun_20261020\\S2.7\\page_30.png",
+      "sha256": "9aca15de2ca72ef83f62bc67b34083792169d34cf47ac27b7edecf2e7a3eb70b",
+      "visually_checked": true
+    }
+  ],
+  "main_page_notes": "实际检查第28–30页的数值表、三幅图、公式、图注与分页；未逐页目视其余34页。"
+}

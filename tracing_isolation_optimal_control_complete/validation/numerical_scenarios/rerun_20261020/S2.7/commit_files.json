@@ -1,0 +1,31 @@
+{
+  "step": "S2.7",
+  "files": [
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/export_provenance.json",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/figure_provenance.json",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/numerical_checks.json",
+    "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_regions.pdf",
+    "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_regions.png",
+    "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN2_waiting.pdf",
+    "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN2_waiting.png",
+    "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN3_boundary_tracking.pdf",
+    "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN3_boundary_tracking.png",
+    "tracing_isolation_optimal_control_complete/latex/main.pdf",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/run_s27_regression.m",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.7/build_report.json",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.7/commit_files.json",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.7/export_report.json",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.7/macro_comparison_report.json",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.7/main_1.log",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.7/main_2.log",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.7/main_3.log",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.7/main_4.log",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.7/preservation_report.json",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.7/README.md",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.7/refresh_console.log",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.7/regression_console.log",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.7/regression_report.json",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/S2.7/visual_qa.json",
+    "tracing_isolation_optimal_control_complete/validation/numerical_scenarios/rerun_20261020/verify_exported_macros.py"
+  ]
+}
