@@ -7,5 +7,5 @@ tracing_isolation_optimal_control_complete/validation/numerical_scenarios/grid_e
 tracing_isolation_optimal_control_complete/validation/numerical_scenarios/local_fixes_20261010/** -text
 tracing_isolation_optimal_control_complete/validation/numerical_scenarios/prose_compression_20261010/** -text
 tracing_isolation_optimal_control_complete/validation/numerical_scenarios/tolerance_revision_20261010/** -text
-# 此 PDF 不含 NUL 字节，显式按二进制保存以避免换行转换。
-tracing_isolation_optimal_control_complete/ref/Tang_Zhou_2024_JMB.pdf binary
+# 参考文献 PDF 按二进制保存，避免换行转换改变文件内容。
+tracing_isolation_optimal_control_complete/ref/*.pdf binary
