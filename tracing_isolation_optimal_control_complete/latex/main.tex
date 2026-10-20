@@ -221,26 +221,6 @@ Carath\'eodory 解全程满足式\eqref{eq:capacity}的控制称为可行控制�
 状态约束和成本均不涉及 $s_q,i_q,r$，因此以下只需研究二维系统\eqref{eq:normalized-model}上的最优控制问题。
 控制的启动时刻、切换次数和退出状态不预先指定，由后文的最优性分析确定。
 
-\paragraph{与传播率控制的关系。}
-为便于比较，将 \citet[式(1)]{MicloSpiroWeibull2022}
-中的状态和恢复率分别改记为 $s,i,\gamma$，传播控制仍记为 $b$。
-该系统为 $\dot s=-bsi$、$\dot i=(bs-\gamma)i$。
-在本文常接触率情形令 $b=\beta c(1-q)$、$b_0=\beta c$，则
-\[
-0\le b\le b_0,\qquad \beta cq=b_0-b=[b_0-b]_+,
-\]
-两者在线性抑制区间内的运行成本可以对应，而本文的状态方程变为
-\[
-\dot s=-bsi-cqsi,\qquad \dot i=(bs-\gamma)i.
-\]
-额外的移出项 $cqsi$ 使完全跟踪 $q=1$ 时仍有 $\dot s=-csi<0$；
-标准传播率模型在完全抑制 $b=0$ 时则保持易感比例不变。
-这一流量差异改变了完全跟踪特征线及其与安全边界的连接位置。
-此外，原文允许 $b>b_0$ 且运行成本仍为零\citep[式(2)]{MicloSpiroWeibull2022}，
-本文的控制集则使零成本控制唯一对应 $q=0$。
-后文据此针对本模型分别建立全局最优性与控制唯一性。
-
-
 \section{解的适定性、正性与基本耗散}
 \label{sec:wellposed}
 \begin{theorem}[全局解与正性]

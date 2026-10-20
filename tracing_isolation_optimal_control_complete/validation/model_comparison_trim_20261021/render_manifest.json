@@ -1,0 +1,104 @@
+{
+  "documents": [
+    {
+      "name": "main",
+      "pdf_sha256": "73078c845c5bf96c8de161b0eb4788bbc135b184d802e969da85ab0385bfe79a",
+      "pages": [
+        4,
+        5,
+        9
+      ],
+      "render_commands": [
+        [
+          "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+          "-f",
+          "4",
+          "-l",
+          "4",
+          "-scale-to",
+          "1400",
+          "-png",
+          "-singlefile",
+          "tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+          "tracing_isolation_optimal_control_complete\\tmp\\model_comparison_trim_20261021\\qa\\main_4"
+        ],
+        [
+          "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+          "-f",
+          "5",
+          "-l",
+          "5",
+          "-scale-to",
+          "1400",
+          "-png",
+          "-singlefile",
+          "tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+          "tracing_isolation_optimal_control_complete\\tmp\\model_comparison_trim_20261021\\qa\\main_5"
+        ],
+        [
+          "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+          "-f",
+          "9",
+          "-l",
+          "9",
+          "-scale-to",
+          "1400",
+          "-png",
+          "-singlefile",
+          "tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+          "tracing_isolation_optimal_control_complete\\tmp\\model_comparison_trim_20261021\\qa\\main_9"
+        ]
+      ]
+    },
+    {
+      "name": "theory_only",
+      "pdf_sha256": "5ab86ab367f86220108fcf3da8bf9ff0def6ef5f5d1830170c424e4545cb35a3",
+      "pages": [
+        4,
+        5,
+        9
+      ],
+      "render_commands": [
+        [
+          "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+          "-f",
+          "4",
+          "-l",
+          "4",
+          "-scale-to",
+          "1400",
+          "-png",
+          "-singlefile",
+          "tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+          "tracing_isolation_optimal_control_complete\\tmp\\model_comparison_trim_20261021\\qa\\theory_only_4"
+        ],
+        [
+          "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+          "-f",
+          "5",
+          "-l",
+          "5",
+          "-scale-to",
+          "1400",
+          "-png",
+          "-singlefile",
+          "tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+          "tracing_isolation_optimal_control_complete\\tmp\\model_comparison_trim_20261021\\qa\\theory_only_5"
+        ],
+        [
+          "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+          "-f",
+          "9",
+          "-l",
+          "9",
+          "-scale-to",
+          "1400",
+          "-png",
+          "-singlefile",
+          "tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+          "tracing_isolation_optimal_control_complete\\tmp\\model_comparison_trim_20261021\\qa\\theory_only_9"
+        ]
+      ]
+    }
+  ]
+}

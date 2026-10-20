@@ -1,0 +1,33 @@
+{
+  "base_commit": "12509e6995af626c87f2fd09b3cce96127fd3b74",
+  "removed_paragraph_has_no_labels": true,
+  "protected_file_count": 535,
+  "changed_protected_files": [],
+  "outside_target_delta": "two existing proof lines changed integral dummy variable tau to v during compilation",
+  "outside_target_delta_exactly_matched": true,
+  "optimizer_calls": 0,
+  "scientific_solves": 0,
+  "outside_target_delta_author_approved": true,
+  "source_exactly_matches_approved_edits": true,
+  "final_source_sha256": "c48c65dc6b928b2821063934cc4c03095874e69aaa82604cd15b8a553de0ce89",
+  "existing_symbolic_checks_passed": 28,
+  "existing_symbolic_checks_total": 28,
+  "final_pages": {
+    "main": 37,
+    "theory_only": 28
+  },
+  "build_success": true,
+  "visual_qa": {
+    "main": [
+      4,
+      5,
+      9
+    ],
+    "theory_only": [
+      4,
+      5,
+      9
+    ],
+    "passed": true
+  }
+}
