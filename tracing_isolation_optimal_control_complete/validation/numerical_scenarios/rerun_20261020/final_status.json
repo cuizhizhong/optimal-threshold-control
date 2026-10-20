@@ -1,0 +1,95 @@
+{
+  "stage": "S2",
+  "status": "completed",
+  "scope_after_S2": "not_executed",
+  "pushed": false,
+  "execution": {
+    "stage": "S2.4",
+    "status": "completed",
+    "started_utc": "2026-10-20T12:51:31.938Z",
+    "finished_utc": "2026-10-20T13:27:57.143Z",
+    "solver_calls": 35,
+    "cache_hits": 0,
+    "assessment_calls": 35,
+    "elapsed_seconds": 2157.5074708,
+    "batch_id": "batch_489a22dd23b64763a9a163f1390ca080",
+    "successful_count": 35,
+    "failed_count": 0,
+    "protocol_complete": true,
+    "scheduler_status": "failed",
+    "numeric_pass_count": 33,
+    "agreement_pass_count": 30,
+    "both_pass_count": 30
+  },
+  "strict_comparison_passed": 35,
+  "largest_differences": {
+    "cost_relative_difference": 0,
+    "control_max_abs_difference": 0,
+    "state_max_abs_difference": 0
+  },
+  "original_counts": {
+    "records": 35,
+    "numeric_pass": 29,
+    "agreement_pass": 29,
+    "both_pass": 28
+  },
+  "current_counts": {
+    "records": 35,
+    "numeric_pass": 33,
+    "agreement_pass": 30,
+    "both_pass": 30
+  },
+  "python_tests_passed": 9,
+  "compatibility_tests_passed": 9,
+  "explicit_unit_groups_passed": 13,
+  "all_internal_unit_groups_passed": 13,
+  "export_regression_tests_passed": 16,
+  "checkpoint_numeric_fields": 105,
+  "macro_blocks_and_outside_text_identical": true,
+  "main_builds": {
+    "S2.2": {
+      "pages": 37,
+      "success": true
+    },
+    "S2.3": {
+      "pages": 37,
+      "success": true
+    },
+    "S2.4": {
+      "pages": 37,
+      "success": true
+    },
+    "S2.5": {
+      "pages": 37,
+      "success": true
+    },
+    "S2.6": {
+      "pages": 37,
+      "success": true
+    },
+    "S2.7": {
+      "pages": 37,
+      "success": true
+    },
+    "S2.8": {
+      "pages": 37,
+      "success": true
+    },
+    "S2.9": {
+      "pages": 37,
+      "success": true
+    }
+  },
+  "S2_1_main_pages": 37,
+  "S2_1_theory_only_pages": 29,
+  "final_main_pdf_sha256": "6787962761207d295ac4ca001b39426e18a11d12506ec021b101175d28fcebd5",
+  "old_protected_files_unchanged": 141,
+  "old_index_entries_unchanged": 35,
+  "record_counts": {
+    "raw": 70,
+    "solver": 70,
+    "assessment": 140
+  },
+  "stop_conditions_triggered": [],
+  "author_decisions_needed": []
+}

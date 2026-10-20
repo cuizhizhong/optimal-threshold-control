@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "optimizer_calls": 0,
+  "scientific_solves": 0,
+  "new_raw_hashes_verified": 35,
+  "new_saved_records_match_S2_6_commit": true,
+  "source_and_figures_match_visually_checked_S2_7": true,
+  "final_pdf_text_identical_to_visually_checked_S2_7": true,
+  "manifest_paths": 797,
+  "old_manifest_paths_retained": 445,
+  "manifest_duplicate_paths": 0,
+  "record_counts": {
+    "raw": 70,
+    "solver": 70,
+    "assessment": 140
+  },
+  "independent_review": "两名独立只读审阅核对科学报告、来源哈希、MANIFEST和文档口径；两处措辞已澄清，未改实现。",
+  "old_record_preservation_report": "S2.9/preservation_report.json"
+}
