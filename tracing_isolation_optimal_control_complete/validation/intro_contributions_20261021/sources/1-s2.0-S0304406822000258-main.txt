@@ -1,0 +1,1538 @@
+                                                         Journal of Mathematical Economics 101 (2022) 102669
+
+
+
+                                                            Contents lists available at ScienceDirect
+
+
+                                               Journal of Mathematical Economics
+                                                   journal homepage: www.elsevier.com/locate/jmateco
+
+
+
+
+Optimal epidemic suppression under an ICU constraint: An analytical
+solution
+                                                  ∗
+Laurent Miclo a ,1 , Daniel Spiro b , ,2 , Jörgen Weibull c ,3
+a
+  Toulouse School of Economics, Institut de Mathématiques de Toulouse, CNRS, France
+b
+  Department of Economics, Uppsala University, Box 513, 75120 Uppsala, Sweden
+c
+  Stockholm School of Economics, Sweden
+
+
+
+article              info                             a b s t r a c t
+
+Article history:                                      How much and when should we limit economic and social activity to ensure that the health-
+Received 2 June 2021                                  care system is not overwhelmed during an epidemic? We study a setting where ICU resources are
+Received in revised form 17 February 2022             constrained and suppression is costly. Providing a fully analytical solution we show that the common
+Accepted 21 February 2022
+                                                      wisdom of “flattening the curve”, where suppression measures are continuously taken to hold down
+Available online 11 March 2022
+                                                      the spread throughout the epidemic, is suboptimal. Instead, the optimal suppression is discontinuous.
+Manuscript handled by Editor Fausto Gozzi
+                                                      The epidemic should be left unregulated in a first phase and when the ICU constraint is approaching
+Keywords:                                             society should quickly lock down (a discontinuity). After the lockdown, regulation should gradually be
+Epidemic                                              lifted, holding the rate of infected constant, thus respecting the ICU resources while not unnecessarily
+Optimal control                                       limiting economic activity. In a final phase, regulation is lifted. We call this strategy “filling the box”.
+Health                                                The cost under the optimal strategy is obtained in closed form as an explicit function of economic and
+Suppression                                           medical fundamentals. We show that the policy is optimal also when there, in addition, is a small cost
+Infection
+                                                      associated with the number of infected. The tighter the ICU constraint, the wider is the range of such
+Corona
+                                                      cost for which the policy is still optimal. This suggests the primary focus of poor countries (with few
+                                                      ICU resources) should be to protect the health-care system, while richer countries (with extensive ICU
+                                                      resources) may strive to reduce the number of infected even more.
+                                                            © 2022 The Author(s). Published by Elsevier B.V. This is an open access article under the CC BY license
+                                                                                                                  (http://creativecommons.org/licenses/by/4.0/).
+
+
+
+1. Introduction                                                                       2020). The second goal is to minimize the socioeconomic costs
+                                                                                      associated with epidemic suppression. Essentially, the more one
+   Amid the Covid-19 health and economic crisis one question                          is suppressing the spread, the costlier it is since, absent a vaccine,
+has been standing at the center of professional opinion: How                          suppression boils down to keeping people away from each other,
+much and when should we limit economic and social activity                            thus limiting economic activity and social life.
+to ensure that the health-care system is not overwhelmed? This                             This paper extends the standard S.I.R. model (Kermack and
+question embodies two simultaneous goals when fighting a pan-                         McKendrick, 1927) to provide an analytical answer to the above
+demic. First, to ensure that each infected person gets the best                       question. Our answer departs from common wisdom. During
+possible care, we need to ensure that the capacity of the health-                     the Covid-19 pandemic, authorities, news reporting and policy
+care system (henceforth the ICU constraint) is never breached.                        makers popularized the ideal policy as “flattening the curve”,4
+This goal was perhaps best epitomized by the UK slogan “Protect                       i.e., imposing continuous limitations to lower the number of
+the NHS” and by the Imperial College report (Ferguson et al.,                         simultaneously infected in all time periods. This would ensure
+                                                                                      that the peak of the curve never crossed the ICU constraint. We
+    ∗ Corresponding author.                                                           show that this policy is suboptimal. Instead, the optimal policy
+    E-mail addresses: laurent.miclo@math.cnrs.fr (L. Miclo),                          can be described as “filling the box”, involving a sudden and
+daniel.spiro@nek.uu.se (D. Spiro), jorgen.weibull@hhs.se (J. Weibull).                discontinuous suppression. More precisely, it prescribes (Theo-
+  1 Acknowledges funding from the French National Research Agency (ANR)               rem 1 and Fig. 2) leaving the spread unregulated during a first
+under the Investments for the Future program (Investissements d’Avenir, grant         phase. As the number of infected approaches the ICU constraint
+ANR-17-EURE-0010). The funding source had no impact on the research.
+                                                                                      we enter a second phase where harsh suppression measures
+  2 This research did not receive any specific grant from funding agencies in
+the public, commercial, or not-for-profit sectors.
+  3 This research was partly funded by the Jan Wallander and Tom Hedelius               4 See, e.g., the Imperial College report (Ferguson et al., 2020), Branswell
+Research Foundation under grant no. P21-0052. This funding had no impact on           (2020), Time (2020), Pueyo (2020), even Donald Trump (The Sun, 2020) and
+the research.                                                                         many more.
+
+https://doi.org/10.1016/j.jmateco.2022.102669
+0304-4068/© 2022 The Author(s). Published by Elsevier B.V. This is an open access article under the CC BY license (http://creativecommons.org/licenses/by/4.0/).
+L. Miclo, D. Spiro and J. Weibull                                                                                  Journal of Mathematical Economics 101 (2022) 102669
+
+
+are imposed at once (a discontinuity) but afterward gradually                               In the epidemiology literature there exist other papers with
+relaxed. The aim of policy in this second phase is to precisely                         analytical solutions for optimal policy.6 For a literature review
+stop the number of infected from exceeding the ICU constraint                           on the early research see Wickwire (1977). Many papers model
+and keep it constant at that level. The discontinuous tightening                        vaccinations (Morton and Wickwire, 1974; Ledzewicz and Schät-
+followed by gradual relaxation of suppression is optimal since                          tler, 2011; Hu and Zou, 2013; Laguzet and Turinici, 2015; Maurer
+the underlying growth of infections is highest in the beginning                         and De Pinho, 2014), some model screening (Ainseba and Ian-
+of this phase. In a third phase, once the underlying growth of                          nelli, 2012). The previous papers focusing on suppression (or
+infections subsides and herd immunity under laissez-faire has                           quarantine) either restrict the policy (e.g., Di Lauro et al., 2020,
+been obtained, no suppression measures are taken.                                       see also Nowzari et al. (2016) for a review) or abstract from
+    We further fully solve for the optimized cost in closed form                        the fact that increasing the suppression is costly, obviously a
+as a function of economic and medical fundamentals. This is                             key aspect of any economic analysis.7 The papers most closely
+thus a lower bound, within the S.I.R. model, below which no                             related to ours are Toxvaerd (2020), Kruse and Strack (2020), and
+policy whatsoever (in our wide class) can bring down the costs                          Loertscher and Muir (2021). The last paper is the closest. Their
+associated with a given ICU capacity constraint. This lower-cost
+                                                                                        model and question are similar to ours. However, their analytical
+bound is higher the lower is the ICU capacity. The lower-cost
+                                                                                        result concerns only constant suppression levels. They solve for
+bound is increasing in the basic reproduction number and in
+                                                                                        optimal time-varying policies only numerically. By contrast, we
+the population share of initially infected, for instance, how many
+                                                                                        (a) solve analytically for a fully time-varying policy (Theorem 1),
+infected individuals arrived from other regions or countries at
+                                                                                        (b) obtain a closed-form solution for the indirect cost function,
+the start. The expression obtained (see Eq. (20)) makes all these
+                                                                                        thus allowing for analytical comparative statics (Eq. (20)), and (c)
+dependencies explicit and allows for quantification.
+    Our main contribution is methodological; we show how to                             obtain a robustness result concerning the cost of the number of
+analytically solve — from first principles without relying on nu-                       infected (Theorem 2).
+merical simulations or quantitative calculations — a classic                                Toxvaerd (2020), though being fully analytical, has a differ-
+epidemic–economic model for the optimal suppression policy.                             ent research question and, indeed, a different model than us,
+Importantly, the suppression policy is allowed to be fully time                         focusing on individual choice of social distancing (a form of self-
+varying, including potential discontinuities. This clearly distin-                      suppression). He does not analyze social optimality and abstracts
+guishes our paper both from papers that study a subset of simpler                       from the ICU capacity which are the focus of our paper. Yet, inter-
+policies analytically (e.g., Loertscher and Muir, 2021), and from                       estingly, Toxvaerd (2020) finds that individuals may, by their own
+papers that study particular policies by way of numerical simula-                       individual choices, collectively create an infection spread which
+tion.5 We focus on analytically solving the mentioned optimiza-                         graphically looks similar to the one that we show is optimal.
+tion problem, minimization of the socioeconomic costs associated                            Kruse and Strack (2020), finally, also look at optimal suppres-
+with limitations of economic and social activity, subject to a                          sion with costs which are increasing in suppression. They show
+health-capacity constraint. Clearly, this optimization program                          existence of an optimizer for a rather general health-cost function
+neglects many other relevant aspects. In particular, we do not                          but only solve for the optimizer in the special case where the
+consider non-linear economic costs, vaccine arrival, endogenous                         health costs are linear in the number of currently infected.8 This
+expansion of the health-care system and political constraints to                        is equivalent to assuming that the total number of deaths (over
+suppression. We discuss the possible effects of such extensions on                      time) is proportional to the total number of infected (the linearity
+our results in the concluding section. However, since the classical                     assumption implies bang–bang solutions for suppression) so it
+S.I.R. model is ubiquitous within economic–epidemic modeling                            does not (directly) matter how many are infected at the same
+and taught to so many students around the globe, we think it                            time (in that sense, their paper is similar to Grigorieva et al.,
+is important to illuminate the model’s properties and its capa-                         2016; Grigorieva and Khailov, 2014). Our contribution is thus
+bility to permit analytical solutions to relevant policy questions.                     complementary since in our model the planner wants to avoid
+One important aspect is the cost associated with being infected                         too many infected at the same time – respecting the capacity
+(including potentially harmful long-term health consequences or                         of the health-care system. The extension where we add a cost
+death), for the afflicted individuals themselves and for society at
+                                                                                        of the number of infected (Theorem 2) is in essence a convex
+large. We show that our main result (Theorem 1) is optimal also
+                                                                                        combination of Kruse and Strack’s (2020) and our model.
+under sufficiently small such costs (see Theorem 2). Moreover,
+“filling the box” is optimal under larger infection costs if the ICU
+constraint is more binding. This has the policy implication that                          6 There is a much larger literature studying epidemics without controls, of
+developing countries (with few ICU resources) should primarily                          course, see for instance Dickison et al. (2012) and Brauer and Castillo-Chavez
+focus on ensuring their health-care system is not overwhelmed.                          (2011), Pastor-Satorras et al. (2015) and references therein.
+                                                                                          7 Many papers analytically solve for a suppression policy while respecting
+Richer countries (with more ICU resources) on the other hand
+                                                                                        a budget constraint (Hansen and Day, 2011; Bolzoni et al., 2019) or a time
+should also focus on reducing the infection numbers per se.                             constraint (so that the suppression cannot be too long, (Morris et al., 2020)) but
+The intuition for this is that countries with a low ICU capacity                        disregarding that more suppression within a time period is costlier than less
+need to implement extensive suppression in order to ensure that                         suppression (Bolzoni et al., 2017; Piunovskiy et al., 2019). This is isomorphic to
+the capacity is not breached. Therefore, further suppression, to                        restricting the suppression policy to be binary since, once there is suppression
+generally reduce infection, becomes redundant.                                          within a time period, it may as well be at full force. We allow the suppression
+                                                                                        policy to take any value within a period and change in any way between time
+                                                                                        periods. Grigorieva et al. (2016) and Grigorieva and Khailov (2014) analyze an
+  5 In a rich numerical model, Favero et al. (2020) analyze ways to restart             objective of minimizing the number of infectious during or at some end period,
+the Italian economy. They do take into account that ICU capacity is limited             but the control bears no cost. Abakus (1973) and Behncke (2000) analyze an
+among many other things and analyze a subset of policy options (containing              objective of minimizing the total (over time) number of infected (see Behncke,
+not only suppression) but not global optimality. Also Gollier (2020a) analyzes          2000, Section 3) but the cost of putting a person in quarantine is only taken
+the effect on an ICU constraint among many other things in a simulation                 once so is independent of the length of quarantine. Finally, Gonzalez-Eiras and
+model. For numerically solved models with other focuses see, e.g., Wearing              Niepelt (2020) analyze an S.I. model, finding, just like some of the papers above,
+et al. (2005), Iacoviello and Liuzzi (2008), Lee et al. (2010), Kar and Batabyal        that the optimal control is binary.
+(2011), Iacoviello and Stasio (2013), Di Giamberardino and Iacoviello (2017),             8 They also show existence of an optimizer when adding that a vaccine may
+Wang (2020), Farboodi et al. (2020), Eichenbaum et al. (2020), and Alvarez et al.       arrive. For dual approaches to the problem solved by Kruse and Strack (2020),
+(2020).                                                                                 see Bliman and Duprez (2021) and Bliman et al. (2020).
+
+                                                                                    2
+L. Miclo, D. Spiro and J. Weibull                                                                                           Journal of Mathematical Economics 101 (2022) 102669
+
+
+2. Model                                                                                          Here B(x(0), γ ), for any given x(0) and γ > 0, is the subset of
+                                                                                                  functions in B for which x2 (t ) ≤ γ at all times t ≥ 0.11 Thus
+   Our model setup closely follows the canonical Susceptible–                                     c ∗ (x (0) , γ ) is the greatest lower bound on the socio-economic
+Infectious–Removed model (Kermack and McKendrick (1927);                                          cost of keeping the infection from ever surpassing the ICU ca-
+see also Brauer and Castillo-Chavez (2011), for an excellent                                      pacity constraint γ , when the initial population state is x (0). The
+overview). At any time t ≥ 0, let x1 (t ) be the population share                                 social planner seeks to find a policy b ∈ B (x (0) , γ ) that achieves
+of individuals who at time t are susceptible to the infection,                                    this theoretically lowest cost. Does such a policy exist? If so, can
+and let x2 (t ) be the population share of individuals who are                                    optimal policies be characterized in terms of the primitives of
+infected at time t. All infected individuals are assumed to be                                    the S.I.R. model? How does c ∗ (x (0) , γ ) depend on the health-
+contagious, and population shares are defined with respect to                                     care capacity γ , the initial population share of infected x2 (0) (say
+the initial population size, N. Let m (t ) be the rate at time t of                               when x2 (0) + x1 (0) = 1), the natural propagation rate β , and
+pairwise meetings between susceptible and infected, and let q (t )                                the recovery rate α ? These are the questions we here raise and
+be the probability of contagion when an infected person meets                                     answer.
+a susceptible person at time t. Write b (t ) = m (t ) q (t ). Infected                                 We focus on situations in which ε < γ , that is, when the initial
+individuals are removed from the population at rate α > 0. This                                   infection level is below the ICU capacity constraint. Moreover,
+may be either because they become immune or because they die.                                     we assume that β > α . Otherwise the population share of
+An important assumption is that those who are infected never                                      infected individuals does not increase from its initial value, which
+again become susceptible.                                                                         would imply herd immunity already from the outset, and thus the
+   The population dynamic is then defined by the following sim-                                   social planner’s optimization program then has a trivial solution;
+ple system of ordinary differential equations:                                                    laissez-faire, that is, b (t ) ≡ β . The basic reproduction number, or
+                                                                                                  basic reproduction rate, is R0 = β/α .
+    ẋ1 (t ) = −b (t ) x1 (t ) x2 (t )
+{
+                                                  .                                    (1)
+    ẋ2 (t ) = b (t ) x1 (t ) x2 (t ) − α x2 (t )
+                                                                                                  3. Preliminaries
+The initial condition is x1 (0) = 1 − ε and x2 (0) = ε , for some
+ε ∈ (0, 1). That is, the infection enters the population at time zero                                 The class B of policies allowed for in this analysis is very
+in a population    share ε > 0. The state } space of this dynamic is                              large (an infinite-dimensional function space). However, it can
+∆ = x = (x1 , x2 ) ∈ R2+ : x1 + x2 ≤ 1 . The only difference from
+       {
+                                                                                                  be shown that for any function b ∈ B, Eqs. (1)              ) a unique
+                                                                                                                                                       ( define
+the standard S.I.R. model is that the propagation coefficient b (t ),                             solution trajectory through any given state xo1 , xo2 ∈ ∆ and
+instead of being a constant over time, is here allowed to vary over                               time t0 ≥ 0 (see Appendix for a proof.). Evidently, all constant
+time.9                                                                                            functions b : R+ → R+ , with b (t ) = δ for some δ > 0, belong
+    Indeed, we will view (b(t))t ≥0 as a non-negative function in the                             to B. However, they do not all belong to B(x(0), γ ), i.e., they may
+hands of a social planner who strives to minimize the economic                                    violate the ICU constraint. It is easy to show that such constant
+and social costs of limiting economic activity and/or social life,                                policies belong to B(x(0), γ ) if δ is sufficiently low, for any given
+while never letting the population share of infected individu-                                    γ > 0. Thus, to choose δ as high as possible, while keeping
+als, x2 (t ), exceed an exogenously given level γ . The latter is                                 x2 (t ) ≤ γ for all t ≥ 0, is a feasible policy (belongs to B(x(0), γ )),
+interpreted as the capacity of the health-care system to give full                                and can be called flattening the curve.12 However, such a policy
+treatment to infected patients. We refer to it as the ICU capacity                                incurs an infinite cost if δ < β , since it lasts forever. An alternative
+or constraint.10 It is meant to capture a situation, such as under                                feasible control function, with finite cost, is to only temporarily
+Covid-19, where if the number of simultaneously and seriously ill                                 keep b (t ) at a constant level δ < β , where δ is such that x2 (t ) ≤
+exceeds the number of respirators some patients may have to be                                    γ for all t ≥ 0. However, as will be shown below, also such
+left to die. Not breaching the ICU capacity thus ensures that all get                             “temporary constant shut down” policies are suboptimal. Before
+the full care. To allow for risk – e.g., due to intrinsic stochasticity                           turning to the formal statement of our main result, we analyze
+or uncertainty about parameter values – the ICU constraint can                                    some general properties of the dynamic induced by (1).
+of course also include a margin to the actual limit.
+    We assume that the cost of keeping b (t ) below its natural, or                               3.1. Dynamic
+unregulated level β is a linear function of the difference, while
+there is no cost of moving b (t ) above β . The latter assumption                                     Some well-known properties of the solutions to standard S.I.R.
+is made to “tilt the table” against us in the subsequent analysis,                                models hold also here (see Brauer and Castillo-Chavez, 2011). A
+where we will show that it is suboptimal to enhance the propaga-                                  key such property is that the population share of susceptible in-
+tion of the infection even if this can be done at no cost. Formally,                              dividuals, x1 (t ), is non-increasing over time t. Roughly speaking,
+the cost functional C : B → R+ ⊔ {+∞} is defined by                                               this follows from the first equation in (1), since b (t ) is always
+           ∫ ∞                                                                                    non-negative and x2 (t ) is positive at all times t ≥ 0. Being
+C (b) =          [β − b (t )]+ dt .                                                    (2)        bounded from below by zero, x1 (t ) necessarily has a limit value
+             0                                                                                    as t → ∞, which we denote x∞         1 . According to (1), also the sum
+where B is the class of piecewise continuous functions b : R+ →                                   x2 (t )+ x1 (t ) is strictly decreasing over time t, and hence also this
+R+ that have finitely many points of discontinuity (allowing                                      sum has a limit value. If x∞   2 > 0, then x1 (t )+ x2 (t ) → −∞ which
+for no discontinuity at all). Let x (0) ≡ (x1 (0) , x2 (0)) be the                                implies that x∞   2 = 0. In other words, in the very long run, the
+population state at time t = 0 and let                                                            population share of (currently) infected individuals tends to zero.
+
+c ∗ (x (0) , γ ) =       inf        C (b)                                              (3)         11 To be more precise, we require that there is a finite set T ⊂ R such
+                     b∈B(x(0),γ )                                                                                                                                        +
+                                                                                                  that the function b : R+ → R+ is continuous at all other points, and that it
+                                                                                                  is everywhere left-continuous and has a right limit. We also require that b is
+   9 If x (t ) denotes the population share of removed individuals in a standard                  positive except on at most finitely many connected components.
+         3
+S.I.R. model, then its dynamic is ẋ3 (t ) = α x2 (t ), and x1 (t ) + x2 (t ) + x3 (t ) = 1        12 In the public debate, “flattening the curve” has not been provided a
+at all times t ≥ 0.                                                                               mathematically exact meaning. We perceive the common usage to suggest a
+ 10 If, for example, on average 20% of those infected need intensive care and                     constant suppression level which is also what we will mean formally when
+the number of ICUs is C in a population of size N, then γ = 5C /N.                                using that term in the paper.
+
+                                                                                              3
+L. Miclo, D. Spiro and J. Weibull                                                                                                             Journal of Mathematical Economics 101 (2022) 102669
+
+
+                                                                                                                                                          1 ,0   ∈ ∆,
+                                                                                                                                                                                (      )
+Denoting by x∞ 3 the total population share of removed individuals                                 small perturbation of the limit population state x∞
+during the whole epidemic, we thus have x∞            ∞         ∞
+                                              3 = 1−x1 , and Nx3 is                                obtained by exogenously inserting a small population share of
+approximately (for large N), the total number of individuals who                                   infected individuals, the population share of infected individuals
+were infected during the epidemic.                                                                 will fall gradually back toward zero, while the population share
+    Let(us now) consider the solution to (1) through any given state                               of susceptible individuals gradually moves toward a somewhat
+xo = xo1 , xo2 ∈ ∆ at any time t0 ≥ 0, where 0 < xo1 < 1 and                                       lower, new limit value.
+0 < xo2 < 1. Dividing both sides of the first equation in (1) by                                       Eq. (10) is particularly relevant for the case when δ = β , that
+x1 (t ) > 0 and integrating, we obtain                                                             is, under laissez-faire. Because if the peak of the infection wave
+                                ∫ t                                                                then does not exceed the ICU capacity constraint, that is, if
+ln x1 (t ) =       ln xo1   −         b (s) x2 (s) ds ∀t ≥ t0 .                          (4)
+                                                                                                          α          α        α
+                                                                                                               (           )
+                                 t0                                                                1+       ln               − ≤ γ,                                                         (11)
+                                                                                                          β      β (1 − ε)    β
+Moreover, integrating the sum of the two equations in (1), we
+obtain                                                                                             then laissez-faire is evidently optimal; b∗ (t ) ≡ β solves (3) at no
+                                             ∫ t                                                   cost. Since R0 = β/α , we note that inequality (11) holds if and
+x1 (t ) + x2 (t ) = xo1 + xo2 − α                   x2 (s) ds ∀t ≥ t0 .                  (5)       only if R0 is small enough. More precisely, (11) can be rewritten
+                                               t0                                                  as
+3.2. Constant policy                                                                                                  1
+                                                                                                   γ ≥1−                  [ln R0 + ln (1 − ε) R0 + 1] .                                     (12)
+                                                                                                                  R0
+   In particular, if b (t ) = δ > 0 for all t ≥ t0 , for some δ > 0,                               In other words: c ∗ (x(0), γ ) = 0 for all such γ . Moreover, when
+then for all t ≥ t0 :                                                                              the initial infection constitutes an infinitesimal population frac-
+                                                                                                   tion (ε → 0), then (12) boils down to γ ≥ 1 − (ln R0 + 1) /R0 .
+         x1 (t )                                    δ [
+     [             ]          ∫ t
+                                      x2 (s) ds =      x1 (t ) − xo1 + x2 (t ) − xo2 ,             For γ ≥ 1, the condition is trivially met (then the health sector
+                                                                                    ]
+ln                     = −δ
+           xo1                  t0                  α                                              has the capacity to receive the whole population). For γ < 1, this
+                                                                                         (6)       inequality gives an upper bound on R0 .14 But if the peak is above
+                                                                                                   the ICU constraint, regulation has to be implemented. This is the
+or                                                                                                 topic of the next section.
+                            α      x1 (t )
+                                 [         ]
+x1 (t ) + x2 (t ) =           ln             + xo1 + xo2 ∀t ≥ t0 .                       (7)
+                            δ        xo1                                                           4. Main result
+This equation is well-known( for S.I.R.) models. Moreover,  (7) im-
+                                                                                                      Our main result, optimal control of an epidemic under a
+                                  1 , 0 ∈ ∆, where x1 by continuity
+plies that (x1 (t ) , x2 (t )) → x∞                 ∞
+                                                                                                   health-care capacity constraint, is fairly easy to state but involved
+solves (7) for x2 (t ) = 0, so
+                                                                                                   to prove. The formal proof, based on the Hamilton–Jacobi ap-
+            α
+                [ ∞]
+                 x                                                                                 proach, is provided in a separate appendix. Here we state the
+x∞
+ 1 =          ln 1o + xo1 + xo2 .                                                        (8)
+            δ     x1                                                                               result and provide intuitions and sketch a heuristic proof.
+                                                                                                      We summarize below our main result, which treats all cases
+Since x1 (t ) is strictly decreasing, x∞
+                                       1  < xo1 . It is easily verified                            when laissez-faire does not respect the ICU constraint. If (11) does
+that  the fixed-point    equation (8) has a unique solution x∞   1    ∈                            not hold, which we henceforth assume, then the solution orbit (7)
+ 0, x1 . Eq. (8) will later be used to calculate the population
+( o ) 13
+                                                                                                   under laissez-faire intersects the capacity constraint x2 (t ) = γ
+share that were ever infected during the epidemic under the                                        twice. Let τ1 > 0 be the first such time and let x1 (τ1 ) be the
+optimal suppression policy.                                                                        population share of susceptible individuals at that time. Then
+   The value
+                                                                                                                                     α     x1 (t )
+                                                                                                                   {                     (         )}
+x̂2 = sup x2 (t )                                                                        (9)       τ1 = min t ≥ 0 : x1 (t ) = 1 − γ + ln                                                    (13)
+           t ≥0
+                                                                                                                                     β     1−ε
+
+is the peak infection level. It is obtained when ẋ2 = 0, or,                                      where x1 (t ) is solved for according to (1) when b (t ) g ≡ β ,
+equivalently (by (1)), when x1 = α/δ . From (7), for xo1 = 1 − ε                                   and x1 (τ1 ) is the larger of the two solutions to the associated
+and xo2 = ε , we obtain                                                                            fixed-point equation in x1 ,
+                                                                                                        α
+                                                                                                             (     )
+         α
+             [
+                   α
+                         ]
+                            α                                                                                   x1
+x̂2 = 1 + ln               − .                                                       (10)          x1 =   ln         + 1 − γ.                                                               (14)
+         δ     δ (1 − ε)    δ                                                                           β      1−ε
+
+The right-hand side is a strictly decreasing function of the ratio                                 We note that x1 (τ1 ) > α/β .15 Let
+α/δ . Thus, the infection peak is higher the larger δ is and the                                                          1
+                                                                                                                                  [
+                                                                                                                                                   α
+                                                                                                                                                     ]
+smaller α is.                                                                                      τ2 = τ1 +                      x1 (τ1 ) −           .                                    (15)
+    Once the population share x1 (t ) of susceptible individuals has                                                  αγ                           β
+fallen below the level α/δ , achieved precisely when x2 (t ) = x̂2 ,
+herd immunity is obtained; the population share x2 (t ) of infected                                Theorem 1. Suppose that ε < γ , α < β and (11) does not hold.
+individuals falls, even without intervention. To see this, note that                               There exists a solution to program (3), one of which is the policy
+according to (1), x1 (t ) = β/α = R0 if ẋ2 (t ) = 0 and b (t ) = β .
+In particular, the limit state as t → ∞ is Lyapunov stable. That                                   14 This follows from the observation that
+is, there is no risk of a second infection wave, since after any                                    ∂
+                                                                                                          (
+                                                                                                              ln R0 + 1
+                                                                                                                              )
+                                                                                                                                       ln R0
+                                                                                                                                  =−           ,
+                                                                                                   ∂ R0          R0                     R20
+ 13 For any xo > 0 and 0 < xo ≤ 1 − xo , the right-hand side of (8) is a
+             1                    2         1                                                      a negative number for all R0 > 1, which holds under our maintained hypothesis
+                                                      1 ∈ 0, x1 . Moreover,
+                                                          ( o)
+continuous and strictly increasing function f of s = x∞                                            that α < β .
+f (s) → −∞ as s ↓ 0 and f xo1 > xo1 , f ′ > 0 and f ′′ < 0, so there exists a
+                             ( )
+                                                                                                    15 This follows from the observation that the derivative of the right-hand side
+unique fixed point s in 0, x1 .                                                                    of (14) is less than unity at x1 = x1 (τ1 ).
+                    ∗
+                       ( o)
+
+                                                                                               4
+L. Miclo, D. Spiro and J. Weibull                                                                                 Journal of Mathematical Economics 101 (2022) 102669
+
+
+
+
+Fig. 1. The solution orbit (solid) in the (x1 , x2 )-plane under the optimal policy b∗ , and the solution orbit under unregulated spread (dotted). Parameter values used:
+α = 0.3, β = 1, γ = 0.2, and ε = 0.01.
+
+
+b∗ ∈ B(x(0), γ ) defined by                                                            logic behind the optimal policy is essentially to ensure that we do
+                                                                                       not close down society while leaving idle ICU resources – “filling
+                β                          for t ≤ τ1
+            {
+                                                                                       the box”. This implies that whenever the natural spread is not
+b∗ (t ) =       β/ [1 + βγ (τ2 − t )]      for τ1 < t ≤ τ2                  (16)
+                                                                                       threatening the constraint, it should go unregulated. This holds in
+                β                          for t > τ2
+                                                                                       the early phase when only few have been infected, and in the last
+Every optimal policy b ∈ B(x(0), γ ) agrees with b∗ on [0, τ2 ] and                    phase, when many have already been infected but most of them
+satisfies b (t ) ≥ β for all t > τ2 .                                                  also have recovered. It is only when the epidemic may breach the
+                                                                                       ICU constraint – the second phase – that it should be regulated.
+    We note that the optimal policy is laissez-faire both before                       In order to ensure that the constraint is not breached, strong
+time τ1 and after time τ2 . We also note that the optimal policy has                   suppression has to be imposed when reaching the ICU constraint
+exactly one discontinuity, namely, a sudden shut-down of society                       – a sudden shutdown. The reason for the abruptness of this policy
+at time τ1 ; then b∗ (t ) falls from b∗ (τ1 ) = β to                                   (the discontinuity) is that the natural infection is progressing very
+                        β               α                                              quickly at that point, so a sudden break is needed to stop it. This
+lim b∗ (t ) =                      =          .                             (17)       can be seen in the lower panel by the drop at τ1 . After that, b∗
+t ↓τ1            1 + βγ (τ2 − τ1 )   x1 (τ1 )
+                                                                                       gradually increases. The reason for this is that the suppression
+From time τ1 on, b∗ (t ) rises continuously until time τ2 , at which                   only needs to keep the infection just below the ICU constraint.
+point b∗ (t ) reaches the level β . In the meantime, between times                     Then since over time the number of susceptible, x1 , is falling,
+τ1 and τ2 , the population share x2 (t ) of infected individuals                       the number of infected, x2 , is held endogenously constant and
+remains constant at the capacity level γ , while the population                        since new infections depends on their product, b (t ) x2 (t ) x1 (t ), it
+share x1 (t ) falls linearly over time to the level α/β = 1/R0 ,                       follows that b∗ is increasing during the second phase. The policy
+reached at time τ2 . The solid curve in the phase-space diagram                        as a function of the uninfected population share simply is b∗ (t ) =
+in Fig. 1, is the orbit induced by the optimal policy, starting at                     α/x1 (t ), i.e., the recovery rate α determines what share of the
+where x1 (0) is close to 1 and x2 (0) is close to zero. Once the                       susceptible population that can be allowed to be infected.
+orbit hits the horizontal line where x2 = γ , it remains there until                       Three further remarks about optimal policies are now in place.
+it reaches the point where herd immunity is reached, whereupon                         First, it may be noted that the optimal policy never attempts to
+the orbit without any suppression turns back down. The dotted                          fully eradicate the spread. In our model, like in all standard S.I.R.
+curve is the orbit taken under laissez-faire.                                          models, this is since x2 only asymptotically goes to zero. Hence,
+    Fig. 2 depicts the optimal policy as a function of time in                         full eradication (a form of extreme corner solution) would imply
+comparison to a strategy of flattening the curve, here assumed                         locking down forever. We discuss this further in the conclusions.
+to take the form: keep b (t ) at the level δ < β for which x̂2 = γ                         Second, the optimal policy is unique during the first and the
+(see (10)) until the infection wave has passed its peak, and then                      second phase but not during the third. The uniqueness during the
+return to laissez-faire, b (t ) = β (outside the time range of the                     first phase is not obvious. To see this note that here there is no
+figure). The upper panel shows the dynamics of infections and                          reason to hold back the spread. Then, given that b(t) > β has been
+the lower panel the policy b (t ).                                                     assumed to be costless, why would accelerating the spread not be
+    As can be seen, and as expressed by the theorem, the optimal                       optimal? The answer is that, if one does that, then the ICU capac-
+policy is characterized by leaving the spread unregulated initially,                   ity is reached at a high speed of infection hence it would require
+then a sudden shut-down of society (a discontinuity at τ1 ), fol-                      hitting the breaks very hard. This is not optimal. The multiplicity
+lowed by gradual (continuous) opening of society, until time τ2 ,                      of optimal strategies during the third phase is due to the same
+from which onwards the propagation is not regulated. The time                          assumption – acceleration is free. Hence, not only laissez-faire is
+axis and the ICU constraint create a square – a box. The economic                      optimal, but also acceleration (of which one can think as stimulus
+                                                                                   5
+L. Miclo, D. Spiro and J. Weibull                                                                              Journal of Mathematical Economics 101 (2022) 102669
+
+
+
+
+Fig. 2. Upper panel: The share of infected over time under the optimal policy (solid) and flattening the curve (dotted). The horizontal dashed line represents the
+ICU constraint γ . Lower panel: Optimal suppression (solid) and flattening-the-curve suppression (dotted). The horizontal dashed line represents the baseline spread
+β . Parameter values used: α = 0.3, β = 1, γ = 0.2, and ε = 0.01.
+
+
+for economic interaction). The acceleration cannot be too fast,                      While b is a function of (calendar) time, for a fixed and given
+however, as it may then breach the ICU constraint. Naturally,                        initial state at time zero, u is a timeless function of the current
+should we assume that there is a cost of acceleration (even the                      state. The laissez-faire policy is now represented by the (costless)
+slightest) this multiplicity disappears and a unique optimal policy                  control function uo (x) = β for all x ∈ ∆. We will call the solution
+emerges also in the third phase — laissez-faire.                                     orbits under this control function the laissez-faire orbits. As shown
+    Third, compared with the optimal policy, “flattening the curve”                  above, the laissez-faire orbit through any given state xo ∈ ∆
+implies costs that lead to idle resources. This is visible in the                    consists of those population states x ∈ ∆ that satisfy the equation
+upper panel of Fig. 2, where costs are incurred without the spread
+                                                                                          α
+                                                                                               ( )
+                                                                                                x1
+posing a threat to the health system – both before and after the                     x2 =   ln      − x1 + xo1 + xo2 .                                         (18)
+peak, suppression costs are incurred for no reason. The additional                        β     xo1
+cost of flattening the curve (instead of filling the box) can be seen                Such laissez-faire orbits are shown in Fig. 3.
+in the lower panel by comparing the rectangle between β and the                          The orbit through any point xo on any one of these curves
+dashed–dotted line on the one hand with the area between β and                       will follow its curve counter-clockwise and gradually over time
+the solid line on the other. It is potentially very large, in particular             approach a limit point on the boundary where x2 = 0. The
+if the policy maker continues to flatten the curve long after the                    dashed horizontal line represents the capacity constraint γ =
+peak.                                                                                0.2, and the thick curve is the maximal laissez-faire orbit that
+                                                                                     respects the health-care constraint x2 ≤ γ . The dashed vertical
+4.1. A heuristic                                                                     line indicates states with x1 = α/β . The population state at the
+                                                                                     intersection of these dashed lines, x̃ = (α/β, γ ), is the point
+    While the interested reader is recommended to consult the                        at which the maximal laissez-faire orbit touches the health-care
+ Appendix for a rigorous proof of Theorem 1, we here provide                         capacity constraint. All laissez-faire orbits reach their maximal
+a graphical heuristic for some key steps.                                            infection share when x1 = x̃1 = α/β . At all such states, herd
+    Consider the solution orbits associated   ) (1) in the state
+                                             with                                    immunity is achieved.
+space ∆, through a given state xo = xo1 , xo2 , at some arbitrary
+                                       (
+                                                                                         From any population state in the rectangle A = [0, α/β ] ×
+time, where 0 < xo1 < 1 and 0 < xo2 < γ . In such a                                  [0, γ ], the solution orbit respects the capacity constraint at all
+population state, some, but not all individuals are susceptible,                     future times. Inside this rectangle, the population state travels
+and the population share of infected is positive but below the                       counter-clockwise along its orbit, and both x1 , the number of
+health-care capacity. Write Dγ ⊂ ∆ for this subset of population                     (currently) susceptible, and x2 , the number of (currently) infected,
+states, and write (1) more concisely as an autonomous system of                      decline over time, and x2 tends toward zero. Consider a popula-
+ordinary differential equation ẋ = f (x, u (x)), where u : ∆ →
+                                                                                     tion state xo ∈ A, the expansion of the set A to also contain all
+R+ is a control function and f : ∆ × R+ → R2 is the vector
+                                                                                     states on or below the maximal laissez-faire orbit. At any such
+field that defines the population dynamic — by pointing in the
+                                                                                     population state (irrespective of time), laissez-faire is clearly an
+tangential direction of movement. In this (timeless) perspective,
+                                                                                     optimal policy; the population state will drift along its laissez-
+(1) becomes
+                                                                                     faire orbit, without ever breaching the capacity constraint. Hence,
+    f1 (x, u (x)) = −u (x) x1 x2                                                     the value function c ∗ (·, γ ) is zero on the subset of initial states
+{
+                                       .
+    f2 (x, u (x)) = u (x) x1 x2 − α x2                                               x (0) ∈ A.
+                                                                                 6
+L. Miclo, D. Spiro and J. Weibull                                                                           Journal of Mathematical Economics 101 (2022) 102669
+
+
+
+
+                                                             Fig. 3. Laissez-faire orbits.
+
+
+   How should one optimally control the epidemic in population                   Suppose that xo1 > α/β and xo2 < γ , and suppose that the
+states xo ∈ Dγ outside A? We here only provide intuitions for                 social planner, by way of a brief temporary suppression induces
+why local deviations from the proposed optimal control,                       inward with respect to the laissez-faire orbit through xo , and
+               α/x1     if x2 = γ                                             thereafter applies laissez-faire. This ends up being suboptimal,
+           {
+u (x) =
+ ∗
+                                                                              as it would be cheapest to wait until the capacity constraint is
+               β        otherwise
+                                                                              reached (the population share of susceptible will then be lower).
+are suboptimal.                                                               A direct comparison of the cost is not so easy as it may seem
+    Suppose, first, that the population state xo ∈ Dγ , outside A, is         (and is related to the linearity of the cost), that is why we will
+exactly at the capacity constraint, that is, xo1 > α/β and xo2 = γ . In
+                                                                              resort to the Hamilton–Jacobi approach in the Appendix to prove
+such a situation, it is necessary to suppress the propagation rate
+                                                                              Theorem 1.
+not to violate the constraint. It can be shown that it is optimal to
+suppress it as little as possible, while not breaching the capacity
+constraint. The population state will then travel west-ward along             4.2. The socio-economic cost of respecting the ICU constraint
+the straight line x2 = γ . During this travel, which requires costly
+regulation, gradually less suppression is needed. This is because
+the population share x1 of susceptible individuals declines over                   Having solved the optimization program, one can readily ob-
+time while the population share of infected is held constant.                 tain a closed form expression for the minimized socio-economic
+When the population share x1 has reached the critical value α/β ,             cost, when starting from a population state x (0) ∈ Dγ outside
+herd immunity has been obtained. From then on, laissez-faire is               A. With a slight abuse of notation we will write c ∗ (ε, γ ) for
+optimal.                                                                      c ∗ (x (0) , γ ) when x (0) = (1 − ε, ε) for some ε ∈ (0, 1).
+    Second, suppose that the population state is above the maxi-
+mal laissez-faire orbit and with xo1 > α/β and xo2 < γ . According            Corollary 1.         Suppose ε < γ , α < β , and that (11) does not hold.
+to the claimed optimal control u∗ , it is best to follow the laissez-         Then
+faire orbit, the (thin) curve through the point, all the way up
+                                                                                                       β −α      β (1 − ε)    β
+                                                                                                   [                       ]
+                                                                                               1
+to the capacity constraint, and from there behave as described                c ∗ (ε, γ ) =                 − ln             − .                                (19)
+above. Could it be better to deviate upwards or downwards, in                                  γ         α           α        α
+comparison with the laissez-faire orbit? It can be shown that it is
+suboptimal to boost the propagation rate. All that then happens               Proof. In force of Theorem 1:
+is that the population state will sooner reach the capacity con-                                                      ∫ τ2 (
+                                                                                                                                              1
+                                                                                                                                                       )
+                                                                              c ∗ (ε, γ ) = C b∗ , x (0) = β
+                                                                                                   (         )
+straint, and will then have a higher share x1 of susceptible than                                                              1−                          dt
+                                                                                                                                    1 + βγ (τ2 − t )
+if laissez-faire had been applied. Since it is costly to travel along                                                ∫ ττ21
+the capacity constraint, as noted above, there will be no gain but                                                                  dt
+                                                                                             = β (τ2 − τ1 ) − β
+                                                                                                                      τ1 1 + βγ (τ2 − t )
+an additional suppression cost, to travel an extra stretch along
+this straight line. Could it be better to deviate downwards? By                                                       ∫ 1+βγ (τ2 −τ1 )
+assumption, this is costly. But by doing so, the capacity constraint                                             1                       ds
+                                                                                             = β (τ2 − τ1 ) −
+can be reached later, and thus be less costly to uphold until                                                    γ     1                 s
+x1 = α/β . However, one can show that the cost is higher than                                                    1
+the benefit.                                                                                 = β (τ2 − τ1 ) −         ln [1 + βγ (τ2 − τ1 )]
+                                                                                                                 γ
+                                                                          7
+L. Miclo, D. Spiro and J. Weibull                                                                               Journal of Mathematical Economics 101 (2022) 102669
+
+
+where we have used the substitution s = 1 +βγ (τ2 − t ). In force               a form that can be found by numerical simulation, but for which
+of (15):                                                                        we do not see any possibility to pin it down analytically in closed
+                                                                                form.
+                                 α
+                    (                )
+                1
+τ2 − τ1 =                 x1 −                                                     Let a ≥ 0 and generalize the cost functional C defined in (2)
+             αγ                  β                                              to Ca , defined by
+where x1 > α/β is the largest solution to the fixed-point Eq. (14).                                       ∫ ∞                              ∫ ∞
+Hence,                                                                          Ca (x (0) , b)     =              [β − b (t )]+ dt + a           x2 (t ) dt.       (22)
+                                                                                                            0                               0
+                 β         α         β x1
+                    ( [      )            ]
+                1
+c ∗ (ε, γ ) =         x1 −     − ln                                             (now this quantity depends on x(0) through the second integral).
+              γ α          β          α                                         Since the last integral equals the total number of infected during
+              1 β x1            β
+                (                          )
+                                                                                the epidemic, a is a cost per infected person. For any a ≥ 0, the
+            =          − 1 − ln − ln x1                                         corresponding optimized cost is defined like in (3) by
+              γ    α            α
+              1 β                                  β                            ca∗ (x (0) , γ ) =                  Ca (b, x (0)) .
+                (                                    )
+                                                                                                         inf                                                       (23)
+            =       (1 − γ ) − ln (1 − ε) − 1 − ln                                                   b∈B(x(0),γ )
+              γ α                                  α
+              1 β
+                (
+                                            β
+                                              )
+                                                  β                                  Our next result establishes that exactly the same filling-the-
+            =       − ln (1 − ε) − 1 − ln       −                               box policy (b∗ or u∗ ) that was found to be optimal when a = 0
+              γ α                           α     α                             remains optimal also when a is positive but small enough, and we
+where we used the fixed-point Eq. (14).                    ■                    also establish a closed-form expression for ca∗ (x (0) , γ ) for values
+                                                                                of a in this range.
+    From Eq. (19) it is clear that the lower the ICU capacity (γ ) is                To rigorously pin down this result in our formal model, we
+the more costly implementing the policy will be. Likewise, the                  restrict the analysis to initial states x (0) ∈ ∆ where the initial
+cost is increasing in the initial share of infected. It may seem                population share of infected is strictly below the health-care
+surprising that the size ε of the initial infection plays a role, since         capacity, but where this constraint will be hit in finite time under
+under the optimal policy no actions are anyhow taken during                     laissez-faire. Formally, x (0) belongs to the subset Dγ but not to
+the first phase of the epidemic. However, if the initial infection              A.
+is large, contagion is faster already from the outset, which ne-                     In order to state the result, some more notation is needed.
+cessitates a harder lock-down once the ICU capacity is reached.                 First, let a0 ≥ 0 denote the maximal a-value for which the original
+This result can be interpreted as a motivation for closing borders              filling-the-box policy (for the case a = 0) is still optimal. Second,
+when a new virus hits another country. Limiting interaction with                let λ be the unique solution x∞  1 ∈ (0, α/β) of Eq. (8) for δ = β
+that country then may decrease the initial infection ε which                    and xo = x̃ (recalling that x̃1 = α/β and x̃2 = γ , see Section 4.1,
+will lower the total costs. It can also be shown that the cost is               see also Fig. 4 in the Appendix):
+increasing in the basic level of infection spread , β . Moreover,
+                                                                                       α              α
+                                                                                         [           ( )   ]
+since in this model the basic reproduction rate R0 equals β/α , the             λ=         ln λ − ln     +1 +γ                                                     (24)
+expression for the minimal cost can be rewritten entirely in terms                     β              β
+of three fundamental parameters, the ICU capacity constraint, γ ,
+                                                                                In other words, λ, a number in the interval (0, α/β), is the popu-
+the initial infection size, ε , and R0 :
+                                                                                lation share that remains uninfected during the whole epidemic,
+                R0 − 1 − ln R0 − ln (1 − ε)                                     granted the population state at some point in time passes through
+c ∗ (ε, γ ) =                                        − R0 .         (20)
+                                     γ                                          the population state x̃. And this is always true under the optimal
+                                                                                filling-the-box policy when a = 0. Third, and finally, let ρ be the
+For infinitesimally small initial infection levels (ε ↓ 0), the
+                                                                                unique solution in (0, 1) of the equation ρ 2 + ρ + ln (1 − ρ) = 0
+expression of the cost boils down to a simple formula:
+                                                                                (ρ ≈ 0.684). Moreover, let
+                                         R0 − 1 − ln R0                                      λ
+ĉ (R0 , γ ) = lim c ∗ (ε, γ ) =
+                                                                                       {
+                                                          − R0      (21)                        ·γ        if γ ≤ γ0
+                ε↓0                            γ                                a0 =       α−βλ
+                                                                                                                           .                                       (25)
+                                                                                           1−ρ
+                                                                                            βρ
+                                                                                               · γ0        γ > γ0
+This lower bound is continuous in R0 , taking the value zero when
+R0 is such that the infection peak, x̂2 , in the absence of regulation,         where γ0 = ρ 2 α/β .
+equals γ . For R0 above this critical level (see Eq. (11)), ĉ (·, γ ) is
+strictly increasing in R0 . Moreover, the dependence is non-linear.             Theorem 2. Suppose that x (0) ∈ Dγ and x (0) ∈       / A. The filling-
+An increase in the ICU capacity γ has a moderate effect on the                  the-box policy b∗ defined in (16) is optimal if and only if a ∈ [0, a0 ].
+minimal suppression cost if R0 is low (near its critical unit value),           Moreover, the optimized cost for any a ∈ [0, a0 ] is
+but a relatively strong cost effect if R0 is high.
+                                                                                                                                      x1 (0) + x2 (0) − λ
+                                                                                ca∗ (x (0) , γ )     =    c ∗ (x (0) , γ ) + a ·                               .   (26)
+5. Infection costs                                                                                                                              α
+                                                                                    The formal proof of the theorem can be found in the
+    The policy of filling the box may need to be mitigated in prac-               Appendix. Part of the intuition for the – perhaps surprising
+tice when including other considerations than just the existence                – result that the same policy is optimal even when a is posi-
+of an ICU constraint. However, filling the box does remain optimal              tive but sufficiently small, is latent in the heuristic sketched in
+under some perturbations of our simple model. We are now in                     Section 4.1. Because, as suggested there, in the beginning of an
+a position to present such an instance, where the cost suffered                 epidemic, an “outward” deviation (boosting its spread) is always
+by infected people is added. This cost may include both personal                suboptimal (even more so when a > 0 ). Also an “inward”
+sufferings as well as treatment costs or a cost to delays in other              deviation (suppressing the epidemic spread) in the beginning of
+medical activities when treating a large number of infected dur-                an epidemic is suboptimal, because, as we argued, it is cheaper
+ing an epidemic. Indeed, there is a range of small such costs for               to postpone such a deviation, and the maximal postponement is
+which the same filling-the-box policy as found above remains                    until the capacity constraint is reached. The cost saved by waiting
+optimal. When the costs are large enough to fall outside this                   is positive. Hence, by continuity, it is still positive for when a > 0
+range, the optimal policy may take another mathematical form,                   is sufficiently small. That laissez-faire is also optimal in the late
+                                                                            8
+L. Miclo, D. Spiro and J. Weibull                                                                  Journal of Mathematical Economics 101 (2022) 102669
+
+
+stage of an epidemic is a more subtle issue, and we have to refer           shown that the general recommendation of “flattening the curve”
+the interested reader to the Appendix.                                      is suboptimal. Instead the optimal policy essentially prescribes
+     An economic intuition for the optimality of the filling-the-box        “filling the box”. In a first phase, the spread is unregulated until
+policy also in the presence of a small cost associated with the             the number of infected reaches the ICU constraint. A second
+number of infected is that a side effect of filling the box is that         phase begins by discontinuous suppression followed by gradual
+the total number of infected is lowered, compared to complete               relaxation until, in a third phase, the spread is left unregulated
+laissez-faire, despite not having it as an explicit aim. However, the       again.
+filling-the-box policy may not reduce the infection in the cheap-               The main contribution of the paper is methodological, to ana-
+est way, compared to if only the number of infected mattered and            lytically solve a S.I.R. model with economic costs that are linearly
+there were no ICU constraint (a solution of which can be found
+                                                                            increasing in suppression, and respecting an I.C.U. constraint. We
+in Kruse and Strack, 2020). But given that the ICU constraint is
+                                                                            obtain closed-form expressions both for the optimal policy and
+respected, any further reductions of infections are not worth the
+                                                                            for the theoretically lowest possible cost of respecting a given
+cost when the per unit cost a of infection is low. Another way
+                                                                            I.C.U. constraint. We also analyze under which infection costs
+of interpreting the result is that when a policy maker has two
+considerations – respecting an ICU constraint and reducing the              “filling the box” remains optimal. With these results we hope to
+number of infected – then the former takes precedent and the                contribute to the policy debate on how to fight an epidemic, and,
+latter can be ignored if the infection cost is low.                         in particular, the current pandemic.
+     As can be verified, λ is a continuous function of γ , for any              Our model rests upon a number of simplifying assumptions.
+given 0 < α < β . Hence also the upper bound a0 is a continuous             We here briefly discuss the robustness of our result on optimal
+function of γ , given 0 < α < β . Our final result is that this upper       policy with respect to some of the modeling assumptions.
+bound on the optimality of the filling-the-box policy b∗ is strictly            First, in our model (like in the standard S.I.R. model) a com-
+decreasing in γ for all γ < γ0 :                                            plete wipe out of the spread is infeasible. The number of infected
+                                                                            only asymptotically approaches zero, even if full suppression (b =
+Corollary 2. For given α and β , with 0 < α < β , Eq. (25) defines          0) were implemented. The reason is the technical assumption that
+a0 as a strictly decreasing function of γ ∈ (0, γ0 ).                       the duration of an individual’s infection has no upper bound (it is
+                                                                            treated as if it has an exponential distribution). Naturally, if there
+    By the same heuristic as above, a0 is greater the lower is γ ,
+ceteris paribus. Because when γ is lower, the initial part of the           instead would exist a maximal duration within which all recover
+laissez-faire orbit hits the constraint sooner, when the population         with probability one, then it could be optimal to go for a full wipe
+share of still susceptible is larger, and hence the suppression cost        out right away.
+is higher, which means that there is a wider range of a-values for              Second, if account was taken of a potential vaccine arriving
+initial laissez-faire to still be optimal.                                  within a reasonable time frame, then suppressing the spread
+    The policy implication of the corollary is that countries with          more than what our policy prescribes could be optimal. See,
+less developed health care (few ICU resources) should focus on              e.g., Auld (2003) and McAdams (2020) for modeling and discus-
+ensuring that the spread is not overwhelming the health-care                sion of vaccines. Third, another factor that could suggest early
+system. Meanwhile, more developed countries (with more ICU                  suppression is if the ICU constraint can be expanded over time
+resources) should also focus on reducing the infection numbers              (for Covid-19 equivalent to an increased number of respirators
+per se. The intuition for this is that countries with a tight ICU           or development of a cure or improved treatment). Another pos-
+constraint need to implement extensive suppression just to re-              sibility is that one learns about the parameters of the disease.
+spect the constraint (i.e., the side effect on reduced infection is         However, for that to motivate early suppression, one has to
+large). Further suppression, to reduce infection more generally,            assume that the suppression itself does not distort the signal, see
+is then redundant. When the ICU constraint is not very tight, on            Gollier (2020b).
+the other hand, less suppression is needed to respect it hence                  Fourth, if the cost of suppression is strictly convex (rather than
+further suppression is needed if one also cares about the number
+                                                                            as here linear), in particular if mild suppression is very cheap,
+of infected.
+                                                                            then that would again motivate some suppression early on. How-
+    We finally note that under the filling-the-box policy, the re-
+                                                                            ever, most likely, it would still be optimal to discontinuously
+sulting additional cost term in (26) is amenable to comparative
+                                                                            increase suppression.
+statics in terms of the primitives of the model. To see this, first
+note that the second integral in the generalized cost function                  Fifth, and finally, the only constraint considered by our model
+(22) equals the total population share ever infected during the             is the health-care capacity. In practice there may exist, for in-
+epidemic, multiplied by 1/α , the average duration                          stance, political constraints one how harsh policies that can be
+                                              ∫ ∞ of the infection
+in an individual. Hence, if we write y for 0 x2 (t ) dt, then the           implemented or how fast a policy can be changed. Our results
+fixed-point equation for λ can be used to establish that y is the           remain the same if these other constraints do not bind under our
+unique solution, in the open interval between 1/α − 1/β and 1/α ,           optimal policy. But if, for instance, a fast increase in suppression is
+of the fixed-point equation                                                 not politically feasible then suppression may need to start before
+                                                                            infections reach the ICU constraint.
+      1−γ
+                           (       )    (      )
+                  1            1      1    1
+y=            −       ln         −y +    ln − 1 .               (27)            Despite these limitations of our model, we do hope that the
+        α         β            α      β    β                                present analysis, focusing on a restricted but clear question and
+We thus have ca∗ (x (0) , γ ) = c ∗ (x (0) , γ ) + ay, where (19) and       providing a clear answer, provides a useful stepping stone for
+(27) permit comparative statics analyses. A topic we, for the sake          future analyses of more complex and richer models.
+of brevity, leave for future studies.
+                                                                            Declaration of competing interest
+6. Discussion
+
+    This paper provides an analytical answer to the question: What              The authors declare that they have no known competing finan-
+is the optimal time-varying suppression policy to avoid a col-              cial interests or personal relationships that could have appeared
+lapsed health-care system when suppression is costly? We have               to influence the work reported in this paper.
+                                                                        9
+L. Miclo, D. Spiro and J. Weibull                                                                          Journal of Mathematical Economics 101 (2022) 102669
+
+
+Acknowledgments                                                                such that the solution x̃ of (28) with x̃(t) = x and b replaced
+                                                                               by b̃, remains in D for any time belonging to [t , t + ϵ]. Denote
+   We are grateful for valuable comments from Atahan Afsar,                    K(x) the set of such b(t). When x ∈ D \ ∂ D, it is convenient to
+Andrés Carvajal, Bénédicte Alziary-Chassat, Tommy Andersson,                   define K(x) := K. When D is smooth, the requirement b(t) ∈ K(x)
+Jérôme Bolte, Tom Britton, Avinash Dixit, Christian Gollier, Fausto            amounts to
+Gozzi, Bengt Holmström, Niko Jaakkola, Hannes Malmberg, Lars-
+Göran Mattsson, Jean Tirole, Stéphane Villeneuve, Robert Östling               ⟨f (x, b(t)), ν (x)⟩ ≤ 0
+and two anonymous referees.                                                    where ν (x) is the outward normal of ∂ D at x.
+                                                                                 When D is the intersection of a finite number of smooth
+Appendix                                                                       domains D1 , D2 , . . . , DN , the previous requirement amounts to
+
+    This appendix provides proofs of Theorems 1, 2 and Corol-                  ⟨f (x, b(t)), νn (x)⟩ ≤ 0
+lary 2. The proofs are based on the Hamilton–Jacobi approach
+                                                                               for all 1 ≤ n ≤ N such that x ∈ ∂ Dn . In our application, we will be
+to optimal control. This approach is quite useful here since we
+                                                                               in this situation with N = 4 and D1 , D2 , D3 and D4 half-planes.
+do have a conjectured candidate solution to the optimization
+                                                                                   For any initial condition x(0) ∈ D, we would like to minimize
+program. The Euler–Lagrange approach is more appropriate for
+                                                                               the cost associated to a policy B via
+situations in which the analyst has no candidate solution to verify.
+This is, for example, the case when a > a0 in Theorem 2,
+                                                                                                ∫ +∞
+                                                                               C (x(0), B) :=          L(x(t), b(t)) dt
+and the Euler–Lagrange approach may be useful for analyses of
+                                                                                                0
+generalizations of the present model, a task we leave for future
+studies.                                                                       where L is a measurable function going from D × K to R+ .
+    The discussion in the main text, including the heuristics in               The non-negativeness and the measurability of L, as well as the
+Section 4.1, is focused on a ‘‘new’’ epidemic, that is, a population           measurability of t ↦ → (x(t), b(t)), ensure that the above integral is
+in which initially nobody is immune. Technically, this amounts to              well-defined, taking values in R+ ⊔ {+∞}. More precisely, we are
+the assumption x1 (0) + x2 (0) = 1. By contrast, in this appendix              interested in the following quantity as a function of x := x(0) ∈ D,
+we also allow for ‘‘old’’ epidemics, that is, initial population states        the initial value of X ,
+where x1 (0)+x2 (0) < 1. The heuristic in Section 4.1 also presumes            V (x) := inf C (x, B)
+that the control problem is time homogenous, that is, that it is                         B
+
+sufficient to know the current population state x(t), and not the              where the infimum is taken over all admissible control policies.
+time t since the epidemic started. By contrast, the appendix sets                Introduce the Hamiltonian H on D × Rd via
+out without this presumption, by allowing the control to depend
+in part also directly on time. At the end of Appendix A.2, we                  H(x, p) := inf{⟨p, f (x, b)⟩ + L(x, b) : b ∈ K(x)} ∀ (x, p) ∈ D × Rd . (29)
+show how the Hamilton–Jacobi approach justifies the ‘‘timeless’’                   The principle behind the Hamilton–Jacobi method consists
+approach in Section 4.1. While the discussion in that section only             in the characterization of the function V described in the two
+considers small local variations of the candidate solution, we here            following results. More precisely, Lemma 1 and Lemma 2 respec-
+consider also global variations, a much more challenging task.                 tively give conditions ensuring that a candidate function U :
+    The plan of this appendix is as follows: in the next section we            D → R+ satisfies U ≤ V and U ≥ V .
+recall the general methodology we will follow, fixing the notation
+and introducing the Hamilton–Jacobi equation. In Appendix A.2,                 Lemma 1. Let U : D → R+ be a differentiable function satisfying
+we will check that this equation is satisfied when the control is              the Hamilton–Jacobi equation
+given by the filling-the-box policy, thus proving Theorem 1. The
+last section will extend these computations to the case of sub-                H(x, ∇ U(x)) = 0            ∀x∈D                                          (30)
+critical infection costs a ≤ a0 , ensuring the validity of Theorem 2
+                                                                               and such that for any control policy B, the transversality condition
+and Corollary 2.
+                                                                               is satisfied:
+A.1. The Hamilton–Jacobi approach                                               lim U(x(t)) = 0.                                                         (31)
+                                                                               t →+∞
+
+   We begin by recalling some general features of the Hamilton–                   Then we have U ≤ V .
+Jacobi approach to optimal control. For more details, specially
+concerning regularity questions, we refer to Section 1.4 of Soner                 To get a reverse inequality, let be given a control policy B and
+(Soner, 2009) (the following lemmas correspond to Theorems 2                   consider X the associated controlled trajectory, solution of (28)
+and 3 there) or to Section 5.1.4 of Liberzon (Liberzon, 2012).                 and starting from x ∈ D.
+   Consider a controlled dynamical system
+                                                                               Lemma 2. Let U : D → R+ be a function such that for a.e. t ≥ 0,
+ẋ(t) = f (x(t), b(t))       ∀t≥0                                 (28)
+                                                                               ⟨∇ U(x(t)), f (x(t), b(t))⟩ + L(x(t), b(t)) ≤ 0
+where the trajectory X := (x(t))t ≥0 is taking values in a closed
+domain D ⊂ Rd , the control policy B := (b(t))t ≥0 is taking values            then U(x) ≥ V (x).
+in a closed set K ⊂ R. We assume that B is right-continuous                      To conclude, for any (x, p) ∈ D × Rd , consider the set of
+and admits left limits (at any positive time). It follows the control          minimizers in (29)
+policy B is measurable and locally bounded. The function f goes
+from D × K to Rd . In particular, X cannot cross the boundary ∂ D,             M(x, p) := {b ∈ K(x) : H(x, p) = ⟨p, f (x, b)⟩ + L(x, b)}
+which is seen as the set of constraints on the system (28). This
+property leads to restrictions on the admissible controls. Namely,             Corollary 3. Let be given a function U : D → R+ satisfying
+at any time t ≥ 0 when X hits the boundary, say x(t) = x ∈ ∂ D,                the conditions of Lemma 1. Consider a policy B and the associated
+the value of the control b(t) must be such that there exists a                 trajectory X , starting from x ∈ D. Assume that for a.e. t ≥ 0,
+continuous function b̃ on [t , t + ϵ], with ϵ > 0 and b̃(t) = b(t),            b(t) ∈ M(x(t), ∇ U(x(t))), then U(x) = V (x).
+                                                                          10
+L. Miclo, D. Spiro and J. Weibull                                                                              Journal of Mathematical Economics 101 (2022) 102669
+
+
+   As consequence a strategy to compute V is as follows. First find                   with
+a solution U of the Hamilton–Jacobi equation. Second for a.e. time
+t ≥ 0, pick up a control b(t) ∈ M(x(t), ∇ U(x(t))), to construct the                  I1 := β + min{[(p2 − p1 )x1 x2 − 1]b : b ∈ [0, β]}
+corresponding controlled trajectory X . Finally check the validity                    I2 := inf{(p2 − p1 )x1 x2 b : b ≥ β}.
+of (31). In particular it follows that the optimal solution we will
+get depends on time t only through x(t), enabling us to draw                              Let us first deal with I2 . We consider two cases: (i) If p1 ≤ p2 ,
+corresponding orbits, as in Figs. 1 and 3, thus establishing a link                   then the mapping [β, +∞) ∋ b ↦ → (p2 − p1 )x1 x2 b is non-
+with Section 4.1.                                                                     decreasing, so its minimal value is attained at b = β (as well as
+                                                                                      on the whole interval [0, β], if p1 = p2 ) and I2 = (p2 − p1 )x1 x2 β .
+                                                                                          (ii) If p1 > p2 , we have x1 x2 > 0 since x ∈ D̊, thus the mapping
+A.2. Proof of Theorem 1                                                               [β, +∞) ∋ b ↦→ (p2 − p1 )x1 x2 b is decreasing, its minimal value is
+                                                                                      ‘‘attained’’ at +∞ and I2 = −∞.
+    Let us come back to our S.I.R. minimization problem, with                             Let us now come to I1 . Again we consider two cases:
+parameters α, β, γ > 0 and a = 0. Recall (1): we are interested                           (i) If (p2 − p1 )x1 x2 − 1 ≥ 0, then the mapping [0, β] ∋ b ↦ →
+in the controlled evolution described by                                              [(p2 − p1 )x1 x2 − 1]b is non-decreasing, so its minimal value is
+                                                                                      attained at b = 0 (as well as on the whole interval [0, β], if
+    ẋ1 (t ) = −b (t ) x1 (t ) x2 (t )
+{
+                                                                          (32)        (p2 − p1 )x1 x2 = 1) and I1 = β .
+    ẋ2 (t ) = b (t ) x1 (t ) x2 (t ) − α x2 (t )                                         (ii) If (p2 − p1 )x1 x2 − 1 < 0, then the mapping [0, β] ∋ b ↦ →
+where, with the notations of the previous section, we have X :=                       [(p2 − p1 )x1 x2 − 1]b is decreasing, so its minimal value is attained
+(x1 (t), x2 (t))t ≥0 (so the dimension is d = 2) and B := (b(t))t ≥0 .                at b = β and I1 = (p2 − p1 )x1 x2 β . These observations lead us to
+The constraint is represented by the domain                                           divide D̊ × R2 into the three regions:
+
+D := {x ∈ △ : x2 ≤ γ },              K := R+
+                                                                                         • On {(x, p) ∈ D̊ × R2 : p2 − p1 ≥ 0 and (p2 − p1 )x1 x2 − 1 ≥ 0},
+                                                                                           we have I2 = (p2 − p1 )x1 x2 β ≥ 0 and I1 = β , so that
+(this set is Dγ in Section 4.1). The interior D̊ of D is                                   H(x, p) = −α p2 x2 + min{1, (p2 − p1 )x1 x2 }β .
+                                                                                         • On {(x, p) ∈ D̊ × R2 : p2 − p1 ≥ 0 and (p2 − p1 )x1 x2 − 1 < 0},
+D̊ = {x ∈ △ : x1 > 0, x2 > 0, x1 + x2 < 1 and x2 < γ }.                                    we have I2 = (p2 − p1 )x1 x2 β and I1 = (p2 − p1 )x1 x2 β = I2 ,
+A priori ∂ D consists in the four segments around the trapezoid                            so that H(x, p) = (p2 − p1 )x1 x2 β − α p2 x2 .
+D (see Fig. 3), but only the segment S ⊂ ∂ D linking the point                           • On {(x, p) ∈ D̊ × R2 : p2 − p1 < 0}, since I2 = −∞, we
+(α/β, γ ) to (1 − γ , γ ) is relevant for our purposes (the other                          necessarily have H(x, p) = −∞.
+parts are not attainable from D̊). In this section and in the next                       It follows that for all (x, p) ∈ D̊ × R2 ,
+ones, we will check the Hamilton–Jacobi on D̊. Here it will essen-
+                                                                                                      min{1, (p2 − p1 )x1 x2 }β − α p2 x2
+                                                                                                  {
+tially be sufficient to check on D \ A (where A was introduced                                                                               if p1 ≤ p2
+                                                                                      H(x, p) =
+in Section 4.1 and will be given an alternative characterization                                      −∞                                     if p1 > p2
+below).
+                                                                                      as announced in the lemma.
+    With the notations of the previous section, we have
+                                                                                         The corresponding sets of minimizers follow from the above
+    f (x, b)              (−bx1 x2 , bx1 x2 − α x2 )                                  analysis.   ■
+{
+                   :=
+                                                         ∀ (x, b) ∈ D × K.
+    L(x, b)        :=     (β − b)+
+                                                                                         Similar considerations lead to:
+                                                                          (33)
+                                                                                      Lemma 4.        We have for any (x, p) ∈ S × R2 ,
+   For x ∈ S , let us compute K(x). The outward normal on S is
+                                                                                                      β − αγ p2              if γ (p2 − p1 )x1 − 1 ≥ 0
+                                                                                                  {
+the vector (0, 1) (except at the corner (1 − γ , γ ) where it is not
+                                                                                      H(x, p) =
+defined), so                                                                                          β − αγ p1 − α/x1       if γ (p2 − p1 )x1 − 1 < 0
+
+K(x) = {b ≥ 0 : ⟨f (x, b), (0, 1)⟩ ≤ 0}                                               and
+       = {b ≥ 0 : bx1 γ − αγ ≤ 0} = [0, α/x1 ].                                                        {0}          , if γ (p2 − p1 )x1 − 1 > 0
+                                                                                                  {
+                                                                                      M(x, p) =        [0, α/x1 ]    if γ (p2 − p1 )x1 − 1 = 0
+    The important computation corresponds to the determination                                         {α/x1 }       if γ (p2 − p1 )x1 − 1 < 0.
+of the Hamiltonian H:
+                                                                                      Proof. Let (x, p) ∈ S × R2 be fixed.
+Lemma 3.           We have for all (x, p) ∈ D̊ × R2 ,
+                                                                                      H(x, p) = min{−p1 bx1 x2 + p2 (bx1 x2 − α x2 ) + (β − b)+ : b ∈ [0, α/x1 ]}
+                   min{1, (p2 − p1 )x1 x2 }β − α p2 x2
+               {
+                                                           if p1 ≤ p2
+H(x, p) =                                                                                     = min{−p1 bx1 x2 + p2 (bx1 x2 − α x2 ) + β − b : b ∈ [0, α/x1 ]}
+                   −∞                                      if p1 > p2 .
+                                                                                              = min{−p1 bx1 γ + p2 (bx1 γ − αγ ) + β − b : b ∈ [0, α/x1 ]}
+where p1 and p2 are the components of the vector p.
+    Furthermore, the corresponding sets of minimizers are, still for all                      = min{[γ (p2 − p1 )x1 − 1]b : b ∈ [0, α/x1 ]} + β − αγ p2
+(x, p) ∈ D̊ × R2 ,
+                                                                                      where for the second equality we used that for x ∈ S , we have
+                        {0}   if p1 ≤ p2 and (p2 − p1 )x1 x2 − 1 ≥ 0                  x1 ≥ α/β , so α/x1 ≤ β , and for the third equality we used that
+               {
+M(x, p) =               {β}   if p1 ≤ p2 and (p2 − p1 )x1 x2 − 1 < 0                  x2 = γ for x ∈ S .
+                        ∅     if p1 > p2 .                                                We consider two cases:
+                                                                                          (i) If γ (p2 − p1 )x1 − 1 ≥ 0, then the mapping that takes b from
+Proof. Let (x, p) ∈ D̊ × R2 be fixed. He have                                         [0, α/x1 ] to [γ (p2 − p1 )x1 − 1]b is non-decreasing, so its minimal
+                                                                                      value is attained at b = 0, H(x, p) = β − αγ p2 .
+H(x, p) = inf{−p1 bx1 x2 + p2 (bx1 x2 − α x2 ) + (β − b)+ : b ∈ R+ }                      (ii) If γ (p2 − p1 )x1 − 1 < 0, then the mapping that takes b from
+          = min{I1 , I2 } − α p2 x2                                                   [0, α/x1 ] to [γ (p2 − p1 )x1 − 1]b is decreasing, so its minimal value
+                                                                                 11
+L. Miclo, D. Spiro and J. Weibull                                                                                      Journal of Mathematical Economics 101 (2022) 102669
+
+
+is attained at b = α/x1 and                                                               (there are two solutions to this equation and ξ (x) is the largest,
+                                         α                                                corresponding to the first time τ1 (x) when ϕ2∗ (x, ·) goes through
+H(x, p) = [γ (p2 − p1 )x1 − 1]                + β − αγ p2                                 γ , it will pass at this level a second time, in its way to herd
+                                         x1
+                                    α                                                     immunity).
+          = αγ (p2 − p1 ) −              + β − αγ p2                                          As a consequence, we get
+                                    x1
+                             α                                                                      β                    βξ (x)
+                                                                                                       (              (         ))
+                                                                                                   1
+          = −αγ p1 −              + β.                                                    U(x) =      ξ (x) − 1 − ln
+                             x1                                                                  γ α                      α
+                                                                                                 1 β                             β
+                                                                                                  (                           ( )     )
+    The desired results follow. Note that in the first case, we have
+to separate the sub-cases γ (p2 − p1 )x1 − 1 > 0 and γ (p2 − p1 )x1 −                          =      ξ (x) − ln (ξ (x)) − ln      −1
+                                                                                                 γ α                             α
+1 = 0, where the sets of minimizers are respectively {0} and
+                                                                                                 1 β                   β        β       β
+                                                                                                  (                                   ( )   )
+[0, α/x1 ].   ■                                                                                =      x2 − ln (x1 ) + x1 − γ − ln         −1
+                                                                                                 γ α                   α        α       α
+   Let us now construct a function U, inspired by the results
+                                                                                                 1 β             β x1       β        β
+                                                                                                  (            (      )                 )
+obtained in our previous paper (Miclo et al., 2020) (see also                                  =      x2 − ln            + x1 − 1 − γ .
+Corollary 1), that will satisfy the assumptions of Corollary 3.                                  γ α              α         α        α
+   First, let us introduce some more notations. For any x ∈ △, let                           The gradient of U is immediately obtained by differentiation of
+ϕ (x, ·) := (ϕ1 (x, t), ϕ2 (x, t))t ∈[0,+∞)                                               this expression (extended on a neighborhood of points belonging
+                                                                                          to S ).  ■
+be the trajectory starting from x and ‘‘controlled’’ by the laissez-
+faire policy. It amounts to taking b ≡ β in (28), where the                                  We deduce:
+mappings f and L considered in (33) have been extended to △× K
+(then no boundary condition has to be taken into account). As in                          Lemma 6.         The function U satisfies the Hamilton–Jacobi equation
+Section 4.1, the trajectory ϕ (x, ·) will also be called laissez-faire                    on D \ A.
+in the sequel. We need to extend the domain to all of △ because
+for some x, ϕ (x, ·) does take values in △ \ D, i.e. the laissez-faire                    Proof. First let us consider x ∈ D̊ \ A. Let us write ∇1 and ∇2 the
+policy is not always respecting the capacity constraint x2 (t) ≤ γ .                      partial derivatives with respect to x1 and x2 . Note that
+We have seen in (7) that ϕ (x, ·) satisfies                                                            β                α                  β
+                                                                                                              (               )
+                                                                                          ∇1 U(x) =               1−                  <       = ∇2 U(x)
+                        α    ϕ1 (x, t)                                                                 γα              β x1                γα
+                            (             )
+ϕ2 (x, t) = x2 +          ln                  − ϕ1 (x, t) + x1       ∀ t ≥ 0. (34)
+                        β       x1                                                        so according to Lemma 3
+    Denote τ1 (x) the hitting time of S when the state at time zero                       H(x, ∇ U(x)) = min{1, (∇2 U(x) − ∇1 U(x))x1 x2 }β − α∇2 U(x)x2
+is x in D:
+                                                                                                                                β
+                                                                                                            {              }
+                                                                                                                  1
+                                                                                                       = min 1,       x1 x2 β − x2
+τ1 (x) := inf{t ≥ 0 : X2 (t) = γ }.                                                                              γ x1           γ
+                                                                                                                          β
+                                                                                                                {     }
+By the usual conventions, this hitting time is infinite, when S is                                                 1
+                                                                                                           = min 1, x2 β − x2 .
+not hit by ϕ (x, ·).                                                                                               γ      γ
+    Let A be the closure of initial points x ∈ D with τ1 (x) = +∞.
+                                                                                             Since x2 < γ , the latter expression vanishes.
+Note it corresponds to the same set A introduced in Section 4.1.
+                                                                                             Second, for x = (x1 , γ ) ∈ S , we have
+Its boundary in D consists of the points x ∈ D such that ϕ (x, ·)
+passes through the point (α/β, γ ). For x ∈ A, we take U(x) := 0.                                                                          1
+                                                                                          γ (∇2 U(x) − ∇1 U(x))x1 − 1 = γ                        x1 − 1 = 0.
+    Let us define U on S . Consider x = (x1 , γ ) ∈ S , we take                                                                           γ x1
+                   β             β x1
+               (                    (         ))
+           1                                                                                 According to Lemma 4, we infer
+U(x) :=              x1 − 1 − ln                   .
+           γ       α              α                                                                                                         α
+                                                                                          H(x, ∇ U(x)) = β − αγ ∇1 U(x) −
+For x ∈ D \ A, the trajectory ϕ (x, ·) hits S , say at a point y(x) ∈ S .                                                                  x1
+                                                                                                                                           α             α
+                                                                                                                              (                  )
+We take U(x) := U(y(x)).                                                                                                 1
+                                                                                                           = β − βγ               1−                 −         = 0.   ■
+   Here is a more explicit expression:                                                                                  γ                 β x1           x1
+                                                                                             Following the roadmap presented after the proof of
+Lemma 5.           For any x := (x1 , x2 ) ∈ D \ A, we have
+                                                                                          Corollary 3, we are led to choose at any time t ≥ 0, a policy
+                   β         β x1             β         β                                 b(t) ∈ M(x(t), ∇ U(x(t))). In the following cases, write x = (x1 , x2 )
+               (             (       )                           )
+          1
+U(x) =               x2 − ln             +      x1 − 1 − γ
+          γ        α          α               α         α                                 for the position x(t).
+                                                                                             (i) When x ∈ D̊ \ A, the above proof shows that ∇1 U(x) ≤
+and
+                                                                                          ∇2 U(x) and similarly we see that
+         β                α
+                    (           )
+∇ U(x) =              1−      ,1                                                                                                  1                  x2
+         γα              β x1                                                             (∇2 U(x) − ∇1 U(x))x1 x2 =                  x1 x2 =                 < 1.
+                                                                                                                              γ x1                   γ
+(for x ∈ S , the interpretation of ∇ U(x) is that for any v pointing
+                                                                                               Thus according to Lemma 3, we must take b(t) = β .
+toward D, the differential of U at x in the direction of v is given by
+                                                                                               (ii) When x ∈ S , the proof of Lemma 6 shows that (∇2 U(x) −
+dU(x)[v] = ⟨∇ U(x), v⟩).
+                                                                                          ∇1 U(x))x1 γ − 1 = 0. Thus according to Lemma 4, we must take
+                                                                                          b(t) ∈ [0, α/x1 ]. Taking exactly b(t) = α/x1 , namely b(t) =
+Proof. For fixed x := (x1 , x2 ) ∈ D \ A, denote y(x) := (ξ (x), γ ).
+                                                                                          α/x1 (t) where x1 (t) is the first coordinate of x(t), we recover the
+According to (34), the coordinate ξ (x) is a solution ξ to the
+                                                                                          filling-the-box policy, at least until X hits the point (α/β, γ ).
+equation
+                                                                                               To end the proof of Theorem 1, it remains to check (31),
+               α     ξ
+                    ( )
+                                                                                          where X is the trajectory controlled as above and where the initial
+γ = x2 +         ln     − ξ + x1
+               β     x1                                                                   point x(0) belongs to D \ A. Remark: X ends up hitting the point
+                                                                                     12
+L. Miclo, D. Spiro and J. Weibull                                                                                                          Journal of Mathematical Economics 101 (2022) 102669
+
+                                                                                                                                                         a                                τ∗
+(α/β, γ ) after moving along S . Since U(α/β, γ ) = 0, afterward                                                                              = − [ϕ1∗ (x, t) + ϕ2∗ (x, t)]01
+the trajectory X stays in the set where U vanishes, following the                                                                                α
+laissez-faire trajectory passing through (α/β, γ ), as explained in                                                                                      a
+                                                                                                                                      = − (ϕ1∗ (x, τ1∗ ) + ϕ2∗ (x, τ1∗ ) − (x1 + x2 )).
+Section 4.1.                                                                                                                               α
+                                                                                                                 According to the situation τ1∗ < τ2∗ or τ1∗ = τ2∗ , we deduce the
+A.3. Proof of Theorem 2 and Corollary 2                                                                   desired result.             ■
+
+                                                                                                             Next we compute the cost on the second period [τ1∗ , τ2∗ ], it is
+   Let us add to the instantaneous cost a term ax2 , with a > 0,                                          only needed when τ1∗ < τ2∗ .
+corresponding to the costs suffered by infectious people. Namely
+in our S.I.R. minimization problem, we replace L by                                                       Lemma 8. For any τ1∗ less than τ2∗ :
+La (x, b) := L(x, b) + ax2            ∀ x ∈ D, ∀ b ∈ K                                                    ∫ τ∗
+                                                                                                                 2                                     β + aγ
+                                                                                                                                                                         (
+                                                                                                                                                                                  α
+                                                                                                                                                                                    )
+                                                                                                                                                                                       1
+                                                                                                                                                                                           (
+                                                                                                                                                                                             βξ (x)
+                                                                                                                                                                                                    )
+                                                                                                                     La (ϕ ∗ (x, t), b(t)) dt =                           ξ (x) −     − ln            .
+(here and in the sequel, a quantity having no index a corresponds                                          τ1∗                                           αγ                       β    γ      α
+to a = 0, i.e. the quantity considered in the previous section).
+   Since the additional term does not contain b, we get for the                                           Proof. We have
+corresponding Hamiltonian and minimizer set:                                                              ∫ τ∗                                         ∫ τ∗ (
+                                                                                                                 2                                            2
+                                                                                                                                                                                                     )
+                                                                                                                                                                                               (x)
+     Ha (x, p)                H(x, p) + ax2                                                                          La (ϕ ∗ (x, t), b(t)) dt =                         L(ϕ ∗ (x, t), b(t)) + aX2 (t) dt
+{
+                      =
+                                                                   ∀ (x, p) ∈ D × R .    2
+                                                                                                           τ1∗                                          τ1∗
+     Ma (x, p)        =       M(x, p)                                                                                                                  ∫ τ∗
+                                                                                                                                                              2
+     Our goal here is to investigate the modifications induced by                                                                             =                    L(ϕ ∗ (x, t), b(t)) dt + aγ (τ2∗ − τ1∗ ).
+this change of the cost and to show that for a > 0 sufficiently                                                                                         τ∗
+                                                                                                                                                         1
+small, that will be precisely quantified, the filling-the-box policy                                         The integral in the last r.h.s. was computed in Corollary 1, we
+remains optimal.                                                                                          have
+     Our first task is to compute the induced surplus of cost for the                                     ∫ τ∗
+                                                                                                                                                             β                          β
+                                                                                                                                                       (                               ( )   )
+filling-the-box policy, whose definition is recalled below.
+                                                                                                                 2                                 1
+                                                                                                                     L(ϕ (x, t), b(t))dt =
+                                                                                                                         ∗
+                                                                                                                                                               ξ (x) − ln (ξ (x)) − ln     −1 .
+     For x ∈ D, let ϕ ∗ (x, ·) := (ϕ1∗ (x, t), ϕ2∗ (x, t))t ∈[0,+∞) be the tra-                            τ1∗                                     γ         α                          α
+jectory controlled by the filling-the-box policy B := (b(t))t ∈[0,+∞) .
+                                                                                                                 The time difference τ2∗ − τ1∗ was computed in (15):
+Denote by τ2∗ the first time ϕ1∗ (x, ·) hits α/β and τ1∗ the first time
+ϕ2∗ (x, ·) hits γ , except that if ϕ2∗ (x, ·) never hits γ , we take τ1∗ = τ2∗ .                                             ξ (x) − α/β
+By convention we take τ1∗ = τ2∗ = 0 when x1 ≤ α/β . The control
+                                                                                                          τ2∗ − τ1∗ =
+                                                                                                                                  αγ
+B is given by
+                                                                                                          as claimed.             ■
+                  β                  if t < τ1∗
+            {
+                                                                                                             Finally follows the computation of the contribution to the cost
+b(t) :=           α/ϕ1∗ (x, t)       if t ∈ [τ1∗ , τ2∗ ]                    ∀ t ≥ 0.
+                                                                                                          of the last period [τ2∗ , +∞). Note that contrary to the situation
+                  β                  if t > τ2∗
+                                                                                                          a = 0 considered in Appendix A.2, we can no longer overlook
+    Note that ϕ ∗ (x, ·) coincides with the laissez-faire trajectory                                      this period.
+ϕ (x, ·) (see the paragraph before (34)) up to the time τ1∗ = τ1 (x),
+with the notations of Appendix A.2.                                                                       Lemma 9.
+    We begin by computing the surplus of cost on the first period                                         ∫ +∞                                     {     a
+                                                                                                                                                           (α/β + γ − λ)                    if τ1∗ < τ2∗
+[0, τ1∗ ].                                                                                                            La (ϕ ∗ (x, t), b(t)) dt =         α
+                                                                                                           τ∗
+                                                                                                                                                         a
+                                                                                                                                                         α
+                                                                                                                                                           (α/β + χ (x) − l(x))             if τ1∗ = τ2∗
+                                                                                                            2
+
+Lemma 7.            When τ1∗ < τ2∗ , we have                                                              where λ is the smallest solution to Eq. (24) (see also Fig. 4), and
+∫ τ∗                                                                                                      where l(x), for x ∈ A, is the smallest solution to the following
+     1                                   a                                                                equation in l,
+         La (ϕ ∗ (x, t), b(t)) dt =          (x1 + x2 − ξ (x) − γ )
+ 0                                       α                                                                           α     βl
+                                                                                                                          ( )
+                                                                                                                               α
+                                                                                                          l =          ln     + + χ (x).                                                                   (35)
+where ξ (x) := ϕ1∗ (x, τ1∗ ), was introduced in the proof of Lemma 5.                                                β     α   β
+  When τ1∗ = τ2∗ , we have
+∫ τ∗                                                                                                      Proof. For t ≥ τ2∗ , we have b(t) = β , so as in the proof of
+     1                                   a
+         La (ϕ (x, t), b(t)) dt =
+              ∗
+                                             (x1 + x2 − χ (x) − α/β )                                     Lemma 7,
+ 0                                       α                                                                ∫ +∞                                             ∫ +∞
+where χ (x) := ϕ2 (x, τ1 ).
+                          ∗      ∗                                                                                    La (ϕ ∗ (x, t), b(t)) dt = a                        ϕ2∗ (x, t) dt
+                                                                                                           τ2∗                                                    τ2∗
+                                                                                                                                                              a
+Proof. In all cases, since b(t) = β for t ∈ [0, τ1∗ ), we have                                                                           = − (λ(x) − ϕ1∗ (x, τ2∗ ) − ϕ2∗ (x, τ2∗ ))
+∫ τ∗                                     ∫ τ∗                                                                                                   α
+     1
+         La (ϕ ∗ (x, t), b(t)) dt =
+                                                 1
+                                                     La (ϕ ∗ (x, t), β ) dt                               where λ(x) := limt →+∞ ϕ1∗ (x, t) and where we took into account
+ 0                                           0                                                            that limt →+∞ ϕ2∗ (x, t) = 0.
+                                             ∫ τ∗                                                            From (34), λ(x) is the smallest solution to the equation in l
+                                                     1
+                                     =a                  ϕ2∗ (x, t) dt                                        α
+                                                                                                                    (
+                                                                                                                            l
+                                                                                                                                    )
+                                                 0                                                        l=     ln                   + ϕ1∗ (x, τ2∗ ) + ϕ2∗ (x, τ2∗ ).
+                                                     ∫ τ∗                                                     β       ϕ1∗ (x, τ2∗ )
+                                                 a           1
+                                     =−                          (−α )ϕ2∗ (x, t) dt                          Let us now separate the two possible cases.
+                                                 α       0
+                                                                                                             (i) When τ1∗ < τ2∗ , we have (ϕ1∗ (x, τ2∗ ), ϕ2∗ (x, τ2∗ )) = (α/β, γ ),
+                                                     ∫ τ∗
+                                                 a           1    d                                       so l(x) does not depend on x (except that x ∈ D \ A is required)
+                                     =−                               (ϕ1∗ (x, t) + ϕ2∗ (x, t)) dt        and is the smallest solution λ to (24).
+                                                 α       0       dt
+                                                                                                     13
+L. Miclo, D. Spiro and J. Weibull                                                                                                                Journal of Mathematical Economics 101 (2022) 102669
+
+
+    (ii) When τ1∗ = τ2∗ , we have (ϕ1∗ (x, τ2∗ ), ϕ2∗ (x, τ2∗ ))=(α/β, χ (x)),                                   Lemma 10. The function Ua satisfies the Hamilton–Jacobi equation
+so l(x) does depend on x and is the smallest solution to (35).              ■                                    on D \ A.
+
+     As a consequence of the three previous lemmas, we get:                                                      Proof. Note that on D \ A, we have
+     (i) When τ1∗ < τ2∗ , i.e. x ∈ D \ A, we have
+∫ +∞                                                                                                             ∇2 Ua − ∇1 Ua = ∇2 U − ∇1 U .
+             La (ϕ ∗ (x, t), b(t)) dt                                                                               In Appendix A.2, we checked that on D̊ \ A, ∇2 U − ∇1 U < 0,
+ 0
+     ∫ τ∗                                              ∫ τ∗                                                      and that for x ∈ S , γ (∇2 U(x) − ∇1 U(x))x1 − 1 = 0, so we get:
+          1                                                     2
+=               La (ϕ ∗ (x, t), b(t)) dt +                          La (ϕ ∗ (x, t), b(t)) dt                        (i) On D̊ \ A,
+      0                                                   τ1∗
+          ∫ +∞                                                                                                   Ha (x, ∇ Ua (x)) = H(x, ∇ Ua (x)) + ax2
+    +                   La (ϕ ∗ (x, t), b(t)) dt                                                                                    = min{1, (∇2 Ua (x) − ∇1 Ua (x))x1 x2 }β
+              τ2∗
+                                                                                                                                      − α∇2 Ua (x)x2 + ax2
+                                                      β + aγ                      α
+                                                                         (          )
+     a                                                                                                                              = min{1, (∇2 U(x) − ∇1 U(x))x1 x2 }β
+=        (x1 + x2 − ξ (x) − γ ) +                                         ξ (x) −
+     α                                                  αγ                        β                                                       (            a)
+                                                                                                                                      − α ∇2 U(x) +       x2 + ax2
+         βξ (x)                                                                                                                                        α
+                    (             )
+         1
+    − ln                                                                                                                            = H(x, ∇ U(x)) − ax2 + ax2
+     γ    α
+          a                                                                                                                         = H(x, ∇ U(x))
+  + (α/β + γ − λ)
+  ∫ α+∞                                                                                                                             =0
+                                a
+=       L(ϕ ∗ (x, t), b(t)) dt + (x1 + x2 − ξ (x) − γ )                                                          according to Appendix A.2.
+   0                            α                                                                                   (ii) On S ,
+                 α
+      (            )
+    a
+  +     ξ (x) −                                                                                                  Ha (x, ∇ Ua (x)) = H(x, ∇ Ua (x)) + ax2
+    α            β
+          a                                                                                                                         = β − αγ ∇2 Ua (x) + aγ
+  + (α/β + γ − λ)                                                                                                                             (           a)
+  ∫ α+∞                                                                                                                             = β − αγ ∇2 U(x) +
+                                                                                                                                                          α
+                                                                                                                                                             + aγ
+                                a
+=       L(ϕ ∗ (x, t), b(t)) dt + (x1 + x2 − λ)                                                                                      = β − αγ ∇2 U(x)
+   0                            α
+                        a                                                                                                           = H(x, ∇ U(x))
+= U(x) +                    (x1 + x2 − λ)
+                        α                                                                                                           =0
+where we took into account that                                                                                  according to Appendix A.2.                       ■
+                ∫ +∞
+U(x) =                       L(ϕ ∗ (x, t), b(t)) dt                                                                 To check if the Hamilton–Jacobi equation is satisfied on A, we
+                    0                                                                                            need to investigate ∇ l(x). Taking into account (34) and that for
+when a = 0, as shown in the previous section.                                                                    x ∈ A, the control is the laissez-faire policy all the time, l(x) is
+   (ii) When τ1∗ = τ2∗ , i.e. x ∈ A (recall that A is the set of points                                          the smallest solution to the following equation in l,
+below the laissez-faire trajectory passing through (α/β, γ )), we                                                            α
+                                                                                                                                  ( )
+                                                                                                                                    l
+have similarly, only using Lemmas 7 and 9,                                                                       0 = x2 +      ln     − l + x1
+                                                                                                                             β     x1
+∫ +∞
+             La (ϕ ∗ (x, t), b(t)) dt                                                                            or equivalently,
+ 0                                                                                                                    α              α
+          a                                                         a                                            l−     ln (l) = x2 − ln (x1 ) + x1 .
+    =          (x1 + x2 − χ (x) − α/β ) +                               (α/β + χ (x) − l(x))                          β              β
+          α                                                         α
+                            a                                                                                      Except in the non-relevant case where x2 = 0 and x1 ≥ α/β ,
+    = U(x) +                    (x1 + x2 − l(x))                                                                 we have l(x) < α/β . It follows that
+                            α
+                                                                                                                                                                       )T
+where we used that U(x) = 0 for x ∈ A and where l(x) is defined                                                                              1 − α/(β x1 )
+                                                                                                                                         (
+                                                                                                                                1
+in Lemma 9.                                                                                                      ∇ l(x) =         α                                           .
+                                                                                                                            1 − β l(x)            1
+   Since we want to test if the filling-the-box policy is optimal, let
+us define the function Ua via                                                                                         Since U = 0 on A, we deduce from (37) that
+                                        ∫ +∞                                                                                                         ((           )T                                                )T )
+                                                                                                                                                                                                    1 − α/(β x1 )
+                                                                                                                                                                                               (
+∀ x ∈ D,                    Ua (x) :=               La (ϕ ∗ (x, t), b(t)) dt                                                                     a            1                        1
+                                                                                                                 ∀ x ∈ A,       ∇ Ua (x) =                                −         α
+                                            0                                                                                                    α            1               1 − β l(x)                 1
+                                                           a
+                                                             (x + x2 − λ)
+                                                     {
+                                                           α 1
+                                                                                        if x ∈ D \ A
+                                                                                                     (36)                                                                               α                            )T
+                                    = U(x) +                                                                                                                                                 − (1 − α/(β x1 ))
+                                                                                                                                                                          (
+                                                           a
+                                                             (x + x2 − l(x))            if x ∈ A.                                                         a                       1 − β l(x)
+                                                           α 1                                                                               =       (                )                          α
+                                                                                                                                                         α                                 1 − β l(x) −1
+     In particular, we have (where T stands for transposition)                                                                                   α 1 − β l(x)
+                                                                                                                                                                          (                        )T
+                                                     )T                                                                                                                            1       1
+                                                                                                                                                                                     − l(x)
+                                            (
+                                      a         1                                                                                                         a
+∇ Ua (x) = ∇ U(x) +                                                     ∀ x∈D\A                                                              =    (           )                   x1
+                                                                                                                                                                                        1               .
+                                      α         1                                                                                                        α
+                                                                                                                                                 β 1 − β l(x)                       − l(x)
+
+and                                                                                                                 Recall that l(x) < α/β , so that ∇1 Ua (x) < ∇2 Ua (x). We deduce
+                                                                            )T
+                                                                                                                 that for x ∈ A:
+                                                                (
+                                        a                 a             1
+∇ Ua (x) = ∇ U(x) −                         ∇ l(x) +                               ∀x∈A             (37)
+                                        α                 α             1                                        H(x, ∇ Ua (x))
+     We deduce:                                                                                                    = H(x, ∇ Ua (x)) + ax2
+                                                                                                            14
+L. Miclo, D. Spiro and J. Weibull                                                                                           Journal of Mathematical Economics 101 (2022) 102669
+
+
+  = min{1, (∇2 Ua (x) − ∇1 Ua (x))x1 x2 }β − α∇2 Ua (x)x2 + ax2                                For l ∈ (λ, α/β ), the highest second coordinate x2 for the
+                                                                                            elements of A(l) is χ (l). Thus we have
+       ⎧ ⎛                      ⎞       ⎫
+                    − a/x1
+       ⎨                                ⎬
+  = min 1, ⎝ (                ) ⎠ x1 x2 β
+                                                                                                  ⎧                                     ⎫
+                                                                                                                                                               χ (l)l
+                                                                                                                                                          {                          }
+                           α
+                                                                                                  ⎨                                     ⎬
+                β 1 − β l(x)
+                                                                                                                        ⋃
+                                                                                                                                                                      : l ∈ [λ, α/β ) .
+       ⎩                                ⎭
+                                                                                            sup       F (x) : x ∈                 A(l)          = sup
+                                                                                                                                                              α − βl
+                                                                                                                     l∈(λ,α/β )
+       ⎛                     ⎞                                                                    ⎩                                     ⎭
+                 a/l(x)
+   − α ⎝− (               ) ⎠ x2 + ax2                                                      Note that l and χ (l) are related via (35) (with χ (x) replaced by
+                       α
+            β 1 − β l(x)                                                                    χ (l)), so that
+                                                                                                       α α    βl
+                                                                                                             ( )
+                                   aα x 2
+       {                 }
+             −ax2 l(x)
+  = min 1,                 β+                + ax2                                          χ (l) = l − − ln     .
+             β l(x) − α         β l(x) − α                                                             β β    α
+                                 aβ x2 l(x)                                                                                                                                               β
+       {                 }
+              ax2 l(x)                                                                        Using this expression and introducing the variable r := 1 − α l,
+  = min 1,                 β−               .                                                                        β
+             α − β l(x)         α − β l(x)                                                  which belongs to (0, 1 − α λ], we get
+                                                                                            β 2 χ (l)l
+                                                                                                                         (              )
+   We are led to consider two cases.                                                                                         1
+          ax2 l(x)
+   (i) If α−β       ≤ 1 (for a given x ∈ A with x2 > 0, this will be                                   = f (r) := (r − 1) 1 + ln(1 − r)
+               l(x)                                                                         α α − βl                         r
+true for a > 0 small enough), then
+                                                                                            and thus
+                          ax2 l(x)β           ax2 l(x)β
+                                                                                                  ⎧                                     ⎫
+H(x, ∇ Ua (x)) =                         −                  = 0                                   ⎨                   ⋃                 ⎬       α
+                          α − β l(x)         α − β l(x)                                     sup       F (x) : x ∈                A(l)       =      sup{f (r) : r ∈ (0, 1 − βλ/α]}.
+                                                                                                                                                β2
+                                                                                                                    l∈(λ,α/β]
+                                                                                                  ⎩                                     ⎭
+so the Hamilton–Jacobi equation is satisfied.
+           ax2 l(x)
+   (ii) If α−β  l(x)
+                     > 1 (for a given x ∈ A with x2 > 0, this will be                           We compute that for any r ∈ (0, 1), f ′ (r) = r 2 , with g(r) :=
+                                                                                                                                                                        g(r)
+
+true for a > 0 large enough), then                                                           2
+                                                                                            r + r + ln(1 − r).
+                                                                                                Since
+                               aβ x2 l(x)
+H(x, ∇ Ua (x)) = β −                      < β −β = 0                                                  r(1 − 2r)
+                               α − β l(x)                                                    ′
+                                                                                            g (r) =                ∀ r ∈ (0, 1)
+                                                                                                        1−r
+and the Hamilton–Jacobi equation is not satisfied.                                          g is increasing on (0, 1/2) and decreasing on (1/2, 1). Since
+    The following result shows that the former case can be sat-                             g(0) = 0 and limr →1− g(r) = −∞, there exists a unique ρ ∈ (0, 1)
+isfied uniformly in x ∈ A. Recall (see the paragraph preceding                              such that g(ρ ) = 0, g being positive and negative respectively on
+Theorem 2) that ρ is the unique solution in (0, 1) of the equation                          (0, ρ ) and (ρ, 1).
+ρ 2 + ρ + ln (1 − ρ) = 0 and that γ0 = ρ 2 α/β . In addition, define                            It follows that
+λ0 := (1 − ρ )α/β .
+                                                                                            sup{f (r) : r ∈ [0, 1 − βλ/α]} = f (min{ρ, 1 − βλ/α}) .
+Proposition 3.                                                                                   Taking into account that χ (λ) = γ , we get that
+                                γλ                                                          α                   γλ
+                           {
+           x2 l(x)             α−βλ
+                                             if γ ≤ γ0                                         f (1 − βλ/α) =
+sup                  =          γ0 λ0
+                                             if γ > γ0 .
+                                                                                            β2                α − βλ
+x∈ A   α − β l(x)              α−βλ0
+                                                                                            and consequently
+                                                                                                  ⎧                                     ⎫
+                                                                                                                                                         γλ
+                                                                                                                                                                    if 1 − βλ/α ≤ ρ
+                                                                                                                                                 {
+Proof. Let                                                                                        ⎨                                     ⎬
+                                                                                                                                                        α−βλ
+                                                                                                                       ⋃
+                                                                                            sup       F (x) : x ∈                A(l)       =           α
+                                                                                                                                                                                       (39)
+                x2 l(x)                                                                                                                                    f (ρ )   if 1 − βλ/α > ρ.
+                                  ∀ x ∈ A.                                                                          l∈(λ,α/β )                          β2
+                                                                                                  ⎩                                     ⎭
+F (x) :=
+             α − β l(x)
+                                                                                                Considering the constants λ0 and γ0 introduced in the propo-
+   Consider x ∈ A. If x2 = 0, then F (x) = 0, so we are only                                sition,one may write
+interested in the case x2 > 0 and then l(x) < α/β . For given                               α             γ0 λ0
+l ∈ (0, α/β ), let                                                                             f (ρ ) =
+                                                                                            β2          α − βλ0
+A(l) := {x ∈ A : l(x) = l}                                                                  and the condition 1 −βλ/α ≤ ρ is equivalent to λ ≥ λ0 or γ ≤ γ0 .
+                                                                                            It follows that (39) can be written
+    There are three alternatives for this set:                                                    ⎧                                     ⎫
+                                                                                                                                                          γλ
+    (i) For l ∈ (0, λ), A(l) is a curve going from (l, 0) to a point                                                                                                if γ ≤ γ0
+                                                                                                                                                    {
+                                                                                                                                                         α−βλ
+                                                                                                  ⎨                     ⋃               ⎬
+(x1 (l), γ ), where x1 (l) ∈ (0, α/β ), see Fig. 4 (recall that λ was                       sup       F (x) : x ∈                 A(l)          =         γ0 λ0
+                                                                                                                                                                    if γ > γ0
+defined as the smallest solution to Eq. (24), the largest one is λ̃                                                  l∈(λ,α/β )                          α−βλ0
+                                                                                                  ⎩                                     ⎭
+in the following figures).                                                                  and comparing with (38), we conclude the desired result.                                   ■
+    (ii) For l = λ, A(l) is the union of the whole set D \ A with the
+curve going from the point (λ, 0) to (α/β, γ ), see Fig. 5.                                 Remark 4. In Proposition 3, the alternative γ > γ0 is only
+    (iii) For l ∈ (λ, α/β ), A(l) is the curve going from the point                         possible if the point (α/β, γ0 ) belongs to the interior of the
+(l, 0) to (l̃, 0) passing through (α/β, χ (l)), see Fig. 6.                                 simplex, i.e. if α/β + γ0 < 1. This condition is equivalent to
+    For l ≤ λ, the highest second coordinate x2 for the elements
+                                                                                            α  α
+of A(l) is γ . It follows that                                                                − (ρ + ln(1 − ρ )) < 1
+       {                                }                                                   β  β
+                                                           γl                               or, recalling the definition of ρ ,
+                           ⋃                         {                      }
+sup F (x) : x ∈                   A(l)       = sup              : l ∈ (0, λ]                α
+                                                         α − βl                               (1 + ρ 2 ) < 1
+                          0<l≤λ
+                                                                                            β
+                                                   γλ
+                                             =          .                       (38)        which is satisfied for α/β < 1/(1 + ρ 2 ).
+                                                 α − βλ
+                                                                                       15
+L. Miclo, D. Spiro and J. Weibull                                                                            Journal of Mathematical Economics 101 (2022) 102669
+
+
+
+
+                                               Fig. 4. When l ∈ (0, λ), the set A(l) is the dotted line.
+
+
+
+
+                                        Fig. 5. When l = λ the set A(l) is the bold line and the shaded area.
+
+
+
+
+                                              Fig. 6. When l ∈ (λ, α/β ), the set A(l) is the dotted line.
+
+
+    Define a0 > 0 as in (25). It follows from the previous consider-           from which it follows that λ is decreasing with respect to γ (this
+ations that for a ∈ [0, a0 ], Ua satisfies the Hamilton–Jacobi on D.           monotonicity is obvious on a picture of the phase space), since
+More precisely, it appears that filling the box is an optimal policy           λ < α/β . Moreover,
+if and only if a ∈ [0, a0 ]. This ends the proof of Theorem 2.
+                                                                               da0     λ          d    λ
+Proof of Corollary 2. Recall that λ is solution of                                   =     +γ
+                                                                               dγ   α − βλ       dγ α − βλ
+                                                                                       λ             α     dλ
+      α          α     β   α                                                      =        +γ
+                      ( )
+λ−      ln (λ) =   ln     + + γ.                                                    α − βλ       (α − βλ)2 dγ
+      β          β     α   β                                                           λ             α        1
+                                                                                  =        +γ                   α
+                                                                                    α − βλ       (α − βλ)2 1 − βλ
+Differentiating with respect to γ , we get
+                                                                                       λ            αβλ
+                                                                                  =        −γ
+         α        dλ                                                                α − βλ       (α − βλ)3
+(             )
+    1−                 =1                                                               λ
+         βλ       dγ                                                                            (α − βλ)2 − γ αβ .
+                                                                                              (                   )
+                                                                                  =
+                                                                                    (α − βλ)3
+
+                                                                          16
+L. Miclo, D. Spiro and J. Weibull                                                                                        Journal of Mathematical Economics 101 (2022) 102669
+
+              λ
+                    is positive for λ ∈ (0, α/β ), the sign of dγ0 is that
+                                                                        da
+     Since (α−βλ )3
+                                                                                             Gonzalez-Eiras, M., Niepelt, D., 2020. On the optimal lockdown during an
+of                                                                                               epidemic (no. 20.01).
+                                                                                             Grigorieva, E.V., Khailov, E.N., 2014. Optimal vaccination, treatment, and pre-
+f (λ) := (α − βλ)2 − γ αβ                                                                        ventive campaigns in regard to the SIR epidemic model. Math. Model. Nat.
+                                                                                                 Phenom. 9 (4), 105–121.
+                               α           α    β    β
+                                (              ( )     )
+       = (α − βλ) − αβ λ − ln (λ) − ln
+                      2
+                                                   −                                         Grigorieva, E.V., Khailov, E.N., Korobeinikov, A., 2016. Optimal control for a SIR
+                               β           β    α    α                                           epidemic model with nonlinear incidence rate. Math. Model. Nat. Phenom.
+                                        βλ                                                       11 (4), 89–104.
+                                       ( )
+       = 2α 2 − 3αβλ + β 2 λ2 + α 2 ln       .                                               Hansen, E., Day, T., 2011. Optimal control of epidemics with limited resources.
+                                        α                                                        J. Math. Biol. 62 (3), 423–451.
+                                                                                             Hu, Q., Zou, X., 2013. Optimal vaccination strategies for an influenza epidemic
+     Thus for λ ∈ (0, α/β ),
+                                                                                                 model. J. Biol. Systems 21 (04), 1340006.
+                         α2                                                                  Iacoviello, D., Liuzzi, G., 2008. Optimal control for SIR epidemic model: A two
+f ′ (λ) = −3αβ + 2β 2 λ +                                                                        treatments strategy. In: 2008 16th Mediterranean Conference on Control and
+                          λ                                                                      Automation. IEEE, pp. 842–847.
+         2β 2 λ2 − 3αβλ + α 2                                                                Iacoviello, D., Stasio, N., 2013. Optimal control for SIRC epidemic outbreak.
+       =                      .
+                   λ                                                                             Comput. Methods Programs Biomed. 110 (3), 333–342.
+                                                                                             Kar, T.K., Batabyal, A., 2011. Stability analysis and optimal control of an SIR
+    The two roots of the numerator are α/(2β ) and α/β , so that f                               epidemic model with vaccination. Biosystems 104 (2–3), 127–135.
+is increasing on (0, α/(2β )) and decreasing on (α/(2β ), α/β ). We                          Kermack, W.O., McKendrick, A.G., 1927. A contribution to the mathematical
+compute that limλ→0+ = −∞ and f (α/β ) = 0, so there exists                                      theory of epidemics. Proc. R. Soc. Lond. Series A, Contain. Pap. Math. Phys.
+a unique l̃ ∈ (0, α/β ) such that f (l̃) = 0. Comparing with the                                 Charact. 115 (772), 700–721.
+                                                                                             Kruse, T., Strack, P., 2020. Optimal control of an epidemic through social
+equation satisfied by ρ , we get l̃ = λ0 . It follows that f is negative                         distancing. In: SSRN WP.
+on (0, λ0 ), that is, a0 is decreasing on (0, λ0 ).    ■                                     Laguzet, L., Turinici, G., 2015. Global optimal vaccination in the SIR model: prop-
+                                                                                                 erties of the value function and application to cost-effectiveness analysis.
+References                                                                                       Math. Biosci. 263, 180–197.
+                                                                                             Ledzewicz, U., Schättler, H., 2011. On optimal singular controls for a general
+Abakus, A., 1973. An optimal isolation policy for an epidemic. J. Appl. Probab.                  SIR-model with vaccination and treatment. Discrete Contin. Dyn. Syst. 2,
+    10 (2), 247–262.                                                                             981–990.
+Ainseba, B., Iannelli, M., 2012. Optimal screening in structured SIR epidemics.              Lee, S., Chowell, G., Castillo-Chávez, C., 2010. Optimal control for pandemic
+    Math. Model. Nat. Phenom. 7 (3), 12–27.                                                      influenza: the role of limited antiviral treatment and isolation. J. Theoret.
+Alvarez, F.E., Argente, D., Lippi, F., 2020. A Simple Planning Problem for Covid-19              Biol. 265 (2), 136–150.
+    Lockdown (No. W26981). National Bureau of Economic Research.                             Liberzon, D., 2012. Calculus of Variations and Optimal Control Theory. Princeton
+Auld, M.C., 2003. Choices, beliefs, and infectious disease dynamics. J. Health Econ.             University Press, Princeton, NJ, A Concise Introduction.
+    22 (3), 361–377.                                                                         Loertscher, S., Muir, E.V., 2021. Road to recovery: Managing an epidemic. J. Math.
+Behncke, H., 2000. Optimal control of deterministic epidemics. Optim. Control                    Econom. 93, 102482.
+    Appl. Methods 21 (6), 269–285.                                                           Maurer, H., De Pinho, M.D.R., 2014. Optimal control of epidemiological
+Bliman, P.A., Duprez, M., 2021. How best can finite-time social distancing reduce                seir models with L1-objectives and control-state constraints. HAL Id:
+    epidemic final size? J. Theoret. Biol. 511, 1–31.                                            hal-01101291.
+Bliman, P.A., Duprez, M., Privat, Y., Vauchelet, N., 2020. Optimal immunity control
+                                                                                             McAdams, D., 2020. Economic epidemiology in the wake of Covid-19. Covid Econ.
+    by social distancing for the SIR epidemic model. ArXiv, https://arxiv.org/abs/
+                                                                                                 (48), 1–45.
+    2006.05733.
+                                                                                             Miclo, L., Spiro, D., Weibull, J., 2020. Optimal epidemic suppression under an
+Bolzoni, L., Bonacini, E., Della Marca, R., Groppi, M., 2019. Optimal control
+                                                                                                 ICU constraint. arXiv preprint arXiv:2005.01327.
+    of epidemic size and duration with limited resources. Math. Biosci. 315,
+                                                                                             Morris, D.H., Rossine, F.W., Plotkin, J.B., Levin, S.A., 2020. Optimal, near-optimal,
+    108232.
+Bolzoni, L., Bonacini, E., Soresina, C., Groppi, M., 2017. Time-optimal control                  and robust epidemic control. arXiv preprint arXiv:2004.02209.
+    strategies in SIR epidemic models. Math. Biosci. 292, 86–96.                             Morton, R., Wickwire, K.H., 1974. On the optimal control of a deterministic
+Branswell, H., 2020. Why ’flattening the curve’ may be the world’s best bet                      epidemic. Adv. Appl. Probab. 6 (4), 622–635.
+    to slow the coronavirus. In: STAT News (Mar. 2020). https://www.statnews.                Nowzari, C., Preciado, V.M., Pappas, G.J., 2016. Analysis and control of epidemics:
+    com/2020/03/11/flattening-curve-coronavirus/.                                                A survey of spreading processes on complex networks. IEEE Control Syst.
+Brauer, Castillo-Chavez, 2011. Mathematical Models in Population Biology and                     Mag. 36 (1), 26–46.
+    Epidemiology, second ed. Springer Verlag.                                                Pastor-Satorras, R., Castellano, C., Van Mieghem, P., Vespignani, A., 2015.
+Di Giamberardino, P., Iacoviello, D., 2017. Optimal control of SIR epidemic model                Epidemic processes in complex networks. Rev. Modern Phys. 87 (3), 925.
+    with state dependent switching cost index. Biomed. Signal Process. Control               Piunovskiy, A., Plakhov, A., Tumanov, M., 2019. Optimal impulse control of a SIR
+    31, 377–380.                                                                                 epidemic. Optim. Control Appl. Methods.
+Di Lauro, F., István, Z.K., Mille, J., 2020. The timing of one-shot interventions for        Pueyo, T., 2020. Coronavirus: The hammer and the dance. https://medium.com/
+    epidemic control. medRxiv (2020).                                                            @tomaspueyo/coronavirus-the-hammer-and-the-dance-be9337092b56.
+Dickison, M., Havlin, S., Stanley, H.E., 2012. Epidemics on interconnected                   Soner, H.M., 2009. Lecture Notes on Stochastic Optimal Control. ETH Zürich.
+    networks. Phys. Rev. E 85 (6), 066109.                                                   The Sun, 2020. ‘We’ll BOOM AGAIN’ Donald Trump says US coronavirus
+Eichenbaum, M.S., Rebelo, S., Trabandt, M., 2020. The Macroeconomics of                          curve is ‘FLATTENING’ after almost 2, 000 die in just 24 h in deadliest
+    Epidemics (No. W26882). National Bureau of Economic Research.                                day. https://www.the-sun.com/news/655595/trump-coronavirus-flattening-
+Farboodi, M., Jarosch, G., Shimer, R., 2020. Internal and External Effects of Social             die-24-hours-boom/.
+    Distancing in a Pandemic. Becker Friedman Institute for Economics Working
+                                                                                             Time, 2020. The U.S. has flattened the curve. Next up is ’squashing’ it — and
+    Paper, University of Chicago, pp. 2020–2047.
+                                                                                                 that’s not going well. https://time.com/5827156/squashing-squash-curve-
+Favero, C.A., Ichino, A., Rustichini, A., 2020. Restarting the Economy While Saving
+                                                                                                 coronavirus-covid19/.
+    Lives under Covid-19. CEPR Discussion Paper No. DP14664.
+                                                                                             Toxvaerd, F.M.O., 2020. Equilibrium social distancing. In: Cambridge-INET WP
+Ferguson, N., Laydon, D., Nedjati Gilani, G., Imai, N., Ainslie, K., Baguelin, M.,
+                                                                                                 No: 2020/08.
+    Bhatia, S., Boonyasiri, A., Cucunuba Perez, Z.U.L.M.A., Cuomo-Dannenburg, G.,
+    Dighe, A., 2020. Report 9: Impact of non-pharmaceutical interventions (NPIs)             Wang, Y., 2020. An analytical SIR model of epidemics and a sustainable
+    to reduce COVID19 mortality and healthcare demand.                                           suppression policy: Testing. Available at SSRN 3573979.
+Gollier, C., 2020a. Cost–benefit analysis of age-specific deconfinement strategies.          Wearing, H.J., Rohani, P., Keeling, M.J., 2005. Appropriate models for the
+    J. Public Econ. Theory 22 (6), 1746–1771.                                                    management of infectious diseases. PLoS Med. 2 (7).
+Gollier, C., 2020b. Pandemic economics: optimal dynamic confinement under                    Wickwire, K., 1977. Mathematical models for the control of pests and infectious
+    uncertainty and learning. Geneva Risk Insur. Rev. 45 (2), 80–93.                             diseases: a survey. Theor. Popul. Biol. 11 (2), 182–238.
+
+
+
+
+                                                                                        17
+

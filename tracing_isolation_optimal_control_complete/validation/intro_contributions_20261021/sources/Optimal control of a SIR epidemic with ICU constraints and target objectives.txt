@@ -1,0 +1,1621 @@
+                                              i An update to this article is included at the end
+
+
+
+
+                                                        Applied Mathematics and Computation 418 (2022) 126816
+
+
+
+                                                            Contents lists available at ScienceDirect
+
+
+                                          Applied Mathematics and Computation
+                                                        journal homepage: www.elsevier.com/locate/amc
+
+
+
+
+Optimal control of a SIR epidemic with ICU constraints and
+target objectivesR
+Florin Avram a, Lorenzo Freddi b, Dan Goreac c,d,∗
+a
+  Laboratoire de Mathématiques Appliquées, Université de Pau, Pau F-64012, France
+b
+  Dipartimento di Scienze Matematiche, Informatiche e Fisiche, via delle Scienze 206, Udine 33100, Italy
+c
+  School of Mathematics and Statistics, Shandong University, Weihai, Weihai 264209, PR China
+d
+  LAMA, Univ Gustave Eiffel, UPEM, Univ Paris Est Creteil, CNRS, Marne-la-Valleée F-77447, France
+
+
+
+
+a r t i c l e               i n f o                         a b s t r a c t
+
+Article history:                                            The aim of this paper is to provide a rigorous mathematical analysis of an optimal con-
+Received 23 August 2021                                     trol problem with SIR dynamics main feature of our study is the presence of state con-
+Revised 12 November 2021
+                                                            straints (related to intensive care units ICU capacity) and strict target objectives (related
+Accepted 16 November 2021
+                                                            to the immunity threshold). The ﬁrst class of results provides a comprehensive description
+Available online 28 November 2021
+                                                            of different zones of interest using viability tools. The second achievement is a thorough
+Keywords:                                                   mathematical analysis of Pontryagin extremals for the aforementioned problem allowing
+Optimal control                                             to obtain an explicit closed-loop feedback optimal control. All our theoretical results are
+SIR                                                         numerically illustrated for a further understanding of the geometrical features and scenar-
+Pontryagin principle                                        ios.
+State constraints
+Viability
+                                                                                                                © 2021 Elsevier Inc. All rights reserved.
+Epidemics
+Feedback control
+
+
+
+
+1. Introduction
+
+   The optimal control of epidemics (Anderson et al. [1], Behncke [2], Hansen and Day [3], Martcheva [4], ...) has been
+awakening lots of interest recently, and even more so after the start of the COVID-19 pandemic – see for example [5–7]. In
+this paper, we focus on the optimal “contact control” of the following two-dimensional SIR model [8] :
+             ds
+              dt
+                   (t ) = −b(t ) s(t ) i(t )
+                                                                                                                                                   (1.1)
+              di
+              dt
+                   (t ) = b(t ) s(t ) i(t ) − γ i(t )
+(the third “recovered class” of SIR being classically obtained by using the conservation of mass).
+    In our problem, the control parameters are chosen as b ∈ B := [β∗ , β ] for some 0 < β∗ < β . The derivatives in (1.1) are
+meant in a distibutional sense and the trajectories are constructed from admissible controls b ∈ L0 (R; B ) (B-valued Borel-
+measurable functions). Whenever   the control b and the initial conditions s(0 ) = s0 , i(0 ) = i0 are ﬁxed, the unique solution
+to (1.1) will also be denoted by ss0 ,i0 ,b , is0 ,i0 ,b . The reader is invited to note that the trajectory can be computed for positive
+and negative times t ∈ R.
+
+
+    R
+        The work of D. G. has been supported by the National Key R and D Program of China (No. 2018YFA0703900) and the NSF of P.R. China (No. 12031009).
+    ∗
+        Corresponding author at: School of Mathematics and Statistics, Shandong University, Weihai, Weihai 264209, PR China.
+        E-mail addresses: lorenzo.freddi@uniud.it (L. Freddi), dan.goreac@univ-eiffel.fr (D. Goreac).
+
+
+
+https://doi.org/10.1016/j.amc.2021.126816
+0 096-30 03/© 2021 Elsevier Inc. All rights reserved.
+F. Avram, L. Freddi and D. Goreac                                                  Applied Mathematics and Computation 418 (2022) 126816
+
+
+    Our aim is to consider the optimization problem of minimizing an effort-related cost functional of the form
+                         tf
+        J (t f , b) =          [λ1 + λ2 (β − b(t ) )] dt,                                                                         (1.2)
+                         0
+
+for two ﬁxed non-negative weight parameters λ1 , λ2 , under an intensive care unit (ICU) constraint on the number of infected
+[9,10]
+        i(t ) ≤ iM ,
+for some ﬁxed 0 < iM < 1, and starting from initial positions
+                                                            
+        (s0 , i0 ) ∈ TiM := (s, i ) ∈ R2+ : s + i ≤ 1, i ≤ iM .
+In this model, the prescribed level iM represents an upper bound to the capacity of the health-care system to treat infected
+patients. The time t f should be seen as a monitoring horizon. The λ1 cost is related to the (psychological) stress of the epi-
+demics and λ2 is an economic cost of conﬁnement. The second part λ2 (β − b) depends on the severity of the conﬁnement
+measures, b = β meaning no conﬁnement, whileas b = β∗ meaning maximal conﬁnement that avoids economic shut-down.
+    Even for the simplest cost (1.2), the decision maker is faced with hard fundamental choices: to aim for eradication of
+the epidemics [11,12], which corresponds to a target i(t f ) = ε , where ε < i0 is very small, or merely for a “modus vivendi”,
+which could be modeled via the “safe zone/no-effort zone constraint” in the spirit of Angulo et al. [13]. More precisely, this
+no-effort condition requires that the trajectory (1.1) controlled with β satisfy the ICU constraint:
+                                                                            
+            s(t f ), i(t f ) ∈ A := (s, i ) ∈ R2+ : is,i,β (t ) ≤ iM , ∀t ≥ 0 .
+We will see shortly after that this constraint can be regularized and it can be completely
+                                                                                            described
+                                                                                                       cf. Theorem 2.3, assertion
+                                                                                                                   γ
+5, b. In our precise statement, we will ask a ﬁnal qualiﬁcation stricter than s(t f ), i(t f ) ∈ A, i.e. s(t f ) < β . On one hand,
+the method we develop here can be applied to a wide range of real-life systems and, in particular, it can be extended to
+more complex models of epidemiology. Roughly said, we exhibit a set B0 that is the largest subset of the viability kernel
+in which the ICU constraint can be fully saturated, while the remaining of the manageable conﬁgurations (B1 ) describes
+a backward-in-time “trace” of B0 . We are currently working on a paper detailing this tool-kit in the identiﬁcation of safe
+zones in other epidemic models.
+   Let us further emphasize that this kind of backward-in-time invariance is of particular relevance in control problems
+under state constraints (cf. Frankowska and Plaskacz [14]), especially when the boundary may be degenerate. It allows ex-
+tensions of the control problems to discontinuous costs and the use of veriﬁcation theorems coming from the Hamilton–
+Jacobi–Bellman theory.
+   On the other hand, the proof of Theorem 2.3 makes explicit how the curves describing the boundaries (∂ A and ∂ B) can
+be obtained and are generalizable to different models.
+   The main tool for solving the problem is Pontryagin’s maximum/(minimum) principle (see for example [15–21]). How-
+ever, unlike the usual approach for SIR problems consisting in writing down Pontryagin’s conditions and using a numerical
+method to ﬁnd the/an optimal control, we provide a thorough analysis of extremals and optimal control(s). The main fea-
+tures of the work are the following.
+
+1. It provides a comprehensive, self-contained description of different zones of interest (in Section 2) via classical viability
+   and invariance tools.
+2. It provides, in Section 4 a work-through mathematical analysis of the features of Pontryagin extremals for the consid-
+   ered problems. As opposed to an important part of the literature on the subject, we look deeply into the extremals
+   instead of using numerical methods to deal with the (dual) co-state problem. We would like to emphasize that our
+   Problems 3.1 and 3.2 deal with both state constraints and target constraints, and, for Problem 3.1, due to a strict con-
+   straint, existence of optimal controls is obtained a posteriori.
+
+    The analysis of the optimality via Pontryagin extremals allows to prove that the optimal control in such problems is
+unique, which is only assumed when directly applying numerical tools. Furthermore, we show that, for the problem we
+consider, an “act only when imperative” conﬁnement is, indeed, optimal (see Theorem 5.6). The paper is organized as fol-
+lows. In Section 2 we deﬁne the different sets of initial conﬁgurations according to the controls one can employ. Precise
+characterizations of these regions (in terms both of reachable sets and of the explicit separating borders) are provided in
+Theorem 2.3. The proof of this theorem, relaying on viability tools is relegated to an appendix (Appendix A). Section 3 pro-
+vides the description of two types of control problem under investigation with ﬁxed time horizon. The ﬁrst (Problem 3.1)
+deals with a relaxed constraint on the infections and a strict no-effort target. The second problem (Problem 3.2) relaxes
+the no-effort target and approximates the previous one. Section 4 presents general considerations on Pontryagin’s principle
+in the presence of state and target constraints. In Section 5, we provide a detailed analysis of the shape of Pontryagin ex-
+tremals in each region (see Theorems 5.1 and 5.2). After having done it for Problem 3.2, we present, by extrapolation, the
+implications on Problem 3.1. The optimality is gathered in Theorem 5.6 with emphasis on the a posteriori continuity of the
+value function(s), on zone-related feedback forms and uniqueness considerations. Section 6 provides numerical illustrations
+in the different region-related scenarios. The last two sections are devoted to conclusions and appendix.
+    Notations: Throughout the paper, we will make use of the following notations:
+
+                                                                           2
+F. Avram, L. Freddi and D. Goreac                                                                  Applied Mathematics and Computation 418 (2022) 126816
+
+
+1. given an interval I ⊂ R and a (subspace of a) metric space B, L0 (I; B ) will stand for the family of Borel-measurable B-
+   valued functions whose domain is I;
+2. the usual 0/1-valued indicator function of sets will be denoted by 1, while the 0/∞-version is denoted by χ .
+
+2. No-effort, all-control and feasible zones
+
+   Before getting into optimality considerations, let us take some time in order to describe regions of feasibility and the
+no-effort zone by means of viability tools. For our readers’ sake, and in an effort of providing a self-contained material, we
+gather these notions of viability, viability kernel, invariance, capture basin in the Appendix.
+
+Deﬁnition 2.1.
+                                                                                        
+1. We call a no-effort zone the set A ⊆ T := (s0 , i0 ) ∈ R2+ : s0 + i0 ≤ 1 of all initial conﬁgurations (s0 , i0 ) ∈ T such that the
+   associated trajectories controlled with β satisfy the state constraint is0 ,i0 ,β (t ) ≤ iM , for all t ≥ 0.
+2. We call an all-control zone the family A0 of all initial data such that, for every b ∈ L0 (R; [β∗ , β ] ), one has is0 ,i0 ,b (t ) ≤ iM ,
+   for all t ≥ 0.
+3. We call feasible (or viable, see next remark) zone the set B ⊆ T of all initial conﬁgurations (s0 , i0 ) ∈ R2 for which there
+   exists a control b ∈ L0 (R; [β∗ , β ] ) keeping the associated trajectory is0 ,i0 ,b ≤ iM .
+
+Remark 2.2.
+
+1. The feasible or viable zone B is the maximal set of initial conﬁgurations on which at least one trajectory satisﬁes the
+   afore-mentioned constraint. All-control zones are the sets on which constrained and unconstrained problems give the
+   same value (independently on the cost). No-effort zones are useful in target problems.
+2. The reader will easily note that A is the viability kernel of
+                                                          
+            TiM := (s0 , i0 ) ∈ T : is0 ,i0 ,β ≤ iM ,                                                                                             (2.1)
+   when the ﬂow is only controlled with B = {β}.
+3. Similarly, B is the viability kernel of TiM when B = [β∗ , β ]. This is why feasible zones are viable in the sense of the
+   preceding subsection (see also Remark A.2).
+4. The set A0 is the largest subset of TiM that is time-invariant (using B = [β∗ , β ]). It can be referred to as an invariance
+   kernel.
+5. Finally, the simple inclusion A0 ⊆ A ⊆ B holds true.
+
+   The following result, whose proof is based solely on viability theory, provides an extensive characterization of the
+previously-introduced zones.
+
+Theorem 2.3.
+
+1. The all-control zone A0 contains the set
+                              γ
+            A0 :=        0,      × 0 , iM          ∩ T,
+                               β
+   as well as [0, 1] × {0}.
+2. The viable zone B contains the set
+                             γ
+            B0 :=        0,      × 0 , iM           ∩ T,
+                              β∗
+    as well as [0, 1] × {0}.
+3. One has the explicit (capture basin) characterizations
+   (a) A = A0 ∪ A1 , where
+                               γ ,i0 ,β            γ              γ 
+                 A1 :=         sβ          (−t ), i β ,i0 ,β (−t ) :  , i ∈ A 0 , t ≥ 0 ∩ T.
+                                                                     β 0
+   (b) B = B0 ∪ ([0, 1] × {0} ) ∪ B1 , where
+                               γ ,i0 ,b            γ               γ 
+                 B1 :=         s β∗        (−t ), i β∗ ,i0 ,b (−t ) :   , i ∈ B0 , b ∈ L0 (R; [β∗ , β ] ), t ≥ 0 ∩ T.
+                                                                      β∗ 0
+4. If (s0 , i0 ) ∈ B (resp. A0 or A), then, for every 0 < i1 ≤ i0 , (s0 , i1 ) ∈ B (resp. A0 or A). As a consequence, there exist maps A0 ,
+   A and B from [0, 1] to [0, iM ] such that
+                                                                                          
+            A0      = (s, i ) ∈ T : i ≤ A0 (s ) , A = (s, i ) ∈ T : i ≤ A (s ) ,
+                                                                                                                                                (2.2)
+            B                        = (s, i ) ∈ T : i ≤ B (s ) .
+
+5. The sets in (2.2) can be expressed using the following regular (piecewise C 1 ) functions
+
+                                                                               3
+F. Avram, L. Freddi and D. Goreac                                                                  Applied Mathematics and Computation 418 (2022) 126816
+
+
+   (a)
+                                      ⎧
+                                      ⎨iM ,                              if s ≤ βγ∗ ,
+                                                                                            
+                    B (s ) = iM − s + βγ∗ + βγ∗ log βγ∗ s ,             if s ∈ βγ∗ , s∗M ,                                                       (2.3)
+                             ⎩
+                                        0,                               otherwise,
+         where
+                                       γ   γ      β∗ s∗M 
+                    iM − s∗M +           +   log            = 0.
+                                       β∗ β∗        γ
+   (b) A0 = A and
+                                      ⎧
+                                      ⎨iM ,                             if s ≤ γβ ,
+                                                            βs                          
+                    A (s ) =           i − s + γβ + γβ log γ ,         if s ∈ γβ , sM ,                                                          (2.4)
+                                      ⎩M
+                                        0,                              otherwise,
+         where
+                                       γ γ     β sM 
+                    iM − sM +           + log          = 0.
+                                       β β       γ
+                                                                                                                                                  s ,i 
+6. If s∗M ≤ 1 then, starting from (s0 , i0 ) ∈ ∂ B with s0 > 0 and i0 > 0, the only viable controls are identically β∗ on 0, τ00 0 ,
+   where
+                                                        γ 
+              τ0s0 ,i0 := inf t ≥ 0 : ss0 ,i0 ,β∗ (t ) ≤     ,
+                                                         β∗
+    with the convention inf ∅ = +∞.
+
+    The proof is relegated to Section A.2, allowing the reader to get familiarized with the viability notions. The pictures show
+the intersection with the triangle T of the qualitative graphs of the viability boundaries A and B in the cases in which
+s∗M < 1 and s∗M > 1. From them, the reader can recognize the sets A0 and B0 , A and B. From now on, and unless otherwise
+stated, we assume that s∗M ≤ 1. This implies that
+                                      
+             (s, i ) ∈ [0, 1]2 : i ≤ B ⊆ T.
+Remark 2.4.
+
+1. Assertion 3 tells us that the feasible/viable region B is the capture basin of B0 (completed by the stationary regimes
+   [0, 1] × {0}).
+2. Similarly, the no-effort region A is the capture basin of A0 (completed by the stationary regimes [0, 1] × {0}).
+
+3. A strict no-effort formulation
+
+    Let us begin with an optimal control problem on a ﬁnite and ﬁxed time horizon [0, t f ]. To lighten notation, from this
+point on and unless explicitly stated otherwise, the states is0 ,i0 ,b and ss0 ,i0 ,b , corresponding to the speciﬁc initial conditions
+(s0 , i0 ) and control b, will be simply denoted by i and s, respectively.
+Problem 3.1. Given a ﬁxed t f > 0 (large enough) and the initial data (s0 , i0 ) ∈ B (i.e. i0 ≤ B (s0 )) in the feasible region,
+                                                                          
+minimize, over all admissible controls b ∈ L0 R; [β∗ , β ] ,
+
+ • the cost functional
+                               tf
+              J (t f , b) =             λ1 + λ2 (β − b(t ) ) dt;                                                                                  (3.1)
+                                  0
+
+ • under the ICU constraint on the trajectory of (1.1)
+                             
+                  s(t ), i(t ) ∈ B, ∀t ∈ 0, t f ;                                                                                                 (3.2)
+                                                 γ
+ • under a strict no-effort constraint s(t f ) < β .
+
+    In the sequel, we refer to this formulation as problem P.
+                                                      γ
+    Due to the strict constraint s(t f ) < β , the existence of an optimal control does not follow from the embedding in a lower
+semicontinuous functional. However, should such an optimal control exist, it is also the optimal solution of the following
+problem (for some ε0 > 0 and all ε < ε0 ).
+
+Problem 3.2. Given a ﬁxed t f > 0 (large enough) and ε > 0 (small enough) and the initial data (s0 , i0 ) ∈ B (i.e. i0 ≤ B (s0 ))
+in the feasible region, minimize, over all admissible controls b ∈ L0 (R; [β∗ , β ] ),
+
+                                                                                       4
+F. Avram, L. Freddi and D. Goreac                                                          Applied Mathematics and Computation 418 (2022) 126816
+
+
+ • the cost functional (3.1);
+ • under the ICU constraint on the trajectory (3.2);
+                                          γ
+ • under a no-effort constraint s(t f ) ≤ β − ε .
+
+    In the sequel, we refer to this formulation as problem Pε .
+
+Remark 3.1. Form a mathematical point of view, because of the properties of indicator functions, instead of directly working
+                                   γ                                                     γ                         γ
+with a half-open set s(t f ) ∈ [0, β ), we prefer working with closed sets s(t f ) ∈ [0, β − ε0 ] by approximating β from the left.
+Let us note that
+                                                                                                   ◦
+1. the ε -formulation (as opposed to merely writing an interior condition i(t f ), s(t f ) ∈A) is due to the fact that the lower-
+   semicontinuous penalty χs(t )≤ γ −ε is needed in order to guarantee the existence of optimal controls for every ε ;
+                                        f   β
+2. non-emptiness of the set of viable controls satisfying the no-effort constraint is guaranteed for t f large enough by using,
+   for example, (5.13);
+3. furthermore, in view of the comment preceding the introduction of problem Pε , we can restrict our attention to controls
+                          γ
+   b satisfying s(t f ) < β − ε .
+
+   Whenever needed, we will specify the initial data (s0 , i0 ) ∈ B by writing J (t f , b; s0 , i0 ). The value functions of P and Pε
+will be denoted by V (t f ; s0 , i0 ), respectively Vε (t f ; s0 , i0 ).
+
+Proposition 3.2.
+
+1. For every ε > 0, (s0 , i0 ) ∈ B with i0 > 0 and every t f large enough, the problem Pε has an optimal solution.
+2. Furthermore, for every ε > 0, (s0 , i0 ) ∈ B, with i0 > 0, for every t f large enough and every 20 > η > 0 such that Vε (t f ; s1 , i1 ) <
+                                                                                                         i
+
+   ∞ for every (s1 , i1 ) ∈ B ∩ Bη (s0 , i0 ), the value function Vε (t f ; ·, · ) is lower semi-continuous on B ∩ Bη (s0 , i0 ) (with Bη being
+   the η-radius open ball);
+3. V = infε>0 Vε .
+
+Proof. The existence of optimal solutions to problem Pε with ﬁxed ε > 0 is a standard matter. It follows by the Direct
+Method of the Calculus of Variations as, for instance, in Freddi [22] or using Clarke [23, Theorem 23.11] by noting that
+B and      (s, i ) ∈ B : s ≤ γβ − ε     are compact (Clarke [23, Theorem 23.11 (a), (c), (e)]), B := [β∗ , β ] is convex and compact
+(Clarke [23, Theorem 23.11 (b), (f.i)]), the running cost f (b) := λ1 + λ2 (β − b) is lower-bounded (by λ1 ), continuous and
+convex (Clarke [23, Theorem 23.11 (d)]).
+   The ﬁnal state constraints in the problem Pε can classically be dropped by considering a lower semi-continuous ﬁ-
+nal cost g(s, i ) := χs≤ γ −ε , where χ stands for the usual 0/∞-valued indicator function. As a consequence, one gets the
+                            β
+lower semi-continuity of Vε . This result is standard, and further references for state-constrained dynamics can be found in
+Frankowska and Plaskacz [14, Proposition 4] (see also Bokanowski, Olivier et al. [24, Remark 2.2]).
+   The last assertion is straightforward. For every ε > 0, V does not exceed Vε , as it minimizes over a larger set, implying
+the inequality V ≤ inf Vε . On the other hand, if (s0 , i0 ) is ﬁxed and b is an admissible control for P, it is admissible for Pε0
+                        ε >0
+for some ε0 > 0. As such, J (t f , b; s0 , i0 ) ≥ Vε0 (s0 , i0 ) ≥ inf Vε (s0 , i0 ). The conclusion follows by taking the inﬁmum over any
+                                                                      ε >0
+admissible b.      
+
+4. Pontryagin approach. General considerations
+
+  To write necessary conditions of optimality let us introduce the adjoint variables p0 ≥ 0, ps , pi ∈ R, and the pre-
+Hamiltonian
+
+        H (t, b, s, i, p0 , ps , pi ) = p0 f0 (s, i, b) + ps fs + pi fi
+where f0 (s, i, b) = λ1 + λ2 (β − b) is the running cost function and fs = −sbi, fi = sbi − γ i are the dynamics of the state
+equations. After some manipulations, the pre-Hamiltonian turns out to be
+
+        H (t, b, s, i, p0 , ps , pi ) = p0 (λ1 + λ2 (β − b) ) + ηsbi − γ pi i
+where η := pi − ps . The usage of η is quite natural. Nevertheless, the idea that two adjoint variables can be summarized
+into a single new variable is already in Behncke [2] and used also in Kruse and Strack [6] and Freddi [22].
+    In the sequel we use a constrained version of Pontryagin’s theorem developed in Bonnans and de la Vega [25], Bonnans
+et al. [26]. In particular, we refer to Bonnans et al. [26] for the deﬁnition of the space of functions with bounded variation
+BV ([0, t f ] ) which is given by extending functions in a constant way on an open interval containing [0, T ]. We adopt here
+also the notation used in Bonnans and de la Vega [25], Bonnans et al. [26] of denoting the distributional derivative of a BV
+function f (which is a measure) by df , instead than f˙ that we reserve to measures which are absolutely continuous with
+respect to Lebesgue as, for instance, in the state equations.
+
+                                                                             5
+F. Avram, L. Freddi and D. Goreac                                                                       Applied Mathematics and Computation 418 (2022) 126816
+
+
+4.1. Optimality conditions for problem Pε
+
+   By Pontryagin’s theorem, given an optimal solution (s, i, b), there exist a constant p0 ∈ {0, 1}, adjoint state real func-
+tions ps , pi ∈ BV ([0, t f ] ), a multiplier for the state constraint μ ∈ BV ([0, t f ] ) with a nondecreasing representative (hence
+with measure distributional derivative dμ ≥ 0) such that μ(t +       f
+                                                                       ) = 0 (recall that the functions are extended outside [0, t f ]),
+and a multiplier for the ﬁnal state constraint p1 ≥ 0 that satisfy
+
+ (P1) the non-degeneration property
+
+                p0 + dμ([0, t f ] ) + p1 > 0;                                                                                                          (4.1)
+        indeed, our problem
+                             Pε corresponds
+                                                  to problem (P ) in Bonnans and de la Vega [25] with a ﬁnal condition (yT ) ∈
+                                                       γ
+        K where yT = s(t f ), i(t f ) , (s, i ) = s − β + ε and K = (−∞, 0]; the normal cone to K is given by NK (0 ) = [0, ∞ )
+                                                                                                                              γ
+        implying p1 ≥ 0; furthermore, NK (x ) = {0}, for all x < 0, implying p1 = 0 whenever s(t f ) < β − ε ;
+ (P2) the complementarity condition
+                              
+                                   i(t ) − iM ) dμ(t ) = 0;                                                                                            (4.2)
+                    [0,t f ]
+
+ (P3) the conjugate equations with transversality conditions
+                ⎧
+                ⎨dps = −ηbi,           
+                 dpi = − ηbs − γ pi − dμ,
+                ⎩ ps (t ) = p1 , p (t + ) = 0,
+                       f          i f
+
+      which hold as equalities between measures on [0, t f ]; we observe that the boundary condition for the costate pi
+      is given on the right limit in t f , since pi could be discontinuous in t f if the measure dμ charges this point; on the
+      contrary, ps is continuous in [0, t f ] since the derivative is absolutely continuous with respect to the Lebesgue measure;
+ (P4) the minimality property
+                                                                                                              
+                H t , b(t ), s(t ), i(t ), p0 , ps (t ), pi (t ) = infH t , b, s(t ), i(t ), p0 , ps (t ), pi (t ) ,
+                                                                   b∈B
+
+      for almost every t ∈ [0, t f ];
+ (P5) the conservation property
+                                                              
+                H t , b(t ), s(t ), i(t ), p0 , ps (t ), pi (t ) = k,
+        with k constant, for a.e. t ∈ [0, t f ] (see Bonnans [27, Lemma 7.7]).
+
+Deﬁnition 4.1. We recall that a Pontryagin extremal for problem Pε is any control b ∈ L0 (R; [β∗ , β ] ) that satisﬁes the con-
+straints of problem Pε and conditions (P1)–(P5).
+
+4.2. Remarks and consequences
+
+    Throughout all this section we assume that (s = ss0 ,i0 ,b , i = is0 ,i0 ,b , b) be a local solution of the control Problem 3.2 (with
+initial data (s0 , i0 ) ∈ B and write consequences of Pontryagin’s necessary conditions.
+    We have the following consequences.
+
+ (C1) By (P3) the jump condition [η (t )] = [ pi (t )] = −[μ(t )] ≤ 0 holds for every t ∈ [0, t f ] (where the inequality follows by
+      the fact that μ is non-decreasing); The functions μ, pi and η have the same set of discontinuity points D; since such
+      functions have bounded variation, the set D is at most countable; in particular it is a Lebesgue-null set;
+ (C2) By the conservation of the Hamiltonian
+                                                  
+                p0 λ1 + λ2 (β − b(t ) ) + η (t )b(t )s(t )i(t ) − γ pi (t )i(t ) = k for a.e. t ∈ [0, t f ].                                           (4.3)
+ (C3) (P3) implies that
+
+                d η = d p i − d p s = η b( i − s ) + γ p i − d μ,                                                                                      (4.4)
+        or, owing to (4.3),
+                                                             
+                                         p0 λ1 + λ2 (β − b(t ) ) − k
+                dη = ηbi +                                             − d μ.                                                                          (4.5)
+                                                       i
+Remark 4.2. We remark here that, differently from the case in which state constraints are not considered, the computation
+of the constant k is not a straightforward consequence of the transversality conditions, because, as already observed, pi is
+allowed to jump in the ﬁnal point t f .
+
+                                                                                6
+F. Avram, L. Freddi and D. Goreac                                                        Applied Mathematics and Computation 418 (2022) 126816
+
+
+    Since the cost is linear in the control b, the minimum value of the Hamiltonian on K = [β∗ , β ] is achieved when b ∈
+{β∗ , β}. Hence, setting the switching function
+        ψ := ηsi
+the optimal control has to satisfy
+                  
+                      β,       if ψ (t ) < p0 λ2 ,
+        b(t ) =                                                                                                                         (4.6)
+                      β∗ ,     if ψ (t ) > p0 λ2 .
+
+for almost every t ∈ [0, t f ], where ψ denotes any pointwise representative of the switching function.
+
+Proposition 4.3. If k − p0 λ1 ≥ 0 in (4.3) and p1 = 0 then we have η (t ) ≥ 0 for almost every t ∈ [0, t f ].
+
+Proof. We begin with noting that, since μ is nondecreasing, dμ ≥ 0 and, therefore, (4.5) implies
+                                                    
+                             p0 λ1 + λ2 (β − b(t ) ) − k
+        dη ≤ ηbi +                                         .                                                                            (4.7)
+                                          i
+Without loss of generality, we assume η, and thus ψ , to be right-continuous.
+   Arguing by contradiction, let us assume that there exists t ∈ (0, t f ) such that η (t ) = η (t + ) < 0. Since the switching
+function ψ = ηsi has the same sign as η, and since p0 ≥ 0, we have ψ (t + ) < p0 λ2 . On the other hand, since ψ is right-
+continuous, one is able to ﬁnd some ε > 0 such that ψ < p0 λ2 , and hence b = β , a.e. in J := (t, t + ε ). Owing to (4.7) with
+b = β , in J we have
+
+                         k − p0 λ1
+        dη ≤ ηbi −                 .
+                             i
+Under the standing assumption of our assertion i.e. k ≥ p0 λ1 , we have that
+
+        dη ≤ ηbi
+
+and ηbi < 0 in J, and therefore η is negative and decreasing in J.
+   As we shall see, this implies that η < 0, and decreasing, in (t, t f ), which implies η (t −
+                                                                                              f
+                                                                                                ) < 0 and hence η (t +f ) < 0 since
+(by (C1)) it cannot have increasing jumps, thus contradicting the fact that η (t +
+                                                                                 f
+                                                                                   ) = −p1 = 0 by the transversality conditions
+and the assumption p1 = 0.
+   To prove the claim that η (s ) < 0 in (t, t f ), let us set
+
+        t0 := sup{s ∈ (t, t f ] : η (s ) < 0}.
+
+Assume, again by contradiction, that t0 < t f . Since η ∈ BV , then there exists the left limit η (t0− ) ≤ 0. Since η has no positive
+jumps in [0, t f ], it follows that η (t0+ ) ≤ 0. On the other hand, η (t0+ ) < 0 would contradict the choice of t0 . It follows that
+η (t0 ) = 0. On the other hand, in the interval (t, t0 ) we have that η < 0, hence ψ < 0. Then, in (t, t0 ) we have that ψ < p0 λ2 ,
+hence b = β a.e., hence dη ≤ ηbi < 0, hence η is decreasing, which contradicts η (t0 ) = 0. Our assumption on t0 is wrong such
+that t0 = t f and η (s ) < 0 in (t, t f ). 
+                                     γ
+Proposition 4.4. If s(t f ) < β − ε then
+
+1. k = p0 λ1 in (4.3),
+2. η (t ) ≥ 0 for almost every t ∈ [0, t f ],
+3. ps is (continuous) nonincreasing and nonnegative in [0, t f ].
+                                          γ                                                                                             γ
+Proof. The assumption s(t f ) < β − ε implies p1 = 0, as observed in (P1). Since s is continuous, then we have that s < β in
+                                                                            γ
+an interval (tI , t f ] with tI < t f . This implies that di = (sb − γ )i < β (b − β )i ≤ 0, hence i is decreasing and therefore i < iM in
+(tI , t f ]. Then, by complementarity, we have dμ((tI , t f ] ) = 0 which implies that pi is continuous in (tI , t f ].
+ • If p0 = 0 then (4.3) implies
+
+            k = η (t )b(t )s(t )i(t ) − γ pi (t )i(t ) a.e. t ∈ (tI , t f ].
+
+   By taking a sequence tn → t f on which the equality holds and taking the limit an n → ∞ then we get k = 0, which proves
+   1. in this case.
+ • If p0 = 1 then ψ (t f ) = 0 < p0 λ2 and, by continuity, we have ψ (t ) < p0 λ2 and hence b(t ) = β in a left neighborhood of
+   t f which we still call (tI , t f ]; (4.3) implies
+
+            k = η (t )β s(t )i(t ) − γ pi (t )i(t ) + p0 λ1 a.e. t ∈ (tI , t f ].
+
+    By arguing as before, we get k = p0 λ1 , which proves 1. also in this case.
+
+                                                                               7
+F. Avram, L. Freddi and D. Goreac                                                             Applied Mathematics and Computation 418 (2022) 126816
+
+
+   Point 2. follows by Proposition 4.3. Point 3. comes from the previous point 2., the ﬁrst adjoint equation and the ﬁnal
+conditions. 
+
+    Using (4.4), one easily proves the following result.
+
+Proposition 4.5. The distributional derivative of ψ is the measure given by
+
+        dψ = siγ ps − si dμ.
+
+Theorem 4.6. Let us assume that λ2 > 0. Let (t1 , t2 ) ⊂ 0, t f        be an interval in which ψ = p0 λ2 . Then the following hold true
+
+1. if p0 = 1, then ps (t ) > 0 and i(t ) = iM for every t ∈ (t1 , t2 );
+2. if p0 = 0, then we have that, either
+   (a) i is constant in (t1 , t2 ), or
+  (b) k = p0 λ1 , η ≥ 0 in [0, t f ], η = pi = ps = 0 in (t1 , t f ] and dμ([0, t1 ] ) > 0.
+
+Proof. Let us consider the case when p0 = 1 and prove the ﬁrst assertion. First of all, the reader is invited to note that
+η > 0 in (t1 , t2 ). Since ψ is constant, on this interval, it follows that dψ = 0 in (t1 , t2 ). Since s and i are strictly positive, by
+Proposition 4.5, we have
+
+        dμ = γ ps in (t1 , t2 ).                                                                                                             (4.8)
+
+Then, using the complementarity condition (P2) and γ > 0, we have that
+        
+                        ps (iM − i(t )) dt = 0.                                                                                              (4.9)
+            (t1 ,t2 )
+
+Since i is continuous, in order to prove that i = iM , it suﬃces to prove that ps > 0.
+   Since dμ ≥ 0, from (4.8) we have
+
+        ps ≥ 0 in (t1 , t2 ).                                                                                                               (4.10)
+
+Now we prove that the strict inequality holds. Suppose now, by contradiction, that there exists t0 ∈ (t1 , t2 ) such that ps (t0 ) =
+0. By the adjoint equation dps = −ηbi we have that dps ≤ 0 in (t1 , t2 ), hence ps (t ) ≤ 0 for every t ∈ (t0 , t2 ) and, by (4.10),
+the equality holds in this interval. Then in (t0 , t2 ) we would have dps = 0, hence η = 0 by the adjoint equation, and ﬁnally
+ψ = 0 < p0 λ2 , thus giving a contradiction. The ﬁrst assertion is now completely proved.
+   Let us assume p0 = 0 and prove 2. In the interval (t1 , t2 ), we have that ψ = 0, hence η = 0; by the adjoint equations
+then dps = 0, hence there exists a constant c such that ps = c on this interval. Since 0 = η = pi − ps , we also get pi = c. By
+conservation of the Hamiltonian we have
+
+        p0 λ1 − γ ci(t ) = k,                                                                                                               (4.11)
+
+hence i is constant in (t1 , t2 ) whenever c = 0.
+   In the case in which c = 0, by (4.11), we have k = p0 λ1 = 0. By Proposition 4.3, it follows that η ≥ 0 in [0, t f ]. Then
+dps ≤ 0 and ps is nonincreasing. Since ps is zero on (t1 , t2 ) and at the end point t f , we must have ps = 0 in (t1 , t f ], hence
+p1 = 0. By the ﬁrst adjoint equation, it follows that η = 0 on (t1 , t f ] which implies that pi = 0 on (t1 , t f ]. By (4.5), we
+                                                                                                                         
+have dμ((t1 , t f ] ) = −dη ((t1 , t f ] ) = 0. Finally, the non degeneration condition (4.1) requires dμ 0, t f              > 0, which implies
+dμ([0, t1 ] ) > 0. 
+
+Proposition 4.7. If i = i0 ∈ (0, iM ] in an interval (t1 , t2 ) then there exists a positive constant ks such that
+                          γ              γ
+        b(t ) =                  =                                                                                                          (4.12)
+                         s(t )       ks − γ i0 t
+
+a.e. in the interval. The constant is given by
+
+        ks = s(t1 ) + γ i0 t1 = s(t2 ) + γ i0 t2 .
+
+Moreover, since b ∈ [β∗ , β ], we have
+                         γ              γ
+        s(t1 ) ≤            and s(t2 ) ≥ .
+                         β∗             β
+Proof. By the second state equation with i = i0 we immediately have sb = γ . Then the ﬁrst becomes ds = −γ i0 . Integrating
+we obtain that there exists a constant ks such that s(t ) = ks − γ i0 t. The moreover part of the statement follows by imposing
+β∗ ≤ γs ≤ β and using the fact that s does not increase. 
+
+                                                                        8
+F. Avram, L. Freddi and D. Goreac                                                                 Applied Mathematics and Computation 418 (2022) 126816
+
+
+5. Pontryagin extremals and optimal controls
+
+    Let us set, for (s0 , i0 ) ∈ A, the reaching time1
+                                                      γ
+        t̄ sf 0 ,i0 := inf t ≥ 0 : ss0 ,i0 ,β (t ) =      .                                                                                        (5.1)
+                                                       β
+It is easy to see that this quantity is well deﬁned, that is the set on the right hand side is non-empty. By continuity we have
+               s ,i      γ                                                                    s ,i          γ
+ss0 ,i0 ,β (t̄ f 0 0 ) = β . If i0 > 0, the state s is strictly decreasing, so that, t f > t̄ f 0 0 implies β − ss0 ,i0 ,β (t f ) > 0. Hence, for every
+ε > 0 small enough (i.e. ε < γβ − ss0 ,i0 ,β (t f )) we have
+                              γ
+        ss0 ,i0 ,β (t f ) <     − ε.
+                              β
+As a consequence, the control b ≡ β is admissible for problem Pε for this choice of ε (and actually for every ε  < ε ). The
+reader is invited to keep in mind these elements of reasoning whenever encountering the expression “ε > 0 small enough”.
+
+Theorem 5.1.
+                                                                                          γ
+    1. If (s0 , i0 ) ∈ A \ ∂ A, b is a Pontryagin extremal of Pε and s(t f ) < β − ε , then b = β almost everywhere.
+                                                   s ,i
+    2. If (s0 , i0 ) ∈ A with i0 > 0, and t f > t̄ f 0 0 , then,
+            (a) for every ε > 0 small enough, the optimal solution of Pε is b = β , almost everywhere;
+            (b) for every ε > 0 small enough, the restriction of the value function Vε (t f ; ·, · ) to A is continuous at (s0 , i0 );
+            (c) The problem P admits the unique optimal control b = β almost everywhere. The value is the constant λ1 t f .
+
+Proof. Let us recall that the states is0 ,i0 ,b and ss0 ,i0 ,b , corresponding to the speciﬁc initial conditions (s0 , i0 ) and control b,
+will be simply denoted by i and s, respectively.
+   First, let us note that if (s0 , i0 ) ∈ A \ ∂ A, then we have i < iM on [0, t f ] for every choice of b among the admissible
+controls. Indeed, in the sense of distributions,
+        d                            γ         −
+           i − A (s ) = bsi                 −1        + (bs − γ )i.
+        dt                              βs
+The later quantity is non-positive. As a consequence, i(t ) ≤ A (s(t ) ) + i0 − A (s0 ) < A (s(t ) ) which implies the desired
+inequality. This implies a series of consequences. Indeed, we get
+    1. dμ([0, t f ] ) = 0, by complementarity and the fact that i < iM on [0, t f ];
+                                                    γ
+    2. p1 = 0, as observed in (P1), since s(t f ) < β − ε ;
+    3. p0 = 1, by the previous items and the non-degeneration condition (4.1);
+    4. ψ = p0 λ2 in a subinterval (t1 , t2 ) ⊂ [0, t f ] is impossible, due to Theorem 4.6 (otherwise, we would have i = iM , which
+       is a contradiction);
+    5. by the ﬁrst item and 3. of Proposition 4.4, it holds dψ = siγ ps ≥ 0 and hence ψ is continuous and non-decreasing;
+    6. by the second item, ψ (t f ) = 0.
+                                                                                      γ
+By assumption, there exists some interval tI , t f                     on which s < β . Owing to Proposition 4.7, it is clear that i cannot be
+constant on any interval (t1 , t2 ) ⊂ tI , t f . Combined with ψ (t f ) = 0 and the monotonicity of ψ , one gets ψ (t ) < 0 ≤ p0 λ2
+for all t ∈ (0, t f ) and the ﬁrst assertion follows by (4.6).
+                                                                           s ,i           γ
+    For the second assertion point (a), let us ﬁx t f > t̄ f 0 0 and 0 < ε < β − ss0 ,i0 ,β (t f ).
+
+                     / ∂ A, and b is a Pontryagin extremal for Pε (with horizon t f ), it is also a Pontryagin extremal for P ε with
+     • If (s0 , i0 ) ∈
+                                                                                                                                               2
+                                                                γ      γ
+        the same horizon. Moreover, s(t f ) ≤ β − ε < β − 2ε . By the ﬁrst assertion, it follows that b = β (which is admissible
+       for Pε by the choice of ε ). Since this is the only extremal, it follows that it is the optimal control for Pε .
+                                                                              / ∂ A}. Clearly, δ is well deﬁned and δ < t f ; indeed,
+     • Let us ﬁx (s0 , i0 ) ∈ ∂ A. We deﬁne δ := inf {t ≥ 0 : (s(t ), i(t ) ) ∈
+                       γ
+       since s(t f ) < β − ε then i is strictly decreasing in the last part of the time horizon, hence i(t f ) < iM , which implies
+                                                                                                      
+                          / ∂ A. It is also clear by the previous point that b = β a. e. on δ, t f . Furthermore, the only control keep-
+         s(t f ), i(t f ) ∈
+        ing the solution on ∂ A is again β . It follows that b = β (almost surely).
+                                                          γ
+    By (a) and the continuity of (s, i ) → β − ss,i,β (t f ) (for i > 0) there exists a neighbourhood U of (s0 , i0 ) such that the
+restriction of Vε (t f ; ·, · ) to U ∩ A is the constant λ1 t f , hence proving (b).
+   Let us prove (c). Since b ≤ β , one has J (t f , b) ≥ λ1 t f . On the other hand, we have J (t f , b) = λ1 t f if and only if b = β a.e.
+                                                         s ,i
+On the other hand, the assumption t f > t̄ f 0 0 implies ss0 ,i0 ,β (t f ) < γ /β which means that b ≡ β is admissible, hence optimal
+and unique.        
+
+  1
+    Note that in the statement of Theorem 5.6, Eq. (5.14), the reaching time has been redeﬁned using the same notation. When restricted to A the two
+deﬁnitions turn out to be equivalent.
+
+
+                                                                                  9
+F. Avram, L. Freddi and D. Goreac                                                           Applied Mathematics and Computation 418 (2022) 126816
+
+
+Theorem 5.2. Let λ2 > 0. Let us assume that 0 < i0 , and 0 < s0 are such that (s0 , i0 ) ∈ B \ A. Assume moreover that b is a
+                                                       γ
+Pontryagin extremal for Problem Pε such that s(t f ) < β − ε .
+
+     1. The ICU saturation time
+                                                              
+                   τ1 := sup t ∈ (0, t f ] : i < iM in [0, t )
+        if the set on the right hand side is nonempty and τ1 := 0 if it is empty, satisﬁes τ1 < t f .
+     2. If (s0 , i0 ) ∈ B0 \ A and i0 < iM , then the control b must have the following structure:
+                             
+                              β                                if t ∈ (0, τ1 ),
+                   b(t ) =                   γ                                                                                             (5.2)
+                                                               if t ∈ (τ1 , τ2 ),
+                                 s ( τ2 ) + γ i M ( τ2 − t )
+             where τ1 has been deﬁned above, and
+                                                                
+                   τ2 := sup t ∈ [τ1 , t f ] : i = iM in [τ1 , t] .                                                                        (5.3)
+             Furthermore,
+                                γ
+                   s ( τ2 ) =     .
+                                β
+     3. If (s0 , i0 ) ∈ B \ B0 , then, prior to reaching B0 , the control b must have the following structure:
+                             
+                                 β     if t ∈ (0, τ1 ∧ τ0 ),
+                   b(t ) =                                                                                                                 (5.4)
+                                 β∗    if τ0 < τ1 , t ∈ (τ0 , τ1 ),
+             where τ1 has been deﬁned above and
+                                                       
+                   τ0 := inf t ≥ 0 : i(t ) = B (s(t ) ) .                                                                                 (5.5)
+Proof. Let us start with some structural remarks.
+                                                     γ
+      i. Since, by assumption, s(t f ) < β − ε , Proposition 4.4 implies that η ≥ 0 in [0, t f ], and ps is non-increasing and non-
+         negative; moreover, ψ is non-negative and, by (P1), we have p1 = 0.
+     ii. In the interval [0, τ1 ), whenever nonempty, we have i < iM and hence
+            (a) dμ([0, τ1 )) = 0 (by complementarity);
+            (b) if ψ is equal to p0 λ2 = 0 in a subinterval (t1 , t2 ) ⊂ [0, τ1 ), then p0 = 0 and, owing to Theorem 4.6, we have that
+                i is constant in (t1 , t2 ) (the alternative dμ([0, t1 ] ) > 0 being impossible since [0, t1 ] ⊂ [0, τ1 ) and dμ([0, τ1 )) = 0
+                by (a));
+            (c) ψ = p0 λ2 > 0 in a subinterval (t1 , t2 ) ⊂ [0, τ1 ) is impossible, again due to Theorem 4.6 (otherwise, we would
+                have i = iM , which is a contradiction);
+            (d) by the ﬁrst assertion, on this same interval [0, τ1 ), it holds dψ = siγ ps dt ≥ 0 and hence ψ is continuous and
+                non-decreasing (and non-negative as already observed in i.).
+     Assertion 1. To prove the ﬁrst assertion, we assume by contradiction that τ1 = t f , that is i < iM on [0, t f ). Then the same
+                                                                                                         γ
+applies on 0, t f           since, by assumption, there exists some interval tI , t f    on which s < β and i is strictly decreasing on
+(tI , t f ]. We claim that (s0 , i0 ) ∈ A, against one of the hypotheses of the theorem. This will be achieved by showing that
+among the three exhaustive cases
+    1.1. ψ (0 ) > p0 λ2 ,
+    1.2. p0 λ2 > 0 and ψ (0 ) ≤ p0 λ2 ,
+    1.3. ψ (0 ) = p0 λ2 = 0,
+only the second can happen. In that case, ψ (s ) = p0 λ2 on some interval is excluded as discussed in item (c) at the beginning
+of the proof. Similarly, ψ (s ) > p0 λ2 at some point s < t f will be excluded as in 1.1. It follows that ψ < p0 λ2 and b = β on
+        
+  0, t f (by Deﬁnition 2.1, this corresponds to (s0 , i0 ) ∈ A), hence showing that the extremal policy can only keep i < iM if
+( s0 , i0 ) ∈ A.
+     It remains then to exclude the other cases. Since ψ is non-decreasing, in case 1.1 we have ψ > p0 λ2 and the optimal
+control is β∗ on (0, t f ), which contradicts the nature of our problem for which β is optimal as soon as one reaches A (thus,
+                       
+at least on tI , t f ). In case 1.3 we have p0 = 0. Since, as observed in point (i) of our preliminar discussion, also p1 = 0,
+by the non-degeneration condition (4.1) we get dμ([0, t f ] ) > 0. ψ (s ) > 0 at some point s is excluded as in 1.1, thus ψ = 0
+              
+on 0, t f . By Theorem 4.6, using dμ([0, t f ] ) > 0, we have i = i(0 ) on [0, t f ); this is in contradiction with the fact that i is
+strictly decreasing on [tI , t f ) as observed in 1.
+    The remaining assertions concern (s0 , i0 ) ∈ B \ A. Due to the previous argument, τ1 < t f , and, by continuity, we have that
+i(τ1 ) = iM . Moreover, our assumptions imply τ1 > 0.
+    Assertion 3. We now turn our attention to the last assertion of the theorem. By deﬁnition of the sets B and B0 , in this
+case we have i0 < iM and hence τ1 > 0. It is convenient to split the proof according to the following subcases:
+
+                                                                                    10
+F. Avram, L. Freddi and D. Goreac                                                               Applied Mathematics and Computation 418 (2022) 126816
+
+
+  3.1. (s0 , i0 ) ∈ ∂ B \ B0 ,
+  3.2. (s0 , i0 ) ∈ B \ (∂ B ∪ B0 ).
+
+Subcase 3.1. When (s0 , i0 ) ∈ ∂ B \ B0 , the claim directly follows from Theorem 2.3, assertion 6. Indeed, in this case we have
+τ0 = 0 and b = β∗ until the time τ0s0 ,i0 , and to conclude it suﬃces to prove that τ0s0 ,i0 = τ1 . In fact, s0 > βγ (by assumption)
+                                                                                                                               ∗
+                            γ
+and, as long as s ≥ β , we have
+                             ∗
+
+
+            d                                        γ
+                 i − B (s ) = (β∗ s − γ )i − (1 −        )β si = 0.                                                                           (5.6)
+        dt                                            β∗ s ∗
+This        implies      that        i = B ( s )
+                                               on    (0, τ0s0 ,i0 ). Furthermore, along the associated trajectory, we have
+ s ,i ,β  s ,i                  s ,i                             s ,i     γ                                 s ,i                            s ,i
+ s 0 0 ∗ (τ00 0 ), is0 ,i0 ,β∗ (τ00 0 ) ∈ ∂ B. Since ss0 ,i0 ,β∗ (τ00 0 ) = β , it follows that is0 ,i0 ,β∗ (τ00 0 ) = iM which implies τ1 ≤ τ00 0 .
+                                                                             ∗
+                                          s ,i                                  s ,i
+On the other hand, if τ1 < τ00 0 then there would exist t̄ ∈ (τ1 , τ00 0 ) such that is0 ,i0 ,β∗ (t̄ ) = iM and ss0 ,i0 ,β∗ (t̄ ) > γ /β∗ so
+exiting the viable zone B, which is a contradiction.
+        s ,i
+   At τ00 0 = τ1 , the trajectory enters in the set B0 .
+                                                                                 γ
+   Subcase 3.2. When (s0 , i0 ) ∈ B \ (∂ B ∪ B0 ) we have i0 < B (s0 ) and s0 > β . The proof of the assertion in this subcase is
+                                                                                            ∗
+divided in three steps.
+    Step 3.2.1. We claim that ψ (0 ) < p0 λ2 (hence p0 λ2 > 0, since η and ψ are non-negative).
+    Indeed, otherwise, since ψ is non-decreasing in [0, τ1 ) and does not stay equal to p0 λ2 on an interval, we must have ψ >
+p0 λ2 in (0, τ1 ). According to (4.6), we would have b = β∗ in this interval. Then the associated trajectory ss0 ,i0 ,β∗ , is0 ,i0 ,β∗ is
+                                                                                                            γ
+                                                                                                        d
+kept in the interior of B. To see this, it suﬃces to note that, as in (5.6), as long as s ≥ β , we have dt (i − B (s ) ) = 0. On
+                                                                                                             ∗
+                                                                                                                                           γ
+the other hand, since is0 ,i0 ,β∗ (τ1 ) = iM , the trajectory has to reach the boundary by entering in the zone in which s < β .
+                                                                                                                                            ∗
+                                           γ                                                                    γ
+In particular, we have ss0 ,i0 ,β∗ (τ1 ) < β . But, then, there exists some t < τ1 such that ss0 ,i0 ,β∗ (t ) = β (and is0 ,i0 ,β∗ (t ) < iM ).
+                                            ∗                                                                    ∗
+Since i is decreasing on (t, τ1 ), we get a contradiction.
+    Step 3.2.2. Deﬁnition of σ1 . Since ψ (0 ) < p0 λ2 and it is continuous, there exists a right neighbourhood of 0 in which
+ψ < p0 λ2 and where, according to (4.6), we have b = β . Let us deﬁne
+    σ1 := sup t ∈ [0, t f ] : ψ < p0 λ2 in [0, t ) .
+    The reader is invited to note that σ1 < t f . Otherwise, β would be always admissible for (s0 , i0 ) which contradicts the
+choice (s0 , i0 ) ∈
+                  / A.
+    Step 3.2.3. The time τ0 is well deﬁned since, due to i(τ1 ) = iM , the set on the right hand side in (5.5) is nonempty. We
+claim that σ1 = τ0 ∧ τ1 .
+                                                                                                                             γ
+    We focus ﬁrst on the case in which τ0 < τ1 . Then, by deﬁnition of τ1 , i(t ) < iM for every t ≤ τ0 . Moreover, s(τ0 ) > β
+                                                                                                                                                   ∗
+                                                                                                        γ
+because (s(τ0 ), i(τ0 )) ∈ ∂ B and i(τ0 ) < iM . Since s is decreasing then we have s(t ) > β for every t ≤ τ0 and we can apply
+                                                                                            ∗
+an argument similar to that of Step 3.2.1 to s˜0 , i˜0 = (s(σ1 ), i(σ1 )) to get a contradiction with σ1 < τ0 . On the other hand,
+the only control admissible at (s(τ0 ), i(τ0 )) is (locally in time) β∗ (see Subcase 3.1), and this implies σ1 ≤ τ0 . The conclusion
+follows.
+    If τ0 ≥ τ1 > 0, we aim at proving that σ1 = τ1 . Assume, by contradiction, that σ1 > τ1 . The control β is admissible at
+(s(τ1 ), iM ) ∈ ∂ B only if s(τ1 ) ≤ γβ (since, otherwise, i would be increasing in a neighbourhood of τ1 and the ICU state con-
+straint would be violated) and, in this case, we would have σ1 = t f (excluded before). Thus σ1 ≤ τ1 .
+     If, by contradiction, σ1 < τ1 , then, in the interval (σ1 , τ1 ) we would have ψ > p0 λ2 (since ψ is non-decreasing in [0, τ1 )
+and cannot stay equal to p0 λ2 which is positive, by Step 3.2.1.). Then we would have b = β∗ in (σ1 , τ1 ) and i would be
+decreasing so contradicting i(τ1 ) = iM .
+     The structure (5.4) follows now by deﬁnition of σ1 , the fact that σ1 = τ0 ∧ τ1 and (4.6). Actually, assertion 3 is completely
+proved.
+     Assertion 2. Let us now prove the second assertion. The reader is invited to note that the assumption i0 < iM implies
+τ1 > 0. The proof is subdivided in ﬁve steps.
+     Step 2.1. We claim that ψ (0 ) < p0 λ2 (and, thus, p0 = 1, since η and ψ are non-negative).
+     Again, the case ψ (0 ) > p0 λ2 leads to the control β∗ in (0, τ1 ) for which i is non-increasing thus cannot reach iM at time
+τ1 . By remark ii. (c) at the beginning of the proof, the case ψ (0 ) = p0 λ2 > 0 cannot hold on some non-empty sub-interval.
+By remark ii. (b), the case ψ (0 ) = 0 yields i constant on some initial (possibly empty) interval followed by i decreasing and
+it is also excluded.
+     Step 2.2. The argument on (0, τ1 ) is identical to the one in Step 3.2.2, with the notable exception that, starting from B0 ,
+we get τ0 = τ1 .
+     Step 2.3. Since i(τ1 ) = iM , it follows that the time τ2 is well deﬁned, that is, the set on the right hand side in (5.3) is
+                                            γ
+nonempty. By the assumption s(t f ) < β , one has τ2 < t f . We focus on the case when τ1 < τ2 for which, in (τ1 , τ2 ), we have
+i = iM . Then the optimal control in (τ1 , τ2 ) is given by (4.12), that is
+                                 γ
+        b(t ) =                                   .                                                                                            (5.7)
+                    s ( τ2 ) + γ i M ( τ2 − t )
+
+                                                                        11
+F. Avram, L. Freddi and D. Goreac                                                                                        Applied Mathematics and Computation 418 (2022) 126816
+
+                                             γ
+Since b ≤ β , we have s(τ2 ) ≥ β . Since s is strictly decreasing, it follows that
+                                 γ
+          s(t ) > s(τ2 ) ≥         for every t ∈ [τ1 , τ2 ).                                                                                                             (5.8)
+                                 β
+In other terms, we have i(t ) > A (s(t )) for every t ∈ [τ1 , τ2 ). Let us set
+                                                              
+          τ 2 := sup t ∈ (τ1 , t f ] : i > A (s ) in (τ1 , t ) .
+We note that the right-hand side set is nonempty and τ2 ≤ τ 2 < t f .
+   The remaining part of the proof aims to show that τ2 = τ 2 . By continuity, this yields ∂ A  (s(τ2 ), iM ), which implies
+         γ
+s(τ2 ) ≤ β and, together with (5.8), provides the “furthermore” part of the assertion.
+      Step 2.4. We claim that if τ2 < τ 2 , then i < iM in (τ2 , τ 2 ].
+      First of all, we prove that
+
+          i < iM in a right neighborhood of τ2 .                                                                                                                        (5.9)
+We assume, by contradiction, the existence of a strictly decreasing sequence of points tn ∈ (τ2 , τ 2 ) with i(tn ) = iM and such
+that tn → τ2 . We claim that this implies that
+
+          i = iM in [tn , tn+1 ] for every n.                                                                                                                           (5.10)
+Again, by contradiction, should there exist tˆn ∈ (tn+1 , tn ) such that i(tˆn ) < iM , the continuity of i implies the existence of
+some open interval (a, a ) ⊆ [tn+1 , tn ] such that i < iM inside and i = iM at the boundary.2 By complementarity, we have that
+dμ((a, a )) = 0 and, therefore, dψ = siγ ps ≥ 0 such that ψ is continuous and non-decreasing in (a, a ). Moreover ψ cannot
+stay equal to p0 λ2 in (a, a ): otherwise, recalling that p0 = 1, by Theorem 4.6, we would have i = iM , which is a contradiction
+with the choice of tˆn . Then, we have all the ingredients to repeat in (a, a ) the argument that we have used in the interval
+(0, τ1 ) (albeit we are now in the interior of B if τ2 − τ1 > 0), obtaining that b = β in (a, a ).
+                                                                        γ
+    Since we are inside the interval (τ2 , τ 2 ), it holds that s(t ) > β and, therefore, di = (sβ − γ )i > 0 in (a, a ), that is i is
+increasing in (a, a ) which is a contradiction with i(a ) = i(a ) = iM .
+    Then, we have proved that (5.10) holds true. Since the sequence tn converges to τ2 then, by continuity, this implies that
+i = iM on (τ1 , t1 ) with t1 > τ2 , against the deﬁnition of τ2 . This proves (5.9) and there exists a right neighborhood of τ2 in
+which we have i < iM .
+    We can set
+                                                          
+          τˆ2 := sup t ∈ (τ2 , τ 2 ] : i < iM in (τ2 , t )
+By the same argument as before we must have τˆ2 = τ 2 . Indeed, otherwise, in the interval (τ2 , τˆ2 ), we would have i < iM
+inside and i = iM at the boundary and we repeat the same argument used in the interval (a, a ), leading to a contradiction.
+By the same argument we get that i(τ 2 ) < iM . Then we have proved that i < iM in (τ2 , τ 2 ].
+     Step 2.5. We claim that if τ2 < τ 2 then there exists σ > τ 2 such that ψ > p0 λ2 ; hence b = β∗ , in (τ2 , σ ).
+     Owing to the assertion in Step 2.4 and to the continuity of i, there exists σ > τ 2 such that i < iM on (τ2 , σ ). Due to the
+complementarity conditions, we have that ψ is non-decreasing and continuous in (τ2 , σ ). We can exclude that ψ (τ2+ ) <
+p0 λ2 . Indeed, in such case, we would have ψ < p0 λ2 in a right neighborhood of τ2 in which we have also i < iM and i(τ2 ) =
+                                                    γ
+iM . However, since in such a case b = β and s > β , we would have that di = (sβ − γ )i > 0 and this provides a contradiction.
+Moreover it does not stay          equal to p0 λ2 in a subinterval (as constancy would imply i = iM ). Then we must have ψ (t ) > p0 λ2 ,
+on some interval τ2 , σ  . Since ψ is non-decreasing and does not stay equal to p0 λ2 in any sub-interval of (τ2 , σ ), we have
+ψ > p0 λ2 in (τ2 , σ ). Therefore, ψ > p0 λ2 and b = β∗ in (τ2 , σ ), as claimed.
+ s(By     deﬁnition, (s(τ 2 ), i(τ 2 ) ) ∈ A and,             as we have seen, i(τ 2 ) < iM . Then, for every t ∈ (τ 2 , σ ), (s(t ), i(t ) ) =
+ s τ 2 ),i(τ 2 ),β∗ (t − τ 2 ), is(τ 2 ),i(τ 2 ),β∗ (t − τ 2 ) ∈ A \ ∂ A and b = β∗ on [t, σ ). This comes in contradiction with Theorem 5.1,
+1.
+    It follows that τ2 = τ 2 and the theorem is completely proved. 
+                                                    γ
+Remark 5.3. Substituting s(τ2 ) = β in the expression (5.2) of b(t ), in assertion 2 we have
+                     
+                         β                           if t ∈ (0, τ1 ),
+          b(t ) =                β                                                                                                                                      (5.11)
+                                                     if t ∈ (τ1 , τ2 ).
+                         1 + β i M ( τ2 − t )
+Remark 5.4.
+
+      1. Assertion 2 of the previous theorem yields that the only optimal control for (s0 , i0 ) ∈ B0 , with i0 < iM is of the
+                                                                                            γ        γ
+         form (5.2). This optimality statement can easily be extended to (s0 , iM ) ∈ B0 if β < s0 < β . Indeed, each point of
+                                                                                                                                             ∗                   
+          this type can be written as (s0 , iM ) = ss1 ,i1 ,β (t ), is1 ,i1 ,β (t )                    starting from (s1 , i1 ) = ss0 ,iM ,β (−t ), is0 ,iM ,β (−t ) . Since
+
+  2
+      One may take, for instance, a = inf{t ∈ [tn+1 , tˆn ] : i (t ) < iM and a = sup{t ∈ [tˆn , tn ] : i (t ) < iM }.
+
+
+                                                                                            12
+F. Avram, L. Freddi and D. Goreac                                                                            Applied Mathematics and Computation 418 (2022) 126816
+
+                γ                                                    γ                                                   γ
+         s0 < β , it follows that ss0 ,iM ,β (−t ) < β                   for t small enough. Furthermore, s0 > β implies that r → is0 ,iM ,β (−r ) is
+                 ∗                                                   ∗
+         decreasing (locally in time). This shows that, for small t > 0, (s1 , i1 ) ∈ B0 with i1 < iM . Whenever b is an admis-
+         sible control for t f , s0 , i0 and the problem Pε , one sets b˜ (r ) := β 1r≤t + b(r − t )1r>t . The optimality of bopt given
+         by (5.2) for the problem Pε , the initial data (s1 , i1 ) and for the time horizon t f (note also that t = τ1 !) yields
+                                                            
+         J t , bopt (· + t ); s0 , iM = J t + t, bopt ; s1 , i1 = V (t + t; s1 , i1 ) ≤ J (t + t, b˜ ; s1 , i1 ) = J (t , b; s0 , iM ).
+            f                                    f                             f                f
+                                                                                                                         f
+                                                                                                        γ
+      2. In the same spirit, for the upper-right corner of B0 i.e. (s0 , i0 ) =                         β∗ , iM , every (locally-in-time) admissible control
+                                                                
+         b1[0,δ ] (t ) should be followed (on δ, t f ), by (5.2).3 As such, in this case too, an optimal control can be chosen of form
+         (5.2).
+
+Remark 5.5.
+
+      1. By Theorem 5.2, we have i = iM in the interval (τ1 , τ2 ). By integrating the state equations (see Proposition 4.7), in this
+         interval the susceptible population s turns out to be
+
+                    s(t ) = s(τ2 ) + γ iM (τ2 − t ).
+         Then it decreases linearly from s(τ1 ) to s(τ2 ) = γ /β . In particular, we have
+                                 γ
+                    s ( τ1 ) =     + γ i M ( τ2 − τ1 )
+                                 β
+         from which we obtain that the time amplitude of this control regime is given by
+                                   s(τ1 ) − γβ
+                    τ2 − τ1 =                    .
+                                      γ iM
+         The later provides also an alternative deﬁnition of the switching time τ2 in terms of τ1 .
+      2. One can give an estimate of τ1 − τ0 solely based on the initial data and the parametersβ , β∗ , γ , iM . Using the fact
+                                                                                                                                γ
+         that between τ0 and τ1 one employs the constant control β∗ and that ss0 ,i0 ,β∗ , is0 ,i0 ,β∗ ∈ ∂ B with ss0 ,i0 ,β∗ ≥ β , one
+                                                                                                                                                          ∗
+         can easily show that
+                    β∗ ϑ1 − γ              β∗ ϑ1 − γ
+                               ≤ τ1 − τ0 ≤           ,                                                                                                     (5.12)
+                    β∗ β s0 iM              βγ ϑ2
+         where
+                               γ      γ       γ
+                    ϑ0 := iM +     −     log     ;
+                               β∗ β∗          β∗
+                                                        
+                                s0 + i0 − γβ log s0 − ϑ0
+                    ϑ1 := exp            γ     γ          ;
+                                                 β∗ − β
+                                                             γ
+                               β∗        s0 + i0 − β log s0
+                    ϑ2 :=           ϑ0 +                    − ϑ1 .
+                             β − β∗            1 − β∗        β
+
+5.1. The optimal control
+
+   Gathering these pieces of information provided by Theorems 5.1, 5.2, Remarks 5.3–5.5, we get the following complete
+characterizations of an optimal control for problems Pε and P.
+
+Theorem 5.6. Let (s0 , i0 ) ∈ B with 0 < i0 , 0 < s0 . Let
+                        ⎧
+                        ⎪β                   if t ∈ (0, τ1 ∧ τ0 ),
+                        ⎨β                   if τ0 < τ1 , t ∈ (τ0 , τ1 ),
+                             ∗
+         bopt (t ) =              β                                                                                                                        (5.13)
+                        ⎪                    if t ∈ (τ1 , τ2 ),
+                        ⎩ 1+β iM (τ2 −t )
+                         β                   if t > τ2 ,
+where
+                                                                     
+          τ0 := inf t ≥ 0 : is0 ,i0 ,β (t ) = B is0 ,i0 ,β (t ) ,
+                                                              
+         τ1β := inf t ∈ (0, t f ] : is0 ,i0 ,β (t ) = iM ,
+                                      s0 ,i0 ,β 1 β         + β∗ 1 β                     
+          τ1 := inf t ∈ (0, t f ] : i             (0,τ ∧τ0 )
+                                                      1
+                                                                   (τ ∧τ0 ,t f )
+                                                                     1           (t ) = iM ,
+
+  3
+      This can be made rigorous using the dynamic programming principle.
+
+
+                                                                                      13
+F. Avram, L. Freddi and D. Goreac                                                                          Applied Mathematics and Computation 418 (2022) 126816
+
+
+                         s ,i ,β 1(0,τ ∧τ ) +β∗ 1(τ ∧τ ,t )
+                        s0 0          1   0          1   0 f   (τ1 ) − γβ
+        τ2 := τ1 +                                                             .
+                                                γ iM
+Furthermore, let us set
+
+    1. the reaching time
+                                                                       γ
+                t̄ sf 0 ,i0 := inf t ≥ 0 : ss0 ,i0 ,b (t ) =
+                                                         opt
+                                                                           ;                                                                             (5.14)
+                                                                        β
+    2. ωs0 ,i0 to be the function
+                                              γ     γ s0 ,i0 ,bopt s0 ,i0
+                                                                  (t̄ f ),bopt
+                τ → ωs0 ,i0 (τ ) :=            − s β ,i                       ( τ ).                                                                    (5.15)
+                                              β
+    Then
+                           s ,i                                                   s ,i 
+    1. For every t f > t̄ f 0 0 and every ε < ωs0 ,i0 t f − t̄ f 0 0 , the problem Pε has a continuous value and bopt is an optimal control.
+                            s ,i
+    2. For every t f > t̄ f 0 0 , the problem P admits bopt as optimal control.
+    3. The optimal control can be given in a feed-back form
+                               ⎧
+                               ⎨β              if (s, i ) ∈ (B \ ∂ B ) ∪ ∂ A,
+                ˜bopt (s, i ) = β∗             if (s, i ) ∈ ∂ B \ B0 ,
+                               ⎩γ                                  
+                                               if (s, i ) ∈ γβ , βγ∗ × {iM },
+                                      s
+                                                                                    γ        
+        and is unique up to the Lebesgue-null set ∂ A ∪ β , iM .
+                                                         ∗
+
+Remark 5.7.
+
+    1. The function ωs0 ,i0 represents the deviation of the susceptible population from the value γ /β taken at the reaching
+       time, when the latter is taken as new origin of times and the control is bopt ; accordingly, we have ωs0 ,i0 (0 ) = 0. By the
+       monotonicity of s, we have that ωs0 ,i0 is increasing and strictly positive (if i0 > 0) on the interval (0, +∞ ). Moreover,
+                   s ,i
+       if t f > t̄ f 0 0 , then
+
+                                                                                            γ
+                ωs0 ,i0 (t f − t̄ sf 0 ,i0 ) > ε ⇐⇒ ss0 ,i0 ,b (t f ) <                       − ε.
+                                                                        opt
+
+                                                                                            β
+                                                                                                                 γ
+    2. The only control keeping the solution on ∂ A is β (and only as long as s > β ). Furthermore, an optimal trajectory
+                                                           
+                                                               γ
+        starting from B \ A enters A at                        β , iM         (see assertion 2 in Theorem 5.2). It follows that the occupation time of
+       ∂ A is non-singular with respect to the Lebesgue measure on R+ only if (s0 , i0 ) ∈ ∂ A, s0 > γβ and only if, on the set
+       {(s, i ) ∈ ∂ A}, the control coincides with b˜ opt . This shows that bopt is unique Lebesque-almost surely (in time).
+                                                                                            / A \ ∂ A, the modulus ω is independent
+    3. If one does not already start in the interior of the no-effort zone, i.e. (s0 , i0 ) ∈
+                                        γ
+                                  γ       ,i ,β
+       of (s0 , i0 ) and ω (t ) = β − s β M (t ).
+        optimal controls need to be extremals and they are unique in almost all the settings (excepting i = iM and s ∈
+    4. The
+           γ γ
+           β , β∗   which is dealt with in Remark 5.4. Assertion 2 follows from assertion 3 in Proposition 3.2. Finally, assertion
+       3 is just a way to say that we actually have a “positional strategy” but this is merely a way of rewriting the ﬁrst
+       assertion.
+    5. The value function in assertion 1 only depends (in an integral formulation) on the position ss0 ,i0 ,β (τ ) where τ
+       is the hitting time of B (with β control). The continuity of (s0 , i0 ) → τ implies that of the value
+                                                                                                             function V it-
+                                                                                                                                          γ γ
+        self. Note that the (relevant part of the) boundary ∂ B can be divided into two sets 1 :=                                        β , β∗   × {iM } and
+
+        2 := (s, B (s ) ) : s ≥ βγ∗              with different “qualiﬁcation” behavior (see, for instance, the introduction in Frankowska
+       and Plaskacz [14]). Indeed, 1 satisﬁes the “inward pointing” condition, while 2 is “outward pointing” with all but
+       the viable control. This hybrid qualiﬁcation does not allow direct application of classical results of continuity of the
+       value function.
+    6. The control bopt is continuous at τ2 ; moreover, starting from B0 \ A its expression coincides with the one obtained in
+       Miclo et al. [10, Theorem 1].
+
+   We end this section with a few elements of comparison with [13]. While it is true that the optimal control is the greedy
+one in both cases, we wish to emphasize that our problem is fundamentally different than the one in Angulo et al. [13].
+Indeed, Angulo et al. [13] focuses on the minimal time to reach A (cf. line 4 after Eq. (2.1) in Angulo et al. [13]). Roughly
+speaking,
+
+                                                                                                  14
+F. Avram, L. Freddi and D. Goreac                                                Applied Mathematics and Computation 418 (2022) 126816
+
+
+    1. their cost is λ1 = 1 and λ2 = 0, prior to reaching the safe zone; this has a strong impact on the proof as their com-
+       parison in S1.4 strongly uses the independence of control in the cost;
+    2. since they deal with a minimal time problem, the “ﬁnal” time varies with the controls used; for us, there is a surveil-
+       lance until a ﬁxed time t f .
+
+
+
+
+6. Bocop simulations
+
+   To conclude, we present some numeric simulations done by using the Bocop package, Inria Saclay Team Commands [28],
+Bonnans et al. [29]. For simplicity, the simulations are made on a ﬁxed time interval [0, t f ] where t f is taken to be large
+enough to ensure that in the last part of the epidemic horizon the optimal control is β (no effort condition). Consequently,
+we can consider a cost functional in which λ1 = 0 and λ2 = 1 (indeed, since t f is ﬁxed, the choice λ1 > 0 would simply
+result in a constant additive contribution to the cost functional), that is
+
+                      tf          
+        J (b ) =           β − b(t ) dt .
+                      0
+
+
+The cost J (b) is minimized under the SIR state equations
+
+        
+          s = −sbi
+          i = sbi − γ i
+          s ( 0 ) = s0 , i ( 0 ) = i0
+
+with the ICU contraint
+
+
+        i(t ) ≤ iM ∀ t ∈ [0, t f ].
+
+The Bocop package implements a local optimization method. The optimal control problem is approximated by a ﬁnite di-
+mensional optimization problem (NLP) using a time discretization (the direct transcription approach). The NLP problem is
+solved by the well known software Ipopt, using sparse exact derivatives computed by CppAD. From the list of discretization
+formulas proposed by the package (Euler, Midpoint, Gauss II and Lobatto III C), we have chosen to use the Gauss II implicit
+method since it appears to be stable enough for the problem under consideration.
+   In our simulations we consider only viable initial conditions outside the no-effort zone (in which the optimal control
+would be identically equal to β ), in other words we take (s0 , i0 ) ∈ B \ A. Once having choosen s0 , this condition writes
+
+
+        A (s0 ) < i0 < B (s0 ).
+
+By the theory developed in the previous sections we expect qualitatively different optimal controls according to the follow-
+ing two scenarios:
+
+                 γ
+    1. s0 < β , in which we expect an optimal control b with a bang-boundary-bang structure,
+                 ∗
+                 γ
+    2. s0 > β , in which we expect an optimal control b with a bang-bang-boundary-bang structure.
+                 ∗
+
+
+
+   In both scenarios we consider a time horizon t f of 500 days and choose the coeﬃcients β = 0.16, γ = 0.06, β∗ = 0.08
+         γ
+(so that β = 0.75), the initial conditions i0 = 0.001 and the ICU upper bound iM = 0.02, but different values of s0 ; precisely
+             ∗
+
+
+
+                          γ
+    1. s0 = 0.7 < β in the ﬁrst scenario, so that A (s0 ) ≃ −0.071 < i0 < B (s0 ) ≃ 0.018;
+                          ∗
+                              γ
+    2. s0 = 0.85 > β in the second, so that A (s0 ) ≃ −0.148 < i0 < B (s0 ) ≃ 0.014.
+                              ∗
+
+
+
+   The ﬁgures below show the graph of the optimal control, the states and the adjoint states (adjointState.2 stands for
+pi and adjointState.1 is ps ). In both scenarios the expected structure of the optimal control is conﬁrmed by the numeri-
+cal solutions. Moreover, in the second scenario the adjoint variable pi has two jumps while in the ﬁrst there is just one
+discontinuity. As expected, ps is always continuous and decreasing.
+
+                                                              15
+F. Avram, L. Freddi and D. Goreac        Applied Mathematics and Computation 418 (2022) 126816
+
+
+Scenario 1
+
+
+
+
+                                    16
+F. Avram, L. Freddi and D. Goreac                                                                 Applied Mathematics and Computation 418 (2022) 126816
+
+
+Scenario 2
+
+
+
+
+   Let us end this section with some further insights on the optimal decisions to be taken depending on the state-of-
+epidemics. For better understanding, we illustrate this on the COVID-19 situation in France and explain the optimal decisions
+in connection with the associated zones (see Fig. 1).
+   We deal here with a population N = 67, 0 0 0, 0 0 0 individuals and an alert level of 400 cases per 10 0,0 0 0 inhabitants (as
+announced in May 2021 for basis of de-conﬁnement; a very large level if compared to 40 in Japan or 100 in several other
+countries). The incubation-to-recovery average time is set to γ1 = 14 (days).4 A simple computation yields a normalized
+             0,0 0 0 ≃ 0.056. We consider β = 0.5 (this parameter is computed from the Delta-variant R0 ≃ 7 and γ using the
+iM := γ1 × 10400
+Cori method with c = 1 contact per time unit) and β∗ = 0.25 (i.e. roughly 50% of the population is not directly involved in
+the essential economy or can work remotely and can be conﬁned if needed), we get
+          γ              γ
+            ≃ 0.1428571,    ≃ 0.2857143, sM ≃ 0.3091318, s∗M ≃ 0.5037254.
+          β              β∗
+Given a state-of-epidemics (S, I ) (under the curve B !):
+
+       • If I ≤ IM = iM × N = 3, 752, 0 0 0 and S ≤ 0.1428571 × N = 9, 571, 425 (meaning that 53,676,571 individuals have re-
+         covered or are vaccinated corresponding to a percentage of roughly 80%), then do nothing. The herd immunity is
+         achieved.
+                                                                                                                         γ ×N
+       • If I = IM = iM × N = 3, 752, 0 0 0 and S ∈ (9, 571, 425, 19, 142, 857], then apply progressive de-conﬁnement b = S
+         (high b means less conﬁnement) until herd    immunity  (see  previous
+                                                                                case).
+       • If I < 3, 752, 0 0 0, compute S− := N × A NI and S+ := N × B NI .
+
+  4
+      Indeed, with an exponential law, the average is the inverse of the exponential parameter.
+
+
+                                                                             17
+F. Avram, L. Freddi and D. Goreac                                                                 Applied Mathematics and Computation 418 (2022) 126816
+
+
+
+
+                                                                     Fig. 1. Viability regions.
+
+
+
+            • If S ≤ S− , then do nothing (the herd immunity will be achieved).
+            • If S > S− , monitor the situation without intervention until S = S+ . If S+ > 19, 142, 857, then a strict conﬁnement
+              is in order until the number of susceptibles reaches 19,142,857. Otherwise, we are in the second case (progres-
+              sive de-conﬁnement).
+     • The reader is invited to note that A0 represents the ﬁrst case (herd immunity already attained), A is the zone where
+       no measure is necessary, B0 is a part of the region in which a progressive de-conﬁnement is possible, while the part
+       of B for which S+ > 19, 142, 857 corresponds to conﬁgurations for which a strict conﬁnement cannot be avoided.
+
+7. Conclusions
+
+    We considered an optimal control problem for a SIR epidemic where the control is on the transmission rate coeﬃcient
+b, under an ICU state constraint which prescribes that the infected population i has to stay always below a critical threshold
+iM (representing the estimated maximum capacity of the health-care system) and a ﬁnal condition which requires that at
+                                                                                         γ
+the ﬁnal time t f the susceptible population should be under the immunity threshold β . The cost functional is assumed to
+be aﬃne and depending only on the control variable.
+   We proved that, under viable initial conditions, the optimal strategy is as follows
+
+     • do nothing if the initial conditions allow for an evolution in which i(t ) ≤ iM for every y ∈ [0, t f ] (meaning that the
+       capacity of the health-care system is never exceeded, i.e. (s0 , i0 ) ∈ A);
+     • do nothing until time τ1 at which i(τ1 ) = iM , then preserve the saturation i = iM until reaching the immunity thresh-
+           γ
+       old β if the initial conditions allow for this kind of control (i.e. if (s0 , i0 ) ∈ B are below the curve R+  t →
+         γ                 γ
+              ,i ,β             ,i ,β
+         s β∗ M (−t ), i β∗ M (−t ) );
+     • otherwise, actuate the maximum level of lock-down before reaching i = iM and then preserve saturation; the time length
+       of the lock-down regime (τ1 − τ0 ) depends on the initial conditions and on the coeﬃcient β∗ which gives the strength
+       of the lock-down (see the inequality (5.12)).
+
+Appendix A
+
+A1. Viability, invariance and other tools
+
+    We recall here some tools from the theory of viability and see their qualitative implications on the system under study.
+
+Deﬁnition A.1. Let xx0 ,b be a solution to a controlled system governed by a regular (Lipschitz-continuous) ﬁeld f : Rn × B →
+Rn i.e.
+                                        
+        dxx0 ,b (t ) = f xx0 ,b (t ), b(t ) dt, xx0 ,b (0 ) = x0 ,                                                                               (A.1)
+
+                                                                                18
+F. Avram, L. Freddi and D. Goreac                                                                  Applied Mathematics and Computation 418 (2022) 126816
+
+
+where B is some compact (subset of a) metric space and the admissible controls are Borel measurable functions b ∈ L0 (R; B ).
+
+    1. A closed set K ⊂ Rn is said to be (forward-in-time) viable w.r.t. (A.1) if for every initial datum x0 ∈ K there exists an
+       admissible control b such that the associated trajectory satisﬁes xx0 ,b (t ) ∈ K for all t ≥ 0.
+    2. Given a closed set K + ⊂ Rn , the largest subset K ⊂ K + such that trajectories starting at x ∈ K can be maintained in K +
+       is called a viability kernel.
+    3. A closed set K ⊂ Rn is said to be (forward-in-time) invariant w.r.t. (A.1) if for every initial datum x0 ∈ K and every
+       admissible control b, the associated trajectory satisﬁes xx0 ,b (t ) ∈ K for all t ≥ 0.
+    4. Given a viable constraint set K ⊂ Rn and a target set K0 ⊆ K, the family L ⊂ K of initial data that can be steered to K0
+       in ﬁnite time (such that the associated trajectories do not leave K) is called a capture basin of K0 from K.
+
+Remark A.2. It is easy to note that a viability kernel is viable in time (i.e. trajectories starting in K remain not only in K + but
+actually in K). Indeed, if x0 ∈ K, then xx0 ,b (t ) ∈ K + for some control and all t (by deﬁnition of the viability kernel). Taking
+now y0 := xx0 ,b (t0 ) (for some t0 > 0), then xy0 ,b(·+t0 ) (s ) = xx0 ,b (s + t0 ) ∈ K + . This proves that y ∈ K (instead of the weaker
+condition y ∈ K + ). Thus the viability kernel is viable. It follows that a viability kernel is the largest viable set contained in
+K+.
+
+   These notions are related to the Bouligand tangent (or contingent) and the (negative polar) normal cones. For our readers’
+sake, we recall these notions hereafter.
+
+Deﬁnition A.3. Given a closed set K ⊂ Rn , the tangent cone to K at a point x ∈ K is the set
+                                                             
+                                           dK ( x + ε d )
+        TK (x ) =           n
+                       d ∈ R : lim inf                      =0 ,
+                                    ε→0+         ε
+
+where dK (y ) denotes the distance of y from the set K. The normal cone to K at x ∈ K is the negative polar cone to TK (x ),
+i.e.,
+
+        NK (x ) = { p ∈ Rn :  p, d ≤ 0, ∀d ∈ TK (x )}.
+
+   The following result(s) gather some tools when dealing with viability and invariance cf. Propositions 3.4.1, 3.4.2, Theorem
+3.2.4, Theorem 5.2.1 in Aubin [30].5
+
+Theorem A.4. With the notation of Deﬁnition A.1, let us assume B to be convex and compact, f (x, · ) to be convex and f to be
+Lipschitz in x and globally uniformly continuous.
+
+    1. A closed set K ⊂ Rn is viable with respect to (A.1) if and only if for every x ∈ ∂ K and every p ∈ NK (x ),
+
+                inf  p, f (x, b) ≤ 0;
+                b∈B
+
+    2. A closed set K ⊂ Rn is invariant with respect to (A.1) if and only if for every x ∈ ∂ K and every p ∈ NK (x ),
+
+                sup  p, f (x, b) ≤ 0;
+                 b∈B
+
+
+Remark A.5. In practice, the domain K is often described by a regular frontier φ (C 1 -diffeomorphism) i.e. K =
+{x ∈ Rn : φ (x ) ≤ 0}, ∂ K = {x ∈ Rn : φ (x ) = 0} and the computation of normal sets is made to direct and inverse images
+roughly leading to the semi-line spanned by ∇φ (x ) (at x ∈ ∂ K with positive multiplicative constants) or intersections of
+such domains.
+
+
+
+A2. Proof of Theorem 2.3
+
+    This section is devoted to the proof of Theorem 2.3.
+
+    1. We use 2. of Theorem A.4 with the vector ﬁeld
+                                                    
+                f (s, i, b) = − sbi, (bs − γ )i .
+
+
+  5
+    The cited reference considers differential inclusions but the properties can easily be obtained in these simple cases via the regularity assumptions we
+state in the theorem.
+
+
+                                                                            19
+F. Avram, L. Freddi and D. Goreac                                                                                                           Applied Mathematics and Computation 418 (2022) 126816
+
+
+        The picture displays the set A0 with the normal cones in the singular points of the boundary. The set degenerates
+                                     γ
+        into a rectangle if iM ≤ 1 − β .
+
+
+
+
+        To prove that A0 is invariant (viable with any measurable control that takes the values in [β∗ , β ]) by checking that
+        along the boundary condition 2. of Theorem A.4 is always satisﬁed is an easy task. Let us do it in the less trivial cases
+        and left the others to the reader:
+            • along the upper side of ∂ A0 we have
+                                                                                                      γ           
+                          NA0 (s, iM ) = {r (0, 1 ) : r ≥ 0}, ∀s ∈ 0, min{                               , 1 − iM } ;
+                                                                                                       β
+                                                                                                     γ
+                           f (s, iM , b), (0, 1 ) = (bs − γ )iM ≤ 0, ∀s ≤                            , ∀b ≤ β .
+                                                                                                     β
+                                                                                 γ
+              • the diagonal side of ∂ A0 appears only if β > 1 − iM ; assuming to be in such case:
+                      • on the vertex between the upper and the diagonal sides we have
+                                 NA0 (1 − iM , iM ) = {r (λ, 1 ) : λ ∈ [0, 1], r ≥ 0};
+                                                                                        
+                                  f (1 − iM , iM , b), (λ, 1 ) = b(1 − iM )(1 − λ ) − γ iM ≤ 0, ∀b ≤ β , ∀λ ∈ [0, 1].
+                      • along the diagonal side of ∂ A0 we have
+                                                                                                                                γ
+                                 NA0 (s, 1 − s ) = {r (1, 1 ) : r ≥ 0}, ∀s ∈ 1 − iM ,                                               ;
+                                                                                                                                 β
+                                  f (s, 1 − s, b), (1, 1 ) = −γ (1 − s ) ≤ 0, ∀s.
+                      • on the vertex between the diagonal and the vertical sides we have
+                                       γ    γ
+                                 NA0        ,1 −  = {r (1, λ ) : λ ∈ [0, 1], r ≥ 0};
+                                        β    β
+                                  γ       γ                     γ  γ            
+                                  f ( , 1 − , b ), ( 1, λ ) = 1 −      b (1 − λ ) − γ ≤ 0, ∀b ≤ β , ∀λ ∈ [0, 1].
+                                     β     β                       β     β
+        The remaining cases are almost trivial since the s component is non-increasing on A0 and when the initial i = 0 the
+                                                γ
+        system is stationary. The case in which β ≤ 1 − iM and the set A0 is a rectangle is very similar.
+                                                                                                                                                                γ
+    2. The argument is quite similar to the previous one but one employs b = β∗ for every s ≤ β .
+                                                                                                                                                                ∗
+    3. We present the argument for B, the argument for A being
+                                                              quite similar. The right-hand set in the deﬁnition
+                                                                                                                  γ
+        of B1 is included in B. To see this, one notes that, given                                                β∗ , i 0               ∈ B0 , and an admissible control b, the func-
+                   γ                                     γ
+                     ,i ,b                                 ,i ,b      γ
+                s β∗ 0 (−t ) is non-decreasing, hence s β∗ 0 (−t ) ≥
+        tion t →                                                                                             β∗ for every t ≥ 0. It follows that, in the same interval,
+                            γ                                        γ
+                              ,i ,b                                    ,i ,b
+        the                          is non-increasing and, thus, i β∗ 0 (−t ) ≤ iM for all t ≥ 0, hence satisfying the state-
+                         i β∗ 0 (−t )
+             function t →
+                                                                     γ             γ
+                                                                       ,i ,b         ,i ,b
+        constraint. As a consequence, starting at some position s β∗ 0 (−t0 ), i β∗ 0 (−t0 ) ∈ B1 , one reverses the time in
+        b up till t0 (thus reaching B0 ), then uses β∗ .
+                                                                                                           γ
+        Conversely, let (s, i ) ∈ B \ B0 . We only need to consider the case when i > 0. In this case, s > β and, as long as
+                                                                                                                                                                           ∗
+                     γ
+        ss,i,b (t ) > β , the map t → is,i,b (t ) is increasing (for every b ∈ L0 (R+ ; [β∗ , β ] )), hence is,i,b (t ) ≥ i, for all t as before and
+                      ∗
+                                                                                                                                                         γ
+        ss,i,b (t ) ≤ se−β∗ it . It follows that there exists (a unique) t1 > 0 such that ss,i,b (t1 ) = β . Since (s, i ) ∈ B, one has (for the
+                                                                                s,i,b                                          ∗
+        viable control b), is,i,b (t1 ) ≤ iM . It follows that s                            (t1 ), is,i,b (t1 ) ∈ B0 and, hence, by reversing the time, and setting
+                                                   
+                                                       s,i,b (t                           −                                                   −
+                                                                  1 ),i
+                                                                          s,i,b (t
+                                                                                     1 ),b
+                                                                                                           s,i,b (t
+                                                                                                                      1 ),i
+                                                                                                                              s,i,b (t
+        b− (t ) := b(t1 − t ), one gets (s, i ) = ss                                          (−t1 ), is                                 1 ),b    (−t1 ) , thus concluding our argument.
+
+                                                                                                20
+F. Avram, L. Freddi and D. Goreac                                                                         Applied Mathematics and Computation 418 (2022) 126816
+
+
+    4. We only prove the assertion for B (the remaining relations being quite similar). We take (s0 , i0 ) ∈ B and a viable
+       control b. If t1 = t0 the conclusion is trivial. Let us then consider the case in which i1 < i0 . Any trajectory (say with
+       control b ) starting from (s0 , i1 ) has a non-increasing s and, thus, satisﬁes
+                   s ,i ,b                               
+                       s 0 1 (t ), is0 ,i1 ,b (t ) : t ≥ 0 ⊂ R := [0, s0 ] × [0, 1].
+                                                                                                   
+        The associated trajectory Reach(s0 , i0 ) := ss0 ,i0 ,b (t ), is0 ,i0 ,b (t ) : t ≥ 0 ⊂ R is asymptotically (as t→ ∞) directed to-
+        wards i = 0 and, thus, separates the line i = iM and the point (s0 , i1 ) (in the rectangle R). We consider the hitting
+        time
+                                                                                       
+                  0 < t0 := inf t > 0 : ss0 ,i1 ,b (t ), ss0 ,i1 ,b (t ) ∈ Reach(s0 , i0 ) .
+                                                                                                                                                          
+        If t0 = ∞, then b is obviously a viable control for (s0 , i1 ). Otherwise, for some t > 0, ss0 ,i1 ,b (t0 ), ss0 ,i1 ,b (t0 ) =
+         s ,i ,b                    
+          s 0 0 (t ), ss0 ,i0 ,b (t ) . We modify b by setting b˜  (r ) := b (r )1 0,t (r ) + b(r − t0 + t )1r>t to get a viable control for
+                                                                                        [   0]                             0
+        ( s0 , i1 ).
+        Our second assertion follows by setting
+                                                                                                      
+                  A0 (s ) := sup i : (s, i ) ∈ T, is,i,b (t ) ≤ iM , ∀t ≥ 0, ∀b ∈ L0 (R; [β∗ , β ] ) ,
+                                                                            
+                  A (s ) := sup i : (s, i ) ∈ T, is,i,β (t ) ≤ iM , ∀t ≥ 0 ,
+                                                                                                         
+                  B (s ) := sup i : (s, i ) ∈ T, ∃ b ∈ L0 (R; [β∗ , β ] ) s.t . is,i,b (t ) ≤ iM , ∀t ≥ 0 .
+        Let us prove that
+                  B = {(s, i ) ∈ T : i ≤ B (s )},
+        the other cases being similar and easier.
+        Let us prove ﬁrst the inclusion ⊆. Let (s0 , i0 ) ∈ B. Then, there exists b such that is0 ,i0 ,b (t ) ≤ iM for any t ≥ 0. Then
+                                                                                                         
+                  i0 ∈ i : (s0 , i ) ∈ T, ∃ b ∈ L0 (R; [β∗ , β ] ) s.t. is0 ,i,b (t ) ≤ iM ∀t ≥ 0,
+        and therefore
+                                                                                                              
+                  i0 ≤ sup i : (s0 , i ) ∈ T, ∃ b ∈ L0 (R; [β∗ , β ] ) s.t. is0 ,i,b (t ) ≤ iM ∀t ≥ 0, = B (s0 ),
+        that is (s0 , i0 ) ∈ {(s, i ) ∈ T : i ≤ B (s )}, which proves the claimed inclusion.
+        Let us prove the opposite inclusion ⊇. Let (s0 , i0 ) ∈ {(s, i ) ∈ T : i ≤ B (s )}, that is
+                                                                                                                          
+                  i0 ≤ B (s0 ) = sup i : (s0 , i ) ∈ T, ∃ b ∈ L0 (R; [β∗ , β ] ) s.t. is0 ,i,b (t ) ≤ iM ∀t ≥ 0, .                                         (A.2)
+        If the strict inequality holds, then there exists i1 > i0   (R; [β∗ , β ] ) such that (s0 , i1 ) ∈ T, is0 ,i,b (t ) ≤ iM , ∀ t ≥ 0.
+                                                                               and b ∈ L0
+                                                                                                                            
+        Then, using the ﬁrst part of this item, we have the existence of some admissible b such that is0 ,i0 ,b (t ) ≤ iM , i.e.
+        (s0 , i0 ) ∈ B and the proof is concluded in this case.
+        If, otherwise, in (A.2) the equality holds, then we have that for any ε > 0 there exists iε > i0 − ε and bε ∈
+        L0 (R; [β∗ , β ] ) such that (s0 , iε ) ∈ T, is0 ,iε ,bε (t ) ≤ iM , ∀ t ≥ 0. Then we have (for some modiﬁed controls bε ,
+                             
+                  is0 ,i0 −ε,bε (t ) ≤ iM                                                                                                                   (A.3)
+        By extracting from (bε ) a weakly-∗ converging sequence and sending ε → 0, by using continuous dependence on the
+       data and the uniqueness of the solution of the initial value problem for the system of state equations, we can deduce
+       that is0 ,i0 ,b (t ) ≤ iM .
+    5. If φ is regular enough, then the explicit computation of contingent cones and normal cones to K := {(s, i ) : i ≤ φ (s )}
+       yields
+                                                                                           
+                  NK (s, φ (s )) = {r (∂s , ∂i )(i − φ (s ) ) : r ≥ 0} = {r −φ  (s ), 1         : r ≥ 0}.
+        The viability condition 1. of Theorem A.4 for B yields, for frontier points (s, i ) = (s, φ (s ) ),
+                  ∃ b ∈ [β∗ , β ] s.t. φ  (s )bsφ (s ) + (bs − γ )φ (s ) ≤ 0,                                                                              (A.4)
+        which implies
+                                          γ
+                  φ  (s ) ≤ −1 +             .
+                                         β∗ s
+                                                                                                 γ
+        It follows that a necessary condition for φ to be constant is s ≤ β . On the other hand, the maximal admissible
+                                                                                                  ∗
+                                                                                                                                                   γ
+        constant is φ = iM . It is immediately seen that, for this constant, the condition is also suﬃcient, that is s0 ≤ β , i0 ≤ iM
+                                                                                                                                                    ∗
+        implies (s0 , i0 ) ∈ B. Indeed, since s is nonincreasing, with β∗ control we have i = (sβ∗ − γ )i ≤ 0. Then we have proven
+                                    γ
+        that B (s ) = iM , ∀s ≤ β and decreases afterwards. Since T is invariant, it follows that the intersection with T is
+                                     ∗
+                           γ
+        viable. For s ≥ β , the (maximal) solution (realizing the equality in the previous inequality) is given by
+                            ∗
+                                                
+                                     γ   γ      β∗ s
+                  B (s ) = iM − s +   +   log       .
+                                     β∗ β∗       γ
+                                                                                21
+F. Avram, L. Freddi and D. Goreac                                                                       Applied Mathematics and Computation 418 (2022) 126816
+
+
+       Since B is non-negative and i = 0 is stationary, the conclusion follows. The argument for A is similar but one reasons
+       for b = β . For A0 one asks that (A.4) be satisﬁed for all b ∈ [β∗ , β ], thus arriving on the same set as for A.
+    6. One writes
+                                                                                           
+                d                                     γ                            b
+                   (i − B (s ) ) = bsi − γ i + −1 +      bsi = γ i                     −1       ≥ 0,
+                dt                                   β∗ s                          β∗
+                                                                  γ                                                                          γ
+        whenever b is admissible, and as long as s > β . As a consequence, starting from (s0 , i0 ) ∈ ∂ B with s0 > β , one either
+                                                                   ∗                                                                          ∗
+        exits this region (thus violating viability) or at most stays on the boundary and, in this case, the viable control is β∗
+        as described in the statement.
+
+    The theorem is completely proved.
+
+References
+
+ [1] R.M. Anderson, B. Anderson, R.M. May, Infectious Diseases of Humans: Dynamics and control, Oxford University Press, 1992.
+ [2] H. Behncke, Optimal control of deterministic epidemics, Optim. Control Appl. Methods 21 (6) (20 0 0) 269–285.
+ [3] E. Hansen, T. Day, Optimal control of epidemics with limited resources, J. Math. Biol. 62 (3) (2011) 423–451.
+ [4] M. Martcheva, An Introduction to Mathematical Epidemiology, vol. 61, Springer, 2015.
+ [5] F.E. Alvarez, D. Argente, F. Lippi, A Simple Planning Problem for COVID-19 Lockdown, Technical Report, National Bureau of Economic Research, 2020.
+ [6] T. Kruse, P. Strack, Optimal control of an epidemic through social distancing (2020).
+ [7] D.I. Ketcheson, Optimal control of an sir epidemic through ﬁnite-time non-pharmaceutical intervention, J. Math. Biol. 83 (1) (2021) 7, doi:10.1007/
+     s00285- 021- 01628- 9.
+ [8] W.O. Kermack, A.G. McKendrick, G.T. Walker, A contribution to the mathematical theory of epidemics, Proc. R. Soc. Lond. Ser. A 115 (772) (1927)
+     700–721, doi:10.1098/rspa.1927.0118. https://royalsocietypublishing.org/doi/abs/10.1098/rspa.1927.0118
+ [9] M. Kantner, T. Koprucki, Beyond just “ﬂattening the curve”: optimal control of epidemics with purely non-pharmaceutical interventions, J. Math. Ind.
+     10 (1) (2020) 1–23.
+[10] L. Miclo, D. Spiro, J. Weibull, Optimal epidemic suppression under an ICU constraint, arXiv preprint arXiv:2005.01327(2020).
+[11] L. Bolzoni, E. Bonacini, C. Soresina, M. Groppi, Time-optimal control strategies in sir epidemic models, Math. Biosci. 292 (2017) 86–96.
+[12] L. Bolzoni, E. Bonacini, R. Della Marca, M. Groppi, Optimal control of epidemic size and duration with limited resources, Math. Biosci. 315 (2019)
+     108232.
+[13] M.T. Angulo, F. CastaØos, R. Moreno-Morton, J.X. Velasco-Hernndez, J.A. Moreno, A simple criterion to design optimal non-pharmaceutical interventions
+     for mitigating epidemic outbreaks, J. R. Soc. Interface 18 (178) (2021) 20200803, doi:10.1098/rsif.2020.0803. https://royalsocietypublishing.org/doi/abs/
+     10.1098/rsif.2020.0803
+[14] H. Frankowska, S. Plaskacz, Semicontinuous solutions of Hamilton–Jacobi–Bellman equations with degenerate state constraints, J. Math. Anal. Appl.
+     251 (2) (20 0 0) 818–838, doi:10.10 06/jmaa.20 0 0.7070.
+[15] L.S. Pontryagin, Mathematical Theory of Optimal Processes, Routledge, 2018.
+[16] U. Boscain, B. Piccoli, Optimal Syntheses for Control Systems on 2-D Manifolds, vol. 43, Springer Science & Business Media, 2003.
+[17] U. Boscain, B. Piccoli, An introduction to optimal control, in: Contrôle non Linéaire et Applications, Herman, Paris, 2005, pp. 19–66.
+[18] H. Schättler, U. Ledzewicz, Geometric Optimal Control: Theory, Methods and Examples, vol. 38, Springer Science & Business Media, 2012.
+[19] O. Sharomi, T. Malik, Optimal control in epidemiology, Ann. Oper. Res. 251 (1–2) (2017) 55–71.
+[20] P. Di Giamberardino, D. Iacoviello, Direct integrability for state feedback optimal control with singular solutions, in: International Conference on
+     Informatics in Control, Automation and Robotics, Springer, 2018, pp. 482–502.
+[21] S.P. Sethi, P.W. Staats, Optimal control of some simple deterministic epidemic models, J. Oper. Res. Soc. 29 (2) (1978) 129–136.
+[22] L. Freddi, Optimal control of the transmission rate in compartmental epidemics, Mathematical Control and Related Fields10.3934/mcrf.2021007.
+[23] F. Clarke, Functional Analysis, Calculus of Variations and Optimal Control, Springer London, London, 2013, doi:10.1007/978- 1- 4471- 4820- 3_14.
+[24] Olivier Bokanowski, Nicolas Forcadel, Hasnaa Zidani, Deterministic state-constrained optimal control problems without controllability assumptions,
+     ESAIM:COCV 17 (4) (2011) 995–1015, doi:10.1051/cocv/2010030.
+[25] J.F. Bonnans, C.S.F. de la Vega, Optimal control of state constrained integral equations, Set-Valued Var. Anal. 18 (3–4) (2010) 307–326.
+[26] J.F. Bonnans, C. De La Vega, X. Dupuis, First-and second-order optimality conditions for optimal control problems of state constrained integral equa-
+     tions, J. Optim. Theory Appl. 159 (1) (2013) 1–40.
+[27] J.F. Bonnans, Course on optimal control. Part I: the Pontryagin approach., 2020.
+[28] Inria Saclay Team Commands, Bocop: an open source toolbox for optimal control, 2017, (http://bocop.org).
+[29] J.F. Bonnans, D. Giorgi, V. Grelard, B. Heymann, S. Maindrault, P. Martinon, O. Tissot, J. Liu, BOCOP - A Collection of Examples, Technical Report, INRIA,
+     2017. http://www.bocop.org
+[30] J.-P. Aubin, Viability Theory, Birkhäuser Boston, Boston, MA, 2009, doi:10.1007/978- 0- 8176- 4910- 4_1.
+
+
+
+
+                                                                              22
+                      Update
+Applied Mathematics and Computation
+        Volume 423, Issue , 15 June 2022, Page
+
+
+   DOI: https://doi.org/10.1016/j.amc.2022.127012
+                                                     Applied Mathematics and Computation 423 (2022) 127012
+
+
+
+                                                         Contents lists available at ScienceDirect
+
+
+                                       Applied Mathematics and Computation
+                                                   journal homepage: www.elsevier.com/locate/amc
+
+
+Corrigendum
+
+Corrigendum to “Optimal control of a SIR epidemic with ICU
+constraints and target objectives”
+Florin Avram 1, Lorenzo Freddi 2, Dan Goreac 3,4,∗
+1
+  Laboratoire de Mathématiques Appliquées, Université de Pau, Pau F-64012, France
+2
+  Dipartimento di Scienze Matematiche, Informatiche e Fisiche, via delle Scienze 206, Udine 33100, Italy
+3
+  School of Mathematics and Statistics, Shandong University, Weihai, Weihai 264209, PR China
+4
+  LAMA, Univ Gustave Eiffel, UPEM, Univ Paris Est Creteil, CNRS, Marne-la-Valleée F-77447, France
+
+
+
+
+        DOI of original article: 10.1016/j.amc.2021.126816
+    ∗
+        Corresponding author.
+        E-mail address: dan.goreac@univ-eiffel.fr (D. Goreac).
+
+
+
+https://doi.org/10.1016/j.amc.2022.127012
+0 096-30 03/© 2021 Elsevier Inc. All rights reserved.
+F. Avram, L. Freddi and D. Goreac                                             Applied Mathematics and Computation 423 (2022) 127012
+
+
+    The authors regret that in the printed version of the above article, some ﬁgures (those corresponding to Scenario 2 in
+Section 6) are missed. We believe that this mistake occurred during the publication process. The missed pictures are the
+following.
+
+
+
+
+    The correct and ﬁnal version follows. The authors would like to apologise for any inconvenience caused.
+
+
+
+
+                                                             2
+

@@ -1,4 +1,4 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{14}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -42,12 +42,37 @@ Stef Baas, Sander Dijkstra, Aleida Braaksma, Plom {van Rooij}, Fieke~J.
 \newblock \emph{Health Care Management Science}, 24:\penalty0 402--419, 2021.
 \newblock \doi{10.1007/s10729-021-09553-5}.
 
+\bibitem[Freddi and Goreac(2024)]{FreddiGoreac2024}
+Lorenzo Freddi and Dan Goreac.
+\newblock Infinite horizon optimal control of a {SIR} epidemic under an {ICU}
+  constraint.
+\newblock \emph{Journal of Convex Analysis}, 31\penalty0 (2):\penalty0
+  525--562, 2024.
+\newblock \doi{10.68381/jca31028}.
+
+\bibitem[Freddi et~al.(2022)Freddi, Goreac, Li, and Xu]{FreddiGoreacLiXu2022}
+Lorenzo Freddi, Dan Goreac, Juan Li, and Boxiang Xu.
+\newblock {SIR} epidemics with state-dependent costs and {ICU} constraints: A
+  {Hamilton--Jacobi} verification argument and dual {LP} algorithms.
+\newblock \emph{Applied Mathematics \& Optimization}, 86:\penalty0 23, 2022.
+\newblock \doi{10.1007/s00245-022-09884-x}.
+
 \bibitem[Koenemann et~al.(2019)Koenemann, Licitra, Alp, and
   Diehl]{Koenemann2019OpenOCL}
 Jonas Koenemann, Giovanni Licitra, Mustafa Alp, and Moritz Diehl.
 \newblock {OpenOCL} -- open optimal control library, June 2019.
 \newblock URL \url{https://openocl.github.io/publications/}.
 \newblock Robotics Science and Systems, workshop submission, extended abstract.
+
+\bibitem[Kretzschmar et~al.(2020)Kretzschmar, Rozhnova, Bootsma, {van Boven},
+  {van de Wijgert}, and Bonten]{Kretzschmar2020}
+Mirjam~E. Kretzschmar, Ganna Rozhnova, Martin C.~J. Bootsma, Michiel {van
+  Boven}, Janneke H. H.~M. {van de Wijgert}, and Marc J.~M. Bonten.
+\newblock Impact of delays on effectiveness of contact tracing strategies for
+  {COVID-19}: a modelling study.
+\newblock \emph{The Lancet Public Health}, 5\penalty0 (8):\penalty0 e452--e459,
+  2020.
+\newblock \doi{10.1016/S2468-2667(20)30157-2}.
 
 \bibitem[Liberzon(2012)]{Liberzon2012}
 Daniel Liberzon.
@@ -61,6 +86,12 @@ Laurent Miclo, Daniel Spiro, and J{\"o}rgen Weibull.
   solution.
 \newblock \emph{Journal of Mathematical Economics}, 101:\penalty0 102669, 2022.
 \newblock \doi{10.1016/j.jmateco.2022.102669}.
+
+\bibitem[Morris et~al.(2021)Morris, Rossine, Plotkin, and Levin]{Morris2021}
+Dylan~H. Morris, Fernando~W. Rossine, Joshua~B. Plotkin, and Simon~A. Levin.
+\newblock Optimal, near-optimal, and robust epidemic control.
+\newblock \emph{Communications Physics}, 4:\penalty0 78, 2021.
+\newblock \doi{10.1038/s42005-021-00570-y}.
 
 \bibitem[Soner(1986)]{Soner1986}
 Halil~Mete Soner.

@@ -1,0 +1,21 @@
+{
+  "batch": "B",
+  "optimizer_calls": 0,
+  "ocp_solves": 0,
+  "events": [
+    {
+      "operation": "临时使用 pypdf 提取 PDF 页面并预览到控制台",
+      "error": "UnicodeEncodeError: 'gbk' codec can't encode character '\\xe4' in position 41: illegal multibyte sequence",
+      "impact": "控制台文本预览中断；最终两份 PDF 和实际编译未受影响",
+      "resolution": "正式 render_qa.py 显式使用 sys.stdout.reconfigure(encoding='utf-8')，逐页文本写入 UTF-8 文件；14 页渲染成功"
+    },
+    {
+      "operation": "按 staging_paths.json 的43条明确路径执行 git add",
+      "error": "fatal: Unable to create 'E:/work/optimal-threshold-control/.git/index.lock': Permission denied",
+      "impact": "受限环境将 .git 设为只读，首次暂存未完成；未改变提交历史或文件内容",
+      "resolution": "在获准执行的环境中对同一明确路径清单重试，退出码0；仅本地提交，不推送"
+    }
+  ],
+  "plan_stop_conditions_triggered": [],
+  "author_review_checkpoint": "B 初稿提交后暂停，待作者审阅，再进入 C1–C4"
+}

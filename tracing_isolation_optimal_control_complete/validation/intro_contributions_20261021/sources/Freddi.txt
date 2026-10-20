@@ -1,0 +1,1718 @@
+                                                SIR Epidemics With State-Dependent Costs and ICU
+                                           Constraints: A Hamilton-Jacobi Verification Argument and Dual
+                                                                  LP Algorithms
+                                                        Lorenzo Freddi1,a , Dan Goreac2,3,*,a,b , Juan Li2,a,b , and Boxiang Xu2,*,a,b
+arXiv:2110.11625v2 [math.OC] 18 May 2022
+
+
+
+
+                                           1
+                                               Dipartimento di Scienze Matematiche, Informatiche e Fisiche, via delle Scienze 206, 33100
+                                                                                      Udine, Italy
+                                               2
+                                                 School of Mathematics and Statistics, Shandong University, Weihai, Weihai 264209, PR
+                                                                                         China
+                                                      3
+                                                        LAMA, Univ Gustave Eiffel, UPEM, Univ Paris Est Creteil, CNRS, F-77447
+                                                                               Marne-la-Valleée, France,
+                                                  *
+                                                    Corresponding author, email: dan.goreac@univ-eiffel.fr, email: boxiangxu@163.com
+                                                                 a
+                                                                   These authors have contributed equally to this work.
+                                                b
+                                                  The work of these authors has been partially supported by the National Key R and D
+                                               Program of China (NO. 2018YFA0703901) and the NSF of P.R. China (NOs. 12031009,
+                                                                                       11871037).
+
+
+
+                                                                                                Abstract
+                                                       The aim of this paper is twofold. On one hand, we strive to give a simpler proof of the
+                                                   optimality of greedy controls when the cost of interventions is control-affine and the dynamics
+                                                   follow a state-constrained controlled SIR model. This is achieved using the Hamilton-Jacobi
+                                                   characterization of the value function, via the verification argument and explicit trajectory-
+                                                   based computations. Aside from providing an alternative to the Pontryagin complex arguments
+                                                   in [6] (see also [5]), this method allows one to consider more general classes of costs; in particular
+                                                   state-dependent ones. On the other hand, the paper is completed by linear programming
+                                                   methods allowing one to deal with possibly discontinuous costs. In particular, we propose a
+                                                   brief exposition of classes of linearized dynamic programming principles based on our previous
+                                                   work and ensuing dual linear programming algorithms. We emphasize the particularities of our
+                                                   state space and possible generations of forward scenarios using the description of reachable sets.
+
+                                               Keywords: Optimal control, State Constraints,Hamilton-Jacobi, Epidemics, Modelling, Lin-
+                                           ear programming;
+                                           MSC2020: 49L12, 49L25, 92D30, 65K15.
+
+
+                                           1      Introduction
+                                           We deal here with a classical SIR model (cf. [25]) in which the total population is considered to
+                                           be time-independent and the contact rate is controlled via an external parameter (linked to, say,
+                                           confinement). Such models are far from being new as witnessed by the rich literature on the subject
+                                           [3, 8, 22, 31] and the recent pandemic has stimulated an increasing number of contributions, e.g.,
+                                           [1, 27, 26, 11]. For us, the aim is to maintain the number of infected individuals (or, equivalently,
+
+
+                                                                                                     1
+the proportion of infection from the total population) upper-bounded by a chosen parameter I ∗
+(resp., a proportion i∗ ). The parameter is to be thought in connection with the intensive-care unit
+capacities (see [24, 32, 6]). Motivated by the recent paper [6], we recall the green maximal zone in
+which no control is needed to stabilize the infections and the yellow zone in which policies allowing
+the trajectory to be kept under the level i∗ do exist. The explicit treatment of the yellow zone (see
+also [4] for geometrical intuitions) is achieved in [6] by using normal cone (viability) conditions; see
+also the recent papers [14], [36] for analogous treatments of such sets. We give here some further
+geometrical insights into the splitting of this yellow zone following the need for strict confinement
+and some conditional viability properties of such zones (see Proposition 3 in the Appendix).
+    In [6], we have considered a state-independent affine-type cost and established the optimality
+of the greedy policy acting only when the trajectory is about to exit the manageable yellow set.
+The optimality has been investigated by using an extensive analysis of the Pontryagin extremals
+of the underlying control problem. We have chosen here to give a different proof of the optimality
+of such greedy policies. This is achieved by giving explicit worked-out formulae for the associated
+cost function, based on computations on the trajectories. It turns out that the regularity of this
+candidate function allows one to check the naturally-associated Hamilton-Jacobi equation (in an
+almost sure sense). Furthermore, the method allows to treat considerably more general costs, the
+price to pay being essentially linked to the usual regularity (cf. Assumption 1 and Eq. (8)) and an
+inequality (15). A general class of examples connected with [6], is presented. We should emphasize
+that while several authors (e.g. [2], [14]) look into such greedy policies, in connection with the
+"safety" issues, the conditions on the cost guaranteeing their optimality are not made explicit.
+    A technical point concerns some hints into the actual regularity of the value function without
+(15). Since we are focused on a particular type of verification with a specific candidate in mind, we
+will only present these results in the Appendix A1. The first discussion, in Section 5.1.1, concerns
+the uniqueness of the solution of the associated Hamilton-Jacobi equation. We follow the outward
+qualification and backward invariance arguments in [16]. The second discussion (cf. Section 5.1.2)
+concerns the inward qualification arguments in [38].
+    The second part of the paper (Section 4) presents a method allowing one to deal with possibly
+discontinuous costs. We recall here the embeddings of the state-constrained controlled trajectories
+into occupation measures, in the spirit of [18] or [20], [17], [12], etc. The state constraints imply
+a support condition for such measures and the differential formula applied to regular functions of
+the dynamics imply a linear constraint, where the linearity is in the spirit of functionals of regular
+measures. Minimization over such sets of measures is paired with convenient dual formulations
+(e.g. [18], [35], [13], [20]). Such formulations are naturally connected with the (subsolutions of the)
+Hamilton-Jacobi equation satisfied by the value function (e.g., [18, EQ. 3.1], see also our formulation
+in (19)).
+    Since we work here under state constraints, we present, in the spirit of [20], a linearized dynam-
+ical programming principle (DPP) in (20). This is complemented by a modified DPP, in (21). For
+our readers’ sake, we sketch the proof, following Krylov’s shaking of coefficients method in the Ap-
+pendix 5.2. This formulation (in (21)) is very much in the spirit of the dual dynamic programming
+algorithms introduced in [33] and [37], also known as Benders decomposition (cf. [9]). Of course,
+in essence, such algorithms are not completely new, their connections with occupation measures-
+formulations appearing, for example in [29] or, more recently, in [23]. The fundamentals consist in
+the use of polynomial bases (see [30] for connections with Nachbin’s theorem) and Putinar’s results
+on positiveness and moments coherence (see [34]). However, the presence of state constraints, the
+various formulations extending to semi-continuous settings and the Krylov-based duality arguments
+justify our interest. Furthermore, we provide, in the SIR setting, a detailed description of the state-
+induced constraints on semi-algebraic sets (based on geometrical/viability descriptions) as well as
+
+
+                                                   2
+reachability considerations with an impact on the generation of scenarios in the forward stage(s).
+To the best of our knowledge, such arguments are new.
+    Let us briefly explain the structure of the paper. We begin, in Section 2 by recalling the con-
+trolled SIR dynamics and basic explicit computations when using constant control policies. We
+proceed with a description of green (self-regulating, mathematically invariant) and yellow (manage-
+able, mathematically viability kernels) areas with respect to ICU capabilities-induced constraints.
+The arguments are illustrated on a toy example where the data correspond more or less to the
+most recent decision of strict confinement in France retaining an incidence of 400 cases per 100.000
+inhabitants, and complemented by the description of some further curves of interest. The control
+problem is presented in Section 3. We provide the Hamilton-Jacobi equation associated to the
+value function as well as a verification argument as to the optimality of a greedy policy. Explicit
+computations in connection to such closed-loop policies are provided in Lemma 1 which, in turn,
+allows us to obtain the main verification result, Theorem 2. The consistency of the assumptions are
+illustrated in Example 2. Section 4 deals with the linear formulation of control problems. Relevant
+results are recalled (set of constraints, primal and dual formulations, equivalence) and they are
+employed to provide dynamic programming principles (cf. Proposition 1). The different formula-
+tions of two-stage problems are presented and followed by an extensive description of tools and
+procedures. These are thought in tight connection with the SIR system under analysis.
+    Throughout the paper, we denote by R+ := [0, +∞), R∗+ := (0, +∞) and N∗ = N \ {0}. Given
+an interval I ⊂ R and a (subspace of a) metric space B, L0 [I; B] will stand for the family of
+Borel-measurable B-valued functions whose domain is I. The usual 0/1-valued indicator function
+of sets will be denoted by 1, while the 0/∞-version is denoted by χ.
+
+
+2     Controlled SIR systems: geometrical considerations
+2.1    The Dynamics
+We consider the following deterministic evolution of a SI(R) model
+                     
+                          s0 ,i0 ,a (t) = −β (1 − a(t)) ss0 ,i0 ,a (t)is0 ,i0 ,a (t) dt
+                     ds
+                     
+                       dis0 ,i0 ,a (t) = β(1 − a(t))ss0 ,i0 ,a (t) − γ is0 ,i0 ,a (t) dt                  (1)
+                                                                         
+                     
+                      s0 ,i0 ,a
+                       dr           (t) = γis0 ,i0 ,a (t) dt.
+
+The control policy a takes its values in a set [0, a], for some parameter a ∈ (0, 1). For the construc-
+tion of trajectories, one uses Borel measurable inputs a ∈ L0 (R; [0, a]). The contact rate β > 0
+and the recovery rate γ are assumed to satisfy the consistency condition 0 < γ < β(1 − a). As it
+                                             γ
+will be clear afterwards, the proportion β(1−a)    is the one after which strict confinements are to be
+envisaged. When the spontaneous recovery parameter γ is large, the epidemics tend to disappear
+without strict interventions.
+
+Remark 1. 1. As it is usually the case, we deal with a time-constant population size. The compo-
+nents s0 and i0 are regarded as proportions i.e. s0 + i0 ≤ 1.
+2. A simple look at the dynamics shows that R+ × R+ is time-invariant in the sense that, indepen-
+dently of the control used, starting with s0 ≥ 0 and i0 ≥ 0, neither ss0 ,i0 ,a (t) nor is0 ,i0 ,a (t) becomes
+negative.
+3. Actually, in a normalized framework, if s0 + i0 ≤ 1 (and both non-negative), then ss0 ,i0 ,a (t) +
+is0 ,i0 ,a (t) ≤ s0 + i0 ≤ 1, for every t ≥ 0. This yields the time-invariance of the triangle T :=
+   (s0 , i0 ) ∈ R2+ : s0 + i0 ≤ 1 with respect to the control system (1).
+
+
+                                                         3
+      One notes that, for every t ∈ R, and for constant controls a ∈ [0, a],
+                                                       Z t
+                                                                                            γ         ss0 ,i0 ,a (t)
+        s s0 ,i0 ,a
+                    (t) + is0 ,i0 ,a
+                                     (t) = s0 + i0 − γ     is0 ,i0 ,a (u) du = s0 + i0 +          log                .   (2)
+                                                        0                                β(1 − a)          s0
+
+2.2      Colour zones
+Definition   1. 1. We call green zone the set G of initial configurations (s0 , i0 ) belonging to the set
+T := (s0 , i0 ) ∈ R2+ : s0 + i0 ≤ 1 for which the infections remain under the level i∗ even without
+     
+
+any intervention, i.e.,
+
+                   G := (s0 , i0 ) ∈ T : ∀a ∈ L0 (R; [0, a]) , ∀t ≥ 0, is0 ,i0 ,a (t) ≤ i∗ .
+                         
+
+
+2. We call yellow zone the set Y of initial configurations (s0 , i0 ) ∈ T for which the infections can
+be kept under i∗ with some Borel measurable, [0, a]-valued, intervention a ∈ L0 (R+ ; [0, a]), i.e.,
+
+               Y := (s0 , i0 ) ∈ T : ∃ a ∈ L0 (R; [0, a]) s.t. is0 ,i0 ,a (t) ≤ i∗ , ∀t ≥ 0 .
+                     
+
+
+The strategies a keeping the trajectory under ICU capability will be referred to as admissible, i.e.,
+describing a set Ad(s0 , i0 ); when there is no confusion at risk, we will drop the dependency on the
+initial data.
+
+   The following result is taken from the recent paper [6]. Its proof is based on viability (state-
+constrained evolution) theory and will be omitted here.
+
+Theorem 1 (Theorem 2.3 in [6]). 1. The green zone is explicitly given by
+
+                                           G = {(s0 , i0 ) ∈ T : s0 ≤ φ(i0 )} ,                                          (3)
+
+where x := φ(i) is the unique solution of the equation −x + βγ log x = i − i∗ + βγ log βγ − βγ satisfying
+x ≥ βγ .1
+2. The yellow zone is explicitly given by
+
+                                           Y = {(s0 , i0 ) ∈ T : s0 ≤ ψ(i0 )} ,                                          (4)
+                                                               γ                       γ          γ
+where x := ψ(i) is the unique solution of the equation −x + β(1−a) log x = i − i∗ + β(1−a) log β(1−a) −
+   γ                     γ    2
+β(1−a) satisfying x ≥ β(1−a) .
+
+
+Example 1. Let us illustrate this on the example of a total population of N = 67, 000, 000 indi-
+viduals with a maximal tolerance of 400 cases per 100, 000 habitants (rolling 7 days average) and
+an incubation-to-recovery time of t0 = 14 days. This leads to I ∗ = t0 × 100000
+                                                                           400
+                                                                                × N = 3, 752, 000,3
+i.e., a proportion i = 0.056. We pick β = 1/3 (one infection out of three contacts approximately)
+                    ∗
+
+and a recovery parameter γ = 141
+                                  (recovery intervenes in an average of 14 days). With these data,
+cf. Figure 1,
+
+   1. a control (confinement) range in [0, 60] percent is applied, i.e., a = 0.6;
+
+   2. for the green zone,
+  1
+    Another solution of this equation exists but it does not exceed βγ .
+  2                                                                      γ
+    Another solution of this equation exists but it does not exceed β(1−a) .
+  3
+    We are talking here of a level of infected individuals at some moment and not a cumulated number of infections.
+
+
+                                                               4
+ Figure 1: Flag zones for Example 1: N = 67M , I ∗ = 3.75M , β = 13 , 1 − a = 40%, γ = 14
+                                                                                       1
+                                                                                          .
+
+
+
+
+    (a) one can start with I ∗ infections for every S0 ≤ N βγ = 14, 357, 143, that is, a proportion
+              3
+        s0 ≤ 14 ≃ 0.214, leading to the upper-left data tip (0.214, 0.056);
+   (b) as I0 → 0, the green zone extends until S max := 27, 374, 986; equivalently, a proportion
+       smax ≃ 0.4085819 leading to the lower-left data tip (0.409, 0+);
+
+3. for the yellow zone,
+                                                              γ
+    (a) one can start with I ∗ infections for every S0 ≤ N β(1−a)  = 35, 892, 857, that is, a pro-
+                        γ
+        portion s0 ≤ β(1−a) ≃ 0.5357143, i.e., the upper-right label (0.536, 0.056);
+   (b) as I0 → 0, the yellow zone extends until S max ≃ 54, 895, 452; equivalently, a proportion
+       smax ≃ 0.8193351 leading to the lower-right data tip (0.819, 0+);
+
+4. finally, with a slightly over-unitary contagion parameter β = 1.01, we get the following dra-
+   matic decrease on safe (green) and yellow (feasible) zones (cf. Figure 2)
+
+
+
+
+                                               5
+   Figure 2: Flag zones for Example 1: N = 67M , I ∗ = 3.75M , β = 1.01, 1 − a = 40%, γ = 14
+                                                                                          1
+                                                                                             .
+
+
+2.3    Further geometric considerations
+At this point, the reader may be intrigued by the magenta curve in Figure 1. As it turns out, it
+corresponds to                          γ                        γ
+                                                ,i∗ ,0                ,i∗ ,0
+                                                                                 
+                             R+ 3 t 7→ s β(1−a)        (−t), i β(1−a)        (−t) ,
+                                                                                                  
+                                                                                           γ
+i.e., initial positions from which the 0-controlled trajectory of (1) reaches the point β(1−a) , i∗ .
+Since (2) holds for every t ∈ R, by reversing time we obtain that an equivalent description of this
+curve is
+                                       {(ϕ(i), i) : i ∈ (0, i∗ ]} ,
+                       γ
+where x := ϕ(i) ≥ β(1−a)    ≥ βγ satisfies −x + βγ log x = i − i∗ + βγ log β(1−a)
+                                                                               γ       γ
+                                                                                  − β(1−a) .
+In general, let us define the set
+
+                             B s := (s, i) : s ≥ 0, i ∈ [0, i∗ ] , s ≤ ϕs (i) ,                    (5)
+                                    
+
+                                                                                              
+where x := ϕs (i) satisfies − x + βγ log x = i − i∗ + βγ log s − s, and sign x − βγ = sign s − βγ with
+sign(t) := |t|t , if t 6= 0, sign(0) := 1. In other words, ϕs is taken on the same side of βγ as s.
+                                                           γ
+Remark 2.        1. The reader will have noticed that B β = G.
+
+                                                     6
+                                                                                         γ
+     2. Furthermore, to avoid complicated notations, we drop the superscript when s = β(1−a) , i.e.,
+                                 γ
+        we let B := B β(1−a) . This equally explains the notation employed in Figure 1. As it will be
+        clear in the verification arguments, the boundary of B (represented in magenta in Figure 1)
+        delimits the zone in which strict confinement is required.
+
+     3. It is easy to show (please take a look at Proposition          3) that if (s0 , i0 ) ∈ B \ G, then, prior
+        to hitting i∗ , one has ss0 ,i0 ,0 (t), is0 ,i0 ,0 (t) ∈ B. Furthermore, due to the maximality of G
+                                                              
+
+        (as invariant
+                     set),  it follows that there exists t0 ∈ R+ such that ss0 ,i0 ,0 (t0 ), is0 ,i0 ,0 (t0 ) ∈
+          γ      γ       ∗
+          β , β(1−a) × {i }.
+
+
+3      Optimality of greedy policies
+3.1      The control problem
+We now consider the following control problem.
+
+Problem 1. For every controllable initial configuration (s0 , i0 ) ∈ Y, i.e., subject to s0 ≤ ψ (i0 ),
+minimize
+                           s0 ,i0 ,a
+                        Z τgreen                                                            Z ∞
+                                              s0 ,i0 ,a        s0 ,i0 ,a
+                                                                                                  l1 (s(t), i(t), a(t)) 1s(t)≥φ(i(t)) dt, (6)
+                                                                                    
+    J(s0 , i0 , a) :=                  l1 s               (t), i           (t), a(t) dt =
+                         0                                                                   0
+
+(in the second equation, we have dropped the superscript (s, i) := ss0 ,i0 ,a , is0 ,i0 ,a ;)
+                                                                                          
+
+     • under the state constraint
+                                                                   is0 ,i0 ,a (t) ≤ i∗ , a.s. on R+ ,                                    (7)
+
+     • until reaching the target G, i.e., until
+                               s0 ,i0 ,a
+                                         := inf t ≥ 0 : ss0 ,i0 ,a (t) < φ is0 ,i0 ,a (t) .
+                                                                                        
+                             τgreen
+
+3.2      The Hamilton-Jacobi equation
+Before proceeding, let us explain the standing assumptions.
+
+Assumption 1. Throughout the rest of the paper, unless otherwise stated, the following assumptions
+hold true:
+
+     i. the cost l1 is non-negative and lower-semicontinuous;
+
+    ii. for every (s, i) ∈ R2 , the map [0, a] 3 a 7→ l1 (s, i, a) is non-decreasing;
+
+    iii. the set {l1 (s, i, a) : a ∈ [0, a]} is convex, for every (s, i) ∈ R2 .
+
+Remark 3. 1. The reader is invited to note that the second formulation in (6) is independent of
+τgreen .
+2. Please note that the main case of interest is the one in which l1 is control-affine for which
+Assumption 1 iii. is trivially satisfied.
+3. Sometimes it is convenient to assume that
+
+                                                                    l1 (s, i, 0) = 0 on G.                                               (8)
+
+
+                                                                               7
+Then, owing to a = 0 being optimal as soon as it is admissible (due to Assumption 1 ii.), in such
+framework, minimizing J is equivalent to minimizing
+                                         Z ∞
+                        ˜                    l1 ss0 ,i0 ,a (t), is0 ,i0 ,a (t), a(t) dt.
+                                                                                    
+                       J(s0 , i0 , a) :=
+                                                        0
+
+The function J˜ is to be regarded as an infinite horizon discounted value function with discount
+parameter q = 0. The arguments developed hereafter equally apply to q ≥ 0.
+         Heuristically speaking, the control Problem 14 is connected with the Hamilton-Jacobi equation
+
+                                                                                                     (9)
+                      
+                sup ∂s V (s, i)β(1 − a)si − ∂i V (s, i) (β(1 − a)s − γ) i − l1 (s, i, a)1s≥φ(i) = 0,
+                a∈[0,a]
+
+i.e., provided that l1 is lower-semicontinuous (l.s.c.) and bounded from below, Y 3 (s, i) 7→
+V (s, i) := inf a∈Ad J(s, i, a) is the smallest l.s.c. viscosity super-solution of (9) (with various mean-
+ings). For semicontinuity results and connections with the Hamilton-Jacobi equation, the reader is
+referred to [21], [16] (see also [10]). For the continuity of V , we refer the reader to [6, Remark 5.7
+assertion 5]. For the connection with [16] and the inward pointing condition from [38], we provide
+some elements in the Appendix 5.1.
+
+3.3         A verification argument
+We now consider the "greedy" closed-loop feedback control
+                                       "              #
+                                              γ +
+                                                
+                            ∗
+                           a (s, i) :=   1−        ∧ a 1∂Y + (s, i),                                                   (10)
+                                             βs
+
+where, for rigour, we set ∂Y + to be the "active" boundary of the viable set Y i.e.
+                                                
+                               γ      γ
+                    ∂Y =+
+                                 ,               ∗
+                                             × {i } ∪ {(ψ(i), i) : 0 < i ≤ i∗ } .                                      (11)
+                               β β(1 − a)
+Remark 4. This control is called greedy as it takes no action until forced (about to exit the yellow
+set) and, at this time, one takes minimal action guaranteeing that Y is not exited. We recall that
+a+ = max {a, 0} stands for the positive part and a ∧ b = min {a, b} is the minimum operator.
+between two real quantities In the interior of Y and on the set G, no action (a = 0) is taken.
+When the current position is at (ψ(i), i), the trajectory is kept on this boundary ∂Y + with the only
+                                                                     γ
+control available i.e. a until the number of susceptibles reaches β(1−a) . When the constraint on i is
+                                     γ    γ                                                 γ
+saturated (only manageable for s ∈ β , β(1−a) ), the deconfinement is progressive (a = 1 − βs   ).
+                                                                         2
+Lemma 1. Under the assumption (8), the function Y ∩ R∗+                                                       ˜ 0 , i0 , a∗ )
+                                                                              3 (s0 , i0 ) 7→ W (s0 , i0 ) := J(s
+is explicitly given by
+
+1)                                                    0, if (s0 , i0 ) ∈ G,
+                                      Z s1 (s0 ,i0 )
+                                                                   
+                                     1                  ∗        γ
+2)                                               l1 u, i , 1 −         du, if (s0 , i0 ) ∈ B \ G,
+                                    γi∗ γ                      βu
+                                          β
+                                                              
+                    Z s2 (s0 ,i0 ) l1 s, θ∗ − s + γ log s, a                                  
+              1                                  β(1−a)                            γ         ∗
+3)                                                           ds + W                     , i , if (s0 , i0 ) ∈ Y \ B,
+           β(1 − a)     γ
+                                     s θ∗ − s + γ log s                       β(1 − a)
+                          β(1−a)                       β(1−a)
+
+     4
+         seen as an infinite horizon 0-discounted control problem
+
+
+                                                                8
+where
+           
+           
+           (i)      s1 (s0 , i0 ) > βγ is the unique solution to s1 − s0 − i0 + i∗ − βγ log ss10 = 0,
+                                                                             
+            (ii)     s2 (s0 , i0 ) := exp β(1−a)
+                                              γa     s 0 + i0 − γ
+                                                                β log s 0 − θ ∗    ,                                        (12)
+           
+           (iii)                  γ        γ          γ
+                     θ∗ := i∗ + β(1−a)
+           
+                                       − β(1−a) log β(1−a) .
+
+Proof. On G, there is nothing to prove.
+We first deal with the case when (s0 , i0 ) ∈ B \ G. The 0 controlled trajectory reaches ∂Y + at
+some point (s1 , i∗ ) (see Remark 2, item 3). Using the computations on the constant controlled
+trajectories (2), it follows that
+                                                       γ   s1
+                                    s1 = s0 + i0 − i∗ + log .
+                                                       β   s0
+                                                              ∗    ∗
+On the other hand, one explictly computes ss1 ,i ,a (t) = s1 − γi∗ t prior to reaching βγ (at which
+point G has been reached). This leads to the explicit computation (see also Remark 1, 2.)
+                                                                   γ
+                                                         Z s1 −∗β                                                
+                               ∗     ˜ 1 , i∗ , a∗ ) =
+                                                              γi                                       γ
+        W (s0 , i0 ) = W (s1 , i ) = J(s                               l1 s1 − γi∗ t, i∗ , 1 −                        dt.
+                                                          0                                      β (s1 − γi∗ t)
+
+The conclusion follows by using the change of variable r(t) := s1 − γi∗ t.
+Let us now consider (s0 , i0 ) ∈ Y \ B. It is clear that one uses 0 control to reach ∂Y at some  point
+                                                                                        γ
+(s2 = ψ(i2 ), i2 ) after which, one uses a until reaching B through the entry point β(1−a)  , i∗ .
+As in the previous case, using the computations on the constant controlled trajectories (2), we have
+                                                                        γ    s2
+                                          s2 + i2 = s0 + i0 +             log .
+                                                                        β    s0
+
+Using the definition of s2 = ψ(i2 )(cf. Theorem 1), it follows that
+                    γ                      γ        γ            γ          γ
+     s2 + i2 =            log s2 + i∗ +         −         log          =          log s2 + θ∗ .
+                 β(1 − a)               β(1 − a) β(1 − a)     β(1 − a)   β(1 − a)
+
+Combining the two, we get
+
+                                               β(1 − a)               γ
+                                                            s0 + i0 − log s0 − θ∗ .                         (13)
+                                                                                     
+                                   log s2 =
+                                                     γa               β
+                                                                                 
+                                                                          γ
+The a∗ -controlled trajectory stays on ∂Y + and reaches β(1−a)                , i∗ in time t. On this set both s
+and i are monotone. It follows that
+                                                                                    l1 s, ψ −1 (s), a
+                 Z t                                                       Z s2                      
+                          s2 ,i2 ,a       s2 ,i2 ,a
+                                                                    1
+           J :=      l1 s           (u), i          (u), a du =                                        ds.
+                  0                                              β(1 − a)      γ        sψ −1 (s)
+                                                                                 β(1−a)
+
+
+The definition of ψ gives a simple definition for
+                           γ                γ        γ            γ                   γ
+  ψ −1 (s) =i∗ − s +             log s +         −         log          = θ∗ − s +          log s,
+                        β(1 − a)         β(1 − a) β(1 − a)     β(1 − a)            β(1 − a)
+
+so that                                                                    
+                                                       ∗−s+    γ
+                                1            l
+                                           Z s2
+                                              1   s, θ      β(1−a) log s, a
+                          J=                                             ds.
+                             β(1 − a)    γ                    γ
+                                                s θ∗ − s + β(1−a)  log s
+                                      β(1−a)
+
+
+
+                                                              9
+The final expression for W (s0 , i0 ) follows then by observing that
+                                                                     
+                                                            γ
+                                  W (s0 , i0 ) = J + W            , i∗ .
+                                                         β(1 − a)
+
+The lemma is now proved owing to (13).
+                                                                                                      ∗
+Remark 5. The reader is invited to note that, by definition, s2 = ss0 ,i0 ,a (t0 ), for some t0 ≥ 0 such
+                   γ                                                              ∗
+that s2 (t) ∈ [ β(1−a) , s0 ] for every t ∈ [0, t0 ]. As a consequence, is0 ,i0 ,a (t) ≥ i0 for every t ∈ [0, t0 ].
+In particular, at t0 ,
+                                               γ
+                                 θ∗ − s2 +             log s2 = ψ −1 (s2 ) = i2 ≥ i0 .                      (14)
+                                           β(1 − a)
+Theorem 2. The following propositions hold true.
+
+   1.             lim               s1 (s0 , i0 ) = βγ ; moreover, for (s0 , i0 ) ∈ B \ G we have
+        B\G3(s0 ,i0 )→(s0 ,i0 )∈G
+
+                                                           (βs0 − γ) s1                               βs1
+                                      ∂s s1 (s0 , i0 ) =                ,      ∂i s1 (s0 , i0 ) =           .
+                                                           (βs1 − γ) s0                             βs1 − γ
+
+                                                       γ
+   2.             lim               s2 (s0 , i0 ) = β(1−a) ; moreover, for (s0 , i0 ) ∈ Y \ B we have
+        Y\B3(s0 ,i0 )→(s0 ,i0 )∈B
+                                                                     
+                                              β(1 − a)             γ                            β(1 − a)
+                           ∂s s2 (s0 , i0 ) =                  1−       s2 , ∂i s2 (s0 , i0 ) =          s2 .
+                                                 γa               βs0                              γa
+
+   3. Under the Assumption 1 and assuming (8) to hold true and l1 to be continuous, the function
+      W is continuous and differentiable almost everywhere on Y.5
+                                       2
+   4. Let us introduce the function R∗+ × (0, a] 3 (s, i, a) 7→ ˜l1 (s, i, a) := l1 (s,i,a)
+                                                                                     γia    and assume that
+                                                             
+                    ˜l1 s1 (s0 , i0 ), i∗ , 1 −       γ
+                   
+                                                βs1 (s0 ,i0 )          ≤ min ˜l1 (s0 , i0 , a), if (s0 , i0 ) ∈ B \ G,
+                   
+                                                                         a∈(0,a]
+                    ˜l1 s2 , θ∗ − s2 + γ log s2 , a                     ≤ min ˜l1 (s0 , i0 , a), if (s0 , i0 ) ∈ Y \ B,   (15)
+                                            β(1−a)                         a∈(0,a]
+                   
+                   
+                                                                        where s2 = s2 (s0 , i0 ).
+                   
+
+        Then W satisfies the Hamilton-Jacobi equation (9) at all points where it is differentiable
+        (hence almost everywhere).
+
+Proof. The first two assertions are simple consequences of the definitions in (12) and those of the
+sets G and B.
+Let us sketch the proof of the third assertion concerning W . The continuity is a mere consequence of
+the limiting behaviour of s1 and s2 . We wish to point out that the boundaries where differentiability
+                                                            γ
+issues may appear ({(φ(i), i) : i ∈ [0, i∗ ]}, resp. {(ϕ β(1−a (i), i) : i ∈ [0, i∗ ]}), are Lebesgue-null
+sets in R2 . This type of consideration is also valid for ∂Y (which is 1-dimensional) on which
+                                                 γ
+differentiability may only fail at βγ , resp. β(1−a) . From now on, we leave aside these sets and prove
+                                                                                               ◦
+   5
+    Since the equation (9) usually concerns an equality condition on the interior Y and an inequality on the boundary
+∂Y, the "almost everywhere" here is intended with respect to the Lebesgue measure on R2 for the interior, respectively
+a suitable 1-dimensional measure on the regular curve describing ∂Y.
+
+
+
+                                                                   10
+                   ◦                                                       γ                            
+assertion 4. On G, there is nothing to prove (as W is null). On B\ {(ϕ β(1−a) (i), i) : i ∈ (0, i∗ ]} ∪ G ,
+one easily computes
+                                                                                    
+                           1           ∗       γ   (βs0 − γ) s1 ˜           ∗      γ     βs0 − γ
+       ∂s W (s0 , i0 ) =    ∗
+                              l1 s1 , i , 1 −                   = l1 s1 , i , 1 −                  ,
+                          γi                  βs1 (βs1 − γ) s0                    βs1      βs0
+                                                                               
+                           1           ∗       γ     βs1      ˜        ∗       γ
+       ∂i W (s0 , i0 ) =      l1 s1 , i , 1 −               = l1 s1 , i , 1 −       .
+                          γi∗                 βs1 βs1 − γ                     βs1
+
+On Y \ B, one easily computes
+                                                                
+                                       ∗−s +      γ
+                        1 l1   s 2 , θ    2    β(1−a) log s 2 , a  
+                                                                          γ
+                                                                             
+   ∂s W (s0 , i0 ) =                            γ                   1−
+                       γa         θ∗ − s2 + β(1−a)  log s2               βs0
+                                                                
+                                                γ                  βs0 − γ
+                    = ˜l1 s2 , θ∗ − s2 +              log s2 , a           ,
+                                            β(1 − a)                 βs0
+                                                                
+                                       ∗−s +      γ
+                        1 l1   s 2 , θ    2    β(1−a) log s 2 , a      
+                                                                                         γ
+                                                                                                         
+                                                                     ˜        ∗
+    ∂i W (s0 , i0 ) =                           γ                  = l1 s2 , θ − s2 +          log s2 , a .
+                       γa         θ∗ − s2 + β(1−a)  log s2                            β(1 − a)
+
+One deduces the following.
+                   γ                             
+  1. On B \ {(ϕ β(1−a) (i), i) : i ∈ (0, i∗ ]} ∪ G ,
+
+          ∂s W (s0 , i0 )β(1 − a)s0 i0 − ∂i W (s0 , i0 ) (β(1 − a)s0 − γ) i0 − l1 (s0 , i0 , a) =
+                                                                                                  
+                  ˜        ∗       γ                           ˜     ∗       γ          ˜
+         =i0 a −l1 s1 , i , 1 −          (βs0 − γ) + βs0 l1 s1 , i , 1 −           − γ l1 (s0 , i0 , a)
+                                  βs1                                      βs1
+                                                                                                       
+                 ˜         ∗       γ                           ˜    ∗       γ           ˜          ∗      γ
+           + i0 l1 s1 , i , 1 −          (βs0 − γ) − βs0 l1 s1 , i , 1 −           + γ l1 s1 , i , 1 −
+                                  βs1                                      βs1                           βs1
+                                                         
+                                   γ
+         =γi0 a ˜l1 s1 , i∗ , 1 −        − ˜l1 (s0 , i0 , a) .
+                                  βs1
+
+      The conclusion follows using the assumption on ˜l1 (the coefficient of a is non-positive such
+      that the max is attained for a = 0 and this maximum is 0).
+
+   2. In the remaining case when (s  0 , i0 ) ∈ Y \B, the conclusion is obtained
+                                                                                  in exactly the same way;   
+                                                    γ                                          γ
+      the only difference is that ˜l1 s1 , i , 1 − βs1 is replaced with ˜l1 s2 , θ − s2 + β(1−a)
+                                             ∗                                     ∗               log s2 , a
+      and one concludes using the second inequality in (15).
+
+
+
+Remark 6.     1. As a consequence, a∗ is (an) optimal control for Problem 1 provided the unique-
+   ness result in [16, Theorem 11] holds true; please refer to the remarks in the Appendix 5.1.1.
+                                                       γ
+                                                  ϕ β(1−a) (i), i : 0 < i ≤ i∗ , W is a regular
+                                                                
+   Roughly speaking, with the exception of
+   (sub)solution of (9) and, thus, it does not exceed the supersolution V . On the other hand,
+   since a∗ is admissible, the reverse inequality is valid, hence providing the optimality of a∗ .
+
+   2. The condition (15) is not only sufficient but actually necessary (among the costs l1 satisfying
+      Assumption 1 and (8)) in order for a∗ to be optimal (or, equivalently, for W to be a solution
+      of (9)).
+
+                                                       11
+Example 2.               1. The typical example one has in mind is a multiplicative one
+
+                                                          l1 (s, i, a) = λ(s, i)a,
+
+          for some non-negative, uniformly continuous function λ : R2 −→ R+ such that
+              • for every i ∈ R∗+ , the map R∗+ 3 s 7→ λ(s, i) is non-decreasing (the higher the number of
+                susceptibles, the higher the price);
+              • for every s ∈ R∗+ , the map R∗+ 3 i 7→ λ(s,i)
+                                                         i    is non-increasing.
+
+          In this case, ˜l1 (s, i, a) = λ(s,i)
+                                         γi . Recalling that s1 ≤ s0 (s1 is on a trajectory starting at (s0 , i0 )
+          and the s component of such trajectories       are non-increasing   in time) and that i0 ≤ i∗ for all
+                                                                   ∗)        ∗)
+          i0 ∈ Y, it follows that ˜l1 s1 , i∗ , 1 − βsγ 1 = γi1 ∗ ≤ γi0 ∗ ≤ λ(sγi0 0,i0 ) , thus implying the first
+                                                            λ(s ,i    λ(s ,i
+
+          condition in (15). The second condition in (15) is similar and relies on (14).
+          We emphasize, for completeness sake, that the Assumption 1 and the condition (8) hold true
+          for such functions.
+    2. The case l1 (s, i, a) := λa studied in [6] is a special case of the previous one. In fact, one
+       can consider general contributions of type λiη a, for every 0 ≤ η ≤ 1 (eventually by slightly
+       altering them around 0 if Lipschitz continuity is desired).
+
+Remark 7. The non-increasing character of functions i 7→ λ(i)
+                                                           i  amounts to a sub-homogeneity
+requirement λ(αi) ≤ αλ(i), ∀α ≥ 1. Concave functions λ for which λ(0) = 0 satisfy the above-
+mentioned condition at i ≥ 0.
+
+
+4        A short journey into discontinuous costs
+Although the previous arguments give enough novelty with respect to our previous paper [6] and
+with respect to the current literature, let us explain the dual programming approach allowing one
+to compute the value function in semi-continuous settings. Numerical illustrations and analysis of
+the algorithm are left for a future work.
+We wish to point out that, throughout the section, the cost l1 is assumed to be lower semi-
+continuous, bounded from below and control independent, i.e., of the form l1 (s, i). This is a
+sufficient condition in order to guarantee the equality between strict and relaxed formulations, see,
+for instance, [18, Assumption I, Page 2494] and discussions following for an idea of more general
+settings.6
+
+4.1        The linear programming (LP) approach
+As we have already mentioned before, we deal with an infinite-horizon control problem for which
+we have chosen the discount parameter q = 0. Hereafter, we consider a general discount q > 0 (the
+case q = 0 can be obtained as a limit). To every initial data (s, i) ∈ Y and every control a0 ∈ Ad,
+one associates
+        • the so-called (q-discounted) occupation probability
+                                                     Z ∞
+                        µs0 ,i0 ,a0 (ds, di, da) = q     e−qt 1ss0 ,i0 ,a0 (t)∈ds,is0 ,i0 ,a0 (t)∈di,a0 (t)∈da dt;
+                                                          0
+    6
+    The algorithm developed hereafter can be used for the relaxed problem (where an optimal measure exists). The
+assumptions are only sufficient to guarantee that these optimal measures correspond to a control policy. Of course,
+convexity in control of l1 is also sufficient.
+
+
+                                                                 12
+   • the T > 0 finite-horizon couple of occupation probability measures
+                                                     Z
+                    s0 ,i0 ,a0                     1
+                  µ1           (dt, ds, di, da) :=            1 s0 ,i0 ,a0 (t)∈ds,is0 ,i0 ,a0 (t)∈di,a0 (t)∈da dt,
+                                                   T dt∩[0,T ] s
+                      µs20 ,i0 ,a0 (ds, di) := δ(ss0 ,i0 ,a0 (T ),is0 ,i0 ,a0 (T )) (ds, di).
+
+
+The viability condition         of Y and the dynamic formula for test functions f ∈ C 1 R2 applied to the
+                                                                                             
+
+flow ss0 ,i0 ,a0 , is0 ,i0 ,a0 yields the following definition of the measure set of constraints
+                              
+
+
+     Θ (s0 , i0 ) :=
+       µ ∈ P (Y × [0, a]) : ∀f ∈ C 1 R2
+                                                                                             
+                                                                                                                     (16)
+     
+                                                                                              
+                                                                                               
+                               (                                            )
+                                 (−∂s f (s, i)) β(1 − a)si                                       ,
+                      Z
+     qf (s0 , i0 ) +
+                                                                             µ(ds, di, da) = 0
+                                 + ∂i f (s, i) (β(1 − a)s − γ) i − qf (s, i)
+                                                                                               
+                       Y×[0,a]
+
+respectively
+
+            Θt0 ,T (s0 , i0 ) :=
+              µ := (µ1 , µ2 ) ∈ P ([t0 , T ] × Y × [0, a]) × P (Y) : ∀f ∈ C 1 R3
+                                                                                                       
+            
+                                                                                                        
+                                                                                                         
+            
+             Z                                                                                          
+                                                                                                         
+                                                                                                        
+                   f (T, s, i)µ2 (ds, di) − f (t0 , s0 , i0 ) =                                                      (17)
+            
+                                                                                                        
+                                                                                                         
+                 Y
+                                        (                                           )                      .
+                                                                                                        
+                                         ∂  f (t, s, i) − ∂   f (t, s, i)β(1 − a)si
+                    Z                                                                                   
+                                         t                 s                                            
+            =T                                                                       µ1 (dt, ds, di, da)
+            
+                                                                                                        
+                                                                                                         
+            
+                       [t0 ,T ]×Y×[0,a]   + ∂i f (t, s, i) (β(1 − a)s − γ) i                             
+
+As usual, given a (subset of a) metric space S, P(S) stands for the family of probability measures
+on S endowed with the Borel σ-field. The reader is referred to [18] (see also [20] for the finite
+horizon setting or [13]) for the structure of such sets. In particular (e.g. [18, Eq. (4.20)], see also
+[20, Proposition 1]), Θ (s0 , i0 ) is the closure of the convex hull of occupation measures as described
+before and, for every continuous cost l1 ,
+                                              Z
+                                                    e−qt l1 ss0 ,i0 ,a (t), is0 ,i0 ,a (t) dt
+                                                                                          
+                      qV (s0 , i0 ) = q inf
+                                        a∈Ad R+
+                                                                 Z
+                                    = Λ(s0 , i0 ) :=     inf         l1 (s, i)µ(ds, di, [0, a]).
+                                                             µ∈Θ(s0 ,i0 )
+                                                                            Y
+
+A similar property holds true for Θt0 ,T (s0 , i0 ) but, for our readers’ sake, we will skip unnecessary
+details. The dual value (obtained by standard duality algorithms e.g. in [13] or Hamilton-Jacobi
+methods e.g. in [18, Lemma 3.2], [20, Appendix]) can be written in numerous ways:
+
+   1. (cf. [18, Eq (3.1)])
+
+                   Λ(s0 , i0 ) = Λ∗ (s0 , i0 )
+                                                          1
+                                                                                           
+                                  η ∈ R : ∃f ∈ C s.t. ∀ (s, i, a) ∈ Y × [0, a]
+                                                                                           
+                                                                                            
+                           = sup η ≤ − ∂s f (s, i)β(1 − a)si + ∂i f (s, i) (β(1 − a)s − γ) i .
+                                                                                           
+                                            + q (f (s0 , i0 ) − f (s, i)) + l1 (s, y)
+                                                                                           
+
+      Let us point out that the first equality (see the cited reference) gives the no-gap property.
+
+                                                                 13
+   2. (cf. [35, Proposition 12] rewriting the original [7, Lemmas 2.6, 2.7])
+
+                                           Λ∗ (s0 , i0 ) = sup {qf (s0 , i0 ) : f ∈ Φ} ,                              (18)
+
+         where
+                    (                                                                                         )
+                     f ∈ C 1 : ∀ (s, i, a) ∈ Y × [0, a]
+             Φ :=                                                                                                 .   (19)
+                      − ∂s f (s, i)β(1 − a)si + ∂i f (s, i) (β(1 − a)s − γ) i − qf (s, i) + l1 (s, i) ≤ 0
+
+Using the dynamic programming principle for lower semi-continuous functions (given as in [20,
+Theorem 14 2.] 7 ), one gets
+
+Proposition 1.       1. If l1 is lower semi-continuous, then the following dynamic programming prin-
+    ciple holds true:
+                                                   Z                                                       
+                                                                          −qt
+                                                  
+                                                  
+                                                  T q                  e     l1 (s, i) µ 1 (dt, ds, di, da)
+                                                                                                            
+                                                                                                            
+                                                       [0,T ]×R2 ×[0,a]
+          ∗
+        Λ (s0 , i0 ) =           inf                         Z                                                . (20)
+                       µ=(µ1 ,µ2 )∈Θ0,T (s0 ,i0 ) 
+                                                   + e−qT        ∗                                         
+                                                               Λ (s, i)µ2 (ds, di)                         
+                                                                                                            
+                                                                  Y
+
+
+   2. If l1 is continuous, the following (modified) Dual DPP holds true
+                                                      Z                                                 
+                                                                           −qt
+                                                     T q                 e l1 (s, i) µ1 (dt, ds, di, da)
+                                                     
+                                                                                                        
+                                                                                                        
+                                                                   2
+                                                                                                         
+             ∗                                            [0,T ]×R ×[0,a]
+           Λ (s0 , i0 ) =           inf                              Z                                     .          (21)
+                          µ=(µ1 ,µ2 )∈Θ0,T (s0 ,i0 )     −qT
+                                                     +e       q sup     f (s, i)µ2 (ds, di)
+                                                                                                        
+                                                                                                         
+                                                                                                        
+                                                                                                         
+                                                                  f ∈Φ Y
+
+    The proof is forwardly inspired by the arguments in [20, Theorem 14 2.] and the character-
+izations of Θ and Θt0 ,T . We provide some elements of proof regarding particularly the second
+formulation in the appendix 5.2.
+    Furthermore, the compactness of the set Θ0,T (s0 , i0 ) with respect to the weak* convergence of
+probability measures, and the weak* lower semi-continuity of the functionals
+                         Z                                                           Z
+                                            −qt                                  −qT
+       µ 7→ θ(µ) := T q                    e l1 (s, i) µ1 (dt, ds, di, da) + e           Λ∗ (s, i)µ2 (ds, di),
+                          [0,T ]×R2 ×[0,a]                                             Y
+                         Z                                                                 Z
+       µ 7→ θ̃(µ) := T q                   e−qt l1 (s, i) µ1 (dt, ds, di, da) + e−qT q sup     f (s, i)µ2 (ds, di),
+                               [0,T ]×R2 ×[0,a]                                            f ∈Φ Y
+
+show that the infimum in problems (20) and (21) is actually a minimum.
+
+4.2       The dual LP algorithm
+We are now equipped with all the elements allowing one to state the problem as a two-stage linear
+problem (in the spirit of [33] or [37]).
+
+Problem 2. Solve the two stage problem
+   7
+       The original reference concerns the finite time horizon, but it is easily adaptable to this discounted setting.
+
+
+
+
+                                                             14
+                               →                                                   ←
+                               F(s0 , i0 ) := min e−qt hT ql1 (s, i), µ1 i + he−qT B(s, i), µ2 i
+                                                 
+
+     where the minimum is taken over all measures µ = (µ1 , µ2 ) with supp(µ) ⊆ [t0 , T ] × Y ×
+     [0, a] × Y and such that
+                hf (T, s, i), µ2 i − f (0, s0 , i0 )
+               = T h∂t f (t, s, i) − ∂s f (t, s, i)β(1 − a)si + ∂i f (t, s, i) (β(1 − a)s − γ) i, µ1 i ,
+
+     for every f ∈ C 1 R3 ;
+                            
+
+
+                           (                               "                                                                   #)
+     ←                                                         − ∂s f (s0 , i0 )β(1 − a)s0 i0 + ∂i f (s0 , i0 ) β(1 − a)s0 − γ i0
+      B(s, i) := sup       qf (s, i) +          inf                                                                                  .
+                  f ∈C 1                     (s0 ,i0 )∈Y       − qf (s0 , i0 ) + l1 (s0 , i0 )
+
+Remark 8.    1. The spaces over which one integrates and the integration parameters have been
+   dropped to simplify the presentation. Furthermore, h·, ·i denotes the usual duality pairing
+   between measurable functions and measures.
+                                                           ←
+  2. Provided a regular candidate b̂ for B, the forward formulation can be transformed into a dual
+     one
+          ←0
+           B (s0 , i0 ) :=
+                  η ∈ R : ∃ f ∈ C 1 R2 s.t. ∀(t, s0 , i0 , s, i, a) ∈ [0, T ] × Y 2 × [0, a]
+                                                                                                            
+               
+                                                                                                             
+                         ( −qt                                                                               )
+           sup            T e   [−∂  s f (s, i)β(1 − a)si + ∂ i f (s, i) (β(1  −  a)s −   γ)  i + ql1 (s, i)]   .
+               η ≤
+               
+                                 −qt                         −qT        0 0      −qT      0 0
+                                                                                                              
+                           − qT e f (s, i) + f (s0 , i0 ) − e
+                                                                                                              
+                                                                   f (s , i ) + e     b̂(s , i )
+     or, again,
+                                       ←00
+                                       B (s0 , i0 ) :=               sup                 qf (s, i), δ(s0 ,i0 ) .
+                                                               f ∈ Φ, qf ≥ b̂
+    As it is usually the case, one projects the problem onto some convenient space that is dense in
+C 1 and for which computations are simplified. Since we are looking for optimal measures that are
+traditionally best fitted by their moments, we will work with polynomial functions Rk [t, s, i], where
+k ∈ N∗ large enough. For the density of such functions, the reader uses Nachbin’s theorem applied
+to monomials (see [30, Chapter 1]). As such, we are morally dealing with continuous functions, for
+which one will use the second form of the dynamic programming principle in Proposition 1 leading
+to
+Problem 3. Solve the two stage problem
+
+                                   →                                                  ←
+                                   F(s0 , i0 ) := min T qhe−qt l1 (s, i), µ1 i + e−qT B 1 (µ2 )
+                                                     
+
+     where the minimum is taken over all measures µ = (µ1 , µ2 ) with supp(µ) ⊆ [t0 , T ] × Y ×
+     [0, a] × Y and such that
+                hf (T, s, i), µ2 i − f (0, s0 , i0 )
+               = T h∂t f (t, s, i) − ∂s f (t, s, i)β(1 − a)si + ∂i f (t, s, i) (β(1 − a)s − γ) i, µ1 i ,
+
+     for every f ∈ C 1 R3 ;
+                            
+
+
+                                                                        15
+                                             ←
+                                             B 1 (µ2 ) := sup hqf (s, i), µ2 i .
+                                                          f ∈Φ
+
+                                                                      ←                        ←00
+Remark 9. The reader is invited to note the formulation B 1 and the relation with B in Remark
+8, especially for multi-stage problems when the backward step can be repeated in order to provide a
+lower estimate for the value function at (s0 , i0 ).
+       Let us now describe an approximation scheme for Problem 3.
+   1. One begins with recalling the class of polynomials with multi-index of length at most r ≥ 1,
+      Rr [s, i, a] ⊂ R [s, i, a]. We recall that the monomial sα1 iα2 aα3 has the multi-index α :=
+      (α1 , α2 , α3 ) with length kαk = α1 + α2 + α3 .
+   2. The cost function l1 has been assumed to be bounded from below and, without loss of gen-
+      erality, one can assume inf (s,i)∈Y l1 (s, i) > 0 . As such, both the value functions and the
+      polynomials candidate to approximate this value function should be non-negative.
+   3. The reader is reminded that the boundary of the set of constraints Y is characterized by a
+                                   γ                          γ                      γ          γ        γ
+      region (s, i∗ ) with s ≤ β(1−a)   and a region −s+ β(1−a)    log s = i−i∗ + β(1−a) log β(1−a) − β(1−a) ,
+                    γ                                                                         γ
+      with s ≥ β(1−a)   . For the second region, by adding the interior, one gets −s+ β(1−a)      log s ≥ i−
+              γ          γ        γ
+      i∗ + β(1−a) log β(1−a) − β(1−a) . It is perfectly possible to approximate the log with polynomials8 ,
+      in order to have semi-algebraic spaces. However, to simplify arguments, we focus on
+                                                            γ
+                                                                  , 0 ≤ i ≤ i∗ .
+                                     
+                                       (s, i) : 0 ≤ s ≤
+                                                         β(1 − a)
+         The control component is already in an interval [0, a]. The time component needs no approx-
+         imation (functions to integrate are always exponential in t and it can be easily shown that
+         the µ1 measures have Leb(dt) marginals).
+   4. Following [34, Theorem 1.3], we consider the (truncated) quadratic modules
+                                                                                                         
+                                                γ
+             p2 (s, i, a) + p2 (s, i, a)s            − s + p2i (s, i, a)(i∗ − i)i + p2a (s, i, a)(a − a)a :
+                                                                                                           
+                0             s
+      Qr :=                                  β(1 − a)                                                         .
+             
+             p ∈ R [s, i, a], p , p , p ∈ R [s, i, a]                                                      
+                                                                                                            
+                0      r            s i a        r−1
+
+         Note that we imposed that the overall index in Qr does not exceed 2r. Approximating l1
+         comes to picking some l1r ∈ Qr that is assumed to be fixed throughout the developments.
+         Hereafter, we will just write l1 but we actually use the modifications l1r .
+   5. By abuse of notation, we will still write Qr (instead of Q̃r ) for polynomials p(s, i) (that do not
+      depend on a). The reason is that one easily obtains Q̃r = {p(s, i, 0) : p ∈ Qr } thus getting a
+      simple identification.
+   6. For the backward step: given an estimate µ̂r,N −1 obtained from the previous step, solve the
+      problem
+               ←r,N
+               B1 :=
+                  n
+                                    −1
+               max hqp(s, i), µ̂r,N
+                                2      i : p ∈ Qr ,                                                        (22)
+                                                                                                     o
+                      ∂s p(s, i)β(1 − a)si − ∂i p(s, i) (β(1 − a)s − γ) i + qp(s, i) − l1 (s, i) ∈ Qr .
+   8
+       Please note that i∗ < 1 implies β(1−a)
+                                          γ                           γ
+                                              ≤ ψ ≤ lim ψ(i) < 1 + β(1−a) . As a consequence, ψ(i) = 1 + l, with
+                                                      i→0+
+l ∈ (−1, 1).
+
+
+                                                         16
+ 7. Add the optimal p̂r,N to the set of vertices Πr,N −1 i.e.
+
+                                            Πr,N := Πr,N −1 ∪ {p̂r,N }.
+
+    We emphasize that p̂r,N consists of a finite number of coefficients describing elements of
+    Qr ⊂ R2r [s, i, a]. Since Πr,N ⊂ Φ (the identification of elements Πr,N with either vectors of
+    coefficients or polynomials being made with a slight abuse of notation, but cannonically), it
+    follows that
+                                                                          ←
+                                 b̂r,N (µ2 ) := sup hqp(s, i), µ2 i ≤ B 1 (µ2 ) .                      (23)
+                                                    p∈Πr,N
+
+
+ 8. Since p ∈ Qr , computing hqp(s, i), µ2 i amounts to compute the moments mα for a multi-
+    index α whose length does not exceed 2r. As such, "remembering" a measure µ amounts to
+    "remember" the moments
+                                           Z
+                   m1 (α1 , α2 , α3 ) := q                e−qt sα1 iα2 aα3 µ1 (dt, ds, dy, da),
+                                            R ×Y×[0,a]
+                                         Z +
+                      m2 (α1 , α2 ) :=       sα1 iα2 µ2 (ds, da),
+                                                Y
+
+    for 0 ≤ α1 + α2 ≤ 2r and α3 ∈ {0, 1}. In general, if l1 depends on the control a, one adapts
+    to kαk ≤ 2r for µ1 moments.
+
+ 9. We wish to emphasize that, in our problems, t only appears in a q-exponential form. By
+    further assuming that the optimal answer a is a positional strategyR a(s, i) (but independent
+    of the time), one can replace µ1 with the marginal µ1 (ds, di, da) := R+ qe−qt µ1 (dt, ds, di, da)
+    in the forward problem.
+                                                                                    r,N
+10. For the forward step: given b̂r,N as in (23), find the arguments (µ̂1 , µ̂r,N      2 ) realizing the
+    minimum (with respect to some generated scenarios that will be explained below)
+         
+     min T hl1 (s, i), µ1 i + e−qT b̂r,N (µ2 ) : supp (µ1 , µ2 ) ⊂ Y × [0, a] × Y s.t. ∀ α1 + α2 ≤ 2r
+
+           e−qT m2 (α1 , α2 ) − sα0 1 iα0 2 =
+                                                                                                    !
+                   T      − qm1 (α1 , α2 , 0) − α1 βm1 (α1 , α2 + 1, 0) + α1 βm1 (α1 , α2 + 1, 1)
+                 =                                                                                       .
+                   q      + α2 βm1 (α1 + 1, α2 , 0) − α2 βm1 (α1 + 1, α2 , 1) − α2 γm1 (α1 , α2 , 0)
+                                                                                                       (24)
+
+    Please note that the above equality on moments is nothing else than the equality constraint
+    on measures in Θ0,T written for the function f (t, s, i) := e−qt sα1 iα2 .
+                                                         r,N                          ←r,N +1
+    The value obtained Γr,N cannot exceed Γ        := T hl1 (s, i), µr,N
+                                                                     1 i+e
+                                                                          −qT B
+                                                                                1    (the second-
+                                                      r,N
+    stage being computed as in (22) with respect to µ̂2 ). The difference between these quantities
+    is used as a stopping criterion.
+
+11. The measures µ2 can be generated by an a-priori discretization of the compact state space. To
+    limit the generation of µ2 , one may want to note that the (convex) reachable set starting from
+    (s0 , i0 ) ∈ Y with viable controls is described by the (trace over Y of) convex combinations of
+
+
+
+                                                         17
+        extremal trajectories (controlled with 0 for the "upper" branch, respectively a for the "lower
+        one") i.e.
+
+            R(s0 , i0 ) :=
+            α (s1 , i1 ) + (1 − α) (s2 , i2 ) : 0 ≤ α ≤ 1, 0 ≤ i1 , i2 ≤ i∗ , s1 ≤ ψ(i1 ), s2 ≤ ψ(i2 ),
+                                                                                                       
+
+                                     γ       s1                          γ           s2                   .
+            s1 + i1 = s0 + i0 + log , s2 + i2 = s0 + i0 +                       log
+                                                                      β(1 − a)
+                                                                                                        
+                                     β       s0                                      s0
+
+        For the two equalities in R, the reader is invited to recall the computations in (2) (with
+        minimal control 0 and maximal control a). Further precision can be added by computing,
+        for T > 0, s1 T := ss0 ,i0 ,0 (T ), s2 T := ss0 ,i0 ,a (T ) and defining RT (s0 , i0 ) by further imposing
+        si T ≤ si , i ∈ {1, 2}. This will provide the positions reachable prior to time T > 0.
+
+    12. Reduction of reachable sets starting from the support of µ2 is possible when one uses several
+        stages. Randomization of T such that one fully takes advantage of RT is also possible (see
+        [21]).
+
+    13. Finally, for each scenario of µ2 generated, the moments m2 are computed and they provide
+        the family m1 (satisfying the relations in (24)). Compatibility with the measure structure
+        is then checked for the functionals m2 (cf. [34, Eq. (16)] and the comments following this
+        condition).
+
+Finally, let us mention that target problems can be obtained using the same procedure as in [21,
+Section 5].
+
+
+5      Appendix
+5.1     A1
+As mentioned before, the regularity of the value function V (with an impact on the definition of a
+solution to (9)) makes the object of several papers, usually under some inward pointing qualification
+assumption (cf. [38]) or some outward qualification ones (cf. [16]). None of these results apply
+directly to our problem: either because the analysis partially covers the space (as it is the case
+when using [38]), or because the condition per se is not satisfied everywhere on the boundary (see
+the analysis in connection with [16]) but it can be generalized.
+    To understand the importance of these considerations, the reader is reminded the following.
+We have hinted that the value function is a "solution" to (9). Under reasonable controllability (or
+qualification) conditions, the solution satisfies (in a viscosity sense), the solution equality in (9) on
+the interior of the set of constraints Y and a super-solution (≤ inequality) on the boundary; see
+[38, Definition 2.1]. Roughly said, the existing results are for either inward pointing conditions (cf.
+[38]) or outward pointing conditions (cf. [16]). Our system is of "hybrid" nature boundary. It turns
+out that, up till G, the boundary ∂Y will comply with [16] and on G (and actually on the larger
+boundary ∂Y ∩ ∂B), the inward pointing condition is satisfied. It appears in no way surprising that
+theoretical results can be obtained, but we choose to only hint the connections.
+
+5.1.1     Connection with [16]
+Let us point out some connections with [16] from which we borrow the notations (D, M , etc.) in
+order to facilitate referral.
+
+
+                                                        18
+Proposition 2. The locally compact set D := Y \ (s0 , i∗ ) : βγ ≤ s0 ≤ β(1−a)         γ
+                                                              
+                                                                                             is locally-in-time
+backward invariant for [0, a]-valued policies, i.e., for every (s0 , i0 ) ∈ D, and every a ∈ L0 (R; [0, a]),
+there exists t0 > 0 such that ss0 ,i0 ,a (−t), is0 ,i0 ,a (−t) ∈ D for every t ∈ [0, t0 ]. Moreover, D = Y.
+
+Proof. We only need to show something for initial conditions on the active boundary of Y, defined
+in (11), that is if (s0 , i0 ) ∈ ∂Y + ∩ D; otherwise, using the continuous dependency of the initial
+                                                                                      γ
+data, and the explicit form of Y, the conclusion is obvious. In this setting, s0 ≥ β(1−a) . Then, this
+inequality is preserved for t 7→ s  s 0 ,i 0 ,a (−t). As a consequence,
+
+                        d is0 ,i0 ,a (−t) = − β(1 − a)ss0 ,i0 ,a (−t) − γ is0 ,i0 ,a (−t) ≤ 0
+                                                                       
+
+
+which implies is0 ,i0 ,a (−t) ≤ i0 < i∗ and, thus, it follows that ss0 ,i0 ,a (−t), is0 ,i0 ,a (−t) ∈ Y. In-
+                                                                                                               
+
+deed, setting (s1 , i1 ) = (ss0 ,i0 ,a (−t), is0 ,i0 ,a (−t)), by taking            the control ã(r) := a(−t + r), r ≥ 0
+, (ss1 ,i1 ,ã (r), is1 ,i1 ,ã (r)) = ss0 ,i0 ,a (r − t), is0 ,i0 ,ã (r − t) satisfies i ≤ i∗ for every r ∈ [0, t],. At
+                                                                              
+
+time t, the trajectory reaches (s0 , i0 ) after which a control can be found to stay in Y. Thus, for
+(s1 , i1 ), we have found a control keeping i ≤ i∗ (which is the definition of Y). On the other hand,
+is0 ,i0 ,a (−t) < i∗ , thus, ss0 ,i0 ,a (−t), is0 ,i0 ,a (−t) ∈ D.
+
+      Let us set M := Y \ D = (s0 , i∗ ) : βγ ≤ s0 ≤ β(1−a)                       γ                      γ
+                                                                                      . If βγ < s0 < β(1−a) , then ∂Y + is
+                                            
+
+regular and the outward normals are of type (0, 1). Then h(−βs0 i∗ , (βs0 − γ) i∗ ) , (0, 1)i > 0 and it
+follows that the 0-controlled trajectory does not belong to the paratingent set PYM (s0 , i∗ ) (for the
+definition and the relevance of these computations,                              refer to [16, Page 822 and the Remark
+                                                                            please
+                                                                         γ
+(2) on page 823]). This is easily extended at β(1−a) , i . However, the same argument no longer
+                                                                               ∗
+                     
+works at βγ , i∗ . It follows that one cannot directly apply [16, Theorem 11] to infer the connection
+                                                                                                     
+with (9). The attentive reader will have noted that the litigious point βγ , i∗ belongs to G which
+is
+h thei invariance domain with respect to our control system (1) and that the remaining of ∂Y (i.e.
+ 0, βγ × {i∗ } satisfies the inward pointing qualification condition with every control but 0).
+
+Remark 10.     1. The generalization of [16, Theorem 11] to our present setting can be obtained,
+   under Assumption 1 and the hypotheses (8) and (15), as follows. First, note that our function
+   W in (1) is differentiable almost everywhere and continuous. At the points of differentiability,
+   the subdifferential set is a singleton and, using the computation of the derivatives of W done
+   in the proof of Theorem 2, it is easily seen that the conditions [16, Eq. (26), (27)] are satisfied.
+   This yields [16, Step 1 in Theorem 11], first at every point where W is differentiable, then,
+   using the continuity of W , also on the curve where W may not be differentiable. The inequality
+   W ≤ V can be proven following the arguments in [16, Proposition 9] due to the previous
+   considerations.
+
+   2. [16, Proposition 9] uses a boundary condition at the final time. In our case, this condition
+      is replaced with V = 0, on G. Furthermore, in order to guarantee that accumulations do not
+      happen outside G, one requires
+
+                                                l1 (s, 0, 0) > 0, ∀(s, 0) ∈
+                                                                          / G.                                      (25)
+
+       The need for boundary conditions in order to guarantee comparison results is also illustrated
+       in [10].
+
+
+
+
+                                                           19
+   The assumptions in [16, Proposition 9] can be directly enforced by slightly modifying the yellow
+(admissible) set in such a way that G is the only one affected. The reader will note that the value
+function is kept the same if one further assumes
+
+                            l1 (s, i, a) = 0, for all a ∈ [0, a] whenever (s, i) ∈ G.                  (26)
+
+We consider
+                              (s, i) ∈ G : s ≥ ψ̃(i) , and Ỹ = (Y \ G) ∪ G̃,
+                                   
+                            G̃ =
+                                     n γ ∗            γ ∗               o
+                                          ,i ,a          ,i ,a
+where ψ̃(i), i describes the curve                             (t) : t ≥ 0 (please see Figure 3). It is easy
+             
+                                       sβ       (t), i β
+                                                 γ                       γ
+to see that ψ̃(i) = x is the solution of −x + β(1−a) log x = i − i∗ + β(1−a) log βγ − βγ , but, this time
+asking that x ≤ βγ . By computing derivatives in the above definition, one gets
+                                            
+                        0           γ                                  1
+                   ψ̃ (i) −1 +                 = 1 ⇐⇒ ψ̃ 0 (i) =          γ       .
+                               β(1 − a)ψ̃(i)                     −1 + β(1−a)ψ̃(i)
+
+Please note that this derivative is positive. It is easy to see that
+                                                       
+   1. The 0-controlled trajectory starting from βγ , i∗ leaves ∂Y (thus completing the paratingent
+                          
+      assumption at βγ , i∗ ∈ M ). The reader is referred to the red line in Figure 3.
+
+   2. The set D̃ := Ỹ \ M is locally-in-time backward invariant.
+                                                                      To see this, we only need to
+      show that every (backward) trajectory starting at ψ̃(i), i with i < i∗ satisfies sψ̃(i),i,a (−t) −
+                       
+      ψ̃ iψ̃(i),i,a (−t) ≥ 0. To this purpose, we drop the superscript and compute
+           h                  i
+          d s(−t) − ψ̃ (i(−t))
+                                                   1
+        =β(1 − a(−t))s(−t)i(−t) +                           (β(1 − a(−t))s(−t) − γ) i(−t)
+                                      −1 + β(1−a)γψ̃(i(−t))
+                                                          
+               γi(−t)            1 − a(−t) s(−t)                     γi(−t)          s(−t) − ψ̃ (i(−t))
+        =            γ                                 −1 ≥                γ                            .
+          −1 + β(1−a)ψ̃(i(−t))     1 − a ψ̃ (i(−t))             −1 + β(1−a)ψ̃(i(−t))    ψ̃ (i(−t))
+
+      It follows that s(−t) − ψ̃ (i(−t)) is non-decreasing, hence it stays non-negative.
+
+    We do not actually deal with the equation (9) as written, but merely check for this equation
+in order to avoid the presence of the discount factor q. We focus on the analysis on Ỹ with the
+aforementioned assumptions and properties. To be more rigorous, one should define
+                    
+                    J˜q (s0 , i0 , a) := ∞ e−qt l1 ss0 ,i0 ,a (t), is0 ,i0 ,a (t), a(t) dt;
+                                         R                                              
+                                           0
+                                                                                             (27)
+                    Vq (s0 , i0 ) := inf J˜q (s0 , i0 , a) .
+                                         a∈Ad
+
+The associated equation is
+
+  qVq (s, i) + sup {βsi(1 − a)∂s Vq (s, i) − (β(1 − a)s − γ) i∂i Vq (s, i) − l1 (s, i, a)} = 0, on G̃. (28)
+              a∈[0,a]
+
+
+
+
+                                                       20
+                     Figure 3: Modified Ỹ and the outer pointing trajectory at βγ .
+
+
+To simplify notations, we set, for (s, i, ps , pi ) ∈ R4 ,
+   
+   
+   
+    H(s, i, ps , pi ) :=      sup {−βsi(1 − a)ps + (β(1 − a)s − γ) ipi − l1 (s, i, a)} ;
+                             a∈[0,a]
+                                   
+    Hout (s, i, ps , pi ) := sup − βsi(1 − a)ps + (β(1 − a)s − γ) ipi − l1 (s, i, a) :
+   
+                                                                                 / PG̃M , ∀ (s, i) ∈ M.
+                                    a ∈ [0, a] , (−βsi(1 − a), (βs(1 − a) − γ)i) ∈
+   
+   
+                                                                                                      (29)
+The reader is invited to note that the paratingent condition defining Hout and the continuity of the
+vector field defining the dynamics lead to
+
+          Hout (s, i, ps , pi ) :=     h
+                                        sup     i
+                                                    {−βsi(1 − a)ps + (β(1 − a)s − γ) ipi − l1 (s, i, a)} ,
+                                             γ
+                                     a∈ 0,1− βs
+
+                     γ
+for all βγ < s0 < β(1−a) , i = i∗ . At the corners, all but one control a take the trajectory out of
+Ỹ such that Hout = Hin . With these in mind, the precise understanding of the solution (see [15,
+Theorem 6, c)]) is the following.
+Definition 2. Wq is a (viscosity) solution to (28) if
+  1. Wq is a lower semi-continuous bounded function;
+
+                                                             21
+   2. for every (s, i) ∈ D̃, and for all n ∈ ∂− Wq (s, i), qWq (s, i) + H(s, i, −n) = 0;
+
+   3. for every (s, i) = (s, i∗ ) ∈ M , and every n ∈ ∂− Wq (s, i), one has qWq (s, i) + H(s, i, −n) ≥ 0
+      and qWq (s, i) + Hout (s, i, −n) ≤ 0.
+
+Remark 11.     1. We do not insist here neither on the definitions of subdifferentials nor on their
+   link with negative polar cones to the epigraph or to proximal or Mordukovich cones. Instead,
+   the interested reader can take a further look at [15, Section 2].
+
+   2. The condition on Hout is only needed (see [15, Lemma 15]) to guarantee continuity at points
+      in M . Our candidates are shown to satisfy such continuity properties such that Hout can
+      be left aside (please see [15, Proposition 16] providing the comparison result without the
+      supersolution-like condition on Hout ).
+
+   3. Subdiferentials at (s, i) are either approximated by (convex combinations) of gradients at
+                                                                                     ∗
+      points of differentiability or
+      n      γ                         o computed on the lines {(φ(i), i) : i ∈ [0, i ]}, respectively on
+       (ϕ β(1−a) (i), i) : i ∈ [0, i∗ ] or, eventually, on M .
+
+   4. Along the aforementioned line (φ(i), i), the function J˜q (s0 , i0 , a∗ ) = 0 is constant such that
+      the contribution to the subdifferentials is n = (0, 0) and there is nothing to prove. On
+      the contrary,
+                  n the       definition of s1 shows    that there is no particular problem of differentia-
+                         γ                          o
+      bility on (ϕ    β(1−a)   (i), i) : i ∈ [0, i ] . The same holds true on M , where J˜q (s0 , i∗ , a∗ ) =
+                                                  ∗
+             qs0 R     qu                    
+       1 − γi∗ s0 γi∗                ∗, 1 − γ
+      γi ∗ e       γ e     l1   u,  i       βu du.
+                  β
+
+
+     Following similar arguments as for Lemma 1, it follows that J˜q (s0 , i0 , a∗ ) is a (continuous)
+solution to (28). Since all the assumptions of [15, Theorem 6] are satisfied on G̃, it follows that
+Vq (·) = J˜q (·, a∗ ), hence a∗ is optimal for Vq .
+As a by-product, a∗ is optimal for V (with q = 0). Indeed, since l1 is non-negative, it is ob-
+vious that Vq ≤ V . Using Lebesgue’s dominated convergence, it is obvious that J(s           ˜ 0 , i0 , a∗ ) =
+                                                 ˜ 0 , i0 , a∗ ) and the optimality follows.
+limq→0+ J˜q (s0 , i0 , a∗ ). Then V (s0 , i0 ) ≥ J(s
+When we say that "heuristically" V satisfies the equation, it is because, under the standing as-
+sumptions on l1 , it is obtained as the limit of continuous solutions to (28).
+
+5.1.2    Connection with [38]
+Let us assume that, in addition to the Assumption 1, the condition (8) holds true.
+
+Proposition 3. Whenever (s0 , i0 ) ∈ B s , with s ∈ βγ , β(1−a) γ
+                                                                     and a ∈ Ad such that ss0 ,i0 ,a , is0 ,i0 ,a ∈
+                                                                                                               
+
+Y on R+ , it holds true that ss0 ,i0 ,a , is0 ,i0 ,a ∈ B s on R+ .
+                                                    
+
+Proof. The argument is quite simple. Nonetheless, we provide the elements for our readers’ sake.
+                                                 γ
+First, the conclusion is obvious for s = βγ as B β = G which is invariant.
+For s > βγ , by computing derivatives in the definition of ϕs , it follows that
+
+                                                                              βϕs (i)
+                                                      
+                            s 0                γ                   0
+                                                           = 1 ⇔ ϕs (i) =                                    (30)
+                              
+                          ϕ       (i) −1 +                                              .
+                                             βϕs (i)                        γ − βϕs (i)
+
+
+
+
+                                                           22
+          0
+Thus, ϕs (i) < 0 as long as ϕs (i) > βγ (which is always true due to the inequality s > βγ ).
+Computing the derivative in time of t 7→ ss0 ,i0 ,a (t) − ϕs is0 ,i0 ,a (t) one gets
+                                                                           
+
+
+   d s0 ,i0 ,a                                −γis0 ,i0 ,a (t)
+               (t) − ϕs is0 ,i0 ,a (t) =                                 β(1 − a(t))ss0 ,i0 ,a (t) − βϕs is0 ,i0 ,a (t)
+                                                                                                                     
+      s                                          s     s    ,i   ,a
+   dt                                      γ − βϕ (i     0     0    (t))
+                                              −γβi s 0 ,i 0 ,a  (t)        s0 ,i0 ,a        s s0 ,i0 ,a
+                                                                                                           
+                                         ≤                               s           (t) − ϕ  i         (t)   .
+                                           γ − βϕs (is0 ,i0 ,a (t))
+
+The conclusion follows from Gronwall’s inequality and the initial condition (s0 , i0 ) ∈ B s (which
+implies s0 ≤ ϕs (i0 )).
+
+     Since, on the other hand, every control a ∈ Ad keeping    the trajectory in B s also keeps it in Y,
+                                                       γ     γ
+it follows that Problem 1 restricted to B s (with s ∈ β , β(1−a) ) is equivalent with
+                                                     
+
+
+Problem 4. For every initial configuration (s0 , i0 ) ∈ B s ⊂ Y,
+
+   • minimize (6),
+
+   • under the state constraint
+
+                    ss0 ,i0 ,a (t), is0 ,i0 ,a (t) ∈ B s ⇐⇒ ss0 ,i0 ,a (t) ≤ ϕs is0 ,i0 ,a (t) , a.s. on R+ .          (31)
+                                                                                             
+
+
+Let us notethat the outward normal unit vector to the "active" part of the boundary of B s , that
+is ϕs (i), i : i > 0 ∪ ((0, s] × {i∗ }), with the exception of the singular point (s̄, i∗ ) in which one
+could instead consider the normal cone, is
+                              
+                              
+                              
+                              (0, 1) ,              if (s, i) ∈ (0, s) × {i∗ } ,
+                                           0
+                                               
+                                  1, − ϕs (i)
+                                           
+                     n(s,i) =
+                               q                  , if i ∈ (0, i∗ ) and s = ϕs (i).
+                               1 + | (ϕs )0 (i)|2
+                              
+                              
+
+
+Using (30), we have
+
+                           n(s,i) , (−β(1 − a)si, (β(1 − a)s − γ) i)
+                             
+                             (β(1 − a)s − γ) i∗ ,             if (s, i) ∈ (0, s) × {i∗ }                              (32)
+                           =                         s
+                                                   βϕ (i)
+                             √        1
+                                         0
+                                             aγi γ−βϕ  s (i) , if i ∈ (0, i∗ ), s = ϕs (i).
+                                   1+|(ϕs ) (i)|2
+
+
+It is easy to note that we always have n(s,i) , (−β(1 − a)si, (β(1 − a)s − γ) i) ≤ 0. Moreover, on
+the set (0, s) × {i∗ } we have
+                                                                                              γ
+                    (β(1 − a)s − γ) i∗ ≤ (β(1 − a)s − γ) i∗ < 0               ⇐⇒ s̄ <               .
+                                                                                           β(1 − a)
+
+On the remaining part of the boundary, that is {(ϕs (i), i) : i ∈ (0, i∗ )}, due to the monotonicity
+of the function f (x) = γ−x
+                         x
+                            on (γ, +∞) and of ϕs on (0, i∗ ), we have
+
+                                           βϕs (i)       βϕs (0+ )
+                                                     ≤               < 0,
+                                         γ − βϕs (i)   γ − βϕs (0+ )
+
+
+
+                                                            23
+where ϕs (0+ ) := lim ϕs (i) which is finite and larger than βγ ; hence, for i ≥ δ > 0 we have
+                   i→0+
+
+                          n(s,i) , (−β(1 − a)si, (β(1 − a)s − γ) i)
+                                   1                 βϕs (i)           βϕs (0+ )
+                          =q                   aγi             ≤ aγδ               ,
+                                                   γ − βϕs (i)       γ − βϕs (0+ )
+                            1 + | (ϕs )0 (i)|2
+
+and the right hand side is a strictly negative constant.
+                                                       γ                          γ
+                                                           ,i∗ ,0                              γ
+   Second, the reader is invited to note that lim s β(1−a)        (−t) = lim ϕ β(1−a) (i) > β(1−a) . In par-
+                                                    t→∞                     i→0+
+                                γ                             γ
+ticular, if s is close to β(1−a)    , one has lim ϕs (i) > β(1−a) . It follows that, locally around the bound-
+                                             i→0+                                                              
+                                                                                              γ
+ary, is0 ,i0 ,b > i0 , so that, by reducing the study to such (viable) sets, i.e., B s \ [ β(1−a) , +∞] × [0, δ] ,
+the estimates in (32) give an actual inward pointing qualification condition on these sets (see [38,
+A3 Page 558] for details). As a conclusion, on the reunion of these sets first over δ > 0 then
+                                                         γ
+                 γ
+over s % β(1−a)        , containing the interior of B β(1−a) , the value function is bounded and uniformly
+continuous.
+
+5.2    A2
+Sketch of the proof of Proposition 1. The first equality follows the same reasoning as in [20, The-
+orem 14] (with the only difference that we are dealing here with a discounted problem) and its
+proof will be omitted. Let us just mention that, following [20, Theorem 14], the problem can be
+reduced to continuous l1 (via inf-convolutions) and without state constraints by adding a penalty
+term involving ndY (the distance function) and allowing n → ∞.
+If l1 is continuous, one considers a state penalty
+                   
+                   l1n (s, i)                     Z Y∞(s, i) ∧ 1) ,
+                                  := l1 (s, i) + n (d
+                                                        e−qt l1n ss0 ,i0 ,a (t), is0 ,i0 ,a (t) dt.
+                                                                                               
+                   Vn (s0 , i0 ) :=      inf
+                                        a∈L0 (R;[0,a]) 0
+
+As in [20, Theorem 14],
+
+                                            Λ∗ = q sup Vn , on Y.                                            (33)
+                                                      n≥1
+
+For this kind of (state unconstrained) problems, with n ≥ 1 fixed, using [28] (see also [7, Lemmas
+2.6 and 2.7] ), it follows that for every n ≥ 1, for some Cn > 0 and for every ε > 0, there
+exists vnε ∈ Cb1 R2 (continuously differentiable real functions that are bounded and have bounded
+first-order derivatives) such that
+            
+            
+              sup |vnε (s, i) − Vn (s, i)| ≤ Cn ε,
+            
+            (s,i)∈R 2
+                              (                                                            )
+                                 − β(1 − a)si∂s vnε (s, i) + (β(1 − a)s − γ) i∂i vnε (s, i)
+            
+                    sup                                                                       ≤ 0,           (34)
+            
+            
+            (s,i,a)∈R2 ×[0,a]   − qv ε (s, i) + l1n (s, i)
+            
+            
+             Cn ≤ C(1 + n),
+            
+
+where C > 0 is a constant independent of n and ε. The last inequality, merely stating that Cn is
+chosen depending on the modulus of continuity of Vn (i.e. the Lipschitz constants of the dynamics
+
+
+
+                                                           24
+and coefficients) can be found, for instance, in [19, Propositions 18, 19] in a much more general
+setting. In particular, since l1n ≥ l1 , it follows that
+
+                                                            vnε ∈ Φ, ∀n ≥ 1, ∀ε > 0.
+9 A glance at (18) and (20) shows that one only needs to prove the inequality ≤ in (21).                                          More
+precisely, it suffices to prove that for all measures µ ∈ Θ0,T (s0 , i0 ),
+                            Z                              Z
+                                 ∗
+                               Λ (s, i)µ2 (ds, di) ≤ q sup   f (s, i)µ2 (ds, di).
+                                              Y                             f ∈Φ Y
+
+                                                                              1
+For every n ≥ 1, by considering Φ 3 fn (·) := vnn , it follows from (34) that, on Y, Vn (s, i) ≤
+                                                                               2
+
+
+fn (s, i) + C 1+n
+               n2
+                  . By integrating with respect to µ2 , it follows that
+                       Z                              Z
+                                                                                 1+n
+                           Vn (s, i)µ2 (ds, di) ≤ sup    f (s, i)µ2 (ds, di) + C     .
+                         Y                        f ∈Φ Y                         n+1
+
+The conclusion follows by passing to the limit as n → ∞ and using (33), the boundedness of Λ∗
+and recalling that µ2 is a probability measure.
+
+
+References
+    [1] F. E. Alvarez, D. Argente, and F. Lippi. A simple planning problem for covid-19 lockdown.
+        Technical report, National Bureau of Economic Research, 2020.
+
+    [2] A. D. Ames, T. G. Molnár, A. W. Singletary, and G. Orosz. Safety-critical control of active
+        interventions for covid-19 mitigation. IEEE Access, 8:188454–188474, 2020.
+
+    [3] R. M. Anderson, B. Anderson, and R. M. May. Infectious diseases of humans: dynamics and
+        control. Oxford university press, 1992.
+
+    [4] M. T. Angulo, F. Castaños, R. Moreno-Morton, J. X. Velasco-Hernández, and J. A. Moreno.
+        A simple criterion to design optimal non-pharmaceutical interventions for mitigating epidemic
+        outbreaks. Journal of The Royal Society Interface, 18(178):20200803, 2021.
+
+    [5] F. Avram, L. Freddi, and D. Goreac. Corrigendum to “Optimal control of a SIR epidemic with
+        ICU constraints and target objectives”. Applied Mathematics and Computation, 423:127012,
+        2022.
+
+    [6] F. Avram, L. Freddi, and D. Goreac. Optimal control of a sir epidemic with icu constraints
+        and target objectives. Applied Mathematics and Computation, 418:126816, 2022.
+
+    [7] G. Barles and E. R. Jakobsen. On the convergence rate of approximation schemes for Hamilton-
+        Jacobi-Bellman equations. ESAIM, Math. Model. Numer. Anal., 36(1):M2AN, Math. Model.
+        Numer. Anal., 2002.
+
+    [8] H. Behncke. Optimal control of deterministic epidemics. Optimal control applications and
+        methods, 21(6):269–285, 2000.
+     9
+                                                              vnε                                                           ω n1
+                                                                                                                                 
+         In       the        semi-continuous        case,                      should  be    penalized    by   a    term               :=
+                                                                                 
+1
+q
+     sup              inf        (l1 (s, i) + n |(s, i) − (s0 , i0 )|) − l1 (s, i) . However, its convergence to 0 requires l1 to be con-
+    (s,i)∈Y       (s0 ,i0 )∈R2
+tinuous.
+
+
+                                                                         25
+ [9] J. F. Benders. Partitioning procedures for solving mixed-variables programming problems.
+     Numerische Mathematik, 4(1):238–252, Dec 1962.
+
+[10] O. Bokanowski, N. Forcadel, and H. Zidani. Deterministic state-constrained optimal control
+     problems without controllability assumptions. ESAIM: COCV, 17(4):995–1015, 2011.
+
+[11] L. Bolzoni, E. Bonacini, R. Della Marca, and M. Groppi. Optimal control of epidemic size and
+     duration with limited resources. Mathematical biosciences, 315:108232, 2019.
+
+[12] V. Borkar and V. Gaitsgory. On existence of limit occupational measures set of a controlled
+     stochastic differential equation. SIAM J. Control Optim., 44(4):1436–1473 (electronic), 2005.
+
+[13] R. Buckdahn, D. Goreac, and M. Quincampoix. Existence of Asymptotic Values for Non-
+     expansive Stochastic Control Systems. Applied Mathematics and Optimization, 70(1):1–28,
+     2014.
+
+[14] W. Esterhuizen, J. Lévine, and S. Streif. Epidemic management with admissible and robust
+     invariant sets. PLOS ONE, 16(9):1–28, 09 2021.
+
+[15] H. Frankowska and S. Plaskacz. Hamilton-Jacobi equations for infinite horizon control problems
+     with state constraints, in Proceedings of International Conference ”Calculus of Variations and
+     related topics”, Haifa, 1998. page 97–116, 1998.
+
+[16] H. Frankowska and S. Plaskacz. Semicontinuous solutions of Hamilton–Jacobi–Bellman equa-
+     tions with degenerate state constraints. J. Math. Anal. Appl., 251(2):818–838, 2000.
+
+[17] V. Gaitsgory. Averaging and near viability of singularly perturbed control systems. Journal of
+     Convex Analysis, 13(2):329–352, 2006.
+
+[18] V. Gaitsgory and M. Quincampoix. Linear programming approach to deterministic infinite
+     horizon optimal control problems with discouting. SIAM J. Control Optim., 48(4):2480–2512,
+     2009.
+
+[19] D. Goreac. Asymptotic control for a class of piecewise deterministic markov processes associ-
+     ated to temperate viruses. SIAM J. Control Optim., 53(4):1860–1891, 2015.
+
+[20] D. Goreac and C. Ivaşcu. Discontinuous control problems with state constraints: linear for-
+     mulations and dynamic programming principles. J. Math. Anal. Appl., 402(2):635–647, 2013.
+
+[21] D. Goreac and O.-S. Serea. Mayer and optimal stopping stochastic control problems with
+     discontinuous cost. J. Math. Anal. Appl., 380(1):327–342, 2011.
+
+[22] E. Hansen and T. Day. Optimal control of epidemics with limited resources. J. Math. Biol.,
+     62(3):423–451, 2011.
+
+[23] M. Hohmann, J. Warrington, and J. Lygeros. A moment and sum-of-squares extension of
+     dual dynamic programming with application to nonlinear energy storage problems. European
+     Journal of Operational Research, 283(1):16–32, 2020.
+
+[24] M. Kantner and T. Koprucki. Beyond just “flattening the curve”: Optimal control of epidemics
+     with purely non-pharmaceutical interventions. Journal of Mathematics in Industry, 10(1):1–23,
+     2020.
+
+
+
+                                                26
+[25] W. O. Kermack and A. G. McKendrick. A contribution to the mathematical theory of epi-
+     demics. Proceedings of the Royal Society of London. Series A, Containing Papers of a Mathe-
+     matical and Physical Character, 115(772):700–721, 1927.
+
+[26] D. I. Ketcheson. Optimal control of an SIR epidemic through finite-time non-pharmaceutical
+     intervention. J. Math. Biol., 83(1):Paper No. 7, 21, 2021.
+
+[27] T. Kruse and P. Strack. Optimal control of an epidemic through social distancing. Cowles Foun-
+     dation Discussion Paper No. 2229, Available at SSRN: https://ssrn.com/abstract=3583186 or
+     http://dx.doi.org/10.2139/ssrn.3583186, April 23, 2020.
+
+[28] N. V. Krylov. On the rate of convergence of finite-difference approximations for Bellman’s
+     equations with variable coefficients. Probab. Theory Related Fields, 117(1):1–16, 2000.
+
+[29] J. B. Lasserre, D. Henrion, C. Prieur, and E. Trélat. Nonlinear optimal control via occupation
+     measures and lmi-relaxations. SIAM Journal on Control and Optimization, 47(4):1643–1666,
+     2008.
+
+[30] J. G. Llavona, editor. Approximation of Continuously Differentiable Functions, volume 130 of
+     North-Holland Mathematics Studies. North-Holland, 1986.
+
+[31] M. Martcheva. An introduction to mathematical epidemiology, volume 61. Springer, 2015.
+
+[32] L. Miclo, D. Spiro, and J. Weibull. Optimal epidemic suppression under an icu constraint.
+     arXiv preprint arXiv:2005.01327, 2020.
+
+[33] M. V. F. Pereira and L. M. V. G. Pinto. Multi-stage stochastic optimization applied to energy
+     planning. Mathematical Programming, 52(1):359–375, May 1991.
+
+[34] M. Putinar. Positive polynomials on compact semi-algebraic sets. Indiana University Mathe-
+     matics Journal, 42(3):969–984, 1993.
+
+[35] M. Quincampoix and O. S. Serea. The problem of optimal control with reflection studied
+     through a linear optimization problem stated on occupational measures. Nonlinear Analysis,
+     Theory, Methods and Applications, 72(6):2803–2815, 2009.
+
+[36] P. Sauerteig, W. Esterhuizen, M. Wilson, T. K. S. Ritschel, K. Worthmann, and S. Streif.
+     Model predictive control tailored to epidemic models, arxiv:2111.06688, 2021.
+
+[37] A. Shapiro. Analysis of stochastic dual dynamic programming method. European Journal of
+     Operational Research, 209(1):63–72, 2011.
+
+[38] H. M. Soner. Optimal control with state-space constraint. I.       SIAM J. Control Optim.,
+     24(6):552–561, 1986.
+
+
+
+
+                                                27
+

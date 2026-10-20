@@ -1,0 +1,2257 @@
+                                          Optimal epidemic suppression under
+                                          an ICU constraint∗
+arXiv:2005.01327v1 [econ.TH] 4 May 2020
+
+
+
+
+                                          Laurent Miclo†, Daniel Spiro‡ and Jörgen Weibull§
+
+
+
+                                                May 5, 2020
+
+                                                                               Abstract
+                                                       How much and when should we limit economic and social ac-
+                                                  tivity to ensure that the health-care system is not overwhelmed
+                                                  during an epidemic? We study a setting where ICU resources are
+                                                  constrained while suppression is costly (e.g., limiting economic in-
+                                                  teraction). Providing a fully analytical solution we show that the
+                                                  common wisdom of “flattening the curve”, where suppression mea-
+                                                  sures are continuously taken to hold down the spread throughout
+                                                  the epidemic, is suboptimal. Instead, the optimal suppression
+                                                  is discountinuous. The epidemic should be left unregulated in a
+                                                  first phase and when the ICU constraint is approaching society
+                                                  should quickly lock down (a discontinuity). After the lockdown
+                                                  regulation should gradually be lifted, holding the rate of infected
+                                                  constant thus respecting the ICU resources while not unnecessar-
+                                                  ily limiting economic activity. In a final phase, regulation is lifted.
+                                                  We call this strategy “filling the box”.
+                                            ∗
+                                               We wish to thank Tommy Andersson, Hannes Malmberg and Robert Östling for
+                                          valuable comments.
+                                             †
+                                               Toulouse Institute of Mathematics, Toulouse School of Economics and CNRS.
+                                          Email: laurent.miclo@math.cnrs.fr.
+                                             ‡
+                                               Department      of    Economics,     Uppsala    University.         Email:
+                                          daniel.spiro.ec@gmail.com.
+                                             §
+                                               Department of Economics, Stockholm School of Economics.             Email:
+                                          jorgen.weibull@hhs.se.
+
+
+
+
+                                                                                    1
+1    Introduction
+Amid the Covid-19 health and economic crisis one question stood at
+the centre of professional opinion: How much and when should we limit
+economic and social activity to ensure that the health-care system is
+not overwhelmed? This question embodies two simultaneous goals when
+fighting a pandemic: (1) To ensure that each infected person gets the
+best possible care, we need to ensure that the capacity of the health-
+care system (henceforth the ICU constraint) is never breached. Under
+Covid-19 the ICU constraint is essentially the number of available respi-
+rators, indeed a scarce resource in most countries. It was perhaps best
+epitomized by the UK slogan “Protect the NHS” and by the Empirical
+College report (Ferguson et al., 2020). (2) The more one is suppressing
+the spread the costlier it is since, absent a vaccine, suppression boils
+down to keeping people away from each other thus limiting economic
+and social life.
+     This paper extends the standard S.I.R. model (Kermack and McK-
+endrick, 1927) with those two extensions to provide an analytical answer
+to the above question. Our answer departs from the common wisdom.
+During the Covid-19 pandemic, authorities, news reporting and policy
+makers popularized the ideal policy as “flattening the curve”,1 i.e., im-
+posing continuous limitations to lower the number of simultaneously
+infected in all time periods. This would ensure that the peak of the
+curve never crossed the ICU constraint. We show that this policy is
+suboptimal. Instead, the optimal policy is characterized by what we call
+“filling the box” and a discontinuous suppression. More precisely, it pre-
+scribes (Theorem 1 and Figure 2) leaving the spread unregulated during
+a first phase. As the number of infected approaches the ICU constraint
+we enter a second phase where harsh suppression measures are imposed
+at once (a discontinuity) but afterwards gradually relaxed. The aim of
+policy in this second phase is to stop the number of infected just below
+the ICU constraint and keep it constant at that level. The discontinu-
+ous tightening followed by gradual relaxation of suppression is optimal
+since the underlying growth of infections is highest in the beginning of
+this phase. In a third phase, once the underlying growth of infections
+subsides, no suppression measures are taken.
+     The logic behind this result is simple, but bears relevance for a disease
+spreading such as Covid-19. When access to a vaccine is not realistic
+within a sufficiently near future and pinpointing each infectious person
+is not feasible, which is implicitly assumed in our model, full eradication
+  1
+    See, e.g., the Empirical College report (Ferguson et al., 2020), Branswell (2020),
+Time (2020), Pueyo (2020), even Donald Trump (The Sun, 2020) and many more.
+
+
+
+                                          2
+is not possible. What remains then, is letting the infection spread in the
+population but ensuring that each person gets best possible care, i.e.,
+ensuring the available respirators are sufficient at all times. But there is
+no point in leaving some of the respirators idle (if considering risk one
+can view the ICU constraint as being the number of respirators with a
+margin). Hence, early suppression is unnecessary and costly. Once the
+number of infections reaches the ICU constraint, drastic suppression has
+to be installed to keep it below. But also here it is unnecessarily costly
+to suppress the whole curve as it leaves idle respirators. Hence, the
+aim during the second phase is to precisely fill the ICU capacity. Once
+the infection rate goes down so that the ICU constraint is no longer
+binding – the third phase – suppression can be lifted. The number of
+respirators and the time axis can essentially be thought of as a box.
+“Filling the box” then simply means respecting the ICU constraint while
+not incurring costs to leave idle resources. In the concluding remarks we
+further discuss how various implicit assumptions may change this result.
+    Apart from the policy implication our main contribution lies in the
+model and the analysis itself. We develop and show how to fully ana-
+lytically solve an epidemic-economic model for the optimal suppression
+policy. Importantly, the suppression policy is allowed to be fully time
+varying. Our approach is thus clearly distinguished from a large number
+of recent papers (not least in economics) that analyze policies numeri-
+cally (e.g., Wearing et al., 2005; Iacoviello and Liuzzi, 2008; Lee et al.,
+2011; Kar and Batabyal, 2011; Iacoviello and Stasio, 2013; Giamber-
+ardino and Iacoviello, 2017; Gollier, 2020; Wang, 2020; Farboodi et al,
+2020; Eichenbaum et al., 2020; Alvarez et al, 2020). In order to make
+analytical headway we abstract from many nuances that such, numer-
+ical, papers consider including the possibility of testing (Gollier, 2020;
+Wang, 2020, Berger et al., 2020), the arrival of a vaccine (Zaman et al.,
+2008; Iacoviello and Liuzzi, 2008; Lee et al., 2011; Kar and Batabyal,
+2011; Giamberardino and Iacoviello, 2017; Farboodi et al, 2020), treat-
+ment and education (e.g., Bakare et al., 2014) group heterogeneity (e.g.,
+Shim, 2013; Sjödin, 2020), contact tracing (see, e.g., Wearing et al., 2005;
+McCaw and McVernon, 2007; Britton and Malmberg, 2020; and refer-
+ences therein), time delays (Zaman et al., 2009), network effects (e.g.,
+Gourdin, 2011) and individual decision making (Farboodi et al, 2020;
+Eichebaum et al., 2020). Our exercise is a stepping stone for considering
+also such aspects in future work. To our knowledge ours it the first paper
+to at all consider optimal policy under an ICU constraint.
+    In the epidemiology literature there exists a series of papers with an-
+alytical solutions for optimal policy.2 For a literature review on the early
+  2
+      There is a much larger literature studying epidemics without controls, of course,
+
+
+                                           3
+research see Wickwire (1977). Many papers model vaccinations (Morton
+and Wickwire, 1974; Ledzewicz and Schättler, 2011; Hu and Zou, 2014,
+Laguzet and Turinici, 2015; Maurer and de Pinho, 2015), some model
+screening (Ainseba & Iannelli, 2012). The previous papers focusing on
+suppression (or quarantine) either restrict the policy (e.g., diLauro et
+al., 2020, see also Nowzari 2016 for a review) or abstract from the fact
+that increasing the suppression is costly, obviously a key aspect of any
+economic analysis.3 The paper closest to ours is an elegant analysis by
+Kruse and Strack (2020). They also look at optimal suppression with
+costs which are increasing in suppression. They show existence of an
+optimizer for a rather general health-cost function but only solve for the
+optimizer in the special case where the health costs are linear in the
+number of currently infected.4 This is equivalent to assuming that the
+total number of deaths (over time) is proportional to the total number of
+infected (the linearity assumption implies bang-bang solutions for sup-
+pression) so it does not (directly) matter how many are infected at the
+same time like is the focus of our paper (in that sense, it is similar to
+Grigorieva et al., 2016, and Grigorieva and Khailov, 2014). Our con-
+tribution is thus complementary to theirs since we study a health cost
+which specifically captures the overwhelming of the health-care system.
+
+2    Model
+Our model setup closely follows the canonical Susceptible-Infectious-
+Removed model (Kermack and McKendrick 1927; see also Brauer and
+Castillo-Chavez, 2011, for an excellent overview). At any time t ě 0, let
+x ptq be the population share of individuals who at time t are suscepti-
+see for instance Dickison et al (2012) and Brauer and Castillo-Chavez (2011), Pastor-
+Satorras et al. (2015) and references therein.
+   3
+     Many papers analytically solve for a suppression policy while respecting a budget
+constraint (Hansen and Day, 2011; Bolzoni et al., 2019) or a time constraint (so that
+the suppression cannot be too long, Morris et al 2020) but disregarding that more
+suppression within a time period is costlier than less suppression (Bolzoni et al., 2017;
+Piunovskiy et al., 2019). This is isomorphic to restricting the suppression policy to
+be binary since, once there is suppression within a time period, it may as well be
+at full force. We allow the suppression policy to take any value within a period and
+change in any way between time periods. Grigorieva et al. (2016) and Grigorieva and
+Khailov (2014) analyze an objective of minimizing the number of infectious during
+or at some end period, but the control bears no cost. Abakus (1973) and Behncke
+(2000) analyzes an objective of minimizing the total (over time) number of infected
+quarantine (see his Section 3) but the cost of putting a person in quarantine is only
+taken once so is independent of the length of quarantine. Finally, Gonzales-Eiras
+and Niepelt (2020) analyze an S.I. model, finding, just like some of the papers above,
+that the optimal control is binary.
+   4
+     They also show existence of an optimizer for when a vaccine can arrive.
+
+
+                                           4
+ble to the infection, and let y ptq be the population share of individuals
+who are infected at time t. All infected individuals are assumed to be
+contagious, and population shares are defined with respect to the initial
+population size, N . Let λ ptq be the rate at time t of pairwise meet-
+ings between susceptible and infected, and let q ptq be the probability of
+contagion when an infected person meets a susceptible person at time
+t. Write b ptq “ λ ptq q ptq. Infected individuals are removed from the
+population at rate α ą 0.5 This may be either because they get immune
+or because they die. An important assumption is that those who are
+infected never again become susceptible.
+    The population dynamic is then defined by the following simple sys-
+tem of ordinary differential equations:
+                      "
+                        x9 ptq “ ´b ptq y ptq x ptq
+                                                                       (1)
+                        y9 ptq “ b ptq y ptq x ptq ´ αy ptq
+
+The initial condition is x p0q “ 1 ´ ε and y p0q “ ε, for some ε P
+p0, 1q. That is, the infection enters the population at time zero in
+a population share ε ą( 0. The state space of this dynamic is ∆ “
+  px, yq P R2` : x ` y ď 1 . The only difference from the standard S.I.R.
+model is that the propagation coefficient b ptq, instead of being a con-
+stant over time, say, b ptq “ β ą 0 for all t ě 0, we here allow it to vary
+over time.6
+    Indeed, we will view b : R` Ñ R` as a function in the hands of a
+social planner who strives to minimize the economic and social costs of
+shutting down parts of the economy and social life in the population,
+while never letting the population share of infected individuals, y ptq,
+exceed an exogenously given level γ. The latter is interpreted as the ca-
+pacity of the health-care system to treat infected patients. We refer to
+it as the ICU capacity or constraint.7 It is meant to capture a situation,
+such as under Covid-19, where if the number of simultaneously and se-
+riously ill exceeds the number of respirators implies instant death. Not
+breaching the ICU capacity thus ensures that all get the best possible
+care.8
+   5
+      Implicitly this assumes that the duration of the infection in an individual is an
+i.i.d. exponentially distributed random variable with mean value 1{α.
+    6
+      If z ptq denotes the population share of removed individuals in a standard S.I.R.
+model, then its dynamic is z9 ptq “ αy ptq, and x ptq ` y ptq ` z ptq “ 1 at all times
+t ě 0.
+    7
+      If, for example, on average 20% of those infected need intense care and the
+number of ICUs is C in a population of size N , then γ “ 5C{N . To allow for risk,
+the ICU constraint can of course also include a margin to the actual limit.
+    8
+      In practice this of course is no guarantee against fatalities. We implicitly assume
+that those that pass away despite getting the best care are not within the control
+
+
+                                           5
+    We assume that the cost of keeping b ptq below its natural, or un-
+regulated level β is a linear function of the difference, while there is no
+cost of moving b ptq above β. The latter assumption is made to "tilt the
+table" against us in the subsequent analysis, where we will show that
+even under this assumption, it is suboptimal to enhance the propagation
+of the infection even if this can be done at noş cost. Formally, the cost
+                                                 8
+function C : B Ñ R` is defined by C pbq “ 0 rβ ´ b ptqs` dt, and the
+social planner faces the optimization program
+
+                                       min C pbq ,                                    (2)
+                                       bPBγ
+
+
+where B is the class of piecewise continuous functions b : R` Ñ R` that
+have finitely many points of discontinuity (including no discontinuity at
+all), and Bγ , for any given γ ą 0, is the subset of functions in B for
+which y ptq ď γ at all times t ě 0.9
+    We focus on situations in which ε ă γ, that is, when the initial
+infection level is below the ICU capacity constraint. Moreover, we as-
+sume that β ą α. Otherwise the population share of infected individuals
+does not increase from its initial value, which would imply herd immu-
+nity already from the outset, and thus the social planner’s optimization
+program then has a trivial solution; laissez-faire, that is, b ptq ” β.
+
+3    Analysis
+We first comment on the set of policies allowed by the optimization
+program. For functions b P B, it can be shown that (1) defines a unique
+solution trajectory through any given state px pt0 q , y pt0 qq P ∆ and time
+t0 ě 0.10 Trivially all constant functions b : R` Ñ R` , with b ptq “ δ
+for some δ ą 0, belong to B. However, they do not all belong to B pγq,
+i.e., they may violate the ICU constraint. It is easy to show that such
+constant policies belong to B pγq if δ is sufficiently low, for any given
+γ ą 0. Thus, to choose δ as high as possible, while keeping y ptq ď γ
+for all t ě 0, is a feasible policy (belongs to B pγq), and can be called
+flattening the curve. However, such a policy incurs an infinite cost since
+of the policy maker. See, e.g., Kruse and Strack (2020), Grigorieva et al. (2016)
+and Grigorieva and Khailov (2014) for models where the objective is to minimize the
+number of infected.
+    9
+      To be more precise, we require that there is a finite set T Ă R` such that the
+function b : R` Ñ R` is continuous at all other points, and that it is everywhere
+left-continuous and has a right limit. We also require that b is positive everywhere,
+except on at most finitely many connected components.
+   10
+      See Appendix for a proof. For this class of functions b, the time derivatives in (1)
+represent left derivatives. The solution trajectories px ptq , y ptqqtą0 are then uniquely
+determined and are continuous in t.
+
+
+                                              6
+it lasts forever, if and only if δ ă β. An alternative feasible control
+function, with finite cost, is to only temporarily keep b ptq at a constant
+level δ ă β over a carefully chosen finite time interval, where δ is such
+that y ptq ď γ for all t ě 0. However, as will be shown below, also such
+“temporary constant shut down” policies are suboptimal. Before turning
+to the formal statement of our main result, we analyze some general
+properties of the dynamic induced by (1).
+
+3.1       The dynamic
+Some well-known properties of the solutions to standard S.I.R. mod-
+els hold also here (see Brauer and Castillo-Chavez, 2011). A key such
+property is that the population share of susceptible individuals, x ptq, is
+non-increasing over time t. Roughly speaking, this follows from the first
+equation in (1), since b ptq is always non-negative and y ptq is positive
+at all times t ě 0. Being bounded from below by zero, x ptq necessarily
+has a limit value as t Ñ 8, which we denote x8 . According to (1), also
+the sum y ptq ` x ptq is strictly decreasing over time t, and hence also
+this sum has a limit value, x8 ` y8 . By standard arguments, it is easily
+verified that this implies that y8 “ 0.11 In other words, in the very long
+run, the population share of infected individuals tends to zero. Denoting
+by z8 “ limtÑ8 z ptq the total population share of removed individuals
+during the whole epidemic, we thus have z8 “ 1 ´ x8 , and N z8 is
+approximately (for large N ), the total number of infected individuals
+during the epidemic.
+    Let us now consider the solution to (1) through any through any
+given state px pt0 q , y pt0 qq P ∆ and time t0 ě 0, where 0 ă x pt0 q ă 1
+and 0 ă y pt0 q ă 1. Dividing both sides of the second equation in (1) by
+x ptq ą 0 and integrating, one obtains
+                                     żt
+                ln x ptq “ x pt0 q ´    b psq y psq ds @t ě t0 .
+                                        t0
+
+Moreover, integrating the sum of the two equations in (1), we obtain
+                                              żt
+         x ptq ` y ptq “ x pt0 q ` y pt0 q ´ α y psq ds @t ě t0 .
+                                                 t0
+
+3.1.1      Constant policy
+In particular, if b ptq “ δ ą 0 for all t ě t0 , for some δ ą 0, then for all
+t ě t0 :
+                       żt
+          x ptq                      δ
+       ln         “ ´δ     y psq ds “ rx ptq ´ x pt0 q ` y ptq ´ y pt0 qs ,
+          x pt0 q       t0           α
+ 11
+      If y8 ą 0, then x ptq ` y ptq Ñ ´8.
+
+
+                                             7
+or                              ˆ         ˙
+                           α      x ptq
+         y ptq “ y pt0 q ` ln               ´ x ptq ` x pt0 q @t ě t0 .  (3)
+                           δ      x pt0 q
+This equation is well-known for S.I.R. models. Moreover, (3) implies
+that px ptq , y ptqq Ñ p0, x8 q P ∆, where x8 by continuity solves (3) for
+y ptq “ 0, so
+                             α     x8
+                      x8 “ ln             ` x pt0 q ` y pt0 q .          (4)
+                             δ x pt0 q
+Since x ptq is strictly decreasing, x8 ă x pt0 q. It is easily verified that
+the fixed-point equation (4) has a unique solution x8 P p0, x pt0 qq.12
+    The maximal population share of infected individuals,
+                                      ŷ “ sup y ptq
+                                            tě0
+
+(still for b ptq ” δ for some δ ą 0) is the peak infection level. It obtains
+when y9 ptq “ 0, or, equivalently (by (1)), when x ptq “ α{δ. From (3) we
+obtain                               ˆ           ˙
+                                α          α        α
+                        ŷ “ 1 ` ln                ´ .                   (5)
+                                δ      δ p1 ´ εq    δ
+This is thus the maximal population share of infected individuals when
+the suppression policy is held constant over time. Once the popula-
+tion share x ptq of susceptible individuals has fallen below the level α{δ,
+achieved precisely when y ptq “ ŷ, flock immunity is obtained; the pop-
+ulation share y ptq of infected individuals falls. In particular, the limit
+state as t Ñ 8 is Lyapunov stable. That is, there is no risk of a second
+infection wave, since after any small perturbation of the limit population
+state px8 , 0q P ∆, obtained by exogenously inserting a small population
+share of infected individuals, the population share of infected individu-
+als will fall gradually back towards zero, while the population share of
+susceptible individuals gradually moves towards a somewhat lower, new
+limit value.
+    Equation (5) is particularly relevant for the case when δ “ β, that
+is, under under laissez-faire. Because if the peak of the infection wave
+then does not exceed the ICU capacity constraint, that is, if
+                                ˆ           ˙
+                             α        α          α
+                        1 ` ln                ´ ď γ,                     (6)
+                             β    β p1 ´ εq      β
+then laissez-faire is optimal; b˚ ptq ” β solves (2) at no cost. But if the
+peak is above the ICU constraint, regulation has to be implemented.
+This is the topic of the next subsection.
+  12
+     The right-hand sides of () is a continuous and strictly increasing functions f :
+p0, x pt0 qq Ñ R of x8 . Moreover, f px8 q Ñ ´8 as x8 Ó 0 and f px pt0 qq “ x pt0 q `
+y pt0 q ą x pt0 q, f 1 ą 0 and f 2 ă 0, so there exists a unique fixed point in p0, x pt0 qq.
+
+
+                                             8
+3.2     Optimization
+To the best of our knowledge, the optimization program (2) has not been
+analyzed before. We summarize below our main result, which treats all
+cases when laissez-faire is suboptimal. If (6) does not hold, then the
+solution orbit (3) under laissez-faire intersects the capacity constraint
+y ptq “ γ twice. Let τ 1 ą 0 be the first such time and let x pτ 1 q be the
+population share of susceptible individuals at that time. Then
+                     "                             ˆ        ˙*
+                                               α      x ptq
+            τ 1 “ min t ě 0 : x ptq “ 1 ´ γ ` ln
+                                               β     1´ε
+
+(where x ptq is solved for according to (1) when b ptq ” β), and x pτ 1 q is
+the larger of the two solutions to the associated fixed-point equation in
+x,                                       ˆ      ˙
+                                    α        x
+                        x “ 1 ´ γ ` ln            .                     (7)
+                                    β      1´ε
+We note that x pτ 1 q ą α{β.13 Let
+                                           ˆ                  ˙
+                                      1                   α
+                           τ2 “ τ1 `           x pτ 1 q ´
+                                     αγ                   β
+
+Theorem 1 Suppose that ε ă γ, α ă β and (6) does not hold. There
+exists a solution to program (2), one of which is the policy b˚ P B pγq
+defined by                $
+                          &β            for t ď τ 1
+                   ˚            β
+                  b ptq “ 1`αβγpτ 2 ´tq for τ 1 ă t ď τ 2
+                          %
+                            β           for t ą τ 2
+Every optimal policy b P B pγq agrees with b˚ on r0, τ 2 s and satisfies
+b ptq ě β for all t ą τ 2 .
+
+
+    We note that the optimal policy is laissez-faire both before time τ 1
+and after time τ 2 . We also note that the optimal policy has exactly one
+discontinuity, namely, a sudden shut-down at time τ 1 ; then b˚ ptq falls
+from b˚ pτ 1 q “ β to
+                                         β                 α
+                   lim b˚ ptq “                        “         .
+                   tÓτ 1          1 ` αβγ pτ 2 ´ τ 1 q   xpτ 1 q
+   From time τ 1 on, b˚ ptq rises continuously until time τ 2 , at which
+point b˚ ptq reaches the level β. In the mean-time, between times τ 1 and
+  13
+     This follows from the observation that the derivative of the right-hand side of
+(7) is less than unity at x “ x pτ 1 q.
+
+
+                                          9
+τ 2 , the population share y ptq of infected individual remains constant, at
+the capacity level γ, while the population share x ptq falls linearly over
+time to the level α{β, reached at time τ 2 .
+      One obtains the following expression for the minimized cost:
+                      ż τ2
+               ˚              αβγ pτ 2 ´ tq
+           C pb q “ β                         dt
+                       τ 1 1 ` αβγ pτ 2 ´ tq
+
+                     1 αβγpτ 2 ´τ 1 q
+                        ż             ˆ           ˙
+                                              1
+                  “                     1´          ds
+                    αγ 0                    1`s
+                     1
+                  “     rαβγ pτ 2 ´ τ 1 q ´ ln p1 ` αβγ pτ 2 ´ τ 1 qqs
+                    αγ
+                      ˆ                        ˙       ˆ ˆ ˙           ˙
+                    1             α                 α         α
+                  “      xpτ 1 q ´ lnpxpτ 1 qq `         ln         ´1   (8)
+                    γ             β                 βγ        β
+
+    The proof of Theorem 1 is mathematically involved, and is given
+in the Appendix. It uses measure theory and views the minimization
+as taking place in phase space (much in line with equation (3)). For
+a rich enough measure space, existence of a solution to (2) is obtained
+by topological arguments. Invoking the Picard-Lindelöf theorem, it is
+shown that the differential equations (1) indeed uniquely define solutions.
+The next step in the proof is to show that the minimizer measure is
+absolutely continuous (with respect to Lebesgue measure). This brings
+us back to functions b P B, now viewed as transforms of Radon-Nikodyn
+derivatives of the measures in question. The rest of the proof consists in
+verifying that the above function, b˚ , indeed corresponds to an optimal
+measure, and that it is unique in the sense stated. In particular, one
+needs to show that it is neither worthwhile to slow down nor speed up
+the infection in its early phase (before time τ 1 ). An early slow-down
+would postpone the problem at a cost but without benefit, and an early
+speed-up, although costless in our model, would imply that the capacity
+constraint is reached sooner and at a higher speed, which would require
+an even more drastic, and costly, shut down when the capacity constraint
+is reached.
+    The result is illustrated in Figure 1, where the solid kinked curve is
+the solution orbit induced by (1) under the optimal control function b˚ .
+The dotted curve is the infection orbit under laissez-faire (b ptq ” β). We
+note that the limit share of susceptible individuals, x8 , is higher under
+the optimal policy than under laissez-faire. Recalling that z8 “ 1 ´ x8
+is the total population share of infected individuals during the epidemic,
+we conclude that, the policy not only respects the ICU constraint, it
+also indirectly affects the total number that will ultimately have been
+infected at some point in time.
+
+                                    10
+    0.4
+
+
+                                                           Filling the box
+                                                           Unregulated
+y
+
+
+
+
+     0
+                                       x
+
+Figure 1: The solution orbit (solid) in the px, yq-plane under the optimal policy
+b˚ , and the solution orbit under unregulated spread (dotted) . Parameter
+values used: α “ 0.3, β “ 1, γ “ 0.2, and ε “ 0.01.
+
+
+    Figure 2 depicts the optimal policy as a function of time in com-
+parison to a strategy of flattening the curve, here assumed to take the
+form: keep b ptq at at the level δ ă β for which ŷ “ γ (see (5)) until
+the infection wave has reached its peak, and then return to laissez-faire,
+b ptq “ β (outside the time range of the figure). The upper panel shows
+the dynamics of infections and the lower panel the policy b ptq .
+    As can be seen, and as expressed by the theorem, the optimal pol-
+icy is characterized by leaving the spread unregulated initially, then a
+sudden shut-down of society (a discontinuity at τ 1 ), followed by grad-
+ual (continuous) opening of society, until τ 2 , from which onwards the
+propagation is not regulated. The time axis and the ICU constraint
+create a square – a box. The economic logic behind the optimal policy
+is essentially to ensure that we do not close down society while leaving
+idle ICU resources – “filling the box”. This implies that whenever the
+natural spread is not threatening the constraint, it should go unregu-
+lated. This holds in the early phase when only few have been infected,
+and in the last phase, when many have already been infected but most
+of them also have recovered. It is only when the epidemic may breach
+the ICU constraint – the second phase – that it should be regulated. In
+order to ensure that the constraint is not breached, strong suppression
+has to be imposed when reaching the ICU constraint – a sudden shut-
+
+
+                                       11
+        0.3
+
+                                                     Flattening the curve
+                                                     Filling the box
+ y(t)
+
+
+
+
+         0
+
+
+        1.5
+ b(t)
+
+
+
+
+         0
+                     1              Time   2
+
+
+Figure 2: Upper panel: The share of infected over time under the optimal
+policy (solid) and flattening the curve (dotted). The horizontal dashed line
+represents the ICU constraint γ. Lower panel: Optimal suppression (solid) and
+flattening-the-curve suppression (dotted). The horizontal dashed represents
+the baseline spread β. Parameter values used: α “ 0.3, β “ 1, γ “ 0.2, and
+ε “ 0.01.
+
+
+down. The reason for the abruptness of this policy (the discontinuity)
+is that the natural infection is progressing very quickly at that point, so
+a sudden break is needed to stop it. This can be seen in the lower panel
+by the drop at τ 1 . After that, b˚ gradually increases. The reason for
+this is that the suppression only needs to keep the infection just below
+the ICU constraint. Then since over time the number of susceptible (x)
+is falling, the number of infected (y) is held endogenously constant and
+since new infections depends on their product (b ptq y ptq x ptq) it follows
+that b˚ is increasing during the second phase. The policy as a function
+of the population share simply is b˚ ptq “ α{x ptq, i.e., recovery (α) de-
+termines what share of the susceptible population that can be allowed
+to be infected. A few further remarks about optimal policies are now in
+place.
+    It may be noted that the optimal policy never attempts to fully
+eradicate the spread. In our model, like in all standard S.I.R. models,
+this is since y only asymptotically goes to zero. Hence, full eradication
+(a form of extreme corner solution) would imply locking down forever.
+We discuss this further in the conclusions.
+
+
+                                     12
+    Furthermore, the optimal policy is unique during the first and the
+second phase but not during the third. The uniqueness during the first
+phase is not obvious. To see this note that here there is no reason to
+hold back the spread. Then, given that b ą β 0 has been assumed to be
+costless, why would accelerating the spread not be optimal? The answer
+is that, if one does that, then the ICU capacity is reached at a high speed
+of infection hence it would require hitting the breaks very hard. This
+is not optimal. The multiplicity of optimal strategies during the third
+is due to the same assumption – acceleration is free. Hence, not only
+laissez-faire is optimal, but also acceleration (of which we can think of as
+stimulus for economic interaction). The acceleration cannot be too fast,
+however, as it may then breach the ICU constraint. Naturally, should
+we assume that there is a cost of acceleration (even the slightest) this
+multiplicity disappears and a unique optimal policy emerges also in the
+third phase – laissez-faire.
+    Compared with the optimal policy, “flattening the curve” implies
+costs that lead to idle resources. This is visible in the upper panel
+of Figure 2, where costs are incurred without the spread posing a threat
+to the health system – both before and after the peak, suppression costs
+are incurred for no reason. The additional cost of flattening the curve
+(instead of filling the box) can be seen in the lower panel by comparing
+the rectangle between β and the dashed-dotted line on the one hand
+with the area between β and the solid line on the other. It is potentially
+very large, in particular if the policy maker continues to flatten the curve
+long after the peak.
+
+4   Concluding discussion
+This paper has developed an economic SIR model to provide an analyt-
+ical answer to the question: What is the optimal time-varying suppres-
+sion policy to avoid a collapsed health-care system when suppression
+is costly? We have shown that the general recommendation of “flat-
+tening the curve” is suboptimal. Instead the optimal policy essentially
+prescribes “filling the box”: in an initial phase the spread is unregulated
+until the number of infected approaches the ICU constraint whereby, in a
+second phase, suppression discontinuously increases and then gradually
+drops until, in a third phase, the spread is left unregulated again.
+    A contribution of the paper is methodological, showing how to ob-
+tain a fully analytical solution to an S.I.R. model with economic costs
+which are increasing in suppression. Another contribution is the policy
+implication of “filling the box”. We discuss here the robustness of this
+policy to various perturbations.
+    In our model attempting for a complete wipe out of the spread is
+
+                                    13
+never optimal. Technically this is since the number of infected only
+asymptotically goes to zero hence a wipe out would require suppression
+to be in place for the infinite future. Naturally, if the rate of recovery
+from infection happens quickly for everyone it could be optimal to go
+for a full wipe out right away. We do not, however, find that feasible in
+most cases since it is hard to practically identify all infected and since
+in practice the cost of full suppression (b “ 0) is virtually infinite – after
+all, people need to access food and medical services. Furthermore, unless
+countries are closed more or less indefinitely, a very costly prospect,
+under a pandemic such as Covid-19 one would be bound to import new
+cases.
+     In the model we have assumed that the only medical harm is if vi-
+olating the ICU constraint. If two assumptions were added – medical
+harm from the aggregate number of infected and existence of a vaccine
+within a reasonable time frame – then suppressing the spread more than
+what our policy prescribes could be optimal. Likewise if the number
+of simultaneously infected would cause harm more gradually. This, how-
+ever, does not seem to be case for Covid-19 where the bottleneck in most
+countries is the number of respirators – respecting the ICU constraint
+is the main issue. Another factor that could suggest early suppression
+is if the ICU constraint can be expanded (for Covid-19 equivalent to an
+increased number of respirators or development of a cure or improved
+treatment). Another possibility is that one learns about the parameters.
+However, for that to motivate regulation early, one has to assume that
+the suppression itself does not distort the signal. Finally, if the cost of
+suppression were convex, in particular so that small suppression is very
+cheap, then that would motivate some suppression early on. However,
+it would still most probably be optimal to discontinuously increase sup-
+pression to ensure that the number of infected is constant just below the
+ICU constraint.
+     This discussion highlights that there exist a number of questions that
+call for an analytical approach for full understanding of their impact.
+Our model and tools of analysis provide a stepping stone for doing so.
+
+References
+ [1] Brauer and Castillo-Chavez (2011): Mathematical Models in Popu-
+     lation Biology and Epidemiology. Second Edition, Springer Verlag.Y
+ [2] Abakuks, A., 1973. An optimal isolation policy for an epidemic.
+     Journal of Applied Probability, 10(2), pp.247-262.
+ [3] Ainseba, B. and Iannelli, M., 2012. Optimal screening in struc-
+     tured SIR epidemics. Mathematical Modelling of Natural Phenom-
+     ena, 7(3), pp.12-27.
+
+                                     14
+ [4] Alvarez, F.E., Argente, D. and Lippi, F., 2020. A simple planning
+     problem for covid-19 lockdown (No. w26981). National Bureau of
+     Economic Research.
+ [5] Bakare, E.A., Nwagwo, A. and Danso-Addo, E., 2014. Optimal con-
+     trol analysis of an SIR epidemic model with constant recruitment.
+     International Journal of Applied Mathematics Research, 3(3), p.273.
+ [6] Behncke, H., 2000. Optimal control of deterministic epidemics. Op-
+     timal control applications and methods, 21(6), pp.269-285.
+ [7] Berger, D.W., Herkenhoff, K.F. and Mongey, S., 2020. An seir in-
+     fectious disease model with testing and conditional quarantine (No.
+     w26901). National Bureau of Economic Research.
+ [8] Bolzoni, L., Bonacini, E., Soresina, C. and Groppi, M., 2017. Time-
+     optimal control strategies in SIR epidemic models. Mathematical
+     biosciences, 292, pp.86-96.
+ [9] Bolzoni, L., Bonacini, E., Della Marca, R. and Groppi, M., 2019.
+     Optimal control of epidemic size and duration with limited re-
+     sources. Mathematical biosciences, 315, p.108232.
+[10] Branswell. H., 2020 Why ’flattening the curve’ may be the
+     world’s best bet to slow the coronavirus. In: STAT News (Mar.
+     2020). url:      https://www.statnews.com/2020/03/11/flattening-
+     curve-coronavirus/.
+[11] Francis Clarke. Functional analysis, calculus of variations and
+     optimal control, volume 264 of Graduate Texts in Mathematics.
+     Springer, London, 2013.
+[12] Di Giamberardino, P. and Iacoviello, D., 2017. Optimal control of
+     SIR epidemic model with state dependent switching cost index.
+     Biomedical signal processing and control, 31, pp.377-380.
+[13] Di Lauro, F., István Z.K., and Mille, J., 2020. The timing of one-
+     shot interventions for epidemic control. medRxiv (2020).
+[14] Dickison, M., Havlin, S. and Stanley, H.E., 2012. Epidemics on
+     interconnected networks. Physical Review E, 85(6), p.066109.
+[15] Eichenbaum, M.S., Rebelo, S. and Trabandt, M., 2020. The macroe-
+     conomics of epidemics (No. w26882). National Bureau of Economic
+     Research.
+[16] Farboodi, M., Jarosch, G. and Shimer, R., 2020. Internal and Ex-
+     ternal Effects of Social Distancing in a Pandemic. University of
+     Chicago, Becker Friedman Institute for Economics Working Paper,
+     (2020-47).
+[17] Ferguson, N., Laydon, D., Nedjati Gilani, G., Imai, N., Ainslie,
+     K., Baguelin, M., Bhatia, S., Boonyasiri, A., Cucunuba Perez,
+     Z.U.L.M.A., Cuomo-Dannenburg, G. and Dighe, A., 2020. Report
+     9: Impact of non-pharmaceutical interventions (NPIs) to reduce
+
+
+                                  15
+     COVID19 mortality and healthcare demand.
+[18] Gollier, C., 2020, Cost-benefit analysis of deconfinement strategies,
+     mimeo, Toulouse School of Economics.
+[19] Gonzalez-Eiras, M. and Niepelt, D., 2020. On the Optimal" Lock-
+     down" During an Epidemic (No. 20.01).
+[20] Gourdin, E., Omic, J. and Van Mieghem, P., 2011, October. Op-
+     timization of network protection against virus spread. In 2011 8th
+     International Workshop on the Design of Reliable Communication
+     Networks (DRCN) (pp. 86-93). IEEE.
+[21] Grigorieva, E.V. and Khailov, E.N., 2014. Optimal vaccination,
+     treatment, and preventive campaigns in regard to the SIR epi-
+     demic model. Mathematical Modelling of Natural Phenomena, 9(4),
+     pp.105-121.
+[22] Grigorieva, E.V., Khailov, E.N. and Korobeinikov, A., 2016. Opti-
+     mal control for a SIR epidemic model with nonlinear incidence rate.
+     Mathematical Modelling of Natural Phenomena, 11(4), pp.89-104.
+[23] Hansen, E. and Day, T., 2011. Optimal control of epidemics with
+     limited resources. Journal of mathematical biology, 62(3), pp.423-
+     451.
+[24] Hu, Q. and Zou, X., 2013. Optimal vaccination strategies for an
+     influenza epidemic model. Journal of Biological Systems, 21(04),
+     p.1340006.
+[25] Iacoviello, D. and Liuzzi, G., 2008, June. Optimal control for
+     SIR epidemic model: A two treatments strategy. In 2008 16th
+     Mediterranean Conference on Control and Automation (pp. 842-
+     847). IEEE.
+[26] Iacoviello, D. and Stasio, N., 2013. Optimal control for SIRC epi-
+     demic outbreak. Computer methods and programs in biomedicine,
+     110(3), pp.333-342.
+[27] JHU         2020,        "Has       the       curve      flattened?"
+     https://coronavirus.jhu.edu/data/new-cases
+[28] Kar, T.K. and Batabyal, A., 2011. Stability analysis and optimal
+     control of an SIR epidemic model with vaccination. Biosystems,
+     104(2-3), pp.127-135.
+[29] Kermack, W.O. and McKendrick, A.G., 1927. A contribution to
+     the mathematical theory of epidemics. Proceedings of the royal so-
+     ciety of london. Series A, Containing papers of a mathematical and
+     physical character, 115(772), pp.700-721.
+[30] Kruse, T. and Strack, P., 2020. Optimal Control of an Epidemic
+     through Social Distancing. SSRN WP
+[31] Laguzet, L. and Turinici, G., 2015. Global optimal vaccination in
+     the SIR model: properties of the value function and application to
+
+
+                                   16
+     cost-effectiveness analysis. Mathematical biosciences, 263, pp.180-
+     197.
+[32] Ledzewicz, U. and Schättler, H., 2011. On optimal singular controls
+     for a general SIR-model with vaccination and treatment. Discrete
+     and continuous dynamical systems, 2, pp.981-990.
+[33] Lee, S., Chowell, G. and Castillo-Chávez, C., 2010. Optimal control
+     for pandemic influenza: the role of limited antiviral treatment and
+     isolation. Journal of Theoretical Biology, 265(2), pp.136-150.
+[34] Daniel Liberzon. Calculus of variations and optimal control the-
+     ory. Princeton University Press, Princeton, NJ, 2012. A concise
+     introduction.
+[35] Malmberg, H. and Britton, T., 2020. Inflow restrictions can prevent
+     epidemics when contact tracing efforts are effective but have limited
+     capacity. medRxiv.
+[36] Maurer, H. and De Pinho, M.D.R., 2014. Optimal control of epi-
+     demiological seir models with L1-objectives and control-state con-
+     straints.
+[37] McCaw, J.M. and McVernon, J., 2007. Prophylaxis or treatment?
+     Optimal use of an antiviral stockpile during an influenza pandemic.
+     Mathematical biosciences, 209(2), pp.336-360.
+[38] Morris, D.H., Rossine, F.W., Plotkin, J.B. and Levin, S.A., 2020.
+     Optimal, near-optimal, and robust epidemic control. arXiv preprint
+     arXiv:2004.02209.
+[39] Morton, R. and Wickwire, K.H., 1974. On the optimal control
+     of a deterministic epidemic. Advances in Applied Probability, 6(4),
+     pp.622-635.
+[40] Nowzari, C., Preciado, V.M. and Pappas, G.J., 2016. Analysis and
+     control of epidemics: A survey of spreading processes on complex
+     networks. IEEE Control Systems Magazine, 36(1), pp.26-46.
+[41] Pastor-Satorras, R., Castellano, C., Van Mieghem, P. and Vespig-
+     nani, A., 2015. Epidemic processes in complex networks. Reviews of
+     modern physics, 87(3), p.925.
+[42] Piunovskiy, A., Plakhov, A. and Tumanov, M., 2019. Optimal im-
+     pulse control of a SIR epidemic. Optimal Control Applications and
+     Methods.
+[43] Pueyo, T., 2020. Coronavirus: The Hammer and the Dance.
+     https://medium.com/@tomaspueyo/coronavirus-the-hammer-and-
+     the-dance-be9337092b56
+[44] Walter Rudin. Real and complex analysis. McGraw-Hill Book Co.,
+     New York, third edition, 1987.
+[45] Schneider, C.M., Mihaljev, T., Havlin, S. and Herrmann, H.J.,
+     2011. Suppressing epidemics with a limited amount of immunization
+
+
+                                   17
+     units. Physical Review E, 84(6), p.061911.
+[46] Shim, E., 2013. Optimal strategies of social distancing and vaccina-
+     tion against seasonal influenza. Mathematical Biosciences & Engi-
+     neering, 10(5&6), pp.1615-1634.
+[47] Sjödin, H., Johansson, A.F., Brännström, Å., Farooq, Z., Kriit,
+     H.K., Wilder-Smith, A., Åström, C., Thunberg, J. and Rocklöv,
+     J., 2020. Covid-19 health care demand and mortality in Sweden in
+     response to non-pharmaceutical (NPIs) mitigation and suppression
+     scenarios. MedRxiv https://doi. org/10.1101/2020.03, 20.
+[48] The Sun, 2020. "‘WE’LL BOOM AGAIN’ Donald Trump
+     says US coronavirus curve is ‘FLATTENING’ after almost
+     2,000 die in just 24 hours in deadliest day" https://www.the-
+     sun.com/news/655595/trump-coronavirus-flattening-die-24-hours-
+     boom/
+[49] Time 2020, The U.S. Has Flattened the Curve. Next
+     Up Is ’Squashing’ It — and That’s Not Going Well
+     https://time.com/5827156/squashing-squash-curve-coronavirus-
+     covid19/
+[50] Wang, Y., 2020. An Analytical SIR model of Epidemics and A Sus-
+     tainable Suppression Policy: Testing. Available at SSRN 3573979.
+[51] Wearing, H.J., Rohani, P. and Keeling, M.J., 2005. Appropriate
+     models for the management of infectious diseases. PLoS medicine,
+     2(7).
+[52] Wickwire, K., 1977. Mathematical models for the control of pests
+     and infectious diseases: a survey. Theoretical population biology,
+     11(2), pp.182-238.
+[53] Zaman, G., Kang, Y.H. and Jung, I.H., 2008. Stability analysis and
+     optimal vaccination of an SIR epidemic model. BioSystems, 93(3),
+     pp.240-249.
+[54] Zaman, G., Kang, Y.H. and Jung, I.H., 2009. Optimal treatment of
+     an SIR epidemic model with time delay. BioSystems, 98(1), pp.43-
+     50.
+
+
+
+
+                                   18
+5    Appendix: Proof of Theorem 1
+This appendix provides a proof of Theorem 1, namely that b˚ is a global
+minimizer for the control problem of optimizing the functional C given
+just above (2), and that any other global minimizer coincides with b˚ up
+to time when x hits α{β.
+    Our strategy consists of the following steps:
+    • The optimization problem is written in the phase space 4.
+    • The new formulation admits a natural extension on a signed-mea-
+      sure space.
+    • Topological properties of this measure space and of the functional
+      deduced from C imply the existence of a global minimizer.
+    • A priori a global minimizer is a general signed measure, but it
+      turns out to be an absolutely continuous, bringing us back to a
+      functional setting.
+    • Calculus of variation arguments show that the minimizer is uniquely
+      determined until the time when x reaches the level α{β, and this
+      leads to Theorem 1.
+    To the best of our knowledge, there is no such result in calculus
+of variations or optimal control theory (see the books of Clarke [11] or
+Liberzon [34]). We therefore give a direct and self-contained proof (only
+requiring a first knowledge of measure theory, as can be found e.g. in
+Rudin [44]). For the optimization problem at hand, our extension to
+measure spaces seems natural, and we believe it is original. The Euler-
+Lagrange equations will not be satisfied and the constraints will play
+a more important role. This is related to the fact that we consider a
+cost of suppression that is linear in downwards deviations, and zero for
+upwards deviations. If one is interested in more general costs of the form
+                               ż `8
+                       Cpbq
+                        r B          F pβ ´ bptqq dt                    (9)
+                                0
+
+where the mapping F : R Ñ R` is e.g. a strictly convex function
+attaining its minimum at 0, then the Euler-Lagrange equations admit
+solutions leading to optimal policies different from b˚ (but b˚ remains
+a minimizer for certain functionals F , see Remark 8 at the end of this
+appendix). When F is close to the mapping p¨q` considered here, for
+instance if F is given by
+                                   " 1`
+                                     x       , when x P R`
+              @ x P R,     F pxq B
+                                     |x|1` , when x P R´
+
+                                    19
+where  ą 0 is small, we expect that the corresponding solution will be
+close to b˚. In particular a jump will still occur. We plan to investigate
+more precisely this situation in future work.
+    Let us now move toward the proof of Theorem 1 according to the
+above strategy. We assume in the sequel that we are in the “interesting”
+case where y0 ă γ and where the laissez-faire policy b ” β leads y to take
+values strictly large than γ (y0 “ ε in the main text). This hypothesis
+will be referred to as the underlying assumption.
+
+5.1    The phase space 4
+We begin by rewriting the constrained control problem of minimizing C
+on Bγ as a optimization problem in the associated phase space 4.
+    Let us be more precise: B is the set of piecewise continuous func-
+tions b : R` Ñ R` with a finite number of discontinuities and such
+that tt ě 0 : bptq “ 0u has a finite number of connected components.
+Let px0 , y0 q P 4, with y0 P p0, 1q, as well as b B pbptqqtě0 P B be given
+and consider px, yq B pxptq, yptqqtě0 the maximal (over time) solution of
+the S.I.R. ODE (1) starting from pxp0q, yp0qq “ px0 , y0 q (this is a slight
+generalization of the setting of Theorem 1, where x0 “ 1´y0 , the impor-
+tant hypothesis is that the underlying assumption holds). The existence
+and uniqueness of this solution is a consequence of the Picard-Lindelöf
+or Cauchy-Lipschitz theorem, extended to a time-dependent vector field
+that is left continuous with right limits (instead of continuous). The im-
+portant fact being that the r.h.s. of (1) is locally Lipschitz with respect
+to pxptq, yptqq. By Bγ , we designate the set of b P B such that y always
+remains below γ.
+    We begin with a simple observation.
+Lemma 1 When y0 P p0, 1q, the solution px, yq is defined for all times
+t ě 0 and pxptq, yptqq P p0, 1q2 X 4.
+Proof
+As already mentioned, the solution px, yq is locally unique. From this
+it follows that if x reaches 0, then it will stay there forever afterward,
+since the r.h.s. of (1) is zero if xptq “ 0. Similarly, if y reaches 0, then
+it will stay there forever afterward. It follows that x and y will stay
+non-negative. As a consequence, x is non-increasing and thus will stay
+below x0 and never hit 1. From the identity
+                        9 ` yptq
+                        xptq 9 “ ´αyptq ď 0
+we deduce that x ` y will stay below y0 ` x0 ď 1 and in particular y will
+stay below 1. The first equation of (1) then implies that
+                             xptq ě ´bptqxptq
+
+                                    20
+and Gronwall lemma shows
+                                    ´ ş          ¯
+                                        t
+                       xptq ě x0 exp ´ 0 bpsq ds
+
+so x remains positive. The inequality x ` y ď 1 then insures that y never
+reaches 1. Finally, the second equation of (1) then implies that
+
+                                yptq ě ´αyptq
+
+so that yptq ě y0 expp´αtq and y cannot reach 0 in finite time.
+    Since px, yq stays in the compact square r0, 1s2 , the solution of (1) is
+defined for all times.
+                                                                           
+
+Remark 1 In particular, since for all t ě 0 we have yptq ą 0, a part of
+the population will always remain infectious, whatever the choice of the
+policy b: it is impossible to entirely eliminate the disease. This feature
+is due to the fact we are considering continuous populations, it would
+not be true for approximating finite random populations.
+                                                                         ˝
+
+   Introduce B ` the set of b P B that are everywhere positive (never-
+theless, if t is a discontinuity point of b, we can have bpt`q “ 0).
+   When b P B ` , Lemma 1 and the first equation of (1) imply that x is
+decreasing, so x admits a limit x8 ě 0 that it will never reach. Another
+consequence is:
+Lemma 2 Assume that b P B ` . There exists a unique function ϕ :
+px8 , x0 s Ñ p0, 1q such that
+
+                        @ t ě 0,          yptq “ ϕpxptqq                (10)
+
+    The function ϕ is piecewise C 1 , its left and right derivatives exist
+everywhere and differ only at a finite number of points. Denoting the
+right derivative by ϕ1 , we have
+
+                      @ r P px8 , x0 s,       ϕ1 prq ą ´1
+
+Proof
+As observed above, for b P B ` , x is decreasing from R` to px8 , x0 s. Since
+x it continuous, it is a homeomorphism between R` to px8 , x0 s. Denote
+by τ its inverse, so that
+
+                      @ u P px8 , x0 s,       xpτ puqq “ u              (11)
+
+                                      21
+   Let t P R` be a time where b is continuous. Let u P px8 , x0 s be such
+that τ puq “ t. We can differentiate (11) at u to get that
+                                    1              1
+                      τ9 puq “          “´
+                                 xpτ
+                                 9 puqq    bpτ puqquypτ puqq
+    Considering discontinuity time t of b, we see that the above relation
+also holds, if τ9 puq is seen as a right derivative (recall x9 is a left derivate).
+Furthermore, taking into account that τ is decreasing, we have the exis-
+tence of the left limit:
+                                                     1
+                           lim τ9 pvq “ ´
+                          vÑu´               bpτ puq`quypτ puqq
+       It leads us to define ϕ via
+
+                         @ u P px8 , x0 s,         ϕpuq B ypτ puqq
+
+since this is indeed equivalent to (10). Its left and right derivatives exist
+everywhere as a consequence of the differentiability properties of y and τ .
+These left and right derivatives do not coincide only on a finite number
+of points, those of the form xptq, where t P R` is a discontinuity time of
+b.
+    Our conventions insure that (10) can be left differentiated everywhere
+and that
+
+                          @ t ě 0,           9 “ ϕ1 pxptqqxptq
+                                             yptq         9
+
+(recall y9 is a left derivate), namely
+                                             yptq
+                                             9              α
+              @ t ě 0,        ϕ1 pxptqq “         “ ´1 `          ą ´1
+                                             xptq
+                                             9           bptqxptq
+
+Remark 2 From the knowledge of ϕ it is possible to reconstruct b, at
+least when ϕ1 is Lipschitzian. Indeed, (1) can be written
+              #
+                        xptq
+                         9 “ ´bptqxptqϕpxptqq
+                    ϕ1 pxptqqxptq
+                             9 “ bptqxptqϕpxptqq ´ αϕpxptqq
+
+which implies that
+
+                          9 “ ´ϕ1 pxptqqxptq
+                          xptq          9 ` αϕpxptqq
+
+i.e.
+                                               ϕpxptqq
+                                 9 “α
+                                 xptq
+                                             1 ` ϕ1 pxptqq
+
+                                              22
+   So when ϕ1 is Lipschitzian, we can solve this ODE to reconstruct x B
+pxptqqtě0 . The trajectory y B pyptqqtě0 is then obtained as pϕpxptqqqtě0
+and b via the formula
+                                                    xptq
+                                                    9
+                       @ t ě 0,        bptq “ ´
+                                                  xptqyptq
+                                                                       ˝
+
+   This inequality can be translated into ϕ1 ą ´1 on px8 , x0 q.
+                                                                       
+   To any function ϕ as in the previous lemma, associate the quantity
+                            ż x0
+                   J pϕq B       Lpξ, ϕpξq, ϕ1 pξqq dξ
+                                  x8
+
+where for any pξ, χ, χ1 q P px8 , x0 s ˆ p0, 1q ˆ p´1, `8q,
+                                       ˆ               ˙
+                              1     β 1 ` χ1        α
+                   Lpξ, χ, χ q B                 ´
+                                    α      χ       βξχ `
+
+   The interest of these definitions is to enable us to write the cost
+functional C in terms of ϕ:
+Lemma 3 For b P B ` and with the notations of Lemma 2, we have
+
+                                  Cpbq “ J pϕq
+
+Proof
+Equation (12) enables us to recover b in terms of ϕ and x:
+                                                   α
+                   @ t ě 0,       bptq “                             (12)
+                                           xptqp1 ` ϕ1 pxptqqq
+and we deduce that
+             ż8ˆ                          ˙
+                               α
+      Cpbq “       β´                        dt
+              0        xptqp1 ` ϕ1 pxptqqq `
+                ż8ˆ                         ˙
+                                 α                  1
+           “´        β´                                     xptqdt
+                                                            9
+                 0       xptqp1 ` ϕ1 pxptqqq ` bptqxptqyptq
+             ż x0 ˆ                  ˙
+                             α                1
+           “        β´                                du
+              x8       up1 ` ϕ puqq ` bpτ puqquϕpuq
+                               1
+
+
+where we used the change of variable t “ τ puq, the mapping τ being
+defined in (11).
+
+                                       23
+    Let us remove the term bpτ puqq in the latter integral. Replacing t by
+τ puq, we get from (12)
+                                         α
+                         bpτ puqq “
+                                    up1 ` ϕ1 puqq
+so that
+                         ż x0 ˆ        ˙
+                               α          1 ` ϕ1 puq
+           Cpbq “      β´                            du
+                   x8     up1 ` ϕ1 puqq ` αϕpuq
+                  β x0 1 ` ϕ1 puq α 1
+                    ż ˆ                     ˙
+                “                 ´              du “ J pϕq
+                  α x8    ϕpuq       β uϕpuq `
+                                                                            
+    Let us now extend the above transformation to a policy b P B which
+can take the value 0. More precisely consider two times 0 ď t1 ď t2
+such that rt1 , t2 s or pt1 , t2 s is a connected component of the set tt ě 0 :
+bptq “ 0u. We recall that this set is assumed to be finite union of such
+intervals, if it is not empty.
+    Let us first suppose that t1 ‰ t2 . On pt1 , t2 s, (1) is transformed into
+                                    #
+                                       9 “0
+                                      xptq
+                                   yptq
+                                   9 “ ´αyptq
+namely
+               @ t P pt1 , t2 s,   xptq “ xpt1 q
+                                   yptq “ ypt1 q expp´αpt ´ t1 qq
+   Since x remains constant and y is changing, one cannot represent y
+as a function ϕ of x. To circumvent this difficulty, we allow ϕ to jump
+at xpt1 q, taking
+                ϕpxpt1 qq B ypt1 q
+               ϕpxpt1 q´q B ypt2 q “ ypt1 q expp´αpt2 ´ t1 qq
+   This is illustrated in the following diagram:
+             y = 𝜑(𝑥)
+
+
+
+
+                y(𝑡1 )
+
+
+                y(𝑡2 )
+
+
+
+
+                                    x 𝑡1 = x(𝑡2 )              x
+
+
+
+
+                                          24
+    The contribution of the period pt1 , t2 s to the cost Cpbq is
+    ż t2                                ˆ        ˙         ˆ            ˙
+                                    β     ypt1 q      β       ϕpxpt1 q
+         pβ ´ 0q` dt “ βpt2 ´ t1 q “ ln            “ ln
+     t1                             α     ypt2 q      α      ϕpxpt1 q´q
+
+    The above observations are also valid, but trivial, when t2 “ t1 .
+    A priori, our definition of B does not exclude the fact that t2 “ `8,
+namely that b ends up vanishing identically after t1 . By convention in
+this case ϕpxpt1 q´q “ 0 and the above formula gives an
+                                                      ş`8infinite contribu-
+tion to the cost, which is coherent with the fact that t1 pβ ´ bptqq` dt “
+ş`8
+ t1
+     β dt “ `8. Since this situation is not interesting for our optimiza-
+tion problem, we exclude it from our considerations and from now on
+the connected components of tb “ 0u are assumed to be bounded.
+    Repeating the above treatment to all the connected components of
+tb “ 0u and extending Lemmas 2 and 3 to the connected components of
+tb ą 0u, we can associate to any b P B a function ϕ satisfying
+
+(H1): ϕ is defined on px8 , x0 s, takes values in p0, 1q and ϕpx0 q “ y0 ,
+
+(H2): ϕ has at most a finite number of discontinuity points and is right
+      continuous and admits a positive left limit at them,
+
+(H3): at any discontinuity point u, ϕpuq ą ϕpu´q,
+
+(H4): ϕ admits a right derivative ϕ1 , as well as a left derivative, outside a
+      finite number of points (which includes the discontinuity points of
+      ϕ, but also some points corresponding to the case t2 “ t1 described
+      above, since due to (12), at these points ϕ1 may diverge to `8),
+
+(H5): ϕ1 ą ´1 where it is defined,
+
+    But the most important feature is that
+
+                                 Cpbq “ J pϕq
+
+where the functional is defined by
+         ż                                                           ˆ      ˙
+                                1          β          ÿ                ϕpuq
+ J pϕq B            Lpξ, ϕpξq, ϕ pξqq dξ `                        ln
+          px8 ,x0 q                        α uPpx ,x s : ϕpuq‰ϕpu´q ϕpu´q
+                                                8   0
+
+
+(x8 is excluded from the last sum, since we don’t allow b to end up
+vanishing identically).
+    There is a point which is not satisfactory in the above construction of
+ϕ: its definition domain px8 , x0 s still depends explicitly on b via x8 . It
+is possible to erase this drawback with the convention that ϕ vanishes on
+
+                                      25
+  r0, x8 s Accordingly, L has to be extended to r0, x0 s ˆ r0, 1q ˆ p´1, `8q
+  via the convention that Lpξ, χ, χ1 q “ 0 if ξ P r0, x8 s (or equivalently if
+  χ “ 0).
+      Remarking that the condition y ď γ can be translated into ϕ ď γ,
+  we have embedded the problem of the global minimization of C over Bγ
+  into the problem of the global minimization of J over Frγ , the set of
+  functions ϕ that satisfy the requirements (H1a), (H2), (H3), (H4) and
+  (H5), where (H1) has been replaced by
+(H1a): ϕ is defined on r0, x0 s, takes values in r0, γs, ϕp0q “ 0, ϕpx0 q “ y0
+       and if ϕpuq ą 0 for some u P p0, x0 s, then ϕpvq ą 0 and ϕpv´q ą 0
+       for all v P ru, x0 s.
+      As it was explained in the main text, the most important part of the
+  above optimization problem concerns the contribution of the restriction
+  of the function ϕ to the interval rα{β, x0 s, since once x has reached α{β,
+  the laissez-faire policy is cost-free and induces y to be non-increasing.
+  Let us furthermore assume the function ϕ satisfies
+
+                                  ϕpα{βq “ γ                              (13)
+
+      This restriction will be justified a posteriori (see Subsection 5.6), but
+  it can also be understood a priori according to the following heuristic.
+  Let us come back to the temporal description given by pb, x, yq. To get
+  x8 ě α{β is extremely costly and requires in fact Cpbq “ `8 (think for
+  instance to the case where x8 “ x0 which asks that b ” 0), so for the
+  optimization problem at hand, we can dismiss this possibility and assume
+  x8 ă α{β. Then consider τ ` the first time x reaches α{β, we have
+  ypτ ` q P p0, γs. As already observed, taking b “ β after time τ ` leads
+  to a non-increasing evolution of y on rτ ` , `8q. In particular, yptq stays
+  below γ for all times t P rτ ` , `8q, while this part of the trajectory does
+  not participate positively to the cost. Due to our underlying assumption,
+  the laissez-faire policy b ” β leads y to hit γ strictly before x reaches
+  α{β. Then if ypτ ` q ă γ, it means that for some times t P r0, τ ` q, we
+  have bptq ă β and yptq ă γ. Increasing a little b at such times, will have
+  the effect of increasing ypτ ` q while keeping y below γ. Furthermore this
+  operation will decrease a little the cost. As a consequence, in order to
+  find a minimizing policy b for C, we can assume that ypτ ` q “ γ. This
+  amounts to assuming (13).
+      These considerations and Assumption (13) lead us to modify the
+  functional set Frγ into Fγ , replacing its first requirement (H1a) by
+(H1b): ϕ is defined on rα{β, x0 s, takes values in p0, γs, the left limits of ϕ
+       are positive, ϕpα{βq “ γ and ϕpx0 q “ y0
+
+                                       26
+   Of course the cost functional on such functions ϕ is given by
+                      ż
+             J pϕq B             Lpξ, ϕpξq, ϕ1 pξqq dξ
+                       pα{β,x0 q
+                                                     ˆ       ˙
+                        β            ÿ                  ϕpuq
+                      `                           ln                  (14)
+                        α uPpα{β,x s : ϕpuq‰ϕpu´q      ϕpu´q
+                                  0
+
+
+   Our ultimate goal is to prove that J admits a unique minimizer ϕ˚
+over Fγ and that this minimizer is obtained from b˚ by the operation
+described above. Up to the justification of the reduction of (H1a) to
+(H1b), given at the end of Subsection 5.6, Theorem 1 will then be proven.
+
+5.2    Extension of J to measures
+To prove the existence of the minimizer ϕ˚ of J on Fγ , we begin by
+generalizing this optimization problem by replacing Fγ by a set of mea-
+sures.
+   To any given ϕ P Fγ , we associate three measures µ, ψ and ν on
+I B rα{β, x0 s via
+                                                        ˆ       ˙
+                 ϕ1 pxq                ÿ                   ϕpuq
+       µpdxq B          dx `                         ln           δ u pdxq
+                 ϕpxq        uPpα{β,x s : ϕpuq‰ϕpu´q
+                                                          ϕpu´q
+                                  0
+
+                1
+       ψpdxq B      dx
+               ϕpxq
+                    ˆ       ˙
+                1        α
+       νpdxq B        1´      dx
+               ϕpxq      βx
+
+(where δ u stands for the Dirac mass at u).
+   Note that ψ and ν are non-negative measures, but µ is a signed
+measure. Denote Fµ the repartition function associated to µ via
+
+                    @ x P I,     Fµ pxq B µprα{β, xsq
+
+   Recall that ϕ, as well as its left limits, are positive on I, it follows
+that ϕ is bounded below by a positive constant on I. This observation
+enables us to compute Fµ :
+
+       @ x P I,      Fµ pxq “ lnpϕpxqq ´ lnpϕpα{βqq “ lnpϕpxq{γq      (15)
+
+   We deduce that
+
+                    @ x P I,     ϕpxq “ γ exppFµ pxqq
+
+
+
+                                      27
+and as a consequence
+                            expp´Fµ pxqq
+                     ψpdxq B             dx
+                                 γ
+                            ˆ       ˙
+                                  α expp´Fµ pxqq
+                     νpdxq B 1 ´                 dx
+                                 βx         γ
+    On these expressions, it appears that ψ and ν only depend on µ (in
+addition to the constants α, β, γ), so they will be denoted ψ µ ν µ from
+now on.
+    From (15) we get that the total weight µpIq of µ is given by Fµ x0 “
+lnpy0 {γq. Let us estimate the total variation }µ}tv of µ:
+Lemma 4 We have
+                             2
+                      }µ}tv ď px0 ´ α{βq ` lnpy0 {γq
+                             
+where
+
+           B inftϕpxq : x P Iu “ mintϕpxq ^ ϕpx´q : x P Iu
+
+Proof
+Recall that any signed measure m on I can be decomposed into m` ´m´ ,
+where m´ and m` are two non-negative measures mutually singular.
+The total variation is given by }m}tv “ m´ pIq ` m` pIq.
+   Coming back to µ, we have
+                                    |ϕ1 pxq|
+                        µ´ pdxq “            1tϕ1 pxqą0u dx
+                                     ϕpxq
+so that
+                        ż                   ż
+                          1        1                      x0 ´ α{β
+              µ´ pIq ď        dx ď               1 dx “
+                       I ϕpxq               I                
+   It follows that
+                                             2
+   }µ}tv “ µ´ pIq ` µ` pIq “ 2µ´ pIq ` µpIq ď px0 ´ α{βq ` lnpy0 {γq
+                                             
+                                                                       
+    The quantity  ą 0 associated to ϕ in the previous lemma can be
+estimated in terms of J pϕq:
+Lemma 5 We have
+
+                             ě y0 expp´βJ pϕq{αq
+
+                                       28
+Fix an arbitrary point x P I. We have
+                                         β x0
+               ż                             ż
+             β                1
+     J pϕq ě      Lpu, ϕpuq, ϕ puqq du ě         Lpu, ϕpuq, ϕ1 puqq du
+             α I                         α x
+               ż x0 ˆ 1               ˆ         ˙˙
+             β       ϕ puq        α          α
+           “                `           1´           du
+             α x      ϕpuq    βϕpuq         βu     `
+             β x0 ϕ1 puq
+               ż                    ˆ         ˙
+                                α         α
+           ě              `           1´        du
+             α x ϕpuq       βϕpuq         βu
+             β x0 ϕ1 puq
+               ż                     ˆ        ˙
+                                 β     ϕpx0 q
+           ě              du “ ln
+             α x ϕpuq            α     ϕpxq
+                                                                   α
+where in the last-but-one inequality, we took into account that 1´ βu ě0
+for u ě x ě α{β. The above bound can be written
+
+           ϕpxq ě ϕpx0 q expp´αJ pϕq{βq “ y0 expp´αJ pϕq{βq
+
+    By taking the infimum over all x P I, we get the desired result.
+                                                                           
+   Consider an element ϕ0 of Fγ such that J pϕ0 q ă `8, for instance
+the function constructed from b˚ as in the previous subsection and denote
+                 2 exppαp1 ` J pϕ0 qq{βq
+           MB                            px0 ´ α{βq ` lnpy0 {γq          (16)
+                           y0
+   The global minimization of J on Fγ is equivalent of the global mini-
+mization of J on tϕ P Fγ : J pϕq ď J pϕ0 qu. So according to Lemma 4,
+we can restrict our attention to measure µ satisfying
+(C1): }µ}tv ď M .
+Furthermore note that the belonging of ϕ to Fγ implies three conditions
+on µ:
+(C2): µpIq “ lnpy0 {γq,
+
+(C3): Fµ ď 0,
+
+(C4): µ ` ψ µ ě 0.
+    Denote by Mγ the set of signed measures µ on I which satisfy the
+conditions (C1), (C2), (C3) and (C4).
+    Up to now, we did not use ν µ , its interest comes from the fact that
+for ϕ P Fγ , the cost functional writes
+                                 α
+                          J pϕq “ pµ ` ν µ q` pIq
+                                 β
+
+                                    29
+   This observation leads us to define for any µ P Mγ ,
+                               α
+                         Kpµq “ pµ ` ν µ q` pIq
+                               β
+since the global minimization of J on tϕ P Fγ : J pϕq ď J pϕ0 qu can be
+embedded in the global minimization of K on Mγ .
+
+5.3    Existence of a global minimizer of K on Mγ
+The successive extensions of our initial minimization problem worked
+out in the two previous subsections will be justified here by showing the
+existence of a global minimizer, via abstract topological arguments. It
+won’t be clear that such a minimizer from Mγ corresponds to an element
+of Bγ via the transformation of Subsection 5.1: this will be investigated
+in the next subsections.
+    Let us endow the set of (signed) measures on I with the weak topol-
+ogy, i.e. a sequence pµn qnPN of such measures converges toward a measure
+µ if and only if for any continuous function g : I Ñ R, we have
+
+                             lim µn rgs “ µrgs
+                            nÑ8
+
+   The existence of a global minimizer of K on Mγ is a consequence of
+a version of Weierstrass’ maximum theorem through the two following
+results.
+Proposition 3 The set Mγ is compact.
+
+Proposition 4 The mapping K : Mγ Ñ R is lower semi-continuous.
+
+Proof of Proposition 3
+ Consider the ball (with respect to the strong topology) BpM q consisting
+of the signed measures whose total variation is smaller or equal to M .
+It is well-known that BpM q is weakly compact. So it sufficient to show
+that the sets
+
+                  S1 B tµ P BpM q : µpIq “ lnpy0 {γqu
+                  S2 B tµ P BpM q : Fµ ď 0u
+                  S3 B tµ P BpM q : µ ` ψ µ ě 0u
+
+are closed.
+    ‚ Concerning S1 , this is obvious, since µpIq “ µr1I s, where 1I is the
+continuous function on I always taking the value 1.
+    ‚ For S2 , consider a sequence pµn qnPN of measures from S2 converging
+toward a signed measure µ. We have to check that µ P S2 . Consider A
+
+                                    30
+the set of atoms of µ, A is at most denumerable and for x P IzA, we
+have
+
+                               lim Fµn pxq “ Fµ                      (17)
+                               nÑ8
+
+   We deduce
+
+                        @ x P IzA,          Fµ pxq ď 0
+
+It remains to use that Fµ is right-continuous and that IzA is dense in I
+to extend the validity of the above inequality to the whole set I.
+    ‚ For S3 , consider a sequence pµn qnPN of measures from S3 converging
+toward a signed measure µ. We have to check that µ ` ψ µ ě 0. Consider
+g a continuous function on I. We begin by showing that
+
+                              lim ψ µn rgs “ ψ µ rgs                 (18)
+                              nÑ8
+
+Indeed, for any n P N, we have
+                               ż
+                             1
+                  ψ µn rgs “     gpxq expp´Fµn pxqq dx
+                             γ I
+
+    We have seen in (17) that Fµn is almost everywhere converging to
+Fµ . Furthermore, we have for all n P N,
+
+                   @ x P I,         |Fµn pxq| ď }µn }tv ď M
+
+   It follows that dominated convergence can be invoked to conclude to
+(18).
+   We deduce that
+
+                     lim pµn ` ψ µn qrgs “ pµ ` ψ µ qrgs
+                    nÑ8
+
+   Now assume furthermore that g ě 0. The above convergence implies
+that
+
+                               pµ ` ψ µ qrgs ě 0
+
+Since this is true for all non-negative continuous function g, we get that
+µ ` ψ µ ě 0, as desired.
+                                                                        
+
+Proof of Proposition 4
+
+
+
+                                       31
+ To get that the mapping K : Mγ Ñ R is lower semi-continuous, it is
+sufficient to write it as the supremum of (weakly) continuous functions
+on Mγ . By definition, we have
+                   α
+             Kpµq “ pµ ` ν µ q` pIq “     sup        pµ ` ν µ qrgs
+                   β                  gPCpIq : 0ďgď1
+
+where CpIq is the set of continuous functions on I.
+   So it remains to check that for any fixed g P CpIq with 0 ď g ď 1,
+the mapping
+
+                           Mγ Q µ ÞÑ pµ ` ν µ qrgs
+
+is continuous. The proof of this continuity is similar to the closure of
+S3 in the proof of Proposition 3: both the mappings Mγ Q µ ÞÑ ψ µ and
+Mγ Q µ ÞÑ ν µ are continuous (taking values in the set of non-negative
+measures on I endowed with the weak topology).
+                                                                      
+
+5.4    Reduction to absolutely measures
+Let µ˚ be a minimizer of K on Mγ . We will show here that µ˚ is
+absolutely continuous with respect to λ, the Lebesgue measure on I.
+    Recall that any signed measure µ on I can be uniquely decomposed
+into a sum µa ` µs ` µc , where µa is atomic, µc is diffuse and singular
+with respect to λ and µc is absolutely continuous with respect to λ. Due
+to Radon-Nikodym theorem, µc admits a (signed) density f : I Ñ R
+with respect to λ, this relation will be denoted µc “ f ¨ λ.
+    Using this decomposition, the cost functional K can be written under
+the form
+                         ˆ                  ż              ˙
+                      β
+              Kpµq “       µa pIq ` µs pIq ` pf ` ν µ q` dλ
+                      α                      I
+
+where we identified ν µ with its density with respect to λ, namely
+                                      ˆ       ˙
+                                    1      α
+            @ x P I,      ν µ pxq “     1´      expp´Fµ pxqq
+                                    γ      βx
+   Our goal here is to show that µ˚a “ 0 “ µ˚s , by perturbative argu-
+ments. Both proofs will follow the same pattern, but the deduction of
+µa “ 0 is simpler, so for pedagogical reasons we will insist on this one.
+Proof of µ˚a “ 0
+The argument is by contradiction. Assume that µ˚a ‰ 0, then there exist
+x1 P I and  ą 0 such that µ˚a ě δ x1 . Since Fµ˚ px1 q ´ Fµ˚ px1 ´q ě  and
+
+                                      32
+that Fµ˚ px1 q ď 0, we have Fµ˚ px1 ´q ď ´ and we can find x2 P pα{β, y1 q
+such that
+                                                                 
+                         @ x P rx2 , x1 q,        Fµ˚ pxq ď ´
+                                                                 2
+   It leads us to consider for r ą 0, the perturbation µ˚r defined by
+                                        1rx2 ,x1 q
+                          µ˚r B µ ` r              ¨ λ ´ rδ x1
+                                        x1 ´ x2
+(where 1rx2 ,x1 q is the indicator function of rx2 , x1 q and the middle term
+is an absolutely continuous measure).
+    Let us check that µr P Mγ for r ą 0 small enough, namely that (C1),
+(C2), (C3) and (C4) are satisfied by µ˚r .
+    ‚ }µ˚r }tv ď M :
+    Since µ˚ is also a minimizer of K on the space of signed measures
+on I, we have Kpµ˚ q ď Lpϕ0 q, where ϕ0 was defined above (16). It
+follows from Lemmas 4 and 5, taking into account the definition of M in
+(16), that }µ˚ }tv ă M . Triangular inequality with respect to the total
+variation norm implies
+                               ›                         ›
+              ˚        ˚
+                               › 1rx2 ,x1 q              ›
+           }µr }tv ď }µ }tv ` ››r           ¨ λ ´ rδ x1 ›› “ }µ˚ }tv ` 2r
+                                  x1 ´ x2                 tv
+
+insuring that for r ď pM ´ }µ˚ }tv q{2, we have }µ˚ }tv ď M .
+   ‚ µ˚r pIq “ lnpy0 {γq:
+   The total weight of µ˚r is always the same as that of µ˚ , since
+                   ˆ                       ˙
+                      1rx2 ,x1 q
+                                 ¨ λ ´ δ x1 pIq “ 1 ´ 1 “ 0
+                      x1 ´ x2
+
+    ‚ Fµ˚r ď 0:
+    Note that outside px2 , x1 q, Fµ˚r coincides with Fµ˚ , so we just need
+to check that Fµ˚r pxq ď 0 for all x P px1 , x2 q. Indeed, we have
+                                                       x ´ x2     
+     @ x P px1 , x2 q,       Fµ˚r pxq “ Fµ˚ pxq ` r             ď´ `r ď0
+                                                       x1 ´ x 2   2
+as soon as r ď {2.
+    ‚ µ˚r ` ψ µ˚r ě 0:
+    Note again that outside px2 , x1 s, we have µ˚r ` ψ µ˚r “ µ˚ ` ψ µ˚ , so we
+just need to check that the measure µ˚r ` ψ µ˚r is non-negative on px2 , x1 s.
+The diffusive singular part of µ˚r `ψ µ˚r is the same as that of µ˚ `ψ µ˚ and
+the atomic ones only differ at x1 . Note that µ˚r ptx1 uq “ µs ptx1 uq ´ r ě
+
+                                             33
+´r and this is non-negative, as soon as r ď . Concerning the absolutely
+continuous part, denote f ˚ (respectively fr˚ ) the density of µ˚ (resp. µ˚r )
+with respect to λ. We have a.e. for x P px2 , x1 q,
+                                                        r
+                               fr˚ pxq “ f ˚ pxq `                         (19)
+                                                     x1 ´ x2
+      Identify ψ µ˚r with its density, so that we can write (a.e.)
+
+                                                          expp´Fµ˚r pxqq
+                    @ x P px2 , x1 q,     ψ µ˚r pxq “
+                                                               γ
+      Note that
+                                           ˇ ˇ x
+                                               ˇż          ˇ
+                         ˇ                           r     ˇ rpx ´ x2 q
+@ x P px2 , x1 q,        ˇFµ˚ pxq ´ Fµ˚ pxqˇ “ ˇ
+                            r
+                                                         dλˇ“           ď r
+                                               ˇ  x1 ´ x2 ˇ
+                                                     x2       x1 ´ x2
+Let
+                               expp1 ` maxxPrx2 ,x1 s |Fµ pxq|q
+                         CB
+                                           γ
+      For any r P r0, 1s, we have
+                                          ˇ                   ˇ
+                    @ x P px2 , x1 q,     ˇψ µ˚ pxq ´ ψ µ˚ pxqˇ ď Cr
+                                              r
+
+
+   Comparing with (19), we get that if x2 has been chosen so that
+x1 ´ x2 ď C ´1 , then a.e. for x P px2 , x1 q,
+
+                     fr˚ pxq ` ψ µ˚r pxq ě f ˚ pxq ` ψ µ˚ pxq ě 0
+
+   This ends the proof that µr P Mγ , as soon as r ą 0 is small enough
+and x2 is sufficiently close to x1 .
+   Let us evaluate Kpµ˚r q. We have
+                          ż x1 ˆ                     ˙
+      ˚         ˚                       r
+  Kpµr q “ Kpµ q ´ r `           f`          ` ν µ˚r     ´ pf ` ν µ q` dλ (20)
+                           x2        x1 ´ x2           `
+
+and for almost all x belonging to px2 , x1 q,
+ˆ                            ˙
+             r                                          r
+  f pxq `         ` ν µ˚r pxq ´ pf pxq ` ν µ pxqq` ď         ` ν µ˚r pxq ´ ν µ pxq
+          x1 ´ x2             `                      x1 ´ x2
+
+Note that for x P px2 , x1 q, we have Fµ˚r pxq ą Fµ˚ pxq, so that ν µ˚r pxq ă
+ν µ˚ pxq. Thus we get
+        ˆ                            ˙
+                     r                                             r
+          f pxq `         ` ν µ˚r pxq    ´ pf pxq ` ν µ pxqq` ă
+                  x1 ´ x2              `                        x1 ´ x2
+
+                                            34
+    It follows that that for r ą 0:
+              ż x1 ˆ                     ˙
+                            r
+                     f`          ` ν µ˚r     ´ pf ` ν µ q` dλ ă r
+                x2      x 1 ´ x2           `
+
+and (20) implies the contradiction Kpµ˚r q ă Kpµ˚ q.
+                                                                                        
+
+Remark 5 In Subsection 5.2, we have seen that the atomic part of
+a measure corresponds to imposing the drastic policy b “ 0 for some
+time, as a partial attempt toward eradication of the disease (according
+to Remark 1 this goal cannot be fully attained). The significance of
+µ˚a “ 0 is that such attempts are sub-optimal. From the above proof we
+see that it is better to replace such attempts by future softer policies,
+replacing a (partial) Dirac mass at x1 by a density before x1 (recall that
+x and time go in reverse directions).
+                                                                         ˝
+
+
+Proof of µ˚s “ 0
+ The pattern of the proof is the same as that for µ˚a “ 0, except that we
+have to “thicken a little” x1 . Indeed, if µ˚s ‰ 0, we can find x1 P pα{β, x0 s
+and 1 ą 0 such that
+                                                   α
+                                                      ă x1 ´ 1
+                                                   β
+                              ˚         1        1
+                            µs ppx1 ´  , x1 `  qq ą 0
+     @ 2 P p0, 1 s,      µ˚s ppx1 ´ 2 , x1 ` 2 qq ě 2µ˚c ppx1 ´ 2 , x1 ` 2 qq
+
+      In comparison with the previous proof, the restriction of µ˚s to px1 ´
+1 , x1 ` 1 q plays the role of δ x1 with µ˚s ppx1 ´ 1 , x1 ` 1 qq playing the role
+of .
+      It is now possible to find x2 P pα{β, x1 ´ 1 q such that for r ą 0 small
+enough, the measure
+                   1rx2 ,x1 ´1 q              r
+    µ˚r B µ ` r                   ¨λ´ ˚                      1px1 ´1 ,x1 `1 q ¨ µ˚s
+                  x1 ´  ´ x2
+                          1          µs prx1 ´  , x1 `  sq
+                                                1        1
+
+
+belongs to Mγ and
+
+                                   Kpµ˚r q ă Kpµ˚ q
+
+   This is the desired contradiction. The details of the adaptation of
+the arguments of the proof of µ˚a “ 0 are left to the reader.
+                                                                    
+
+                                           35
+    We have shown that any minimizer µ˚ of K can be written in the
+form f ˚ ¨ λ. As a consequence, such a density f ˚ is a minimizer of a
+suitably formulated optimization problem, to which we now turn..
+    For any integrable function f on I, let associate to f the notions that
+were previously associated to the measure f ¨ λ: for any x P I,
+                                          żx
+                     F pxq B Ff ¨λ pxq “       f puq du
+                                               α{β
+                             1
+                    ψ F pxq B expp´F pxqq
+                             γ
+                             ˆ       ˙
+                                  α
+                    ν F pxq B 1 ´      expp´F pxqq
+                                  βx
+   We introduce Dγ the set of integrable functions f such that
+
+               F px0 q “ lnpy0 {γq,   F ď 0,         f ` ψF ě 0
+
+and we consider on Dγ the functional
+                                    ż
+                 Gpf q B Kpf ¨ λq “ pf ` ν F q` dλ
+                                           I
+
+   We have shown the optimization problem of G on Dγ (which is an
+extension of the optimization problem of J on Fγ ) admits global min-
+imizers: they are exactly the functions f ˚ such that f ˚ ¨ λ P Mγ is a
+global minimizer of K.
+
+5.5    Characterization of the minimizer of G on Dγ
+In this subsection, a minimizer of G on Dγ will be denoted f and our
+goal is to show that it is a.e. equal to the function f ˚ described below.
+   Define x˚ as the unique solution belonging to rα{β, x0 s of the equation
+                           α                  α
+                    x˚ ´     lnpx˚ q “ 1 ´ γ ´ lnpx0 q                (21)
+                           β                  β
+(the existence of this solution is due to our underlying assumption, note
+that x˚ coincides with xpτ 1 q defined above (7)), and take
+
+  @ x P rα{β, x0 s,
+          #
+            0                                        , if x ď x˚
+   ˚
+  f pxq B     ´     ´                  ¯¯´1´       ¯             (22)
+            ´ γ ´ x ´ x˚ ´ αβ lnpx{x˚ q         α
+                                            1 ´ βx   , if x ą x˚
+
+Theorem 2 The function f ˚ is the unique minimizer of G on Dγ , up
+to modifications on subsets of I with Lebesque measure zero.
+
+                                      36
+   The proof of this result proceeds by way of a few lemmas.
+   We associate to f , a minimizer of G on Dγ , the notions defined at
+the end of the previous subsection. In addition, we define
+
+                                v B maxtx P I : F pxq “ 0u
+                                     żv
+                           G1 pf q B      pf ` ν F q` dλ
+                                      α{β
+                                     ż x0
+                           G2 pf q B      pf ` ν F q` dλ
+                                       v
+
+   Note that Gpf q “ G1 pf q`G2 pf q. We will investigate separately G1 pf q
+and G2 pf q. The computation of the former will be a consequence of:
+Lemma 6 The function F vanishes everywhere on rα{β, vs.
+
+Proof
+We have
+                    żv                                    żv               żv
+        G1 pf q ě          f ` ν F dλ “ F pvq `                 ν F dλ “         ν F dλ
+                    α{β                                   α{β              α{β
+
+since by continuity of F , F pvq “ 0.
+    The bound F ď 0 implies that
+                              ˆ        ˙                 ˆ       ˙
+                            1       α                  1      α
+     @ x P I,     ν F pxq “     1´       expp´F pxqq ě     1´      (23)
+                            γ       βx                 γ      βx
+and we deduce
+                                       żv
+                                   1                  α
+                         G1 pf q ě               1´      dx “ G1 pfrq
+                                   γ       α{β        βx
+
+where the function fr is given by
+                                                      "
+                                                   0     , if x ď v
+                     @ x P I,              frpxq B
+                                                   f pxq , if x ą v
+
+   Since F pvq “ 0, we get that for any x P rv, x0 s, that
+                żx             żx            żx
+        Frpxq B     frpuq du “    frpuq du “     f puq du “ F pxq
+                     α{β                    v                   v
+
+
+     We deduce that fr ` ν Fr coincides with f ` ν F on rv, x0 s and thus
+G2 pfrq “ G2 pf q, which implies
+
+                                       Gpfrq ď Gpf q
+
+                                                 37
+    Taking into account that fr P Dγ and that f is a minimizer of G on
+Dγ , we must have Gpfrq “ Gpf q and G1 pfrq “ G1 pf q. In particular, (23)
+must be an equality a.e. on rα{β, vs. This means that F vanishes a.e. on
+rα{β, vs. The continuity of F then implies that F vanishes identically
+on rα{β, vs.
+                                                                        
+   As announced, we deduce the value of G1 pf q:
+
+Lemma 7
+                           ˆ            ˙     ˆ ˆ ˙   ˙
+                       1          α        α      α
+             G1 pf q “         v ´ lnpvq `     ln   ´1
+                       γ          β        βγ     β
+
+and the r.h.s. is increasing with respect to v.
+
+Proof
+From Lemma 6, we deduce that f “ 0 on rα{β, vs (a.e., as all statements
+about densities, in the sequel we will no longer mention it). Recalling
+that ν F ě 0, we get
+            żv            żv
+                                         1 v
+                                           ż
+                                                  α
+  G1 pf q “      ν F dλ “      ν 0 dλ “        1´    dx
+             α{β           α{β          γ α{β     βx
+              „             v         ˆ           ˙      ˆ ˆ ˙     ˙
+            1        α               1       α          α     α
+          “     x ´ lnpxq         “      v ´ lnpvq `       ln    ´1
+            γ        β       α{β     γ       β         βγ     β
+
+                                                                            
+   We now come to the study of G2 . Our main step in this direction is:
+
+Proposition 6 We have f ` ν F ď 0 on rv, x0 s.
+
+Proof
+Consider x1 P pv, x0 s. Since x1 can be arbitrary close to v, it is sufficient
+to show that f ` ν F ď 0 on rx1 , x0 s. The advantage of considering such
+a x1 is that we can find η ą 0 such that
+
+                       @ x P rx1 , x0 s,    F pxq ď ´η                   (24)
+
+    This property will be important for the perturbations of f we are
+to consider. More precisely they will be of the form fr B f ` rg, with
+r ą 0 sufficiently small and where g is an appropriate bounded function
+on rα{β, x0 s and satisfying g “ 0 on rα{β, x1 s.
+
+
+
+                                       38
+   Defining for x P rα{β, x0 s
+                                 żx
+                      Fr pxq B          fr dλ
+                                  α{β
+                                 żx               ż v_x
+                      Gpxq B            g dλ “            g dλ
+                                  α{β              v
+
+
+we have Fr “ F ` rG and it is clear from (24) that the inequality Fr ď 0
+will be satisfied on rv, x0 s for r ą 0 sufficiently small. Since Fr and F
+coincide on rα{β, vs, we will get Fr ď 0 on I.
+    It will be easy to impose that Gpx0 q “ 0, to get Fr px0 q “ F px0 q “
+lnpy0 {γq.
+    It will be more tricky to insure that fr ` ψ Fr ě 0 (on rx1 , x0 s, since
+it is trivial on rα{β, x1 s where fr ` ψ Fr coincides with f ` ψ F ) and we
+have to be very careful about the choice of g. The construction of such
+appropriate g is given as follows.
+    First note that if x P rx1 , x0 s is such that f pxq ` ψ F pxq “ 0, then
+                                                  α
+         f pxq ` ν F pxq “ f pxq ` ψ F pxq ´         expp´F pxqq ď ´
+                                                 βγx
+with
+                         "                              *
+                         α
+                 B min     expp´F pxqq : x P rx1 , x0 s
+                        βγx
+
+   Denote
+
+                A B tx P rx1 , x0 s : f pxq ` ν F pxq ď ´{2u
+                B B tx P rx1 , x0 s : f pxq ` ν F pxq ą 0u
+
+   Let h be a bounded and measurable function defined on B. Consider
+the two functions ξ and χ given on rx1 , x0 s by
+                             $
+                             &1      , if x P A
+                      ξpxq B hpxq , if x P B
+                               0     , otherwise
+                             %
+                             "
+                               ψ F pxq , if x P A
+                      χpxq B
+                               ν F pxq , otherwise
+
+   Solve on rx1 , x0 s the weak ODE in G:
+                            #
+                              Gpx1 q “ 0
+                                                                        (25)
+                                      G9 “ χG ` ξ
+
+                                         39
+(this is always possible, even with irregular ξ and χ, see (26) below).
+    Next extend G to rα{β, x1 s by imposing that G vanishes there (equiv-
+alently, keep solving (25) with ξ “ χ “ 0 there) and define g B G. 9
+    Note that on A, we have g ´ ψ F G “ 1, i.e.
+
+                                  g ´ γ ´1 e´F G “ 1
+
+   It follows that for r ě 0 sufficiently small, say r P r0, r0 q, with some
+r0 ą 0, we have
+
+                      g ´ γ ´1 e´Fr G ě 1{2                  on A
+
+(r0 depends on h through (25) via a bound on G).
+    The latter inequality can be written as
+                                                     1
+                        Br fr ` Br ψ Fr ě                  on A
+                                                     2
+and we deduce that for r P r0, r0 q,
+
+                             fr ` ψ Fr ě 0               on A
+
+    Due to the definition of  and A, f ` ψ F is bounded below by {2
+on rx1 , x0 szA. It follows that up to diminishing r0 , we can insure that
+fr ` ψ Fr ě 0 on rx1 , x0 s for all r P r0, r0 q.
+    Up to imposing Gpx0 q “ 0, this is the type of perturbations fr we
+are to consider.
+    Note that (25) can be solved explicitly:
+                                                  żx
+                                             Hpxq
+              @ x P rx1 , x0 s,    Gpxq “ e          e´Hpuq ξpuq du   (26)
+                                                           x1
+
+where
+                                                          żx
+                  @ x P rx1 , x0 s,           Hpxq “             χpuq du   (27)
+                                                            x1
+
+   Thus the condition Gpx0 q “ 0 writes
+                          ż x0
+                               e´H ξ dλ “ 0
+                                      x1
+
+namely
+                        ż                    ż
+                                 ´H
+                             e        dλ `           e´H h dλ “ 0          (28)
+                         A                       B
+
+
+                                             40
+    Once this condition is satisfied, we have fr P Dγ for r P r0, r0 q. It
+leads us to investigate G2 pfr q. Let us differentiate this quantity at r “ 0.
+First note that
+
+                        Br |r“0 pfr ` ν Fr q “ g ´ ν F G
+
+   If x P rx1 , x0 s is such that f pxq ` ν F pxq “ 0, then x does not belong
+to A \ B, so g ´ ν F G “ 0. Taking into account the definition of B, we
+obtain by differentiation under the integral
+                                      ż               ż
+                    Br |r“0 G2 pfr q “ g ´ ν F G dλ “    h dλ
+                                   B                       B
+
+    Since f is a global minimizer of G on Dγ and that Gpfr q ´ Gpf q “
+G2 pfr q ´ G2 pf q, we must have
+                                 ż
+                                   h dλ ě 0                       (29)
+                                  B
+
+    So we have shown that if h is such that (28) is true, then (29) holds.
+    To finish the proof, it remains to see that this property implies that
+λpDq “ 0.
+    We proceed by contradiction, assuming λpDq ą 0. Consider x2 P
+px1 , x0 q such that
+
+                              λpD´ q “ λpD` q                            (30)
+
+with
+
+               D´ B D X rx1 , x2 q,         D` B D X rx2 , x0 q
+
+   Find a bounded and measurable function h0 on B such that
+               ż                    ż
+                  expp´Hqh0 dλ “ ´ expp´Hq dλ                            (31)
+                    B                         A
+
+   Consider next
+
+                  h “ h0 ` t exppHq1D´ ´ t exppHq1D`
+
+with t ě 0 to be chosen later.
+    Due to (30) and (31), (28) holds.
+    However, as can be seen in (27), H is strictly increasing on B. It
+follows that
+
+                @ x1 P D´ , @ x2 P D` ,           Hpx1 q ă Hpx2 q
+
+                                       41
+and as a consequence
+           ż         ż         ˆż                      ż           ˙
+                                              H             H
+              h dλ “ h0 dλ ` t                e dλ ´        e dλ
+                D         D              D´            D`
+
+diverges toward ´8 as t goes to `8 (the latter assertion follows from
+λpD´ q “ λpD` q “ λpDq{2 ą 0). However, this leads to a contradiction
+with (29), so we must have λpDq “ 0, as desired.
+                                                                    
+       We can now come to the
+Proof of Theorem 2
+ From Proposition 6, we deduce that G2 pf q “ 0 and so Gpf q “ G1 pf q.
+Lemma 7 tells us that Gpf q will be minimal if v is as small as possible.
+   From Proposition 6, we also get that for x P rv, x0 s,
+                              ˆ        ˙
+                            1       α
+                  f pxq ď ´     1´       expp´F pxqq                 (32)
+                            γ       βx
+inequality which can rewritten under the form
+                                        ˆ           ˙
+                  d                1 d       α
+                    exppF pxqq ď ´        x ´ lnpxq
+                 dx                γ dx      β
+(where d{dx corresponds to a weak derivative).
+   Integrating this bound we obtain
+                                    ˆ                   ˙
+               F px0 q   F pvq    1           α
+              e        ´e      ď´     x0 ´ v ´ lnpx0 {vq
+                                  γ           β
+       Recalling that F pvq “ 0 and F px0 q “ lnpy0 {γq, we deduce
+                                   ˆ                      ˙
+                      y0         1             α
+                         ´ 1ď´       x0 ´ v ´ lnpx0 {vq
+                      γ          γ             β
+i.e.
+                                 α              α
+                        1´γ´       lnpx0 q ď v ´ lnpvq
+                                 β              β
+   The r.h.s. is a quantity which is increasing with v. Thus we must
+have v ě x˚ , where x˚ was defined in (21).
+   The equality v “ x˚ is realized if and only if (32) is an equality (a.e.),
+namely
+                               ˆ        ˙
+                             1        α
+                   f pxq “ ´     1´       expp´F pxqq                   (33)
+                             γ       βx
+
+                                      42
+   Integrating this equality as before, we get
+                                          ˆ                  ˙
+               ˚           F pxq        1        ˚ α      ˚
+       @ x P rx , x0 s,   e      ´ 1“´      x ´ x ´ lnpx{x q
+                                        γ          β
+
+    Replacing this value of eF pxq in (33), we get the function announced
+in (22).
+                                                                       
+    In the above arguments also enable to compute the minimal value
+of G on Dγ (which is also the minimal value of K on Mγ according to
+Subsection 5.4).
+Corollary 1
+                               ˆ ˆ ˙                ˙
+                      ˚  α         α      β
+         min G “ Gpf q “        ln   ´ 1 ` ´ lnpx0 q ´ 1
+         Dγ              βγ        β      α
+
+Proof
+In the proof of Theorem 2 we have seen that Gpf ˚ q “ G1 pf ˚ q. Using the
+expression given in Lemma 7, where v is replaced by x˚ , we get
+                       ˆ            ˙       ˆ ˆ ˙           ˙
+                     1    ˚ α     ˚      α         α
+           G1 pf q “     x ´ lnpx q `         ln       ´1
+                     γ      β            βγ        β
+It remains to take into account the characterization (21) of x˚ .
+                                                                         
+    Remember this value of minDγ G is only valid under our underlying
+assumption, otherwise this minimum is simply 0, as it is attained at the
+laissez-faire policy. It should be noted that minDγ G is decreasing with
+respect to γ, as long as our underlying assumption is satisfied (recall (6)
+in the main text). This observation will be useful in the next subsection.
+
+5.6    Back to Theorem 1
+Finally we come to the proof of Theorem 1. But first we have to re-
+turn to a rigorous justification of the restriction to (13), which was only
+heuristically discussed at the end of Subsection 5.1. We will also present
+an extension of Theorem 1.
+    In the setting of Subsection 5.1, consider a function ϕ : rα{β, x0 s Ñ
+r0, γs with ϕpα{βq ă γ, and satisfying (H2), (H3), (H4) and (H5). Due to
+the fact that ϕ is right continuous and only jumps upward, this function
+attains its maximum, say at x1 P rα{β, x0 s. Define a new function ϕ  r via
+                                            "
+                                              ϕpx1 q , if x ď x1
+              @ x P rα{β, x0 s,    ϕr pxq B
+                                              ϕpxq , if x ą x1
+
+                                    43
+   Note that ϕr still satisfies (H2), (H3), (H4) and (H5). Recall the
+functional J defined in (14).
+
+Lemma 8 We have
+
+                                     ϕq ď J pϕq
+                                  J pr
+
+                                r ‰ ϕ.
+and the inequality is strict if ϕ
+
+Proof
+The argument is similar to the proof of Lemma 6 and is based on the
+following computation:
+ż x1
+                            β x1 1 ` ϕ1 puq
+                               ż
+                 1                                 α
+     Lpu, ϕpuq, ϕ puqq du ě                  ´           du
+ α{β                        α α{β ϕpuq          βuϕpuq
+                                            β x1 1
+                                             ż           ˆ       ˙
+                                      x1                       α
+                          “ rlnpϕpuqsα{β `                 1´      du
+                                            α α{β ϕpuq        βu
+                                                    ż x1
+                                      x1      β              α
+                          ě rlnpϕpuqsα{β `               1´     du
+                                            αϕpx1 q α{β      βu
+                                                          „            x1
+                                                     β         α
+                          “ lnpϕpx1 q{ϕpα{βqq `            u ´ lnpuq
+                                                 αϕpx1 q       β        α{β
+                                    „             x1
+                                β         α
+                          ě           u ´ lnpuq
+                            αϕpx1 q       β        α{β
+
+   If we replace ϕ by ϕr in the above computations, all the inequalities
+become equalities, so the last term is in fact equal to
+                        ż x1
+                             Lpu, ϕ      r 1 puqq du
+                                  r puq, ϕ
+                            α{β
+
+    We have furthermore
+                            ˆ       ˙                                  ˆ        ˙
+           ÿ                   ϕpuq                  ÿ                    ϕ
+                                                                          r puq
+                         ln           ě0 “                          ln
+ uPpα{β,x s : ϕpuq‰ϕpu´q
+                              ϕpu´q        uPpα{β,x s : ϕ     ϕpu´q
+                                                        r puq‰r
+                                                                         ϕ
+                                                                         r pu´q
+        1                                           1
+
+
+and the respective contributions of ϕ and ϕ r to the costs J pϕq and J pr
+                                                                        ϕq
+are the same on px1 , x0 s. It follows that
+
+                                     ϕq ď J pϕq
+                                  J pr
+
+şx1 The equality1 holds if in the above computation of the integral
+ α{β
+     Lpu, ϕpuq, ϕ puqq du, all inequalities are equalities and we get that
+ϕpxq “ ϕpx1 q for a.e. x P pα{β, x1 q, namely ϕr “ ϕ.
+
+                                       44
+                                                                             
+    It follows that in the perspective of minimizing J , we can restrict
+ our attention to functions ϕ attaining their maximum at α{β, i.e. we
+ can replace (H1a) by
+(H1c): ϕ is defined on rα{β, x0 s, takes values in r0, γs, ϕpα{βq “ maxrα{β,x0 s ϕ,
+       ϕpx0 q “ y0 and the left limits of ϕ are positive.
+    To go further toward (H1b), let ϕ a function satisfying (H1c), (H2),
+ (H3), (H4) and (H5), denote η B ϕpα{βq and assume that η ă γ. From
+ the development of Subsections 5.2 to 5.5, we get that
+
+                                 J pϕq ě min G
+                                            Dη
+
+
+ According to Corollary 1 (see also its following paragraph), we have
+
+                                 min G ą min G
+                                  Dη        Dγ
+
+
+    This observation ends up the justification of the replacement of (H1a)
+ by (H1b), relatively to the search of a global minimizer of L.
+     We can now come to the
+ Proof of Theorem 1
+  One direct way would be to check that the procedure described in
+ Subsection 5.1 transform b˚ into f ˚ . There is even a faster way, as it is
+ sufficient to check that
+
+                                 Cpb˚ q “ Gpf ˚ q
+
+ and this is a consequence of (8), on one hand, and of Corollary 1, on the
+ other hand (recall that x˚ “ xpτ 1 q).
+     This argument shows that b˚ is a global minimizer of C over Bγ .
+ To see that any global minimizer coincides with b˚ on the time interval
+ r0, τ 1 s, take into account Remark 2: since f ˚ is Lipschitzian, there is
+ only one policy leading to f ˚ (defined on rα{β, x0 s).
+                                                                         
+     Let us end this subsection with several observations.
+ Remark 7 Corollary 1 provides in fact a quantitative formulation of
+ our underlying assumption, since it does correspond to minDγ G ą 0 and
+ we get
+                        ˆ ˆ ˙                       ˙
+                      α        α          β
+                   γă     ln       ´ 1 ` ´ lnpx0 q
+                      β        β          α
+
+                                       45
+(in particular the r.h.s. must be positive). We recover (6) in the main
+text.
+                                                                      ˝
+
+
+Remark 8 Consider a cost functional of the form (9), where F coincides
+with p¨q` on R` and is non-negative on p´8, 0q. Then we get that Cr ě C.
+                        r ˚ q “ Cpb˚ q. It follows that b˚ is also a global
+Note nevertheless that Cpb
+              r In particular if F is positive on p´8, 0q, then b˚ is the
+minimizer of C.
+unique minimizer of C.
+                     r
+                                                                          ˝
+
+
+Remark 9 Our extension of the optimization problem to measure
+spaces suggests that the S.I.R. ODE (1) could itself be generalized into
+                         #
+                           dx “ ´xy dB
+                                                                    (34)
+                           dy “ xy dB ´ αy dt
+
+where
+şt      B is a Radon signed measure on R` (in (1), it is given by Bpr0, tsq “
+ 0
+   bpsq ds, for all t ě 0). Equation (34) is to be understood in the Stieltjes
+sense: for any t ě 0,
+            #                ş
+               xptq “ xp0q ´ r0,ts xpsqypsq dBpsq
+                             ş                      ş
+               yptq “ yp0q ` r0,ts xpsqypsq dBpsq ´ r0,ts αypsq ds
+
+(where x and y are themselves only right-continuous with left limits, in
+fact they should be seen as repartition functions of measures). It would
+be modeling very erratic policies and Theorem 2 would imply that even
+among them, b˚ is a minimizer of the extension of C similar to J (as one
+would guess).
+                                                                       ˝
+
+
+
+
+                                     46
+

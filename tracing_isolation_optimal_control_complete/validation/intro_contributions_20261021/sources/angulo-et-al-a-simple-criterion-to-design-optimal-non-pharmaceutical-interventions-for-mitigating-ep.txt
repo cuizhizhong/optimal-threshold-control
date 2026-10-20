@@ -1,0 +1,884 @@
+                                                                                                                         A simple criterion to design optimal
+                                                                      royalsocietypublishing.org/journal/rsif
+                                                                                                                         non-pharmaceutical interventions for
+                                                                                                                         mitigating epidemic outbreaks
+                                                                                                                         Marco Tulio Angulo1, Fernando Castaños3, Rodrigo Moreno-Morton4,
+                                                                      Research                                           Jorge X. Velasco-Hernández2 and Jaime A. Moreno5
+                                                                                                                         1
+                                                                                                                           CONACyT - Institute of Mathematics, and 2Institute of Mathematics, Universidad Nacional Autónoma de México,
+                                                                      Cite this article: Angulo MT, Castaños F,          Juriquilla 76230, México
+                                                                                                                         3
+                                                                                                                           Department of Automatic Control, Cinvestav-IPN, Ciudad de México 07360, México
+                                                                      Moreno-Morton R, Velasco-Hernández JX,             4
+                                                                                                                           Faculty of Sciences, and 5Institute of Engineering, Universidad Nacional Autónoma de México, Ciudad de
+                                                                      Moreno JA. 2021 A simple criterion to design       México 04510, México
+                                                                      optimal non-pharmaceutical interventions for
+                                                                                                                               MTA, 0000-0002-9802-8567; FC, 0000-0002-0389-7955
+                                                                      mitigating epidemic outbreaks. J. R. Soc.
+Downloaded from https://royalsocietypublishing.org/ on 01 June 2025
+
+
+
+
+                                                                      Interface 18: 20200803.                                For mitigating the COVID-19 pandemic, much emphasis is made on
+                                                                      https://doi.org/10.1098/rsif.2020.0803                 implementing non-pharmaceutical interventions to keep the reproduction
+                                                                                                                             number below one. However, using that objective ignores that some of these
+                                                                                                                             interventions, like bans of public events or lockdowns, must be transitory and
+                                                                                                                             as short as possible because of their significant economic and societal costs.
+                                                                      Received: 5 October 2020                               Here, we derive a simple and mathematically rigorous criterion for designing
+                                                                      Accepted: 21 April 2021                                optimal transitory non-pharmaceutical interventions for mitigating epidemic
+                                                                                                                             outbreaks. We find that reducing the reproduction number below one is suffi-
+                                                                                                                             cient but not necessary. Instead, our criterion prescribes the required reduction
+                                                                                                                             in the reproduction number according to the desired maximum of disease preva-
+                                                                                                                             lence and the maximum decrease of disease transmission that the interventions
+                                                                      Subject Category:                                      can achieve. We study the implications of our theoretical results for designing
+                                                                      Life Sciences–Mathematics interface                    non-pharmaceutical interventions in 16 cities and regions during the COVID-
+                                                                                                                             19 pandemic. In particular, we estimate the minimal reduction of each region’s
+                                                                      Subject Areas:                                         contact rate necessary to control the epidemic optimally. Our results contribute
+                                                                                                                             to establishing a rigorous methodology to design optimal non-pharmaceutical
+                                                                      biomathematics, computational biology
+                                                                                                                             intervention policies for mitigating epidemic outbreaks.
+
+                                                                      Keywords:
+                                                                      epidemic outbreak, non-pharmaceutical
+                                                                      interventions, COVID-19, optimal control
+                                                                                                                         1. Introduction
+                                                                                                                         Since the seminal work of May & Anderson [1], the design of interventions to era-
+                                                                                                                         dicate infectious diseases has the objective of achieving a basic (R0) or effective
+                                                                                                                         reproduction number below one [2,3]. The underlying assumption here is that it
+                                                                      Author for correspondence:                         is possible to maintain interventions for long periods, such as long-term vaccination
+                                                                      Marco Tulio Angulo                                 programmes. During the COVID-19 pandemic, this same objective is guiding the
+                                                                      e-mail: mangulo@im.unam.mx                         design of non-pharmaceutical interventions (NPIs) [4]. However, maintaining
+                                                                                                                         NPIs like bans of public events or lockdowns for long periods of time is infeasible
+                                                                                                                         because of their substantial economic and societal costs [5,6]. Actually, instead of
+                                                                                                                         aiming for eradication, NPIs aim to mitigate the economic and social costs of an epi-
+                                                                                                                         demic outbreak [7]. Nevertheless, we still lack simple guidelines to design NPIs for
+                                                                                                                         mitigating epidemic outbreaks, analogous to the R0 < 1 condition for eradication.
+                                                                                                                             Here, we use the classic Susceptible–Infected–Removed (SIR) epidemiological
+                                                                                                                         model to fully characterize the design of NPIs for mitigating epidemic outbreaks.
+                                                                                                                         With this aim, we consider that NPIs should achieve an optimal tradeoff between
+                                                                                                                         two objectives [8]. First, optimal NPIs must minimize the period in which they
+                                                                                                                         need to be applied, consequently minimizing their associated economic and
+                                                                                                                         societal costs. Second, optimal NPIs must guarantee that the disease prevalence
+                                                                                                                         does not exceed a specified maximum level, which for example can represent
+                                                                      Electronic supplementary material is available     health services’ capacity for that particular disease outbreak [9]. We obtain a
+                                                                      online at https://doi.org/10.6084/m9.figshare.c.   full analytical characterization of such optimal NPIs for mitigating epidemic
+                                                                      5416018.
+                                                                                                                             © 2021 The Authors. Published by the Royal Society under the terms of the Creative Commons Attribution
+                                                                                                                             License http://creativecommons.org/licenses/by/4.0/, which permits unrestricted use, provided the original
+                                                                                                                             author and source are credited.
+                                                                           (a)                                                                                             (b)                                                                                    2
+                                                                                                                                                                                                 0.20
+                                                                                                                                      susceptible                                                                        no intervention
+
+
+
+
+                                                                                                                                                                            disease prevalence
+
+
+
+
+                                                                                                                                                                                                                                                                royalsocietypublishing.org/journal/rsif
+                                                                                                                                                                                                 0.15
+                                                                                                                                             S                                                          intervention 2
+                                                                                                                                                                                                 0.10                                              Imax
+                                                                                                                                                                                                                                 intervention 1
+
+
+
+
+                                                                                                                                                 transmission
+                                                                                                        NPI                   u
+
+
+
+
+                                                                                                                                                    disease
+                                                                                                                                                                                                 0.05
+                                                                                                       policy
+                                                                                                                        intervention
+
+                                                                                                                                                                                                   0        20    40     60   80 100 120 140
+                                                                                                                                                                            (c)                   1.0
+
+                                                                                                                                             I                                                    0.8 intervention 2             intervention 1
+                                                                                                                                                         infected
+
+
+
+
+                                                                                                                                                                            intervention
+                                                                                                                                                                                                  0.6                                              umax
+                                                                                 flow
+
+
+
+
+                                                                                                                                                                                                                                                                J. R. Soc. Interface 18: 20200803
+                                                                                 information                                                                                                      0.4
+                                                                                                                                                                                                  0.2
+Downloaded from https://royalsocietypublishing.org/ on 01 June 2025
+
+
+
+
+                                                                                 individuals                                                                                                       0        20     40 60 80 100 120 140
+                                                                                                                                  D                             R
+                                                                                                                                                                                                                 time (days since onset)
+                                                                                                                                                                            (d)
+                                                                                                                             deaths                     recovered
+                                                                                                                                                                            effective                                                          intervention 1
+                                                                                                                                                                            duration                                          intervention 2
+                                                                      Figure 1. Optimal non-pharmaceutical interventions. (a) Susceptible–Infected–Removed (SIR) model with non-pharmaceutical interventions (NPIs) reducing disease trans-
+                                                                      mission. For the optimal NPI design problem, the objective is to design the intervention u*(t) with minimal effective duration such that u*(t) ∈ [0, umax] and I(t) ≤ Imax for all
+                                                                      t ≥ 0. (b,c) The response of the SIR model for two interventions (parameters are β = 0.52, γ = 1/7, I0 = 8.855 × 10−7 and S0 = 1 − I0). Both interventions 1 and 2 satisfy
+                                                                      u(t) ≤ umax and guarantee that I(t) ≤ Imax. Actually, intervention 2 is the optimal one derived using our analysis: it is the intervention with minimal effective duration satisfying
+                                                                      I(t) ≤ Imax. (d) The effective duration of an intervention measures the interval between the start of the outbreak and the last time that a non-zero intervention is applied. In this
+                                                                      example, the effective duration of intervention 1 is 120 days, while the effective duration of intervention 2 is 69 days.
+
+                                                                      outbreaks, specifying the optimal intervention at each state that                              the population that is susceptible to the disease, and I is the dis-
+                                                                      the epidemic can be. This characterization yields the necessary                                ease prevalence (i.e. the proportion of the population that is
+                                                                      and sufficient criterion for the existence of optimal NPIs for miti-                           infected); see figure 1a. We discuss later other more detailed epi-
+                                                                      gation, analogous to the R0 < 1 condition for eradication. We find                             demic models. The epidemic state changes with time t as the
+                                                                      that reducing the reproduction number below one is sufficient but                              disease is transmitted, producing the trajectory (S(t), I(t)) for
+                                                                      not necessary for their existence. Instead, for mitigation, we show                            t ≥ 0. For epidemic mitigation, we consider that the goal is keep-
+                                                                      that the desired maximum disease prevalence determines the                                     ing the disease prevalence below a specified level Imax ∈ (0, 1]. A
+                                                                      necessary reduction in the reproduction number. The conse-                                     main factor determining this constant is health services’
+                                                                      quence of not reducing the reproduction number below one is                                    capacity in the sense that a prevalence above Imax causes
+                                                                      that interventions must start before the disease prevalence reaches                            higher mortality due to hospital saturation [9]. In general, the
+                                                                      the specified maximum level. We also demonstrate numerically                                   selection of Imax could depend on other social and economic fac-
+                                                                      that the derived optimal NPIs for mitigation are robust to uncer-                              tors of the specific population where the outbreak occurs. To
+                                                                      tainties in the model parameters and unmodelled epidemic                                       keep I(t) ≤ Imax, we assume we can apply one or several NPIs
+                                                                      dynamics (e.g. undetected infections). Finally, we explore the                                 that reduce disease transmission by the factor (1 − u), for some
+                                                                      implications of our theoretical result by analysing the response                               u ∈ [0, 1]; see figure 1a. The NPIs achieve no reduction when
+                                                                      of 16 cities and regions across the globe to the COVID-19 pan-                                 u = 0, and they completely stop transmission when u = 1. Differ-
+                                                                      demic, finding that most regions achieved a larger-than-                                       ent NPIs correspond to particular values of u. For instance, a
+                                                                      necessary reduction in transmission. Our results contribute to                                 study of NPIs during the COVID-19 pandemic [11] found that
+                                                                      designing NPIs to optimally and robustly mitigate epidemic                                     closing most non-essential business corresponds to u ≈ 0.25, clos-
+                                                                      outbreaks.                                                                                     ing schools and universities to u ≈ 0.37, and limiting gatherings to
+                                                                                                                                                                     at most 10 people to u ≈ 0.42. In practice, it can be unfeasible to
+                                                                                                                                                                     fully stop the disease transmission (i.e. u < 1) because of inherent
+                                                                      2. Characterizing optimal non-pharmaceutical                                                   challenges like asymptomatic transmission [12], or because of the
+                                                                                                                                                                     necessity of maintaining a working economy [13]. Therefore, we
+                                                                         interventions                                                                               upper-bound the reduction by umax ∈ (0, 1). We say that u is
+                                                                                                                                                                     admissible if u ∈ [0, umax].
+                                                                      2.1. Optimal epidemic mitigation using                                                             Different admissible NPIs can keep the disease prevalence
+                                                                           non-pharmaceutical interventions                                                          below Imax. For instance, ‘intervention 1’ in the example of
+                                                                      Our objective is to characterize the reduction in the disease                                  figure 1b,c keeps this restriction and it has an ‘effective
+                                                                      transmission that is optimal for each state in which the epidemic                              duration’ of 120 days. Here, the effective duration of an interven-
+                                                                      outbreak can be. For this, we leverage on the mathematical                                     tion is the time interval between the start of the outbreak and
+                                                                      tractability of the SIR model [10], where the state can be charac-                             the last time that a non-zero intervention is applied (figure
+                                                                      terized by the pair (S, I) [ [0, 1]2 . Here, S is the proportion of                            1d). ‘Intervention 2’ of figure 1b,c also keeps the restriction
+                                                                                                                                                                                                                             3
+                                                                         Box 1. Optimal NPIs for the Susceptible–Infected–Removed (SIR) model.
+
+
+
+
+                                                                                                                                                                                                                           royalsocietypublishing.org/journal/rsif
+                                                                         The SIR model with interventions u(t) ∈ [0, umax] reducing disease transmission takes the form
+                                                                                                                       dS                     dI
+                                                                                                                          ¼ (1  u)b SI,        ¼ (1  u)b SI  gI:
+                                                                                                                       dt                     dt
+                                                                         Here, S(t) and I(t) are the proportion of the population that is susceptible or infected at time t ≥ 0, respectively. We denote by
+                                                                         (S0, I0) the initial state at t = 0. The parameters of the SIR model are the (effective) contact rate β ≥ 0, and the mean residence time
+                                                                         of infected individuals γ ≥ 0 (in units of day−1). By assuming S0 ≈ 1, these two parameters yield the basic reproduction number
+                                                                         R0 = β/γ.
+                                                                             We are interested in reaching the safe zone
+                                                                                                                                    S ¼ {(S, I) j I  FR0 (S)},
+                                                                         where
+                                                                                                                             
+
+
+
+
+                                                                                                                                                                                                                           J. R. Soc. Interface 18: 20200803
+                                                                                                                                 Imax                             if S  R1 ,
+                                                                                                                  FR ðSÞ ¼                                                                                      (2:1)
+                                                                                                                                 Imax þ R1 ½logðRSÞ þ 1  RS    otherwise:
+                                                                         The safe zone is the largest set with the following property: if, for any given time t1, the state (S1, I1) belongs to S, we can set
+                                                                         u = 0 henceforth and still have I(t) ≤ Imax for all t ≥ t1. That is, when S is reached, we can terminate the intervention with the
+Downloaded from https://royalsocietypublishing.org/ on 01 June 2025
+
+
+
+
+                                                                         assurance that a possible rebound in the disease prevalence will not exceed Imax.
+                                                                              Our goal is to steer an arbitrary initial state (S0, I0) to the safe zone S in minimal time without violating the constraint
+                                                                         I(t) ≤ Imax. We say that an intervention achieving this goal is an optimal intervention.
+                                                                              In electronic supplementary material, note S1, we prove that the existence of an optimal intervention is characterized by
+                                                                         the separating curve FRc as follows:
+                                                                             1. An optimal intervention exists if and only if the initial state (S0, I0) lies below this separating curve (i.e. I0  FRc (S0 )).
+                                                                                Above, Rc : = (1 − umax)R0 is the controlled reproduction number. Moreover:
+                                                                             2. If it exists, the optimal intervention u* at the state (S, I) is
+                                                                                                                           8
+                                                                                                                           >
+                                                                                                                           >  0          if ðS,IÞ [ S < W
+                                                                                                                           <       1
+                                                                                                                  
+                                                                                                                 u ðS,IÞ ¼ 1            if I¼FRc ðSÞ andS < S < R1                                           (2:2)
+                                                                                                                           >
+                                                                                                                           >      Rc S                             c
+                                                                                                                           :
+                                                                                                                              umax       otherwise
+                                                                                with
+                                                                                                                             W ¼ {(S, I) j I , FRc (S), S . (I)}:
+                                                                               Above, the curve S ¼ C(I) is defined in electronic supplementary material, note S1, while S* denotes the intersection of
+                                                                               S ¼ C(I) and I ¼ FRc (S).
+                                                                         Code to calculate the optimal interventions is provided as electronic supplementary material.
+
+
+
+                                                                      I(t) ≤ Imax, but its effective duration is only 69 days. To design             of states (S, I) where, without any further interventions, the dis-
+                                                                      the optimal NPI for mitigating epidemic outbreaks, we ask for                  ease prevalence will not exceed Imax (blue zone in figure 2a–c).
+                                                                      the intervention with minimal effective duration. Specifically,                The safe zone is characterized by the inequality I  FR0 (S),
+                                                                      we ask for the admissible intervention u*(S(t), I(t)) required                 where R0 is the basic reproduction number of the outbreak in
+                                                                      now (i.e. at the current state) such that: (1) it minimizes the effec-         the population, and the function FR is defined in equation
+                                                                      tive duration of the intervention and (2) it ensures that the                  (2.1) of box 1. The goal of the optimal NPIs is thus to reach
+                                                                      prevalence can be maintained below Imax for all future time                    this safe zone as fast as possible without violating the restric-
+                                                                      by using some admissible intervention. If the optimal NPI pro-                 tion I(t) ≤ Imax. The ability to achieve this goal depends on
+                                                                      blem has a solution u*, then u*(S, I) characterizes the optimal                the epidemic state. That is, we can partition the plane (S, I ) in
+                                                                      reduction in the disease transmission that the NPIs should                     two regions: those states from which it is possible to reach
+                                                                      achieve if the epidemic state is (S, I ). In particular, u* gives              the safe zone without exceeding Imax ( feasible states), and
+                                                                      the optimal way to start and stop the NPIs.                                    those where it is impossible (unfeasible states). We find these
+                                                                                                                                                     two regions are characterized by the separating curve FRc (S),
+                                                                                                                                                     where we call Rc := (1 − umax)R0 the controlled reproduction
+                                                                      2.2. Optimal non-pharmaceutical interventions for                              number (figure 2a–c). Note that Rc describes the maximum
+                                                                                                                                                     reduction in the basic reproduction number that (constant)
+                                                                           mitigation exist without reducing the reproduction                        admissible interventions can achieve. Therefore, Rc < 1 is the
+                                                                           number below one                                                          necessary and sufficient condition that a constant and perma-
+                                                                      Our first main result is a complete analytical characterization                nent admissible intervention (i.e. u(t) ≡ const. for all t ≥ 0)
+                                                                      of the optimal NPIs for outbreak mitigation in the SIR model                   needs to satisfy to eradicate a disease outbreak in the SIR
+                                                                      (see box 1 for a summary and electronic supplementary                          model. However, for outbreak mitigation, our analysis shows
+                                                                      material, note S1, for details). To understand how these opti-                 that feasible states exists without achieving disease eradication
+                                                                      mal NPIs work, note that the SIR model predicts a safe zone                    (white regions in figure 2b,c). This result is important because it
+                                                                                         (a)                                                                   (b)                                                                                                                  4
+                                                                                                                     Rc < 1                                                                                                         Rc > 1
+
+
+
+
+                                                                                                                                                                                                                                                                                  royalsocietypublishing.org/journal/rsif
+                                                                                                           1/R0                                   1/Rc                                                                    1/R0                     1/Rc
+                                                                                                                                                                           0.20
+                                                                                        0.20
+
+                                                                                                                   unfeasible                                              0.15                                                   unfeasible
+                                                                                        0.15
+                                                                           prevalence
+
+
+
+
+                                                                                                                                                              prevalence
+                                                                                        0.10                                                           Imax                0.10                                                                                            Imax
+
+                                                                                                    safe                                                                   0.05                                    safe
+                                                                                        0.05                                          feasible                                                                                                        feasible
+                                                                                                    zone                                                                                                           zone
+
+                                                                                           0                                                                                  0
+                                                                                               0     0.2          0.4       0.6          0.8     1.0                                               0                   0.2       0.4       0.6            0.8        1.0
+
+
+
+
+                                                                                                                                                                                                                                                                                  J. R. Soc. Interface 18: 20200803
+                                                                                                                   susceptible                                                                                                    susceptible
+
+
+                                                                                                                                                                              (d)                                 supression
+Downloaded from https://royalsocietypublishing.org/ on 01 June 2025
+
+
+
+
+                                                                                                                                                                                                                                            mitigation
+                                                                                                                     Rc >> 1                                                                                0.5
+                                                                                 (c)
+
+                                                                                                           1/R0     1/Rc
+
+
+
+                                                                                                                                                                               desired maximum prevalence
+                                                                                        0.20                                                                                                                0.4
+                                                                                                                                                                                                                                 feasible
+
+                                                                                        0.15                                                                                                                0.3
+                                                                                                                            unfeasible
+                                                                                                                                                                      Imax
+                                                                           prevalence
+
+
+
+
+                                                                                        0.10                                                           Imax                                                 0.2
+
+                                                                                                                                                                                                                                                   unfeasible
+                                                                                        0.05       safe                                                                                                     0.1
+                                                                                                   zone                    feasible
+
+                                                                                          0                                                                                                                  0
+                                                                                               0     0.2          0.4      0.6           0.8     1.0
+                                                                                                                                                                                                                   0         1       2         3          4      5
+                                                                                                                   susceptible
+                                                                                                                                                                                                                        controlled reproduction number
+                                                                                                                                                                                                                                         Rc
+
+                                                                      Figure 2. Existence of non-pharmaceutical interventions in the Susceptible–Infected–Removed model. Parameters are γ = 1/7, β = 0.52 (i.e. R0 = 3.64) and
+                                                                      Imax = 0.1. The safe zone (in blue) consists of all states that do not exceed Imax without interventions. This zone is characterized by the inequality
+                                                                      I  FR0 (S). The plane is further divided into feasible states that can reach the safe zone without exceeding Imax (white), and unfeasible states that cannot
+                                                                      (grey). Feasible and unfeasible states are separated by the separating curve FRc (S) (black line). (a) For ‘strong’ interventions with umax = 0.8, the controlled repro-
+                                                                      duction number is Rc = (1 − umax)R0 = 0.728 < 1. Here, the separating curve is the straight line Imax, implying that all states below Imax are feasible. Note this case
+                                                                      corresponds to eradication. (b) For ‘intermediate’ interventions with umax = 0.6, the controlled reproduction number is Rc = (1 − umax)R0 = 1.456 > 1. Here, the
+                                                                      separating curve FRc (S) is nonlinear, and some states below Imax are unfeasible. (c) For ‘weak’ interventions with umax = 0.4 we obtain Rc = 2.184 > 1. In this case,
+                                                                      states with S(0) ≈ 1 are unfeasible. (d) For S(0) → 1, our design criterion for NPIs prescribes the values of Rc that a given Imax can manage.
+
+
+                                                                      proves that optimal NPIs for epidemic mitigation do not                                              outbreak’s controlled reproduction number Rc = (1 − umax)R0
+                                                                      require reducing the basic reproduction number below one                                             (electronic supplementary material, note S2). The inequality
+                                                                      (i.e. without achieving Rc < 1).                                                                     (2.3) governs the existence of NPIs for mitigating epidemic
+                                                                                                                                                                           outbreaks, in analogy to how the condition Rc < 1 works for
+                                                                                                                                                                           disease eradication. Note that Rc < 1 is a sufficient condition
+                                                                                                                                                                           for the existence for NPIs, but the inequality (2.3) shows
+                                                                      2.3. A design criterion for optimal non-pharmaceutical                                               that this condition is far from necessary. If Imax > 0, there
+                                                                           interventions                                                                                   exists Rc > 1 for which NPIs exist (figure 2d). Note also that
+                                                                      We demonstrated above that optimal NPIs for outbreak miti-                                           the maximum feasible Rc increases with Imax.
+                                                                      gation exist even when Rc > 1. However, how large can Rc be                                              We can use (2.3) to design NPIs for outbreak mitigation as
+                                                                      before NPIs keeping I(t) ≤ Imax do not exist? When S(0) → 1,                                         follows. Consider an infectious disease outbreak with a given
+                                                                      our characterization shows that such NPIs exists if and only if                                      R0 and that the specified maximum prevalence is Imax. Then,
+                                                                                                                                                                         the inequality (2.3) gives the criterion to design NPIs by pro-
+                                                                                                1               1
+                                                                            Rc  1, or Imax þ ln Rc  1             0:        (2:3)                                      viding the range of disease transmission reduction umax that
+                                                                                                Rc             Rc
+                                                                                                                                                                           the NPIs should attain. In particular, it provides the minimal
+                                                                      The above inequality is our second main result, connecting                                           reduction umax in the disease transmission required for the
+                                                                      the specified maximum disease prevalence Imax with the                                               existence of NPIs. For example, if Imax = 0.1 then Rc ¼ 1:71
+                                                                             (a)                         interventions are strong enough                                            (b)                        interventions need to start                                           (c)                                interventions are too weak                                  5
+                                                                                                         to start at Imax                                                                                      before reaching Imax                                                                                     to stop prevalence at Imax
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                  royalsocietypublishing.org/journal/rsif
+                                                                                                                                    Rc < 1                                                                                            Rc > 1                                                                                            Rc >> 1
+
+                                                                                                                                     S*                                                                                                   S*                                                                                                 S*
+                                                                                                  0.20                                                                                                  0.20                                                                                                 0.20
+
+                                                                                                  0.15                 maximum interevention                                                            0.15                 maximum interevention                                                           0.15              maximum interevention
+
+
+
+
+                                                                                                                                                                            prevalence
+
+
+
+
+                                                                                                                                                                                                                                                                                 prevalence
+                                                                           prevalence
+
+
+
+
+                                                                                                  0.10                                                               Imax                               0.10                                                              Imax                               0.10                                                          Imax
+
+                                                                                                  0.05               no                              no                                                 0.05                no                            no                                                 0.05            no
+                                                                                                                intervention                    intervention                                                           intervention                  intervention                                                       intervention
+                                                                                                    0                                                                                                     0                                                                                                    0
+                                                                                                         0       0.2          0.4         0.6        0.8       1.0                                             0       0.2          0.4        0.6        0.8       1.0                                             0    0.2           0.4         0.6        0.8    1.0
+                                                                                                                              susceptible                                                                                           susceptible                                                                                        susceptible
+
+                                                                                                  0.20                                                                                             0.20                                                                                                      0.20
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                  J. R. Soc. Interface 18: 20200803
+                                                                                                  0.15                                                                                             0.15                                                                                                      0.15
+                                                                           prevalence
+
+
+
+
+                                                                                                                                                                            prevalence
+
+
+
+
+                                                                                                                                                                                                                                                                                 prevalence
+                                                                                                  0.10                                                               Imax                          0.10                                                                   Imax                               0.10                                                          Imax
+
+                                                                                                  0.05                                                                                             0.05                                                                                                      0.05
+Downloaded from https://royalsocietypublishing.org/ on 01 June 2025
+
+
+
+
+                                                                                                    0                                                                                                     0                                                                                                    0
+                                                                                                         0     20        40         60          80    100      120                                             0     20        40         60         80    100      120                                             0   20        40          60         80    100   120
+                                                                                                                       time (days since onset)                                                                               time (days since onset)                                                                            time (days since onset)
+
+
+                                                                                                  1.0                                                                                                   1.0                                                                                                   1.0
+                                                                                                  0.8                                                                umax                               0.8                                                                                                   0.8
+                                                                                                  0.6                                                                                                   0.6                                                               umax                                0.6
+                                                                                                  0.4                                                                                                   0.4                                                                                                   0.4                                                          umax
+                                                                                                  0.2                                                                                                   0.2                                                                                                   0.2
+                                                                                                    0                                                                                                     0                                                                                                     0
+                                                                                                         0     20        40         60          80    100      120                                             0      20       40         60         80    100      120                                             0   20        40          60         80    100   120
+                                                                           optimal intervention
+
+
+
+
+                                                                                                                                                                                 optimal intervention
+
+
+
+
+                                                                                                                                                                                                                                                                                      optimal intervention
+                                                                                                  1.0                                                                                                   1.0                                                                                                   1.0
+                                                                                                  0.8                                                                umax                               0.8                                                                                                   0.8
+                                                                                                  0.6                                                                                                   0.6                                                               umax                                0.6
+                                                                                                  0.4                                                                                                   0.4                                                                                                   0.4                                                          umax
+                                                                                                  0.2                                                                                                   0.2                                                                                                   0.2
+                                                                                                    0                                                                                                     0                                                                                                     0
+                                                                                                         0     20        40         60          80    100      120                                             0     20        40         60         80    100      120                                             0   20        40          60         80    100   120
+                                                                                                  1.0                                                                                                   1.0                                                                                                   1.0
+                                                                                                  0.8                                                                umax                               0.8                                                                                                   0.8
+                                                                                                  0.6                                                                                                   0.6                                                               umax                                0.6
+                                                                                                  0.4                                                                                                   0.4                                                                                                   0.4                                                          umax
+                                                                                                  0.2                                                                                                   0.2                                                                                                   0.2
+                                                                                                    0                                                                                                     0                                                                                                     0
+                                                                                                         0     20        40         60          80    100      120                                             0     20        40         60         80    100      120                                             0   20        40          60         80    100   120
+                                                                                                                       time (days since onset)                                                                               time (days since onset)                                                                            time (days since onset)
+
+                                                                      Figure 3. Optimal non-pharmaceutical interventions in the Susceptible–Infected–Removed model. For all panels, the parameters of the SIR model are γ = 1/7,
+                                                                      β = 0.52 (i.e. R0 = 3.64) and Imax = 0.1. We consider a population of N = 8.855 × 106 individuals (like in Mexico City) and I0 = 1/N. Panels shows trajectories for
+                                                                      three initial proportions of the susceptible population: large S0 = 1 − I0 ≈ 1 ( pink), medium S0 = 0.8 (green) and small S0 = 0.65 ( purple). (a) For umax = 0.8, we
+                                                                      have Rc = (1 − umax)R0 = 0.728 ≤ 1. In this case, the optimal intervention starts when the disease prevalence reaches Imax. Afterwards, the intervention decreases in
+                                                                      a hyperbolic arc until reaching the point S = S*. At that time, the intervention becomes maximum in the ‘final push’ to reach the safe zone. (b) For umax = 0.58, the
+                                                                      controlled reproduction number is Rc = (1 − umax)R0 = 1.52 > 1. Here, FRc (1) . 0, implying that the epidemic still can be mitigated for initial states with S0 ≈ 1
+                                                                      and I0 ≈ 0 ( pink trajectory). In this case, the optimal intervention starts when the initial condition hits the separating curve below Imax at t = 35. At that instant,
+                                                                      the intervention starts with the maximum value umax, and continues in that form until the trajectory reaches Imax. (c) Choosing umax = 0.4 yields Rc = 2.184 > 1. In
+                                                                      this case, the optimal intervention problem does not have a solution for all initial states S0 > 0.85. This is illustrated by pink trajectory: even when applying the
+                                                                      maximum intervention from the start, I(t) will grow beyond Imax.
+
+
+                                                                      is the maximum admissible controlled reproduction number                                                                                                                    along the two regions, leading to an ‘average’ intervention
+                                                                      (orange point in figure 2d ). Therefore, if an outbreak in the                                                                                                              u* ∈ [0, umax]. In general, we find that the optimal NPIs have
+                                                                      population has R0 = 3, then the minimal required reduction                                                                                                                  four phases: a first one where no intervention is needed, a
+                                                                      is umax ¼ 0:43 because (1  umax )R0 ¼ Rc .                                                                                                                              second phase where interventions start with maximum
+                                                                                                                                                                                                                                                  strength, a third phase of gradual decrease of interventions,
+                                                                                                                                                                                                                                                  and a ‘final push’ where the maximum interventions are
+                                                                      2.4. Optimal non-pharmaceutical interventions for                                                                                                                           re-applied for a short period to reach the safe zone faster.
+                                                                           outbreak mitigation are simple                                                                                                                                             We illustrate the above behaviour in three qualitatively
+                                                                      For any epidemic state, the optimal transmission reduction                                                                                                                  different cases. The first case is when the optimal intervention
+                                                                      takes a simple form which can be described by colouring the                                                                                                                 starts just when the disease prevalence reaches Imax (figure 3a).
+                                                                      (S, I) plane; see top row of figure 3. Here, for all states in the                                                                                                          This case occurs when the interventions are strong enough to
+                                                                      white region the optimal intervention is no intervention;                                                                                                                   stop the rise in prevalence at Imax regardless of the remaining
+                                                                      for all states in the yellow region the optimal intervention is                                                                                                             fraction the population that is still susceptible to the disease.
+                                                                      u*(S, I ) = umax. There are regions (specifically lines) where the                                                                                                          Our analysis shows that this case occurs if and only if umax
+                                                                      optimal intervention switches frequently between u* = 0 and                                                                                                                 is large enough to render Rc = (1 − umax)R0 ≤ 1. When the
+                                                                      u* = umax producing a so-called ‘singular arc’ that slides                                                                                                                  initial susceptible population is close to 1 (pink trajectory in
+                                                                      figure 3a), the optimal intervention first waits until the disease       consider an SEIR outbreak with an incubation period for the           6
+                                                                      prevalence reaches Imax. At that time, the optimal NPI stops the         disease. For an incubation period of 7 days, as typical for a
+
+
+
+
+                                                                                                                                                                                                                   royalsocietypublishing.org/journal/rsif
+                                                                      disease prevalence exactly at Imax, and then it gradually                COVID-19 infection, the optimal NPIs maintain the disease
+                                                                      decreases its magnitude to ensure that the disease prevalence            prevalence below Imax if R0 < 2.5 and its value is estimated
+                                                                      slides along Imax as the susceptible population decreases.               with an error of below 30% (solid yellow and orange in
+                                                                      When the susceptible population reaches the threshold S*,                figure 4b). For larger R0 or a larger incubation period, the
+                                                                      the optimal intervention is again the maximum one                        disease prevalence may exceed Imax (red in figure 4b).
+                                                                      (figure 3a). This ‘final push’ allows reaching the safe zone                 For the final scenario, we consider an SEIIR model with an
+                                                                      faster, releasing the interventions sooner. The middle and               incubation period of 7 days and with a fraction p ∈ [0, 1] of
+                                                                      bottom panels of figure 3a show the resulting disease                    infected individuals that are asymptomatic and thus remain
+                                                                      prevalence and optimal interventions as a function of time.              hidden to the epidemic surveillance system. The goal is to
+                                                                      Note that a smaller initial susceptible population yields other          maintain the prevalence of symptomatic individuals below
+                                                                      trajectories (green and purple in figure 3a).                            Imax, without knowing the fraction of asymptomatic individ-
+                                                                           The second case is when an ‘early’ intervention is necessary        uals. This situation occurs during the COVID-19 pandemic,
+
+
+
+
+                                                                                                                                                                                                                   J. R. Soc. Interface 18: 20200803
+                                                                      before the disease prevalence reaches Imax (figure 3b). This case        where between p = 0.55 and p = 0.8 of infections are asympto-
+                                                                      happens when the admissible reduction in the contact rate                matic [14]. For p < 0.7 and R0 < 3.64, the optimal NPIs
+                                                                      cannot immediately stop the disease prevalence at Imax if the sus-       maintain the disease prevalence of symptomatic individuals
+                                                                      ceptible population is large at that time. We find this case occurs if   below or very close to Imax if the estimation error for R0 is
+Downloaded from https://royalsocietypublishing.org/ on 01 June 2025
+
+
+
+
+                                                                      and only if umax is small in the sense that Rc = (1 − umax)R0 > 1.       below 30% (dotted and solid lines in figure 4c). An outbreak
+                                                                      Here, a trajectory may hit the yellow region before reaching             with low R0 produces a maximum disease prevalence of symp-
+                                                                      Imax (pink trajectory in figure 3b). When that happens, the opti-        tomatic individuals below Imax, which may result in a larger
+                                                                      mal intervention starts with the maximum reduction u* = umax.            effective duration of the interventions. Overall, these numerical
+                                                                      Then it maintains this maximum reduction to ‘slide’ the trajec-          results show that the optimal NPIs are robust against a wide
+                                                                      tory between the yellow and white regions. Once the trajectory           range of parameter uncertainty and unmodelled dynamics,
+                                                                      reaches Imax, the magnitude of the optimal intervention decreases        provided that the estimation error in the outbreak’s basic
+                                                                      to slide the trajectory along Imax. Again, the final push occurs         reproduction number does not exceed 30%.
+                                                                      when the susceptible population reaches the point S*.
+                                                                           The third case is when the initial state (S0, I0) lies in
+                                                                      the unfeasible region (figure 3c). This case occurs when umax is
+                                                                      so small that, even if the maximum admissible intervention               3. Designing optimal non-pharmaceutical
+                                                                      u = umax is applied from the start of the outbreak, the disease             interventions for mitigating the COVID-19
+                                                                      prevalence will exceed Imax (pink trajectory in figure 3c). In
+                                                                      this case, the optimal intervention problem is unfeasible because           pandemic
+                                                                      it is impossible to achieve I(t) ≤ Imax. However, note that using        To explore the implications of our simple criterion for design-
+                                                                      u* = umax yields the smallest prevalence peak. Other trajectories        ing NPIs for outbreak mitigation, we analysed how 16 cities
+                                                                      that start with a smaller proportion of susceptible individuals          and regions implemented NPIs during the COVID-19 pan-
+                                                                      remain feasible (green and purple in figure 3c). In particular,          demic. For each region or city, we constructed Imax using the
+                                                                      note that the threshold S* decreases as Rc increases.                    number of available intensive care beds during the first
+                                                                                                                                               months of the pandemic, considering that a fraction of the
+                                                                                                                                               infected individuals will require them (electronic supplemen-
+                                                                      2.5. Optimal non-pharmaceutical interventions for                        tary material, note S4). The values for Imax that we obtain
+                                                                           outbreak mitigation are robust                                      range from 2.87 × 10−3 for Lima (Peru) to 109.78 × 10−3 for
+                                                                      To evaluate the optimal NPIs for outbreak mitigation in more             Boston (USA), reflecting the large heterogeneity of the available
+                                                                      realistic scenarios, we numerically analysed their perform-              health services across the globe (figure 5a). With this infor-
+                                                                      ance in three epidemic models with uncertain epidemic                    mation, we calculated the maximum feasible Rc for each
+                                                                      parameters and more detailed epidemic dynamics (see details              region using our design criterion of inequality (2.3). Since Rc
+                                                                      in electronic supplementary material, note S3). In all cases,            is a monotone function of Imax, we find that Rc follows the
+                                                                      we consider that the basic reproduction number has been                  same trend as Imax (figure 5b). The smallest Rc ¼ 1:08 occurs
+                                                                      estimated as R ^ 0 using an SIR model, and that the optimal              for Lima and the largest Rc ¼ 1:75 for Boston. Note that in
+                                                                      NPIs for mitigation are designed using this estimate. Then,              both cases Rc . 1. This result implies that, for the R0 of a
+                                                                      these optimal NPIs are applied to an outbreak with possibly              region’s disease outbreak, a successful mitigation of the out-
+                                                                      different epidemic dynamics and possibly different R0. Note              break requires NPI policies that achieve at least a reduction
+                                                                      that estimation errors in R0 will affect the correct start of            umax such that (1  umax )R0  Rc .
+                                                                      the NPIs and the ‘final push’ for reaching the safe zone.                    Next, we investigated the minimal reduction umax in trans-
+                                                                          In the first scenario, we consider an outbreak with SIR              mission required to achieve those upper bounds for the
+                                                                      dynamics where the strength of the NPIs is uncertain. We                 COVID-19 pandemic. For this, we first collected information
+                                                                      model this uncertainty replacing u by ku in the model equations,         for the R0 in each region calculated at the start of the pan-
+                                                                      where k ∈ (0, 1). Then, for example, k = 0.9 (resp. k = 1.1) rep-        demic and when the NPIs were inactive (electronic
+                                                                      resents a 10% underestimation (resp. overestimation) of the              supplementary material, note S3). We find a median nominal
+                                                                      NPI strength. Across outbreaks with different R0’s and an                R0 of 2.2, with Tokyo having the smallest one (R0 = 1.3) and
+                                                                      uncertainty of 10% in the intervention’s strength, we find that          Madrid having the largest one (R0 = 3.11); see figure 5c.
+                                                                      the disease prevalence is maintained below Imax as long as R0            From these values of R0, we calculated the minimal required
+                                                                      is not underestimated (figure 4a). In the second scenario, we            reduction umax per region or city (blue in figure 5d). For the
+                                                                              (a)                                        uncertain strength of interventions                                (b)                               incubation period                           7
+                                                                                                       0.8                                                                                    0.8
+
+
+
+
+                                                                                                                                                                                                                                                                        royalsocietypublishing.org/journal/rsif
+                                                                                                       0.6    R0 = 1.73                                                                       0.6     R0 = 1.73
+                                                                                                       0.4                                                                                    0.4
+                                                                                                       0.2                                                                                    0.2
+                                                                                                         0                                                                                      0
+                                                                                                      –0.2                                                                                   –0.2
+                                                                                                      –0.4                                                                                   –0.4
+                                                                                                      –0.6                                                                                   –0.6
+                                                                                                      –0.8                                                                                   –0.8
+                                                                                                             0.7     0.8        0.9                        1.0       1.1     1.2     1.3            0.7          0.8         0.9           1.0    1.1     1.2     1.3
+                                                                                   (t) – Imax)/Imax
+
+
+
+
+                                                                                                       0.8                                                                                    0.8
+                                                                                                       0.6    R0 = 2.5                                                                        0.6     R0 = 2.5
+                                                                                                       0.4                                                                                    0.4
+                                                                                                       0.2                                                                                    0.2
+                                                                                                         0                                                                                      0
+                                                                                                      –0.2                                                                                   –0.2
+                                                                                                      –0.4                                                                                   –0.4
+                                                                             (maxI
+
+
+
+
+                                                                                                      –0.6                                                                                   –0.6
+                                                                               t
+
+
+
+
+                                                                                                      –0.8                                                                                   –0.8
+
+
+
+
+                                                                                                                                                                                                                                                                        J. R. Soc. Interface 18: 20200803
+                                                                                                             0.7     0.8        0.9                        1.0       1.1     1.2     1.3            0.7          0.8         0.9           1.0    1.1     1.2     1.3
+                                                                                                       0.8                                                                                    0.8
+                                                                                                       0.6    R0 = 3.64                                                                       0.6
+                                                                                                       0.4                                                                                    0.4
+                                                                                                       0.2                                                                                    0.2
+Downloaded from https://royalsocietypublishing.org/ on 01 June 2025
+
+
+
+
+                                                                                                         0                                                                                      0
+                                                                                                      –0.2                                                                                   –0.2
+                                                                                                      –0.4                                                                                   –0.4
+                                                                                                      –0.6                                                                                   –0.6     R0 = 3.64
+                                                                                                      –0.8                                                                                   –0.8
+                                                                                                             0.7    0.8      0.9                           1.0       1.1      1.2    1.3            0.7          0.8      0.9              1.0    1.1      1.2    1.3
+                                                                                                                   underestimated                                    overestimated                              underestimated                    overestimated
+                                                                                                                                                   R̂0/R0                                                                                R̂0/R0
+
+                                                                                                                                                               (c)                   hidden infections
+                                                                                                                                                                0.8
+                                                                                                                                                                0.6 R0 = 1.73
+                                                                                                                                                                0.4
+                                                                                                                                                                0.2
+                                                                                                                                                                  0
+                                                                                                                                                               –0.2
+                                                                                                                                                               –0.4
+                                                                                                                                                               –0.6
+                                                                                                                                                               –0.8
+                                                                                                                                                                    0.7    0.8     0.9       1.0          1.1          1.2         1.3
+                                                                                                                                            (t) – Imax)/Imax
+
+
+
+
+                                                                                                                                                                0.8
+                                                                                                                                                                0.6 R0 = 2.5
+                                                                                                                                                                0.4
+                                                                                                                                                                0.2
+                                                                                                                                                                  0
+                                                                                                                                                               –0.2
+                                                                                                                                                               –0.4
+                                                                                                                                      (maxI
+
+
+
+
+                                                                                                                                                               –0.6
+                                                                                                                                        t
+
+
+
+
+                                                                                                                                                               –0.8
+                                                                                                                                                                     0.7    0.8     0.9      1.0          1.1          1.2         1.3
+                                                                                                                                                                0.8
+                                                                                                                                                                0.6 R0 = 3.64
+                                                                                                                                                                0.4
+                                                                                                                                                                0.2
+                                                                                                                                                                  0
+                                                                                                                                                               –0.2
+                                                                                                                                                               –0.4
+                                                                                                                                                               –0.6
+                                                                                                                                                               –0.8
+                                                                                                                                                                    0.7    0.8      0.9      1.0          1.1      1.2             1.3
+                                                                                                                                                                          underestimated                  overestimated
+                                                                                                                                                                                           R̂0/R0
+
+                                                                      Figure 4. Optimal non-pharmaceutical interventions are robust. For all panels, the estimated parameters used for constructing the optimal NPIs are g^ ¼ 1=7,
+                                                                      b^ ¼ 0:52, Imax = 0.1, umax = 0.6. We consider a population of N = 8.855 × 106 as in Mexico City, and the initial conditions I(0) = 1/N and S(0) = 1 − 1/N. If the
+                                                                      models contain other state variables, they were initialized at zero. The optimal NPIs are constructed assuming ^R0 ¼ b^ =^
+                                                                                                                                                                                               g , while the actual epidemic dynamics has
+                                                                      a possibly different R0 = β/γ. Panels show results for outbreaks with three values of R0: low (yellow), medium (orange) and large (red). (a) SIR model where the
+                                                                      reduction in the disease transmission by the NPIs is uncertain. We model this case replacing u by ku in the model equations. Panel shows the results for k = 1.1
+                                                                      (dotted), k = 1 (solid) and k = 0.9 (dashed). (b) SEIR model where exposed individuals do not transmit the infection, with λ > 0 the incubation period. Panel shows
+                                                                      the results for λ = 1/5 (dotted), λ = 1/7 (solid) and λ = 1/11 (dashed). (c) SEIIR model with λ = 1/7 and two classes of infected individuals (symptomatic and
+                                                                      asymptomatic). Here, p ∈ [0, 1] is the proportion of exposed individuals that become asymptomatic. The vertical axis denotes the disease prevalence for
+                                                                      symptomatic individuals. The panel shows the results for p = 0.55 (dotted), p = 0.7 (solid) and p = 0.8 (dashed).
+
+
+                                                                      nominal R0’s per region or city, we find that a median                                                                 example, Tokyo just requires umax ¼ 0:15 while Madrid
+                                                                      reduction of umax of 0.42 is necessary. However, this minimal                                                         requires umax ¼ 0:61. These two cities have the smallest and
+                                                                      necessary reduction is heterogeneous across regions. For                                                               largest R0, respectively. If two cities have similar R0, then
+                                                                                                     (a)                           (b)                        (c)                        (d)                                                    8
+                                                                                                               estimated                  maximum                                             minimum necessary
+                                                                                                                                                                          R0               reduction in transmission
+
+
+
+
+                                                                                                                                                                                                                                              royalsocietypublishing.org/journal/rsif
+                                                                                                                  Imax                    feasible Rc
+
+                                                                                                           0   0.05 0.10 0.15       1.0      1.5        2.0    1.0 1.5 2.0 2.5 3.0 3.5         0 0.2 0.4 0.6 0.8 1.0
+
+                                                                                               Lima
+                                                                                       Delhi (India)
+                                                                                             Tokyo
+                                                                          New South Wales (Australia)
+                                                                                               Dublin
+                                                                                       Lombardy (Italy)
+                                                                                               Bogota                                                                                                                    reported
+                                                                                                Madrid                                                                                                                   average
+                                                                                            Mexico City                                                                                                                  mobility
+                                                                                                                                                                                                                        reduction
+
+
+
+
+                                                                                                                                                                                                                                              J. R. Soc. Interface 18: 20200803
+                                                                                            New York
+                                                                             British Columbia (Canada)
+                                                                                                Vienna
+                                                                                                 Berlin
+Downloaded from https://royalsocietypublishing.org/ on 01 June 2025
+
+
+
+
+                                                                                           Buenos Aires
+                                                                                                Athens
+                                                                                                Boston
+
+
+                                                                      Figure 5. Minimum necessary reduction in disease transmission for NPIs in the COVID-19 pandemic. (a) Calculated Imax according to the proportion of available
+                                                                      intensive care beds in each region or city and the estimated fraction of infected individuals requiring intensive care. (b) Maximum controlled reproduction number Rc
+                                                                      that each region or city can handle according to its Imax. Larger Imax allows a larger Rc. (c) Basic reproduction number R0 per region or city before interventions
+                                                                      started. Median (blue big dot), and 95% confidence interval (smaller dots) are shown. (d ) Minimum umax necessary for feasibility for each region or city (blue)
+                                                                      according to the R0 of (c). Grey bars denote the reported average mobility reduction in each region between 19 March and 30 April 2020.
+
+                                                                      the city with large Imax ends up requiring a smaller umax (e.g.                        most other studies applying optimal control to epidemic out-
+                                                                      Boston with umax ¼ 0:26 and Lima with umax ¼ 0:50).                                   breaks, where the derived optimal intervention u*(t, S0, I0) is
+                                                                          To evaluate the feasibility of achieving the minimal                                an open-loop function of time [15–18]. The open-loop interven-
+                                                                      reduction predicted by our analysis, we collected data for                              tion gives the optimal action at any time given a particular
+                                                                      the average mobility reduction in each region during the                                initial state (S0, I0). However, it does not tell us the optimal
+                                                                      NPIs (grey in figure 5d; electronic supplementary material,                             action if the epidemic is not in the exact state predicted by
+                                                                      note S4). Considering this average mobility reduction as a                              the model.
+                                                                      proxy for the reduction in disease transmission, we find                                    Understanding the optimal action to perform at any state
+                                                                      that all regions achieved a greater than necessary reduction.                           has the crucial advantage of allowing us to apply this know-
+                                                                      For example, Delhi attained a mobility reduction of 0.84,                               ledge to any model, and to reality. Feedback can give control
+                                                                      while the minimal necessary reduction in transmission                                   strategies the required robustness to work on real systems
+                                                                      according to our analysis is umax ¼ 0:42. Other regions are                            despite large uncertainties and unknown dynamics [19,20],
+                                                                      in the boundary. For example, New South Wales attained a                                and we numerically confirmed that our optimal NPIs for out-
+                                                                      mobility reduction of 0.48, while the minimal necessary                                 break mitigation have such robustness. Indeed, other works
+                                                                      reduction in transmission was umax ¼ 0:44. Overall, across                             have also found that interventions derived from the SIR
+                                                                      regions, we find a median excess of 0.22 in the reduction of                            model can work in detailed agent-based models of epidemic
+                                                                      mobility compared to the minimal reduction in transmission                              outbreaks [21]. Future work could analyse the robustness
+                                                                      umax predicted by our analysis.                                                        of optimal interventions when the epidemic state is not
+                                                                                                                                                              entirely known. This situation may happen when significant
+                                                                                                                                                              delays exist in reporting new infections, or when tests for
+                                                                                                                                                              identifying infected individuals are limited. For example, con-
+                                                                      4. Discussion                                                                           trol-theoretical techniques like the construction of observers
+                                                                      Our results provide a complete analytical characterization of                           and predictors allow applying our optimal interventions when
+                                                                      the optimal NPIs for mitigating epidemic outbreaks in the                               the only available information is the disease prevalence, and
+                                                                      SIR model. We also show that these optimal NPIs are robust                              when this information is obtained with a significant delay [22].
+                                                                      as they can ‘work’ in epidemic models with more complicated                                 Our framework could also guide the complete characteriz-
+                                                                      dynamics. The SIR model is a minimal strategic model of the                             ation of optimal NPIs for mitigating epidemic outbreaks using
+                                                                      general population dynamics of a disease. Although this                                 more detailed models or more detailed optimization objectives,
+                                                                      model ignores critical epidemiological phenomena, using the                             but this is likely very challenging. Indeed, deriving such com-
+                                                                      SIR model allows us to leverage on its mathematical tractability                        plete characterization for very detailed models can be
+                                                                      to obtain a complete characterization of the optimal NPIs for                           unreasonable, considering the tradeoff between how detailed
+                                                                      outbreak mitigation. The feedback form u*(S, I) of the optimal                          is a model and how much we can trust its predictions [23].
+                                                                      intervention reflects such complete characterization, prescrib-                         Note also that our approach could be applied to calculate the
+                                                                      ing the optimal action to perform if the epidemic is at any                             optimal NPIs in the presence of a constant vaccination rate
+                                                                      state (S, I). This feedback strategy should be contrasted to                            by modifying the SIR model accordingly (e.g. [24]).
+                                                                          The optimal intervention resulting from our analysis can                                    works have applied these and other optimal control methods                                 9
+                                                                      take a continuum of values that may be infeasible to implement                                  to the SIR model (e.g. [30,31]). The COVID-19 pandemic has
+
+
+
+
+                                                                                                                                                                                                                                                               royalsocietypublishing.org/journal/rsif
+                                                                      in practice. We can use an averaging approach to circumvent                                     produced a surge in the development of numerical and analyti-
+                                                                      this problem. Namely, consider a time window of T days (e.g.                                    cal methods to design optimal NPIs minimizing diverse
+                                                                      a week). Suppose that the average reduction prescribed by                                       criteria, including the infection peak [32], number of infections
+                                                                      the optimal intervention over a certain window is u      . We can                             [33,34] and economic costs [35,36].
+                                                                      realize this reduction on average by combining d ¼ T        u =umax                               We will inevitably face new epidemics where NPIs are the
+                                                                      days of maximum reduction with (T − d) days without inter-                                      only option to control the outbreaks. Rather counterintui-
+                                                                      vention. This approach yields an intervention similar to                                        tively, we find that for ‘ending’ an epidemic outbreak as
+                                                                      Karin et al. [25], with the difference that the periods of interven-                            fast as possible using NPIs, it is not always optimal to
+                                                                      tion and activity are optimally balanced. Quantifying the errors                                apply the maximum intervention. This observation illustrates
+                                                                      produced by such approximations, in particular over the                                         the need for developing a better scientific understanding that
+                                                                      singular arc [26], deserves further study.                                                      informs the design of optimal NPIs and planning the
+                                                                          Our criterion to design optimal NPIs for mitigating epi-                                    required health services capacity.
+
+
+
+
+                                                                                                                                                                                                                                                               J. R. Soc. Interface 18: 20200803
+                                                                      demic outbreaks is obtained by characterizing the necessary
+                                                                      and sufficient conditions for the existence of solutions to an
+                                                                      optimal control problem. Specifically, the low dimensionality
+                                                                                                                                                                      Data accessibility. The data analysed are reported in electronic supple-
+                                                                      of the SIR model allowed us to apply Green’s theorem to com-                                    mentary material, notes S3 and S4. Code supporting the results
+Downloaded from https://royalsocietypublishing.org/ on 01 June 2025
+
+
+
+
+                                                                      pare the cost of any two interventions analytically (electronic                                 is archived in the Github repository: https://github.com/Synthetic
+                                                                      supplementary material, note S1.4). In this sense, the method                                   Dynamics/OptimalOutbreakMitigation.
+                                                                      we use to derive the optimal NPIs is closer to our previous                                     Authors’ contributions. M.T.A. conceived the project. F.C. did the math-
+                                                                      work on optimal control for bioreactors [27]. In general, deriv-                                ematical analysis with the help of J.A.M. R.M.M., M.T.A. and F.C.
+                                                                                                                                                                      did the numerical analysis. M.T.A. wrote the manuscript. All authors
+                                                                      ing such complete characterization of optimal control problems
+                                                                                                                                                                      revised the manuscript.
+                                                                      is challenging because it involves solving an infinite-dimen-
+                                                                                                                                                                      Competing interests. We declare we have no competing interests.
+                                                                      sional optimization [28]. Indeed, computational methods
+                                                                                                                                                                      Funding. M.T.A. acknowledges the financial support provided by CON-
+                                                                      cannot produce such a characterization [29], and established                                    ACyT grant no. A1-S-13909. J.X.V.-.H. acknowledges support from
+                                                                      analytical methods like Pontryagin’s maximum principle                                          DGAPA-PAPIIT-UNAM grant no. IV100220 (convocatoria especial
+                                                                      only yield necessary conditions for optimality [28]. Several                                    COVID-19) and DGAPA-PAPIIT-UNAM grant no. IN115720.
+
+
+
+
+                                                                      References
+                                                                      1.   Anderson RM, May RM. 1985 Vaccination and herd                mitigation measures influence the course of the          16. Yan X, Zou Y. 2008 Optimal and sub-optimal
+                                                                           immunity to infectious diseases. Nature 318,                  COVID-19 epidemic? Lancet 395, 931–934. (doi:10.             quarantine and isolation control in SARS epidemics.
+                                                                           323–329. (doi:10.1038/318323a0)                               1016/S0140-6736(20)30567-5)                                  Math. Comput. Model. 47, 235–245. (doi:10.1016/j.
+                                                                      2.   Anderson RM, May RM. 1992 Infectious diseases of        9.    Elston J, Cartwright C, Ndumbi P, Wright J. 2017             mcm.2007.04.003)
+                                                                           humans: dynamics and control. Oxford, UK: Oxford              The health impact of the 2014–15 Ebola outbreak.         17. Rowthorn RE, Laxminarayan R, Gilligan CA. 2009
+                                                                           University Press.                                             Public Health 143, 60–70. (doi:10.1016/j.puhe.               Optimal control of epidemics in metapopulations.
+                                                                      3.   Fraser C, Riley S, Anderson RM, Ferguson NM.                  2016.10.020)                                                 J. R. Soc. Interface 6, 1135–1144. (doi:10.1098/rsif.
+                                                                           2004 Factors that make an infectious                    10.   Kermack WO, McKendrick AG. 1927 A contribution               2008.0402)
+                                                                           disease outbreak controllable. Proc. Natl Acad. Sci.          to the mathematical theory of epidemics.                 18. Caetano MAL, Yoneyama T. 2001 Optimal and sub-
+                                                                           USA 101, 6146–6151. (doi:10.1073/pnas.                        Proc. R. Soc. Lond. A 115, 700–721. (doi:10..1098/           optimal control in Dengue epidemics. Optimal Control
+                                                                           0307506101)                                                   rspa.1927.0118)                                              Appl. Methods 22, 63–73. (doi:10.1002/oca.683)
+                                                                      4.   Kupferschmidt K. 2020 Ending coronavirus                11.   Brauner JM et al. 2020 Inferring the effectiveness of    19. Åström KJ, Murray RM. 2010 Feedback systems: an
+                                                                           lockdowns will be a dangerous process of trial and            government interventions against COVID-19. Science           introduction for scientists and engineers. Princeton,
+                                                                           error. Science—AAAS. (doi:10.1126/science.                    371, eabd9338. (doi:10.1126/science.abd9338)                 NJ: Princeton University Press.
+                                                                           abc2507)                                                12.   Moghadas SM, Fitzpatrick MC, Sah P, Pandey A,            20. Angulo MT, Velasco-Hernandez JX. 2018 Robust
+                                                                      5.   Ferguson NM, Cummings DA, Fraser C, Cajka JC,                 Shoukat A, Singer BH, Galvani AP. 2020 The                   qualitative estimation of time-varying contact rates
+                                                                           Cooley PC, Burke DS. 2006 Strategies for mitigating           implications of silent transmission for the control of       in uncertain epidemics. Epidemics 24, 98–104.
+                                                                           an influenza pandemic. Nature 442, 448–452.                   COVID-19 outbreaks. Proc. Natl Acad. Sci. USA 117,           (doi:10.1016/j.epidem.2018.03.001)
+                                                                           (doi:10.1038/nature04795)                                     17 513–17 515. (doi:10.1073/pnas.2008373117)             21. Di Lauro F, Kiss IZ, Rus D, Della Santina C. 2020
+                                                                      6.   Hollingsworth TD, Klinkenberg D, Heesterbeek H,         13.   McKee M, Stuckler D. 2020 If the world fails                 COVID-19 and flattening the curve: a feedback
+                                                                           Anderson RM. 2011 Mitigation strategies for                   to protect the economy, COVID-19 will damage                 control perspective. IEEE Control Syst. Lett. 5,
+                                                                           pandemic influenza A: balancing conflicting policy            health not just now but also in the future. Nat. Med.        1435–1440. (doi:10.1109/LCSYS.2020.3039322)
+                                                                           objectives. PLoS Comput. Biol. 7, e1001076. (doi:10.          26, 640–642. (doi:10.1038/s41591-020-0863-y)             22. Castaños F, Mondié S. In press. Observer-based
+                                                                           1371/journal.pcbi.1001076)                              14.   For Evidence-Based Medicine OC. COVID-19: What               predictor for a susceptible-infectious-recovered
+                                                                      7.   Ferguson N et al. 2020 Impact of non-pharmaceutical           proportion are asymptomatic? Available from:                 model with delays: an optimal-control case study.
+                                                                           interventions (NPIs) to reduce COVID-19 mortality and         https://www.cebm.net/covid-19/covid-19-what-                 Int. J. Robust Nonlinear Control. (doi:10.1002/rnc.
+                                                                           healthcare demand. Imperial College COVID-19                  proportion-are-asymptomatic/.                                5522)
+                                                                           Response Team.                                          15.   Behncke H. 2000 Optimal control of deterministic         23. Saltelli A et al. 2020 Five ways to ensure that models
+                                                                      8.   Anderson RM, Heesterbeek H, Klinkenberg D,                    epidemics. Optimal Control Appl. Methods 21,                 serve society: a manifesto. London, UK: Nature
+                                                                           Hollingsworth TD. 2020 How will country-based                 269–285. (doi:10.1002/oca.678)                               Publishing Group.
+                                                                      24. Shulgin B, Stone L, Agur Z. 1998 Pulse vaccination        28. Lenhart S, Workman JT. 2007 Optimal control applied     33. Tsay C, Lejarza F, Stadtherr MA, Baldea M.               10
+                                                                          strategy in the SIR epidemic model. Bull. Math. Biol.         to biological models. New York, NY: CRC Press.              2020 Modeling, state estimation, and
+
+
+
+
+                                                                                                                                                                                                                                                             royalsocietypublishing.org/journal/rsif
+                                                                          60, 1123–1148. (doi:10.1016/S0092-8240(98) 90005-2)       29. Bonnans F, Martinon P, Grélard V. 2012 Bocop: a             optimal control for the US COVID-19 outbreak.
+                                                                      25. Karin O et al. 2020 Adaptive cyclic exit strategies           collection of examples.                                     (http://arxiv.org/abs/200406291)
+                                                                          from lockdown to suppress COVID-19 and allow              30. Hansen E, Day T. 2011 Optimal control of epidemics      34. Bliman PA, Duprez M. 2021 How best can
+                                                                          economic activity. medRxiv. (doi:10.1101/2020.04.             with limited resources. J. Math. Biol. 62, 423–451.         finite-time social distancing reduce epidemic
+                                                                          04.20053579)                                                  (doi:10.1007/s00285-010-0341-0)                             final size? J. Theor. Biol. 511, 110557. (doi:10.1016/
+                                                                      26. Fridman LM. 2002 Singularly perturbed analysis of         31. Di Giamberardino P, Iacoviello D. 2017 Optimal              j.jtbi.2020.110557)
+                                                                          chattering in relay control systems. IEEE Trans. Autom.       control of SIR epidemic model with state dependent      35. Alvarez FE, Argente D, Lippi F. In press. A simple
+                                                                          Control 47, 2079–2084. (doi:10.1109/TAC.2002.805672)          switching cost index. Biomed. Signal Process. Control       planning problem for COVID-19 lockdown, testing,
+                                                                      27. Moreno J. 1999 Optimal time control of bioreactors            31, 377–380. (doi:10.1016/j.bspc.2016.09.011)               and tracing. Am. Econ. Rev. Insights.
+                                                                          for the wastewater treatment. Optimal Control             32. Morris DH, Rossine FW, Plotkin JB, Levin SA. 2020       36. Piguillem F, Shi L. 2020 Optimal COVID-19
+                                                                          Appl. Methods 20, 145–164. (doi:10.1002/(SICI)1099-           Optimal, near-optimal, and robust epidemic control.         quarantine and testing policies. EIEF Working Papers
+                                                                          1514(199905/06)20:3<145::AID-OCA651>3.0.CO;2-J)               (http://arxiv.org/abs/200402209)                            Series 2004.
+
+
+
+
+                                                                                                                                                                                                                                                             J. R. Soc. Interface 18: 20200803
+Downloaded from https://royalsocietypublishing.org/ on 01 June 2025
+

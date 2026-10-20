@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-21",
+  "scope": "仅摘要、目录、引言、相邻模型与参考文献页；非全文逐页检查",
+  "documents": [
+    {
+      "name": "main",
+      "pages_inspected": [1, 2, 3, 4, 5, 37, 38],
+      "reviewer": "主任务",
+      "result": "摘要、两页目录、引言跨页与模型衔接、参考文献正常；无裁切、重叠、乱码或未解析编号",
+      "defects": []
+    },
+    {
+      "name": "theory_only",
+      "pages_inspected": [1, 2, 3, 4, 5, 28, 29],
+      "additional_single_page_zoom": [1, 3, 4, 28],
+      "reviewer": "独立子任务 b_theorem_audit",
+      "result": "摘要、目录、引言和相邻模型公式正常；参考文献正常跨页，DOI换行字符完整；无重叠、裁切、乱码、问号编号或孤立标题",
+      "defects": []
+    }
+  ],
+  "source_pages_inspected_by_primary_and_literature_reviewer": [
+    "sources/afg_pdf3.png",
+    "sources/fglx_pdf10.png",
+    "sources/angulo_pdf5.png"
+  ],
+  "hash_manifest": "render_manifest.json",
+  "optimizer_calls": 0,
+  "ocp_solves": 0
+}

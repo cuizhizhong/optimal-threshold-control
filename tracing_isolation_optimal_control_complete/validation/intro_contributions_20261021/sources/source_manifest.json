@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-21",
+  "optimizer_calls": 0,
+  "new_ocp_solves": 0,
+  "sources": [
+    {
+      "source": "ref/1-s2.0-S0304406822000258-main.pdf",
+      "sha256": "9831c65883c530a2a50bac9ad1e0e0eca70e52dc7d90168de3b376000efe2c0c",
+      "text_file": "1-s2.0-S0304406822000258-main.txt",
+      "pdf_pages_by_formfeed": 17,
+      "nonwhitespace_characters": 72647
+    },
+    {
+      "source": "ref/angulo-et-al-a-simple-criterion-to-design-optimal-non-pharmaceutical-interventions-for-mitigating-ep.pdf",
+      "sha256": "8feb19cfd786b7943130314da480b173894276802d06afbc9c3c3a3c70007fd4",
+      "text_file": "angulo-et-al-a-simple-criterion-to-design-optimal-non-pharmaceutical-interventions-for-mitigating-ep.txt",
+      "pdf_pages_by_formfeed": 10,
+      "nonwhitespace_characters": 40198
+    },
+    {
+      "source": "ref/Optimal control of a SIR epidemic with ICU constraints and target objectives.pdf",
+      "sha256": "c5979cd4ac42a4aba7f3d10f0c38f927d3d15b26728b837163ff020876b5da8b",
+      "text_file": "Optimal control of a SIR epidemic with ICU constraints and target objectives.txt",
+      "pdf_pages_by_formfeed": 25,
+      "nonwhitespace_characters": 62014
+    },
+    {
+      "source": "ref/Freddi_Goreac.pdf",
+      "sha256": "0debf2225056ab217fcee1e86b4ca7e05566182dfa357c6a0b569e327565e072",
+      "text_file": "Freddi_Goreac.txt",
+      "pdf_pages_by_formfeed": 34,
+      "nonwhitespace_characters": 66693
+    },
+    {
+      "source": "ref/Freddi.pdf",
+      "sha256": "6a0594088e190ca1d07b4c4be2a6e512b7add29c0e1c8cc01cee9137eabcae29",
+      "text_file": "Freddi.txt",
+      "pdf_pages_by_formfeed": 27,
+      "nonwhitespace_characters": 51605
+    },
+    {
+      "source": "ref/supplementary material.pdf",
+      "sha256": "43d8edfc1202a62f6b73bb2e83c45f946f5e2b21ba35f412c217b7c1378a936c",
+      "text_file": "supplementary material.txt",
+      "pdf_pages_by_formfeed": 20,
+      "nonwhitespace_characters": 0
+    }
+  ]
+}

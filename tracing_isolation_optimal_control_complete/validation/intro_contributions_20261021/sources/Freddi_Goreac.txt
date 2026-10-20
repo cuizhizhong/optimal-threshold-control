@@ -1,0 +1,1964 @@
+                                                       Infinite horizon optimal control of a SIR epidemic
+                                                                     under an ICU constraint
+                                                                          Lorenzo Freddi2 and Dan Goreac3,4
+                                           2
+                                              Dipartimento di Scienze Matematiche, Informatiche e Fisiche, Università di Udine, via
+                                                         delle Scienze 206, 33100 Udine, Italy, lorenzo.freddi@uniud.it
+arXiv:2306.10513v2 [math.OC] 21 Nov 2023
+
+
+
+
+                                           3
+                                             School of Mathematics and Statistics, Shandong University, Weihai, Weihai 264209, PR
+                                                                                      China
+                                                 4
+                                                   LAMA, Univ Gustave Eiffel, UPEM, Univ Paris Est Creteil, CNRS, F-77447
+                                                               Marne-la-Valleée, France, dan.goreac@univ-eiffel.fr
+
+
+
+                                                                                          Abstract
+                                                   The aim of this paper is to provide a rigorous mathematical analysis of an optimal control
+                                               problem of a SIR epidemic on an infinite horizon. A state constraint related to intensive care
+                                               units (ICU) capacity is imposed and the objective functional linearly depends on the state and
+                                               the control. After preliminary asymptotic and viability analyses, a Γ-convergence argument is
+                                               developed to reduce the problem to a finite horizon allowing to use a state constrained version
+                                               of Pontryagin’s theorem to characterize the structure of the optimal controls. Illustrating exam-
+                                               ples and numerical simulations are given according to the available data on Covid-19 epidemic
+                                               in Italy.
+
+                                                  Keywords: Optimal control; SIR; Γ-convergence; Pontryagin principle; State constraints;
+                                               Viability; Epidemics; Infinite horizon.
+
+
+                                               1    Introduction
+                                               The optimal control of epidemics ([2, 5, 25, 32]) have attracted the interest of researchers since
+                                               the introduction of the first compartmental epidemic model by Kermack and McKendrick [28].
+                                               Lots of new contributions have appeared in recent years, particularly after the start of the
+                                               COVID-19 pandemic – see for example [1, 21, 20, 29, 30]. In this paper, we focus on the
+                                               optimal control of the SIR model [28]
+
+                                                                         ds
+                                                                                             
+                                                                     
+                                                                           (t) = − β − u(t) s(t) i(t)
+                                                                      dt
+                                                                     
+                                                                     
+                                                                     
+                                                                         di                                      , t ∈ I,                  (1.1)
+                                                                            (t) = β − u(t) s(t) i(t) − γi(t)
+                                                                     
+                                                                     
+                                                                     
+                                                                        dt
+                                                                     
+                                                                        s(0) = s0 , i(0) = i0
+                                                                     
+
+                                               with β > 0, on an infinite time horizon I = (0, ∞). The unknowns s and i in the system (1.1)
+                                               represent the density functions of the susceptible and infectious populations, respectively. The
+                                               total population is assumed to be constant and the third recovered class r of SIR is classically
+                                               obtained by using the conservation of mass. In Section 2 we recall some other epidemiological
+                                               concepts related with the SIR model, like, for instance, the herd immunity threshold and the
+                                               basic reproduction number R0 . Under a prescribed threshold iM ∈ (0, 1), the initial conditions
+
+
+                                                                                               1
+are taken to be i0 ∈ (0, iM ] and s0 ∈ (0, 1 − i0 ]. The problem is studied under the control
+constraints u ∈ U := L∞ (I; [0, umax ]) with 0 < umax < β and the state constraint
+
+                                         i(t) ≤ iM , ∀ t ∈ I.
+
+Here, umax represents the maximal realistic control effort that can be done to avoid the epidemic
+spread. Also iM is prescribed and it represents an intensive care unit (ICU) safety upper bound
+to the capacity of the health-care system to treat infected patients.
+    In our problem, u(t) plays the role of a control variable that, typically, models any kind of
+non-pharmaceutical intervention suitable for reducing the transmission rate β. The derivatives
+in (1.1) are meant in a distibutional sense and the trajectories are constructed from admissible
+controls u ∈ U .
+    The optimal control problem that we aim to consider here is to minimize on the whole time
+horizon a linear integral cost functional depending both on the state i and on the control u,
+that is                                          ˆ
+                                 J ∞ (u, s, i) =
+                                                              
+                                                   λ1 u + λ2 i dt                            (1.2)
+                                                  I
+where (s, i) is the epidemic trajectory (i.e. solution of (1.1)) corresponding to the control u. The
+cost functional J ∞ represents the cost of treatments and hospitalization for the populations i
+of infected individuals and its dependence on u allows to capture the economic and social cost
+of non-pharmaceutical interventions like slowdown, isolation, quarantine and distance measures
+in general.
+    For a cost functional depending only on the control (that is for λ2 = 0) this problem has
+been considered in Miclo [33]. When I is a bounded interval, that is for a finite time horizon,
+it has been studied in [4]. To be more precise, in [4] we have considered a finite horizon, state-
+independent, cost which corresponds to the choice λ2 = 0. A viability study developed there
+is useful also in the present paper. In particular, we characterized a maximal zone A in which
+no control is needed to keep the infections under the level iM , and a larger zone B in which
+policies allowing the trajectory to satisfy the constraints exist. Using these characterizations,
+we established the optimality of the greedy strategy acting only when the trajectory is about
+to exit the viable set. In particular, it is optimal to stop any control policy as soon as the
+immunity threshold s = βγ is reached. As a consequence, any optimal control for I = (0, +∞)
+is optimal also for a finite horizon problem (0, T ) with T large enough.
+    The greedy policy, which is optimal for the state independent cost considered in [4], can no
+longer be expected to be optimal when the cost (1.2) also depends on i, or, at least when the
+contribution of the term involving the state is able to influence the control policy, that is if λ2 is
+big enough. Moreover, differently from the control, the state function i vanishes only as t → ∞
+and the reduction to a finite horizon argument used before does not work and must be refined.
+In particular, it will be shown that, in this case as well, a reduction to finite horizon problems
+can be obtained, albeit this is done by a Γ-convergence argument.
+    The variational property of Γ-convergence implies that, if uT is an optimal control (which
+can be shown to exist) for the problem with finite horizon T (extended by 0 to the whole infinite
+horizon) then, as T goes to ∞ and up to a subsequence, uT converges to u weakly* in L∞ , and
+u is optimal on the infinite horizon.
+    Since u is optimal, then it is easy to see that herd immunity must be reached in a finite
+time (see Corollary 6.3). As a consequence, for any T large enough, the susceptible population
+corresponding to the optimal control uT satisfies s(T ) < βγ . We are, then, led to characterize
+the optimal controls for such T large enough being allowed, in doing it, to use the final condition
+s(T ) < βγ as a necessary optimality condition (not as an assumption). This property of the
+approximating optimal controls on a finite horizon has a very important simplifying consequence
+in the application of Pontryagin’s principle, because it implies normality (see the proof of
+Theorem 9.1 and 9.7). For this reason, for this specific problem, considering an infinite horizon
+is more effective than working on a finite one. Pontryagin’s principle, in a version suitable to
+take into account state contraints, allows to characterize the controls uT and, hence, the control
+u by taking the weak* limit as T goes to ∞.
+
+
+                                                  2
+    The paper is organized as follows. In Section 2 we state existence, uniqueness and asymptotic
+behavior of solutions of the controlled SIR system. In particular, it is shown that if the control
+has a finite integral on the infinite horizon, then the herd immunity must be reached in finite
+time. In Section 3 we revisit a viability analysis already done in [4] by using only elementary
+methods. This analysis is also useful to enlighten the “laminar flow argument” that will be used
+also in the subsequent sections. In Section 4 we introduce the greedy control strategy and show
+examples of the viability zones compatible with two different times of the Covid-19 epidemic
+in Italy. In Section 5 we formulate the infinite horizon optimal control problem with a general
+cost and prove the existence of a solution. The case of a linear cost is treated in the subsequent
+Section 6. Section 7 is devoted to reduction by Γ-convergence to a finite horizon problem. In
+Section 8 we use a version of Pontryagin’s theorem, suitable for state constrained problems, to
+derive necessary conditions of optimality for a finite horizon sufficiently large. In Section 9 we
+characterize the structure of the optimal controls on the finite as well as on the infinite horizon.
+To numerically illustrate our results we choose the framework of Covid-19 epidemic in Italy and
+perform some simulations in Section 10 by using the solver Bocop, [37, 7].
+
+Notation. Along the paper, we denote by
+    • U := L∞ (I; K) the space of (equivalence classes of) Lebesgue measurable and essentially
+      bounded functions defined on I and taking values in the compact set K := [0, umax ];
+    • Y := W 1,∞ (I; R2 ) the Sobolev space of (equivalence classes of) functions that are es-
+      sentially bounded together with their distributional derivative defined on I and taking
+      values in R2 ; it is well known that every function in this space has a Lipschitz continuous
+      representative.
+
+
+2     Analysis of the controlled system
+We refer to the Cauchy problem (1.1) as being the controlled system, because the control function
+u appears as an input in the state differential equations. The uncontrolled one corresponds to the
+case in which u is identically equal to 0. This section is devoted to study existence, uniqueness
+and asymptotic behavior of the solutions of the aforementioned controlled system. From the
+point of view of mathematical analysis, the controlled case differs from the uncontrolled one.
+The uncontrolled system has constant coefficients and this makes it quite easy to study and
+the solution is continuously differentiable. On the contrary, the controlled system has variable
+and possibly discontinuous coefficients. Then, C 1 solutions are no longer expected and their
+asymptotic behavior is harder to study (see also [33]).
+Theorem 2.1 For every control u ∈ U and every initial condition i0 ∈ (0, 1) and s0 ∈ (0, 1−i0 ]
+the controlled system (1.1) admits a unique solution (s, i) ∈ Y . Moreover, (s(t), i(t)) ∈ T :=
+{(s, i) ∈ (0, 1]2 : s + i ≤ 1} for every t ∈ I.
+Let us remark that, in particular, the population densities s and i are always strictly positive
+and belong to the invariant triangle T. A crucial role in the proof is played by the observation
+that the sum of the two equations gives
+                                           (s + i)′ = −γi.                                     (2.1)
+Since i is positive, this implies that s + i is decreasing.
+
+Proof. Since the dynamic is locally Lipschitz, then it is classical that we have local existence
+and uniqueness of an absolutely continuous solution (see for instance [24, I.3]). Let us denote
+by J, with 0 ∈ J, a time interval in which the unique solution (s, i) exists.
+   Let us claim that s(t) > 0 and i(t) > 0 for every t ∈ J. Indeed, considering i as a coefficient,
+the function s is the unique solution of the linear Cauchy problem
+                                      (
+                                        s′ = −(β − u)si
+                                        s(0) = s0 > 0,
+
+                                                  3
+which is given by                             ´t
+                                 s(t) = s0 e− 0 (β−u(ξ))i(ξ) dξ       ∀ t ∈ J.
+Hence s is strictly positive in J. Similarly, one can prove that also i is strictly positive.
+Since, as already remarked, s + i is decreasing, we have
+
+                                  0 < s(t) + i(t) ≤ s0 + i0       ∀ t ∈ J,
+
+and hence
+                           (s(t), i(t)) ∈ T := {(s, i) ∈ (0, 1]2 : s + i ≤ 1}
+for every t ∈ J. Being bounded, the solution exists for every t ∈ [0, +∞).
+    Finally, looking at the equations, one sees that s and i have bounded derivatives, hence they
+are Lipschitz continuous and the theorem is completely proven.                                 □
+
+Remark 2.2 (Notation) Whenever the control u and the initial conditions s(0) = s0 , i(0) =
+i0 are fixed, the unique solution to (1.1) will also be denoted by (ss0 ,i0 ,u , is0 ,i0 ,u ). However, in
+the sequel, when the initial conditions are fixed or can be easily deduced from the context, we
+write simply (su , iu ), or even (s, i) if also the control is fixed or easy to deduce. This notation
+will be used throughout the whole paper.
+
+   In addition to the notation just introduced, for the rest of this section, we enforce the
+assumptions of Theorem 2.1, that is,
+
+                                  i0 ∈ (0, 1), s0 ∈ (0, 1 − i0 ], u ∈ U.
+
+Lemma 2.3 The solutions s and i are related by the following integro-differential equation
+                                              ˆ t
+                                                       s′ (τ )
+                    s(t) + i(t) − s0 − i0 = γ                     dτ                     (2.2)
+                                               0 (β − u(τ ))s(τ )
+
+for every t ∈ I.
+
+Proof. By integrating (2.1) between 0 and t we have
+                                                              ˆ t
+                                 s(t) + i(t) − s0 − i0 = −γ           i(τ ) dτ.                     (2.3)
+                                                                  0
+
+Equation (2.2) is then obtained by using the first state equation to substitute i in the integral.
+                                                                                                □
+   The next theorem deals with the asymptotic behavior of the epidemic trajectory.
+
+Proposition 2.4 The following propositions hold:
+  1. s is strictly decreasing;
+  2. s∞ := lim s(t) ∈ (0, 1) and i∞ := lim i(t) = 0;
+            t→+∞                              t→+∞
+
+  3.   s∞ < β−uγmax .
+
+Proof. 1. By the first equation and the strict positivity of s and i we have s′ < 0 in I; hence
+the claimed monotonicity.
+   2. By monotonicity and positivity, the limit s∞ := limt→+∞ s(t)exists and is finite. Since
+s + i is decreasing (see (2.1)) and positive, then limt→+∞ s(t) + i(t) exists and is finite. As a
+consequence, also the limit
+                                                                            
+             i∞ := lim i(t) = lim s(t) + i(t) − s(t) = lim s(t) + i(t) − s∞
+                    t→+∞           t→+∞                               t→+∞
+
+exists and is finite.
+
+
+                                                    4
+                                                                        ′
+                                                         s (τ )
+                                               1
+   Let us consider now Lemma 2.3. Since β1 ≤ β−u(τ ) and s(τ ) < 0, by using (2.2) we have
+                                                     ˆ t
+                                                 γ         s′ (τ )     γ    s(t)
+                       s(t) + i(t) − s0 − i0 ≤                     dτ = log      .
+                                                 β       0 s(τ  )      β     s0
+Taking the limit as t → ∞ then we get
+                                                              γ     s∞
+                                 s∞ + i∞ − s0 − i0 ≤            log    ,
+                                                              β     s0
+with the convention that log 0 := −∞. Since s is positive, we have s∞ ≥ 0. On the other hand,
+if we had s∞ = 0, by the previous inequality, we would get i∞ − s0 − i0 ≤ −∞, which is clearly
+impossible. Hence, s∞ > 0.
+    It remains to prove that i∞ = 0. Of course, we have i∞ ≥ 0. Assume by contradiction that
+i∞ > 0. Then, there exists t̄ > 0 such that i(t) > i∞ /2 for all t ≥ t̄. By the first state equation,
+and since s(t) ≥ s∞ > 0 and β − u(t) ≥ β − umax , we would have
+                                                           i∞
+                            s′ (t) ≤ −(β − umax )s∞           < 0,      ∀ t ≥ t̄,
+                                                            2
+leading to the contradiction s∞ = −∞.
+    3. Since s is decreasing, if s0 ≤ γ/(β − umax ), then there is nothing to prove. Let us then
+assume that s0 > β−uγmax . Let us denote by
+                                                                        γ
+                          tmax := sup{t ∈ [0, +∞) : s(t) >                    }
+                                                                     β − umax
+and assume, by contradiction, that tmax = ∞. Since u ≤ umax , we have
+
+          i′ (t) = (β − u(t))s(t) − γ i(t) ≥ (β − umax )s(t) − γ i(t) > 0
+                                                               
+                                                                                     ∀ t > 0,
+
+hence i is increasing. Then, for every t ∈ [0, +∞) we have
+
+              s′ (t) = −(β − u(t))s(t)i(t) ≤ −(β − umax )s(t)i(t) ≤ −γi(t) ≤ −γi0 .
+
+By integrating on [0, t), we would have
+
+                                    s(t) ≤ s0 − γi0 t,       ∀ t ≥ 0,
+
+and therefore limt→+∞ s(t) = −∞, which contradicts 2.
+   It follows that tmax < ∞. Then, by continuity, s(tmax ) = β−uγmax and the claim follows by
+the strict monotonicity of s.
+                                                                                            □
+   By the second equation of the uncontrolled SIR system (1.1) (with u = 0), since i is positive,
+we deduce that
+                                                        γ
+                                  i′ (t) ≤ 0 ⇐⇒ s(t) ≤ .
+                                                        β
+The number βγ is the herd immunity threshold. Since s is decreasing, when immunity is reached,
+i starts to decrease and continues to do it for every time after. In the SIR model, the immunity
+threshold is the reciprocal of the basic reproduction number R0 (see, for instance, [26]).
+Remark 2.5 In Proposition 2.4 we have proved that s∞ < β−uγmax . This number is strictly
+greater than βγ . If u ≡ 0, then we have s∞ < βγ , by simply taking umax = 0 in point 3.
+of Proposition 2.4. On the other hand, it is easy to see that the herd immunity may not be
+reached if the control u is big enough. That is, it may happen that s∞ > βγ .
+    The next theorem provides a very useful sufficient condition that ensures that herd immunity
+is reached in finite time. Proposition 2.4 is quite standard, even if not trivial for the controlled
+system. On the contrary, to the best of our knowledge, Theorem 2.6 is new. It plays an
+important role in the optimal control problems that will be considered in the sequel.
+
+
+                                                     5
+Theorem 2.6 If u ∈ L1 (I) then s∞ < βγ .
+
+   The following lemma will be used in the proof.
+
+Lemma 2.7 There exists n0 ∈ N such that
+                                                            1           1
+                 ∀ n ≥ n0 ∃ tn > 0, tn → ∞ : i(tn ) =         and i(t) ≤ ∀ t ≥ tn .
+                                                            n           n
+Proof. Let n0 > i10 . Let us define
+
+                                                                   1
+                                 tn0 := sup{t ≥ 0 : i(t) =            }.
+                                                                   n0
+
+Since i∞ = 0 and i is continuous, it follows that tn0 < ∞. Moreover, i(tn0 ) = n10 and i(t) ≤ n10
+for every t ≥ tn0 .
+    By continuity, there exists t > tn0 such that i(t) = n01+1 . Let us define
+
+                                                                      1
+                             tn0 +1 := sup{t > tn0 : i(t) =               }.
+                                                                   n0 + 1
+
+As before, we have tn0 +1 < ∞, i(tn0 +1 ) = n01+1 and i(t) ≤ n01+1 for every t ≥ tn0 +1 .
+   We construct the rest of the sequence by induction on k ∈ N as follows. Assume that tn0 +k
+be such that tn0 +k < ∞, i(tn0 +k ) = n01+k and i(t) ≤ n01+k for every t ≥ tn0 +k . By continuity,
+                                             1
+there exists t > tn0 +k such that i(t) = n0 +k+1 . Let us define
+
+                                                                        1
+                       tn0 +k+1 := sup{t > tn0 +k+1 : i(t) =                   }.
+                                                                    n0 + k + 1
+                                                    1                  1
+As before, we have tn0 +k+1 < ∞, i(tn0 +k+1 ) = n0 +k+1 and i(t) ≤ n0 +k+1  for every t ≥ tn0 +k+1 .
+    By construction, the sequence (tn )n≥n0 is increasing. It remains only to prove that tn → ∞.
+Assuming by contraction that, instead, t → t∞ < ∞ then we would have i = 0 for every t > t∞
+(indeed, for every t > t∞ we would have i(t) < 1/n for every n ≥ n0 ). But this is impossible
+since i(t) > 0 for every t ∈ [0, +∞). The lemma is completely proved.                            □
+Proof. of Theorem 2.6. Let us assume, by contradiction, that s∞ ≥ βγ .
+  Let n0 ∈ N and (tn )n≥n0 be as in Lemma 2.7. Since i∞ = 0, we have
+                          ˆ ∞        ˆ ∞                         ˆ
+                               ′                                γ ∞
+                −i(tn ) =     i dt =     [(β − u)s − γ]i dt ≥ −        ui dt                   (2.4)
+                           tn         tn                        β tn
+
+where, in the last inequality, we used that fact that, since s is decreasing and s∞ ≥ βγ , then
+s(t) > βγ for every t ∈ [0, +∞). On the other hand, since i(t) ≤ n1 for every t ≥ tn , we get
+                                       ˆ ∞                  ˆ ∞
+                                   γ                    γ
+                                 −           ui dt ≥ −             u dt.
+                                   β   tn              βn     tn
+
+By putting this inequality together with (2.4) and using the fact that ni(tn ) = 1, then we get
+                                  ˆ ∞
+                                              β
+                                       u dt ≥ , ∀ n ≥ n0 .
+                                    tn        γ
+
+Since tn → ∞, this implies                  ˆ ∞
+                                                  u dt = ∞,
+                                             0
+
+which contradicts the assumption u ∈ L1 (I).
+                                                                                                  □
+
+
+                                                   6
+Remark 2.8 The map s : [0, +∞) → (s∞ , s0 ] is strictly decreasing, hence invertible and
+Lipschitz continuous together with its inverse t = t(s). Then it can be used to perform a
+change of variable in the Lebesgue integral in (2.2) (see for instance [23]) and we get
+                                                   ˆ s
+                                                             dσ
+                            s + i(s) − s0 − i0 = γ                                      (2.5)
+                                                     s0 (β − u(σ))σ
+
+for every s ∈ [s∞ , s0 ]. Let us note that here, with a small abuse of notation, u and i are
+considered as functions of s, through the composition with the function t(s) (that is, u(σ) stays
+for u(t(σ)) and the same holds for i). In this sense, the control u is defined only in the interval
+(s∞ , s0 ], and equality (2.5) does not make sense for s ∈ [0, s∞ ).
+    When the control u is constant, the integral at the right hand side of (2.5) (or (2.2)) can be
+explicitly computed, leading to the following relation
+                                                   γ                 
+                             i = s0 + i0 − s +        log s − log s0                          (2.6)
+                                                  β−u
+
+for every constant control u ∈ [0, umax ]. Differently from the previous one, this equality makes
+sense for every s ∈ (0, 1] because the constant control u can be thought to be defined everywhere.
+Of course, when s is taken in (0, s∞ ), it returns a negative value of i, which is not physically
+relevant. Furthermore, the equality (2.5) itself can be extended to s ∈ (0, 1] by extending the
+control, if needed.
+
+
+3     An elementary viability analysis
+The solution of the controlled system
+
+                                         I → R2         
+                                         t 7→ s(t), i(t)
+
+is a curve (the epidemic trajectory) in the plane si. Since s is a strictly decreasing function
+of time, the epidemic trajectory is graph of a function i = i(s); the curve is traveled in the
+direction of decreasing s.
+
+
+
+
+                              Figure 1: The epidemic trajectory
+
+    The following viability zones have been already defined in [4].
+
+Definition 3.1 The set
+
+                   B := {(s0 , i0 ) ∈ T : ∃ u ∈ U s.t. is0 ,i0 ,u (t) ≤ iM , ∀ t ∈ I}
+
+
+                                                   7
+is called feasible or viable set.
+    The set
+                           A := {(s0 , i0 ) ∈ T : is0 ,i0 ,0 (t) ≤ iM , ∀ t ∈ I}
+is called no-effort or safe zone.
+
+The viable set B is the maximal set of initial configurations on which at least one trajectory
+satisfies the constraint. When the epidemic initial state (s0 , i0 ) is inside B, the epidemic is
+“under control”’. The safe zone A is the maximal set of initial configurations such that the
+associated uncontrolled trajectories satisfy the constraint. These sets play an important role in
+the synthesis of optimal control strategies.
+
+The epidemic trajectories corresponding to constant controls are graphics i = i(s) given by (2.6).
+Let us note that these functions are defined for every s > 0, while the epidemic trajectory is
+only the part of the graph corresponding to s ∈ (s∞ , s0 ].
+    They are easy to study, and play a crucial role in the viability analysis. Given a prescribed
+(fixed) constant control u, and as (s0 , i0 ) varies, the family of graphs {s 7→ is0 ,i0 ,u (s)}(s0 ,i0 )
+satisfies the following properties (very easy to check).
+  1. Any graph of the family is strictly concave.
+                                                    γ
+  2. The graphs have all a unique maximum point in β−u (independent of s0 and i0 ).
+  3. Any graph goes from (s0 , i0 ) to (s∞ , 0) in infinite time (because i is always strictly positive
+     and i∞ = 0).
+  4. It is a laminar flow, that is, the graphs of the family are, two by two, disjoint or identically
+     equal (recall that the control is constant and fixed). See the figure below for two laminar
+     flows with different controls.
+The figure shows some epidemic trajectories with constant controls. Of course only the arcs
+contained in the half plane of positive i have physical meaning.
+
+
+
+
+      Figure 2: Epidemic trajectories with u = 0 (in green) and u = umax (in red)
+
+The picture above suggests how to construct two relevant curves, Φ0 and Φmax , in black in the
+figure below.
+
+
+
+
+                                                     8
+                                Figure 3: The curves Φ0 and Φmax
+
+They are obtained by glueing together the constant i = iM with the epidemic trajectories with
+u = 0 and u = umax and passing trough the maximum points
+                                 γ               γ
+                                   , iM ,               , iM ),
+                                 β            β − umax
+respectively, that is
+                        (
+                         iM                              if 0 < s < βγ ,
+        Φ0 (s)   =        γ            γ             γ
+                                                         if s ≥ βγ ,
+                                                       
+                          β + iM − s + β log s − log β
+                        (
+                         iM                                                  if 0 < s < β−uγmax ,
+     Φmax (s)    =          γ                  γ                     γ
+                                                                             if s ≥ β−uγmax .
+                                                                         
+                          β−umax + iM − s + β−umax log s − log β−umax
+
+The region under the curve Φmax is a viable set. Indeed, by choosing a point inside it and
+applying the maximum control u = umax the corresponding trajectory stays always on, or
+strictly under, the curve Φmax (due to the laminar flow property 4.; see the red curve under
+Φmax in Figure 3). If, instead, we start outside this region then the maximum control is not
+enough to take the epidemic curve under the level iM (always due to property 4.). To complete
+a formal proof of the claimed viability, it remains to prove that this last fact holds also for any
+other control (not only for u = umax ). That is, the following characterization of the viable set
+holds.
+
+Theorem 3.2 B = {(s, i) ∈ T : 0 < i ≤ Φmax (s)}.
+
+Proof. As we already remarked, the inclusion
+
+                                  {(s, i) ∈ T : 0 < i ≤ Φmax (s)} ⊆ B
+
+is trivially proven by choosing u = umax , and it remains only to prove the opposite inclusion.
+    Let us then consider (s0 , i0 ) ∈ T and u ∈ U be such such that is0 ,i0 ,u ≤ iM for all t ∈ I. We
+have only to consider the case in which s0 > β−uγmax since, otherwise, (s0 , i0 ) ∈ {(s, i) ∈ T :
+0 < i ≤ Φmax (s)} and the inclusion is proved. We aim to prove that i0 ≤ Φmax (s0 ), that is
+                          γ                        γ                         γ    
+                  i0 ≤              + iM − s0 +           log s0 − log              .            (3.1)
+                       β − umax                 β − umax               β − umax
+By Lemma 2.3, denoting by i = is0 ,i0 ,u and s = ss0 ,i0 ,u , we have
+                                             ˆ t
+                                                        s′ (τ )
+                  i0 = i(t) − s0 + s(t) − γ                         dτ, ∀t ≥ 0,
+                                               0 (β − u(τ ))s(τ )
+
+
+                                                   9
+                                                                  ′
+                                           1         1          s (τ )
+for every t ≥ 0. Since i ≤ iM , by using β−u(τ ) ≤ β−umax and s(τ ) < 0 to estimate the integral,
+we get
+                                                  γ                       
+                       i0 ≤ iM − s0 + s(t) −             log s(t) − log s0 .
+                                              β − umax
+which holds for every t ≥ 0. Since, by point 3. of Proposition 2.4 and by continuity, we have
+that there exists tmax ≥ 0 such that s(tmax ) = β−uγmax , then the evaluation of the previuos
+inequality in t = tmax gives
+                                         γ          γ            γ              
+                    i0 ≤ iM − s0 +             −          log          − log s0
+                                      β − umax   β − umax     β − umax
+
+which is exactly (3.1).                                                                          □
+
+    Similarly, the region under the curve Φ0 is a safe zone. Indeed, by choosing a point inside it
+and applying the control u = 0 the corresponding trajectory stays always on, or strictly under,
+the curve Φ0 (see the green curve under Φ0 in Figure 3). If, instead, we start outside this region
+then the control u = 0 is not enough to take the epidemic curve under the level iM , that is, the
+following characterization of the safe zone holds.
+
+Theorem 3.3 A = {(s, i) ∈ T : 0 < i ≤ Φ0 (s)}.
+
+Remark 3.4 The previous theorems have been proven in [4, Theorem 2.3] by using viability
+tools. The proofs given here are elementary.
+
+
+4      Greedy control strategy and examples
+Starting from a point inside the viability set B and parametrizing by s instead of t (see Remark
+2.8), the greedy control strategy consists in using for every s the minimal control effort that
+takes the system inside the set B; namely,
+    1. ug = 0 till the associated trajectory reaches a point on the curve Φmax and, afterwards,
+       follow this curve till reaching herd immunity by using the following strategy
+    2. ug = umax , as long as s > β−uγmax ,
+    3. ug = β − γs , as long as s ∈ ( βγ , β−uγmax ),
+    4. ug = 0, for every s ≥ βγ , that is, once that herd immunity has been reached.
+
+
+
+
+           Figure 4: The greedy strategy (in black) starting from (s0 , i0 ) ∈ B \ A
+
+In particular, by applying the control 3. we have i′ = 0 (by the second state equation), hence
+i is taken at the level iM till to reach the herd immunity. Note that such control is admissible
+because it is an increasing function of s on the interval ( βγ , β−uγmax ) taking its minimum value
+0 in the left point βγ and maximum value umax in the right point β−uγmax .
+
+
+                                                        10
+A third important curve is the graph Ψ0 displayed in Figure 5.
+
+
+
+
+                                      Figure 5: The curve Ψ0
+
+It is a curve travelled by control u = 0 and passing trough the point ( β−uγmax , iM ) and truncated
+at the level iM , that is
+                      (
+                        iM                                          if 0 < s < β−uγmax ,
+            Ψ0 (s) =       γ                γ               γ
+                                                                    if s ≥ β−uγmax .
+                                                                
+                        β−umax + iM − s + β log s − log β−umax
+
+It has the property that, starting from an initial point (s0 , i0 ) between Φ0 and Ψ0 with control
+u = 0, the level iM is reached without using the maximum control umax , that is, without
+imposing a lockdown. In the picture below, the safe zone A is coloured in green. The red zone
+corresponds to the points of B laying between the curves Ψ0 and Φmax where a lockdown (i.e.
+u = umax ) is needed.
+
+Remark 4.1 The greedy strategy has been proved to be optimal (in [4, Theorem 5.6]) for the
+case of a cost functional depending only on the control (that is λ2 = 0).
+
+Remark 4.2 Along the greedy strategy, the herd immunity is always reached in finite time.
+This can be easily seen by observing that, starting from (s0 , i0 ) ∈ B \ A, the curve Φmax is
+reached along a curve with control u = 0 in finite time (indeed, the time to reach would be
+infinite only if the intersection point was (ss∞0 ,i0 ,0 , 0), that is on the s axis). Analogously, the
+time spent along the red part of the curve Φmax is finite or null. Finally, also the time eventually
+spent along the line i = iM can be computed (as well as in the other cases, by the way) by
+using the fact that, with the control given by 2. the first SIR equation becomes
+                                             ds
+                                                = −γiM ,
+                                             dt
+and, hence, the time spent along the line is, at most,
+                           ˆ βγ                  ˆ βγ
+                                     dt                     1           umax
+                 Tstab =                ds = −                 ds =                .
+                              γ
+                            β−umax
+                                     ds             γ
+                                                  β−umax
+                                                           γiM      β(β − umax )iM
+
+The other times can be computed in an analogous way.
+
+Example 4.3 To show examples we have to choose the epidemic parameters β, γ, umax , and
+the ICU threshold iM . In this example we do it according to the available Covid-19 data in
+Italy at different times of the epidemic. In particular, we focus on the initial stage of March
+2020 (mainly in Northern Italy) and on autumn 2021 when the government updated the control
+policies against the diffusion of the Delta variant.
+
+
+                                                   11
+     According to [22] (see also [36]) which reports a range between 2.83 and 3.10, we take the
+basic reproduction number R0 = 3. This value is a little bit more than the arithmetic average
+and takes into account the fact that the first part of the epidemic involved mainly the northern’s
+regions.
+                                                                                   1
+     Moreover, by considering a time-to-recovery of 14 days ([6]), we get γ = 14     ≃ 0.0714 and
+hence β = R0 γ ≃ 0.2142.
+     About the numbers ICU places, picu , an optimistic estimate is of 14 over 100 000 inhabitants,
+which is, in fact, the Italian target after Decreto-Legge 19.05.2020 [17]. The reported critical
+cases in March 2020 was cicu = 4.5% (see [27]). Hence, iM = pcicu     icu
+                                                                          = 0.0031. The maximal
+control effort that we assume to be done is umax = 0.63β, which corresponds to 63% reduction
+of the transmission rate, according to the impact estimate of the lockdown on trasmissions given
+in [22].
+     The figure shows the viability zones for the previuos choice of the epidemic parameters
+(summarizing: γ = 0.0714, β = 0.2142, iM = 0.0031, umax = 0.135) with an initial point
+(s0 , i0 ) = (0.94, 0.001) that will be considered in the subsequent Example 10.2.
+
+
+
+
+    Figure 6: The viability zones at the initial stage of Covid-19 epidemic in Italy
+
+In 2021 the Delta variant was more than two times transmissible than the ancestral Sars-CoV-
+2 virus (see for instance [31]). Accordingly, in this case, we choose β = 0.5. With DL 23
+Luglio 2021, n. 105, [18], the Italian government setted the alert level at 150 cases per 100 000
+inhabitants. Since the time to recovery accredited by WHO was always (in mean) of 14 days,
+we can estimate that the health system was considered able to support a number of infections
+14 times bigger, that is
+                                               150
+                                     iM = 14          = 0.021
+                                             100 000
+possibly due also to the effect of the vaccinations that reduced the fraction of critical cases.
+    By updating data in this way (that is, by taking: γ = 0.0714, β = 0.5, iM = 0.021,
+umax = 0.315), we obtain the following figure.
+
+
+
+
+                                                12
+           Figure 7: Viability zones for the Delta variant (autumn 2021) in Italy
+
+The figure shows also the initial point (s0 , i0 ) = (0.5, 0.001) that will be considered in the
+subsequent Example 10.3.
+
+
+5      The optimal control problem for a general cost
+The optimal control problem consists in minimizing a cost functional J : U × Y → [0, ∞] of the
+form                                       ˆ ∞
+                                     J(u, s, i) =        f0 (t, s, i, u) dt,                   (5.1)
+                                                    0
+where f0 is a given running cost such that the integral makes sense, over the set of state equations
+(1.1) with initial conditions (s0 , i0 ) in the viable set B and under the ICU constraint on the
+trajectories of (1.1)
+                                      i(t) ≤ iM , ∀t ∈ [0, +∞).                                (5.2)
+An optimal solution to the control problem (5.1)-(5.2)-(1.1) is a vector function (u, s, i) ∈
+L∞ (I; K) × W 1,∞ (I; R2 ) that minimizes the cost J and satisfies the set of state equations and
+the upper bound on i. The function u is an optimal control and (s, i) an optimal state or
+trajectory. Accordingly, U = L∞ (I; K) is the space of controls and Y = W 1,∞ (I; R2 ) is the
+space of states.
+    The following semicontinuity and existence theorem for a very general cost functional holds.
+
+Theorem 5.1 If f0 : I × R2 × R → [0, ∞) is a normal convex integrand, that is it is measurable
+with respect to the Lebesgue σ-algebra on I and the Borel σ-algebra on R2 × R and there exists
+a subset N ⊂ I of Lebesgue measure zero such that
+    1. f0 (t, ·, ·, ·) is lower semicontinuous for every t ∈ I \ N ,
+    2. f0 (t, s, i, ·) is convex for every t ∈ I \ N and s, i ∈ R,
+then
+    a. the cost functional J defined by (5.1) is weakly* lower semicontinuous,
+    b. there exists an optimal solution (u, s, i) to the control problem (5.1)-(1.1).
+
+
+
+                                                        13
+To prove the existence of an optimal solution we observe that it is equivalent to prove the
+existence of a minimizer of the functional
+
+                            F (u, s, i) := J(u, s, i) + χΛ (u, s, i) + χi≤iM (i)                   (5.3)
+
+where Λ is the set of admissible pairs, that is all state-control vectors (u, s, i) that satisfy the
+initial value problem (1.1), while χΛ denotes the indicator function of Λ that takes the value 0
+on Λ and +∞ otherwise; similarly, the function χi≤iM (i) is 0 if i(t) ≤ iM for every t ∈ I, and
++∞ otherwise.
+Proof. By De Giorgi and Ioffe’s Theorem (see for instance [19, Theorem 7.5] or [13, Section
+2.3]), for every T ∈ (0, +∞) the cost functional JT : L∞ ((0, T ); K) × W 1,∞ ((0, T ); R2 ) → [0, ∞]
+defined by
+                                                ˆ T
+                                 JT (u, s, i) =     f0 (t, s, i, u) dt
+                                                    0
+is weakly* lower semicontinuous. Then we obtain easily that also J is lower semicontinuous.
+                                                            ∗
+Indeed, given weakly* converging sequences (sn , in , un ) ⇀ (s, i, u), since the integrand is non-
+negative, we have
+                   ˆ ∞                          ˆ T
+                       f0 (t, s, i, u) dt = sup      f0 (t, s, i, u) dt
+                     0                           T >0    0
+                                                                  ˆ T
+                                            ≤    sup lim inf            f0 (t, sn , in , un ) dt
+                                                 T >0 n→∞  0
+                                                       ˆ ∞
+                                            ≤    lim inf          f0 (t, sn , in , un ) dt.
+                                                   n→∞        0
+
+This proves a. Let us now prove b. On the domain of F , that is the space L∞ (I; K) ×
+W 1,∞ (I; R2 ), we consider the topology given by the product of the weak* topologies of the
+two spaces and aim to prove sequential lower semicontinuity and coercivity of the functional
+F with respect to this topology. By the Direct Method of the Calculus of Variations (see,
+for instance, Buttazzo [13, Sec. 1.2]), these properties imply the existence of a solution to
+the minimum problem. They are direct consequences of the fact that the space of controls
+is weakly* compact, that the assumptions on f0 imply that the cost functional J is weakly*
+lower semicontinuous and the fact that the sets Λ and {i ≤ iM } are closed with respect to the
+weak* convergence. The claimed closedness of such sets follows by the application of Rellich
+compactness theorem, which ensures that weakly* converging sequences in W 1,∞ (I) are, up
+to subsequences, uniformly converging on every bounded subset J ⊂ I (see for instance [12,
+Theorem 8.8 and Remark 10]).
+                                                                                            □
+
+Remark 5.2 The requirement on f0 = f0 (t, s, i, u) to be a normal convex integrand is satisfied,
+in particular, if it is a piecewise continuous function of t, continuous in (s, i) and convex in u.
+
+
+6     The case of a linear cost
+Problem 6.1 Given the initial data (s0 , i0 ) ∈ B in the feasible region, minimize, over all
+admissible controls u ∈ U ,
+    • the cost functional                          ˆ ∞
+                                    ∞
+                                                                          
+                                   J (u, s, i) =          λ1 u(t) + λ2 i(t) dt,                    (6.1)
+                                                    0
+      with λ2 ≥ 0, and λ1 > 0,
+    • under the ICU constraint on the trajectory of (1.1)
+
+                                          i(t) ≤ iM ,        ∀t ∈ [0, +∞).                         (6.2)
+
+
+                                                    14
+In the sequel, we refer to this formulation as problem Pλ∞1 ,λ2 .
+
+Remark 6.1 Non-emptiness of the set of viable controls with a corresponding finite cost is
+guaranteed by using, for example, the greedy strategy, ug , described in Section 4 till the herd
+immunity is reached, and ug = 0 afterwards. Indeed, as observed in Remark 4.2, with this
+strategy the herd immunity is reached in finite time. Hence, there exists tI ≥ 0 such that
+s(tI ) ≤ βγ and ug = 0 in (tI , +∞). Moreover, since s is strictly decreasing, there exists ε > 0
+and tε ≥ tI such that s(t) ≤ βγ − ε for every t ∈ (tε , +∞) and hence
+
+                                               βs(t) − γ ≤ −εβ.
+
+Thus, for every t ∈ (tε , +∞), we have
+                                              ´t
+                                   i(t) = iε e tε [βs(τ )−γ] dτ ≤ iI e−εβ(t−tε ) .
+
+Then we have                                   ˆ ∞
+                                                     i(t) dt < +∞,
+                                                tε
+
+and this implies
+                      ˆ ∞                             ˆ tε                                 ˆ ∞
+    J ∞ (u, s, i) =
+                                                                             
+                             λ1 u(t) + λ2 i(t) dt =            λ1 u(t) + λ2 i(t) dt + λ2         i(t) dt < +∞.
+                      0                                 0                                  tε
+
+Proposition 6.2 For every (s0 , i0 ) ∈ B with i0 > 0 the problem Pλ∞1 ,λ2 has an optimal solution
+with a finite cost.
+
+Proof. Follows by Theorem 5.1, by taking into account that Remark 6.1 ensures that there
+exists at least an admissible pair (u, s, i) with a finite cost.                      □
+    Very important for our analysis is that, with an infinite time horizon, to reach herd immunity
+in finite time is a necessary condition for optimality. Indeed, the following consequence of
+Theorem 2.6 holds true.
+
+Corollary 6.3 If u is an optimal control for problem Pλ∞1 ,λ2 , then su∞ < βγ .
+
+Proof. By Theorem 2.6, it is enough to observe that u ∈ L1 (I). In fact, this is a consequence
+of the fact that optimal controls have a finite cost (see Proposition 6.2), and of the inequality
+                                 ˆ ∞
+                                              1 ∞
+                                     u dt ≤     J (u, s, i) < ∞.
+                                  0          λ1
+                                                                                                                 □
+
+
+
+7     Reduction to finite horizon problems
+Besides the elements already discussed in the previous section (Corollary 6.3), other optimality
+conditions can be stated by using Pontryagin’s theorem on finite horizon problems suitably
+related to the (infinite horizon) original problem.
+
+Problem 7.1 Let T > 0. Given the initial data (s0 , i0 ) ∈ B in the feasible region, minimize,
+over all admissible controls u ∈ L∞ (0, T ); [0, umax ] ,
+    • the cost functional                               ˆ T
+                                      J T (u, s, i) =
+                                                                                  
+                                                                  λ2 i(t) + λ1 u(t) dt,                     (7.1)
+                                                         0
+      with λ2 ≥ 0 and λ1 > 0,
+
+
+                                                            15
+   • under the ICU constraint on the trajectory of (1.1)
+                                               i(t) ≤ iM        ∀t ∈ [0, T ].                                      (7.2)
+
+In the sequel, we refer to this formulation as problem PλT1 ,λ2 .
+Let us remark that when T = ∞ we obtain the infinite horizon problem Pλ∞1 ,λ2 already intro-
+duced as Problem 6.1.
+    Assume u ∈ U to be an optimal control for problem Pλ∞1 ,λ2 . By Corollary 6.3, we have
+s∞ < βγ , hence the time T γu , to reach the herd immunity level su = βγ with the control u,
+ u
+                             β
+turns out to be finite. If λ2 = 0, after time T γu the optimal control is identically 0, because i
+                                                 β
+is decreasing and the ICU constraint is trivially satisfied, and any other choice of u would lead
+to a bigger cost. This allows to use the finite horizon problem on [0, T ] to state other necessary
+(Pontryagin) optimality conditions in the case λ2 = 0. Unfortunately, the same argument
+cannot be used if λ2 > 0. Nevertheless, it will be shown that a reduction to finite horizon
+problems can be obtained by a Γ-convergence argument, covering also the case λ2 > 0.
+
+7.1    The case of a cost depending only on the control (λ2 = 0)
+In the case λ2 = 0 the following reduction theorem holds.
+Theorem 7.1 (Reduction to a finite horizon, case λ2 = 0) Let u ∈ U be an optimal con-
+trol for problem Pλ∞1 ,λ2 . If λ2 = 0 then, for every T > T γu , the restriction u| := u|[0,T ] is an
+                                                                            β
+
+optimal control for the finite horizon problem PλT1 ,λ2 with target objective s(T ) < βγ .
+
+Proof. By contradiction, assume that u| is not optimal. Then there exists ū ∈ L∞ ((0, T ); [0, umax ])
+with sū (T ) < βγ and such that
+
+                                     J T (ū, sū , iū ) < J T (u| , su| , iu| ).
+Denoting by ū0 the extension of ū to the interval (0, +∞) by setting it to zero after T , using
+the local property of the systems of differential equations, we would have iū = iū|[0,T
+                                                                                       0
+                                                                                           ] , and
+ ū   ū0                            ū0      ū      γ
+s = s|[0,T ] . Then, in particular, s (T ) = s (T ) < β . This implies
+                              ˆ T
+          ∞       ū0   ū0
+        J (ū0 , s , i ) =          λ1 ū dt = J T (ū, sū , iū ) < J T (u| , su| , iu| ) ≤ J ∞ (u, su , iu ),
+                               0
+
+which contradicts the optimality of u.                                                                                □
+
+     Since, by Corollary 6.3, T γu is finite, then the infinite horizon optimal control problem is
+                                β
+brought back to a finite horizon OCP with a target objective. The latter has been studied
+in [4, 3] and the structure of the (unique) optimal control has been characterized. According
+to Theorem 5.6 of [4], the greedy strategy is optimal also in the case of an infinite horizon
+(and without any target objective). This explains also what has been observed by Molina &
+Rapaport, in the introduction to [34], when they compare their result with those obtained in
+[4].
+
+7.2    The general case
+When the cost depends also from i, which, differently from the control, vanishes only as t → ∞,
+the argument used before does not work. Nevertheless, in this section we show that (even when
+λ2 > 0) a reduction to finite horizon problems can be obtained by a Γ-convergence argument.
+Γ-convergence is a general notion of variational convergence introduced in 1976 by De Giorgi
+and Franzoni [15, 16]; we refer the unaccustomed reader also to the books of Dal Maso [14] and
+Braides [11] for general properties and selected applications. To shorten notation, throughout
+this section all problems refer to the same fixed intial data (s0 , i0 ) in the viable set B.
+
+
+                                                         16
+Theorem 7.2 For every increasing sequence of positive numbers Tn → ∞, the sequence of
+problems PλT1n,λ2 Γ-converges to the limit problem Pλ∞1 ,λ2 in the following sense:
+  1. (liminf inequality) for every sequence un ∈ U with iun ≤ iM , un = 0 on (Tn , +∞), and
+         ∗
+     un ⇀ u in L∞ (I) we have iu ≤ iM and
+
+                                     lim inf J Tn (un , sun , iun ) ≥ J ∞ (u, su , iu );
+                                     n→∞
+
+
+  2. (recovery sequence) for every u ∈ U with J ∞ (u, su , iu ) < ∞ with iu ≤ iM , there exists
+                                                            ∗
+     un ∈ U with iun ≤ iM , un = 0 on (Tn , +∞), and un ⇀ u in L∞ (I) such that
+
+                                       lim J Tn (un , sun , iun ) = J ∞ (u, su , iu ).
+                                     n→∞
+
+Remark 7.3     1. The statement of Theorem 7.2 can also be written in terms of usual Γ-
+   convergence as T → ∞ with respect to the weak* convergence on the space L∞ (I; [0, umax ])×
+   W 1,∞ (I; R2 ) of the family of functionals
+
+                F T (u, s, i) := J T (u, s, i) + χΛ (u, s, i) + χi≤iM (i) + χu=0 in (T,+∞) (u)
+
+     to the Γ-limit functional
+
+                           F ∞ (u, s, i) := J ∞ (u, s, i) + χΛ (u, s, i) + χi≤iM (i).
+
+  2. The condition un = 0 in (Tn , +∞) does not affect the problem PλT1n,λ2 ; indeed, after Tn the
+     control can be set at any desired value without changing the value of the optimal control
+     problem on the finite horizon [0, Tn ].
+
+                     ∗
+Lemma 7.4 If un ⇀ u in L∞ (I; [0, umax ]), then sun → su and iun → iu uniformly on every
+bounded subinterval J ⊂ I.
+
+Proof. Since un , sun and iun are uniformly bounded, the derivatives of sun and iun are
+uniformly bounded as well. Hence, ∥sun ∥1,∞ and ∥iun ∥1,∞ are bounded. Then the sequence
+(sun , iun ) is contained in a ball B of the space W 1,∞ (I; R2 ) on which (by the separability of
+L1 ) the weak* topology is metrizable. Since bounded sets are weakly* relatively compact, then
+any subsequence of (sun , iun ) admits a weakly* converging subsequence. The application of
+Rellich compactness theorem ensures that weakly* converging sequences in W 1,∞ (I; R2 ) are,
+up to subsequences, uniformly converging on every bounded subset J ⊂ I (see for instance [12,
+Theorem 8.8 and Remark 10]). We are then allowed to pass to the limit in the state equations
+and, using the uniqueness of the solution, we get that these subsequence converges to (su , iu ).
+Since the limit is always the same and we are inside a metrizable set, then we can conclude
+                                                                        ∗
+that the whole sequence converges to these limit. Hence, (sun , iun ) ⇀ (su , iu ) in W 1,∞ (I; R2 ).
+The claimed uniform convergence on bounded subintervals comes again form the application of
+Rellich’s theorem.                                                                                □
+
+                                                                                                 ∗
+Proof. (of Theorem 7.2). 1. By the previous lemma, the convergence assumption un ⇀ u in
+L∞ (I; [0, umax ]) implies that iun converges to iu uniformly on the bounded subintervals of I,
+and this implies iu ≤ iM . Let us now remark that
+                                ˆ Tn                    ˆ ∞                       ˆ ∞
+                      lim inf           iun = lim inf         iun 1[0,Tn ] dt ≥          iu dt
+                         n→∞     0               n→∞      0                       0
+
+                                                        un
+simply by using the fact that the sequence i 1[0,Tn ] pointwisely converges to iu on (0, +∞)
+and Fatou’s lemma (see, for instance, [35, Theorem 11.31]).
+
+
+
+                                                         17
+   By using the fact that un = 0 on (Tn , +∞), the semicontinuity part a. of Theorem 5.1
+applied to the function f0 (t, u, s, i) = u, and the last inequality, we get
+                                                         ˆ Tn
+              lim inf J Tn (un , sun , iun ) = lim inf          λ1 un + λ2 iun dt
+               n→∞                             n→∞        0
+                                                       ˆ ∞                     ˆ Tn
+                                           =λ1 lim inf      un dt + λ2 lim inf      iun dt       (7.3)
+                                                n→∞                     n→∞
+                                             ˆ ∞        0                       0
+
+                                                             u       ∞      u u
+                                           ≥      λ1 u + λ2 i dt = J (u, s , i ).
+                                               0
+
+
+
+
+    2. It remains to prove the existence of a recovery sequence. It can be constructed as follows.
+Since J ∞ (u, su , iu ) < ∞, the control u belongs to L1 (I) and, hence, su∞ < βγ , by Proposition
+2.6.
+    Let us define                          (
+                                             u(t) if t ∈ (0, Tn ),
+                                  un (t) =
+                                             0    if t ∈ (Tn , +∞).
+Since Tn → ∞, for every n large enough we have sun (Tn ) = su (Tn ) < βγ . This implies that
+iun ≤ iM . Indeed, before time Tn , we have iun = iu ≤ iM , while for every time after the
+function iun (·) is decreasing.
+                      ∗
+   Moreover, un ⇀ u in L∞ (I) (by Lebesgue’s theorem). Finally, by monotone convergence
+we have
+                                                     ˆ Tn
+                    lim J Tn (un , sun , iun ) = lim       λ2 iun + λ1 un dt             (7.4)
+                   n→∞                           n→∞ 0
+                                                 ˆ ∞
+                                               =     λ2 iu + λ1 u dt = J ∞ (u, su , iu ) (7.5)
+                                                     0
+
+and the theorem is completely proved.                                                               □
+
+
+   The next theorem is a consequence of the variational property of Γ-convergence.
+
+Theorem 7.5 Let uT be an optimal control for PλT1 ,λ2 with T < ∞, extended by 0 in (T, +∞).
+Then
+                                                                                    ∗
+  1. there exists an increasing sequence Tn → ∞ and u ∈ U such that uTn ⇀ u;
+                                                                                    ∗
+  2. if (Tn ) is sequence of positive numbers such that Tn → ∞ and uTn ⇀ u, then u is an
+     optimal control for problem Pλ∞1 ,λ2 .
+
+Proof. The first part of the statement immediately follows by the fact that (uT ) is an equi-
+bounded family in L∞ (I) and the existence of a weak* converging sequence follows by Alaoglu’s
+theorem.
+   About assertion 2., by using Theorem 2.1, it is easily seen that the optimal pair (uTn , suTn , iuTn )
+weakly* converges in U × Y to (u, su , iu ), and the claim follows by the variational property of
+Γ-convergence (see, for instance, [14, Corollary 7.17]).                                            □
+
+Remark 7.6 The Γ-convergence Theorem 7.2 and its consequence Theorem 7.5 allow us to
+deal with finite horizon problems. Indeed, suppose that un is an optimal control for problem
+PλT1n,λ2 (which exists), extended by 0 on [Tn , +∞). Since U is weakly* compact, then, up to a
+                  ∗
+subsequence, un ⇀ u and u is optimal for Pλ∞1 ,λ2 .
+   Since u is optimal, then su∞ < βγ (see Corollary 6.3) and, therefore, there exists ε > 0 and
+Tε ∈ [0, +∞) such that su (t) < βγ − ε for every t > Tε .
+
+
+                                                         18
+                                                    ∗
+    On the other hand, by Lemma 7.4, un ⇀ u implies sun (Tε ) → su (Tε ). Hence, there exists
+nε ∈ N such that sun (t) < βγ for every t > Tε and n > nε . Since Tn → ∞, then, possibly
+increasing nε , we have Tn > Tε for every n > nε . Hence sun (Tn ) < βγ for every n > nε .
+    We are, essentially, saying that for any T large enough, the optimal control uT of PλT1 ,λ2
+satisfies the final condition suT (T ) < βγ . We are, then, led to characterize the optimal controls
+for such T large enough being allowed, in doing it, to use the final condition s(T ) < βγ as
+a necessary condition (not as an assumption). As already explained in the introduction, this
+necessary optimality condition has a very important simplifying consequence in the application
+of Pontryagin’s principle, because it implies normality (this will become clear in the proof of
+Theorem 9.1 and 9.7).
+
+
+8     The finite horizon problem: optimality conditions
+8.1     Pontryagin approach. General considerations
+To write necessary conditions of optimality let us introduce the adjoint variables p0 ≥ 0, ps , pi ∈
+R, and the pre-Hamiltonian
+                        H(t, u, s, i, p0 , ps , pi ) = p0 f0 (s, i, u) + ps fs + pi fi ,
+where f0 (s, i, u) = λ2 i+λ1 u is the running cost function and fs = −s(β −u)i, fi = s(β −u)i−γi
+are the dynamics of the state equations. After some manipulations, the pre-Hamiltonian turns
+out to be
+                     H(t, u, s, i, p0 , ps , pi ) = p0 (λ2 i + λ1 u) + ηs(β − u)i − γpi i,
+where
+                                                η := pi − ps .
+In the sequel we use a constrained version of Pontryagin’s theorem developed in [10, 9]. In
+particular, we refer to [9] for the definition of the space of functions with bounded variation
+BV ([0, T ]) which is given by extending functions in a constant way on an open interval con-
+taining [0, T ]. We adopt here also the notation used in [10, 9] of denoting the distributional
+derivative of a BV function f (which is a measure) by df , instead than f ′ that we reserve to
+measures which are absolutely continuous with respect to Lebesgue as, for instance, in the state
+equations.
+
+8.2     Optimality conditions for problem PλT1 ,λ2 with T < ∞
+By Pontryagin’s theorem, given an optimal solution (s, i, b), there exist a constant p0 ∈ {0, 1},
+adjoint state real functions ps , pi ∈ BV ([0, T ]), a multiplier for the state constraint µ ∈
+BV ([0, T ]) with a nondecreasing representative (hence with measure distributional derivative
+dµ ≥ 0) such that µ(T + ) = 0 (recall that the functions are extended outside [0, T ]), that satisfy
+the following properties.
+(P1) The non-degeneration property
+                                               p0 + dµ([0, T ]) > 0.                           (8.1)
+
+(P2) The complementarity condition
+                                  ˆ
+                                                    i(t) − iM ) dµ(t) = 0.                     (8.2)
+                                           [0,T ]
+
+(P3) The conjugate equations with transversality conditions
+                          
+                          dps = −η(β − u)i,
+                          
+                                                            
+                            dpi = − p0 λ2 + η(β − u)s − γpi − dµ,
+                          
+                            ps (T ) = 0, pi (T + ) = 0,
+                          
+
+
+                                                        19
+      which hold as equalities between measures on [0, T ]. We observe that the boundary con-
+      dition for the costate pi is given on the right limit in T , since pi could be discontinuous in
+      T if the measure dµ charges this point. On the contrary, ps is continuous in [0, T ] since
+      the derivative is absolutely continuous with respect to the Lebesgue measure.
+(P4) The minimality property
+                                                                                                           
+            H t, u(t), s(t), i(t), p0 , ps (t), pi (t) =      inf    H t, u, s(t), i(t), p0 , ps (t), pi (t) ,
+                                                           u∈[0,umax ]
+
+      for almost every t ∈ [0, T ].
+(P5) The conservation property
+                                                                             
+                                   H t, u(t), s(t), i(t), p0 , ps (t), pi (t) = k,
+
+      with k constant, for a.e. t ∈ [0, T ] (see [8, Lemma 7.7]).
+
+8.3    Remarks and consequences
+Throughout all this section we assume that (s = ss0 ,i0 ,u , i = is0 ,i0 ,u , u) be a solution of the con-
+trol Problem 7.1 with initial data (s0 , i0 ) ∈ B and write consequences of Pontryagin’s necessary
+conditions. Here we assume, moreover, that s(T ) < βγ ; for our problem, this is not a restriction
+as observed in Remark 7.6.
+    We have the following consequences.
+(C1) By (P3) and the definition of η the jump condition [η(t)] = [pi (t)] = −[µ(t)] ≤ 0 holds for
+     every t ∈ [0, T ] (where the jump of a BV function f in a point t is defined by [f (t)] :=
+      lim+ f (s) − lim− f (s) = df ({t}) and the inequality follows by the fact that µ is non-
+      s→t            s→t
+      decreasing).
+(C2) By the conservation of the Hamiltonian
+                                          
+       p0 λ2 i(t) + λ1 u(t) + η(t) β − u(t) s(t)i(t) − γpi (t)i(t) = k, for a.e. t ∈ [0, T ].                    (8.3)
+
+(C3) (P3) implies that
+
+                            dη = dpi − dps = η(β − u)(i − s) − p0 λ2 + γpi − dµ,                                 (8.4)
+
+      or, owing to (8.3),
+                                                              p0 λ1 u − k
+                                      dη = η(β − u)i +                    − dµ.                                  (8.5)
+                                                                    i
+(C4) Since s(T ) < βγ and s is continuous, we have that s < βγ in an interval (tI , T ] with tI < T .
+     This implies that i′ = s(β − u) − γ i < − βγ ui ≤ 0, hence i is decreasing and therefore
+                                           
+
+     i < iM in (tI , T ]. Then, by complementarity, we have dµ((tI , T ]) = 0 which implies that
+     pi , and thus η and ψ, are continuous in (tI , T ]. This implies pi (T ) = 0 and η(T ) = 0.
+Since the cost is linear in the control u, the minimum value of the Hamiltonian on K = [0, umax ]
+is achieved when u ∈ {0, umax }. Hence, setting the switching function
+
+                                                  ψ := ηsi,
+
+the optimal control has to satisfy
+                                           (
+                                            0,             if ψ(t) < p0 λ1 ,
+                                    b(t) =                                                                       (8.6)
+                                            umax ,         if ψ(t) > p0 λ1 ,
+
+for almost every t ∈ [0, T ], where ψ denotes any pointwise representative of the switching
+function. By (C4 ), we note that ψ(T ) = 0.
+    The criterium (8.6) allows to compute the value of k in (8.3).
+
+
+                                                      20
+Proposition 8.1 In (C2) we have k = p0 λ2 i(T ).
+
+Proof. By having (C4) in mind, let us distinguish two cases.
+  1. If p0 = 1 then ψ(T ) = 0 < p0 λ1 and, by continuity, we have ψ(t) < p0 λ1 and hence
+     u(t) = 0 a.e. in a left neighborhood of T which we still call (tI , T ]; (8.3) implies
+
+                        k = p0 λ2 i(t) + η(t)βs(t)i(t) − γpi (t)i(t) a.e. t ∈ (tI , T ],
+
+     and, by taking the limit as t → T −, and invoking (C4), we obtain
+
+                                               k = p0 λ2 i(T ).
+
+  2. If p0 = 0 then (8.3) implies
+                                          
+                         k = η(t) β − u(t) s(t)i(t) − γpi (t)i(t) a.e. t ∈ (tI , T ].          (8.7)
+
+     By taking a sequence tn → T on which the equality (8.7) holds and passing to the limit
+     as n → ∞ then we get k = 0, which proves the proposition also in this case.
+                                                                                                   □
+
+Proposition 8.2 η(t) ≥ 0 for almost every t ∈ [0, T ].
+
+Proof. Let us recall that, by (C4), η is continuous in a left neighborhood of T and η(T ) = 0.
+  We note that, since µ is nondecreasing, dµ ≥ 0 and, therefore, (8.5) implies
+
+                                                        p0 λ1 u − k
+                                    dη ≤ η(β − u)i +                .                          (8.8)
+                                                              i
+Without loss of generality, we assume η, and thus ψ, to be right-continuous. Moreover η, and
+thus ψ, cannot have increasing jumps (by (C1)).
+   Arguing by contradiction, let us assume that there exists t ∈ (0, t0 ) such that η(t) = η(t+ ) <
+0. Since the switching function ψ = ηsi has the same sign as η, and since p0 ≥ 0, we have
+ψ(t+ ) < p0 λ1 . On the other hand, since ψ is right-continuous, one is able to find some ε > 0
+such that ψ < p0 λ1 , and hence u = 0, a.e. in J := (t, t + ε). Owing to (8.8) with u = 0, in J we
+have
+                                                       k
+                                         dη ≤ ηβi − .
+                                                       i
+Since k ≥ 0 (see Proposition 8.1) , we have that
+
+                                               dη ≤ ηβi
+
+and ηβi < 0 in J, and therefore η is negative and strictly decreasing in J.
+   As we shall see, this implies that η < 0, and strictly decreasing, in (t, T ), which implies
+η(T ) < 0, thus contradicting the fact that η(T ) = 0.
+   To prove the claim that η < 0 in (t, T ), let us set
+
+                                 t1 := sup{s ∈ (t, T ] : η(s) < 0}.
+
+(recall that η is assumed to be right-continuous). Assume, again by contradiction, that t1 < T .
+Since η ∈ BV , then there exists the left limit η(t−
+                                                   1 ) ≤ 0. Since η has no positive jumps in [0, T ],
+it follows that η(t+1 ) ≤ 0. On the other  hand,  η(t +
+                                                      1 ) < 0 would contradict the definition of t1 .
+It follows that η(t1 ) = 0. Nevertheless, in the interval (t, t1 ) we have that η < 0, hence ψ < 0.
+Then, in (t, T ) we have that ψ < p0 λ1 , hence u = 0 a.e., hence dη ≤ η(β − u)i < 0, hence η
+is decreasing, which contradicts η(t1 ) = 0. Our assumption on t1 is wrong such that t1 = T
+and η < 0 in (t, T ). As we have already indicated, this contradicts η(T ) = 0 and, hence, our
+Proposition follows.                                                                              □
+
+
+                                                   21
+Corollary 8.3       1. ψ is non-negative almost everywhere in (0, T );
+  2. ps is continuous, non-increasing and non-negative in [0, T ].
+
+Proof. It is a straightforward consequence of the non-negativity of η, of the definition of ψ, of
+the first adjoint equation and the final condition ps (T ) = 0.                                □
+   Using (8.4), one easily proves the following result.
+
+Proposition 8.4 The distributional derivative of ψ is the measure given by
+
+                                     dψ = si(γps − p0 λ2 ) − si dµ.
+
+   The next theorem provides a characterization of singular arcs, whenever they occur.
+
+Theorem 8.5 Let (t1 , t2 ) ⊂ [0, T ] be an interval in which ψ = p0 λ1 . Then the following hold
+true
+  1. if p0 = 1, then γps (t) − λ2 > 0 and i(t) = iM , for every t ∈ (t1 , t2 );
+  2. if p0 = 0, then η = pi = ps = 0, in (t1 , T ] and dµ([0, t1 ]) > 0.
+
+Proof. Let us consider the case when p0 = 1 and prove the first assertion. First of all, since
+ψ = ηsi = p0 λ1 > 0, then we have η > 0 in (t1 , t2 ). Since ψ is constant, on this interval, it
+follows that dψ = 0 in (t1 , t2 ). Since s and i are strictly positive, by Proposition (8.4), we have
+
+                                       dµ = γps − λ2 , in (t1 , t2 ).                            (8.9)
+
+Then, using the complementarity condition (P2) and γ > 0, we have that
+                         ˆ
+                                                       
+                                  γps (t) − λ2 iM − i(t) dt = 0.                                (8.10)
+                               (t1 ,t2 )
+
+Since i is continuous, in order to prove that i = iM , it suffices to prove that γps − λ2 > 0.
+   Since dµ ≥ 0, from (8.9) we have
+
+                                           γps − λ2 ≥ 0 in (t1 , t2 ).                          (8.11)
+
+Now we prove that the strict inequality holds true.
+Suppose now, by contradiction, that there exists t0 ∈ (t1 , t2 ) such that γps (t0 ) − λ2 = 0. By
+the adjoint equation dps = −η(β − u)i we have that dps ≤ 0 in (t1 , t2 ), hence γps − λ2 ≤ 0 for
+every t ∈ (t0 , t2 ) and, by (8.11), the equality holds in this interval. Then in (t0 , t2 ) we would
+have dps = 0, hence η = 0 by the adjoint equation, and, finally ψ = 0 < p0 λ1 , thus providing a
+contradiction. The first assertion is now completely proved.
+   Let us assume p0 = 0 and prove 2. In the interval (t1 , t2 ), we have that ψ = 0, hence η = 0;
+by the adjoint equations, we also have dps = 0, hence there exists a constant c such that ps = c
+on this interval.
+Since 0 = η = pi − ps , we also get pi = c on the aforementioned interval. By conservation of
+the Hamiltonian, and since p0 = 0 implies k = 0 (see Proposition 8.1), we have
+
+                                                 −γci(t) = 0,                                   (8.12)
+
+hence c = 0. By Corollary (8.3), ps is nonincreasing. Since ps is zero on (t1 , t2 ) and at the end
+point T , we must have ps = 0 in (t1 , T ]. By the first adjoint equation, it follows that η = 0 on
+(t1 , T ] which implies that pi = 0 on (t1 , T ]. By (8.5), we have dµ((t1 , T ]) = −dη((t1 , T ]) = 0.
+Finally, the non degeneration condition (8.1) requires dµ ([0, T ]) > 0, which implies dµ([0, t1 ]) >
+0.
+                                                                                                     □
+
+
+
+                                                       22
+Proposition 8.6 If i = ic ∈ (0, iM ] is constant on an interval (t1 , t2 ), then there exists a
+positive constant ks such that
+                                                 γ           γ
+                                 u(t) = β −          =β−            ,                         (8.13)
+                                                s(t)     ks − γic t
+a.e. in the interval. The constant is given by
+
+                                 ks = s(t1 ) + γic t1 = s(t2 ) + γic t2 .
+
+Moreover, since u ∈ [0, umax ], we have
+                                              γ                 γ
+                                s(t1 ) ≤            and s(t2 ) ≥ .
+                                           β − umax             β
+Proof. By the second state equation with i = ic we immediately have s(β − u) = γ. Then
+the first becomes s′ = −γic . Integrating, we obtain that there exists a constant ks such that
+s(t) = ks − γi0 t. The moreover part of the statement follows by imposing 0 ≤ β − γs ≤ umax
+and using the fact that s decreases (recall that ic cannot be 0).
+                                                                                            □
+
+
+9    Structure of the optimal controls
+Given an initial epidemic state (s0 , i0 ) ∈ B and a control u ∈ U , the ICU saturation time is
+defined as
+                      τ1s0 ,i0 ,u := sup t ∈ (0, T ] : is0 ,i0 ,u < iM in [0, t) ,
+                                        
+
+whenever the set on the right hand side is nonempty and τ1s0 ,i0 ,u := 0 if it is empty. As usual, it
+will simply be denoted by τ1 when the initial conditions and the control can be easily deduced
+by the context.
+    Since the case λ2 = 0 has already been completely studied in [4], we consider here only the
+case λ2 > 0. Then, for the whole section, and unless otherwise stated, all statements are meant
+to hold under the assumptions λ2 > 0 and λ1 > 0. Moreover, to avoid trivialities, we always
+assume s0 > 0 and i0 > 0.
+    Let us start by characterizing the structure of the optimal controls for the problem PλT1 ,λ2 ,
+with T < ∞, in the case in which the ICU capacity is never saturated, that is, when τ1 = T .
+Of course, this case always occurs if iM = 1, that is if an ICU constraint is not prescribed.
+
+Theorem 9.1 Let us assume that T < ∞. If (s0 , i0 ) ∈ B, u is an optimal control of PλT1 ,λ2
+with s(T ) < βγ and τ1s0 ,i0 ,u = T , then u has a bang-bang structure 0 − umax − 0 with at most two
+switches; in particular, for a.e. t ∈ [0, T ] we have
+                                         
+                                                               T
+                                         0
+                                                  if t ∈ [0, σC  ∧ σST ],
+                                                             T
+                                 u(t) = umax if t ∈ (σC        ∧ σST , σST ),                  (9.1)
+                                                           T
+                                           0       if t ∈ [σS , T ],
+                                         
+
+where
+                      T
+                     σC := sup{t ∈ [0, T ] : ψ < p0 λ1 in [0, t)} with sup ∅ := 0,             (9.2)
+                     σST := inf{t ∈ [0, T ]   : ψ < p0 λ1 in (t, T ]} with inf ∅ := T .        (9.3)
+
+Remark 9.2 Before starting the proof, let us remark that the subscripts C and S in σC and
+σS stay for Confinement and Safety, respectively. Indeed, whenever σC < σS , confinement is
+needed starting at time σC and ending at the safety time σS . The case in which σC ≥ σS ,
+which happens if and only if ψ < p0 λ1 a.e. in [0, T ], is a degenerate case in which the optimal
+strategy is u ≡ 0, that is, do nothing.
+
+
+                                                   23
+Proof. Since s0 , i0 and T are fixed, to improve readability, the states is0 ,i0 ,u and ss0 ,i0 ,u ,
+corresponding to the specific initial conditions (s0 , i0 ) and control u, will be denoted by i and
+s, respectively. Consequently, almost all references to T are dropped in the proof, but restored
+in the statement.
+    The assumption τ1 = T implies i < iM on [0, T ). Let us note that the same holds on [0, T ].
+Indeed, by (C4), the assumptions T < ∞ and s(T ) < βγ imply that i is strictly decreasing in a
+left neighborhood of T . This implies the following consequences.
+  1. dµ([0, T ]) = 0, by complementarity.
+  2. p0 = 1 by non-degeneracy.
+  3. pi , η and ψ are continuous in [0, T ] (and pi (T ) = 0, η(T ) = 0 and ψ(T ) = 0 as already
+     observed in (C4)), by 1. and the adjoint equations.
+  4. Singular arcs are excluded, that is ψ = p0 λ1 in a subinterval (t1 , t2 ) ⊂ [0, T ] is impossible.
+     Indeed, by Theorem 8.5, we would have i = iM , which contradicts i < iM on [0, T ].
+  5. By the first item and Proposition (8.4), it holds dψ = si(γps − p0 λ2 ) and we have
+
+                                                                           p0 λ2
+                           dψ ≥ 0 ⇐⇒ γps − p0 λ2 ≥ 0 ⇐⇒ ps ≥                     .
+                                                                             γ
+
+  6. ψ(T ) < p0 λ1 . Follows by the facts that ψ(T ) = 0 and p0 = 1. This implies that the set in
+     the definition of σS is non-empty and σS < T .
+By 6. we have ψ < p0 λ1 in (σS , T ) and, by (8.6), u = 0 in this interval.
+   If σS = 0 then we have u = 0 in (0, T ) and (9.1) is true because, by (9.3), we have
+σC ∧ σS = σS = 0.
+   Let us now assume that σS > 0. Then, by continuity, ψ(σS ) = p0 λ1 . By Corollary 8.3 ps is
+non-increasing and, by 6., the derivative of ψ can change sign only once in the interval (0, σS ).
+Therefore, and since (by 5.) singular arcs cannot occur, the superlevel set {ψ > p0 λ1 } turns out
+to be the interval, possibly empty, (σC ∧ σS , σS ) as defined in (9.3), and the conclusion follows
+by (8.6).                                                                                        □
+
+Corollary 9.3 Let us assume that T < ∞ and (s0 , i0 ) ∈ A \ ∂A. If uT is an optimal control
+of PλT1 ,λ2 with s(T ) < βγ , then uT has the bang-bang structure (9.1)-(9.3).
+
+Proof. If (s0 , i0 ) ∈ A \ ∂A, then we have
+
+                                          i < iM on [0, T ].
+
+Indeed, in the sense of distributions,
+             d                                                  γ
+                i − Φ0 (s) = (β − uT )s − γ i + (β − uT )si min
+                                          
+                                                                    − 1, 0 ≤ 0.
+             dt                                                  βs
+
+As a consequence, i(t) ≤ Φ0 (s(t))+i0 −Φ0 (s0 ) < Φ0 (s(t)), which implies the desired inequality.
+   Then, the claim follows by Theorem 9.1.                                                      □
+
+Remark 9.4 The case considered in Corollary 9.3 arises, for instance, if one sets iM = 1, that
+is when the ICU constraint is not prescribed.
+
+Remark 9.5 The interval (σST , T ) is always non-empty (by 6.). The interval (σC   T
+                                                                                     , σST ) may be
+empty or not, depending on the initial condition (s0 , i0 ) and the ratio between the coefficients
+λ2 and λ1 . The numerical simulation performed in Example 10.2 falls in this framework.
+
+By taking to Γ-limit as T → ∞ (see Theorems 7.2 and 7.5) we get the following result about
+problem Pλ∞1 ,λ2 .
+
+
+                                                 24
+Theorem 9.6 Let us assume that (s0 , i0 ) ∈ A \ ∂A. The problem Pλ∞1 ,λ2 admits an optimal
+control u∞ with the following structure: there exist 0 ≤ σ1 ≤ σ2 < ∞ such that
+                                        
+                                        0
+                                                 if t ∈ (0, σ1 ),
+                                ∞
+                               u (t) = umax if t ∈ (σ1 , σ2 ),                        (9.4)
+                                        
+                                          0       if t ∈ (σ2 , ∞).
+                                        
+
+Proof. For T < ∞, let uT be an optimal control for problem PλT1 ,λ2 . By Theorem 9.1, there
+exist 0 ≤ σ1T ≤ σ2T < T such that
+                                       
+                                       0
+                                            if t ∈ (0, σ1T ),
+                               uT (t) = umax if t ∈ (σ1T , σ2T ),
+                                       
+                                         0   if t ∈ (σ2T , T ).
+                                       
+
+Then, there exist a sequence of positive numbers Tn → ∞ and two times 0 ≤ σ1∞ ≤ σ2∞ such
+                                                       ∗
+that σ1Tn → σ1∞ and σ2Tn → σ2∞ . It follows that uTn ⇀ u∞ with
+                                        
+                                        0
+                                                 if t ∈ (0, σ1∞ ),
+                              ∞
+                             u (t) = umax if t ∈ (σ1∞ , σ2∞ ),
+                                                  if t ∈ (σ2∞ , ∞).
+                                        
+                                          0
+                                        
+
+By Theorem 7.5, u∞ is an optimal control for Pλ∞1 ,λ2 .
+   If σ1∞ < σ2∞ then we have σ2∞ < ∞. Indeed, otherwise the cost would be infinite. Then, the
+theorem is proved in this case.
+   If σ1∞ = σ2∞ then u = 0 and the theorem is proved, with σ1 = σ2 , also in this case.
+Then u∞ takes always the form (9.4) and the theorem is completely proved.
+                                                                                           □
+
+Theorem 9.7 Let T < ∞. Assume that u be an optimal control for problem PλT1 ,λ2 with
+s(T ) < βγ . If (s0 , i0 ) ∈ B \ A and i0 < iM , then the control u must have the following structure:
+                            
+                            
+                            
+                            0                             if t ∈ (0, σC ∧ σS ),
+                             umax                          if t ∈ (σC ∧ σS , τ1 ∧ σS ),
+                            
+                            
+                            
+                            
+                            
+                            0                             if t ∈ (τ1 ∧ σS , τ1 ),
+                            
+                            
+                   u(t) =                  γ                                                    (9.5)
+                             β−                            if t ∈ (τ1 ∧ σS , τ2 ∧ σS ),
+                                 s(τ  ) + γiM (τ2 − t)
+                            
+                            
+                            
+                                   2
+                            
+                             umax                          if t ∈ (τ2 ∧ σS , σS ),
+                            
+                            
+                            
+                            
+                            
+                            0                             if t ∈ (σS , T ),
+
+where σC and σS are defined as in (9.2) and (9.3), while
+                                   
+                          τ1 := sup t ∈ (0, T ] : i < iM in [0, t) ,
+
+and, if τ1 < T ,                       
+                              τ2 := sup t ∈ [τ1 , T ] : i = iM in [τ1 , t] .                    (9.6)
+
+Remark 9.8 Note that some among the time intervals in (9.5) might be empty. For instance,
+(τ1 ∧ σS , τ1 ) = ∅ if σS ≥ τ1 .
+
+Proof. If τ1 = T then the previous Theorem 9.1 applies and u has the structure 0 − umax − 0,
+as claimed. Let us then assume that τ1 < T (hence i(τ1 ) = iM ).
+    Let us start with some structural remarks on [0, τ1 ). The assumption i0 < iM implies τ1 > 0.
+Then the interval [0, τ1 ) is nonempty and, inside, we have i < iM . The following consequences
+hold.
+
+
+                                                   25
+ (a) dµ([0, τ1 )) = 0, by complementarity.
+ (b) pi , ps , η and ψ, are continuous in [0, τ1 ), by the adjoint equations and the previuos item.
+ (c) Singular arcs cannot occur in [0, τ1 ). Indeed,
+        • if ψ = p0 λ1 = 0 in a subinterval (t1 , t2 ) ⊂ [0, τ1 ), then p0 = 0 and, owing to Theorem
+          8.5, we have dµ([0, t1 ]) > 0 which is impossible since [0, t1 ] ⊂ [0, τ1 ) and dµ([0, τ1 )) = 0
+          by (a);
+        • ψ = p0 λ1 > 0 in a subinterval (t1 , t2 ) ⊂ [0, τ1 ) is impossible; indeed, this would imply
+          p0 = 1 and by Theorem 8.5 we would have i = iM , against the definition of τ1 .
+ (d) By the first assertion and Proposition 8.4, on [0, τ1 ) we have dψ = si(γps − p0 λ2 ); hence
+
+                                                                             p0 λ2
+                           dψ ≥ 0 ⇐⇒ γps − p0 λ2 ≥ 0 ⇐⇒ ps ≥                       ,
+                                                                               γ
+
+     in [0, τ1 ).
+ (e) Starting from an initial condition (s0 , i0 ) ∈ B \ ∂B we can exclude that u = umax in the
+     whole interval (0, τ1 ).
+     First of all, this can be excluded if s0 ≤ β−uγmax , because in such a case the control
+     u = umax would keep the trajectory in the interior of B and could not reach the level iM
+     at time τ1 . Indeed, the function is0 ,i0 ,umax (s) has a maximum in s = β−uγmax and s is a
+     decreasing function of time.
+     Also in the case s0 > β−uγmax , the associated trajectory (ss0 ,i0 ,umax , is0 ,i0 ,umax ) would be
+     kept in the interior of B, so contradicting is0 ,i0 ,umax (τ1 ) = iM . In fact, by the laminar
+     flow property (see 1.-4. of Section 3) starting from a position (s0 , i0 ) under the curve
+     Φmax , the control umax generates a trajectory that is always strictly under Φmax as long
+     as s ≥ β−uγmax , where it takes its maximum value strictly smaller than iM . Hence, it
+     cannot reach the boundary at time τ1 .
+ (f) We have p0 = 1. Indeed, assume by contradiction that p0 = 0. By Corollary 8.3, we have
+     ψ ≥ 0 = p0 λ1 and ps ≥ 0 = p0γλ2 in [0, T ] . By (d) this implies that ψ is non-decreasing in
+     [0, τ1 ). Since singular arcs are excluded, then we have ψ > p0 λ1 , hence u = umax in [0, τ1 )
+     which is excluded by (e).
+Step 1. Let us prove that, in the interval (0, τ1 ) the optimal control has a bang-bang structure
+0 − umax − 0 with at most two switches, that is
+                                      
+                                      0
+                                                  if t ∈ (0, σC ),
+                               u(t) = umax if t ∈ (σC , σCE ),                              (9.7)
+                                      
+                                        0          if t ∈ (σCE , τ1 ),
+                                      
+
+where σC has been defined defined in (9.2), while
+
+                     σCE := sup{t ∈ (σC , τ1 ) : ψ(t) > p0 λ1 },      sup ∅ = σC ,
+
+is the Exiting time.
+Indeed, since ps is non-increasing (see Corollary 8.3), it can cross the level p0γλ2 at most one
+time. On the other hand, the sign of dψ is related to the value of ps by point (d). It follows that
+ψ is quasi-concave (in particular, it cannot increase after having started to decrease). Since,
+moreover, singular arcs cannot occur (by (c)), then ψ can cross the level p0 λ1 at most twice in
+the interval [0, τ1 ), that is in σC if it is not zero and in σCE if is not equal to τ1 . Thus, the
+claimed structure (9.7) follows by (8.6).
+
+Step 2. Since i(τ1 ) = iM , it follows that the time τ2 is well defined, that is, the set on the
+right hand side in (9.6) is nonempty. By the assumption s(T ) < βγ , one has τ2 < T (see (C4),
+
+
+
+                                                   26
+Section 8.3). We focus on the case when τ1 < τ2 for which, in (τ1 , τ2 ), we have i = iM . Then,
+the optimal control in (τ1 , τ2 ) is given by (8.13), that is
+                                                         γ
+                                 u(t) = β −                          .                          (9.8)
+                                               s(τ2 ) + γiM (τ2 − t)
+Since u ∈ [0, umax ], we have (see Proposition 8.6)
+                                      γ               γ
+                                        ≤ s(τ2 ) ≤          .                                   (9.9)
+                                      β            β − umax
+Since s is strictly decreasing, it follows that
+                                               γ
+                             s(t) > s(τ2 ) ≥     for every t ∈ [τ1 , τ2 ).                     (9.10)
+                                               β
+We distinguish the following two cases:
+  1. s(τ2 ) = βγ . Since s is decreasing we have s < βγ in (τ2 , T ]. Since i(τ2 ) = iM and herd
+     immunity has been reached, we have i < iM in (τ2 , T ]. Then we are under the assumptions
+     of Theorem 9.1 with s0 = βγ and the optimal control has the structure 0 − umax − 0, with
+     at most two switches, in the interval (τ2 , T ].
+  2. s(τ2 ) > βγ . We observe that ψ(τ2+ ) < p0 λ1 is excluded. Indeed, in such case there would
+     be an interval (τ2 , σ) in which u = 0 and the constraint i = iM would be violated. Then
+     we have ψ(τ2+ ) ≥ p0 λ1 .
+     Subcases:
+      (a) ps (τ2 ) ≤ p0γλ2 . Since ps is non-increasing, by Proposition 8.4 we have dψ ≤ 0, on
+          (τ2 , T ], that is also ψ is non-increasing. On the other hand, it cannot stay equal
+          to p0 λ1 since, otherwise, recalling that p0 = 1, we would have i = iM in a right
+          neighborhood of τ2 , against its definition, then we have ψ < p0 λ1 , and, hence u = 0,
+          in (τ2 , T ].
+      (b) ps (τ2 ) > p0γλ2 . By continuity of s and ps , there exists σ > τ2 such that ps > p0γλ2 and
+          s > βγ in (τ2 , σ). Let us we prove that
+
+                                   i < iM in a right neighborhood of τ2 .                      (9.11)
+
+          We assume, by contradiction, the existence of a strictly decreasing sequence of points
+          tn ∈ (τ2 , σ) with i(tn ) = iM and such that tn → τ2 . We claim that this implies that
+
+                                       i = iM in [tn , tn+1 ] for every n.                     (9.12)
+
+          Again, by contradiction, should there exist t̂n ∈ (tn+1 , tn ) such that i(t̂n ) < iM , the
+          continuity of i implies the existence of some open interval t̂n ∈ (a, a) ⊆ [tn+1 , tn ]
+          such that i < iM inside and i = iM at the boundary (one may take, for instance,
+          a = inf{t ∈ [tn+1 , t̂n ] : i(t) < iM } and a = sup{t ∈ [t̂n , tn ] : i(t) < iM }). By
+          complementarity, we have that dµ((a, a)) = 0 and, therefore, dψ = si(γps − p0 λ2 ) so
+          that ψ is continuous in (a, a). Let us consider the following cases.
+            i. ψ(a+ ) < p0 λ1 . Then ψ < p0 λ1 in a right neighborhood of a (in which u = 0), but
+                this is excluded because i would be increasing, but i(a) = iM and the constraint
+                i ≤ iM would be violated.
+           ii. ψ(a+ ) ≥ p0 λ1 . Since ps > p0γλ2 in (a, a) and dµ(a, a) = 0 then we would have ψ >
+                p0 λ1 , hence u = umax , in (a, a), which would imply that i is strictly decreasing
+                in the interval against the fact that i = iM at the boundary.
+          Since we always obtain a contradiction, we have proved that (9.12) holds true. Since
+          the sequence tn converges to τ2 then, by continuity, this implies that i = iM on
+          (τ1 , τ2 + ε) with ε > 0, against the definition of τ2 . This proves (9.11) and there exists
+          an interval (τ2 , σ) in which we have i < iM .
+
+
+                                                  27
+     By complementarity, we have dµ((τ2 , σ)) = 0. Since ψ(τ2+ ) ≥ p0 λ1 and ps (τ2 ) > p0γλ2 ,
+     then we have ψ > p0 λ1 in a right neighborhood of τ2 in which u = umax and i is decreasing
+     (keep in mind the upper bound on s(τ2 ) and, thus, on every s(t), for t ≥ τ2 ). Let us define
+                          σ2E := sup{t ∈ (τ2 , T ] : ψ > p0 λ1 a.e. in (τ2 , t)}.
+     We have ψ(σ2E  +
+                       ) ≤ p0 λ1 and i(σ2E ) < iM , and ps (σ2E ) ≤ p0γλ2 (because, otherwise, ψ
+     should increase against the definition of σ2E ). Since ps is non-increasing, by Proposition
+     8.4, after this time we have dψ ≤ 0, that is also ψ is non-increasing. On the other hand,
+     it cannot stay equal to p0 λ1 because, otherwise, i = iM in a right neighborhood of σ2E ,
+     which is impossible by continuity of i. Then we have ψ < p0 λ1 , and hence u = 0, in
+     (σ2E , T ]. And, of course, we get σ2E = σS .
+     Summarizing, in this second case u must have the structure
+                                         (
+                                           umax in (τ2 ∧ σS , σS ),
+                                    u=
+                                           0       in (σS , T ).
+
+Putting together with the first case:
+                                    
+                                    0
+                                               in (τ2 , σ2C ∧ σS ),
+                                u = umax        in (σ2C ∧ σS , σS ),                         (9.13)
+                                    
+                                      0         in (σS , T ),
+                                    
+
+where
+              σ2C := sup{t ∈ (τ2 , T ] : ψ(t) < p0 λ1 a.e. in (τ2 , t)},   sup ∅ = τ2 .
+Step 3. Summarizing, we have proved that u has the following structure
+                     
+                     
+                      0                         if t ∈ (0, σC ∧ σS ),
+                     
+                       umax                      if t ∈ (σC ∧ σS , σCE ∧ σS ),
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                      0                         if t ∈ (σCE ∧ σS , τ1 ∧ σS ),
+                     
+                                   γ
+             u(t) = β − s(τ2 ) + γiM (τ2 − t) if t ∈ (τ1 ∧ σS , τ2 ∧ σS ),                   (9.14)
+                     
+                     
+                                                 in (τ2 ∧ σS , σ2C ∧ σS ),
+                     
+                     
+                     
+                     
+                      0
+                       umax                      in (σ2C ∧ σS , σS ),
+                     
+                     
+                     
+                     
+                     
+                       0                         in (σS , T ),
+                     
+
+The final form (9.5) is achieved by taking into account the following remarks.
+  1. If σS > τ1 and τ2 > τ1 , that is if the boundary arc is non-empty, then the regime umax − 0
+     immediately before τ1 cannot occur.
+     This is because we are speaking of the interval [0, τ1 ) considered in Step 1, characterized
+     in (9.7) and for which the structural remarks (a)-(f) of the inital part of the proof hold.
+     Arguing by contradiction, in order to pass from being larger than p0 λ1 in the regime umax
+     (see (8.6)) to being smaller, ψ has to decrease. Since ps is non-increasing in [0, T ] (Corol-
+     lary 8.3, 2.), when ψ has start to decrease, by (d) we have ps < p0γλ2 . By monotonicity of
+     ps , this last inequality holds, in particular, in the whole interval (σCE ∧ σS , T ). Then, in
+     this interval ψ is decreasing (again by (d)) and could not reach the level p0 λ1 necessary
+     for the appearance of the boundary arc (see (8.6)) starting from being smaller (in the
+     preceding stage u = 0).
+     Then, if σS ≤ τ1 the regime umax − 0 can be replaced by umax and the optimal control
+     can be written in the final form (9.5), till to time τ2 ∧ σS .
+  2. Analogously, the regime 0 − umax cannot occur after τ2 .
+  3. The stage umax after τ2 does not occur if λ2 = 0 as proven in [4], but can occur if λ2 > 0
+     (see figure 10).
+                                                                                                  □
+
+
+                                                 28
+Theorem 9.9 Let us assume that (s0 , i0 ) ∈ B \ A and τ1 < ∞. The problem Pλ∞1 ,λ2 admits an
+optimal control u∞ with the following structure: there exist 0 ≤ τ0 ≤ τ1 ≤ τ2 ≤ τ3 < ∞ such
+that                         
+                             
+                               0                          if t ∈ (0, τ0 ),
+                             
+                             
+                             
+                               u max                      if t ∈ (τ0 , τ1 ),
+                             
+                                            γ
+                    u∞ (t) = β − s(τ2 ) + γiM (τ2 − t) if t ∈ (τ1 , τ2 ),             (9.15)
+                             
+                             
+                             
+                             
+                             
+                             
+                               umax                       in (τ2 , τ3 ),
+                                0                          in (τ3 , ∞),
+                             
+
+Proof. For T < ∞, let uT be an optimal control for problem PλT1 ,λ2 . By Theorem 9.7 , there
+exist 0 ≤ σ0T ≤ σ1T ≤ τ1T ≤ τ2T ≤ σ3T < T such that
+                              
+                              
+                              
+                               0                           if t ∈ (0, σ0T ),
+                                umax                        if t ∈ (σ0T , σ1T ),
+                              
+                              
+                              
+                              
+                              
+                              0                            if t ∈ (σ1T , τ1T ),
+                              
+                              
+                      T
+                     u (t) = β −                γ
+                                         T ) + γi (τ T − t)
+                                                            if t ∈ (τ1T , τ2T ),
+                              
+                              
+                              
+                                    s(τ 2       M  2
+                              
+                                u                           in (τ2T , σ3T ),
+                              
+                                  max
+                              
+                              
+                              
+                                                            in (σ T , T ),
+                              
+                              0
+                                                                   3
+
+Then, there exist a sequence of positive numbers Tn → ∞ and five times 0 ≤ σ0∞ ≤ σ1∞ ≤ τ1∞ ≤
+                                                                                             ∗
+τ2∞ ≤ σ3∞ such that σiTn → σi∞ , i = 1, 2, 3, and τjTn → τj∞ , j = 1, 2. It follows that uTn ⇀ u∞
+with                        
+                            
+                            
+                             0                               if t ∈ (0, σ0∞ ),
+                              umax                            if t ∈ (σ0∞ , σ1∞ ),
+                            
+                            
+                            
+                            
+                            
+                            0                                if t ∈ (σ1∞ , τ1∞ ),
+                            
+                            
+                     ∞
+                    u (t) = β −                γ                                             (9.16)
+                                       ∞ ) + γi (τ ∞ − t)     if t ∈ (τ1∞ , τ2∞ ),
+                            
+                            
+                            
+                                  s(τ 2        M   2
+                                                              in (τ2∞ , σ3∞ ),
+                            
+                              umax
+                            
+                            
+                            
+                            
+                                                              in (σ ∞ , ∞),
+                            
+                            0
+                                                                   3
+                   ∞
+By Theorem 7.5, u is an optimal control for Pλ∞1 ,λ2 .
+   If τ1∞ = ∞ then u∞ = 0 − umax − 0 and the claim is true with τ1 = τ2 .
+   If τ1∞ < ∞ we have the following subcases.
+  1. If τ2∞ > τ1∞ , then σ1∞ = τ1∞ and the claim is proved because the corresponding stage u = 0
+      does not occur. Indeed, if by contradiction (σ1∞ , τ1∞ ) ̸= ∅ then, up to a subsequence, we
+      would have (σ1Tn , τ1Tn ) ̸= ∅ for every n large enough. But, looking at Theorem 9.7, this
+      implies τ1Tn = τ2Tn and hence τ2∞ = τ1∞ against our assumption.
+  2. If τ2∞ = τ1∞ hen u∞ = 0 − umax − 0 and the claim is true with τ1 = τ2 .
+Then the optimal control is always of the form (9.15) and the theorem is completely proved. □
+
+
+10     Bocop simulations
+To conclude, we present some numerical simulations done by using the Bocop package, [37, 7].
+For simplicity, they are made on a finite time interval [0, T ] where T is taken to be large enough
+to ensure that in the last part of the epidemic horizon the herd immunity is reached, that is, i
+is decreasing and the optimal control is 0.
+    The Bocop package implements a local optimization method. The optimal control problem
+is approximated by a finite dimensional optimization problem (NLP) using a time discretization.
+The NLP problem is solved by the well known software Ipopt, using sparse exact derivatives
+
+
+                                                29
+computed by CppAD. From the list of discretization formulas proposed by the package, we
+always obtained good results by using Gauss II implicit methods with 4000 time steps.
+    To the reader who wants to reproduce our simulations, we suggest to create a starting point
+by running the solver a first time without imposing the state constraint (i.e. the upper bound
+on i) and for λ2 = 0. This starting point must then be used in solving the problem with full
+constraints and gradually increasing values of λ2 by selecting the option ”Re-use solution from
+.sol file below, including multipliers” in the Optimization menu. The reader is warned that
+neglecting this suggestion could result in a frustrating series of stops due to local infeasibililty.
+Another strategy to overcome local infeasibility errors is to enlarge the time horizon, till to
+several times the time expected to reach herd immunity.
+    Our simulations fall in the framework of Example 4.3 about Covid-19 epidemic in Italy and
+provide numerical solutions to the optimal control problem Pλ∞1 ,λ2 (see Problem 6.1) in different
+times of the epidemic and different ratios λ2 /λ1 . In fact, we fix λ1 = 1 and take several different
+values of λ2 . The first two example deal with the first part of the epidemic with and without
+the ICU constraint. The third is about the second part of the epidemic.
+Example 10.1 Our first simulation concerns the initial part of the Covid-19 epidemic in Italy
+with epidemic parameters γ = 0.0714, β = 0.2142, umax = 0.135 (see Example 4.3) without
+imposing any ICU constraint. We consider a time horizon of 500 days. Computations are made
+starting from s0 = 0.94 and i0 = 0.001.
+    A numerical simulation with λ2 = 6 is displayed in Figure 8. With the same data but
+λ2 ∈ [0, 2] the optimal control turns out to be u ≡ 0. This numerical simulation illustrates the
+results stated in Theorem 9.1, Corollary 9.3, Theorem 9.4 and Theorem 9.6.
+
+
+
+
+               Figure 8: Optimal control and state of infections for λ2 = 6
+
+                                                 30
+Example 10.2 Our second simulation differs from the first simply because we now impose the
+ICU constraint with iM = 0.0031. The viability regions and the corresponding position of the
+initial point (s0 , i0 ) = (0.94, 0.001) are shown in Figure 6. For λ2 ∈ [0, 8], the solver converged
+always to the greedy solution (displayed in the Figure 9). For a greater choice of λ2 we have
+not been able to obtain a numerical solution.
+
+
+
+
+             Figure 9: Optimal control and state of infections for λ2 ∈ [0, 8]
+
+Example 10.3 (Italy) Our last simulation concerns the Covid-19 epidemic state of autumn
+2021 in Italy considered in the second part of Example 4.3. The epidemic parameters are
+γ = 0.0714, β = 0.5, iM = 0.021, umax = 0.315. Computations are done starting from s0 = 0.5
+and i0 = 0.001. The viability regions and the corresponding position of the initial point (s0 , i0 )
+are shown in Figure 7. We consider a time horizon of 600 days. For λ2 ∈ [0, 19] the solver
+converged always to the greedy solution. From λ2 = 20 a second umax regime starts to appear.
+The graphs of the optimal control and the corresponding state of infections are displayed in
+Figure 10 for λ2 = 30.
+
+
+
+
+                                                 31
+              Figure 10: Optimal control and state of infections for λ2 = 30
+
+
+11     Conclusions
+We studied the infinite horizon optimal control problem for a SIR epidemic with an ICU con-
+traint. We proved that, starting from an initial epidemic state (s0 , i0 ) in the viable set, there
+exists an optimal control of the form
+                              
+                              
+                               0                         if t ∈ (0, τ0 ),
+                              
+                              
+                              
+                               umax                      if t ∈ (τ0 , τ1 ),
+                              
+                                           γ
+                      u(t) = β − s(τ2 ) + γiM (τ2 − t) if t ∈ (τ1 , τ2 ),
+                              
+                              
+                              
+                              
+                              
+                              
+                               umax                      in (τ2 , τ3 ),
+                                0                         in (τ3 , ∞),
+                              
+
+for a suitable choice of times 0 ≤ τ0 ≤ τ1 ≤ τ2 ≤ τ3 < ∞. Some numerical simulations
+have been performed to illustrate this result. Finally, let us emphasize that the problem under
+consideration in which purely confinement-related costs λ1 u are completed with social security
+(convalescence) costs λ2 i provides a multi strict confinement scenario (illustrated by the presence
+of the two umax branches).
+
+
+References
+ [1] F. E. Alvarez, D. Argente, and F. Lippi. A simple planning problem for covid-19 lockdown.
+     Technical report, National Bureau of Economic Research, 2020.
+
+
+                                                32
+ [2] R. M. Anderson, B. Anderson, and R. M. May. Infectious diseases of humans: dynamics
+     and control. Oxford university press, 1992.
+ [3] F. Avram, L. Freddi, and D. Goreac. Corrigendum to “Optimal control of a SIR epidemic
+     with ICU constraints and target objectives”. Appl. Math. Comput., 423:Paper No. 127012,
+     2, 2022.
+ [4] F. Avram, L. Freddi, and D. Goreac. Optimal control of a SIR epidemic with ICU con-
+     straints and target objectives. Appl. Math. Comput., 418:Paper No. 126816, 22, 2022.
+ [5] H. Behncke. Optimal control of deterministic epidemics. Optimal control applications and
+     methods, 21(6):269–285, 2000.
+ [6] H. Bhapkar, P. Mahalle, and N. e. a. Dey. Revisited covid-19 mortality and recovery rates:
+     Are we missing recovery time period? J Med Syst, 44(202), 2020.
+ [7] J. Bonnans, Frederic, D. Giorgi, V. Grelard, B. Heymann, S. Maindrault, P. Martinon,
+     O. Tissot, and J. Liu. Bocop – A collection of examples. Technical report, INRIA, 2017.
+ [8] J. F. Bonnans. Course on optimal control. Part I: the Pontryagin approach. 2020.
+ [9] J. F. Bonnans, C. De La Vega, and X. Dupuis. First-and second-order optimality con-
+     ditions for optimal control problems of state constrained integral equations. Journal of
+     Optimization Theory and Applications, 159(1):1–40, 2013.
+[10] J. F. Bonnans and C. S. F. de la Vega. Optimal control of state constrained integral
+     equations. Set-Valued and Variational Analysis, 18(3-4):307–326, 2010.
+[11] A. Braides. Γ-convergence for beginners, volume 22 of Oxford Lecture Series in Mathematics
+     and its Applications. Oxford University Press, Oxford, 2002.
+[12] H. Brezis. Functional analysis, Sobolev spaces and partial differential equations. Universi-
+     text. Springer, New York, 2011.
+[13] G. Buttazzo. Semicontinuity, relaxation and integral representation in the calculus of vari-
+     ations, volume 207 of Pitman Research Notes in Mathematics Series. Longman Scientific
+     & Technical, Harlow; copublished in the United States with John Wiley & Sons, Inc., New
+     York, 1989.
+[14] G. Dal Maso. An Introduction to Γ-convergence. Birkhäuser, Boston, 1993.
+[15] E. De Giorgi and T. Franzoni. Su un tipo di convergenza variazionale. Atti Accad. Naz.
+     Lincei Rend. Cl. Sci. Fis. Mat. Natur. (8), 58(6):842–850, 1975.
+[16] E. De Giorgi and T. Franzoni. Su un tipo di convergenza variazionale. Rend. Sem. Mat.
+     Brescia, 3:63–101, 1979.
+[17] Decreto-legge 19 maggio 2020, n. 34. Misure urgenti in materia di salute, sostegno al lavoro
+     e all’economia, nonché di politiche sociali connesse all’emergenza epidemiologica da covid-
+     19. (20g00052). https://www.gazzettaufficiale.it/eli/id/2020/05/19/20G00052/
+     sg, 2020. Gazzetta Ufficiale della Repubblica Italiana, n.128 del 19-5-2020 - Suppl. Ordi-
+     nario n. 21.
+[18] Decreto-legge 23 luglio 2021, n. 105. Misure urgenti per fronteggiare l’emergenza epidemio-
+     logica da covid-19 e per l’esercizio in sicurezza di attivita’ sociali ed economiche. (21g00117).
+     https://www.gazzettaufficiale.it/eli/id/2021/07/23/21G00117/sg, 2020. Gazzetta Ufficiale
+     della Repubblica Italiana, Serie Generale n.175 del 23-07-2021.
+[19] I. Fonseca and G. Leoni. Modern methods in the calculus of variations: Lp spaces. Springer
+     Monographs in Mathematics. Springer, New York, 2007.
+[20] L. Freddi. Optimal control of the transmission rate in compartmental epidemics. Math.
+     Control Relat. Fields, 12(1):201–223, 2022.
+[21] L. Freddi, D. Goreac, J. Li, and B. Xu. SIR epidemics with state-dependent costs and
+     ICU constraints: a Hamilton-Jacobi verification argument and dual LP algorithms. Appl.
+     Math. Optim., 86(2):Paper No. 23, 31, 2022.
+
+
+                                                 33
+[22] G. Guzzetta, F. Riccardo, V. Marziano, P. Poletti, F. Trentini, A. Bella, and et al. Impact
+     of a nationwide lockdown on sars-cov-2 transmissibility, italy. Emerg Infect Dis., 27(1),
+     2021.
+[23] P. Hajlasz. Change of variables formula under minimal assumptions. Colloq. Math.,
+     64(1):93–101, 1993.
+[24] J. K. Hale. Ordinary differential equations. Robert E. Krieger Publishing Co., Inc., Hunt-
+     ington, N.Y., second edition, 1980.
+[25] E. Hansen and T. Day. Optimal control of epidemics with limited resources. Journal of
+     mathematical biology, 62(3):423–451, 2011.
+[26] H. W. Hethcote. The mathematics of infectious diseases. SIAM review, 42(4):599–653,
+     2000.
+[27] Istituto Superiore di Sanità. Sorveglianza integrata covid-19 in italia, (aggiorna-
+     mento 25 marzo 2020). https://www.epicentro.iss.it/coronavirus/bollettino/
+     Infografica_25marzo%20ITA.pdf, 2020.
+[28] W. O. Kermack and A. G. McKendrick. A contribution to the mathematical theory of
+     epidemics. Proceedings of the Royal Society of London. Series A, Containing Papers of a
+     Mathematical and Physical Character, 115(772):700–721, 1927.
+[29] D. I. Ketcheson. Optimal control of an sir epidemic through finite-time non-pharmaceutical
+     intervention. Journal of Mathematical Biology, 83(1):7, Jun 2021.
+[30] T. Kruse and P. Strack. Optimal control of an epidemic through social distancing. 2020.
+[31] Y. Liu and J. Rocklöv. The reproductive number of the Delta variant of SARS-CoV-2
+     is far higher compared to the ancestral SARS-CoV-2 virus. Journal of Travel Medicine,
+     28(7), 08 2021. taab124.
+[32] M. Martcheva. An introduction to mathematical epidemiology, volume 61. Springer, 2015.
+[33] L. Miclo, D. Spiro, and J. Weibull. Optimal epidemic suppression under an icu constraint.
+     arXiv preprint arXiv:2005.01327, 2020.
+[34] E. Molina and A. Rapaport. An optimal feedback control that minimizes the epidemic
+     peak in the SIR model under a budget constraint. Automatica J. IFAC, 146:Paper No.
+     110596, 8, 2022.
+[35] W. Rudin. Principles of mathematical analysis. International Series in Pure and Applied
+     Mathematics. McGraw-Hill Book Co., New York-Auckland-Düsseldorf, third edition, 1976.
+[36] S. Talic, S. Shah, H. Wild, D. Gasevic, A. Maharaj, Z. Ademi, X. Li, W. Xu, I. Mesa-
+     Eguiagaray, J. Rostron, E. Theodoratou, X. Zhang, A. Motee, D. Liew, and D. Ilic. Effec-
+     tiveness of public health measures in reducing the incidence of covid-19, sars-cov-2 trans-
+     mission, and covid-19 mortality: systematic review and meta-analysis. BMJ, 375, 2021.
+[37] I. S. Team Commands. Bocop: an open source toolbox for optimal control. http://bocop.
+     org, 2017.
+
+
+
+
+                                              34
+

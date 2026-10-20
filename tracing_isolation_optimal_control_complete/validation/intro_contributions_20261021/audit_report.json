@@ -1,0 +1,148 @@
+{
+  "batch": "B",
+  "base_commit": "3be55d664b494429a86fc26ee270f14637ff3c75",
+  "checks": [
+    {
+      "name": "model_and_all_later_text_unchanged",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "preamble_unchanged",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "existing_bibliography_unchanged",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "protected_data_code_figures_unchanged",
+      "passed": true,
+      "details": {
+        "count": 507,
+        "changed": []
+      }
+    },
+    {
+      "name": "tracked_change_scope",
+      "passed": true,
+      "details": [
+        "tracing_isolation_optimal_control_complete/latex/main.bbl",
+        "tracing_isolation_optimal_control_complete/latex/main.pdf",
+        "tracing_isolation_optimal_control_complete/latex/main.tex",
+        "tracing_isolation_optimal_control_complete/latex/references.bib",
+        "tracing_isolation_optimal_control_complete/latex/theory_only.pdf",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/README.md",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/attempt1/build_report.json",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/attempt1/main_1.log",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/attempt1/main_2.log",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/attempt1/main_3.log",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/attempt1/main_4.log",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/attempt1/main_final.blg",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/attempt1/main_final.log",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/attempt1/theory_only_1.log",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/attempt1/theory_only_2.log",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/attempt1/theory_only_3.log",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/attempt1/theory_only_4.log",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/attempt1/theory_only_final.blg",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/attempt1/theory_only_final.log",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/audit_report.json",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/audit_revision.py",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/build_revision.py",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/changed_files.txt",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/notation_checks.log",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/operational_notes.json",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/preservation_baseline.json",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/render_manifest.json",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/render_qa.py",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/sources/1-s2.0-S0304406822000258-main.txt",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/sources/Freddi.txt",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/sources/Freddi_Goreac.txt",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/sources/Optimal control of a SIR epidemic with ICU constraints and target objectives.txt",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/sources/Optimal epidemic suppression under an ICU constraint An analytical.txt",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/sources/Optimal epidemic suppression under an ICU constraint.txt",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/sources/afg_pdf3.png",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/sources/angulo-et-al-a-simple-criterion-to-design-optimal-non-pharmaceutical-interventions-for-mitigating-ep.txt",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/sources/angulo_pdf5.png",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/sources/fglx_pdf10.png",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/sources/literature_audit.md",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/sources/source_manifest.json",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/sources/supplementary material.txt",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/staging_paths.json",
+        "tracing_isolation_optimal_control_complete/validation/intro_contributions_20261021/visual_qa.json"
+      ]
+    },
+    {
+      "name": "theory_wrapper_unchanged",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "no_duplicate_labels",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "references_resolve",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "no_duplicate_bibkeys",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "citations_resolve",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "independent_and_cited_AvramFreddiGoreac2022",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "independent_and_cited_FreddiGoreac2024",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "independent_and_cited_FreddiGoreacLiXu2022",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "independent_and_cited_Kretzschmar2020",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "independent_and_cited_Morris2021",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "no_introduction_table",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "no_return_results_or_symbols_in_abstract_intro",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "three_contributions_reference_existing_results",
+      "passed": true,
+      "details": null
+    }
+  ],
+  "passed": 18,
+  "total": 18,
+  "success": true,
+  "optimizer_calls": 0,
+  "ocp_solves": 0
+}

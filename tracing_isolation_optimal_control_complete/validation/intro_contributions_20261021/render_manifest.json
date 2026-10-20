@@ -1,0 +1,287 @@
+{
+  "scope": "B 摘要、目录、引言、模型衔接和参考文献；仅渲染所列页",
+  "documents": [
+    {
+      "name": "main",
+      "pdf_sha256": "dcb6b6390885692642ef3cdfdf7c750a5a2585d5aa59e8d8178a881ad233b2e4",
+      "page_count": 38,
+      "pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        37,
+        38
+      ],
+      "commands": [
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "1",
+            "-l",
+            "1",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\intro_contributions_20261021\\qa\\main_1"
+          ],
+          "exit_code": 0,
+          "png_sha256": "9c610676d4d7c3054736dfb1534932442620d7608e04c0c873470e45ca5ce2f0"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "2",
+            "-l",
+            "2",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\intro_contributions_20261021\\qa\\main_2"
+          ],
+          "exit_code": 0,
+          "png_sha256": "4e6b3ee3ea2cec7868148b88a6f8d128604df2066c5e570d7bd20748e89b8f1d"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "3",
+            "-l",
+            "3",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\intro_contributions_20261021\\qa\\main_3"
+          ],
+          "exit_code": 0,
+          "png_sha256": "516a0929255335c4fbdb9c5ad374ec08355085c8117ad10f288a2bc8a52e26a0"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "4",
+            "-l",
+            "4",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\intro_contributions_20261021\\qa\\main_4"
+          ],
+          "exit_code": 0,
+          "png_sha256": "5db25d7b2c58bb55092606bede8f19a25eec3fee6677c847762c145df15e276b"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "5",
+            "-l",
+            "5",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\intro_contributions_20261021\\qa\\main_5"
+          ],
+          "exit_code": 0,
+          "png_sha256": "0a6df9cfeb4d8f73682fae3f55b9321d2ff273137e5bd2ccd747c8de22c6e262"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "37",
+            "-l",
+            "37",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\intro_contributions_20261021\\qa\\main_37"
+          ],
+          "exit_code": 0,
+          "png_sha256": "1bd9a1ee2b71629d05a1c8525668465c0287f2c9ef40dca506b9fd97d8b4797d"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "38",
+            "-l",
+            "38",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\intro_contributions_20261021\\qa\\main_38"
+          ],
+          "exit_code": 0,
+          "png_sha256": "fd0851426538c8e08dbe32580a096b30317402057ffd7997a895132136a6bdd0"
+        }
+      ],
+      "contact_sheets": [
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\intro_contributions_20261021\\qa\\main_sheet_1.png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\intro_contributions_20261021\\qa\\main_sheet_2.png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\intro_contributions_20261021\\qa\\main_sheet_3.png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\intro_contributions_20261021\\qa\\main_sheet_4.png"
+      ]
+    },
+    {
+      "name": "theory_only",
+      "pdf_sha256": "921e01dc99baa7750a064abe0be30e4b5250c4bd4af10952148f711ab46342df",
+      "page_count": 29,
+      "pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        28,
+        29
+      ],
+      "commands": [
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "1",
+            "-l",
+            "1",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\intro_contributions_20261021\\qa\\theory_only_1"
+          ],
+          "exit_code": 0,
+          "png_sha256": "b18c50393bce8fbabf0068e9489f74e642b69a3595208dfa36b07abc73e25b3b"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "2",
+            "-l",
+            "2",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\intro_contributions_20261021\\qa\\theory_only_2"
+          ],
+          "exit_code": 0,
+          "png_sha256": "0e686089f1b4787883bead95f4ecadb288d9aed8a829032fb4f1e685d775d175"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "3",
+            "-l",
+            "3",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\intro_contributions_20261021\\qa\\theory_only_3"
+          ],
+          "exit_code": 0,
+          "png_sha256": "7d0457e26947fdbfbed0bdb120bd726a89352542c0e9d92935f6243db630d1c0"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "4",
+            "-l",
+            "4",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\intro_contributions_20261021\\qa\\theory_only_4"
+          ],
+          "exit_code": 0,
+          "png_sha256": "24aef1983e73e16fae5a9d67ce5ea268d3941c390f1ffd695bf035eb3d5caa58"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "5",
+            "-l",
+            "5",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\intro_contributions_20261021\\qa\\theory_only_5"
+          ],
+          "exit_code": 0,
+          "png_sha256": "490fb15d4df164f60943e1c46c90edf9c43fd4577ed279d3f696eb7bfd9e4c71"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "28",
+            "-l",
+            "28",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\intro_contributions_20261021\\qa\\theory_only_28"
+          ],
+          "exit_code": 0,
+          "png_sha256": "7c3d7b1243eee0b8fd4c9dd6eb7c8d135dcd02abb73eb035d8bdbc042c08027f"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "29",
+            "-l",
+            "29",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\intro_contributions_20261021\\qa\\theory_only_29"
+          ],
+          "exit_code": 0,
+          "png_sha256": "5931deea95afe45483466714389cb138c2dddf17a1512a59d44bfd324902bc03"
+        }
+      ],
+      "contact_sheets": [
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\intro_contributions_20261021\\qa\\theory_only_sheet_1.png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\intro_contributions_20261021\\qa\\theory_only_sheet_2.png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\intro_contributions_20261021\\qa\\theory_only_sheet_3.png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\intro_contributions_20261021\\qa\\theory_only_sheet_4.png"
+      ]
+    }
+  ]
+}

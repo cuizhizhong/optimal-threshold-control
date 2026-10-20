@@ -1,0 +1,43 @@
+latex/main.bbl
+latex/main.pdf
+latex/main.tex
+latex/references.bib
+latex/theory_only.pdf
+validation/intro_contributions_20261021/README.md
+validation/intro_contributions_20261021/attempt1/build_report.json
+validation/intro_contributions_20261021/attempt1/main_1.log
+validation/intro_contributions_20261021/attempt1/main_2.log
+validation/intro_contributions_20261021/attempt1/main_3.log
+validation/intro_contributions_20261021/attempt1/main_4.log
+validation/intro_contributions_20261021/attempt1/main_final.blg
+validation/intro_contributions_20261021/attempt1/main_final.log
+validation/intro_contributions_20261021/attempt1/theory_only_1.log
+validation/intro_contributions_20261021/attempt1/theory_only_2.log
+validation/intro_contributions_20261021/attempt1/theory_only_3.log
+validation/intro_contributions_20261021/attempt1/theory_only_4.log
+validation/intro_contributions_20261021/attempt1/theory_only_final.blg
+validation/intro_contributions_20261021/attempt1/theory_only_final.log
+validation/intro_contributions_20261021/audit_report.json
+validation/intro_contributions_20261021/audit_revision.py
+validation/intro_contributions_20261021/build_revision.py
+validation/intro_contributions_20261021/changed_files.txt
+validation/intro_contributions_20261021/notation_checks.log
+validation/intro_contributions_20261021/operational_notes.json
+validation/intro_contributions_20261021/preservation_baseline.json
+validation/intro_contributions_20261021/render_manifest.json
+validation/intro_contributions_20261021/render_qa.py
+validation/intro_contributions_20261021/sources/1-s2.0-S0304406822000258-main.txt
+validation/intro_contributions_20261021/sources/Freddi.txt
+validation/intro_contributions_20261021/sources/Freddi_Goreac.txt
+validation/intro_contributions_20261021/sources/Optimal control of a SIR epidemic with ICU constraints and target objectives.txt
+validation/intro_contributions_20261021/sources/Optimal epidemic suppression under an ICU constraint An analytical.txt
+validation/intro_contributions_20261021/sources/Optimal epidemic suppression under an ICU constraint.txt
+validation/intro_contributions_20261021/sources/afg_pdf3.png
+validation/intro_contributions_20261021/sources/angulo-et-al-a-simple-criterion-to-design-optimal-non-pharmaceutical-interventions-for-mitigating-ep.txt
+validation/intro_contributions_20261021/sources/angulo_pdf5.png
+validation/intro_contributions_20261021/sources/fglx_pdf10.png
+validation/intro_contributions_20261021/sources/literature_audit.md
+validation/intro_contributions_20261021/sources/source_manifest.json
+validation/intro_contributions_20261021/sources/supplementary material.txt
+validation/intro_contributions_20261021/staging_paths.json
+validation/intro_contributions_20261021/visual_qa.json
