@@ -1,0 +1,78 @@
+{
+  "batch": "A1",
+  "attempt": 1,
+  "started_utc": "2026-10-20T14:23:15.731262+00:00",
+  "source_sha256": {
+    "main.tex": "80b5213ed6b84de9b137894b1569372306954389cd3b8f4522fb9232907b50cb",
+    "theory_only.tex": "bc87e137e4cbe11a76dc8b3cb39d45d0ec7de1783bad31dc632335981f149fb5",
+    "references.bib": "4bd6ec0bb2a38da7b94fdb7ed444a3743fc161d7f5ed629190b19742b8927a8a"
+  },
+  "build_directory": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\model_a1_20261020\\attempt1",
+  "optimizer_calls": 0,
+  "scientific_solves": 0,
+  "documents": [
+    {
+      "name": "main",
+      "commands": [
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\model_a1_20261020\\attempt1",
+            "main.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "log": "main_1.log"
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\bibtex.EXE",
+            "main"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\model_a1_20261020\\attempt1",
+          "exit_code": 0,
+          "log": "main_2.log"
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\model_a1_20261020\\attempt1",
+            "main.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "log": "main_3.log"
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\model_a1_20261020\\attempt1",
+            "main.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "log": "main_4.log"
+        }
+      ],
+      "success": false,
+      "final_log_issues": [
+        {
+          "file": "main_final.log",
+          "line": "Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)"
+        },
+        {
+          "file": "main_final.blg",
+          "line": "warning$ -- 0"
+        }
+      ]
+    }
+  ],
+  "success": false,
+  "failure": "停止条件：最终日志有 warning/error/溢出：[{'file': 'main_final.log', 'line': 'Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)'}, {'file': 'main_final.blg', 'line': 'warning$ -- 0'}]"
+}

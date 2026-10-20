@@ -19,10 +19,10 @@
 \setlist{nosep,leftmargin=2.4em}
 \captionsetup{font=small,labelfont=bf}
 \hypersetup{colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,
- urlcolor=blue!55!black,pdftitle={跟踪隔离模型中双传播系数的最优控制与唯一性},pdfauthor={Technical report}}
+ urlcolor=blue!55!black,pdftitle={感染阈值约束下跟踪隔离的全域最优控制},pdfauthor={Technical report}}
 \setlength{\headheight}{14pt}
 \pagestyle{fancy}\fancyhf{}
-\fancyhead[L]{跟踪隔离模型的最优控制与唯一性}
+\fancyhead[L]{感染阈值约束下跟踪隔离的全域最优控制}
 \fancyhead[R]{\thepage/\pageref{LastPage}}
 \renewcommand{\headrulewidth}{0.4pt}
 \newtheorem{theorem}{定理}[section]
@@ -56,8 +56,7 @@
 
 
 \lstset{basicstyle=\ttfamily\small,frame=single,breaklines=true,columns=fullflexible,showstringspaces=false}
-\title{\bfseries 跟踪隔离模型中双传播系数的最优控制与唯一性\\[2mm]
-\large 常接触率的全域 HJB 验证、轨道唯一性与数值分析}
+\title{\bfseries 感染阈值约束下跟踪隔离的全域最优控制}
 \author{技术分析报告}
 \date{2026年9月19日}
 \begin{document}
@@ -67,8 +66,9 @@
 \fi
 \begin{abstract}
 医疗资源承载能力有限时，疫情干预需要兼顾感染规模限制与持续实施的代价。
-本文研究含跟踪隔离的二维传播模型，以与医疗容量相关的非隔离感染者比例阈值为状态约束，
-在接触率固定、跟踪比例取值于 $[0,1]$ 的条件下，最小化无限时域线性干预成本。
+本文研究含跟踪隔离的五仓室传播模型，在隔离易感者不回流时约化为二维系统，
+以社区非隔离感染负荷上限为状态约束，在无回流、接触率固定且跟踪比例取值于 $[0,1]$ 的条件下，
+最小化无限时域线性干预成本。
 跟踪隔离同时减少非隔离感染者的生成、增加未隔离易感者的移出，
 因而两条状态方程中的控制作用不同。
 通过构造切换曲线和分区反馈，得到两类非平凡最优策略：
@@ -110,12 +110,12 @@
 在含密切接触者跟踪的模型中，被追踪的接触者按感染状况进入隔离感染或隔离易感状态，
 仍未被隔离的感染者继续参与社区传播\citep{Zhou2024SPCI}。
 因此，加强跟踪既减少进入非隔离感染状态的新病例，也将未感染的接触者移出社区。
-在隔离者不参与传播且研究期间不返回社区易感状态的假设下，易感者与非隔离感染者构成闭合的二维子系统。
+在隔离者不参与传播、隔离易感者不回流且移出者不再进入易感状态的假设下，易感者与非隔离感染者构成闭合的二维子系统。
 同一跟踪比例使易感者移出系数增加、非隔离感染者生成系数降低，
 而标准 SIR 传播率控制对两条方程中的感染流量使用同一个系数。
 
 本文在这一跟踪隔离模型中研究感染阈值约束下的最小成本控制。
-阈值 $K$ 是与医疗资源承载能力相关的非隔离感染者比例上限，其医疗解释见附录\ref{app:medical-capacity}。
+阈值 $K$ 是社区非隔离感染负荷上限，其与医疗需求的条件性联系见附录\ref{app:medical-capacity}。
 我们固定接触率，以跟踪比例为唯一控制，并采用与跟踪强度成正比的运行成本。
 控制的启动时机、阶段次序和退出状态均由优化确定。
 由此需要回答：最优干预是否应等到感染达到阈值才启动；
@@ -139,23 +139,56 @@
 \section{模型与控制问题}
 \label{sec:model}
 
-沿用跟踪隔离模型的社区传播流量\citep{Zhou2024SPCI}，计数变量的二维系统为
+\paragraph{五仓室与流量假设。}
+设固定人口规模为 $N$，计数变量 $S,S_q,I,I_q,R$ 分别表示未隔离易感者、隔离易感者、
+非隔离感染者、隔离感染者，以及已退出传播过程的移出者。
+令
+\[
+ X=(s,s_q,i,i_q,r)=\frac1N(S,S_q,I,I_q,R),\qquad
+ \Sigma_5=\{X\in[0,1]^5:s+s_q+i+i_q+r=1\}.
+\]
+这里 $r$ 是聚合的移出比例，包含已确诊并退出社区传播但仍在住院者以及康复者，
+不专指累计康复比例；因此 $i+i_q$ 不包含已经进入 $r$ 的住院者。
+与 \citet[式(2.1)]{Zhou2024SPCI} 的六仓室模型比较，本稿把其住院与康复仓室合并为 $r$。
+
+取接触率 $c>0$、单次接触传播概率 $0<\beta<1$，以及跟踪隔离比例 $q(t)\in[0,1]$。
+假定只有非隔离感染者参与社区传播；被追踪的接触者按感染状况进入 $i_q$ 或 $s_q$，
+隔离易感者以速率 $\lambda\ge0$ 返回 $s$，移出者不再进入易感状态。
+设 $\delta_I\ge0$ 是非隔离感染者确诊后退出社区传播的速率，
+$\gamma_I\ge0$ 是其自然恢复率，$\delta_q>0$ 是隔离感染者的移出率，并记
+\[
+ \gamma=\delta_I+\gamma_I>0.
+\]
+沿用上述社区传播流量，并显式加入隔离易感者回流，得到
 \begin{equation}
 \begin{cases}
-\dot S(t)=-\beta_1(t)S(t)I(t),\\
-\dot I(t)=\beta_2(t)S(t)I(t)-\gamma I(t),
+\dot s=-c[\beta+(1-\beta)q]si+\lambda s_q,\\
+\dot i=\beta c(1-q)si-\gamma i,\\
+\dot s_q=(1-\beta)cqsi-\lambda s_q,\\
+\dot i_q=\beta cqsi-\delta_q i_q,\\
+\dot r=\gamma i+\delta_q i_q.
 \end{cases}
-\label{eq:count-model}
+\label{eq:five-compartment-model}
 \end{equation}
-其中
+五式相加为零，各仓室在自身为零时的流入均非负，故 $\Sigma_5$ 正向不变。
+守恒关系及二维系统以外的总量为
 \begin{equation}
-\beta_1(t)=\frac{c(t)[\beta+(1-\beta)q(t)]}{N},\qquad
-\beta_2(t)=\frac{\beta c(t)(1-q(t))}{N}.
-\label{eq:beta12}
+ \begin{gathered}
+ s+s_q+i+i_q+r=1,\qquad s_q+i_q+r=1-s-i,\\
+ \frac{\mathrm d}{\mathrm dt}(s_q+i_q+r)=cqsi+\gamma i-\lambda s_q.
+ \end{gathered}
+ \label{eq:five-compartment-conservation}
 \end{equation}
-这里 $\beta\in(0,1)$ 是单次接触传播概率，$c(t)>0$ 是给定接触率，$q(t)\in[0,1]$ 是跟踪隔离比例。
-$q$ 增大时，非隔离感染者生成系数下降，但未隔离易感者移出的系数上升。
-令 $s=S/N$、$i=I/N$，得到
+其中 $cqsi$ 同时包含追踪后进入 $s_q$ 与 $i_q$ 的流量，不能全部解释为新增感染。
+
+\paragraph{无回流的解析主问题。}
+本稿的全域最优性与唯一性结论限定于 $\lambda=0$、常数 $c$ 和唯一控制 $q$。
+不回流使已隔离易感者持续退出社区接触，从而 $(s,i)$ 构成闭合子系统；
+这是解析主问题的建模假设，若隔离解除发生在所研究时段内，该闭合不再成立。
+\citet[第5页]{Zhou2024SPCI} 关于波次较短及抗体保护的说明针对康复者不再感染，
+不能作为隔离易感者不回流的依据。
+为同时表述下一节的适定性与后文的时变讨论，允许将给定接触率写为 $c(t)$；
+在 $\lambda=0$ 时，约化系统为
 \begin{equation}
 \begin{cases}
 \dot s=-c(t)[\beta+(1-\beta)q]si,\\
@@ -163,32 +196,24 @@ $q$ 增大时，非隔离感染者生成系数下降，但未隔离易感者移�
 \end{cases}
 \label{eq:normalized-model}
 \end{equation}
-\paragraph{状态变量与移出流量。}
-本文的 $s$ 表示仍参与传播过程的未隔离易感比例，
-$i$ 表示仍参与社区传播的非隔离感染者比例。
-现有两式满足流量恒等式
-\[
- c(t)[\beta+(1-\beta)q]si=\beta c(t)(1-q)si+c(t)qsi.
-\]
-因此，易感者的移出并不全部计入 $i$ 的新增项。
-仅为记录二维系统以外的总量，可令 $m(t)=1-s(t)-i(t)$；
-在物理初值下有
-\[
- \dot m(t)=c(t)q(t)s(t)i(t)+\gamma i(t)\ge0,
- \qquad s(t)+i(t)+m(t)=1.
-\]
-$m$ 是未显式区分的隔离或其他移出状态的合计，
-不能仅凭这两条方程将其解释为累计康复人数。
-本文不描述这些移出个体的后续分流和回流。
-特别地，$q=1$ 时非隔离感染者的新增项为零，但未隔离易感者仍可继续移出；
-这一性质属于所研究约化模型的假设，而不是一般隔离措施必然满足的机制。
+$q$ 增大时，非隔离感染者的生成项减小，未隔离易感者的移出项增大。
+特别地，$q=1$ 使前者为零，但后者仍可为正。
+
+回流情形下记总易感比例为 $\tilde s=s+s_q$。由式\eqref{eq:five-compartment-model}，
+\begin{equation}
+ \dot{\tilde s}=-\beta csi.
+ \label{eq:total-susceptible-return}
+\end{equation}
+右端依赖社区易感比例 $s$，不能直接以 $\tilde s$ 替换原二维系统中的 $s$ 来闭合动力学。
+$\lambda>0$ 留作回流扩展检验，不属于本文无回流主定理的结论。
 
 固定非隔离感染者的移出率 $\gamma>0$，要求
 \begin{equation}
 0<i(t)\le K<1,
 \label{eq:capacity}
 \end{equation}
-其中 $K$ 是与医疗容量相关的非隔离感染者比例阈值。
+其中 $K$ 是社区非隔离感染负荷上限，不直接等同于 ICU 床位占人口的比例。
+如需按医疗容量选取 $K$，还须给定病例需求核与可用床位等额外信息，见附录\ref{app:medical-capacity}。
 控制目标为最小化
 \begin{equation}
 J(q)=\int_0^\infty \beta c(t)q(t)\dd t.
@@ -206,9 +231,37 @@ J(q)=\int_0^\infty \beta c(t)q(t)\dd t.
 而不是规定孤立切换瞬间的控制代表元。
 \end{definition}
 
+对完整初值 $X_0\in\Sigma_5$，其投影 $x_0=(s_0,i_0)$ 满足上述正初值条件时，
+记 $\Uad^\lambda(X_0)$ 为使五仓室系统全程满足 $i\le K$ 的可测控制类，并定义
+\begin{equation}
+ V_\lambda(X_0)=\inf_{q\in\Uad^\lambda(X_0)}
+ \int_0^\infty\beta cq(t)\dd t.
+ \label{eq:five-compartment-value}
+\end{equation}
+这里成本不依赖于另外三个仓室，状态约束也只作用于 $i$。
+
+\begin{proposition}[无回流时的二维等价]
+\label{prop:five-compartment-reduction}
+设 $\lambda=0$ 且 $c>0$ 为常数。对任意上述完整初值，
+五仓室与二维系统的可行控制类相同，且
+\begin{equation}
+ V_0(s_0,s_{q,0},i_0,i_{q,0},r_0)=V(s_0,i_0)=U(s_0,i_0),
+ \label{eq:five-compartment-equivalence}
+\end{equation}
+其中 $V$ 是第\ref{sec:constant-problem}节定义的二维值函数，
+$U$ 是后文构造并由定理\ref{thm:verification}验证的候选成本。
+\end{proposition}
+\begin{proof}
+$\lambda=0$ 时，五仓室轨道的 $(s,i)$ 投影恰好满足式\eqref{eq:normalized-model}。
+反过来，给定该二维系统的任意可行控制与轨道，其余三式依次给出
+$s_q,i_q,r$ 的唯一非负解；五式的守恒关系保证完整轨道仍在 $\Sigma_5$ 内。
+因此两问题的可行控制一一对应，同一控制的成本也相同，得 $V_0=V$。
+最后的 $V=U$ 使用后文独立建立的验证定理，不作为构造 $U$ 的前提。
+\end{proof}
+
 \begin{remark}[结果的适用范围]
-本稿常接触率主定理仅讨论 \eqref{eq:normalized-model}、\eqref{eq:linear-cost} 及完整控制区间 $[0,1]$。
-不包含感染成本、隔离者回流、折现、控制变化率惩罚或 $q_{\max}<1$。
+本稿常接触率主定理仅讨论 $\lambda=0$ 下的 \eqref{eq:normalized-model}、\eqref{eq:linear-cost} 及完整控制区间 $[0,1]$。
+不包含感染成本、隔离易感者回流、折现、控制变化率惩罚或跟踪能力上限 $\bar q<1$。
 时变接触率和正则化另行讨论，不能通过改写符号直接继承常接触率主定理。
 \end{remark}
 
@@ -300,11 +353,11 @@ v'(t)=\lim_{n\to\infty}\frac{v(t_n)-v(t)}{t_n-t}=0.
 
 \begin{lemma}[相对局部 Lipschitz 函数沿绝对连续轨道的复合]
 \label{lem:ac-composition}
-设 $E\subset\mathbb R^m$，$F:E\to\mathbb R$ 相对局部 Lipschitz，
+设 $E\subset\mathbb R^d$，$F:E\to\mathbb R$ 相对局部 Lipschitz，
 $x:[0,T]\to E$ 绝对连续，其中 $T<\infty$。
 则 $F\circ x$ 在 $[0,T]$ 上绝对连续。
 这里，$F$ 在 $x_0\in E$ 处具有 $C^1$ 局部表达式，是指存在包含 $x_0$ 的
-环境开邻域 $O\subset\mathbb R^m$ 及 $\widetilde F\in C^1(O)$，
+环境开邻域 $O\subset\mathbb R^d$ 及 $\widetilde F\in C^1(O)$，
 使 $\widetilde F=F$ 于 $E\cap O$。
 在这些状态点所对应的时间集合上，对任一这样的局部延拓，通常的链式法则
 \[
@@ -377,6 +430,18 @@ i_{\rm pk}=i_0+s_0-h+h\ln\frac h{s_0}.
 \label{eq:natural-peak}
 \end{equation}
 若 $s_0\le h$，感染从初始时刻起不增。
+因而对 $s>0$、$i>0$，无控制的未来感染峰值为
+\begin{equation}
+ P_0(s,i):=\sup_{t\ge0}i^0(t)=
+ \begin{cases}
+  i,&s\le h,\\
+  i+s-h-h\ln(s/h),&s>h,
+ \end{cases}
+ \label{eq:uncontrolled-future-peak}
+\end{equation}
+其中 $i^0$ 是从 $(s,i)$ 出发的零控制轨道。
+疾病灭绝轴须另取 $P_0(s,0)=0$，因为此时感染恒为零；
+它不由 $s>h$ 时的正感染分支连续外推，且不属于本文正感染主定理的状态域。
 
 \subsection{安全集与目标边界}
 记
@@ -387,11 +452,13 @@ i_{\rm pk}=i_0+s_0-h+h\ln\frac h{s_0}.
 \end{equation}
 辅助条带中的安全集及物理安全集分别为
 \begin{equation}
-\widehat{\Acal}=\Omega\cap\bigl(\{s\le h\}\cup\{s>h,\ \Phi\le\Phi_A\}\bigr),
-\qquad \Acal=\widehat{\Acal}\cap\Dcal.
+\widehat{\Acal}=\Omega\cap\{P_0\le K\},\qquad
+\Acal=\Dcal\cap\{P_0\le K\}=\widehat{\Acal}\cap\Dcal.
 \label{eq:safe-set}
 \end{equation}
 以下在辅助几何中使用 $\widehat{\Acal}$，实际控制问题的目标集始终是 $\Acal$。
+由式\eqref{eq:uncontrolled-future-peak}，这等价于条带内
+$s\le h$ 或 $s>h$ 且 $\Phi\le\Phi_A$ 的原有几何描述。
 
 \begin{proposition}[最大无控制安全集]
 \label{prop:safe-exact}
@@ -1791,24 +1858,9 @@ i_0+s_0-s_c+h\ln(s_c/s_0),&s_1\le s_c\le s_0.
 该推论在验证和唯一性之后使用，因而没有以候选族极小性循环证明全局最优性。
 \end{proof}
 
-\subsection{从控制到两个传播系数}
-当 $c>0$ 已知时，映射
-\begin{equation}
-q\mapsto\left(\frac{c[\beta+(1-\beta)q]}N,\frac{\beta c(1-q)}N\right)
-\label{eq:q-to-betas}
-\end{equation}
-是单射，故最优 $q$ 的几乎处处唯一性等价于最优系数对的几乎处处唯一性。
-反演公式为
-\begin{equation}
-q=1-\frac{N\beta_2}{\beta c}=\frac{N(\beta_1-\beta_2)}c.
-\label{eq:q-inversion-known-c}
-\end{equation}
-即使 $c$ 未知，只要给定 $\beta,N$ 且两个系数同时可识别，也有代数关系
-\begin{align}
-c&=N\left[\beta_1+\frac{1-\beta}{\beta}\beta_2\right],\label{eq:c-inversion}\\
-q&=\frac{\beta_1-\beta_2}{\beta_1+\frac{1-\beta}{\beta}\beta_2}.\label{eq:q-inversion}
-\end{align}
-这些是模型内的代数反演，并非从观测数据自动获得统计可识别性的结论。
+固定 $\beta,c,N$ 时，最优 $q$ 的几乎处处唯一性也唯一确定计数模型中的
+易感者移出系数 $c[\beta+(1-\beta)q]/N$ 与非隔离感染者生成系数 $b/N$，其中 $b=\beta c(1-q)$。
+这是模型内的代数对应，不是从观测数据获得统计可识别性的结论。
 
 \ifdefined\TheoryOnly\else
 % 数值章节已内联；下方两个标记块由数值导出程序定点更新。
@@ -1924,15 +1976,8 @@ $s,i$ 为相对于初始总量的比例，允许 $s_0+i_0<1$；
 
 对于每个待报告结果，用原始分段常数控制重新积分状态方程，
 检查区间内部的容量峰值、与配点状态的偏差以及终端零控制延拓。
-对正状态，未来无控制峰值为
-\[
- P_0(s,i)=
- \begin{cases}
-  i,&s\le h,\\
-  i+s-h-h\ln(s/h),&s>h.
- \end{cases}
-\]
-终端延拓检查对重积分得到的状态使用 $P_0(s(T),i(T))$，
+终端延拓检查使用第\ref{sec:constant-problem}节式\eqref{eq:uncontrolled-future-peak}定义的
+无控制未来峰值 $P_0(s(T),i(T))$，其中终端状态由重新积分得到，
 同时检查终点前一段时间内的控制是否已接近零。
 这些是求解后的浮点诊断，不进入问题\eqref{eq:numerical-ocp}。
 它们不单独证明连续时间严格可行性，
@@ -2215,15 +2260,15 @@ q_\varepsilon^*(t,s,i)=\proj_{[0,1]}
 \label{rem:unproved-extensions}
 任意时变 $c(t)$ 的全域值函数构造、无穷时域终端处理和无条件唯一性未在本稿证明。
 离散网格加密和 $\varepsilon\downarrow0$ 的收敛、时变高峰后的真实安全延拓也未证明。
-$q_{\max}<1$、完全跟踪后残余感染生成、隔离者回流、联合控制以及参数不确定的情形需重新建立可行域和验证函数。
-特别地，$q_{\max}<1$ 时，容量边界还必须满足 $q_{\max}\ge1-h/s$；
-不能只把本稿的 $1$ 替换成 $q_{\max}$ 后沿用最优结构定理。
+$\bar q<1$、完全跟踪后残余感染生成、隔离者回流、联合控制以及参数不确定的情形需重新建立可行域和验证函数。
+特别地，跟踪能力上限为 $\bar q<1$ 时，容量边界还必须满足 $\bar q\ge1-h/s$；
+不能只把本稿的 $1$ 替换成 $\bar q$ 后沿用最优结构定理。
 \end{remark}
 \fi
 
 \section{主要结论}
 \label{sec:conclusions}
-两个传播系数由同一跟踪比例耦合，但易感者移出与感染者生成对控制的响应方向不同。
+五仓室模型在无回流时约化为二维系统，其中易感者移出与非隔离感染者生成对同一跟踪比例的响应方向不同。
 在常接触率、线性成本、完整控制区间及正感染初值下，
 本稿从有限可达域、非平凡切换曲线的完整参数化和全域分区出发，构造可行候选成本 $U$。
 两种等待分支的统一梯度、内部匹配和容量水平集论证，给出对所有可测可行控制成立的验证不等式。

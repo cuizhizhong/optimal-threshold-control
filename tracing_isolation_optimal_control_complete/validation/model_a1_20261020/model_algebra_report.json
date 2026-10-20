@@ -1,0 +1,18 @@
+{
+  "scope": "A1 independent symbolic identities, not a new scientific solve",
+  "conditions": "0<beta<1; c,gamma,delta_q>0; lambda>=0; positive s,i for the peak formula; P0(s,0)=0 separately",
+  "checks": {
+    "five_compartment_population_conservation": true,
+    "removed_flow_aggregation_gamma": true,
+    "outside_2d_projection_flow": true,
+    "total_susceptible_flow": true,
+    "lambda_zero_s_projection": true,
+    "lambda_zero_i_projection": true,
+    "positive_infection_peak_invariant_for_s_above_h": true,
+    "positive_infection_safe_set_equivalence_for_s_above_h": true
+  },
+  "passed": 8,
+  "total": 8,
+  "optimizer_calls": 0,
+  "scientific_solves": 0
+}
