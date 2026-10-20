@@ -52,7 +52,7 @@ pending{end+1}=macro('NumDegree',sprintf('%d',runs{1}.solver_settings.d));
 mesh={};
 for k=1:5
     if runs{k}.solver_settings.N~=cfg.solve.N
-        mesh{end+1}=sprintf('E%d 使用 $N=%d$',k,runs{k}.solver_settings.N); %#ok<AGROW>
+        mesh{end+1}=sprintf('E%d 使用 $n=%d$',k,runs{k}.solver_settings.N); %#ok<AGROW>
     end
 end
 if isempty(mesh)
@@ -131,8 +131,8 @@ for k=1:numel(runs)
         if r.assessment.capacity_excess>0
             drop=relaxed_capacity_drop(r);
             if isfinite(drop) && drop>=-signedGap
-                finding=[finding sprintf(['重积分轨道有 $\\delta=\\num{%.3g}$ 的容量超出；' ...
-                    '把容量放宽为 $K+\\delta$ 后，解析最优值下降 $\\num{%.2e}$，大于该负差。' ...
+                finding=[finding sprintf(['重积分轨道有 $\\varepsilon_K=\\num{%.3g}$ 的容量超出；' ...
+                    '把容量放宽为 $K+\\varepsilon_K$ 后，解析最优值下降 $\\num{%.2e}$，大于该负差。' ...
                     '因此该控制的成本仍不低于放宽容量后的解析最优值，负差与容量超出相容，' ...
                     '不构成低于解析最优值的连续时间可行控制。'], ...
                     r.assessment.capacity_excess,drop)]; %#ok<AGROW>
@@ -500,7 +500,7 @@ end
 if ~isempty(skipped)
     ids={skipped.case_id}; levels=unique([skipped.coarse_N]);
     if capacityFailure && isscalar(levels)
-        skippedText=sprintf(['%s 的 $N=%d$ 重积分容量超出未达到 $\\num{%.3g}$ 接受容差，' ...
+        skippedText=sprintf(['%s 的 $n=%d$ 重积分容量超出未达到 $\\num{%.3g}$ 接受容差，' ...
             '故最细两级的成本与事件比较未执行。'],strjoin(ids,'、'),levels,cfg.check.capacity_tolerance);
     else
         skippedText=[strjoin(ids,'、') ' 因数值接受未通过，最细两级的成本与事件比较未执行。'];
@@ -533,8 +533,8 @@ if ~isempty(skipped)
     finest=unique([skipped.fine_N]);
     if decreasing && accepted && isscalar(finest)
         text=[text sprintf(['%s 的容量超出在测试网格上随加密下降，' ...
-            '在 $N=%d$ 时均低于该容差。'],strjoin(ids,'、'),finest)];
-        shortText=[shortText sprintf('%s 在 $N=%d$ 时的容量超出均低于该容差。',strjoin(ids,'、'),finest)];
+            '在 $n=%d$ 时均低于该容差。'],strjoin(ids,'、'),finest)];
+        shortText=[shortText sprintf('%s 在 $n=%d$ 时的容量超出均低于该容差。',strjoin(ids,'、'),finest)];
     end
 end
 longCases={}; longLevels=[];
@@ -545,9 +545,9 @@ for k=1:numel(summary.rows)
     end
 end
 if ~isempty(longCases) && isscalar(unique(longLevels))
-    text=[text sprintf('%s 的 $N=%d$ 长中间控制块与阶段识别异常仍保留在配套记录中。', ...
+    text=[text sprintf('%s 的 $n=%d$ 长中间控制块与阶段识别异常仍保留在配套记录中。', ...
         strjoin(unique(longCases,'stable'),'、'),longLevels(1))];
-    shortText=[shortText sprintf('$N=%d$ 的 %s 存在长中间控制块与阶段识别异常。', ...
+    shortText=[shortText sprintf('$n=%d$ 的 %s 存在长中间控制块与阶段识别异常。', ...
         longLevels(1),strjoin(unique(longCases,'stable'),'、'))];
 end
 for k=1:numel(items)
@@ -584,8 +584,8 @@ for k=1:numel(summary.rows)
         drop=relaxed_capacity_drop(run); gap=a.signed_cost_difference;
         if isfinite(drop) && gap<0 && drop>=-gap
             explained{end+1}=row.case_id; %#ok<AGROW>
-            explainedText=[explainedText sprintf(['%s 的 $N=%d$ 负成本差为 $\\num{%.3g}$，' ...
-                '重积分容量超出 $\\delta=\\num{%.3g}$；把容量放宽为 $K+\\delta$ 后，' ...
+            explainedText=[explainedText sprintf(['%s 的 $n=%d$ 负成本差为 $\\num{%.3g}$，' ...
+                '重积分容量超出 $\\varepsilon_K=\\num{%.3g}$；把容量放宽为 $K+\\varepsilon_K$ 后，' ...
                 '解析最优值下降 $\\num{%.2e}$，大于该负差。因此该负差与容量超出相容，' ...
                 '评估记录中的 unresolved-discrepancy 分类按原样保留。'], ...
                 row.case_id,row.N,gap,a.capacity_excess,drop)]; %#ok<AGROW>
@@ -595,7 +595,7 @@ for k=1:numel(summary.rows)
     end
 end
 if ~isempty(coarseCostFailures)
-    costText=sprintf('$N=%d$ 的 %s 成本比较仍未通过。',min([summary.rows.N]), ...
+    costText=sprintf('$n=%d$ 的 %s 成本比较仍未通过。',min([summary.rows.N]), ...
         strjoin(coarseCostFailures,'、'));
     text=[text costText]; shortText=[shortText costText];
 end

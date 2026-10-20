@@ -1,0 +1,8 @@
+首次在默认沙箱内运行 run_s1_export('export')，MATLAB 尚未执行任务代码即退出，退出码 1。
+
+Fatal Startup Error:
+Dynamic exception type: class foundation::core::except::Exception<class MATLAB::settings::prefdir::PrefdirNotWritable,class std::exception,void>
+无法访问预设项文件夹 C:\Users\cui\AppData\Roaming\MathWorks\MATLAB\R2025b。预设项文件夹必须可写。
+ERROR: MATLAB error Exit Status: 0x00000001
+
+随后经工具授权在默认沙箱外运行相同导出入口，退出码 0；见 export_authorized_console.log。未改变导出任务、数据来源或求解设置，未运行优化器。
