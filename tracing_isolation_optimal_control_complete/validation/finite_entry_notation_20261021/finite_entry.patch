@@ -1,0 +1,13 @@
+--- a/tracing_isolation_optimal_control_complete/latex/main.tex
++++ b/tracing_isolation_optimal_control_complete/latex/main.tex
+@@ -546,8 +546,8 @@
+ 由正性及状态方程，
+ \begin{align*}
+ \ln\frac{i(t)}{i_0}
+-&=\beta c\int_0^t(s(\tau)-h)\dd\tau-\beta c\int_0^t s(\tau)q(\tau)\dd\tau\\
+-&\ge-\beta cs_0\int_0^\infty q(\tau)\dd\tau.
++&=\beta c\int_0^t(s(v)-h)\dd v-\beta c\int_0^t s(v)q(v)\dd v\\
++&\ge-\beta cs_0\int_0^\infty q(v)\dd v.
+ \end{align*}
+ 于是 $i(t)\ge i_0\exp[-\beta cs_0\int_0^\infty q\dd t]>0$，与 \eqref{eq:i-integrable} 矛盾。
+ 故有限 $T_h$ 存在；可行性给出 $i(T_h)\le K$，所以 $x(T_h)\in\Acal$。

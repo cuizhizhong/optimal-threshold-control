@@ -1,0 +1,20 @@
+{
+  "files": [
+    "tracing_isolation_optimal_control_complete/latex/main.tex",
+    "tracing_isolation_optimal_control_complete/validation/finite_entry_notation_20261021/build_report.json",
+    "tracing_isolation_optimal_control_complete/validation/finite_entry_notation_20261021/commit_files.json",
+    "tracing_isolation_optimal_control_complete/validation/finite_entry_notation_20261021/finite_entry.patch",
+    "tracing_isolation_optimal_control_complete/validation/finite_entry_notation_20261021/main_1.log",
+    "tracing_isolation_optimal_control_complete/validation/finite_entry_notation_20261021/main_2.log",
+    "tracing_isolation_optimal_control_complete/validation/finite_entry_notation_20261021/main_3.log",
+    "tracing_isolation_optimal_control_complete/validation/finite_entry_notation_20261021/main_4.log",
+    "tracing_isolation_optimal_control_complete/validation/finite_entry_notation_20261021/README.md",
+    "tracing_isolation_optimal_control_complete/validation/finite_entry_notation_20261021/theory_only_1.log",
+    "tracing_isolation_optimal_control_complete/validation/finite_entry_notation_20261021/theory_only_2.log",
+    "tracing_isolation_optimal_control_complete/validation/finite_entry_notation_20261021/theory_only_3.log",
+    "tracing_isolation_optimal_control_complete/validation/finite_entry_notation_20261021/theory_only_4.log",
+    "tracing_isolation_optimal_control_complete/validation/finite_entry_notation_20261021/verify_and_build.py",
+    "tracing_isolation_optimal_control_complete/validation/finite_entry_notation_20261021/visual_qa.json"
+  ],
+  "main_tex_scope": "只暂存finite_entry.patch的两行纯改名；其他工作区改动不纳入"
+}

@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "checked_documents": [
+    {
+      "name": "main",
+      "page": 9,
+      "image": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\finite_entry_notation_20261021\\main_lemma_page_9.png",
+      "image_sha256": "c96eb61dfb53ac675c073252e27043b32ad8c671aed37b875ea9dbf9fd5931cc",
+      "visually_checked": true
+    },
+    {
+      "name": "theory_only",
+      "page": 9,
+      "image": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\finite_entry_notation_20261021\\theory_only_lemma_page_9.png",
+      "image_sha256": "2fe1f8d57dbad1def219b3e893742d5f03bad24be07a6233570779a65b2e50d6",
+      "visually_checked": true
+    }
+  ],
+  "notes": "两稿第9页已实际目视，三个积分均使用v，首达tau保留；公式、引用与版面正常。"
+}
