@@ -1,0 +1,184 @@
+{
+  "batch": "C1--C4",
+  "base_commit": "e86ec62094f72c2aa56c05191c0ecaf5166d3cf6",
+  "checks": [
+    {
+      "name": "abstract_unchanged_from_author_review",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "model_section_unchanged",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "overview_immediately_after_model",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "feasibility_before_cost_partitions",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "existing_nonstandard_equations_preserved",
+      "passed": true,
+      "details": {
+        "checked": 106,
+        "changed": []
+      }
+    },
+    {
+      "name": "numerical_generated_blocks_unchanged",
+      "passed": true,
+      "details": [
+        "NUMERICAL REFERENCE VALUES",
+        "NUMERICAL RESULTS"
+      ]
+    },
+    {
+      "name": "regularity_complete_proof_moved_verbatim",
+      "passed": true,
+      "details": "0d913ecc2d224c7cf3fb500ae3199e9b72f784bc2d7d780bd2fc7c668643e70b"
+    },
+    {
+      "name": "standard_lemmas_replaced_by_textbook",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "free_wait_variation_restricted_below_capacity",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "cost_and_Theta_mechanism_present",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "restricted_endpoints_and_physical_degeneracy_present",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "all_control_set_not_defined_using_admissibility",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "intro_first_contribution_uses_main_theorem",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "old_capability_warning_updated",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "labels_unique",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "source_references_resolve",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "old_bibliography_preserved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "citations_resolve",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "535_original_records_code_figures_unchanged",
+      "passed": true,
+      "details": {
+        "count": 535,
+        "changed": []
+      }
+    },
+    {
+      "name": "tracked_scope",
+      "passed": true,
+      "details": [
+        "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_two_layers.pdf",
+        "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_two_layers.png",
+        "tracing_isolation_optimal_control_complete/latex/main.bbl",
+        "tracing_isolation_optimal_control_complete/latex/main.pdf",
+        "tracing_isolation_optimal_control_complete/latex/main.tex",
+        "tracing_isolation_optimal_control_complete/latex/references.bib",
+        "tracing_isolation_optimal_control_complete/latex/theory_only.pdf",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/README.md",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/apply_geometry.py",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/attempt1/build_report.json",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/attempt1/main_1.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/attempt1/main_2.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/attempt1/main_3.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/attempt1/main_4.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/attempt1/main_final.blg",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/attempt1/main_final.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/attempt2/build_report.json",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/attempt2/main_1.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/attempt2/main_2.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/attempt2/main_3.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/attempt2/main_4.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/attempt2/main_final.blg",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/attempt2/main_final.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/attempt2/theory_only_1.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/attempt2/theory_only_2.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/attempt2/theory_only_3.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/attempt2/theory_only_4.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/attempt2/theory_only_final.blg",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/attempt2/theory_only_final.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/audit_report.json",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/audit_revision.py",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/build_revision.py",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/c3_README.md",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/c3_check.py",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/c3_check_results.json",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/c3_feasibility.tex",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/c_integration_readonly_review.md",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/c_structure_notes.md",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/changed_files.txt",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/content_movement.json",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/main_results_template.tex",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/make_two_layer_phase.py",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/mechanism.tex",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/notation_checks.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/page_map.json",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/render_manifest.json",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/render_qa.py",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/staging_paths.json",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/standard_analysis.tex",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/two_layer_phase_README.md",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/two_layer_phase_checks.json",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/two_layer_phase_pdf_raster.png",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/two_layer_phase_visual_review.json",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/visual_main_front.md",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/visual_qa.json",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/visual_theory_back.md",
+        "tracing_isolation_optimal_control_complete/validation/geometry_proofs_20261021/visual_theory_front.md"
+      ]
+    },
+    {
+      "name": "B_records_not_overwritten",
+      "passed": true,
+      "details": null
+    }
+  ],
+  "passed": 21,
+  "total": 21,
+  "success": true,
+  "source_sha256": "a256fcd7c107fbe2745901cb9a0c25b050f053b39292f35a44c1a8361fd3d44c",
+  "optimizer_calls": 0,
+  "ocp_solves": 0
+}

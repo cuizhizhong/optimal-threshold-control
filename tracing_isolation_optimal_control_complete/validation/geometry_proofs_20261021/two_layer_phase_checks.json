@@ -1,0 +1,75 @@
+{
+  "status": "theoretical_geometry_only",
+  "optimizer_calls": 0,
+  "OCP_solves": 0,
+  "parameters": {
+    "beta": 0.5,
+    "c": 2.0,
+    "gamma": 0.3,
+    "K": 0.15
+  },
+  "restricted_qbar_left_panel": 0.4,
+  "geometry": {
+    "h": 0.3,
+    "ell": 0.15,
+    "p": 0.15,
+    "s_A": 0.7073030021837696,
+    "s_e": 0.46908414634252626,
+    "z_B": 0.4516637862455485,
+    "s_B": 0.5476951246795451,
+    "Phi_A": 0.8111918412977808,
+    "Phi_B": 0.8783060712821368
+  },
+  "checkpoint_max_absolute_error": 1.1102230246251565e-16,
+  "switch_original_theta_max_absolute_error": 3.552713678800501e-15,
+  "nested_feasibility_envelopes_verified": true,
+  "physical_cutoff_verified": true,
+  "classifications": [
+    {
+      "case_id": "E1",
+      "region": "W_Gamma",
+      "pass": true
+    },
+    {
+      "case_id": "E2",
+      "region": "W_K",
+      "pass": true
+    },
+    {
+      "case_id": "E3",
+      "region": "T",
+      "pass": true
+    },
+    {
+      "case_id": "E4",
+      "region": "B",
+      "pass": true
+    },
+    {
+      "case_id": "E5",
+      "region": "T",
+      "pass": true
+    },
+    {
+      "case_id": "E0",
+      "region": "A",
+      "pass": true
+    }
+  ],
+  "sources_sha256": {
+    "validation\\numerical_scenarios\\scenario_inputs.json": "2db6c37435a78d719c0bbb5b3b70840076e56fbbb0fe0b8b64aaa33cfc0b0488",
+    "validation\\numerical_scenarios\\analytic_checkpoints.json": "d7195c0f65ffeda05e3f133116c3f5472857819bf67b37605f1a9e60a5631deb",
+    "validation\\geometry_proofs_20261021\\make_two_layer_phase.py": "3882e17ebd1a16aabf567c68c0a876dbb2e997b9dc583cffe6670af71b2161bb",
+    "matlab\\numerical_scenarios\\build_theory_geometry.m": "eb19409d75472a8c2b237e6b768462b8f0ba2ef1d37db878a130f08d5f881339"
+  },
+  "protected_files_unchanged": {
+    "figures\\numerical_scenarios\\FigN1_regions.pdf": "a38146707856cf24893b6f5748f51be846e8a9778a46b6cb18ee7ce165427b06",
+    "figures\\numerical_scenarios\\FigN1_regions.png": "31ae72e75cb48aa89b76c987873ace2954772fa3156b3011ca40eee383a56652",
+    "data\\numerical_scenarios\\figure_provenance.json": "a947633e8d7d588463a72501e485849b6908b4b9790bfe96195191ada1971b06"
+  },
+  "outputs_sha256": {
+    "figures\\numerical_scenarios\\FigN1_two_layers.pdf": "d295b67cc826e6967a0c6f86ab03e76007955b140fde587f600c712ee891aa26",
+    "figures\\numerical_scenarios\\FigN1_two_layers.png": "3bb2d6e8073b0699a0992df43e017d8a0075b0447e9c5dc8ead7b1424c4865d4"
+  },
+  "visual_review": "recorded separately in two_layer_phase_visual_review.json; match its output SHA256 before relying on it"
+}

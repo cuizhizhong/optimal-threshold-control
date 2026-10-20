@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-21",
+  "scope": "仅新增、搬移及相邻页，非全文逐页目视",
+  "documents": [
+    {
+      "name": "main",
+      "pages_inspected": [1,2,3,4,5,6,7,8,9,10,11,22,28,29,36,37,38,41,42],
+      "front_reviewer_record": "visual_main_front.md",
+      "primary_reviewer_pages": [11,22,28,29,36,37,38,41,42],
+      "blocking_defects": [],
+      "deferred_to_G": ["作者栏与旧日期", "目录末页留白偏多"]
+    },
+    {
+      "name": "theory_only",
+      "pages_inspected": [1,2,3,4,5,6,7,8,9,10,21,27,28,29,30,31,32,33],
+      "reviewer_records": ["visual_theory_front.md", "visual_theory_back.md"],
+      "blocking_defects": []
+    }
+  ],
+  "content_observations": [
+    "主定理与表图前置完整，物理域与能力参数条件明确",
+    "两层相图的s=h点线及s+i=1虚线可区分",
+    "C3必要性、退化说明和C4 i<K限制均正常显示",
+    "正则性证明在附录C跨页完整，参考文献字符与编号正常"
+  ],
+  "hash_manifest": "render_manifest.json",
+  "optimizer_calls": 0,
+  "ocp_solves": 0
+}

@@ -1,4 +1,4 @@
-\begin{thebibliography}{14}
+\begin{thebibliography}{15}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -56,6 +56,12 @@ Lorenzo Freddi, Dan Goreac, Juan Li, and Boxiang Xu.
   {Hamilton--Jacobi} verification argument and dual {LP} algorithms.
 \newblock \emph{Applied Mathematics \& Optimization}, 86:\penalty0 23, 2022.
 \newblock \doi{10.1007/s00245-022-09884-x}.
+
+\bibitem[Fremlin(2001)]{Fremlin2001Volume2}
+David~H. Fremlin.
+\newblock \emph{Measure Theory, Volume 2: Broad Foundations}.
+\newblock Torres Fremlin, Colchester, 2001.
+\newblock URL \url{https://www1.essex.ac.uk/maths/people/fremlin/mt.htm}.
 
 \bibitem[Koenemann et~al.(2019)Koenemann, Licitra, Alp, and
   Diehl]{Koenemann2019OpenOCL}

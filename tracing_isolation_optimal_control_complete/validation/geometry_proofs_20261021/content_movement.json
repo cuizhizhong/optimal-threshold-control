@@ -1,0 +1,9 @@
+{
+  "base_commit": "e86ec62094f72c2aa56c05191c0ecaf5166d3cf6",
+  "regularity_proof_sha256_before": "0d913ecc2d224c7cf3fb500ae3199e9b72f784bc2d7d780bd2fc7c668643e70b",
+  "regularity_proof_moved_verbatim": true,
+  "old_main_sha256": "9a50529866dffd1656d23ca472439f2a51433b40e0d400b9df3227b6bf0cb506",
+  "new_main_sha256": "dfc454aff49888a4087bed46444a034a27dac369bd15a7188cb1929bb94ca51b",
+  "optimizer_calls": 0,
+  "ocp_solves": 0
+}

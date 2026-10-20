@@ -1,0 +1,22 @@
+{
+  "checked_on": "2026-10-21",
+  "timezone": "Asia/Singapore",
+  "status": "pass",
+  "reviewer": "Codex agent reference_visibility",
+  "inspected": [
+    "figures/numerical_scenarios/FigN1_two_layers.png",
+    "validation/geometry_proofs_20261021/two_layer_phase_pdf_raster.png"
+  ],
+  "checks": [
+    "Both panels show full physical domain with s+i=1 clipping.",
+    "Left panel displays A=A^0=V0 contained in V0.4 contained in V1=D, and the envelope tangent at h0.4=.5.",
+    "Right panel displays A, T, W_Gamma, W_K, Gamma_K, Phi=Phi_B and capacity arc B.",
+    "s=h dotted and s+i=1 dashed; legends separate both line types.",
+    "No clipped labels, overlap or missing glyphs in exported PNG or separate PDF raster."
+  ],
+  "outputs_sha256": {
+    "figures\\numerical_scenarios\\FigN1_two_layers.pdf": "d295b67cc826e6967a0c6f86ab03e76007955b140fde587f600c712ee891aa26",
+    "figures\\numerical_scenarios\\FigN1_two_layers.png": "3bb2d6e8073b0699a0992df43e017d8a0075b0447e9c5dc8ead7b1424c4865d4"
+  },
+  "raster_sha256": "bf58e605302baaf0485678fb5113f4f2d8fa3cc3c75f203de1d47a7cba2abe98"
+}

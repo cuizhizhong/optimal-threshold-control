@@ -1,0 +1,74 @@
+\section{主结果与两层几何}
+\label{sec:main-results}
+
+__CONSTANTS__
+此处的下确界针对定义\ref{def:admissible}中的全部可测可行控制，不预先限制切换次数。
+
+\subsection{约束可行性与成本最优性的区分}
+__PEAK__
+先从能否保持感染阈值出发定义第一层集合。
+记 $\mathcal C_{\bar q}$ 为所有可测的 $[0,\bar q]$ 值控制，$0\le\bar q\le1$；
+定义该控制类时不预先要求轨道满足 $i\le K$。令
+\begin{align}
+ \Acal&=\{x\in\Dcal:P_0(x)\le K\},\label{eq:overview-safe}\\
+ \mathcal A^0&=\{x\in\Dcal:i_x^q(t)\le K\ \text{对所有 }t\ge0\text{ 及 }q\in\mathcal C_1\},
+ \label{eq:all-control-safe}\\
+ \mathcal V_{\bar q}&=\{x\in\Dcal:\text{存在 }q\in\mathcal C_{\bar q},\ i_x^q(t)\le K\ \text{对所有 }t\ge0\}.
+ \label{eq:viability-definition}
+\end{align}
+三者分别表示零控制安全集、所有允许控制均安全的初值集和存在可行控制的初值集。
+这种先判定可行性、再比较成本的层级已有研究先例\citep{AvramFreddiGoreac2022,FreddiGoreac2024}。
+本模型满足
+\begin{equation}
+ \mathcal A^0=\Acal=\mathcal V_0,\qquad \mathcal V_1=\Dcal,
+ \label{eq:viability-endpoints}
+\end{equation}
+证明见引理\ref{lem:safe-invariant}；受限能力 $\bar q<1$ 的可行包络见命题\ref{prop:restricted-feasibility}。
+因此，完整控制区间下所有物理初值均可行，但可行性本身尚未决定何时付出控制成本。
+第二层才是按最小成本确定的等待区、完全跟踪区和容量平台。
+
+\subsection{全域反馈与阶段结构}
+\begin{theorem}[常接触率下的全域最优反馈与唯一性]
+\label{thm:main-overview}
+在式\eqref{eq:constants}的条件下，对每个 $x_0\in\Dcal$，存在有限成本最优控制。
+定义\ref{def:candidate}中的分区反馈 $Q^*$ 实现该最优值，其候选成本满足 $U(x_0)=V(x_0)$，
+比较范围为全部可测可行控制。
+从同一初值出发的最优状态轨道唯一，最优控制在 $[0,\infty)$ 上几乎处处唯一。
+不安全初值的阶段顺序为 $0\to1\to0$ 或 $0\to q_B(s)\to1\to0$，允许阶段长度为零，
+其中 $q_B(s)=1-h/s$。两类策略均在首次进入 $\Acal$ 后永久取 $q=0$。
+辅助条带中的非平凡切换曲线 $\Gamma_K$ 及其唯一容量交点 $(s_B,K)$ 由命题\ref{prop:Gamma-geometry}、推论\ref{cor:Gamma-labels}刻画。
+若最优轨道含有正长度容量阶段，则在 $s_B>h$ 处转入完全跟踪，而不继续维持感染阈值至 $s=h$。
+\end{theorem}
+\begin{proof}
+这是后文定理\ref{thm:verification}、定理\ref{thm:unique-q}和推论\ref{cor:optimal-synthesis}的合并陈述。
+后文依次构造几何与候选成本、验证其最优性、再证明唯一性，均不预先使用本概览结论。
+\end{proof}
+
+表\ref{tab:optimal-stages}列出阶段顺序；分区的精确定义见第\ref{sec:candidate}节。
+表中集合均与物理域 $\Dcal$ 取交，超出物理三角形的辅助切换点不对应可实现的阶段。
+\begin{table}[H]
+\centering
+\caption{完整控制区间下的最优阶段。$0$、$1$ 和 $q_B$ 分别表示零控制、完全跟踪与容量切向控制。}
+\label{tab:optimal-stages}
+\begin{tabular}{@{}lll@{}}
+\toprule
+初值区域 & 阶段顺序 & 停止付费的状态\\
+\midrule
+$\Acal$ & 永久 $0$ & 初始已安全\\
+$\mathcal T\cup\Gamma_K$ & $1\to0$ & 首次进入 $\Acal$\\
+$\mathcal W_\Gamma$ & $0\to1\to0$ & 首次进入 $\Acal$\\
+$\mathcal W_K\cup\mathcal B$ & $0\to q_B\to1\to0$ & 首次进入 $\Acal$\\
+\bottomrule
+\end{tabular}
+\end{table}
+在 $\mathcal B$ 出发时等待段为零；临界自然轨道 $\Phi=\Phi_B$ 对应零长度容量段。
+图\ref{fig:two-layer-regions}将约束可行性与成本最优性分别画出。
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{numerical_scenarios/FigN1_two_layers.pdf}
+\caption{两层几何。左图为 $\mathcal A^0=\Acal$、受限能力的 $\mathcal V_{\bar q}$ 与 $\mathcal V_1=\Dcal$；
+右图为 $q\in[0,1]$ 下的成本最优分区，图中曲线均按解析公式计算。
+参数为 $\beta=0.5,c=2,\gamma=0.3,K=0.15$，左图另取 $\bar q=0.4$。
+点线 $s=h$ 为自然感染增长阈值，虚线 $s+i=1$ 为物理总量边界。}
+\label{fig:two-layer-regions}
+\end{figure}

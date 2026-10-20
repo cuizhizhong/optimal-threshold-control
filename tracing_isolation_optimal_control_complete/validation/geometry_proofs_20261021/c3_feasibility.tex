@@ -1,0 +1,113 @@
+% C3 可直接合并片段；不修改主文，未调用优化器或 OCP 求解器。
+% 记号遵循 SYMBOL_TABLE.md #13、#20。只研究正文的正感染物理域。
+\subsection{受限跟踪能力与可行域}
+\label{sec:restricted-feasibility}
+
+给定跟踪能力上限 $\bar q\in[0,1]$，记 $\mathcal V_{\bar q}$ 为
+存在可测控制 $q:[0,\infty)\to[0,\bar q]$ 使感染始终不超过 $K$ 的物理初值集合。
+这里仅判定约束可行性，不比较可行策略的成本。
+当 $0\le\bar q<1$ 时，定义
+\begin{equation}
+ \varpi_{\bar q}=\beta+(1-\beta)\bar q,\qquad
+ \nu_{\bar q}=\frac{\beta(1-\bar q)}{\varpi_{\bar q}},\qquad
+ d_{\bar q}=\frac{\gamma}{c\varpi_{\bar q}},\qquad
+ h_{\bar q}=\frac{h}{1-\bar q}.
+ \label{eq:restricted-constants}
+\end{equation}
+于是 $d_{\bar q}=\nu_{\bar q}h_{\bar q}$。
+最大控制轨道与容量线拼接的构造已有先例\citep{AvramFreddiGoreac2022,FreddiGoreac2024}；
+以下包络按系统\eqref{eq:normalized-model}的跟踪流量推导。
+
+\begin{proposition}[受限能力下的约束可行域]
+\label{prop:restricted-feasibility}
+在式\eqref{eq:constants}的参数条件下，若 $0\le\bar q<1$，令
+\begin{equation}
+ \mathcal I_{\bar q}(s)=
+ \begin{cases}
+  K,&0<s\le h_{\bar q},\\[1mm]
+  K-\nu_{\bar q}(s-h_{\bar q})
+       +d_{\bar q}\ln(s/h_{\bar q}),&s>h_{\bar q}.
+ \end{cases}
+ \label{eq:restricted-envelope}
+\end{equation}
+则
+\begin{equation}
+ \mathcal V_{\bar q}
+   =\Dcal\cap\{(s,i):i\le\mathcal I_{\bar q}(s)\}.
+ \label{eq:restricted-viability}
+\end{equation}
+特别地，$\mathcal V_0=\Acal$；若 $\bar q=1$，则 $\mathcal V_1=\Dcal$。
+在容量线的 $s>h$ 部分，切向控制满足
+\begin{equation}
+ q_B(s)\le\bar q\quad\Longleftrightarrow\quad s\le h_{\bar q}
+ \qquad(\bar q<1).
+ \label{eq:restricted-capacity-tangent}
+\end{equation}
+\end{proposition}
+\begin{proof}
+固定 $\bar q<1$。对 $s>0$ 定义
+\[
+ F_{\bar q}(s,i)=i+\nu_{\bar q}s-d_{\bar q}\ln s.
+\]
+直接代入状态方程得
+\begin{equation}
+ \frac{\dd}{\dd t}F_{\bar q}(s,i)
+ =\frac{\beta c(\bar q-q)(s-p)i}{\varpi_{\bar q}}.
+ \label{eq:restricted-invariant-derivative}
+\end{equation}
+因此 $q=\bar q$ 时 $F_{\bar q}$ 为不变量。
+此时 $\dot i=\beta c(1-\bar q)(s-h_{\bar q})i$，且 $s$ 严格递减。
+若 $s_0\le h_{\bar q}$，感染自初始时刻起不增。
+若 $s_0>h_{\bar q}$，在首次到达 $s=h_{\bar q}$ 之前 $i\ge i_0$，且
+$\dot s\le-\beta c i_0s$，故该首次到达时刻有限。
+不变量给出此时的感染峰值
+\[
+ i_{\rm pk}^{\bar q}
+ =i_0+\nu_{\bar q}(s_0-h_{\bar q})
+          -d_{\bar q}\ln(s_0/h_{\bar q}).
+\]
+这证明 $i_0\le\mathcal I_{\bar q}(s_0)$ 时恒取最大控制即能保持约束；
+物理总量约束由式\eqref{eq:sum-decay}保持，因而得到充分性。
+
+反之，设 $s_0>h_{\bar q}$ 且存在可行控制 $q\le\bar q$。
+只要 $s>h_{\bar q}$，便有 $\dot i\ge0$、$i\ge i_0$ 及
+$\dot s\le-\beta c i_0s$，所以首次到达 $s=h_{\bar q}$ 的时刻 $T$ 仍然有限。
+在 $[0,T]$ 上，$s\ge h_{\bar q}\ge h>p$，
+故式\eqref{eq:restricted-invariant-derivative}表明 $F_{\bar q}$ 不减。
+于是
+\[
+ i(T)\ge i_0+\nu_{\bar q}(s_0-h_{\bar q})
+                  -d_{\bar q}\ln(s_0/h_{\bar q}),
+\]
+而可行性要求 $i(T)\le K$，即 $i_0\le\mathcal I_{\bar q}(s_0)$。
+$s_0\le h_{\bar q}$ 时必要性只是初值约束 $i_0\le K$。
+
+当 $\bar q=0$ 时，$\nu_0=1$、$d_0=h$、$h_0=h$，
+式\eqref{eq:restricted-viability}恰为 $P_0\le K$，故 $\mathcal V_0=\Acal$。
+当 $\bar q=1$ 时，恒取 $q=1$ 给出 $i(t)=i_0\e^{-\gamma t}\le K$，
+故 $\mathcal V_1=\Dcal$，此时不需要定义有限的 $h_1$。
+最后，由 $q_B(s)=1-h/s$ 直接得到式\eqref{eq:restricted-capacity-tangent}。
+\end{proof}
+
+\begin{remark}[切点、物理截断与退化情形]
+\label{rem:restricted-degeneracies}
+包络在 $s=h_{\bar q}$ 处与 $i=K$ 相切，因为右导数为
+$-\nu_{\bar q}+d_{\bar q}/s$，在切点为零；
+在 $s>h_{\bar q}$ 上该导数严格为负。
+式\eqref{eq:restricted-viability}须与 $s+i\le1$ 相交：
+若 $\mathcal I_{\bar q}(s)\le0$，该截面没有正感染可行初值；
+辅助曲线超出物理域的部分不构成实际边界。
+若 $h_{\bar q}\ge1$，曲线分支在物理域中不出现。
+事实上，较弱的条件 $h_{\bar q}\ge1-K$ 已足以保证
+$\mathcal V_{\bar q}=\Dcal$：当 $s>h_{\bar q}$ 时，
+\[
+ \frac{\dd}{\dd s}\bigl[\mathcal I_{\bar q}(s)-(1-s)\bigr]
+ =1-\nu_{\bar q}+\frac{d_{\bar q}}s>0,
+\]
+且该差在 $h_{\bar q}$ 处为 $K+h_{\bar q}-1\ge0$。
+因此此时即使辅助曲边存在，也位于物理上界 $i=1-s$ 之上。
+若将状态域扩充到疾病灭绝轴 $i=0$，该轴上的所有物理初值均可行，
+应另行加入，不能用正感染包络在 $\mathcal I_{\bar q}<0$ 的位置排除它们。
+本命题不确定受限控制下的最低成本，也不证明截断反馈
+$\min\{Q^*,\bar q\}$ 的可行性或最优性。
+\end{remark}

@@ -1,0 +1,27 @@
+\section{不变量坐标与切换机制}
+\label{sec:switching-mechanism}
+利用不变量坐标组织控制轨道的几何比较，沿用 \citet{Angulo2021} 的方法思路；
+本节恒等式由本文的跟踪动力学重新计算，不将不同目标下的策略直接移植到本问题。
+在 $i>0,s>p$ 上，式\eqref{eq:Phi-derivative}给出
+\begin{equation}
+ \beta cq\dd t=-\frac{\beta\,\mathrm d\Phi}{i(s-p)}.
+ \label{eq:cost-in-Phi}
+\end{equation}
+该式表示沿控制轨道每减少单位 $\Phi$ 所付出的成本为 $\beta/[i(s-p)]$。
+在到达安全集之前有 $s>h>p$，故分母严格为正。
+
+对 $x=(s,i)\in\mathcal E\cap\Dcal$ 且 $i<K$，考虑先沿自然轨道 $x^0(t)$ 免费等待，再完全跟踪至安全集的指定策略。
+当等待时间足够小、轨道仍在 $\mathcal E\cap\{i<K\}$ 时，后续完全跟踪成本为 $W(x^0(t))$，由式\eqref{eq:H0-theta}得
+\begin{equation}
+ \left.\frac{\dd}{\dd t}W(x^0(t))\right|_{t=0}
+ =\frac{\beta c}{h}i(s-p)
+   [\Theta(s,i)-\Theta(\bar s,\bar i)].
+ \label{eq:waiting-marginal-cost}
+\end{equation}
+因此 $\Theta(s,i)=\Theta(\bar s,\bar i)$ 恰好使免费等待方向上的后续成本一阶变化为零。
+这解释了切换匹配条件的来源；比较的对象仍是指定策略成本 $W$，
+它在全部可测可行控制中的最优性由定理\ref{thm:verification}另行验证。
+
+在容量线上，单位 $\Phi$ 削减量的成本为 $\beta/[K(s-p)]$，随 $s$ 减小而上升。
+这一趋势只是理解容量退出的一条直观线索：完全跟踪时 $i$ 同样下降，也会改变单位成本。
+确定 $s_B$ 仍须使用式\eqref{eq:JB-derivative}的完整成本变分及全局验证，不能仅凭容量线上的单价上升作结论。
