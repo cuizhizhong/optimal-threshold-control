@@ -1,0 +1,50 @@
+{
+  "batch": "D",
+  "notes": [
+    {
+      "event": "preservation_baseline_initial_attempt",
+      "result": "failed_before_creating_baseline",
+      "reason": "Windows ordinary path exceeded MAX_PATH in existing assessment filenames",
+      "resolution": "new audit script uses extended absolute paths; baseline rerun succeeded; no existing data or prior record modified"
+    },
+    {
+      "event": "historical_check_entrypoints",
+      "result": "not_executed",
+      "reason": "asymptotics_and_feasibility.py main also invokes excluded restricted-capability IVP; scaling_and_savings.py subtracts double-precision total costs",
+      "resolution": "new D-only high-precision scalar implementation; no ODE, optimizer or OCP"
+    },
+    {
+      "event": "build_attempt1",
+      "result": "not_accepted",
+      "reason": "new table produced six Underfull hbox diagnostics and new scenario paragraph had a 15.50378pt Overfull hbox",
+      "resolution": "table columns made wider and left aligned; parameter math separated at ordinary commas; long scenario sentence split; acceptance thresholds unchanged; original logs retained"
+    },
+    {
+      "event": "visual_followup_after_attempt2",
+      "result": "paragraph_break_needed",
+      "reason": "floating table split the Chinese phrase liang pian across pages",
+      "resolution": "added one blank line after the table; no mathematical change"
+    },
+    {
+      "event": "attempt3_source_install_and_delivery",
+      "result": "not_used_for_final_delivery",
+      "reason": "Python write to the mapped existing main.tex returned Invalid argument; PowerShell continued to the build despite the preceding Python nonzero exit; it compiled previous source successfully but PDF synchronization also failed",
+      "resolution": "applied the paragraph-only correction with apply_patch; attempt4 separately compiled the final source; never represented attempt3 as the corrected-source build"
+    },
+    {
+      "event": "attempt4_output_copy",
+      "result": "compilation_passed_but_python_copy_failed",
+      "reason": "all eight build commands exited zero with no final diagnostics, but Python could not truncate a mapped PDF; one native Copy-Item retry explicitly reported a user-mapped region",
+      "resolution": "native PowerShell copy succeeded; already identical targets were skipped; final three output hashes match attempt4; successful delivery recorded separately in delivery_report.json; all original failed reports retained"
+    },
+    {
+      "event": "staged_whitespace_check",
+      "result": "resolved_without_rewriting_records",
+      "reason": "local -text preserves CRLF evidence bytes, which default git whitespace treated as trailing CR; two new source fragments also ended with an extra blank line",
+      "resolution": "check with core.whitespace including cr-at-eol while retaining other whitespace checks; remove only extra final blank lines in new fragments and rerun independent symbolic/source SHA checks; compiled main.tex and PDFs unchanged"
+    }
+  ],
+  "optimizer_calls": 0,
+  "ocp_solves": 0,
+  "ode_integrations": 0
+}

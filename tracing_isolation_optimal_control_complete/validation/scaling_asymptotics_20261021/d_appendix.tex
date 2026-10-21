@@ -1,0 +1,83 @@
+\section{小容量渐近的完整推导}
+\label{app:small-capacity-proof}
+\begin{proof}[命题\ref{prop:small-capacity}的证明]
+令 $k=K/h$、$u=(s_B-h)/h$、$v=(\bar s_B-h)/h$，并在本附录记
+$f(v)=v-\ln(1+v)$。安全边界给出 $\bar i_B/h=k-f(v)$。
+完全跟踪不变量与 $\Theta$ 匹配分别等价于
+\begin{equation}
+ \beta\ln\frac{1+u}{1+v}=f(v),\qquad
+ \frac{u}{k(\beta+u)}=
+ \frac{v}{[k-f(v)](\beta+v)}.
+ \label{eq:small-K-endpoint-match}
+\end{equation}
+因此可用 $v$ 参数化容量切换点：
+\begin{equation}
+ u=(1+v)\exp[f(v)/\beta]-1,\qquad
+ k=\frac{u(\beta+v)f(v)}{\beta(u-v)}.
+ \label{eq:small-K-parametrization}
+\end{equation}
+第一式在 $v=0$ 附近解析，且
+\begin{align}
+ u&=v+\frac{v^2}{2\beta}+\frac{v^3}{6\beta}+O(v^4),\notag\\
+ k&=\beta v+\left(\frac32-\beta\right)v^2
+   +\left(\beta-\frac{19}{12}+\frac1{2\beta}\right)v^3+O(v^4).
+ \label{eq:small-K-param-series}
+\end{align}
+这里 $f(v)=v^2/2+O(v^3)$，$u-v=v^2/(2\beta)+O(v^3)$，
+故第二式的奇点可去，其解析延拓满足 $k(0)=0,k'(0)=\beta>0$。
+解析逆函数定理给出小正 $k$ 的唯一局部正支 $v(k)$，
+且 $k-f(v)>0$、$u>v>0$；结合既有容量切换点的唯一性，这就是 $s_B$ 对应的分支。
+反演得
+\begin{equation}
+ v=\frac k\beta-\frac{(3/2-\beta)k^2}{\beta^3}+O(k^3),\qquad
+ u=\frac k\beta-\frac{(1-\beta)k^2}{\beta^3}+O(k^3),
+ \label{eq:small-K-inverse}
+\end{equation}
+还原 $s_B-h=hu$ 即得式\eqref{eq:small-K-switch}。
+
+由容量弧与完全跟踪弧的成本公式，
+\begin{align}
+ hC_B(s_B,h)
+ &=\frac\beta k\int_0^u\frac{t}{(1+t)(\beta+t)}\dd t
+ =\frac v{2\beta}+\frac{(2\beta-7)v^2}{12\beta^2}+O(v^3),\notag\\
+ hW(s_B,K)
+ &=-\ln\left(1-\frac{f(v)}k\right)
+ =\frac v{2\beta}+\frac{(4\beta-15)v^2}{24\beta^2}+O(v^3).
+ \label{eq:small-K-cost-series}
+\end{align}
+上述函数在零点均有解析延拓，故相减得到
+$h\Delta J=v^2/(24\beta^2)+O(v^3)=k^2/(24\beta^4)+O(k^3)$，
+即式\eqref{eq:small-K-cost}。
+再多展开一阶有
+\begin{equation}
+ \Delta J=\frac{K^2}{24\beta^4h^3}
+ \left[1-\frac{2(2-\beta)K}{\beta^2h}
+       +O\bigl((K/h)^2\bigr)\right].
+ \label{eq:small-K-precision}
+\end{equation}
+此式的余项常数仍依赖固定的 $\beta$；它说明小概率时的精度限制，
+不能用来声称关于 $\beta\downarrow0$ 的一致展开。
+
+公共容量段严格抵消，且 $c=\gamma/(\beta h)$，所以
+\begin{equation}
+ \gamma(T_{+,\rm fill}-T_+^*)
+ =\frac\beta k\ln\left(1+\frac u\beta\right)
+   +\ln\left(1-\frac{f(v)}k\right)
+ =\frac1\beta+O(k).
+ \label{eq:small-K-time-series}
+\end{equation}
+由此得式\eqref{eq:small-K-time}。
+以上各函数均在固定参数下解析，其泰勒余项在足够小的邻域有界。
+公共尾段差不依赖 $s_1$，故这些余项对 $s_1\ge s_B$ 的入口统一。
+
+最后，$s_B\to h<s_1^\circ$ 保证初值族最终满足 $s_1(K)>s_B$。
+利用
+\[
+ \mathcal C(S)=\beta\int_h^S\frac{s-h}{s(s-p)}\dd s>0\quad(S>h),
+ \qquad J_{\rm fill}=\frac{\mathcal C(s_1(K))}K,
+\]
+及 $\mathcal C(s_1(K))\to\mathcal C(s_1^\circ)>0$，得到式\eqref{eq:small-K-relative}。
+在仅有 $s_1(K)\to s_1^\circ$ 的条件下，相对节省的等价式只承诺 $1+o(1)$ 的相对余项。
+又 $T_{+,\rm fill}=(cK)^{-1}\ln[(s_1(K)-p)/\ell]$ 为 $K^{-1}$ 阶，
+故 $T_+^*/T_{+,\rm fill}\to1$。命题得证。
+\end{proof}

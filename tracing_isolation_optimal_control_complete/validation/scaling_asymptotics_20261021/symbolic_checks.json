@@ -1,0 +1,86 @@
+{
+  "review_date": "2026-10-21",
+  "scope": "阶段 D 新增小容量展开的独立符号核对及片段一致性检查",
+  "sympy_version": "1.13.2",
+  "assumptions": [
+    "0 < beta < 1",
+    "c > 0",
+    "gamma > 0",
+    "固定参数后 K -> 0"
+  ],
+  "algebra_checks_total": 10,
+  "algebra_checks_passed": 10,
+  "algebra_checks": [
+    {
+      "name": "u_of_v_cubic",
+      "passed": true,
+      "residual": "0"
+    },
+    {
+      "name": "k_of_v_cubic",
+      "passed": true,
+      "residual": "0"
+    },
+    {
+      "name": "inverse_composition_cubic",
+      "passed": true,
+      "residual": "0"
+    },
+    {
+      "name": "u_of_k_quadratic",
+      "passed": true,
+      "residual": "0"
+    },
+    {
+      "name": "fill_cost_quadratic",
+      "passed": true,
+      "residual": "0"
+    },
+    {
+      "name": "full_cost_quadratic",
+      "passed": true,
+      "residual": "0"
+    },
+    {
+      "name": "delta_cost_v_cubic",
+      "passed": true,
+      "residual": "0"
+    },
+    {
+      "name": "delta_cost_k_cubic",
+      "passed": true,
+      "residual": "0"
+    },
+    {
+      "name": "time_difference_constant_and_linear",
+      "passed": true,
+      "residual": "0"
+    },
+    {
+      "name": "C_derivative_positive_integrand",
+      "passed": true,
+      "residual": "0"
+    }
+  ],
+  "fragment_checks_total": 2,
+  "fragment_checks_passed": 2,
+  "fragment_checks": [
+    {
+      "name": "d_main.tex",
+      "passed": true
+    },
+    {
+      "name": "d_appendix.tex",
+      "passed": true
+    }
+  ],
+  "source_sha256": {
+    "latex/main.tex": "b24862dbf14dc7c9c019aeed949e6b42164466f3d7e12a0b2cbfe5cc78bd51aa",
+    "validation/scaling_asymptotics_20261021/d_main.tex": "f3673c5ffba49cf35a303cfda920efe326174b15d68baec04c12f80dde5606f0",
+    "validation/scaling_asymptotics_20261021/d_appendix.tex": "513d9403107db7f32d8bac109f15111b9622b472c75fa37a0902368d508d2d29"
+  },
+  "optimizer_calls": 0,
+  "new_ocp_solves": 0,
+  "ode_integrations": 0,
+  "all_passed": true
+}

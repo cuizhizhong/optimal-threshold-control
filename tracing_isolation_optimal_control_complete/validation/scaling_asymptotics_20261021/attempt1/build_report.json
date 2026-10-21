@@ -1,0 +1,98 @@
+{
+  "batch": "D_scaling_asymptotics",
+  "attempt": 1,
+  "started_utc": "2026-10-21T03:45:56.326780+00:00",
+  "source_sha256": {
+    "main.tex": "9f11de5be6b4b4183b04f570a12b6ad8cf3a86914b0386cd3a398c56f6406d1c",
+    "theory_only.tex": "bc87e137e4cbe11a76dc8b3cb39d45d0ec7de1783bad31dc632335981f149fb5",
+    "references.bib": "e84bbdef4ffa590f6d7f1a36d1e92481a7cf515cab90bcf41d28f1410ae25fff"
+  },
+  "build_directory": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\attempt1",
+  "optimizer_calls": 0,
+  "ocp_solves": 0,
+  "documents": [
+    {
+      "name": "main",
+      "commands": [
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\attempt1",
+            "main.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "log": "main_1.log"
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\bibtex.EXE",
+            "main"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\attempt1",
+          "exit_code": 0,
+          "log": "main_2.log"
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\attempt1",
+            "main.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "log": "main_3.log"
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\attempt1",
+            "main.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "log": "main_4.log"
+        }
+      ],
+      "success": false,
+      "final_log_issues": [
+        {
+          "file": "main_final.log",
+          "line": "Underfull \\hbox (badness 10000) in paragraph at lines 1954--1954"
+        },
+        {
+          "file": "main_final.log",
+          "line": "Underfull \\hbox (badness 10000) in paragraph at lines 1954--1954"
+        },
+        {
+          "file": "main_final.log",
+          "line": "Underfull \\hbox (badness 2302) in paragraph at lines 1954--1954"
+        },
+        {
+          "file": "main_final.log",
+          "line": "Underfull \\hbox (badness 10000) in paragraph at lines 1954--1954"
+        },
+        {
+          "file": "main_final.log",
+          "line": "Underfull \\hbox (badness 10000) in paragraph at lines 1954--1954"
+        },
+        {
+          "file": "main_final.log",
+          "line": "Underfull \\hbox (badness 10000) in paragraph at lines 1954--1954"
+        },
+        {
+          "file": "main_final.log",
+          "line": "Overfull \\hbox (15.50378pt too wide) in paragraph at lines 1981--1986"
+        }
+      ]
+    }
+  ],
+  "success": false,
+  "failure": "停止条件：最终日志有 warning/error/溢出：[{'file': 'main_final.log', 'line': 'Underfull \\\\hbox (badness 10000) in paragraph at lines 1954--1954'}, {'file': 'main_final.log', 'line': 'Underfull \\\\hbox (badness 10000) in paragraph at lines 1954--1954'}, {'file': 'main_final.log', 'line': 'Underfull \\\\hbox (badness 2302) in paragraph at lines 1954--1954'}, {'file': 'main_final.log', 'line': 'Underfull \\\\hbox (badness 10000) in paragraph at lines 1954--1954'}, {'file': 'main_final.log', 'line': 'Underfull \\\\hbox (badness 10000) in paragraph at lines 1954--1954'}, {'file': 'main_final.log', 'line': 'Underfull \\\\hbox (badness 10000) in paragraph at lines 1954--1954'}, {'file': 'main_final.log', 'line': 'Overfull \\\\hbox (15.50378pt too wide) in paragraph at lines 1981--1986'}]"
+}

@@ -1,0 +1,26 @@
+{
+  "copy_api": "PowerShell Copy-Item",
+  "original_copy_failure_preserved": "attempt4/build_report.json",
+  "compilation_success": true,
+  "success": true,
+  "files": [
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+      "sha256": "d22a53577340a0945465b57488296f5855514ae0ab3601fedf36cae9b05be2d5"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+      "sha256": "5214fe74bdd32d6f165998acdda8259724086073fd4bf974474bfb9876e80756"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.bbl",
+      "sha256": "b136350e9823a3b01b35e852fb9984c86a068c7810cbae8f9a49d7b837db90e4"
+    }
+  ],
+  "pages": {
+    "theory_only": 36,
+    "main": 46
+  },
+  "commands_exit_zero": 8,
+  "source_attempt": 4
+}

@@ -1,0 +1,117 @@
+{
+  "batch": "D",
+  "passed": 20,
+  "total": 20,
+  "checks": [
+    {
+      "name": "final_compilation_and_delivery",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "eight_final_build_commands_exit_zero",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "final_logs_without_diagnostics",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "pages_main46_theory36",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "built_sources_match_final_sources",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "delivered_pdf_hashes_match_build",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "high_precision_analytic_checks",
+      "passed": true,
+      "details": {
+        "scalar_relative": "1.48459347826132412742455161671289772310629107919928426163763396357394395e-69",
+        "endpoint_relative": "5.66784835657555012061751293079033279984406525933790728498804463715491629e-81",
+        "theta_relative": "4.82203509535145554695240213518501886072739902359170169736674415668167159e-73",
+        "cost_difference_relative": "3.79459460897258391484574887973104692808026466327270186498824227651152736e-63"
+      }
+    },
+    {
+      "name": "scan_620_with_one_explicit_mask",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "small_capacity_family_35",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "independent_integrals_two",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "new_symbolic_10_and_fragments_2",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "symbolic_source_hashes_current",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original_notation_28",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "source_and_preservation_audit",
+      "passed": true,
+      "details": 10
+    },
+    {
+      "name": "rendered_24_final_pages",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "visual_review_passed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "zero_optimizer_ocp_ode",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "parameter_provenance_present",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "table_followed_by_independent_paragraph",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "relative_saving_not_renamed_G",
+      "passed": true,
+      "details": null
+    }
+  ],
+  "success": true,
+  "optimizer_calls": 0,
+  "ocp_solves": 0,
+  "ode_integrations": 0,
+  "pushes": 0
+}

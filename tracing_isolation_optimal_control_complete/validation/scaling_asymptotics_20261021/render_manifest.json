@@ -1,0 +1,471 @@
+{
+  "scope": "D 修改与相邻页、摘要目录和参考文献，仅检查所列页面",
+  "documents": [
+    {
+      "name": "main",
+      "pdf_sha256": "d22a53577340a0945465b57488296f5855514ae0ab3601fedf36cae9b05be2d5",
+      "page_count": 46,
+      "pages": [
+        1,
+        2,
+        3,
+        4,
+        28,
+        29,
+        30,
+        31,
+        39,
+        40,
+        45,
+        46
+      ],
+      "commands": [
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "1",
+            "-l",
+            "1",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\main_1"
+          ],
+          "exit_code": 0,
+          "png_sha256": "916ed8cde13dbc2010e49abbe83ad65e27b8d2528df650746d30942eb49ef541"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "2",
+            "-l",
+            "2",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\main_2"
+          ],
+          "exit_code": 0,
+          "png_sha256": "964aa5025919953e4272121938c09f191210022ac81ba527b939587ad08c7d91"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "3",
+            "-l",
+            "3",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\main_3"
+          ],
+          "exit_code": 0,
+          "png_sha256": "c2a0c133e8a1e7321a3e525d1d3f69fe08ad99df60c00cc87848a3eb1a56ae61"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "4",
+            "-l",
+            "4",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\main_4"
+          ],
+          "exit_code": 0,
+          "png_sha256": "9b6dafc3d058886e30493ce82a415f8180d68378913a404e182df1d1bef7efcb"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "28",
+            "-l",
+            "28",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\main_28"
+          ],
+          "exit_code": 0,
+          "png_sha256": "ab81d9874aa437dfdb44533f57462f0146170b0a422b6b57be640c761f95eb47"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "29",
+            "-l",
+            "29",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\main_29"
+          ],
+          "exit_code": 0,
+          "png_sha256": "5171d64f6f4b28765678835838ae40626327eebda681bbae000f9fbf7178e3b6"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "30",
+            "-l",
+            "30",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\main_30"
+          ],
+          "exit_code": 0,
+          "png_sha256": "00754e4fd4d6933ec0e881e76d6b2617b1fd7c6a95439927c80384c62189cab0"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "31",
+            "-l",
+            "31",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\main_31"
+          ],
+          "exit_code": 0,
+          "png_sha256": "14e88002a2061425026dd6969f59ea267e5912c5f269712573816435aee44ec5"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "39",
+            "-l",
+            "39",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\main_39"
+          ],
+          "exit_code": 0,
+          "png_sha256": "1fabbeacdbc30070a12e443aa96e0a43e4e451755ac137e3a6a0929c16319e41"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "40",
+            "-l",
+            "40",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\main_40"
+          ],
+          "exit_code": 0,
+          "png_sha256": "ecd3ef02f95d92adb0652ecf585a65fbced0d600125b3272f3aa2157831b3d06"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "45",
+            "-l",
+            "45",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\main_45"
+          ],
+          "exit_code": 0,
+          "png_sha256": "51cd47d806d303472403da3345d6d32c8efaa092dbfa0cc04dac0e6c25368371"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "46",
+            "-l",
+            "46",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\main_46"
+          ],
+          "exit_code": 0,
+          "png_sha256": "ca80ad2d2f67ff97c697d086aaebf6093a6b4ac16b6f1c0d1f63ddbb295ee4b7"
+        }
+      ],
+      "contact_sheets": [
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\main_sheet_1.png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\main_sheet_2.png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\main_sheet_3.png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\main_sheet_4.png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\main_sheet_5.png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\main_sheet_6.png"
+      ]
+    },
+    {
+      "name": "theory_only",
+      "pdf_sha256": "5214fe74bdd32d6f165998acdda8259724086073fd4bf974474bfb9876e80756",
+      "page_count": 36,
+      "pages": [
+        1,
+        2,
+        3,
+        4,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        35,
+        36
+      ],
+      "commands": [
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "1",
+            "-l",
+            "1",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\theory_only_1"
+          ],
+          "exit_code": 0,
+          "png_sha256": "e136d022bc791ca3a149c9d989d9380e3149b6f45540b772dc1a62e2dbb6d69a"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "2",
+            "-l",
+            "2",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\theory_only_2"
+          ],
+          "exit_code": 0,
+          "png_sha256": "e4f9047d64506a9a8db4cad1031ddda3158861aeef4a903838c5703e8d9c5716"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "3",
+            "-l",
+            "3",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\theory_only_3"
+          ],
+          "exit_code": 0,
+          "png_sha256": "1a78a1103d84ad4ffd5b9613f40cc26840a6777633af9f0d871226146b7ce33b"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "4",
+            "-l",
+            "4",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\theory_only_4"
+          ],
+          "exit_code": 0,
+          "png_sha256": "3359a3827b13d2cbfc520b185eb8af3e25047dfc160726a350859769232da0f0"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "27",
+            "-l",
+            "27",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\theory_only_27"
+          ],
+          "exit_code": 0,
+          "png_sha256": "322f5b71746398c7933c809a38c35a20acf926f284f5d7c0ef71ef699b4a7ec0"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "28",
+            "-l",
+            "28",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\theory_only_28"
+          ],
+          "exit_code": 0,
+          "png_sha256": "c1df91fd045e4bc44ed2c318c4c0dd6906600a12f846b9e11dfadcd4a4a9e838"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "29",
+            "-l",
+            "29",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\theory_only_29"
+          ],
+          "exit_code": 0,
+          "png_sha256": "b7d5050d76100ab831d83a8a53bb68ff899cb7c4baf759e4e53269f2cfe03a77"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "30",
+            "-l",
+            "30",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\theory_only_30"
+          ],
+          "exit_code": 0,
+          "png_sha256": "6ef4f186a99d8bb0a895b57198d88e29b27dd98245135f596b78d2d500a09b7c"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "31",
+            "-l",
+            "31",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\theory_only_31"
+          ],
+          "exit_code": 0,
+          "png_sha256": "1387e74556b315a943195870764911b3ca2c22c32c1e40316942b8f28ef17afb"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "32",
+            "-l",
+            "32",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\theory_only_32"
+          ],
+          "exit_code": 0,
+          "png_sha256": "48a642337cd5e0721403db0e613b61043ed2e8593ad58309549acf47ff37950f"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "35",
+            "-l",
+            "35",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\theory_only_35"
+          ],
+          "exit_code": 0,
+          "png_sha256": "04708d9a27e6ddc1debf8a47738ad2b8e981f93ce0d13746eb4f949ff8a6bb90"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "36",
+            "-l",
+            "36",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\theory_only_36"
+          ],
+          "exit_code": 0,
+          "png_sha256": "8d701c76041c13fb342549ca4401a4102338aefe49853e2bc6fadae89479677d"
+        }
+      ],
+      "contact_sheets": [
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\theory_only_sheet_1.png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\theory_only_sheet_2.png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\theory_only_sheet_3.png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\theory_only_sheet_4.png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\theory_only_sheet_5.png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_asymptotics_20261021\\qa\\theory_only_sheet_6.png"
+      ]
+    }
+  ]
+}

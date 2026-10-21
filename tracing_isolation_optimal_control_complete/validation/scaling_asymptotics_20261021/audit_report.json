@@ -1,0 +1,75 @@
+{
+  "batch": "D",
+  "base_commit": "8b8f5a239193f8b5102355f9946b43eaea2b72ea",
+  "checks": [
+    {
+      "name": "generated_numerical_blocks_verbatim",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "existing_equation_blocks_verbatim",
+      "passed": true,
+      "details": {
+        "count": 100,
+        "changed": []
+      }
+    },
+    {
+      "name": "old_manuscript_verbatim_after_removing_additions",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "existing_records_code_figures_validation_byte_identity",
+      "passed": true,
+      "details": {
+        "count": 6645,
+        "changed": []
+      }
+    },
+    {
+      "name": "unique_labels",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "resolved_labels",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "resolved_unique_bibliography",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "old_bibliography_verbatim_prefix",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "main_branch_unchanged",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "tracked_edit_scope",
+      "passed": true,
+      "details": [
+        "tracing_isolation_optimal_control_complete/latex/main.bbl",
+        "tracing_isolation_optimal_control_complete/latex/main.pdf",
+        "tracing_isolation_optimal_control_complete/latex/main.tex",
+        "tracing_isolation_optimal_control_complete/latex/references.bib",
+        "tracing_isolation_optimal_control_complete/latex/theory_only.pdf"
+      ]
+    }
+  ],
+  "passed": 10,
+  "total": 10,
+  "success": true,
+  "optimizer_calls": 0,
+  "ocp_solves": 0,
+  "ode_integrations": 0,
+  "source_sha256": "b24862dbf14dc7c9c019aeed949e6b42164466f3d7e12a0b2cbfe5cc78bd51aa"
+}
