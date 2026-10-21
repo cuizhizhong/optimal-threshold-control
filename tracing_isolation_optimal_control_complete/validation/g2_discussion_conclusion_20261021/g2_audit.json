@@ -1,0 +1,44 @@
+{
+ "labelled_displays_removed": [
+  "eq:joint-cost"
+ ],
+ "labelled_displays_added": [],
+ "labelled_displays_changed": [],
+ "labelled_display_count": 123,
+ "statements_removed": [],
+ "statements_added": [],
+ "statements_changed": [],
+ "statement_count": 76,
+ "unlabelled_displays_only_old": [],
+ "unlabelled_displays_only_new": [],
+ "labels_removed": [
+  "eq:joint-cost",
+  "rem:unproved-extensions"
+ ],
+ "labels_added": [
+  "sec:interpretation",
+  "sec:one-dimensional",
+  "sec:open-problems"
+ ],
+ "refs_without_label": [],
+ "proofs_changed": [
+  "cor:one-dimensional-min",
+  "prop:main-structure",
+  "thm:main-overview"
+ ],
+ "numbers_only_old": {
+  "0": 3,
+  "2": 2,
+  "3.10": 1,
+  "52951116": 1
+ },
+ "numbers_only_new": {
+  "3": 1
+ },
+ "macro_uses_only_old": {},
+ "macro_uses_only_new": {
+  "DabstractSavingZ": 2,
+  "DabstractTimeFillZ": 2,
+  "DabstractTimeOptZ": 2
+ }
+}

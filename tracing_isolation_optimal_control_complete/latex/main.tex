@@ -62,22 +62,16 @@
 \maketitle
 
 \begin{abstract}
-本文研究无回流五仓室跟踪隔离模型中感染阈值约束下的无限时域最小成本控制。
-隔离易感者不返回社区易感仓室，使社区易感者与非隔离感染者构成闭合的二维子系统。
-在接触率为正常数、跟踪比例 $q\in[0,1]$ 的条件下，以社区非隔离感染负荷 $i\le K$ 为约束，
-最小化线性强度成本 $\int_0^\infty\beta cq(t)\dd t$。
-首先，构造覆盖物理状态域的分区反馈，确定不同初值对应的干预阶段及切换位置。
-不安全初值对应等待后完全跟踪，或等待后沿阈值运行再完全跟踪，两类策略均在进入无控制安全集后停止干预，允许部分阶段长度为零。
-其次，通过有限成本轨道的有限时间入集性质和沿轨道的 HJB 验证，证明该反馈在全部可测可行控制中全局最优；
-当容量阶段具有正长度时，最优轨道在 $s_B>h=\gamma/(\beta c)$ 处离开容量边界，转入完全跟踪。
-因此，始终维持感染阈值直至自然感染增长阈值 $s=h$ 并非最低成本的选择。
-最后，由验证等号条件与分段轨道分析，证明最优状态轨道唯一，最优控制在全时间轴上几乎处处唯一。
-固定传播概率的小容量展开表明，在共同容量入口的初值族下，提前离开容量的成本节省是高阶小量，绝对为 $K^2$ 阶、相对为 $K^3$ 阶；
-但它以短时完全跟踪替代纯容量填充末端漫长的低强度维持，使正控制时长缩短，缩短量趋于不随 $K$ 消失的 $1/(\beta\gamma)$。
+本文研究无回流五仓室跟踪隔离模型中，在社区非隔离感染负荷不超过阈值 $K$ 的约束下，以跟踪比例 $q\in[0,1]$ 为控制、最小化线性强度成本 $\int_0^\infty\beta cq(t)\dd t$ 的无限时域问题，其中接触率为正常数。
+隔离易感者不返回社区易感仓室，使社区易感者与非隔离感染者构成闭合的二维系统。
+本文在整个物理状态域上构造显式的分区反馈：不安全初值依次经过不加控制的等待、沿阈值运行和完全跟踪三个阶段，前两个阶段可以缺失，进入无控制安全集后停止干预。
+通过沿轨道的 HJB 验证，本文证明该反馈在全部可测可行控制中全局最优；
+含容量阶段时，最优轨道在 $s_B>h=\gamma/(\beta c)$ 处离开阈值并转入完全跟踪，比维持阈值直至自然感染增长阈值 $s=h$ 更早结束容量阶段。
+容量平台上 Hamiltonian 的点态极小元不唯一，但最优状态轨道仍唯一，最优控制在全时间轴上几乎处处唯一。
+在固定传播概率、具有共同容量入口的初值族下作小容量展开，提前离开阈值的成本节省是高阶小量，绝对为 $K^2$ 阶、相对为 $K^3$ 阶；
+正控制时长的缩短量却趋于不随 $K$ 消失的 $1/(\beta\gamma)$。
 在取自西安拟合参数、$K=0.01$ 的情景中，成本低 $\DabstractSavingZ\%$，正控制时长由 $\DabstractTimeFillZ$ 日缩短至 $\DabstractTimeOptZ$ 日。
-
-五个代表初值在所报告网格上的直接配点结果支持解析预测的阶段顺序、切换位置和成本。
-
+五个代表初值的直接配点计算再现了解析预测的阶段顺序、切换位置和成本。
 \end{abstract}
 \noindent\textbf{关键词：} 跟踪隔离；最优控制；状态约束；HJB 验证；切换曲线；几乎处处唯一性
 \tableofcontents\newpage
@@ -130,7 +124,6 @@ Freddi 系列工作进一步提供了可行域分析与最优性验证的相关�
 阈值 $K$ 是社区非隔离感染负荷上限，其与医疗需求的条件性联系见附录\ref{app:medical-capacity}。
 我们固定 $c,\gamma>0$、$0<\beta<1$ 和 $0<K<1$，以 $q\in[0,1]$ 为唯一控制，
 最小化 $\int_0^\infty\beta cq(t)\dd t$，不预先规定切换次数或阶段顺序。
-无回流假设是二维闭合的条件，下述最优性与唯一性结论均在这一模型范围内成立。
 本文的三项结果如下。
 
 第一，在正初值满足 $s_0+i_0\le1$、$i_0\le K$ 的整个物理状态域上构造分区反馈。
@@ -152,10 +145,13 @@ $0\to1\to0$ 与 $0\to q_B(s)\to1\to0$，其中 $q_B(s)=1-h/s$，$h=\gamma/(\beta
 逐点极小条件不能单独确定唯一控制。
 推论\ref{cor:verification-equality}的验证等号条件、引理\ref{lem:no-early-boundary-exit}的容量弧延续，
 以及切换界面的严格横穿共同排除其他最优延续。
-定理\ref{thm:unique-q}由此证明同一初值的最优状态轨道唯一，最优控制在 $[0,\infty)$ 上几乎处处唯一；
-这一结论不要求孤立切换时刻的控制代表值唯一。
+定理\ref{thm:unique-q}由此证明同一初值的最优状态轨道唯一，最优控制在 $[0,\infty)$ 上几乎处处唯一。
 
-数值部分使用五类代表初值的已保存直接配点结果，对照不同区域下的阶段次序、切换位置和成本。
+本文其余部分安排如下。
+第\ref{sec:model}节建立无回流五仓室模型，并约化为二维控制问题；第\ref{sec:main-results}节陈述主结果与最优分区。
+第\ref{sec:preliminaries}--\ref{sec:uniqueness}节给出证明：第\ref{sec:preliminaries}节建立预备结果并陈述验证原理，第\ref{sec:candidate-construction}节构造候选策略与候选成本，第\ref{sec:optimality}节证明其全局最优性，第\ref{sec:uniqueness}节证明唯一性。
+第\ref{sec:mechanisms}节解释提前离开阈值的机制并给出量级，第\ref{sec:numerics}节用直接配点计算核对五个代表初值，第\ref{sec:discussion}节讨论结果的含义、模型假设与未解决的问题，第\ref{sec:conclusions}节总结全文。
+较长的计算与证明放在附录，数值复现与诊断记录见补充材料。
 
 
 \section{模型与控制问题}
@@ -248,7 +244,7 @@ Carath\'eodory 解全程满足式\eqref{eq:capacity}的控制称为可行控制�
 \section{主结果与最优分区}
 \label{sec:main-results}
 
-预备结果中的适定性定理\ref{thm:wellposed}对一般 $c(t)$ 成立。
+本节在常接触率下陈述主结果，并给出最优分区。
 第\ref{sec:main-results}--\ref{sec:mechanisms}节固定
 \begin{equation}
 c>0,\quad\gamma>0,\quad0<\beta<1,\quad0<K<1,
@@ -270,8 +266,6 @@ V(x)=\inf_{q\in\Uad(x)}J_x(q),\qquad x\in\Dcal.
 \label{eq:value-definition}
 \end{equation}
 
-此处的下确界针对定义\ref{def:admissible}中的全部可测可行控制，不预先限制切换次数。
-
 \subsection{安全集与可行性}
 对 $s>0$、$i>0$，无控制的未来感染峰值为
 \begin{equation}
@@ -283,8 +277,7 @@ V(x)=\inf_{q\in\Uad(x)}J_x(q),\qquad x\in\Dcal.
  \label{eq:uncontrolled-future-peak}
 \end{equation}
 其中 $i^0$ 是从 $(s,i)$ 出发的零控制轨道。
-疾病灭绝轴须另取 $P_0(s,0)=0$，因为此时感染恒为零；
-它不由 $s>h$ 时的正感染分支连续外推，且不属于本文正感染主定理的状态域。
+在灭绝轴 $i=0$ 上感染恒为零，故另取 $P_0(s,0)=0$，它不是 $s>h$ 时正感染分支的连续延拓；灭绝轴不属于主定理的状态域。
 
 
 定义安全集
@@ -319,8 +312,7 @@ $J_{x_0}(q^*)=U(x_0)=V(x_0)$，比较范围为全部可测可行控制。
 从同一初值出发的最优状态轨道唯一，最优控制在 $[0,\infty)$ 上几乎处处唯一。
 \end{theorem}
 \begin{proof}
-这是后文命题\ref{prop:candidate-attainment}、定理\ref{thm:verification}与定理\ref{thm:unique-q}的合并陈述。
-后文先构造几何与候选成本、验证其最优性，再证明唯一性，均不预先使用本概览结论。
+这是命题\ref{prop:candidate-attainment}、定理\ref{thm:verification}与定理\ref{thm:unique-q}的合并陈述，这些结果在第\ref{sec:candidate-construction}--\ref{sec:uniqueness}节独立证明。
 \end{proof}
 
 \begin{proposition}[最优阶段结构与提前离开容量]
@@ -335,7 +327,7 @@ $J_{x_0}(q^*)=U(x_0)=V(x_0)$，比较范围为全部可测可行控制。
 \begin{proof}
 阶段顺序和安全后的零控制由推论\ref{cor:optimal-synthesis}给出；
 切换曲线及其唯一容量交点由命题\ref{prop:Gamma-geometry}、推论\ref{cor:Gamma-labels}给出。
-这些后文结果不预先使用本命题。
+这些结果均在第\ref{sec:candidate-construction}--\ref{sec:uniqueness}节独立证明。
 \end{proof}
 
 表\ref{tab:optimal-stages}列出阶段顺序；分区的精确定义见第\ref{sec:synthesis}节。
@@ -396,7 +388,6 @@ E2 初值 $(0.99,0.01)$ 的示例轨道先自然等待至容量线，再沿 $\ma
 \item 第\ref{sec:uniqueness}节证明唯一性：由验证等号条件（推论\ref{cor:verification-equality}）和容量弧上的延续性质（引理\ref{lem:no-early-boundary-exit}）得到定理\ref{thm:unique-q}；
 这两个中间结果都不依赖唯一性定理本身。
 \end{enumerate}
-第\ref{sec:mechanisms}节中关于一维策略族的比较（推论\ref{cor:one-dimensional-min}）在全局验证之后才陈述，只用于解释机制，不参与上述证明。
 
 \subsection{解的适定性、正性与基本耗散}
 \label{sec:wellposed}
@@ -1729,9 +1720,13 @@ $(\eta_K(\Phi(x_0)),K)$；初值位于 $\mathcal B$ 时该等待阶段长度为�
 \section{机制与量级}
 \label{sec:mechanisms}
 
-
+第\ref{sec:preliminaries}--\ref{sec:uniqueness}节已经证明最优策略的全局最优性与唯一性。
+本节解释最优轨道为什么在 $s_B>h$ 处提前离开阈值，并给出这一效应的量级。
+第\ref{sec:one-dimensional}小节把候选策略写成以开始完全跟踪的位置为参数的一维族，第\ref{sec:switching-mechanism}小节用不变量坐标解释切换条件，第\ref{sec:scaling}小节与纯容量填充比较，并给出小容量渐近和参数量级。
+本节的比较都以已证明的定理为前提，用于解释机制，不参与前文的证明。
 
 \subsection{一维切换成本与全局结论的关系}
+\label{sec:one-dimensional}
 从不安全初值出发，令 $s_1$ 为自然容量触点，并定义候选等待路径
 \[
 i_w(s_c)=
@@ -1755,7 +1750,7 @@ i_0+s_0-s_c+h\ln(s_c/s_0),&s_1\le s_c\le s_0.
 [\Theta(\bar s,\bar i)-\Theta(s_c,K)].\label{eq:JB-derivative}
 \end{align}
 第一式由 $i_w'=(h-s_c)/s_c$ 与 $W_s,W_i$ 得到；第二式对容量成本下限和 $W$ 求导得到。
-驻点条件与切换曲线相同，但驻点计算本身没有替代定理\ref{thm:verification}的全控制类比较。
+两式的驻点条件都与切换曲线的匹配条件相同。
 
 \begin{corollary}[候选策略族中的唯一全局极小]
 \label{cor:one-dimensional-min}
@@ -1771,18 +1766,11 @@ i_0+s_0-s_c+h\ln(s_c/s_0),&s_1\le s_c\le s_0.
 两个不同的 $s_c$ 会在正长度时间区间内给出不同控制。
 定理\ref{thm:unique-q}排除二者同时最优。
 不安全初值的候选最优策略有一段正长度的完全跟踪弧，故纯容量填充 $s_c=h$ 与它不同，不可能最优。
-该推论在验证和唯一性之后使用，因而没有以候选族极小性循环证明全局最优性。
 \end{proof}
-
-固定 $\beta,c,N$ 时，最优 $q$ 的几乎处处唯一性也唯一确定计数模型中的
-易感者移出系数 $c[\beta+(1-\beta)q]/N$ 与非隔离感染者生成系数 $b/N$，其中 $b=\beta c(1-q)$。
-这是模型内的代数对应，不是从观测数据获得统计可识别性的结论。
 
 \subsection{不变量坐标与切换机制}
 \label{sec:switching-mechanism}
-本节采用式\eqref{eq:constants}的常接触率假设。
-利用不变量坐标组织控制轨道的几何比较，沿用 \citet{Angulo2021} 的方法思路；
-本节恒等式由本文的跟踪动力学重新计算，不将不同目标下的策略直接移植到本问题。
+用不变量坐标比较控制轨道的方法沿用 \citet{Angulo2021}；下面的恒等式由本文的跟踪动力学计算。
 在 $i>0,s>p$ 上，式\eqref{eq:Phi-derivative}给出
 \begin{equation}
  \beta cq\dd t=-\frac{\beta\,\mathrm d\Phi}{i(s-p)}.
@@ -1847,9 +1835,7 @@ i_0+s_0-s_c+h\ln(s_c/s_0),&s_1\le s_c\le s_0.
    [\Theta(s,i)-\Theta(\bar s,\bar i)].
  \label{eq:waiting-marginal-cost}
 \end{equation}
-因此 $\Theta(s,i)=\Theta(\bar s,\bar i)$ 恰好使免费等待方向上的后续成本一阶变化为零。
-这解释了切换匹配条件的来源；比较的对象仍是指定策略成本 $W$，
-它在全部可测可行控制中的最优性由定理\ref{thm:verification}另行验证。
+因此 $\Theta(s,i)=\Theta(\bar s,\bar i)$ 恰好使免费等待方向上的后续成本一阶变化为零，这就是切换匹配条件的来源。
 
 还可据此解释为什么容量段不应持续到 $s=h$。
 当 $s_c\downarrow h$ 时，从 $(s_c,K)$ 出发的完全跟踪弧缩向安全边界上的点 $(h,K)$；
@@ -1859,7 +1845,7 @@ i_0+s_0-s_c+h\ln(s_c/s_0),&s_1\le s_c\le s_0.
 因此，当 $s_c$ 足够接近 $h$ 时，整段完全跟踪弧均位于 $i>g(s)$ 一侧，
 由式\eqref{eq:JB-curvature-integral}可得 $\mathcal J_B'(s_c)<0$。
 也就是说，$\mathcal J_B$ 在 $h$ 右侧递减，$h$ 并非极小点；最优轨道应在 $s_B>h$ 处离开容量线。
-这给出推论\ref{cor:one-dimensional-min}的边际成本解释，全局最优性仍由定理\ref{thm:verification}保证。
+这给出推论\ref{cor:one-dimensional-min}的边际成本解释。
 该比较的数值示例见第\ref{sec:scaling}节。
 
 
@@ -1899,7 +1885,7 @@ i_0+s_0-s_c+h\ln(s_c/s_0),&s_1\le s_c\le s_0.
 相对节省为 $\DsavingE\%$，即第\ref{sec:switching-mechanism}节所述提前退出的成本节省。
 相应的 $T_{+,\rm fill}=\DtimeFillE$、$T_+^*=\DtimeOptE$，容量退出位置为
 $h=0.3$ 与 $s_B=\DsbE$，最优解除位置为 $\bar s_B=\DreleaseE$。
-这里的时间单位与参数速率的单位对应；该算例是数学示例。
+时间单位与速率参数的单位一致。
 
 \subsubsection{固定传播概率下的小容量命题}
 \begin{proposition}[小容量的成本与时长标度]
@@ -1943,18 +1929,16 @@ $h=0.3$ 与 $s_B=\DsbE$，最优解除位置为 $\bar s_B=\DreleaseE$。
 差为 $\DtimeDeltaZ$ 日，缩短 $\DtimeReductionZ\%$。
 小 $\beta$ 时，时长差向 $1/(\beta\gamma)$ 的收敛可能很慢：
 西安参数下时长差的极限为 $\DtimeLimitZ$ 日，而 $K=0.01$ 时实际仅为 $\DtimeDeltaZBrief$ 日。
-有限 $K$ 的时长差应直接用式\eqref{eq:common-capacity-comparison}的公共尾段公式计算，不能直接用极限替代。
-正控制时长不是本文的优化目标，成本最优策略并不同时最小化正控制时长。
+因此，有限 $K$ 的时长差应由式\eqref{eq:common-capacity-comparison}的公共尾段公式直接计算。
+还应注意，正控制时长不是本文的优化目标，成本最优策略并不同时最小化正控制时长。
 
-首项用于说明标度，在小 $\beta$ 下不能直接当作有限 $K$ 的准确估计。
-附录的进一步展开给出 $\Delta J$ 首项的相对修正尺度为 $K/(\beta^2h)$。
-以 $\beta=0.155$ 为例，表\ref{tab:parameter-sources}中文献示例的
-$c=10,\gamma=0.3504$ 下，$K=10^{-4}$ 时解析成本差与渐近首项的偏差，
-以该首项为分母仍约为 $\DsmallBetaError\%$；精度随参数与误差指标改变。
-因此，图\ref{fig:scaling}采用解析公式的高精度求值。
+成本差的首项同样只给出标度。
+附录的进一步展开表明，$\Delta J$ 首项的相对修正尺度为 $K/(\beta^2h)$，所以 $\beta$ 较小时首项的精度有限：
+在表\ref{tab:parameter-sources}的文献示例 $\beta=0.155$、$c=10$、$\gamma=0.3504$ 下，即使 $K=10^{-4}$，解析成本差与首项之差以首项为分母仍约为 $\DsmallBetaError\%$。
+因此，图\ref{fig:scaling}的数值均由解析公式高精度求值，而不用渐近首项。
 
 \subsubsection{参数来源与解析扫描}
-表\ref{tab:parameter-sources}区分本文示例、文献估计和本文作者新拟合。
+表\ref{tab:parameter-sources}区分本文的数学示例与文献估计；本文没有新拟合的参数。
 本文 E1--E5 保持原有数学示例的含义。
 \citet[第8节，表1]{Zhou2024SPCI}的西安拟合对应
 $\gamma=\delta_I+\gamma_I=0.1998+0.1006=0.3004$；
@@ -1965,7 +1949,7 @@ $\gamma=\delta_I+\gamma_I=0.1998+0.1006=0.3004$；
 \begin{table}[htbp]
 \centering\small
 \caption{用于解释量级的参数来源。$\beta$ 无量纲；Zhou 等的时间单位为日，
-本文引用其速率时沿用日。文献参数的引用不等于对本稿控制问题重新拟合。}
+本文引用其速率时沿用日。}
 \label{tab:parameter-sources}
 \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{2.8cm}>{\raggedright\arraybackslash}p{3.7cm}>{\raggedright\arraybackslash}X@{}}
 \toprule
@@ -1975,14 +1959,12 @@ $\gamma=\delta_I+\gamma_I=0.1998+0.1006=0.3004$；
 文献模拟示例 & $\beta=0.155$, $c=10$, $\gamma=0.3504$ & Zhou 等图6、图12；用于小概率下的渐近精度核对，不称西安拟合。\\
 文献西安拟合 & $\beta=0.13675$, $c_0=10.1317$, $\gamma=0.3004$ & Zhou 等表1；仅抽取常规接触率构造常参数无回流情景；$q_0=0.4624$ 不用作本文的零控制。\\
 文献六地估计 & $\beta\in[0.1281,0.2544]$ & He--Tang--Xiao 表1；仅说明概率量级，不合并各地或跨文献的拟合参数。\\
-本文作者新拟合 & 无 & 本文不据此表声称新的数据拟合或城市政策复现。\\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 两篇文献的原模型均使用人数仓室，本文统一按 $s=S/N,i=I/N$ 归一化。
-Zhou 等的西安表列出 $S_0=12952907,I_0=2,H_0=1$，未单列独立的 $N$；
-本文的比例初值另行设定，不从该表反推实际初始负荷。
+Zhou 等的西安表列出 $S_0=12952907,I_0=2,H_0=1$，未单列独立的 $N$，因此本文的比例初值另行设定。
 其 $\delta_q=0.2001$ 不进入闭合的 $(s,i)$ 子系统，故不参与以下成本计算。
 He 等基于日度观测估计时变速率，本文仅引用其无量纲 $\beta$，不转用各地人口或速率。
 
@@ -2011,7 +1993,7 @@ He 等基于日度观测估计时变速率，本文仅引用其无量纲 $\beta$
 并另设容量 $K=0.01$，初值仍为 $(0.9999,0.0001)$。
 所得 $J_{\rm fill}=\DfillZ$、$J^*=\DoptZ$、$\Delta J=\DdeltaZ$，
 相对节省为 $\DsavingZ\%$，正控制时长为 $\DtimeFillZ$ 日与 $\DtimeOptZ$ 日。
-该容量和初值属于本文的情景设定，不能解释为西安实际容量、实际初始感染比例或原文时变拟合的复现。
+该容量与初值是本文设定的情景，不对应西安的实际容量或初始感染比例。
 
 
 \section{数值结果}
@@ -2083,8 +2065,7 @@ He 等基于日度观测估计时变速率，本文仅引用其无量纲 $\beta$
 
 本节围绕不同初值区域，比较解析最优策略与直接配点输出，
 重点考察等待阶段、容量弧和完全跟踪阶段的出现顺序及其连接位置。
-算例组织借鉴 \citet[第6节]{AvramFreddiGoreac2022} 的区域展示方式，
-但该文含目标约束的有限时域问题不作为本文截断处理的等价性依据。
+算例组织借鉴 \citet[第6节]{AvramFreddiGoreac2022} 的区域展示方式。
 全局最优性与几乎处处唯一性分别由
 \NumTheoryRef{thm:verification}{验证定理}和
 \NumTheoryRef{thm:unique-q}{唯一性定理}给出；
@@ -2127,30 +2108,17 @@ $s,i$ 为相对于初始总量的比例，允许 $s_0+i_0<1$；
  J_{\mathrm{OCL}}=\beta c\sum_{k=1}^{n}q_k\Delta t_k.
  \label{eq:numerical-cost-sum}
 \end{equation}
-绘图窗口不作为成本积分范围，求解输出不通过平滑或裁剪替换。
 
 对于每个待报告结果，用原始分段常数控制重新积分状态方程，
 检查区间内部的容量峰值、与配点状态的偏差以及终端零控制延拓。
 
-固定 $T=300$ 的直接配点加终端检查是一种终端处理，
-不等同于原无穷时域问题。
-终端检查采用式\eqref{eq:uncontrolled-future-peak}中的无控制未来峰值
-$P_0(s(T),i(T))$，终端状态取自重积分轨道，
-并核查末段控制是否为零。
-若该轨道在 $[0,T]$ 上满足 $i\le K$，且 $P_0(s(T),i(T))\le K$，
-则在 $T$ 之后令 $q=0$，由引理\ref{lem:safe-invariant}的安全集正向不变性，
-所得控制对原无穷时域问题可行，其完整成本为 $J_{\mathrm{OCL}}$，
-从而 $J_{\mathrm{OCL}}\ge V(x_0)$。
-若重积分轨道有最大容量超出 $\varepsilon_K>0$，
-且终端满足 $P_0(s(T),i(T))\le K+\varepsilon_K$，
-则同一延拓只保证对容量 $K+\varepsilon_K$ 可行，
-相应结论为 $J_{\mathrm{OCL}}\ge V_{K+\varepsilon_K}(x_0)$；
-这里 $V_{K'}$ 表示容量为 $K'$ 时的值函数。
-这给出表\ref{tab:numerical-errors}中容量放宽对照的依据。
-上述可行性推论以连续轨道满足相应条件为前提，
-重积分及终端检查本身仍是浮点诊断。
-本文没有证明离散有限时域最优值随网格加密收敛到 $V$，
-也不以这些诊断代替该收敛性结论。
+固定时域 $T=300$ 加终端检查，是对原无穷时域问题的一种终端处理。
+终端检查使用式\eqref{eq:uncontrolled-future-peak}中的无控制未来峰值 $P_0(s(T),i(T))$，终端状态取自重积分轨道，并核查末段控制是否为零。
+若该轨道在 $[0,T]$ 上满足 $i\le K$，且 $P_0(s(T),i(T))\le K$，则在 $T$ 之后令 $q=0$；
+由引理\ref{lem:safe-invariant}的安全集正向不变性，所得控制对原无穷时域问题可行，其完整成本为 $J_{\mathrm{OCL}}$，从而 $J_{\mathrm{OCL}}\ge V(x_0)$。
+若重积分轨道有最大容量超出 $\varepsilon_K>0$，且终端满足 $P_0(s(T),i(T))\le K+\varepsilon_K$，则同一延拓只对容量 $K+\varepsilon_K$ 可行，相应地有 $J_{\mathrm{OCL}}\ge V_{K+\varepsilon_K}(x_0)$，其中 $V_{K'}$ 表示容量为 $K'$ 时的值函数。
+这就是表\ref{tab:numerical-errors}中容量放宽对照的依据。
+这两个不等式要求连续轨道满足相应条件，而重积分本身是浮点计算，所以它们是诊断而不是证明；离散有限时域最优值随网格加密收敛到 $V$，本文未证明。
 
 阶段依据数值控制及容量接近程度识别，切换位置按过渡网格区间报告。
 已有复核改变初始猜测、网格、终止时刻及阶段识别阈值，
@@ -2201,8 +2169,7 @@ E5 & $(0.50,0.15)$ & $\mathcal T\cap\{i=K\}$ & $1\to0$ & \NumJRefEFive & \NumJOc
 $J_{\mathrm{ref}}=V_K(x_0)$ 为解析参考值，相对差为
 $(J_{\mathrm{OCL}}-J_{\mathrm{ref}})/J_{\mathrm{ref}}$。
 按第\ref{sec:numerical-method}节的终端延拓逻辑，
-末列检查成本差是否不小于 $-(V_K-V_{K+\varepsilon_K})$；
-该浮点比较不构成严格连续可行性的证明。}
+末列检查成本差是否不小于 $-(V_K-V_{K+\varepsilon_K})$。}
 \label{tab:numerical-errors}
 \begin{tabular}{@{}crrrrr@{}}
 \toprule
@@ -2244,9 +2211,8 @@ E1 的解析参考为 $(\NumSwitchSEOneRef,\NumSwitchIEOneRef)$，E2 的参考�
 
 \NumFindingParagraph{\NumFindingWaiting}
 
-不存在容量平台与全时域内不接触容量并非同一命题。
-解析策略在安全边界解除后，感染比例可以沿无控制轨道再次上升至 $K$，
-但不超过它；此时 $q=0$，不应将这种后续接触误判为容量控制弧。
+没有容量平台的策略也可能在后期接触容量线：解析策略在安全边界解除控制后，感染比例可以沿无控制轨道再次升至 $K$，但不会超过它。
+这段接触发生在 $q=0$ 时，属于安全集内的自然轨道，而不是容量控制弧。
 
 \subsubsection{立即完全跟踪与容量边界初值}
 
@@ -2275,10 +2241,9 @@ $1\to0$、$q_B\to1\to0$、$1\to0$ 的参考结构，
 \subsubsection{成本、约束误差与剩余残差}
 
 表\ref{tab:numerical-errors}同时报告成本差、重积分容量超出及放宽容量后的值函数下降。
-五例均满足表中的放宽容量成本比较；其中 E4 的负成本差小于容量放宽导致的值函数下降。
-存在容量超出的离散结果不能称为优于解析最优策略的严格可行控制。
-配点与重积分状态的偏差用于诊断动力学离散，
-不等同于数值状态与解析最优轨道之间的误差；切换位置仍应结合过渡网格宽度解释。
+五例均满足放宽容量后的成本比较。
+E4 的成本差为负，但其绝对值小于容量放宽导致的值函数下降，因此它与容量超出相容，并不给出优于解析最优策略的可行控制。
+配点与重积分状态的偏差只反映动力学离散的误差，切换位置则应结合过渡网格的宽度解读。
 
 \NumFindingParagraph{\NumResidualSummary}
 \FloatBarrier
@@ -2286,60 +2251,53 @@ $1\to0$、$q_B\to1\to0$、$1\to0$ 的参考结构，
 \section{讨论}
 \label{sec:discussion}
 
+\subsection{结果的含义}
+\label{sec:interpretation}
+本文最主要的定性结论是最优轨道提前离开阈值。
+在 \citet{MicloSpiroWeibull2022} 的传播率控制中，控制对易感者流出与感染者生成使用同一个系数，最优策略沿感染上限运行，直至易感比例降到自然感染增长阈值。
+跟踪隔离对这两条流量的作用不同：完全跟踪使非隔离感染者不再增加，同时社区易感者仍以速率 $csi$ 减少，比自然传播时更快。
+第\ref{sec:switching-mechanism}节的边际成本分析表明，在这种流量结构下，用一段短时完全跟踪替代纯容量填充末端漫长的低强度维持更省，所以最优轨道在 $s_B>h$ 处转入完全跟踪。
+\citet{Angulo2021} 的末段加强干预来自不同的目标与受限的干预能力；在本文模型中 $q=1$ 总能使感染下降，提前转入完全跟踪完全由成本最小化决定。
 
+这一效应在成本与时长上的量级不同（第\ref{sec:scaling}节）。
+对具有共同容量入口的初值族，成本节省相对纯容量填充是 $K^3$ 阶的小量，所以当 $K$ 较小时，就累计强度成本而言，纯容量填充已接近最优。
+正控制时长的缩短量却趋于 $1/(\beta\gamma)$，不随 $K$ 消失；在西安参数情景中，正控制时长由 $\DabstractTimeFillZ$ 日缩短至 $\DabstractTimeOptZ$ 日，而成本只低 $\DabstractSavingZ\%$。
+因此，两种策略的实际差别主要在于干预持续多久。
+若干预的持续时间本身带有本文成本未计入的代价，例如执行负担或社会成本，提前离开阈值的意义可能大于成本差所显示的程度；
+把持续时间纳入目标函数会改变最优控制问题本身，需要另行研究。
 
-\subsection{同时控制接触率与跟踪比例时的限制}
-若把 $c$ 也作为控制并允许 $c=0$，而仍仅使用 \eqref{eq:linear-cost}，
-则 $c=0,q=0$ 给出零成本可行方案，问题退化。
-联合控制需另行定义接触减少和跟踪成本，例如
-\begin{equation}
-\int_0^T[\alpha_c(c_0-c)^2+\alpha_q q^2+\alpha_{cq}cq]\dd t,
-\label{eq:joint-cost}
-\end{equation}
-并明确控制约束。
-该示例中的权重须另行保证非负性或所需凸性；即使运行成本严格凸，
-动力学中的 $cq$ 项以及非线性状态约束也不会自动给出整个问题的严格凸性。
-本稿不为此扩展声称全局唯一性。
-
-\subsection{模型假设与理论边界}
+\subsection{模型假设与适用范围}
 \label{sec:limitations}
-本稿的 $q=1$ 代表理想化的完美追踪：所有被接触者均被及时追踪并隔离。
-提前离开容量由命题\ref{prop:main-structure}给出，第\ref{sec:switching-mechanism}节的边际成本分解说明其来源。
-这只是既定动力学与成本下的数学结论，不自动适用于含其他健康损失或资源约束的实际决策。
-非隔离感染者阈值 $K$、自然感染增长阈值 $h$、以及出现在不变量中的 $p$ 是不同的量；切换点由特征线上的 $\Theta$ 匹配确定。
+本文的结论建立在以下模型假设之上。
+第一，隔离易感者不返回社区易感仓室；这一假设使 $(s,i)$ 构成闭合的二维系统，全部最优性与唯一性结论都在这一模型范围内成立。
+第二，$q=1$ 表示理想化的完全跟踪：所有被接触者都被及时追踪并隔离，不考虑检测与追踪延迟\citep{Kretzschmar2020}。
+第三，成本\eqref{eq:linear-cost}衡量跟踪的强度与持续时间，不按实际隔离人数计费，也不包含其他健康损失或资源约束；提前离开阈值是这一成本下的数学结论。
+第四，阈值 $K$ 约束的是社区非隔离感染负荷，把它与医疗容量联系起来需要附加的病例需求假设（附录\ref{app:medical-capacity}）。
+第五，分析中的接触率取为常数。
 
-\begin{remark}[本稿未完成、且未用于主定理的扩展证明]
-\label{rem:unproved-extensions}
-任意时变 $c(t)$ 的全域值函数构造、无穷时域终端处理和无条件唯一性未在本稿证明。
-离散网格加密和 $\varepsilon\downarrow0$ 的收敛、时变高峰后的真实安全延拓也未证明。
-跟踪能力受限（$q\le\bar q<1$）时的最优控制未在本稿研究。
-完全跟踪后残余感染生成、隔离者回流、联合控制以及参数不确定的情形仍需另行建立可行域和验证函数。
-特别地，跟踪能力上限为 $\bar q<1$ 时，容量边界还必须满足 $\bar q\ge1-h/s$；
-不能只把本稿的 $1$ 替换成 $\bar q$ 后沿用最优结构定理。
-\end{remark}
-
+\subsection{未解决的问题}
+\label{sec:open-problems}
+本文还留下几个问题，它们都需要重新建立可行域与验证函数。
+首先，接触率随时间变化时，全域值函数的构造、无穷时域的终端处理和唯一性都有待研究。
+其次，若跟踪能力受限，即 $q\le\bar q<1$，容量边界上的可行性还要求 $\bar q\ge1-h/s$，最优结构不能通过把本文的 $1$ 换成 $\bar q$ 直接得到。
+第三，隔离易感者回流会破坏二维闭合，有回流模型的最优控制宜先通过数值方法研究。
+第四，若同时控制接触率与跟踪比例并允许 $c=0$，在线性成本\eqref{eq:linear-cost}下取 $c=0$、$q=0$ 即得零成本可行方案，问题退化；
+联合控制需要另行设定接触减少与跟踪的成本，而且即使运行成本严格凸，动力学中的 $cq$ 项与非线性状态约束也不会使整个问题自动成为凸问题。
+最后，完全跟踪后仍有残余感染生成的不完全跟踪，以及参数不确定的情形，也有待研究。
 
 \section{结论}
 \label{sec:conclusions}
-无回流五仓室模型的社区易感者与非隔离感染者构成闭合二维系统，其中易感者移出与非隔离感染者生成对跟踪比例的响应方向不同。
-在常接触率、线性成本、完整控制区间及正感染初值下，
-本稿从有限可达域、非平凡切换曲线的完整参数化和全域分区出发，构造可行候选成本 $U$。
-两种等待分支的统一梯度、内部匹配和容量水平集论证，给出对所有可测可行控制成立的验证不等式。
-有限成本轨道的有限时间入安全集引理消除了额外终端假设，从而定理\ref{thm:verification}证明 $U=V$。
+本文研究了无回流跟踪隔离模型中感染阈值约束下的最小成本控制。
+隔离易感者不回流使问题约化为社区易感者与非隔离感染者的二维控制问题；在常接触率、线性强度成本和完整控制区间 $q\in[0,1]$ 下，本文在整个物理状态域上给出了最优反馈的显式构造。
+对不安全初值，最优策略依次经过不加控制的等待、沿阈值运行和完全跟踪三个阶段，前两个阶段可以缺失，进入无控制安全集后停止干预（定理\ref{thm:main-overview}、命题\ref{prop:main-structure}）。
+这一反馈在全部可测可行控制中全局最优（定理\ref{thm:verification}）；容量平台上 Hamiltonian 的点态极小元虽不唯一，最优状态轨道仍唯一，最优控制几乎处处唯一（定理\ref{thm:unique-q}）。
 
-最优性与唯一性分别证明。平台上 Hamiltonian 的打平是结构性事实，
-定理\ref{thm:unique-q}通过禁止提前离边、切换界面严格横穿及各段状态方程唯一性，
-证明最优控制在全时间轴上几乎处处唯一。
-允许零长度阶段后，非平凡结构为 $0\to1\to0$ 或 $0\to q_B\to1\to0$；
-安全初值唯一采用 $q=0$。
-基准初值的解析公式数值评价为 $J^*\approx1.52951116$，相对纯容量填充节省约 $3.10\%$。
-数值计算只评价或核对解析构造，不承担全局充分性证明。
+本文的主要定性结论是最优轨道提前离开阈值：含容量阶段时，它在 $s_B>h$ 处转入完全跟踪，而不是维持阈值直至自然感染增长阈值 $s=h$。
+其来源是跟踪隔离对两条流量的不同作用：完全跟踪在阻止新感染的同时让社区易感者继续减少，用一段短时完全跟踪替代纯容量填充末端漫长的低强度维持更省（第\ref{sec:switching-mechanism}节）。
+这一效应在成本上是高阶小量，在时长上却不随容量消失：在西安参数情景中，成本低 $\DabstractSavingZ\%$，正控制时长由 $\DabstractTimeFillZ$ 日缩短至 $\DabstractTimeOptZ$ 日（第\ref{sec:scaling}节）。
+五个代表初值的直接配点计算再现了解析预测的阶段顺序、切换位置和成本（第\ref{sec:numerics}节）。
 
-\ifNumResultsVerified
-五个代表初值的直接配点结果再现了两种等待方式、内部立即完全跟踪，
-以及容量线上切换阈值两侧的不同初始阶段。
-该比较支持所选算例的结构一致性，不构成全域最优性或唯一性的额外证明。
-\fi
+上述结论依赖二维闭合所需的无回流假设和理想化的完全跟踪；有回流模型的数值研究，以及跟踪能力受限与时变接触率下的最优控制，留待今后研究。
 
 \appendix
 \section{完全跟踪成本导数的逐步计算}
@@ -2728,10 +2686,8 @@ K\le K_{\mathrm{med}}:=
 \label{eq:medical-threshold}
 \end{equation}
 是所有满足感染阈值约束的控制均有 $D_{\rm ICU}(t)\le C_{\rm ICU}$ 的充分条件。
-该估计使用整个轨道的统一流入上界，可能偏保守；若 $K_{\mathrm{med}}<i_0$，
-只能说明这一充分条件不能用于当前初值，不能据此判定实际医疗需求必然超过容量。
-条件\eqref{eq:medical-threshold}约束模型中的平均需求，不给出随机超载概率。
-将其用于具体地区时，需要估计病例需求核、初始病例的未来负担和可用容量；本文的数值算例未进行这一医疗标定。
+该估计对整个轨道使用统一的流入上界，因而偏保守；若 $K_{\mathrm{med}}<i_0$，只说明这一充分条件不适用于当前初值。
+条件\eqref{eq:medical-threshold}约束的是模型中的平均需求；用于具体地区时，还需要估计病例需求核、初始病例的未来负担和可用容量。
 
 
 \section{补充材料 S：数值复现、复核与诊断记录}
