@@ -10,7 +10,7 @@
 \usepackage{enumitem,setspace,caption,subcaption,float,placeins,xcolor}
 \usepackage{hyperref}
 \usepackage[numbers,sort&compress]{natbib}
-\usepackage{listings,siunitx,fancyhdr,lastpage}
+\usepackage{listings,siunitx,fancyhdr}
 \graphicspath{{../figures/}}
 \setstretch{1.16}
 \setlength{\parindent}{2em}
@@ -22,7 +22,7 @@
 \setlength{\headheight}{14pt}
 \pagestyle{fancy}\fancyhf{}
 \fancyhead[L]{感染阈值约束下跟踪隔离的全域最优控制}
-\fancyhead[R]{\thepage/\pageref{LastPage}}
+\fancyhead[R]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \newtheorem{theorem}{定理}[section]
 \newtheorem{proposition}[theorem]{命题}
@@ -45,6 +45,8 @@
 \newcommand{\ess}{\operatorname*{ess}}
 \newcommand{\argmin}{\operatorname*{arg\,min}}
 \input{generated/scaling_values.tex}
+% 正控制时长在正文中保留到 0.1。
+\newcommand{\Dur}[1]{\num[round-mode=places,round-precision=1]{#1}}
 \newif\ifNumResultsVerified
 % 放入导言区，紧接原有 \newif\ifNumResultsVerified 之后。
 % 此处只定义新宏；不得在这里为空定义原本由 providecommand 生成的旧宏。
@@ -74,7 +76,6 @@
 五个代表初值的直接配点计算再现了解析预测的阶段顺序、切换位置和成本。
 \end{abstract}
 \noindent\textbf{关键词：} 跟踪隔离；最优控制；状态约束；HJB 验证；切换曲线；几乎处处唯一性
-\tableofcontents\newpage
 
 \section{引言}
 \label{sec:introduction}
@@ -1883,7 +1884,7 @@ i_0+s_0-s_c+h\ln(s_c/s_0),&s_1\le s_c\le s_0.
 例如，原有 E2 的参数为 $\beta=0.5,c=2,\gamma=0.3,K=0.15$，初值为 $(0.99,0.01)$。
 解析公式给出 $J_{\rm fill}=\DfillE$、$J^*=\DoptE$、$\Delta J=\DdeltaE$，
 相对节省为 $\DsavingE\%$，即第\ref{sec:switching-mechanism}节所述提前退出的成本节省。
-相应的 $T_{+,\rm fill}=\DtimeFillE$、$T_+^*=\DtimeOptE$，容量退出位置为
+相应的 $T_{+,\rm fill}=\Dur{\DtimeFillE}$、$T_+^*=\Dur{\DtimeOptE}$，容量退出位置为
 $h=0.3$ 与 $s_B=\DsbE$，最优解除位置为 $\bar s_B=\DreleaseE$。
 时间单位与速率参数的单位一致。
 
@@ -1923,12 +1924,12 @@ $h=0.3$ 与 $s_B=\DsbE$，最优解除位置为 $\bar s_B=\DreleaseE$。
 这一高阶小量不意味着时长效应也随 $K$ 消失：正控制时长差趋于正常数 $1/(\beta\gamma)$。
 纯容量填充接近 $s=h$ 时，$q_B(s)\to0$，需要很长的低强度维持尾段；
 最优策略提前离开容量，以短时完全跟踪替代该尾段，因此成本差与时长差有不同量级。
-例如，E2 的正控制时长由 $\DtimeFillE$ 缩短至 $\DtimeOptE$，
-差为 $\DtimeDeltaE$，以纯填充时长为分母缩短 $\DtimeReductionE\%$；
-西安来源情景中，相应时长由 $\DtimeFillZ$ 日缩短至 $\DtimeOptZ$ 日，
-差为 $\DtimeDeltaZ$ 日，缩短 $\DtimeReductionZ\%$。
+例如，E2 的正控制时长由 $\Dur{\DtimeFillE}$ 缩短至 $\Dur{\DtimeOptE}$，
+差为 $\Dur{\DtimeDeltaE}$，以纯填充时长为分母缩短 $\DtimeReductionE\%$；
+西安来源情景中，相应时长由 $\Dur{\DtimeFillZ}$ 日缩短至 $\Dur{\DtimeOptZ}$ 日，
+差为 $\Dur{\DtimeDeltaZ}$ 日，缩短 $\DtimeReductionZ\%$。
 小 $\beta$ 时，时长差向 $1/(\beta\gamma)$ 的收敛可能很慢：
-西安参数下时长差的极限为 $\DtimeLimitZ$ 日，而 $K=0.01$ 时实际仅为 $\DtimeDeltaZBrief$ 日。
+西安参数下时长差的极限为 $\Dur{\DtimeLimitZ}$ 日，而 $K=0.01$ 时实际仅为 $\Dur{\DtimeDeltaZBrief}$ 日。
 因此，有限 $K$ 的时长差应由式\eqref{eq:common-capacity-comparison}的公共尾段公式直接计算。
 还应注意，正控制时长不是本文的优化目标，成本最优策略并不同时最小化正控制时长。
 
@@ -1978,7 +1979,7 @@ He 等基于日度观测估计时变速率，本文仅引用其无量纲 $\beta$
 不把固定正 $i_0$ 的扫描向 $K<i_0$ 延拓。
 所有值由80位精度的标量方程和闭式弧成本求得；微小收益直接计算公共尾段差，
 不以双精度总成本相减识别 $K^2$ 项。
-\begin{figure}[htbp]
+\begin{figure}[tb]
 \centering
 \includegraphics{scaling/FigD_magnitude.pdf}
 \caption{固定 $\beta c$ 与 $\gamma$ 的无回流解析量级扫描。
@@ -1992,7 +1993,7 @@ He 等基于日度观测估计时变速率，本文仅引用其无量纲 $\beta$
 作为来源明确的另一情景，取 Zhou 等西安拟合的 $\beta,c_0,\gamma$，
 并另设容量 $K=0.01$，初值仍为 $(0.9999,0.0001)$。
 所得 $J_{\rm fill}=\DfillZ$、$J^*=\DoptZ$、$\Delta J=\DdeltaZ$，
-相对节省为 $\DsavingZ\%$，正控制时长为 $\DtimeFillZ$ 日与 $\DtimeOptZ$ 日。
+相对节省为 $\DsavingZ\%$，正控制时长为 $\Dur{\DtimeFillZ}$ 日与 $\Dur{\DtimeOptZ}$ 日。
 该容量与初值是本文设定的情景，不对应西安的实际容量或初始感染比例。
 
 
@@ -2045,7 +2046,7 @@ He 等基于日度观测估计时变速率，本文仅引用其无量纲 $\beta$
 \providecommand{\NumFindingTrackingBoundary}{E3、E4、E5 的实际阶段依次为 $1\to 0$、$q_B\to 1\to 0$ 和 $1\to 0$。E3、E5 均从初始时刻采用完全跟踪。E4 的容量退出区间为 $[1.05,1.0875]$。E2、E4 的理论容量退出时刻均落在上述单网格过渡区间内；首个纯完全跟踪单元的起点仍不等同于连续切换点。}
 \providecommand{\NumCheckStatement}{对原始分段常数控制逐区间重积分后，五例最大容量超出量为 $\num{8e-07}$，与配点状态的最大差异为 $\num{8.6e-08}$；末尾 $20$ 个时间单位内最大控制幅值为 $\num{0}$。各例终端状态均通过零控制安全延拓核查。这些浮点检查用于排查截断及离散问题，不是连续可行性的严格证明。}
 \providecommand{\NumOverallFinding}{五例成本相对解析参考的最大差异约为 $0.00459\%$。计算结果支持这五个初值下的阶段顺序及切换位置预测；切换位置的偏差应结合控制区间宽度和过渡单元解释。E4 的离散成本比解析参考低 $\num{3.68e-06}$，重积分轨道有 $\varepsilon_K=\num{7.7e-07}$ 的容量超出；把容量放宽为 $K+\varepsilon_K$ 后，解析最优值下降 $\num{1.16e-05}$，大于该负差。因此该控制的成本仍不低于放宽容量后的解析最优值，负差与容量超出相容，不构成低于解析最优值的连续时间可行控制。}
-\providecommand{\NumErrorTableRows}{E1 & \num{1.91e-05} & \num{4.59e-03} & \num{2.97e-07} & \num{4.05e-06} & 是 \\ E2 & \num{1.22e-05} & \num{7.98e-04} & \num{7.99e-07} & \num{1.28e-05} & 是 \\ E3 & \num{1.75e-05} & \num{4.03e-03} & \num{4.80e-08} & \num{6.60e-07} & 是 \\ E4 & \num{-3.68e-06} & \num{-2.90e-04} & \num{7.70e-07} & \num{1.16e-05} & 是 \\ E5 & \num{2.32e-05} & \num{4.32e-03} & \num{5.57e-08} & \num{7.76e-07} & 是 \\}
+\providecommand{\NumErrorTableRows}{E1 & \num{1.91e-05} & \num{4.59e-05} & \num{2.97e-07} & \num{4.05e-06} & 是 \\ E2 & \num{1.22e-05} & \num{7.98e-06} & \num{7.99e-07} & \num{1.28e-05} & 是 \\ E3 & \num{1.75e-05} & \num{4.03e-05} & \num{4.80e-08} & \num{6.60e-07} & 是 \\ E4 & \num{-3.68e-06} & \num{-2.90e-06} & \num{7.70e-07} & \num{1.16e-05} & 是 \\ E5 & \num{2.32e-05} & \num{4.32e-05} & \num{5.57e-08} & \num{7.76e-07} & 是 \\}
 \providecommand{\NumResidualSummary}{五例成本相对解析参考差的绝对值最大为 $\num{0.00459}\%$。重积分最大容量超出为 $\num{7.99e-07}$，与配点状态的最大偏差为 $\num{8.57e-08}$。末段最大控制幅值为 $\num{0}$，各例终端状态均通过零控制安全检查。按求解前预定的原判据，数值接受与理论比较同时通过 28/35；按求解后修订的判据，同时通过 30/35；修订只调整浮点接受尺度，不提供新的收敛证据。未通过的网格记录（E2、E4 在 $n=2000$ 的阶段识别异常；E1、E3、E5 在 $n=2000$ 的成本比较未通过）见补充材料。}
 % END AUTO-GENERATED NUMERICAL RESULTS
 \providecommand{\NumMeshDetails}{}
@@ -2173,7 +2174,7 @@ $(J_{\mathrm{OCL}}-J_{\mathrm{ref}})/J_{\mathrm{ref}}$。
 \label{tab:numerical-errors}
 \begin{tabular}{@{}crrrrr@{}}
 \toprule
-算例 & $J_{\mathrm{OCL}}-J_{\mathrm{ref}}$ & \shortstack{相对差\\（\%）} & $\varepsilon_K$ & $V_K-V_{K+\varepsilon_K}$ & \shortstack{是否满足\\$J_{\mathrm{OCL}}\ge V_{K+\varepsilon_K}$}\\
+算例 & $J_{\mathrm{OCL}}-J_{\mathrm{ref}}$ & 相对差 & $\varepsilon_K$ & $V_K-V_{K+\varepsilon_K}$ & \shortstack{是否满足\\$J_{\mathrm{OCL}}\ge V_{K+\varepsilon_K}$}\\
 \midrule
 \NumErrorTableRows
 \bottomrule

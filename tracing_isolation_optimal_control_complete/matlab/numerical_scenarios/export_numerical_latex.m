@@ -251,7 +251,7 @@ function text=error_table_rows(runs)
 rows=cell(1,numel(runs));
 for k=1:numel(runs)
     r=runs{k}; gap=r.J_openocl-r.reference.J_reference;
-    relative=100*r.assessment.relative_cost_difference;
+    relative=r.assessment.relative_cost_difference;
     excess=r.assessment.capacity_excess;
     if isscalar(excess) && isfinite(excess) && excess==0
         drop=0;
