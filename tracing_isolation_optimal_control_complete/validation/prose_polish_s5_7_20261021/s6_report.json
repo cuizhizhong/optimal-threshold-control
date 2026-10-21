@@ -1,0 +1,21 @@
+{
+  "block": "\\section{候选成本满足验证条件} .. \\section{最优控制的唯一性}",
+  "labels_identical": true,
+  "labelled_displays_identical": true,
+  "changed_labelled_displays": [],
+  "statements_identical": true,
+  "statement_count": 6,
+  "unlabelled_displays_identical": true,
+  "unlabelled_only_old": [],
+  "unlabelled_only_new": [],
+  "refs_only_old": [],
+  "refs_only_new": [
+    "eq:H0",
+    "eq:switching-function",
+    "sec:uniqueness"
+  ],
+  "inline_only_old": [
+    "i=K,s>h"
+  ],
+  "inline_only_new_count": 17
+}

@@ -1,0 +1,17 @@
+{
+  "block": "\\section{最优控制的唯一性} .. \\section{机制与量级}",
+  "labels_identical": true,
+  "labelled_displays_identical": true,
+  "changed_labelled_displays": [],
+  "statements_identical": true,
+  "statement_count": 4,
+  "unlabelled_displays_identical": true,
+  "unlabelled_only_old": [],
+  "unlabelled_only_new": [],
+  "refs_only_old": [],
+  "refs_only_new": [
+    "cor:optimal-synthesis"
+  ],
+  "inline_only_old": [],
+  "inline_only_new_count": 16
+}

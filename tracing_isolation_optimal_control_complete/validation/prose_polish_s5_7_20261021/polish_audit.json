@@ -1,0 +1,62 @@
+{
+  "labelled_displays_same_keys": true,
+  "labelled_displays_changed": [],
+  "labelled_display_count": 124,
+  "statements_removed": [],
+  "statements_added": [],
+  "statements_changed": [],
+  "statement_count": 76,
+  "unlabelled_displays_only_old": [],
+  "unlabelled_displays_only_new": [],
+  "proofs_changed": [
+    "cor:Gamma-labels",
+    "cor:optimal-synthesis",
+    "cor:verification-equality",
+    "lem:chi-regions",
+    "lem:no-early-boundary-exit",
+    "lem:strict-crossing",
+    "lem:trajectory-verification",
+    "lem:unimodal",
+    "lem:waiting-HJB",
+    "lem:waiting-gradient",
+    "prop:Gamma-geometry",
+    "prop:W-HJB",
+    "prop:all-HJB",
+    "prop:candidate-attainment",
+    "prop:reachable",
+    "prop:regularity",
+    "thm:unique-q"
+  ],
+  "proof_count": 30,
+  "forward_refs_in_proofs": [
+    [
+      321,
+      "prop:candidate-attainment"
+    ],
+    [
+      321,
+      "thm:verification"
+    ],
+    [
+      321,
+      "thm:unique-q"
+    ],
+    [
+      335,
+      "cor:optimal-synthesis"
+    ],
+    [
+      335,
+      "prop:Gamma-geometry"
+    ],
+    [
+      335,
+      "cor:Gamma-labels"
+    ],
+    [
+      1299,
+      "eq:Lambda-natural"
+    ]
+  ],
+  "g1_markers_left": 0
+}

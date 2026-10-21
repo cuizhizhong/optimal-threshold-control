@@ -1,0 +1,29 @@
+{
+  "block": "\\subsection{完全跟踪成本的有限可达域及导数} .. \\subsection{全域候选反馈与候选成本}",
+  "labels_identical": true,
+  "labelled_displays_identical": true,
+  "changed_labelled_displays": [],
+  "statements_identical": true,
+  "statement_count": 7,
+  "unlabelled_displays_identical": true,
+  "unlabelled_only_old": [],
+  "unlabelled_only_new": [],
+  "refs_only_old": [],
+  "refs_only_new": [
+    "eq:H0-theta",
+    "eq:endpoint-root",
+    "eq:g-minus-i",
+    "eq:q1-cost",
+    "eq:reachable",
+    "eq:theta-log-derivative"
+  ],
+  "inline_only_old": [
+    "O_*",
+    "\\Dcal\\subset\\Omega",
+    "\\Phi_A",
+    "\\mathcal I_z(z)>g(z)",
+    "\\mathcal I_z-g",
+    "a(s_A)=0"
+  ],
+  "inline_only_new_count": 36
+}
