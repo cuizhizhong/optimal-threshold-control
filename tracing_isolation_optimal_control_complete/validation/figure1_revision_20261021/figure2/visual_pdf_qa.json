@@ -1,0 +1,23 @@
+{
+  "reviewer": "figure2_refresh",
+  "documents": [
+    {
+      "name": "FigN2_waiting",
+      "contact_sheet": "comparison_150dpi/FigN2_waiting_before_after.png",
+      "sha256": "587082b5a838fce29ddf2ad26f2529761fa7303b6f611e70620a9a080a450c5c",
+      "dpi": 150,
+      "actually_viewed": true,
+      "conclusion": "前后控制阶段、跳跃、感染轨道、容量线、文字及布局内容一致；PDF文字位移造成微小像素差。"
+    },
+    {
+      "name": "FigN3_boundary_tracking",
+      "contact_sheet": "comparison_150dpi/FigN3_boundary_tracking_before_after.png",
+      "sha256": "eb86e07f826fdfb2eafe502af12dc7c194b4f9da70d7df14ea0224ca4406373f",
+      "dpi": 150,
+      "actually_viewed": true,
+      "conclusion": "前后控制阶段、跳跃、感染轨道、容量线、文字及布局内容一致；PDF文字位移造成微小像素差。"
+    }
+  ],
+  "defects": [],
+  "scope": "只核查N2/N3重导出后内容保持情况；主文图1/图2整页渲染另由本轮总报告记录。"
+}

@@ -1,0 +1,111 @@
+{
+  "base_commit": "54470c531e3214bdf379b073f69593ec47fecb6a",
+  "passed": 17,
+  "total": 17,
+  "success": true,
+  "checks": [
+    {
+      "name": "source_and_data_scope",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "final_figure1_outputs_match_analytic_record",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "unchanged_original_script_and_geometry_inputs",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "geometry_checkpoints",
+      "passed": true,
+      "details": 1.1102230246251565e-16
+    },
+    {
+      "name": "theta_matching",
+      "passed": true,
+      "details": 4.440892098500626e-15
+    },
+    {
+      "name": "four_envelope_tangencies",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "example_three_arc_endpoints",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "final_print_dimensions_and_font_sizes",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "inset_exterior_and_at_least_2cm",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "three_actual_S27_regressions",
+      "passed": true,
+      "details": [
+        11,
+        3,
+        2
+      ]
+    },
+    {
+      "name": "actual_figure2_refresh_and_export",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "zero_optimizer_and_new_OCP",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "N2_N3_content_unchanged",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "final_actual_four_stage_double_build",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "compiled_sources_figures_and_published_outputs_match",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "actual_150dpi_figure_pages",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "visual_review_of_final_pages_and_N2_N3",
+      "passed": true,
+      "details": null
+    }
+  ],
+  "optimizer_calls": 0,
+  "new_ocp_solves": 0,
+  "figure1_ode_integrations": 0,
+  "matlab_processes": 2,
+  "actual_export_regression_tests": [
+    11,
+    3,
+    2
+  ],
+  "final_pages": {
+    "main": 43,
+    "theory_only": 33
+  },
+  "matlab_ODE_note": "原有N2/N3图形流程含analytic_reference积分/ode45；没有另外启动ODE实验，不把全任务ODE次数写为0。"
+}

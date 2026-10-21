@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "xelatex",
+    "-interaction=nonstopmode",
+    "-halt-on-error",
+    "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\figure1_revision_20261021",
+    "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\figure1_revision_20261021\\measure_linewidth.tex"
+  ],
+  "exit_code": 0,
+  "initial_diagnostic_failures": [
+    "Python Path.read_bytes exceeded Windows normal path length when capturing baseline; fixed with extended path reads.",
+    "Premature XeLaTeX probe invocation after failed capture, before input existed; no production files changed."
+  ]
+}

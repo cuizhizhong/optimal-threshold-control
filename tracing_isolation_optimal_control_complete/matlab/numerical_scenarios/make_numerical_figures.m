@@ -32,7 +32,7 @@ hW=plot(ax,s(valid),ib(valid),'k:','LineWidth',mainWidth);
 hK=plot(ax,[.001 1-p.K],[p.K p.K],'k--','LineWidth',auxiliaryWidth);
 % s+i<=1 的边界是 s+i=1；可行侧在直线下方。
 hP=plot(ax,[.75 1],[.25 0],'--','Color',[.6 .6 .6],'LineWidth',auxiliaryWidth);
-hH=xline(ax,g.h,'--','Color',[.6 .6 .6],'LineWidth',auxiliaryWidth,'Alpha',1);
+hH=xline(ax,g.h,'-.','Color',[.6 .6 .6],'LineWidth',auxiliaryWidth,'Alpha',1);
 hNumerical=gobjects(1,5);
 for k=1:5
     rr=r{k}; ix=rr.t_state<=18;
@@ -55,10 +55,12 @@ text(ax,.43,.14,'$\mathcal{T}$','Interpreter','latex','FontSize',12);
 text(ax,g.s_B+.005,p.K+.005,'$s_B$','Interpreter','latex','FontSize',10);
 xlabel(ax,'$s$','Interpreter','latex'); ylabel(ax,'$i$','Interpreter','latex');
 xlim(ax,[.15 1.01]); ylim(ax,[0 .25]);
-lg=legend(ax,[hA hG hW hNumerical(1) hK hP hH],{'$\partial\mathcal{A}$ (theory)','$\Gamma_K$ (theory)', ...
-    '$\Phi=\Phi_B$ (theory)','OpenOCL (E1--E5)','$i=K$','$s+i=1$','$s=h$'}, ...
-    'Interpreter','latex','Location','northeast','NumColumns',1,'Box','off','FontSize',9);
+lg=legend(ax,[hA hG hW hNumerical(1) hK hP hH],{'$\partial\mathcal{A}$','$\Gamma_K$', ...
+    '$\Phi=\Phi_B$','OpenOCL (E1--E5)','$i=K$','$s+i=1$','$s=h$'}, ...
+    'Interpreter','latex','Location','northwest','NumColumns',1,'Box','off','FontSize',9);
 lg.ItemTokenSize=[16 10];
+% 将图例移到 s=h 右侧、i=K 上方，避开两条辅助边界和全部轨道。
+lg.Units='normalized'; lg.Position(1)=ax.Position(1)+ax.Position(3)*(.35-.15)/(1.01-.15);
 style(ax); export(fig,'FigN1_regions',cfg);
 timepanels(r,[1 2],18,'FigN2_waiting',cfg);
 timepanels(r,[3 4 5],8,'FigN3_boundary_tracking',cfg);

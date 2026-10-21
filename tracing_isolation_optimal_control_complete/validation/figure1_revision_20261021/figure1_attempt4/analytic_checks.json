@@ -1,0 +1,164 @@
+{
+  "status": "analytical_geometry_only",
+  "attempt": 4,
+  "optimizer_calls": 0,
+  "ocp_solves": 0,
+  "ode_integrations": 0,
+  "matlab_calls": 0,
+  "parameters": {
+    "beta": 0.5,
+    "c": 2.0,
+    "gamma": 0.3,
+    "K": 0.15
+  },
+  "measurement": {
+    "linewidth_tex_pt": 469.47049,
+    "width_cm": 16.50000061713021,
+    "height_cm": 6.9,
+    "pdf_width_big_pt": 467.7165529265,
+    "insertion_scale": 1.0000000000000546,
+    "tick_font_pt": 8,
+    "axis_label_font_pt": 9,
+    "region_font_pt": [
+      9,
+      10
+    ],
+    "inset_xlim": [
+      0.42,
+      0.6
+    ],
+    "inset_ylim": [
+      0.1,
+      0.16
+    ],
+    "inset_width_cm": 5.032500188224714,
+    "inset_Gamma_horizontal_span_cm": 2.197832018208756,
+    "inset_does_not_overlap_main_axes": true
+  },
+  "geometry": {
+    "h": 0.3,
+    "ell": 0.15,
+    "p": 0.15,
+    "s_A": 0.7073030021837696,
+    "s_e": 0.46908414634252626,
+    "z_B": 0.4516637862455485,
+    "s_B": 0.5476951246795451,
+    "Phi_A": 0.8111918412977808,
+    "Phi_B": 0.8783060712821368
+  },
+  "checkpoint_errors": {
+    "h": 0.0,
+    "ell": 0.0,
+    "p": 0.0,
+    "s_A": 1.1102230246251565e-16,
+    "s_e": 1.1102230246251565e-16,
+    "z_B": 0.0,
+    "s_B": 1.1102230246251565e-16,
+    "Phi_A": 0.0,
+    "Phi_B": 1.1102230246251565e-16
+  },
+  "checkpoint_max_absolute_error": 1.1102230246251565e-16,
+  "theta_max_absolute_residual": 4.440892098500626e-15,
+  "envelopes": [
+    {
+      "qbar": 0.0,
+      "h_qbar": 0.3,
+      "envelope_at_h": 0.15,
+      "tangency_value_residual": 0.0,
+      "tangency_right_derivative": 0.0,
+      "zero_s": 0.7073030021837696,
+      "physical_intersection_s": null,
+      "infeasible_area": 0.05580213220604403,
+      "complete_D_area": 0.13874999999999998,
+      "infeasible_fraction_complete_D": 0.40217752941293,
+      "area_quadrature_error": 6.195281199832707e-16
+    },
+    {
+      "qbar": 0.1,
+      "h_qbar": 0.3333333333333333,
+      "envelope_at_h": 0.15,
+      "tangency_value_residual": 0.0,
+      "tangency_right_derivative": 0.0,
+      "zero_s": 0.8144613128581256,
+      "physical_intersection_s": null,
+      "infeasible_area": 0.044051945721159926,
+      "complete_D_area": 0.13874999999999998,
+      "infeasible_fraction_complete_D": 0.31749150069304455,
+      "area_quadrature_error": 4.89074844191694e-16
+    },
+    {
+      "qbar": 0.2,
+      "h_qbar": 0.37499999999999994,
+      "envelope_at_h": 0.15,
+      "tangency_value_residual": 0.0,
+      "tangency_right_derivative": 0.0,
+      "zero_s": 0.9476453724946328,
+      "physical_intersection_s": null,
+      "infeasible_area": 0.02944242578682776,
+      "complete_D_area": 0.13874999999999998,
+      "infeasible_fraction_complete_D": 0.21219766332848838,
+      "area_quadrature_error": 3.2687659009353624e-16
+    },
+    {
+      "qbar": 0.4,
+      "h_qbar": 0.5,
+      "envelope_at_h": 0.15,
+      "tangency_value_residual": 0.0,
+      "tangency_right_derivative": 0.0,
+      "zero_s": 1.3446348259338727,
+      "physical_intersection_s": 0.8944145310460281,
+      "infeasible_area": 0.005403786180230633,
+      "complete_D_area": 0.13874999999999998,
+      "infeasible_fraction_complete_D": 0.03894620670436493,
+      "area_quadrature_error": 5.999407837443275e-17
+    }
+  ],
+  "trajectory": {
+    "x0": [
+      0.99,
+      0.01
+    ],
+    "capacity_contact": [
+      0.7775221610386437,
+      0.15
+    ],
+    "capacity_end": [
+      0.5476951246795451,
+      0.15
+    ],
+    "release": [
+      0.45166378624554854,
+      0.12108289155035945
+    ],
+    "endpoint_residuals": {
+      "capacity_contact_Phi": 0.0,
+      "natural_starts_at_x0": 4.5102810375396984e-17,
+      "natural_ends_at_capacity": 8.326672684688674e-17,
+      "capacity_ends_at_s_B": 0.0,
+      "tracking_starts_at_s_B_K": 0.0,
+      "tracking_ends_at_safety": 2.7755575615628914e-17,
+      "release_matches_z_B": 5.551115123125783e-17,
+      "full_tracking_Psi": 5.551115123125783e-17
+    },
+    "all_sampled_points_in_D": true
+  },
+  "optional_hold_until_h_segment": "omitted_for_legibility",
+  "sources_sha256": {
+    "validation\\figure1_revision_20261021\\make_figure1.py": "a22e7fb3e5adeb46baa8cc74ed57a3f00d594319ff3def4cee8985cdf70fa992",
+    "validation\\geometry_proofs_20261021\\make_two_layer_phase.py": "3882e17ebd1a16aabf567c68c0a876dbb2e997b9dc583cffe6670af71b2161bb",
+    "validation\\numerical_scenarios\\scenario_inputs.json": "2db6c37435a78d719c0bbb5b3b70840076e56fbbb0fe0b8b64aaa33cfc0b0488",
+    "validation\\numerical_scenarios\\analytic_checkpoints.json": "d7195c0f65ffeda05e3f133116c3f5472857819bf67b37605f1a9e60a5631deb"
+  },
+  "baseline_outputs_sha256": {
+    ".pdf": "d295b67cc826e6967a0c6f86ab03e76007955b140fde587f600c712ee891aa26",
+    ".png": "3bb2d6e8073b0699a0992df43e017d8a0075b0447e9c5dc8ead7b1424c4865d4"
+  },
+  "immediately_before_outputs_sha256": {
+    ".pdf": "b16a24a89f5004996f09e97e51f70f6e1f6242742b86d1d07304ccd39c67e84d",
+    ".png": "ac1c7d848fc339906f8ce3e139b7006a932a8c9f46e55b0bc996d58385201d39"
+  },
+  "outputs_sha256": {
+    "figures\\numerical_scenarios\\FigN1_two_layers.pdf": "9f4d03c113e4e8e7028df44aeb0d126abb0af86cd8f2e3c63f836bfcc37e79b7",
+    "figures\\numerical_scenarios\\FigN1_two_layers.png": "b4bd544843a575f0bac9b562b986c10722316a911641b74331c46cfa46731f5e"
+  }
+}

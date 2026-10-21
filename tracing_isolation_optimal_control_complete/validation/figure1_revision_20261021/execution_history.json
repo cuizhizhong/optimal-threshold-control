@@ -1,0 +1,82 @@
+{
+  "preflight_issues": [
+    {
+      "operation": "baseline capture",
+      "failure": "Windows Path.read_bytes normal path length exceeded for long assessment file",
+      "resolution": "extended \\?\\ path reads; all1294baseline hashes captured"
+    },
+    {
+      "operation": "premature linewidth probe after failed capture",
+      "failure": "input file not yet created, XeLaTeX exited1",
+      "resolution": "created probe and ran argv list via subprocess successfully; width469.47049pt"
+    },
+    {
+      "operation": "dependency probes",
+      "failure": "bundled Python has no matplotlib; Anaconda has no pypdf",
+      "resolution": "use Anaconda matplotlib/scipy; newfigure script reads its uncompressed MediaBox without pypdf dependency"
+    }
+  ],
+  "figure1_attempts": [
+    {
+      "attempt": 1,
+      "status": "failed_before_overwrite",
+      "reason": "Mathtext requires braces for mathcal",
+      "resolution": "added braces"
+    },
+    {
+      "attempt": 2,
+      "status": "passed",
+      "reason": "initial complete plot; review requested moving T and qbar labels"
+    },
+    {
+      "attempt": 3,
+      "status": "failed_before_overwrite",
+      "reason": "OSError22 on direct PDF open(wb)",
+      "resolution": "render into new attempt folder and atomically replace authorized outputs"
+    },
+    {
+      "attempt": 4,
+      "status": "passed",
+      "reason": "T and inset improved; review found qbar0/.1 label bbox crosses adjacent envelope"
+    },
+    {
+      "attempt": 5,
+      "status": "passed_final",
+      "reason": "moved both labels, added thin same-color pointers; independent bbox audit passed"
+    }
+  ],
+  "build_attempts": [
+    {
+      "attempt": 1,
+      "tex_processes": 8,
+      "all_tex_exit0": true,
+      "pages": [
+        43,
+        33
+      ],
+      "status": "passed_then_superseded_by_final_label_adjustment"
+    },
+    {
+      "attempt": 2,
+      "tex_processes": 8,
+      "all_tex_exit0": true,
+      "pages": [
+        43,
+        33
+      ],
+      "status": "final_compilation_passed",
+      "publication_error": "OSError22 on direct main.pdf replacement",
+      "publication_recovery": "--publish-existing atomic replacement; no extra TeX processes; original failure report retained"
+    }
+  ],
+  "matlab_processes": 2,
+  "matlab_exit_codes": [
+    0,
+    0
+  ],
+  "optimizer_calls": 0,
+  "new_ocp_solves": 0,
+  "figure1_ode_integrations": 0,
+  "stop_conditions_triggered": false,
+  "thresholds_relaxed": false
+}

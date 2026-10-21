@@ -1,0 +1,32 @@
+{
+  "base_commit": "54470c531e3214bdf379b073f69593ec47fecb6a",
+  "figure1_authorized_overwrite": [
+    {
+      "path": "figures/numerical_scenarios/FigN1_two_layers.pdf",
+      "before_sha256": "d295b67cc826e6967a0c6f86ab03e76007955b140fde587f600c712ee891aa26",
+      "after_sha256": "f79eec930f0ca8b2e9fca8be2a3545fd969adcc83e89cacb037bd269eeb47226"
+    },
+    {
+      "path": "figures/numerical_scenarios/FigN1_two_layers.png",
+      "before_sha256": "3bb2d6e8073b0699a0992df43e017d8a0075b0447e9c5dc8ead7b1424c4865d4",
+      "after_sha256": "a98ce380adf3f359d94ece02d04bdec25419a168aa69c78a60fcdf96c9fc01a8"
+    }
+  ],
+  "figure2_and_N2_N3_record": "figure2/after_report.json",
+  "current_production_sha256": {
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/export_provenance.json": "40bdfc0f5615973b3ec70791d4abd3a63aaa7517434ab2050398bb83dcd3f9f6",
+    "tracing_isolation_optimal_control_complete/data/numerical_scenarios/figure_provenance.json": "c563dcf98ed7c7729197f7cf87d243c5775592ac7bdc397db1d738b4aeaa04dc",
+    "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_regions.pdf": "2895a76602d8d98bb9a2d6105b7c33399e0ab433d0497ee7dbd0af9990a53b3e",
+    "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_regions.png": "3eeca5468e6d09f15f358d8aeb10b2a51c1baf8d276093930b1d9a426ebcf880",
+    "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_two_layers.pdf": "f79eec930f0ca8b2e9fca8be2a3545fd969adcc83e89cacb037bd269eeb47226",
+    "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_two_layers.png": "a98ce380adf3f359d94ece02d04bdec25419a168aa69c78a60fcdf96c9fc01a8",
+    "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN2_waiting.pdf": "04141129be11e4492cf53d2027a6c39e41151a01e6315fce4c79cf488adbd1dc",
+    "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN2_waiting.png": "358ff93fcc674da54439c960a6dcdb19e857800bfb2e7dd29bf13b81189df025",
+    "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN3_boundary_tracking.pdf": "f3c3a8773f442ba45e6c839fc3603106938f6a974cf3b163edcd7e6c65c188e4",
+    "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN3_boundary_tracking.png": "d957f5493a0778623d7785e8d4cb3d37ea95c1f6f3f10bc1af8c7269b6d51009",
+    "tracing_isolation_optimal_control_complete/latex/main.pdf": "489456302b799d4989013f191f83eb8e3831eca45665c1984d1fedc81f0ffc6c",
+    "tracing_isolation_optimal_control_complete/latex/main.tex": "7d80f52f9081f768e355a0160478985d86334c8611a84ba5f3f41bf86a7a8826",
+    "tracing_isolation_optimal_control_complete/latex/theory_only.pdf": "c0098840cd9fa2d0f1b5f9319f4fb83652cfbe4a4320c537773c341752525023",
+    "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/make_numerical_figures.m": "82a35f38542e72a7a83cc28b7d06835c7fa499c9916677a229d1575bf24b6226"
+  }
+}

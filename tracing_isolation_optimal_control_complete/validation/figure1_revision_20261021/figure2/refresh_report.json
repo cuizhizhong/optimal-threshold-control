@@ -1,0 +1,15 @@
+{
+  "status": "completed",
+  "verified": true,
+  "optimizer_executions": 0,
+  "scientific_solves": 0,
+  "formal_latex_content_unchanged": true,
+  "figure_code_hash": "aed6a807005715f7a2e7278b262f2f90495ef1f466a60c1deba6f8a7b79b463c",
+  "selected_run_ids": [
+    "run_90557e2d9fa045528eddf70fec1f17cc",
+    "run_be88a14b0f1a4a80a12ea40d2e9e18db",
+    "run_b5125bf7309e446d9ff6146d257d28c0",
+    "run_67ce8234939a4f4b81aa86ca7b197b74",
+    "run_3f672e8955914131af6d36a208c67727"
+  ]
+}

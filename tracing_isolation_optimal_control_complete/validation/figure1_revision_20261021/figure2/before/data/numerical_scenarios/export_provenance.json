@@ -1,0 +1,43 @@
+{
+  "kind": "export",
+  "code_hash": "2c177377372f4df1cf01ecf7208b6b951a9c1dd78b8b7ac28bbc3a915f69ab73",
+  "source_files": [
+    {
+      "path": "export_numerical_latex.m",
+      "sha256": "fc23f6a3e5bfaf033e15ab2b0ef3da6f279ed3b8b01df5a131b68c6bf933c602"
+    },
+    {
+      "path": "load_selected_numerical_runs.m",
+      "sha256": "f39078b83e3f0bb9b57f80f153261bef35869cfe39c5af090440aa55fa9c5291"
+    },
+    {
+      "path": "compare_neutral_initialization.m",
+      "sha256": "783221b8019fff7c6b7b2d195344f238bce44a21c16274dce808c33dcbdeb1af"
+    },
+    {
+      "path": "capacity_exit_transition.m",
+      "sha256": "eb01395da3d72a7e12e892ae5b1fe00a3dc36d9d2a863718eee2039df999de45"
+    },
+    {
+      "path": "numerical_main_verification.m",
+      "sha256": "c36c8c7ae6b4303927407a966040ef67802b3816c8a0fd92d283564a580d8565"
+    },
+    {
+      "path": "numerical_additional_verification.m",
+      "sha256": "6c8a4950aeb7e2e093d15cb714bfe3b8b6fc3e9480be5180669cc35d6a6867e3"
+    },
+    {
+      "path": "numerical_normalize_parameters.m",
+      "sha256": "e4ad279b17c1db240b29ea95e36ded04469990911cb1987f87a9ab241d83035e"
+    }
+  ],
+  "exported_utc": "2026-10-20T13:39:28.130Z",
+  "selection_manifest_hash": "8f9ed00bfc3fec0c8ad94129ccad9ea1748ba8c0777b6436402a0201401780da",
+  "selected_run_ids": [
+    "run_90557e2d9fa045528eddf70fec1f17cc",
+    "run_be88a14b0f1a4a80a12ea40d2e9e18db",
+    "run_b5125bf7309e446d9ff6146d257d28c0",
+    "run_67ce8234939a4f4b81aa86ca7b197b74",
+    "run_3f672e8955914131af6d36a208c67727"
+  ]
+}

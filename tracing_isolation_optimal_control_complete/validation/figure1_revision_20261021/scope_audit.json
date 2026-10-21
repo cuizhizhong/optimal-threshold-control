@@ -1,0 +1,206 @@
+{
+  "base_commit": "54470c531e3214bdf379b073f69593ec47fecb6a",
+  "status": "pass",
+  "passed": 18,
+  "total": 18,
+  "checks": [
+    {
+      "name": "baseline_capture_commit",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "main_tex_only_two_caption_changes",
+      "passed": true,
+      "details": {
+        "before_outside_captions_sha256": "83fb6b5253e51f753da03ab505292388e3ee4c76d1147c3f5c4622ddf83c6ee8",
+        "after_outside_captions_sha256": "83fb6b5253e51f753da03ab505292388e3ee4c76d1147c3f5c4622ddf83c6ee8",
+        "changed_labels": [
+          "fig:two-layer-regions",
+          "fig:numerical-regions"
+        ]
+      }
+    },
+    {
+      "name": "two_auto_generated_blocks_unchanged",
+      "passed": true,
+      "details": {
+        "blocks": [
+          {
+            "name": "NUMERICAL REFERENCE VALUES",
+            "sha256": "f031a4e1d49c1459ffbb4b6667569ee55abed1984bfca467539806ed4fe8b57a"
+          },
+          {
+            "name": "NUMERICAL RESULTS",
+            "sha256": "f5d75880dc9f78ce63b4fe33c55c5a8f63ecfe10e0bec811441e9a6168b7c531"
+          }
+        ]
+      }
+    },
+    {
+      "name": "figure1_linewidth_insertion_unchanged",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "matlab_exactly_authorized_line_style_and_legend_edits",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "N2_N3_time_series_functions_unchanged",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "N2_N3_time_series_calls_unchanged",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "OpenOCL_legend_retained_without_theory_suffix",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "data_except_two_provenance_sha256_unchanged",
+      "passed": true,
+      "details": {
+        "checked_files": 438,
+        "mismatches": []
+      }
+    },
+    {
+      "name": "historical_validation_sha256_unchanged",
+      "passed": true,
+      "details": {
+        "checked_files": 785,
+        "mismatches": []
+      }
+    },
+    {
+      "name": "other_protected_sha256_unchanged",
+      "passed": true,
+      "details": {
+        "checked_files": 60,
+        "mismatches": []
+      }
+    },
+    {
+      "name": "old_figure1_generator_unchanged_against_git",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "selected_run_ids_and_selection_hash_unchanged",
+      "passed": true,
+      "details": {
+        "selected_run_ids": [
+          "run_90557e2d9fa045528eddf70fec1f17cc",
+          "run_be88a14b0f1a4a80a12ea40d2e9e18db",
+          "run_b5125bf7309e446d9ff6146d257d28c0",
+          "run_67ce8234939a4f4b81aa86ca7b197b74",
+          "run_3f672e8955914131af6d36a208c67727"
+        ],
+        "selection_manifest_hash": "8f9ed00bfc3fec0c8ad94129ccad9ea1748ba8c0777b6436402a0201401780da"
+      }
+    },
+    {
+      "name": "export_provenance_only_timestamp_updated",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "figure_provenance_only_derived_hashes_and_timestamp_updated",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "figure_provenance_output_hashes_current",
+      "passed": true,
+      "details": {
+        "outputs": [
+          {
+            "path": "figures/numerical_scenarios/FigN1_regions.pdf",
+            "expected": "2895a76602d8d98bb9a2d6105b7c33399e0ab433d0497ee7dbd0af9990a53b3e",
+            "actual": "2895a76602d8d98bb9a2d6105b7c33399e0ab433d0497ee7dbd0af9990a53b3e"
+          },
+          {
+            "path": "figures/numerical_scenarios/FigN1_regions.png",
+            "expected": "3eeca5468e6d09f15f358d8aeb10b2a51c1baf8d276093930b1d9a426ebcf880",
+            "actual": "3eeca5468e6d09f15f358d8aeb10b2a51c1baf8d276093930b1d9a426ebcf880"
+          },
+          {
+            "path": "figures/numerical_scenarios/FigN2_waiting.pdf",
+            "expected": "04141129be11e4492cf53d2027a6c39e41151a01e6315fce4c79cf488adbd1dc",
+            "actual": "04141129be11e4492cf53d2027a6c39e41151a01e6315fce4c79cf488adbd1dc"
+          },
+          {
+            "path": "figures/numerical_scenarios/FigN2_waiting.png",
+            "expected": "358ff93fcc674da54439c960a6dcdb19e857800bfb2e7dd29bf13b81189df025",
+            "actual": "358ff93fcc674da54439c960a6dcdb19e857800bfb2e7dd29bf13b81189df025"
+          },
+          {
+            "path": "figures/numerical_scenarios/FigN3_boundary_tracking.pdf",
+            "expected": "f3c3a8773f442ba45e6c839fc3603106938f6a974cf3b163edcd7e6c65c188e4",
+            "actual": "f3c3a8773f442ba45e6c839fc3603106938f6a974cf3b163edcd7e6c65c188e4"
+          },
+          {
+            "path": "figures/numerical_scenarios/FigN3_boundary_tracking.png",
+            "expected": "d957f5493a0778623d7785e8d4cb3d37ea95c1f6f3f10bc1af8c7269b6d51009",
+            "actual": "d957f5493a0778623d7785e8d4cb3d37ea95c1f6f3f10bc1af8c7269b6d51009"
+          }
+        ]
+      }
+    },
+    {
+      "name": "tracked_change_scope",
+      "passed": true,
+      "details": {
+        "changed": [
+          "tracing_isolation_optimal_control_complete/data/numerical_scenarios/export_provenance.json",
+          "tracing_isolation_optimal_control_complete/data/numerical_scenarios/figure_provenance.json",
+          "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_regions.pdf",
+          "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_regions.png",
+          "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_two_layers.pdf",
+          "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_two_layers.png",
+          "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN2_waiting.pdf",
+          "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN2_waiting.png",
+          "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN3_boundary_tracking.pdf",
+          "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN3_boundary_tracking.png",
+          "tracing_isolation_optimal_control_complete/latex/main.pdf",
+          "tracing_isolation_optimal_control_complete/latex/main.tex",
+          "tracing_isolation_optimal_control_complete/latex/theory_only.pdf",
+          "tracing_isolation_optimal_control_complete/matlab/numerical_scenarios/make_numerical_figures.m"
+        ],
+        "outside_scope": []
+      }
+    },
+    {
+      "name": "new_figure1_source_only_scalar_root_and_quadrature",
+      "passed": true,
+      "details": {
+        "scipy_imports": [
+          [
+            "scipy.integrate",
+            [
+              "quad"
+            ]
+          ],
+          [
+            "scipy.optimize",
+            [
+              "brentq"
+            ]
+          ]
+        ],
+        "forbidden_calls": [],
+        "note": "brentq 为解析标量方程求根；quad 为解析面积积分。此项是源代码审计，不冒充运行期调用统计。"
+      }
+    }
+  ],
+  "scope": "source_and_data_only",
+  "build_and_regression_execution_assessed": false,
+  "text_comparison": "Git LF canonical bytes; no whitespace or content normalization beyond CRLF to LF",
+  "source_audit_sha256": "110bf604e0f3f429e2387c46d1fe6008c11a90d80bdeb046f8beae48118836ec"
+}

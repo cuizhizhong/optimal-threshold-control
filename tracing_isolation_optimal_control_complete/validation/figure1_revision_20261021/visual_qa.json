@@ -1,0 +1,46 @@
+{
+  "passed": true,
+  "reviewer": "primary agent",
+  "dpi": 150,
+  "final_page_count": 3,
+  "pages": [
+    {
+      "document": "main",
+      "page": 8,
+      "png_sha256": "4bec01a13f09198b6a718cfd137b1a584f26d73b9769fac02d387b9fe5e1abee",
+      "passed": true
+    },
+    {
+      "document": "main",
+      "page": 31,
+      "png_sha256": "bd7aa728ea5aa54d4a3e33de1b214da5e9d801857d0bffe86c375df787068d0b",
+      "passed": true
+    },
+    {
+      "document": "theory_only",
+      "page": 7,
+      "png_sha256": "fe053368db5a6823f02b1c28aee1457a8d16c3bf8fb5bcab98837fa9ce284d9f",
+      "passed": true
+    }
+  ],
+  "observations": [
+    "图1刻度、数学标签在最终正文尺寸可读；四个qbar标签不压包络。",
+    "图1外置插图不遮挡主图；Gamma跨度约2.20cm，T不压容量线。",
+    "图2灰色点划线与虚线可辨；图例位于i>K且在s=h右侧，没有压线。",
+    "两稿图注完整、无裁切或溢出。"
+  ],
+  "N2_N3_individually_compared": true,
+  "N2_N3_contact_sheets": [
+    {
+      "path": "validation\\figure1_revision_20261021\\figure2\\comparison_150dpi\\FigN2_waiting_before_after.png",
+      "sha256": "587082b5a838fce29ddf2ad26f2529761fa7303b6f611e70620a9a080a450c5c",
+      "content_unchanged": true
+    },
+    {
+      "path": "validation\\figure1_revision_20261021\\figure2\\comparison_150dpi\\FigN3_boundary_tracking_before_after.png",
+      "sha256": "eb86e07f826fdfb2eafe502af12dc7c194b4f9da70d7df14ea0224ca4406373f",
+      "content_unchanged": true
+    }
+  ],
+  "scope_note": "只目视本轮三张正文页与N2/N3前后对照，不声称目视整稿。"
+}

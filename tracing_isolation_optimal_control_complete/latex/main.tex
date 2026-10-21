@@ -351,10 +351,14 @@ $\mathcal B$ & 已在容量平台，维持至 $s_B$ 后完全跟踪 & $q_B\to1\t
 \begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{numerical_scenarios/FigN1_two_layers.pdf}
-\caption{两层几何。左图为 $\mathcal A^0=\Acal$、受限能力的 $\mathcal V_{\bar q}$ 与 $\mathcal V_1=\Dcal$；
-右图为 $q\in[0,1]$ 下的成本最优分区，图中曲线均按解析公式计算。
-参数为 $\beta=0.5,c=2,\gamma=0.3,K=0.15$，左图另取 $\bar q=0.4$。
-点线 $s=h$ 为自然感染增长阈值，虚线 $s+i=1$ 为物理总量边界。}
+\caption{两层几何，参数为 $\beta=0.5,c=2,\gamma=0.3,K=0.15$。
+(a) 受限能力 $\bar q=0,0.1,0.2,0.4$ 的嵌套可行包络，均按 $0\le i\le K$、$s+i\le1$ 截断；
+$\bar q=0$ 对应安全边界 $\partial\Acal$，容量线上的数字标出各切点 $h_{\bar q}$。
+(b) $q\in[0,1]$ 下的成本最优分区。蓝线为从 E2 初值 $(0.99,0.01)$ 出发的解析最优轨道，
+依次自然等待、沿容量弧到 $s_B$、完全跟踪至 $\partial\Acal$，箭头表示演化方向；
+下方插图放大虚框内 $s\in[0.42,0.60]$、$i\in[0.10,0.16]$ 的切换角区。
+绿色实线为 $\partial\Acal$，黑色实线为 $\Gamma_K$，黑色点线为 $\Phi=\Phi_B$，黑色虚线为 $i=K$；
+灰色点划线为 $s=h$，灰色虚线为 $s+i=1$。全部曲线与轨道均由解析公式计算。}
 \label{fig:two-layer-regions}
 \end{figure}
 
@@ -2074,7 +2078,8 @@ E5 & $(0.50,0.15)$ & $\mathcal T\cap\{i=K\}$ & $1\to0$ & \NumJRefEFive & \NumJOc
 \NumFigureOrBlank{FigN1_regions.pdf}{4.2cm}
 \caption{理论分区与直接配点轨道的相平面对照。
 图中叠加 E1--E5 的初始点和 OpenOCL 轨道，并标出安全边界、切换曲线 $\Gamma_K$、
-容量线 $i=K$ 及两种等待区的公共边界。理论曲线与数值轨道采用不同线型或标记。}
+容量线 $i=K$ 及两种等待区的公共边界。理论曲线与数值轨道采用不同线型或标记；
+灰色点划线为 $s=h$，灰色虚线为 $s+i=1$。}
 \label{fig:numerical-regions}
 \end{figure}
 

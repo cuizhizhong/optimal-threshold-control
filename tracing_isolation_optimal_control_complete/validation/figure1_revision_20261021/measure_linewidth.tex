@@ -1,0 +1,65 @@
+% Mathematical clarification of the constant-contact-rate theory.
+% Merge base: cuizhizhong/optimal-threshold-control@f33f8b591cefb8226e2c4196d739b841c368fb47
+% Base main.tex Git blob: 51aaa6b923b92f22a7039b42bab713cf46264530
+% Compile from this directory with XeLaTeX + BibTeX.
+% Define \TheoryOnly before input to omit the numerical figures and nonautonomous discussion.
+\documentclass[11pt,a4paper,UTF8]{ctexart}
+\usepackage[a4paper,margin=2.25cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{graphicx}
+\usepackage{booktabs,longtable,array,tabularx,multirow}
+\usepackage{enumitem,setspace,caption,subcaption,float,placeins,xcolor}
+\usepackage{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{listings,siunitx,fancyhdr,lastpage}
+\graphicspath{{../figures/}}
+\setstretch{1.16}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.18em}
+\setlist{nosep,leftmargin=2.4em}
+\captionsetup{font=small,labelfont=bf}
+\hypersetup{colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,
+ urlcolor=blue!55!black,pdftitle={感染阈值约束下跟踪隔离的全域最优控制},pdfauthor={Technical report}}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{感染阈值约束下跟踪隔离的全域最优控制}
+\fancyhead[R]{\thepage/\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}[theorem]{命题}
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{corollary}[theorem]{推论}
+\newtheorem{assumption}[theorem]{假设}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{定义}
+\newtheorem{remark}[theorem]{注}
+\newtheorem{example}[theorem]{例}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Acal}{\mathcal A}
+\newcommand{\Dcal}{\mathcal D}
+\newcommand{\Gcal}{\mathcal G}
+\newcommand{\Uad}{\mathcal U_{\mathrm{ad}}}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\e}{\mathrm e}
+\newcommand{\one}{\mathbf 1}
+\newcommand{\proj}{\operatorname{Proj}}
+\newcommand{\ess}{\operatorname*{ess}}
+\newcommand{\argmin}{\operatorname*{arg\,min}}
+% 在 TheoryOnly 跳过数值输入时也保持条件命令已定义。
+\newif\ifNumResultsVerified
+% 放入导言区，紧接原有 \newif\ifNumResultsVerified 之后。
+% 此处只定义新宏；不得在这里为空定义原本由 providecommand 生成的旧宏。
+\newif\ifNumRobustnessComplete
+\NumRobustnessCompletefalse
+\newcommand{\NumRobustnessStatement}{}
+\newcommand{\NumReproducibilityDetails}{}
+
+
+\lstset{basicstyle=\ttfamily\small,frame=single,breaklines=true,columns=fullflexible,showstringspaces=false}
+\title{\bfseries 感染阈值约束下跟踪隔离的全域最优控制}
+\author{技术分析报告}
+\date{2026年9月19日}
+\begin{document}
+\typeout{FIGUREONE_LINEWIDTH_PT=\the\linewidth}
+\typeout{FIGUREONE_TEXTWIDTH_PT=\the\textwidth}
+\mbox{}\end{document}

@@ -1,0 +1,195 @@
+{
+  "status": "passed",
+  "main_tex_byte_identical_to_preexport": true,
+  "main_tex_check_scope": "刚完成实际导出、尚未修改图注时的完整字节快照",
+  "main_after_export_snapshot_sha256": "560af8a739625d0baccd3ae31d6876946a9cc0180fd931db41b6b85b70e61df5",
+  "regression_test_counts": [
+    11,
+    3,
+    2
+  ],
+  "optimizer_executions": 0,
+  "scientific_solves": 0,
+  "data_files_checked": 300,
+  "data_changes": [
+    {
+      "path": "data/numerical_scenarios/export_provenance.json",
+      "before": "5a160cf063f67f52aacd26760e65a4fed0df30ad538b9dd6738bde06265139bb",
+      "after": "40bdfc0f5615973b3ec70791d4abd3a63aaa7517434ab2050398bb83dcd3f9f6"
+    },
+    {
+      "path": "data/numerical_scenarios/figure_provenance.json",
+      "before": "a947633e8d7d588463a72501e485849b6908b4b9790bfe96195191ada1971b06",
+      "after": "c563dcf98ed7c7729197f7cf87d243c5775592ac7bdc397db1d738b4aeaa04dc"
+    }
+  ],
+  "protected_data_unchanged": true,
+  "file_hashes": [
+    {
+      "path": "latex/main.tex",
+      "before": "560af8a739625d0baccd3ae31d6876946a9cc0180fd931db41b6b85b70e61df5",
+      "after_export_snapshot": "560af8a739625d0baccd3ae31d6876946a9cc0180fd931db41b6b85b70e61df5"
+    },
+    {
+      "path": "data/numerical_scenarios/figure_provenance.json",
+      "before": "a947633e8d7d588463a72501e485849b6908b4b9790bfe96195191ada1971b06",
+      "after": "c563dcf98ed7c7729197f7cf87d243c5775592ac7bdc397db1d738b4aeaa04dc"
+    },
+    {
+      "path": "data/numerical_scenarios/export_provenance.json",
+      "before": "5a160cf063f67f52aacd26760e65a4fed0df30ad538b9dd6738bde06265139bb",
+      "after": "40bdfc0f5615973b3ec70791d4abd3a63aaa7517434ab2050398bb83dcd3f9f6"
+    },
+    {
+      "path": "figures/numerical_scenarios/FigN1_regions.pdf",
+      "before": "a38146707856cf24893b6f5748f51be846e8a9778a46b6cb18ee7ce165427b06",
+      "after": "2895a76602d8d98bb9a2d6105b7c33399e0ab433d0497ee7dbd0af9990a53b3e"
+    },
+    {
+      "path": "figures/numerical_scenarios/FigN1_regions.png",
+      "before": "31ae72e75cb48aa89b76c987873ace2954772fa3156b3011ca40eee383a56652",
+      "after": "3eeca5468e6d09f15f358d8aeb10b2a51c1baf8d276093930b1d9a426ebcf880"
+    },
+    {
+      "path": "figures/numerical_scenarios/FigN2_waiting.pdf",
+      "before": "84b4ed01024b8aa9e4a01c4c8388976da296fad8b93ea4d892b14dfaacaff021",
+      "after": "04141129be11e4492cf53d2027a6c39e41151a01e6315fce4c79cf488adbd1dc"
+    },
+    {
+      "path": "figures/numerical_scenarios/FigN2_waiting.png",
+      "before": "77bc457623f20b9413cffd10d6d6ed63b78c2432803d44e474a2ac748362d176",
+      "after": "358ff93fcc674da54439c960a6dcdb19e857800bfb2e7dd29bf13b81189df025"
+    },
+    {
+      "path": "figures/numerical_scenarios/FigN3_boundary_tracking.pdf",
+      "before": "89ba0a7a7eb5f3f4d8e23cb6a89b85ec83eb68e66e1a6aa28d9d64ce34d360c9",
+      "after": "f3c3a8773f442ba45e6c839fc3603106938f6a974cf3b163edcd7e6c65c188e4"
+    },
+    {
+      "path": "figures/numerical_scenarios/FigN3_boundary_tracking.png",
+      "before": "53302e48b7aac1e3b02379209bbc9b3cae3208ca4588c8bcafe0da62344997f6",
+      "after": "d957f5493a0778623d7785e8d4cb3d37ea95c1f6f3f10bc1af8c7269b6d51009"
+    }
+  ],
+  "figure_provenance_matches_actual_source_and_outputs": true,
+  "comparison_commands": [
+    {
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-r",
+        "150",
+        "-png",
+        "-singlefile",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\figure1_revision_20261021\\figure2\\before\\figures\\numerical_scenarios\\FigN2_waiting.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\figure1_revision_20261021\\figure2\\comparison_150dpi\\FigN2_waiting_before"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-r",
+        "150",
+        "-png",
+        "-singlefile",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\figures\\numerical_scenarios\\FigN2_waiting.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\figure1_revision_20261021\\figure2\\comparison_150dpi\\FigN2_waiting_after"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-r",
+        "150",
+        "-png",
+        "-singlefile",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\figure1_revision_20261021\\figure2\\before\\figures\\numerical_scenarios\\FigN3_boundary_tracking.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\figure1_revision_20261021\\figure2\\comparison_150dpi\\FigN3_boundary_tracking_before"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-r",
+        "150",
+        "-png",
+        "-singlefile",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\figures\\numerical_scenarios\\FigN3_boundary_tracking.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\figure1_revision_20261021\\figure2\\comparison_150dpi\\FigN3_boundary_tracking_after"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "unchanged_content_figures": [
+    {
+      "name": "FigN2_waiting",
+      "png": {
+        "shape": [
+          1218,
+          1986,
+          3
+        ],
+        "changed_pixels": 1,
+        "max_channel_difference": 26,
+        "mean_channel_difference": 6.201042767351758e-06
+      },
+      "pdf_render_150dpi": {
+        "shape": [
+          615,
+          1000,
+          3
+        ],
+        "changed_pixels": 1961,
+        "max_channel_difference": 222,
+        "mean_channel_difference": 0.35522276422764226
+      },
+      "pdf_content_stream": {
+        "operation_count": 12316,
+        "changed_operations": 14,
+        "changed_operator_names": [
+          "Td"
+        ],
+        "max_text_horizontal_displacement_change_in_drawing_units": 1.0,
+        "all_operations_except_text_displacements_identical": true,
+        "extracted_text_identical": true
+      },
+      "contact_sheet": "comparison_150dpi/FigN2_waiting_before_after.png"
+    },
+    {
+      "name": "FigN3_boundary_tracking",
+      "png": {
+        "shape": [
+          1218,
+          1993,
+          3
+        ],
+        "changed_pixels": 1,
+        "max_channel_difference": 4,
+        "mean_channel_difference": 9.612186714804499e-07
+      },
+      "pdf_render_150dpi": {
+        "shape": [
+          615,
+          1003,
+          3
+        ],
+        "changed_pixels": 2274,
+        "max_channel_difference": 222,
+        "mean_channel_difference": 0.42374502508733963
+      },
+      "pdf_content_stream": {
+        "operation_count": 16689,
+        "changed_operations": 11,
+        "changed_operator_names": [
+          "Td"
+        ],
+        "max_text_horizontal_displacement_change_in_drawing_units": 1.0,
+        "all_operations_except_text_displacements_identical": true,
+        "extracted_text_identical": true
+      },
+      "contact_sheet": "comparison_150dpi/FigN3_boundary_tracking_before_after.png"
+    }
+  ]
+}

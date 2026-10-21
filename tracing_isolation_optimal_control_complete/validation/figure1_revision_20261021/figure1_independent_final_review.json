@@ -1,0 +1,200 @@
+{
+  "status": "independent_final_review_pass",
+  "figure1_attempt": 5,
+  "script_sha256": "28fe0d13e28a2c866597dcd75d1ba415298aa378d153fcd223ecea3b91882a3a",
+  "outputs_sha256": {
+    "figures\\numerical_scenarios\\FigN1_two_layers.pdf": "f79eec930f0ca8b2e9fca8be2a3545fd969adcc83e89cacb037bd269eeb47226",
+    "figures\\numerical_scenarios\\FigN1_two_layers.png": "a98ce380adf3f359d94ece02d04bdec25419a168aa69c78a60fcdf96c9fc01a8"
+  },
+  "visually_inspected": "latest FigN1_two_layers.png at native resolution through view_image; no claim of manuscript-page 150 dpi inspection in this independent record",
+  "measurement": {
+    "linewidth_tex_pt": 469.47049,
+    "width_cm": 16.50000061713021,
+    "height_cm": 6.9,
+    "pdf_width_big_pt": 467.7165529265,
+    "insertion_scale": 1.0000000000000546,
+    "tick_font_pt": 8,
+    "axis_label_font_pt": 9,
+    "region_font_pt": [
+      9,
+      10
+    ],
+    "inset_xlim": [
+      0.42,
+      0.6
+    ],
+    "inset_ylim": [
+      0.1,
+      0.16
+    ],
+    "inset_width_cm": 5.032500188224714,
+    "inset_Gamma_horizontal_span_cm": 2.197832018208756,
+    "inset_does_not_overlap_main_axes": true
+  },
+  "geometry_vs_independent_60_digit_max_float_error": 1.1102230246251565e-16,
+  "geometry_vs_analytic_checkpoint_max_error": 1.1102230246251565e-16,
+  "theta_max_absolute_residual": 4.440892098500626e-15,
+  "background_classification_test": {
+    "physical_interior_points": 102757,
+    "mismatches": 0,
+    "expected_class_counts": {
+      "A": 48697,
+      "WG": 13747,
+      "T": 2822,
+      "WK": 37491
+    },
+    "test_method": "new stacked fill intervals compared to original conditional region classifier, using the same sampled analytic Gamma for interface interpolation"
+  },
+  "direct_label_regions": [
+    {
+      "symbol": "A",
+      "position": [
+        0.23,
+        0.05
+      ],
+      "expected_region": "A",
+      "actual_region": "A",
+      "pass_check": true
+    },
+    {
+      "symbol": "W_Gamma",
+      "position": [
+        0.615,
+        0.073
+      ],
+      "expected_region": "WG",
+      "actual_region": "WG",
+      "pass_check": true
+    },
+    {
+      "symbol": "W_K",
+      "position": [
+        0.8,
+        0.065
+      ],
+      "expected_region": "WK",
+      "actual_region": "WK",
+      "pass_check": true
+    },
+    {
+      "symbol": "T",
+      "position": [
+        0.478,
+        0.134
+      ],
+      "expected_region": "T",
+      "actual_region": "T",
+      "pass_check": true
+    },
+    {
+      "symbol": "A_inset",
+      "position": [
+        0.437,
+        0.109
+      ],
+      "expected_region": "A",
+      "actual_region": "A",
+      "pass_check": true
+    },
+    {
+      "symbol": "W_Gamma_inset",
+      "position": [
+        0.558,
+        0.112
+      ],
+      "expected_region": "WG",
+      "actual_region": "WG",
+      "pass_check": true
+    }
+  ],
+  "qbar_text_curve_bbox_checks": [
+    {
+      "qbar": 0.0,
+      "text_bbox_data": [
+        [
+          0.41195868587981566,
+          0.07455980700509038
+        ],
+        [
+          0.4938348241510205,
+          0.08613857690425712
+        ]
+      ],
+      "curves_crossing_text_bbox": [],
+      "pass": true
+    },
+    {
+      "qbar": 0.1,
+      "text_bbox_data": [
+        [
+          0.5101783320782276,
+          0.03590695775135623
+        ],
+        [
+          0.6193628411137595,
+          0.04779866737752747
+        ]
+      ],
+      "curves_crossing_text_bbox": [],
+      "pass": true
+    },
+    {
+      "qbar": 0.2,
+      "text_bbox_data": [
+        [
+          0.7936201516292523,
+          0.0664821538041888
+        ],
+        [
+          0.9060394466767314,
+          0.07806092370335556
+        ]
+      ],
+      "curves_crossing_text_bbox": [],
+      "pass": true
+    },
+    {
+      "qbar": 0.4,
+      "text_bbox_data": [
+        [
+          0.8936201516292521,
+          0.11167171088660942
+        ],
+        [
+          1.0060053962976583,
+          0.12325048078577615
+        ]
+      ],
+      "curves_crossing_text_bbox": [],
+      "pass": true
+    }
+  ],
+  "T_text_bbox_data": [
+    [
+      0.4779999999999999,
+      0.1311803885291397
+    ],
+    [
+      0.48781836774007753,
+      0.1430854147394388
+    ]
+  ],
+  "T_text_top_below_i_K": true,
+  "inset_outside_main_axes": true,
+  "final_visual_findings": {
+    "math_only_labels_and_panels": true,
+    "qbar_labels_with_same_color_leaders_avoid_text_curve_collisions": true,
+    "T_text_not_on_capacity_line": true,
+    "inset_does_not_obscure_main_curves": true,
+    "h_and_sB_axis_marks_readable": true,
+    "three_stage_arrows_correct_s_decreasing_direction": true,
+    "curve_styles_match_requested_pattern": true,
+    "no_blocking_findings": true
+  },
+  "corrected_intermediate_finding": "Attempt4 qbar0 and qbar0.1 direct text intersected neighboring envelopes; attempt5 moved both text labels and added same-color leaders, confirmed by curve-to-text bbox checks.",
+  "optional_counterfactual_segment": "omitted_for_legibility (matches analytic_checks.json)",
+  "optimizer_executions": 0,
+  "new_OCP_solves": 0,
+  "ODE_integrations": 0,
+  "MATLAB_executions": 0
+}

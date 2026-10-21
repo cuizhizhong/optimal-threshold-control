@@ -1,0 +1,116 @@
+{
+  "kind": "figure",
+  "code_hash": "a94babfea49a78e6ebafd87b8e704449b94989902826c0db0946a1a3cba42af4",
+  "source_files": [
+    {
+      "path": "make_numerical_figures.m",
+      "sha256": "e1799197219f181f0c00e6809f22cbcd429c7f1103f52d0a6d183eebd98442b3"
+    },
+    {
+      "path": "build_theory_geometry.m",
+      "sha256": "eb19409d75472a8c2b237e6b768462b8f0ba2ef1d37db878a130f08d5f881339"
+    },
+    {
+      "path": "analytic_reference.m",
+      "sha256": "d9751e16bc081c984180f1fd9bc4e98a4c1f4b24d7e902de3050f0a87d75c0d5"
+    },
+    {
+      "path": "classify_initial_state.m",
+      "sha256": "aed1cad79ee7da56095315180887145755d6d7039d8a2035a246937e929ebd53"
+    },
+    {
+      "path": "safe_peak.m",
+      "sha256": "c813849393aad2470f2216eb78a90ddefdc514a5c63e48312fa9845c2a130a08"
+    },
+    {
+      "path": "load_selected_numerical_runs.m",
+      "sha256": "f39078b83e3f0bb9b57f80f153261bef35869cfe39c5af090440aa55fa9c5291"
+    },
+    {
+      "path": "numerical_normalize_parameters.m",
+      "sha256": "e4ad279b17c1db240b29ea95e36ded04469990911cb1987f87a9ab241d83035e"
+    }
+  ],
+  "exported_utc": "2026-10-20T13:39:08.764Z",
+  "selection_manifest_hash": "8f9ed00bfc3fec0c8ad94129ccad9ea1748ba8c0777b6436402a0201401780da",
+  "selected_run_ids": [
+    "run_90557e2d9fa045528eddf70fec1f17cc",
+    "run_be88a14b0f1a4a80a12ea40d2e9e18db",
+    "run_b5125bf7309e446d9ff6146d257d28c0",
+    "run_67ce8234939a4f4b81aa86ca7b197b74",
+    "run_3f672e8955914131af6d36a208c67727"
+  ],
+  "figures": [
+    {
+      "name": "FigN1_regions",
+      "case_ids": [
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5"
+      ],
+      "run_ids": [
+        "run_90557e2d9fa045528eddf70fec1f17cc",
+        "run_be88a14b0f1a4a80a12ea40d2e9e18db",
+        "run_b5125bf7309e446d9ff6146d257d28c0",
+        "run_67ce8234939a4f4b81aa86ca7b197b74",
+        "run_3f672e8955914131af6d36a208c67727"
+      ],
+      "outputs": [
+        {
+          "file": "figures/numerical_scenarios/FigN1_regions.pdf",
+          "sha256": "a38146707856cf24893b6f5748f51be846e8a9778a46b6cb18ee7ce165427b06"
+        },
+        {
+          "file": "figures/numerical_scenarios/FigN1_regions.png",
+          "sha256": "31ae72e75cb48aa89b76c987873ace2954772fa3156b3011ca40eee383a56652"
+        }
+      ]
+    },
+    {
+      "name": "FigN2_waiting",
+      "case_ids": [
+        "E1",
+        "E2"
+      ],
+      "run_ids": [
+        "run_90557e2d9fa045528eddf70fec1f17cc",
+        "run_be88a14b0f1a4a80a12ea40d2e9e18db"
+      ],
+      "outputs": [
+        {
+          "file": "figures/numerical_scenarios/FigN2_waiting.pdf",
+          "sha256": "84b4ed01024b8aa9e4a01c4c8388976da296fad8b93ea4d892b14dfaacaff021"
+        },
+        {
+          "file": "figures/numerical_scenarios/FigN2_waiting.png",
+          "sha256": "77bc457623f20b9413cffd10d6d6ed63b78c2432803d44e474a2ac748362d176"
+        }
+      ]
+    },
+    {
+      "name": "FigN3_boundary_tracking",
+      "case_ids": [
+        "E3",
+        "E4",
+        "E5"
+      ],
+      "run_ids": [
+        "run_b5125bf7309e446d9ff6146d257d28c0",
+        "run_67ce8234939a4f4b81aa86ca7b197b74",
+        "run_3f672e8955914131af6d36a208c67727"
+      ],
+      "outputs": [
+        {
+          "file": "figures/numerical_scenarios/FigN3_boundary_tracking.pdf",
+          "sha256": "89ba0a7a7eb5f3f4d8e23cb6a89b85ec83eb68e66e1a6aa28d9d64ce34d360c9"
+        },
+        {
+          "file": "figures/numerical_scenarios/FigN3_boundary_tracking.png",
+          "sha256": "53302e48b7aac1e3b02379209bbc9b3cae3208ca4588c8bcafe0da62344997f6"
+        }
+      ]
+    }
+  ]
+}
