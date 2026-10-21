@@ -156,6 +156,8 @@ end
 pending{end+1}=macro('NumFindingTrackingBoundary',boundary);
 pending{end+1}=macro('NumCheckStatement',checktext);
 pending{end+1}=macro('NumOverallFinding',finding);
+pending{end+1}=macro('NumErrorTableRows',error_table_rows(runs));
+pending{end+1}=macro('NumResidualSummary',residual_summary(cfg,runs,robustness,verified));
 mainPath=fullfile(cfg.paths.latex,'main.tex');
 text=fileread(mainPath);
 text=replace_generated_block(text, ...
@@ -186,7 +188,8 @@ suffix={'One','Two','Three','Four','Five'};
 for k=1:numel(suffix)
     body{end+1}=macro(['NumJOclE' suffix{k}],'--'); %#ok<AGROW>
 end
-names={'NumFindingWaiting','NumFindingTrackingBoundary','NumCheckStatement','NumOverallFinding'};
+names={'NumFindingWaiting','NumFindingTrackingBoundary','NumCheckStatement','NumOverallFinding', ...
+    'NumErrorTableRows','NumResidualSummary'};
 for k=1:numel(names), body{end+1}=macro(names{k},''); end %#ok<AGROW>
 names={'NumExitETwoStart','NumExitETwoEnd','NumExitEFourStart','NumExitEFourEnd', ...
     'NumNeutralETwoCostDifference','NumEFourSignedCostDifference','NumEFourCapacityExcess'};
@@ -241,6 +244,93 @@ s=['\renewcommand{\' name '}{' value '}'];
 end
 function s=finite_text(value,format)
 if isscalar(value) && isfinite(value), s=sprintf(format,value); else, s='--'; end
+end
+
+function text=error_table_rows(runs)
+% 只取已选主结果；容量放宽量由已有解析公式计算，不调用优化器或重新评估。
+rows=cell(1,numel(runs));
+for k=1:numel(runs)
+    r=runs{k}; gap=r.J_openocl-r.reference.J_reference;
+    relative=100*r.assessment.relative_cost_difference;
+    excess=r.assessment.capacity_excess;
+    if isscalar(excess) && isfinite(excess) && excess==0
+        drop=0;
+    else
+        drop=relaxed_capacity_drop(r);
+    end
+    judgement='--';
+    if isscalar(gap) && isfinite(gap) && isscalar(drop) && isfinite(drop)
+        if gap>=-drop, judgement='是'; else, judgement='否'; end
+    end
+    rows{k}=[r.case_id ' & ' error_number(gap) ' & ' error_number(relative) ...
+        ' & ' error_number(excess) ' & ' error_number(drop) ' & ' judgement ' \\'];
+end
+text=strjoin(rows,' ');
+end
+
+function text=error_number(value)
+if isscalar(value) && isfinite(value)
+    if value==0, valueText='0'; else, valueText=sprintf('%.2e',value); end
+    text=['\num{' valueText '}'];
+else
+    text='--';
+end
+end
+
+function text=residual_summary(cfg,runs,robustness,verified)
+% 缺失完整资料或只含待执行夹具时，不继承正式五例的计数与结论。
+text='';
+if ~verified || ~isfield(robustness,'original_criterion_source') || ...
+        ~isfield(robustness.groups,'grid') || ~robustness.groups.grid.available, return; end
+root=fileparts(fileparts(fileparts(mfilename('fullpath'))));
+source=robustness.original_criterion_source;
+original=jsondecode(fileread(fullfile(root,source.project_relative_path)));
+grid=jsondecode(fileread(fullfile(cfg.paths.data,'revision_checks','grid_summary.json')));
+cap=max(cellfun(@(r) r.assessment.capacity_excess,runs));
+state=max(cellfun(@(r) r.assessment.state_discrepancy,runs));
+relative=100*max(cellfun(@(r) abs(r.assessment.relative_cost_difference),runs));
+tail=max(cellfun(@(r) r.assessment.tail_max_q,runs));
+terminalSafe=all(cellfun(@(r) isfield(r.assessment,'terminal_safe') && ...
+    isscalar(r.assessment.terminal_safe) && r.assessment.terminal_safe,runs));
+text=sprintf('五例成本相对解析参考差的绝对值最大为 $\\num{%.3g}\\%%$。',relative);
+text=[text sprintf(['重积分最大容量超出为 $\\num{%.3g}$，' ...
+    '与配点状态的最大偏差为 $\\num{%.3g}$。'],cap,state)];
+if terminalSafe
+    text=[text sprintf('末段最大控制幅值为 $\\num{%.3g}$，各例终端状态均通过零控制安全检查。',tail)];
+else
+    text=[text sprintf('末段最大控制幅值为 $\\num{%.3g}$，终端零控制安全检查未全部通过。',tail)];
+end
+text=[text sprintf(['按求解前预定的原判据，数值接受与理论比较同时通过 %d/%d；' ...
+    '按求解后修订的判据，同时通过 %d/%d；' ...
+    '修订只调整浮点接受尺度，不提供新的收敛证据。'], ...
+    original.original_counts.both_pass,original.original_counts.records, ...
+    robustness.numeric_and_agreement_pass_count,robustness.recorded_configuration_count)];
+coarseN=min([grid.rows.N]); structureFailures={}; costFailures={};
+for k=1:numel(grid.rows)
+    row=grid.rows(k); if row.N~=coarseN, continue; end
+    ix=find(strcmp({cfg.cases.id},row.case_id)); assert(isscalar(ix));
+    if ~strcmp(row.observed_structure,cfg.cases(ix).expected_structure)
+        structureFailures{end+1}=row.case_id; %#ok<AGROW>
+    end
+    originalRow=original.rows(strcmp({original.rows.run_id},row.run_id));
+    assert(isscalar(originalRow),'numerical:RevisionSourceMismatch','Missing original grid record.');
+    costRelative=abs((row.J_openocl-originalRow.J_reference)/originalRow.J_reference);
+    if costRelative>cfg.check.relative_cost_tolerance
+        costFailures{end+1}=row.case_id; %#ok<AGROW>
+    end
+end
+diagnostics={};
+if ~isempty(structureFailures)
+    diagnostics{end+1}=sprintf('%s 在 $n=%d$ 的阶段识别异常',strjoin(structureFailures,'、'),coarseN);
+end
+if ~isempty(costFailures)
+    diagnostics{end+1}=sprintf('%s 在 $n=%d$ 的成本比较未通过',strjoin(costFailures,'、'),coarseN);
+end
+if isempty(diagnostics)
+    text=[text '完整网格比较和诊断记录见补充材料。'];
+else
+    text=[text '未通过的网格记录（' strjoin(diagnostics,'；') '）见补充材料。'];
+end
 end
 
 function [out,text,details]=saved_robustness(cfg,main,spec)

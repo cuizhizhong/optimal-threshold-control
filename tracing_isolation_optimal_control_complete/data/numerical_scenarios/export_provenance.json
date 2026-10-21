@@ -1,10 +1,10 @@
 {
   "kind": "export",
-  "code_hash": "2c177377372f4df1cf01ecf7208b6b951a9c1dd78b8b7ac28bbc3a915f69ab73",
+  "code_hash": "4a38f48d740bb7a2c7723e7514292b60da2faac3c6aed084ba52621a7ae38d5f",
   "source_files": [
     {
       "path": "export_numerical_latex.m",
-      "sha256": "fc23f6a3e5bfaf033e15ab2b0ef3da6f279ed3b8b01df5a131b68c6bf933c602"
+      "sha256": "8a74d4f626df30f0f2de0e411477e53a279ca9913bac75f14e30e8a854bc1a4f"
     },
     {
       "path": "load_selected_numerical_runs.m",
@@ -31,7 +31,7 @@
       "sha256": "e4ad279b17c1db240b29ea95e36ded04469990911cb1987f87a9ab241d83035e"
     }
   ],
-  "exported_utc": "2026-10-21T01:16:57.195Z",
+  "exported_utc": "2026-10-21T07:44:23.275Z",
   "selection_manifest_hash": "8f9ed00bfc3fec0c8ad94129ccad9ea1748ba8c0777b6436402a0201401780da",
   "selected_run_ids": [
     "run_90557e2d9fa045528eddf70fec1f17cc",

@@ -1,0 +1,33 @@
+{
+  "files": [
+    {
+      "path": "latex/main.tex",
+      "raw_hash_equal": false,
+      "normalized_text_identical": true,
+      "current_sha256": "a2562f318793cf5e55e54e254c59595ff739a46890d8badae68a0895f1ac32ac",
+      "exported_sha256": "ef8350767655328def9ee290f063db9a806bc11a52341561ebb6d6a4a2c77495"
+    },
+    {
+      "path": "latex/references.bib",
+      "raw_hash_equal": false,
+      "normalized_text_identical": true,
+      "current_sha256": "e84bbdef4ffa590f6d7f1a36d1e92481a7cf515cab90bcf41d28f1410ae25fff",
+      "exported_sha256": "b823fcf6f4b5576ddb7131de6c9f3182626eef209fd82dbf6bf14508928d7b56"
+    },
+    {
+      "path": "latex/theory_only.tex",
+      "raw_hash_equal": true,
+      "normalized_text_identical": true,
+      "current_sha256": "bc87e137e4cbe11a76dc8b3cb39d45d0ec7de1783bad31dc632335981f149fb5",
+      "exported_sha256": "bc87e137e4cbe11a76dc8b3cb39d45d0ec7de1783bad31dc632335981f149fb5"
+    },
+    {
+      "path": "latex/generated/scaling_values.tex",
+      "raw_hash_equal": true,
+      "normalized_text_identical": true,
+      "current_sha256": "ef4d6488864b89fb35a1d45cbbaadc0de0933b023ced432d1c8bb874d4321258",
+      "exported_sha256": "ef4d6488864b89fb35a1d45cbbaadc0de0933b023ced432d1c8bb874d4321258"
+    }
+  ],
+  "method": "UTF-8 universal-newline equality plus index clean-filter blob checks"
+}

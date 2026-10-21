@@ -1,0 +1,17 @@
+{
+  "success": true,
+  "documents": [
+    {
+      "name": "main",
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+      "sha256": "eb6877fa2d2d71c68b08749abff410b0f3a6baabb65adbd18734bf33068698e4",
+      "pages": 46
+    },
+    {
+      "name": "theory_only",
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+      "sha256": "c1080180aed5ebaf3c20c63e09a40e23a2c3265fdf5a21cb9b42b17fb56913ff",
+      "pages": 36
+    }
+  ]
+}

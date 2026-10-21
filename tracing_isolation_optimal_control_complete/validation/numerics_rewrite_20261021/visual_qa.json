@@ -1,0 +1,73 @@
+{
+  "status": "passed",
+  "reviewed_page_count": 8,
+  "reviewer": "Codex primary agent",
+  "inspection": "逐张查看150dpi原始渲染页，不以文字提取代替目视",
+  "pages": [
+    {
+      "page": 30,
+      "dpi": 150,
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerics_rewrite_20261021\\rendered_150dpi\\main_p030.png",
+      "sha256": "5b794f5b25197a6c63d574e4225ae411727effc688cf3093c9cda48221c8d44e",
+      "observations": "第17节开头、参数及配点方程清楚；与原第16节末衔接正常。",
+      "passed": true
+    },
+    {
+      "page": 31,
+      "dpi": 150,
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerics_rewrite_20261021\\rendered_150dpi\\main_p031.png",
+      "sha256": "5f03ff48cc0137a7744fd564fb91873ca5a7b9d6ff322bff83bedae9020fc0c9",
+      "observations": "保留的图2浮动页，面板、图例和中文图注完整；该图文件未修改。",
+      "passed": true
+    },
+    {
+      "page": 32,
+      "dpi": 150,
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerics_rewrite_20261021\\rendered_150dpi\\main_p032.png",
+      "sha256": "65be7bc41b88359268d5741e8135ad80dd39c9a5d5bf75511148012debd6568c",
+      "observations": "终端逻辑、条件不等式及18.1清楚，代表初值表无裁切。",
+      "passed": true
+    },
+    {
+      "page": 33,
+      "dpi": 150,
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerics_rewrite_20261021\\rendered_150dpi\\main_p033.png",
+      "sha256": "4105cde20966ce34a71b12814cb4991c168b3d121f0ac325d5743423ab14b6ee",
+      "observations": "新表六列和五行完整；正负号、百分数表头及放宽容量列可辨；下方数值相图完整。",
+      "passed": true
+    },
+    {
+      "page": 34,
+      "dpi": 150,
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerics_rewrite_20261021\\rendered_150dpi\\main_p034.png",
+      "sha256": "55cd9c56c734edcd726652ca5a752dc06ce5845b42868529d01c0f5f09bb8762",
+      "observations": "N2控制/状态面板及图注完整；等待观测与18.3衔接正常。",
+      "passed": true
+    },
+    {
+      "page": 35,
+      "dpi": 150,
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerics_rewrite_20261021\\rendered_150dpi\\main_p035.png",
+      "sha256": "bfcd9cfcb96fc03ab86ffb172a8d1152d9149d1595f8fd3fa17f85b399530a22",
+      "observations": "N3三组面板及图注完整；18.4残差五句全部排入正文，后续节标题正常。",
+      "passed": true
+    },
+    {
+      "page": 43,
+      "dpi": 150,
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerics_rewrite_20261021\\rendered_150dpi\\main_p043.png",
+      "sha256": "2516191a148b7f1acc971a440a025c0cddb0d32e5f3942f8551dd224d231060d",
+      "observations": "补充材料S标题、拆分说明、原复现命令及前三宏完整，无重叠或裁切。",
+      "passed": true
+    },
+    {
+      "page": 44,
+      "dpi": 150,
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerics_rewrite_20261021\\rendered_150dpi\\main_p044.png",
+      "sha256": "73d7f1400d98f021a4e5559ddd77a24c3b74ec127cb6cdaec63a33c36f49f7fe",
+      "observations": "判据修订与粗网格诊断完整，四条路径分行清楚，无溢出。",
+      "passed": true
+    }
+  ],
+  "scope_limit": "仅核查第17--18节所触及全部页、新表及补充材料S，不声称目视全部46页。"
+}

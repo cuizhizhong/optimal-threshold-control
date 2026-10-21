@@ -1,0 +1,871 @@
+{
+  "mode": "isolated",
+  "attempt": 2,
+  "started_utc": "2026-10-21T07:50:10.249792+00:00",
+  "documents": [
+    {
+      "name": "main",
+      "precompile_commands": [],
+      "commands": [
+        {
+          "stage": "1",
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-recorder",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\isolated_attempt2\\git_index_export\\tracing_isolation_optimal_control_complete\\latex\\build",
+            "main.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\isolated_attempt2\\git_index_export\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "stdout_log": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerics_rewrite_20261021\\isolated_attempt2\\main_1.stdout.log"
+        },
+        {
+          "stage": "2",
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\bibtex.EXE",
+            "main"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\isolated_attempt2\\git_index_export\\tracing_isolation_optimal_control_complete\\latex\\build",
+          "exit_code": 0,
+          "stdout_log": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerics_rewrite_20261021\\isolated_attempt2\\main_2.stdout.log"
+        },
+        {
+          "stage": "3",
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-recorder",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\isolated_attempt2\\git_index_export\\tracing_isolation_optimal_control_complete\\latex\\build",
+            "main.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\isolated_attempt2\\git_index_export\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "stdout_log": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerics_rewrite_20261021\\isolated_attempt2\\main_3.stdout.log"
+        },
+        {
+          "stage": "4",
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-recorder",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\isolated_attempt2\\git_index_export\\tracing_isolation_optimal_control_complete\\latex\\build",
+            "main.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\isolated_attempt2\\git_index_export\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "stdout_log": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerics_rewrite_20261021\\isolated_attempt2\\main_4.stdout.log"
+        }
+      ],
+      "post_commands": [
+        {
+          "stage": "post_1",
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-recorder",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\isolated_attempt2\\git_index_export\\tracing_isolation_optimal_control_complete\\latex\\build",
+            "main.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\isolated_attempt2\\git_index_export\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "stdout_log": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerics_rewrite_20261021\\isolated_attempt2\\main_post_1.stdout.log"
+        }
+      ],
+      "success": true,
+      "final_diagnostics": [],
+      "final_stdout_log": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerics_rewrite_20261021\\isolated_attempt2\\main_post_1.stdout.log",
+      "input_count": 153,
+      "forbidden_project_inputs": [],
+      "pdf_path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\isolated_attempt2\\git_index_export\\tracing_isolation_optimal_control_complete\\latex\\build\\main.pdf",
+      "pdf_sha256": "5bcd3d1cd2c5370863a24e107c99d3ad367966102125c16e59e6fbd0ddddb55a",
+      "pages": 46,
+      "baseline_pages": 46,
+      "page_delta": 0,
+      "section_starts": [
+        {
+          "title": "引言",
+          "start_page": 4
+        },
+        {
+          "title": "模型与控制问题",
+          "start_page": 5
+        },
+        {
+          "title": "主结果与最优分区",
+          "start_page": 6
+        },
+        {
+          "title": "解的适定性、正性与基本耗散",
+          "start_page": 8
+        },
+        {
+          "title": "常接触率问题、自然轨道与安全目标集",
+          "start_page": 9
+        },
+        {
+          "title": "两类控制弧与显式成本",
+          "start_page": 10
+        },
+        {
+          "title": "有限成本可行性与首次到达问题",
+          "start_page": 11
+        },
+        {
+          "title": "HJB 方程与验证所需的边界条件",
+          "start_page": 12
+        },
+        {
+          "title": "完全跟踪成本的有限可达域及导数",
+          "start_page": 13
+        },
+        {
+          "title": "切换曲线的存在、单调性及严格横穿",
+          "start_page": 14
+        },
+        {
+          "title": "全域候选反馈与候选成本",
+          "start_page": 17
+        },
+        {
+          "title": "全域梯度、拼接正则性与验证不等式",
+          "start_page": 20
+        },
+        {
+          "title": "全局最优性验证",
+          "start_page": 22
+        },
+        {
+          "title": "常接触率下控制与轨道的唯一性",
+          "start_page": 23
+        },
+        {
+          "title": "不变量坐标与切换机制",
+          "start_page": 27
+        },
+        {
+          "title": "比较基准、小容量渐近与参数量级",
+          "start_page": 28
+        },
+        {
+          "title": "数值方法与实验设置",
+          "start_page": 30
+        },
+        {
+          "title": "不同初值区域下的数值验证",
+          "start_page": 32
+        },
+        {
+          "title": "时变接触率：条件性结论",
+          "start_page": 35
+        },
+        {
+          "title": "同时控制接触率与跟踪比例时的限制",
+          "start_page": 37
+        },
+        {
+          "title": "模型假设与理论边界",
+          "start_page": 37
+        },
+        {
+          "title": "主要结论",
+          "start_page": 37
+        },
+        {
+          "title": "完全跟踪成本导数的逐步计算",
+          "start_page": 38
+        },
+        {
+          "title": "容量边界成本积分的逐步计算",
+          "start_page": 38
+        },
+        {
+          "title": "小容量渐近的完整推导",
+          "start_page": 38
+        },
+        {
+          "title": "梯度拼接与相对正则性的详细证明",
+          "start_page": 40
+        },
+        {
+          "title": "证明依赖与校验口径",
+          "start_page": 41
+        },
+        {
+          "title": "感染阈值与医疗需求",
+          "start_page": 42
+        },
+        {
+          "title": "补充材料 S：数值复现、复核与诊断记录",
+          "start_page": 43
+        }
+      ],
+      "section17": {
+        "title": "数值方法与实验设置",
+        "start_page": 30,
+        "end_page": 32,
+        "pages": [
+          30,
+          31,
+          32
+        ],
+        "physical_page_count": 3,
+        "shares_last_page_with_next_section": true
+      },
+      "section18": {
+        "title": "不同初值区域下的数值验证",
+        "start_page": 32,
+        "end_page": 35,
+        "pages": [
+          32,
+          33,
+          34,
+          35
+        ],
+        "physical_page_count": 4,
+        "shares_last_page_with_next_section": true
+      },
+      "numerical_sections": {
+        "pages": [
+          30,
+          31,
+          32,
+          33,
+          34,
+          35
+        ],
+        "physical_page_count": 6
+      },
+      "supplement": {
+        "title": "补充材料 S：数值复现、复核与诊断记录",
+        "start_page": 43,
+        "end_page": 44,
+        "pages": [
+          43,
+          44
+        ]
+      },
+      "numerical_page_delta": -1
+    },
+    {
+      "name": "theory_only",
+      "precompile_commands": [],
+      "commands": [
+        {
+          "stage": "1",
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-recorder",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\isolated_attempt2\\git_index_export\\tracing_isolation_optimal_control_complete\\latex\\build",
+            "theory_only.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\isolated_attempt2\\git_index_export\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "stdout_log": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerics_rewrite_20261021\\isolated_attempt2\\theory_only_1.stdout.log"
+        },
+        {
+          "stage": "2",
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\bibtex.EXE",
+            "theory_only"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\isolated_attempt2\\git_index_export\\tracing_isolation_optimal_control_complete\\latex\\build",
+          "exit_code": 0,
+          "stdout_log": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerics_rewrite_20261021\\isolated_attempt2\\theory_only_2.stdout.log"
+        },
+        {
+          "stage": "3",
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-recorder",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\isolated_attempt2\\git_index_export\\tracing_isolation_optimal_control_complete\\latex\\build",
+            "theory_only.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\isolated_attempt2\\git_index_export\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "stdout_log": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerics_rewrite_20261021\\isolated_attempt2\\theory_only_3.stdout.log"
+        },
+        {
+          "stage": "4",
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-recorder",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\isolated_attempt2\\git_index_export\\tracing_isolation_optimal_control_complete\\latex\\build",
+            "theory_only.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\isolated_attempt2\\git_index_export\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "stdout_log": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerics_rewrite_20261021\\isolated_attempt2\\theory_only_4.stdout.log"
+        }
+      ],
+      "post_commands": [
+        {
+          "stage": "post_1",
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-recorder",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\isolated_attempt2\\git_index_export\\tracing_isolation_optimal_control_complete\\latex\\build",
+            "theory_only.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\isolated_attempt2\\git_index_export\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "stdout_log": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerics_rewrite_20261021\\isolated_attempt2\\theory_only_post_1.stdout.log"
+        }
+      ],
+      "success": true,
+      "final_diagnostics": [],
+      "final_stdout_log": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerics_rewrite_20261021\\isolated_attempt2\\theory_only_post_1.stdout.log",
+      "input_count": 151,
+      "forbidden_project_inputs": [],
+      "pdf_path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\isolated_attempt2\\git_index_export\\tracing_isolation_optimal_control_complete\\latex\\build\\theory_only.pdf",
+      "pdf_sha256": "3b66ff0d3a36b739408a68f2c6d3afff09f1c84fea7e508c93763058c4ed97b3",
+      "pages": 36,
+      "baseline_pages": 36,
+      "page_delta": 0,
+      "section_starts": [
+        {
+          "title": "引言",
+          "start_page": 3
+        },
+        {
+          "title": "模型与控制问题",
+          "start_page": 4
+        },
+        {
+          "title": "主结果与最优分区",
+          "start_page": 5
+        },
+        {
+          "title": "解的适定性、正性与基本耗散",
+          "start_page": 7
+        },
+        {
+          "title": "常接触率问题、自然轨道与安全目标集",
+          "start_page": 8
+        },
+        {
+          "title": "两类控制弧与显式成本",
+          "start_page": 9
+        },
+        {
+          "title": "有限成本可行性与首次到达问题",
+          "start_page": 10
+        },
+        {
+          "title": "HJB 方程与验证所需的边界条件",
+          "start_page": 11
+        },
+        {
+          "title": "完全跟踪成本的有限可达域及导数",
+          "start_page": 12
+        },
+        {
+          "title": "切换曲线的存在、单调性及严格横穿",
+          "start_page": 13
+        },
+        {
+          "title": "全域候选反馈与候选成本",
+          "start_page": 16
+        },
+        {
+          "title": "全域梯度、拼接正则性与验证不等式",
+          "start_page": 19
+        },
+        {
+          "title": "全局最优性验证",
+          "start_page": 21
+        },
+        {
+          "title": "常接触率下控制与轨道的唯一性",
+          "start_page": 22
+        },
+        {
+          "title": "不变量坐标与切换机制",
+          "start_page": 26
+        },
+        {
+          "title": "比较基准、小容量渐近与参数量级",
+          "start_page": 27
+        },
+        {
+          "title": "主要结论",
+          "start_page": 29
+        },
+        {
+          "title": "完全跟踪成本导数的逐步计算",
+          "start_page": 29
+        },
+        {
+          "title": "容量边界成本积分的逐步计算",
+          "start_page": 31
+        },
+        {
+          "title": "小容量渐近的完整推导",
+          "start_page": 31
+        },
+        {
+          "title": "梯度拼接与相对正则性的详细证明",
+          "start_page": 32
+        },
+        {
+          "title": "证明依赖与校验口径",
+          "start_page": 34
+        },
+        {
+          "title": "感染阈值与医疗需求",
+          "start_page": 34
+        }
+      ]
+    }
+  ],
+  "success": true,
+  "matlab_calls": 0,
+  "optimizer_calls": 0,
+  "ocp_solves": 0,
+  "pre_xelatex_count_per_document": 0,
+  "post_xelatex_count_per_document": 1,
+  "strict_final_diagnostics_required": true,
+  "baseline": {
+    "main": {
+      "commit": "89d9cc3",
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\baseline_89d9cc3\\main.pdf",
+      "pages": 46,
+      "pdf_sha256": "2f8f7e767e4315fe295aa08de2165919a92d941b0c4ccab4811ca18db17a9f00",
+      "section_starts": [
+        {
+          "title": "引言",
+          "start_page": 4
+        },
+        {
+          "title": "模型与控制问题",
+          "start_page": 5
+        },
+        {
+          "title": "主结果与最优分区",
+          "start_page": 6
+        },
+        {
+          "title": "解的适定性、正性与基本耗散",
+          "start_page": 8
+        },
+        {
+          "title": "常接触率问题、自然轨道与安全目标集",
+          "start_page": 9
+        },
+        {
+          "title": "两类控制弧与显式成本",
+          "start_page": 10
+        },
+        {
+          "title": "有限成本可行性与首次到达问题",
+          "start_page": 11
+        },
+        {
+          "title": "HJB 方程与验证所需的边界条件",
+          "start_page": 12
+        },
+        {
+          "title": "完全跟踪成本的有限可达域及导数",
+          "start_page": 13
+        },
+        {
+          "title": "切换曲线的存在、单调性及严格横穿",
+          "start_page": 14
+        },
+        {
+          "title": "全域候选反馈与候选成本",
+          "start_page": 17
+        },
+        {
+          "title": "全域梯度、拼接正则性与验证不等式",
+          "start_page": 20
+        },
+        {
+          "title": "全局最优性验证",
+          "start_page": 22
+        },
+        {
+          "title": "常接触率下控制与轨道的唯一性",
+          "start_page": 23
+        },
+        {
+          "title": "不变量坐标与切换机制",
+          "start_page": 27
+        },
+        {
+          "title": "比较基准、小容量渐近与参数量级",
+          "start_page": 28
+        },
+        {
+          "title": "数值方法与实验设置",
+          "start_page": 30
+        },
+        {
+          "title": "不同初值区域下的数值验证",
+          "start_page": 32
+        },
+        {
+          "title": "时变接触率：条件性结论",
+          "start_page": 36
+        },
+        {
+          "title": "同时控制接触率与跟踪比例时的限制",
+          "start_page": 37
+        },
+        {
+          "title": "模型假设与理论边界",
+          "start_page": 37
+        },
+        {
+          "title": "主要结论",
+          "start_page": 38
+        },
+        {
+          "title": "完全跟踪成本导数的逐步计算",
+          "start_page": 38
+        },
+        {
+          "title": "容量边界成本积分的逐步计算",
+          "start_page": 38
+        },
+        {
+          "title": "小容量渐近的完整推导",
+          "start_page": 39
+        },
+        {
+          "title": "梯度拼接与相对正则性的详细证明",
+          "start_page": 40
+        },
+        {
+          "title": "证明依赖与校验口径",
+          "start_page": 42
+        },
+        {
+          "title": "感染阈值与医疗需求",
+          "start_page": 42
+        },
+        {
+          "title": "数值复现说明",
+          "start_page": 43
+        }
+      ],
+      "section17": {
+        "title": "数值方法与实验设置",
+        "start_page": 30,
+        "end_page": 32,
+        "pages": [
+          30,
+          31,
+          32
+        ],
+        "physical_page_count": 3,
+        "shares_last_page_with_next_section": true
+      },
+      "section18": {
+        "title": "不同初值区域下的数值验证",
+        "start_page": 32,
+        "end_page": 36,
+        "pages": [
+          32,
+          33,
+          34,
+          35,
+          36
+        ],
+        "physical_page_count": 5,
+        "shares_last_page_with_next_section": true
+      },
+      "numerical_sections": {
+        "pages": [
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36
+        ],
+        "physical_page_count": 7
+      },
+      "supplement": {
+        "title": "数值复现说明",
+        "start_page": 43,
+        "end_page": 44,
+        "pages": [
+          43,
+          44
+        ]
+      }
+    },
+    "theory_only": {
+      "commit": "89d9cc3",
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\baseline_89d9cc3\\theory_only.pdf",
+      "pages": 36,
+      "pdf_sha256": "3efc896fc03f0dbf62bd7d203c91b883dbb3a9e62caab322d9096e169e7b39b5",
+      "section_starts": [
+        {
+          "title": "引言",
+          "start_page": 3
+        },
+        {
+          "title": "模型与控制问题",
+          "start_page": 4
+        },
+        {
+          "title": "主结果与最优分区",
+          "start_page": 5
+        },
+        {
+          "title": "解的适定性、正性与基本耗散",
+          "start_page": 7
+        },
+        {
+          "title": "常接触率问题、自然轨道与安全目标集",
+          "start_page": 8
+        },
+        {
+          "title": "两类控制弧与显式成本",
+          "start_page": 9
+        },
+        {
+          "title": "有限成本可行性与首次到达问题",
+          "start_page": 10
+        },
+        {
+          "title": "HJB 方程与验证所需的边界条件",
+          "start_page": 11
+        },
+        {
+          "title": "完全跟踪成本的有限可达域及导数",
+          "start_page": 12
+        },
+        {
+          "title": "切换曲线的存在、单调性及严格横穿",
+          "start_page": 13
+        },
+        {
+          "title": "全域候选反馈与候选成本",
+          "start_page": 16
+        },
+        {
+          "title": "全域梯度、拼接正则性与验证不等式",
+          "start_page": 19
+        },
+        {
+          "title": "全局最优性验证",
+          "start_page": 21
+        },
+        {
+          "title": "常接触率下控制与轨道的唯一性",
+          "start_page": 22
+        },
+        {
+          "title": "不变量坐标与切换机制",
+          "start_page": 26
+        },
+        {
+          "title": "比较基准、小容量渐近与参数量级",
+          "start_page": 27
+        },
+        {
+          "title": "主要结论",
+          "start_page": 29
+        },
+        {
+          "title": "完全跟踪成本导数的逐步计算",
+          "start_page": 29
+        },
+        {
+          "title": "容量边界成本积分的逐步计算",
+          "start_page": 31
+        },
+        {
+          "title": "小容量渐近的完整推导",
+          "start_page": 31
+        },
+        {
+          "title": "梯度拼接与相对正则性的详细证明",
+          "start_page": 32
+        },
+        {
+          "title": "证明依赖与校验口径",
+          "start_page": 34
+        },
+        {
+          "title": "感染阈值与医疗需求",
+          "start_page": 34
+        }
+      ]
+    }
+  },
+  "index_export": {
+    "method": "git checkout-index --stdin -z",
+    "files": [
+      {
+        "path": "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_optimal_partition.pdf",
+        "index_blob": "3339f6e0a6135de887e780b89701c58a61b2bf1f",
+        "clean_filter_blob": "3339f6e0a6135de887e780b89701c58a61b2bf1f",
+        "raw_sha256": "ca86d4850da4b02467b6eb37a2ceb5dcd911b23c9418bd459ded1c27f075aadf"
+      },
+      {
+        "path": "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_optimal_partition.png",
+        "index_blob": "f13917fdee67069d1011d1ca76a3890ad01cc1a5",
+        "clean_filter_blob": "f13917fdee67069d1011d1ca76a3890ad01cc1a5",
+        "raw_sha256": "b121a7e8a38a9487cade5c085607a572b99ae0a5067fb883d6aba0e5fecc7e01"
+      },
+      {
+        "path": "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_regions.pdf",
+        "index_blob": "a9a01713838c7e79b6d4258f19dbd82800ed20e1",
+        "clean_filter_blob": "a9a01713838c7e79b6d4258f19dbd82800ed20e1",
+        "raw_sha256": "2895a76602d8d98bb9a2d6105b7c33399e0ab433d0497ee7dbd0af9990a53b3e"
+      },
+      {
+        "path": "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_regions.png",
+        "index_blob": "caef99e10c789b776f93214ffe5abc7717729ad8",
+        "clean_filter_blob": "caef99e10c789b776f93214ffe5abc7717729ad8",
+        "raw_sha256": "3eeca5468e6d09f15f358d8aeb10b2a51c1baf8d276093930b1d9a426ebcf880"
+      },
+      {
+        "path": "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN2_waiting.pdf",
+        "index_blob": "888e3099bc18c5724e28d86b34017ab865a6123f",
+        "clean_filter_blob": "888e3099bc18c5724e28d86b34017ab865a6123f",
+        "raw_sha256": "04141129be11e4492cf53d2027a6c39e41151a01e6315fce4c79cf488adbd1dc"
+      },
+      {
+        "path": "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN2_waiting.png",
+        "index_blob": "389806c8068c3deb4bbbff3f4a16634b29bbca0e",
+        "clean_filter_blob": "389806c8068c3deb4bbbff3f4a16634b29bbca0e",
+        "raw_sha256": "358ff93fcc674da54439c960a6dcdb19e857800bfb2e7dd29bf13b81189df025"
+      },
+      {
+        "path": "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN3_boundary_tracking.pdf",
+        "index_blob": "ccdd640e2d015f3b6e22b55a676a227ca184ea3c",
+        "clean_filter_blob": "ccdd640e2d015f3b6e22b55a676a227ca184ea3c",
+        "raw_sha256": "f3c3a8773f442ba45e6c839fc3603106938f6a974cf3b163edcd7e6c65c188e4"
+      },
+      {
+        "path": "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN3_boundary_tracking.png",
+        "index_blob": "47e9c677564d64a7d22ef2ac9f094511a78dcc44",
+        "clean_filter_blob": "47e9c677564d64a7d22ef2ac9f094511a78dcc44",
+        "raw_sha256": "d957f5493a0778623d7785e8d4cb3d37ea95c1f6f3f10bc1af8c7269b6d51009"
+      },
+      {
+        "path": "tracing_isolation_optimal_control_complete/figures/scaling/FigD_magnitude.pdf",
+        "index_blob": "6857739681e325ab42096ca504c863694b5ad4f6",
+        "clean_filter_blob": "6857739681e325ab42096ca504c863694b5ad4f6",
+        "raw_sha256": "182ccccde70a3d9c024c8cd6fe677120be8a8a75d99bf908ce032c1afc822fb5"
+      },
+      {
+        "path": "tracing_isolation_optimal_control_complete/figures/scaling/FigD_magnitude.png",
+        "index_blob": "61994fa75633d06beb91cee18942ed3e4092ca3c",
+        "clean_filter_blob": "61994fa75633d06beb91cee18942ed3e4092ca3c",
+        "raw_sha256": "012d0099156ea319afb751ea4b2678edf0502c16bd8294f0d1033f96c8fae65d"
+      },
+      {
+        "path": "tracing_isolation_optimal_control_complete/latex/generated/.gitattributes",
+        "index_blob": "ffd891eb115e6484289656a0120e27e3d89ddc66",
+        "clean_filter_blob": "ffd891eb115e6484289656a0120e27e3d89ddc66",
+        "raw_sha256": "f88338965ece1fdf740871cec23f80922d66abe94f45e55b031b73a3f5f3d69a"
+      },
+      {
+        "path": "tracing_isolation_optimal_control_complete/latex/generated/scaling_values.tex",
+        "index_blob": "11fc7100cf39bf9b1a2aa8c9fb8ddc4e9641dc7e",
+        "clean_filter_blob": "11fc7100cf39bf9b1a2aa8c9fb8ddc4e9641dc7e",
+        "raw_sha256": "ef4d6488864b89fb35a1d45cbbaadc0de0933b023ced432d1c8bb874d4321258"
+      },
+      {
+        "path": "tracing_isolation_optimal_control_complete/latex/main.bbl",
+        "index_blob": "dfc3d71fdb4d1a32dc7bb072519b500a7050e258",
+        "clean_filter_blob": "dfc3d71fdb4d1a32dc7bb072519b500a7050e258",
+        "raw_sha256": "998ba8475e18df01e70b6382e3458075003cd849587d7bdb1d07c24471ea85d8"
+      },
+      {
+        "path": "tracing_isolation_optimal_control_complete/latex/main.pdf",
+        "index_blob": "b8a9c0e1442082b9eaafd5b5ff1f5fd7ec2c3067",
+        "clean_filter_blob": "b8a9c0e1442082b9eaafd5b5ff1f5fd7ec2c3067",
+        "raw_sha256": "2f8f7e767e4315fe295aa08de2165919a92d941b0c4ccab4811ca18db17a9f00"
+      },
+      {
+        "path": "tracing_isolation_optimal_control_complete/latex/main.tex",
+        "index_blob": "059730821236835f6761c940369263bcf00d89af",
+        "clean_filter_blob": "059730821236835f6761c940369263bcf00d89af",
+        "raw_sha256": "ef8350767655328def9ee290f063db9a806bc11a52341561ebb6d6a4a2c77495"
+      },
+      {
+        "path": "tracing_isolation_optimal_control_complete/latex/references.bib",
+        "index_blob": "44d51c43e28d4128940a73d41377d7c1ad151d02",
+        "clean_filter_blob": "44d51c43e28d4128940a73d41377d7c1ad151d02",
+        "raw_sha256": "b823fcf6f4b5576ddb7131de6c9f3182626eef209fd82dbf6bf14508928d7b56"
+      },
+      {
+        "path": "tracing_isolation_optimal_control_complete/latex/theory_only.pdf",
+        "index_blob": "da0212b2622d1ed44773bdf536d4f112187337df",
+        "clean_filter_blob": "da0212b2622d1ed44773bdf536d4f112187337df",
+        "raw_sha256": "3efc896fc03f0dbf62bd7d203c91b883dbb3a9e62caab322d9096e169e7b39b5"
+      },
+      {
+        "path": "tracing_isolation_optimal_control_complete/latex/theory_only.tex",
+        "index_blob": "0f79902f3ad4908eb00c57126f567820f8476a38",
+        "clean_filter_blob": "0f79902f3ad4908eb00c57126f567820f8476a38",
+        "raw_sha256": "bc87e137e4cbe11a76dc8b3cb39d45d0ec7de1783bad31dc632335981f149fb5"
+      }
+    ]
+  },
+  "initial_root_entries": [
+    "figures",
+    "latex"
+  ],
+  "removed_stale_build_artifacts_in_export_only": [
+    {
+      "path": "latex/main.bbl",
+      "sha256": "998ba8475e18df01e70b6382e3458075003cd849587d7bdb1d07c24471ea85d8"
+    },
+    {
+      "path": "latex/main.pdf",
+      "sha256": "2f8f7e767e4315fe295aa08de2165919a92d941b0c4ccab4811ca18db17a9f00"
+    },
+    {
+      "path": "latex/theory_only.pdf",
+      "sha256": "3efc896fc03f0dbf62bd7d203c91b883dbb3a9e62caab322d9096e169e7b39b5"
+    }
+  ],
+  "project_directory": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\isolated_attempt2\\git_index_export\\tracing_isolation_optimal_control_complete",
+  "build_directory": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\isolated_attempt2\\git_index_export\\tracing_isolation_optimal_control_complete\\latex\\build",
+  "source_sha256": {
+    "latex/main.tex": "ef8350767655328def9ee290f063db9a806bc11a52341561ebb6d6a4a2c77495",
+    "latex/references.bib": "b823fcf6f4b5576ddb7131de6c9f3182626eef209fd82dbf6bf14508928d7b56",
+    "latex/theory_only.tex": "bc87e137e4cbe11a76dc8b3cb39d45d0ec7de1783bad31dc632335981f149fb5",
+    "latex/generated/scaling_values.tex": "ef4d6488864b89fb35a1d45cbbaadc0de0933b023ced432d1c8bb874d4321258"
+  },
+  "figure_sha256": {
+    "figures/numerical_scenarios/FigN1_optimal_partition.pdf": "ca86d4850da4b02467b6eb37a2ceb5dcd911b23c9418bd459ded1c27f075aadf",
+    "figures/numerical_scenarios/FigN1_optimal_partition.png": "b121a7e8a38a9487cade5c085607a572b99ae0a5067fb883d6aba0e5fecc7e01",
+    "figures/numerical_scenarios/FigN1_regions.pdf": "2895a76602d8d98bb9a2d6105b7c33399e0ab433d0497ee7dbd0af9990a53b3e",
+    "figures/numerical_scenarios/FigN1_regions.png": "3eeca5468e6d09f15f358d8aeb10b2a51c1baf8d276093930b1d9a426ebcf880",
+    "figures/numerical_scenarios/FigN2_waiting.pdf": "04141129be11e4492cf53d2027a6c39e41151a01e6315fce4c79cf488adbd1dc",
+    "figures/numerical_scenarios/FigN2_waiting.png": "358ff93fcc674da54439c960a6dcdb19e857800bfb2e7dd29bf13b81189df025",
+    "figures/numerical_scenarios/FigN3_boundary_tracking.pdf": "f3c3a8773f442ba45e6c839fc3603106938f6a974cf3b163edcd7e6c65c188e4",
+    "figures/numerical_scenarios/FigN3_boundary_tracking.png": "d957f5493a0778623d7785e8d4cb3d37ea95c1f6f3f10bc1af8c7269b6d51009",
+    "figures/scaling/FigD_magnitude.pdf": "182ccccde70a3d9c024c8cd6fe677120be8a8a75d99bf908ce032c1afc822fb5",
+    "figures/scaling/FigD_magnitude.png": "012d0099156ea319afb751ea4b2678edf0502c16bd8294f0d1033f96c8fae65d"
+  },
+  "search_environment": {
+    "TEXINPUTS": null,
+    "BIBINPUTS": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\isolated_attempt2\\git_index_export\\tracing_isolation_optimal_control_complete\\latex;",
+    "BSTINPUTS": null,
+    "TEXMFOUTPUT": null
+  },
+  "finished_utc": "2026-10-21T07:50:48.532941+00:00"
+}

@@ -1,0 +1,517 @@
+{
+  "dpi": 150,
+  "started_utc": "2026-10-21T07:47:25.960796+00:00",
+  "build_report": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerics_rewrite_20261021\\workspace_attempt2\\build_report.json",
+  "documents": [
+    {
+      "name": "main",
+      "source_pdf": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\workspace_attempt2\\build\\main.pdf",
+      "source_pdf_sha256": "eb6877fa2d2d71c68b08749abff410b0f3a6baabb65adbd18734bf33068698e4",
+      "pdf_page_count": 46,
+      "pages": [
+        {
+          "physical_page": 30,
+          "printed_page": "30",
+          "reasons": [
+            "section17"
+          ],
+          "dpi": 150,
+          "png_path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\render_attempt1\\main_p030.png",
+          "png_sha256": "5b794f5b25197a6c63d574e4225ae411727effc688cf3093c9cda48221c8d44e",
+          "text_path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\render_attempt1\\main_p030.txt",
+          "text_sha256": "5f24e04fa18be36e3cb56c5f7a7e745e7569174f9c25d977e507dc0464364805",
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "30",
+            "-l",
+            "30",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\workspace_attempt2\\build\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\render_attempt1\\main_p030"
+          ],
+          "exit_code": 0,
+          "stderr": ""
+        },
+        {
+          "physical_page": 31,
+          "printed_page": "31",
+          "reasons": [
+            "section17"
+          ],
+          "dpi": 150,
+          "png_path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\render_attempt1\\main_p031.png",
+          "png_sha256": "5f03ff48cc0137a7744fd564fb91873ca5a7b9d6ff322bff83bedae9020fc0c9",
+          "text_path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\render_attempt1\\main_p031.txt",
+          "text_sha256": "f42d299f601d96529ac5878ead6eb31346d955fc610051f9f04d494b5e610441",
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "31",
+            "-l",
+            "31",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\workspace_attempt2\\build\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\render_attempt1\\main_p031"
+          ],
+          "exit_code": 0,
+          "stderr": ""
+        },
+        {
+          "physical_page": 32,
+          "printed_page": "32",
+          "reasons": [
+            "section17",
+            "section18"
+          ],
+          "dpi": 150,
+          "png_path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\render_attempt1\\main_p032.png",
+          "png_sha256": "65be7bc41b88359268d5741e8135ad80dd39c9a5d5bf75511148012debd6568c",
+          "text_path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\render_attempt1\\main_p032.txt",
+          "text_sha256": "ba8d84e1d5f134713bbfa7ef0783df52d2fa7bccfef989aeb4328523c090c791",
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "32",
+            "-l",
+            "32",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\workspace_attempt2\\build\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\render_attempt1\\main_p032"
+          ],
+          "exit_code": 0,
+          "stderr": ""
+        },
+        {
+          "physical_page": 33,
+          "printed_page": "33",
+          "reasons": [
+            "section18",
+            "tab:numerical-errors"
+          ],
+          "dpi": 150,
+          "png_path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\render_attempt1\\main_p033.png",
+          "png_sha256": "4105cde20966ce34a71b12814cb4991c168b3d121f0ac325d5743423ab14b6ee",
+          "text_path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\render_attempt1\\main_p033.txt",
+          "text_sha256": "a297bdb83ae4dbeef479afe6c4ea178f33546ac676b55d640cb768a789b8a1ae",
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "33",
+            "-l",
+            "33",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\workspace_attempt2\\build\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\render_attempt1\\main_p033"
+          ],
+          "exit_code": 0,
+          "stderr": ""
+        },
+        {
+          "physical_page": 34,
+          "printed_page": "34",
+          "reasons": [
+            "section18"
+          ],
+          "dpi": 150,
+          "png_path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\render_attempt1\\main_p034.png",
+          "png_sha256": "55cd9c56c734edcd726652ca5a752dc06ce5845b42868529d01c0f5f09bb8762",
+          "text_path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\render_attempt1\\main_p034.txt",
+          "text_sha256": "d0ec321e753dbd0d270f8694d78688cb009dce7c0c98bb7f9360917dc000fb04",
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "34",
+            "-l",
+            "34",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\workspace_attempt2\\build\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\render_attempt1\\main_p034"
+          ],
+          "exit_code": 0,
+          "stderr": ""
+        },
+        {
+          "physical_page": 35,
+          "printed_page": "35",
+          "reasons": [
+            "section18"
+          ],
+          "dpi": 150,
+          "png_path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\render_attempt1\\main_p035.png",
+          "png_sha256": "bfcd9cfcb96fc03ab86ffb172a8d1152d9149d1595f8fd3fa17f85b399530a22",
+          "text_path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\render_attempt1\\main_p035.txt",
+          "text_sha256": "8d2d8b1f8443bb6b5ac7fe704703a85cda64d89ebce649225855d4d71f1f7c0c",
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "35",
+            "-l",
+            "35",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\workspace_attempt2\\build\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\render_attempt1\\main_p035"
+          ],
+          "exit_code": 0,
+          "stderr": ""
+        },
+        {
+          "physical_page": 43,
+          "printed_page": "43",
+          "reasons": [
+            "supplement"
+          ],
+          "dpi": 150,
+          "png_path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\render_attempt1\\main_p043.png",
+          "png_sha256": "2516191a148b7f1acc971a440a025c0cddb0d32e5f3942f8551dd224d231060d",
+          "text_path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\render_attempt1\\main_p043.txt",
+          "text_sha256": "0e76538d0a278825f9be3378696feed00d58164780e590f18e698afaa52d36ce",
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "43",
+            "-l",
+            "43",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\workspace_attempt2\\build\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\render_attempt1\\main_p043"
+          ],
+          "exit_code": 0,
+          "stderr": ""
+        },
+        {
+          "physical_page": 44,
+          "printed_page": "44",
+          "reasons": [
+            "supplement"
+          ],
+          "dpi": 150,
+          "png_path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\render_attempt1\\main_p044.png",
+          "png_sha256": "73d7f1400d98f021a4e5559ddd77a24c3b74ec127cb6cdaec63a33c36f49f7fe",
+          "text_path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\render_attempt1\\main_p044.txt",
+          "text_sha256": "b75ab27852e7bd08d582be4d71ae37ab6f0c0cca8fbdb698dcfce4296d946d64",
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "44",
+            "-l",
+            "44",
+            "-r",
+            "150",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\workspace_attempt2\\build\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\render_attempt1\\main_p044"
+          ],
+          "exit_code": 0,
+          "stderr": ""
+        }
+      ],
+      "page_selection": {
+        "section_starts": [
+          {
+            "title": "引言",
+            "start_page": 4
+          },
+          {
+            "title": "模型与控制问题",
+            "start_page": 5
+          },
+          {
+            "title": "主结果与最优分区",
+            "start_page": 6
+          },
+          {
+            "title": "解的适定性、正性与基本耗散",
+            "start_page": 8
+          },
+          {
+            "title": "常接触率问题、自然轨道与安全目标集",
+            "start_page": 9
+          },
+          {
+            "title": "两类控制弧与显式成本",
+            "start_page": 10
+          },
+          {
+            "title": "有限成本可行性与首次到达问题",
+            "start_page": 11
+          },
+          {
+            "title": "HJB 方程与验证所需的边界条件",
+            "start_page": 12
+          },
+          {
+            "title": "完全跟踪成本的有限可达域及导数",
+            "start_page": 13
+          },
+          {
+            "title": "切换曲线的存在、单调性及严格横穿",
+            "start_page": 14
+          },
+          {
+            "title": "全域候选反馈与候选成本",
+            "start_page": 17
+          },
+          {
+            "title": "全域梯度、拼接正则性与验证不等式",
+            "start_page": 20
+          },
+          {
+            "title": "全局最优性验证",
+            "start_page": 22
+          },
+          {
+            "title": "常接触率下控制与轨道的唯一性",
+            "start_page": 23
+          },
+          {
+            "title": "不变量坐标与切换机制",
+            "start_page": 27
+          },
+          {
+            "title": "比较基准、小容量渐近与参数量级",
+            "start_page": 28
+          },
+          {
+            "title": "数值方法与实验设置",
+            "start_page": 30
+          },
+          {
+            "title": "不同初值区域下的数值验证",
+            "start_page": 32
+          },
+          {
+            "title": "时变接触率：条件性结论",
+            "start_page": 35
+          },
+          {
+            "title": "同时控制接触率与跟踪比例时的限制",
+            "start_page": 37
+          },
+          {
+            "title": "模型假设与理论边界",
+            "start_page": 37
+          },
+          {
+            "title": "主要结论",
+            "start_page": 37
+          },
+          {
+            "title": "完全跟踪成本导数的逐步计算",
+            "start_page": 38
+          },
+          {
+            "title": "容量边界成本积分的逐步计算",
+            "start_page": 38
+          },
+          {
+            "title": "小容量渐近的完整推导",
+            "start_page": 38
+          },
+          {
+            "title": "梯度拼接与相对正则性的详细证明",
+            "start_page": 40
+          },
+          {
+            "title": "证明依赖与校验口径",
+            "start_page": 41
+          },
+          {
+            "title": "感染阈值与医疗需求",
+            "start_page": 42
+          },
+          {
+            "title": "补充材料 S：数值复现、复核与诊断记录",
+            "start_page": 43
+          }
+        ],
+        "section17": {
+          "title": "数值方法与实验设置",
+          "start_page": 30,
+          "end_page": 32,
+          "pages": [
+            30,
+            31,
+            32
+          ],
+          "physical_page_count": 3,
+          "shares_last_page_with_next_section": true
+        },
+        "section18": {
+          "title": "不同初值区域下的数值验证",
+          "start_page": 32,
+          "end_page": 35,
+          "pages": [
+            32,
+            33,
+            34,
+            35
+          ],
+          "physical_page_count": 4,
+          "shares_last_page_with_next_section": true
+        },
+        "numerical_sections": {
+          "pages": [
+            30,
+            31,
+            32,
+            33,
+            34,
+            35
+          ],
+          "physical_page_count": 6
+        },
+        "supplement": {
+          "title": "补充材料 S：数值复现、复核与诊断记录",
+          "start_page": 43,
+          "end_page": 44,
+          "pages": [
+            43,
+            44
+          ]
+        }
+      },
+      "error_table_page": 33,
+      "selected_pages": [
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        43,
+        44
+      ],
+      "all_pages_text": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\render_attempt1\\main_all_pages.txt"
+    },
+    {
+      "name": "theory_only",
+      "source_pdf": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\workspace_attempt2\\build\\theory_only.pdf",
+      "source_pdf_sha256": "c1080180aed5ebaf3c20c63e09a40e23a2c3265fdf5a21cb9b42b17fb56913ff",
+      "pdf_page_count": 36,
+      "pages": [],
+      "page_selection": {
+        "section_starts": [
+          {
+            "title": "引言",
+            "start_page": 3
+          },
+          {
+            "title": "模型与控制问题",
+            "start_page": 4
+          },
+          {
+            "title": "主结果与最优分区",
+            "start_page": 5
+          },
+          {
+            "title": "解的适定性、正性与基本耗散",
+            "start_page": 7
+          },
+          {
+            "title": "常接触率问题、自然轨道与安全目标集",
+            "start_page": 8
+          },
+          {
+            "title": "两类控制弧与显式成本",
+            "start_page": 9
+          },
+          {
+            "title": "有限成本可行性与首次到达问题",
+            "start_page": 10
+          },
+          {
+            "title": "HJB 方程与验证所需的边界条件",
+            "start_page": 11
+          },
+          {
+            "title": "完全跟踪成本的有限可达域及导数",
+            "start_page": 12
+          },
+          {
+            "title": "切换曲线的存在、单调性及严格横穿",
+            "start_page": 13
+          },
+          {
+            "title": "全域候选反馈与候选成本",
+            "start_page": 16
+          },
+          {
+            "title": "全域梯度、拼接正则性与验证不等式",
+            "start_page": 19
+          },
+          {
+            "title": "全局最优性验证",
+            "start_page": 21
+          },
+          {
+            "title": "常接触率下控制与轨道的唯一性",
+            "start_page": 22
+          },
+          {
+            "title": "不变量坐标与切换机制",
+            "start_page": 26
+          },
+          {
+            "title": "比较基准、小容量渐近与参数量级",
+            "start_page": 27
+          },
+          {
+            "title": "主要结论",
+            "start_page": 29
+          },
+          {
+            "title": "完全跟踪成本导数的逐步计算",
+            "start_page": 29
+          },
+          {
+            "title": "容量边界成本积分的逐步计算",
+            "start_page": 31
+          },
+          {
+            "title": "小容量渐近的完整推导",
+            "start_page": 31
+          },
+          {
+            "title": "梯度拼接与相对正则性的详细证明",
+            "start_page": 32
+          },
+          {
+            "title": "证明依赖与校验口径",
+            "start_page": 34
+          },
+          {
+            "title": "感染阈值与医疗需求",
+            "start_page": 34
+          }
+        ]
+      },
+      "target_sections_omitted": true
+    }
+  ],
+  "success": true,
+  "scope": "主文第17/18节各实际页面、新表页面、补充材料S各页面；TheoryOnly确认上述部分被省略",
+  "finished_utc": "2026-10-21T07:47:34.732958+00:00"
+}

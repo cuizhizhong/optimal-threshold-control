@@ -1,0 +1,328 @@
+{
+  "schema_version": 1,
+  "no_new_computation_of_trajectories": true,
+  "optimizer_calls": 0,
+  "new_ocp_solves": 0,
+  "ode_calls": 0,
+  "gaps": [
+    {
+      "id": "no_convergence_order",
+      "description": "只对所测最细两级比较一致性；未给出网格加密收敛阶或离散最优值到无穷时域值函数的收敛证明。",
+      "source": "data/numerical_scenarios/revision_checks/grid_summary.json",
+      "evidence": [
+        {
+          "case_id": "E1",
+          "fine_N": 8000,
+          "coarse_N": 4000,
+          "consistency_pass": true
+        },
+        {
+          "case_id": "E2",
+          "fine_N": 8000,
+          "coarse_N": 4000,
+          "consistency_pass": true
+        },
+        {
+          "case_id": "E3",
+          "fine_N": 8000,
+          "coarse_N": 4000,
+          "consistency_pass": true
+        },
+        {
+          "case_id": "E4",
+          "fine_N": 8000,
+          "coarse_N": 4000,
+          "consistency_pass": true
+        },
+        {
+          "case_id": "E5",
+          "fine_N": 8000,
+          "coarse_N": 4000,
+          "consistency_pass": true
+        }
+      ]
+    },
+    {
+      "id": "unrun_extended_configurations",
+      "description": "n=16000、T=600 及额外初猜未运行；本阶段只记录，不补算。",
+      "source": "data/numerical_scenarios/revision_checks/README.md:17",
+      "evidence": {
+        "saved_N": [
+          1600,
+          2000,
+          3200,
+          4000,
+          8000
+        ],
+        "saved_T": [
+          60,
+          120,
+          300
+        ],
+        "saved_initializations": [
+          "analytic_reference",
+          "constant_control",
+          "seeded_random"
+        ],
+        "saved_configuration_count": 35
+      }
+    },
+    {
+      "id": "coarse_stage_anomalies",
+      "description": "E2/E4 在 n=2000 的阶段识别异常保持原分类。",
+      "evidence": [
+        {
+          "case_id": "E2",
+          "run_id": "run_8d919c79b5184492bd815d3e5895fe8a",
+          "N": 2000,
+          "T": 300,
+          "numeric_pass": 0,
+          "agreement_pass": 0,
+          "observed_structure": "0 -> 1 -> 0",
+          "status": "assessed",
+          "capacity_excess": 1.4461280919669806e-05,
+          "state_discrepancy": 5.873068224970801e-06,
+          "signed_cost_difference": 7.777879878889671e-05,
+          "relative_cost_difference": 5.085206359736141e-05,
+          "cost_agreement": {
+            "passed": 1,
+            "mode": "relative",
+            "signed_difference": 7.777879878889671e-05,
+            "absolute_difference": 7.777879878889671e-05,
+            "relative_difference": 5.085206359736141e-05
+          },
+          "event_diagnostic_pass": false,
+          "structure_pass": false,
+          "event_diagnostics": {
+            "passed": 0,
+            "issues": "long_intermediate_control",
+            "long_transition_arc_indices": 2,
+            "ambiguous_events": [],
+            "unexpected_transition_arc_indices": [],
+            "unexpected_direct_arc_indices": [],
+            "incomplete_transition_arc_indices": [],
+            "natural_capacity_contact_cells": [],
+            "capacity_arc_count": 0
+          },
+          "source": "data/numerical_scenarios/revision_checks/assessments/run_8d919c79b5184492bd815d3e5895fe8a_ec66b30b409c7d4dee3dbced194b073bf3eb9df8b2a479c70608812d236589f6_5f6f341204614c4d91a94bd507292810.mat"
+        },
+        {
+          "case_id": "E4",
+          "run_id": "run_473244c3f6cf403e96d8063710303058",
+          "N": 2000,
+          "T": 300,
+          "numeric_pass": 0,
+          "agreement_pass": 0,
+          "observed_structure": "1 -> 0",
+          "status": "assessed",
+          "capacity_excess": 1.2406251404112334e-05,
+          "state_discrepancy": 2.489946959727263e-07,
+          "signed_cost_difference": 5.008271957240851e-05,
+          "relative_cost_difference": 3.947142719230381e-05,
+          "cost_agreement": {
+            "passed": 1,
+            "mode": "relative",
+            "signed_difference": 5.008271957240851e-05,
+            "absolute_difference": 5.008271957240851e-05,
+            "relative_difference": 3.947142719230381e-05
+          },
+          "event_diagnostic_pass": false,
+          "structure_pass": false,
+          "event_diagnostics": {
+            "passed": 0,
+            "issues": "long_intermediate_control",
+            "long_transition_arc_indices": 1,
+            "ambiguous_events": [],
+            "unexpected_transition_arc_indices": [],
+            "unexpected_direct_arc_indices": [],
+            "incomplete_transition_arc_indices": [],
+            "natural_capacity_contact_cells": 32,
+            "capacity_arc_count": 0
+          },
+          "source": "data/numerical_scenarios/revision_checks/assessments/run_473244c3f6cf403e96d8063710303058_3f01065a22dbaad14e8746cc1651e8d43a10569aa928d96fe7959c4e28f6e335_2ea2652aea49454f90d39aec30d00b19.mat"
+        }
+      ]
+    },
+    {
+      "id": "coarse_cost_failures",
+      "description": "E1/E3/E5 在 n=2000 的成本比较未通过。",
+      "evidence": [
+        {
+          "case_id": "E1",
+          "run_id": "run_044a0f7dc8284bfcb0ceaf2f3e470857",
+          "N": 2000,
+          "T": 300,
+          "numeric_pass": 1,
+          "agreement_pass": 0,
+          "observed_structure": "0 -> 1 -> 0",
+          "status": "assessed",
+          "capacity_excess": 1.0065637526257554e-07,
+          "state_discrepancy": 5.64700371019633e-07,
+          "signed_cost_difference": 4.3055400207658856e-05,
+          "relative_cost_difference": 0.00010345232425953666,
+          "cost_agreement": {
+            "passed": 0,
+            "mode": "relative",
+            "signed_difference": 4.3055400207658856e-05,
+            "absolute_difference": 4.3055400207658856e-05,
+            "relative_difference": 0.00010345232425953666
+          },
+          "event_diagnostic_pass": true,
+          "structure_pass": true,
+          "event_diagnostics": {
+            "passed": 1,
+            "issues": [],
+            "long_transition_arc_indices": [],
+            "ambiguous_events": [],
+            "unexpected_transition_arc_indices": [],
+            "unexpected_direct_arc_indices": [],
+            "incomplete_transition_arc_indices": [],
+            "natural_capacity_contact_cells": [],
+            "capacity_arc_count": 0
+          },
+          "source": "data/numerical_scenarios/revision_checks/assessments/run_044a0f7dc8284bfcb0ceaf2f3e470857_e77b532978e1f2ee28fa43d36db61ff40624f26251d189ef27c529799476e5a3_b4b5891c0c924db1a8e56637f8d859a1.mat"
+        },
+        {
+          "case_id": "E3",
+          "run_id": "run_72fdd687379e4b0ba7f4defb3eb137e5",
+          "N": 2000,
+          "T": 300,
+          "numeric_pass": 1,
+          "agreement_pass": 0,
+          "observed_structure": "1 -> 0",
+          "status": "unresolved_discrepancy",
+          "capacity_excess": 7.830067991265732e-06,
+          "state_discrepancy": 1.348930616096311e-07,
+          "signed_cost_difference": -6.75538887330851e-05,
+          "relative_cost_difference": -0.00015566093352762406,
+          "cost_agreement": {
+            "passed": 0,
+            "mode": "relative",
+            "signed_difference": -6.75538887330851e-05,
+            "absolute_difference": 6.75538887330851e-05,
+            "relative_difference": -0.00015566093352762406
+          },
+          "event_diagnostic_pass": true,
+          "structure_pass": true,
+          "event_diagnostics": {
+            "passed": 1,
+            "issues": [],
+            "long_transition_arc_indices": [],
+            "ambiguous_events": [],
+            "unexpected_transition_arc_indices": [],
+            "unexpected_direct_arc_indices": [],
+            "incomplete_transition_arc_indices": [],
+            "natural_capacity_contact_cells": [],
+            "capacity_arc_count": 0
+          },
+          "source": "data/numerical_scenarios/revision_checks/assessments/run_72fdd687379e4b0ba7f4defb3eb137e5_6dfdbcf53b4f54f4cb17ec725e13878fdca6dfbed2661260b814bf03f6cb0005_1cdaa04cd2e4426a9202a9bc5a93a9bd.mat",
+          "relaxed_capacity_drop_independently_recomputed": 0.0001075504599031274,
+          "negative_difference_compatible_with_capacity_excess": true
+        },
+        {
+          "case_id": "E5",
+          "run_id": "run_c3c6be627e2a4996a1efb2f59a1ee71d",
+          "N": 2000,
+          "T": 300,
+          "numeric_pass": 1,
+          "agreement_pass": 0,
+          "observed_structure": "1 -> 0",
+          "status": "assessed",
+          "capacity_excess": 2.5684636780765047e-06,
+          "state_discrepancy": 1.804432370189346e-07,
+          "signed_cost_difference": 0.00014546377988899906,
+          "relative_cost_difference": 0.00027126962818197,
+          "cost_agreement": {
+            "passed": 0,
+            "mode": "relative",
+            "signed_difference": 0.00014546377988899906,
+            "absolute_difference": 0.00014546377988899906,
+            "relative_difference": 0.00027126962818197
+          },
+          "event_diagnostic_pass": true,
+          "structure_pass": true,
+          "event_diagnostics": {
+            "passed": 1,
+            "issues": [],
+            "long_transition_arc_indices": [],
+            "ambiguous_events": [],
+            "unexpected_transition_arc_indices": [],
+            "unexpected_direct_arc_indices": [],
+            "incomplete_transition_arc_indices": [],
+            "natural_capacity_contact_cells": 21,
+            "capacity_arc_count": 0
+          },
+          "source": "data/numerical_scenarios/revision_checks/assessments/run_c3c6be627e2a4996a1efb2f59a1ee71d_a66ebe12631075905f46476d22282fbb7ff7141d69105f862bb6efaac22d8660_14d6dd93d670479f8fbcaab58c2c912a.mat"
+        }
+      ]
+    },
+    {
+      "id": "E3_negative_cost_difference",
+      "description": "E3 在 n=2000 的负成本差与容量超出相容；unresolved_discrepancy 原分类保留。",
+      "evidence": {
+        "case_id": "E3",
+        "run_id": "run_72fdd687379e4b0ba7f4defb3eb137e5",
+        "N": 2000,
+        "T": 300,
+        "numeric_pass": 1,
+        "agreement_pass": 0,
+        "observed_structure": "1 -> 0",
+        "status": "unresolved_discrepancy",
+        "capacity_excess": 7.830067991265732e-06,
+        "state_discrepancy": 1.348930616096311e-07,
+        "signed_cost_difference": -6.75538887330851e-05,
+        "relative_cost_difference": -0.00015566093352762406,
+        "cost_agreement": {
+          "passed": 0,
+          "mode": "relative",
+          "signed_difference": -6.75538887330851e-05,
+          "absolute_difference": 6.75538887330851e-05,
+          "relative_difference": -0.00015566093352762406
+        },
+        "event_diagnostic_pass": true,
+        "structure_pass": true,
+        "event_diagnostics": {
+          "passed": 1,
+          "issues": [],
+          "long_transition_arc_indices": [],
+          "ambiguous_events": [],
+          "unexpected_transition_arc_indices": [],
+          "unexpected_direct_arc_indices": [],
+          "incomplete_transition_arc_indices": [],
+          "natural_capacity_contact_cells": [],
+          "capacity_arc_count": 0
+        },
+        "source": "data/numerical_scenarios/revision_checks/assessments/run_72fdd687379e4b0ba7f4defb3eb137e5_6dfdbcf53b4f54f4cb17ec725e13878fdca6dfbed2661260b814bf03f6cb0005_1cdaa04cd2e4426a9202a9bc5a93a9bd.mat",
+        "relaxed_capacity_drop_independently_recomputed": 0.0001075504599031274,
+        "negative_difference_compatible_with_capacity_excess": true
+      }
+    },
+    {
+      "id": "floating_point_diagnostics",
+      "description": "重积分、终端峰值和状态差均为浮点诊断；通过浮点接受判据不是严格可行性证明。",
+      "source": "data/numerical_scenarios/numerical_checks.json"
+    },
+    {
+      "id": "post_solve_acceptance_revision",
+      "description": "原判据同时通过 28/35，求解后修订判据同时通过 30/35；不新增收敛证据。",
+      "source": "validation/numerical_scenarios/rerun_20261020/S2.6/assessment_revision_report.json",
+      "original": {
+        "records": 35,
+        "numeric_pass": 29,
+        "agreement_pass": 29,
+        "both_pass": 28
+      },
+      "revised": {
+        "records": 35,
+        "numeric_pass": 33,
+        "agreement_pass": 30,
+        "both_pass": 30
+      }
+    },
+    {
+      "id": "relaxed_drop_not_persisted",
+      "description": "原保存评估未记录 relaxed_capacity_drop 字段；表值来源是旧解析公式的评价，本脚本独立重算，不新增 OCP/ODE 或参数扫描。",
+      "source": "matlab/numerical_scenarios/export_numerical_latex.m::relaxed_capacity_drop"
+    }
+  ]
+}

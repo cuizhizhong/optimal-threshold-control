@@ -1,0 +1,132 @@
+{
+  "checks": [
+    {
+      "name": "export_and_three_regressions",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "optimizer_ocp_assessment_and_figure_export_zero",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "independent_table_and_residual_data",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "independent_audit_current_tex",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "protected_bytes_old_macros_and_scope",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "preservation_current_tex",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "no_script_dependency_on_removed_comments",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "28_original_notation_checks",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "workspace_four_stage_pair",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "workspace_final_logs_and_inputs",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "workspace_current_sources",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "workspace_all_figures_current",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "isolated_four_stage_pair",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "isolated_final_logs_and_inputs",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "isolated_current_sources",
+      "passed": false,
+      "details": null
+    },
+    {
+      "name": "isolated_all_figures_current",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "git_export_only_latex_and_figures",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "fresh_build_extra_xelatex_after_four_stages",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "all_page_text_identical_between_builds",
+      "passed": true,
+      "details": {
+        "main": true,
+        "theory_only": true
+      }
+    },
+    {
+      "name": "theoryonly_all_page_text_unchanged",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "published_pdfs_match_actual_build",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "all_eight_target_pages_at150dpi_visually_checked",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "known_evidence_gaps_recorded_without_new_solves",
+      "passed": true,
+      "details": null
+    }
+  ],
+  "passed": 22,
+  "total": 23,
+  "success": false,
+  "optimizer_calls": 0,
+  "new_ocp_solves": 0,
+  "assessment_calls": 0,
+  "ode_calls": 0,
+  "figure_exports": 0,
+  "pushes": 0,
+  "author_review_required": true
+}

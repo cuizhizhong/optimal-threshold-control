@@ -1,0 +1,11 @@
+{
+  "status": "corrected_verification_parser_failure",
+  "failed_command": "python -X utf8 tracing_isolation_optimal_control_complete/validation/numerics_rewrite_20261021/verify_error_table.py",
+  "error": "ValueError: 宏未闭合: NumErrorTableRows",
+  "cause": "初版独立核对脚本只检查括号前一个字符是否为反斜线，错误地把表体最后一行的两个反斜线之后的宏右括号当作转义括号。",
+  "repair": "仅修改独立核对脚本的宏体解析器：按括号前连续反斜线的奇偶性判断转义。未修改任何生产文件或保存数值。",
+  "optimizer_calls": 0,
+  "new_ocp_solves": 0,
+  "ode_calls": 0,
+  "matlab_calls": 0
+}

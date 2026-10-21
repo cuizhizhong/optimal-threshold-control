@@ -1,0 +1,7 @@
+首次默认沙箱启动在执行 run_export_f 之前失败。未运行导出、回归或科学求解。
+Fatal Startup Error:
+Throw location unknown (consider using BOOST_THROW_EXCEPTION)
+Dynamic exception type: class foundation::core::except::Exception<class MATLAB::settings::prefdir::PrefdirNotWritable,class std::exception,void>
+std::exception::what: 无法访问预设项文件夹 C:\Users\cui\AppData\Roaming\MathWorks\MATLAB\R2025b。预设项文件夹必须可写。
+[struct `anonymous namespace'::narrow_str_tag * __ptr64] = 无法访问预设项文件夹 C:\Users\cui\AppData\Roaming\MathWorks\MATLAB\R2025b。预设项文件夹必须可写。
+ERROR: MATLAB error Exit Status: 0x00000001

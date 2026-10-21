@@ -1,0 +1,396 @@
+{
+  "mode": "workspace",
+  "attempt": 1,
+  "started_utc": "2026-10-21T07:44:57.672606+00:00",
+  "documents": [
+    {
+      "name": "main",
+      "precompile_commands": [
+        {
+          "stage": "pre_1",
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-recorder",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\workspace_attempt1\\build",
+            "main.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "stdout_log": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerics_rewrite_20261021\\workspace_attempt1\\main_pre_1.stdout.log"
+        }
+      ],
+      "commands": [
+        {
+          "stage": "1",
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-recorder",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\workspace_attempt1\\build",
+            "main.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "stdout_log": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerics_rewrite_20261021\\workspace_attempt1\\main_1.stdout.log"
+        },
+        {
+          "stage": "2",
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\bibtex.EXE",
+            "main"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\workspace_attempt1\\build",
+          "exit_code": 0,
+          "stdout_log": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerics_rewrite_20261021\\workspace_attempt1\\main_2.stdout.log"
+        },
+        {
+          "stage": "3",
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-recorder",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\workspace_attempt1\\build",
+            "main.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "stdout_log": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerics_rewrite_20261021\\workspace_attempt1\\main_3.stdout.log"
+        },
+        {
+          "stage": "4",
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-recorder",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\workspace_attempt1\\build",
+            "main.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "stdout_log": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerics_rewrite_20261021\\workspace_attempt1\\main_4.stdout.log"
+        }
+      ],
+      "success": false,
+      "final_diagnostics": [
+        "Overfull \\hbox (1.73152pt too wide) in paragraph at lines 2783--2793",
+        "Overfull \\hbox (14.11015pt too wide) in paragraph at lines 2783--2793",
+        "Overfull \\hbox (14.32266pt too wide) in paragraph at lines 2783--2793",
+        "Overfull \\hbox (21.03944pt too wide) in paragraph at lines 2783--2793"
+      ],
+      "input_count": 153,
+      "forbidden_project_inputs": []
+    }
+  ],
+  "success": false,
+  "matlab_calls": 0,
+  "optimizer_calls": 0,
+  "ocp_solves": 0,
+  "pre_xelatex_count_per_document": 1,
+  "strict_final_diagnostics_required": true,
+  "baseline": {
+    "main": {
+      "commit": "89d9cc3",
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\baseline_89d9cc3\\main.pdf",
+      "pages": 46,
+      "pdf_sha256": "2f8f7e767e4315fe295aa08de2165919a92d941b0c4ccab4811ca18db17a9f00",
+      "section_starts": [
+        {
+          "title": "引言",
+          "start_page": 4
+        },
+        {
+          "title": "模型与控制问题",
+          "start_page": 5
+        },
+        {
+          "title": "主结果与最优分区",
+          "start_page": 6
+        },
+        {
+          "title": "解的适定性、正性与基本耗散",
+          "start_page": 8
+        },
+        {
+          "title": "常接触率问题、自然轨道与安全目标集",
+          "start_page": 9
+        },
+        {
+          "title": "两类控制弧与显式成本",
+          "start_page": 10
+        },
+        {
+          "title": "有限成本可行性与首次到达问题",
+          "start_page": 11
+        },
+        {
+          "title": "HJB 方程与验证所需的边界条件",
+          "start_page": 12
+        },
+        {
+          "title": "完全跟踪成本的有限可达域及导数",
+          "start_page": 13
+        },
+        {
+          "title": "切换曲线的存在、单调性及严格横穿",
+          "start_page": 14
+        },
+        {
+          "title": "全域候选反馈与候选成本",
+          "start_page": 17
+        },
+        {
+          "title": "全域梯度、拼接正则性与验证不等式",
+          "start_page": 20
+        },
+        {
+          "title": "全局最优性验证",
+          "start_page": 22
+        },
+        {
+          "title": "常接触率下控制与轨道的唯一性",
+          "start_page": 23
+        },
+        {
+          "title": "不变量坐标与切换机制",
+          "start_page": 27
+        },
+        {
+          "title": "比较基准、小容量渐近与参数量级",
+          "start_page": 28
+        },
+        {
+          "title": "数值方法与实验设置",
+          "start_page": 30
+        },
+        {
+          "title": "不同初值区域下的数值验证",
+          "start_page": 32
+        },
+        {
+          "title": "时变接触率：条件性结论",
+          "start_page": 36
+        },
+        {
+          "title": "同时控制接触率与跟踪比例时的限制",
+          "start_page": 37
+        },
+        {
+          "title": "模型假设与理论边界",
+          "start_page": 37
+        },
+        {
+          "title": "主要结论",
+          "start_page": 38
+        },
+        {
+          "title": "完全跟踪成本导数的逐步计算",
+          "start_page": 38
+        },
+        {
+          "title": "容量边界成本积分的逐步计算",
+          "start_page": 38
+        },
+        {
+          "title": "小容量渐近的完整推导",
+          "start_page": 39
+        },
+        {
+          "title": "梯度拼接与相对正则性的详细证明",
+          "start_page": 40
+        },
+        {
+          "title": "证明依赖与校验口径",
+          "start_page": 42
+        },
+        {
+          "title": "感染阈值与医疗需求",
+          "start_page": 42
+        },
+        {
+          "title": "数值复现说明",
+          "start_page": 43
+        }
+      ],
+      "section17": {
+        "title": "数值方法与实验设置",
+        "start_page": 30,
+        "end_page": 32,
+        "pages": [
+          30,
+          31,
+          32
+        ],
+        "physical_page_count": 3,
+        "shares_last_page_with_next_section": true
+      },
+      "section18": {
+        "title": "不同初值区域下的数值验证",
+        "start_page": 32,
+        "end_page": 36,
+        "pages": [
+          32,
+          33,
+          34,
+          35,
+          36
+        ],
+        "physical_page_count": 5,
+        "shares_last_page_with_next_section": true
+      },
+      "numerical_sections": {
+        "pages": [
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36
+        ],
+        "physical_page_count": 7
+      },
+      "supplement": {
+        "title": "数值复现说明",
+        "start_page": 43,
+        "end_page": 44,
+        "pages": [
+          43,
+          44
+        ]
+      }
+    },
+    "theory_only": {
+      "commit": "89d9cc3",
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\baseline_89d9cc3\\theory_only.pdf",
+      "pages": 36,
+      "pdf_sha256": "3efc896fc03f0dbf62bd7d203c91b883dbb3a9e62caab322d9096e169e7b39b5",
+      "section_starts": [
+        {
+          "title": "引言",
+          "start_page": 3
+        },
+        {
+          "title": "模型与控制问题",
+          "start_page": 4
+        },
+        {
+          "title": "主结果与最优分区",
+          "start_page": 5
+        },
+        {
+          "title": "解的适定性、正性与基本耗散",
+          "start_page": 7
+        },
+        {
+          "title": "常接触率问题、自然轨道与安全目标集",
+          "start_page": 8
+        },
+        {
+          "title": "两类控制弧与显式成本",
+          "start_page": 9
+        },
+        {
+          "title": "有限成本可行性与首次到达问题",
+          "start_page": 10
+        },
+        {
+          "title": "HJB 方程与验证所需的边界条件",
+          "start_page": 11
+        },
+        {
+          "title": "完全跟踪成本的有限可达域及导数",
+          "start_page": 12
+        },
+        {
+          "title": "切换曲线的存在、单调性及严格横穿",
+          "start_page": 13
+        },
+        {
+          "title": "全域候选反馈与候选成本",
+          "start_page": 16
+        },
+        {
+          "title": "全域梯度、拼接正则性与验证不等式",
+          "start_page": 19
+        },
+        {
+          "title": "全局最优性验证",
+          "start_page": 21
+        },
+        {
+          "title": "常接触率下控制与轨道的唯一性",
+          "start_page": 22
+        },
+        {
+          "title": "不变量坐标与切换机制",
+          "start_page": 26
+        },
+        {
+          "title": "比较基准、小容量渐近与参数量级",
+          "start_page": 27
+        },
+        {
+          "title": "主要结论",
+          "start_page": 29
+        },
+        {
+          "title": "完全跟踪成本导数的逐步计算",
+          "start_page": 29
+        },
+        {
+          "title": "容量边界成本积分的逐步计算",
+          "start_page": 31
+        },
+        {
+          "title": "小容量渐近的完整推导",
+          "start_page": 31
+        },
+        {
+          "title": "梯度拼接与相对正则性的详细证明",
+          "start_page": 32
+        },
+        {
+          "title": "证明依赖与校验口径",
+          "start_page": 34
+        },
+        {
+          "title": "感染阈值与医疗需求",
+          "start_page": 34
+        }
+      ]
+    }
+  },
+  "project_directory": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete",
+  "build_directory": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\numerics_rewrite_20261021\\workspace_attempt1\\build",
+  "source_sha256": {
+    "latex/main.tex": "8c40cfa20f521bd34274346e316bdc24893acf346ad5b109014267903707ce6b",
+    "latex/references.bib": "e84bbdef4ffa590f6d7f1a36d1e92481a7cf515cab90bcf41d28f1410ae25fff",
+    "latex/theory_only.tex": "bc87e137e4cbe11a76dc8b3cb39d45d0ec7de1783bad31dc632335981f149fb5",
+    "latex/generated/scaling_values.tex": "ef4d6488864b89fb35a1d45cbbaadc0de0933b023ced432d1c8bb874d4321258"
+  },
+  "figure_sha256": {
+    "figures/numerical_scenarios/FigN1_optimal_partition.pdf": "ca86d4850da4b02467b6eb37a2ceb5dcd911b23c9418bd459ded1c27f075aadf",
+    "figures/numerical_scenarios/FigN1_optimal_partition.png": "b121a7e8a38a9487cade5c085607a572b99ae0a5067fb883d6aba0e5fecc7e01",
+    "figures/numerical_scenarios/FigN1_regions.pdf": "2895a76602d8d98bb9a2d6105b7c33399e0ab433d0497ee7dbd0af9990a53b3e",
+    "figures/numerical_scenarios/FigN1_regions.png": "3eeca5468e6d09f15f358d8aeb10b2a51c1baf8d276093930b1d9a426ebcf880",
+    "figures/numerical_scenarios/FigN2_waiting.pdf": "04141129be11e4492cf53d2027a6c39e41151a01e6315fce4c79cf488adbd1dc",
+    "figures/numerical_scenarios/FigN2_waiting.png": "358ff93fcc674da54439c960a6dcdb19e857800bfb2e7dd29bf13b81189df025",
+    "figures/numerical_scenarios/FigN3_boundary_tracking.pdf": "f3c3a8773f442ba45e6c839fc3603106938f6a974cf3b163edcd7e6c65c188e4",
+    "figures/numerical_scenarios/FigN3_boundary_tracking.png": "d957f5493a0778623d7785e8d4cb3d37ea95c1f6f3f10bc1af8c7269b6d51009",
+    "figures/scaling/FigD_magnitude.pdf": "182ccccde70a3d9c024c8cd6fe677120be8a8a75d99bf908ce032c1afc822fb5",
+    "figures/scaling/FigD_magnitude.png": "012d0099156ea319afb751ea4b2678edf0502c16bd8294f0d1033f96c8fae65d"
+  },
+  "search_environment": {
+    "TEXINPUTS": null,
+    "BIBINPUTS": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex;",
+    "BSTINPUTS": null,
+    "TEXMFOUTPUT": null
+  },
+  "failure": "最终日志未通过严格验收：['Overfull \\\\hbox (1.73152pt too wide) in paragraph at lines 2783--2793', 'Overfull \\\\hbox (14.11015pt too wide) in paragraph at lines 2783--2793', 'Overfull \\\\hbox (14.32266pt too wide) in paragraph at lines 2783--2793', 'Overfull \\\\hbox (21.03944pt too wide) in paragraph at lines 2783--2793']",
+  "finished_utc": "2026-10-21T07:45:15.799113+00:00"
+}

@@ -1,0 +1,374 @@
+{
+  "schema_version": 1,
+  "baseline": "89d9cc3",
+  "optimizer_calls": 0,
+  "new_ocp_solves": 0,
+  "ode_calls": 0,
+  "matlab_calls": 0,
+  "formula_provenance": {
+    "description": "原评估无下降量字段；独立按保存参数与既有解析切换方程重算下降量，无新轨道。",
+    "existing_relaxed_capacity_drop_source": "function drop=relaxed_capacity_drop(run)\n% 只用解析公式：容量放宽为 K+delta（delta 为重积分容量超出）时解析最优值的下降。\ndrop=NaN; delta=run.assessment.capacity_excess;\nif ~(isscalar(delta) && isfinite(delta) && delta>0), return; end\ntry\n    relaxed=numerical_normalize_parameters(run.parameters); relaxed.K=relaxed.K+delta;\n    wide=analytic_reference(relaxed,run.x0,build_theory_geometry(relaxed),0);\n    drop=run.reference.J_reference-wide.J_reference;\ncatch\n    drop=NaN;\nend\nend\n\n",
+    "existing_relaxed_capacity_drop_source_sha256": "748863ca73dae430a2c321344dfca5821619806ffcb68d42d95d79607137190a",
+    "formulas": [
+      "a_K(z)=K+h-z+h*log(z/h)",
+      "Theta(s,i)=(s-h)/(i*(s-p))",
+      "i_f=a_K(z)+ell*log(s_f/z)",
+      "Theta(s_f,i_f)=Theta(z,a_K(z))",
+      "J_B=beta/(K*(1-beta))*(log(s_c/s_B)-beta*log((s_c-p)/(s_B-p)))",
+      "J=J_B+beta*c/gamma*log(i_f/a_K(z))",
+      "drop=J_reference(K)-J_analytic(K+capacity_excess)"
+    ],
+    "production_sources": {
+      "analytic_reference.m": "d9751e16bc081c984180f1fd9bc4e98a4c1f4b24d7e902de3050f0a87d75c0d5",
+      "build_theory_geometry.m": "eb19409d75472a8c2b237e6b768462b8f0ba2ef1d37db878a130f08d5f881339",
+      "classify_initial_state.m": "aed1cad79ee7da56095315180887145755d6d7039d8a2035a246937e929ebd53"
+    }
+  },
+  "source_hashes": {
+    "data/numerical_scenarios/numerical_checks.json": "7859f2ad4fb20d901aa7b9fea2805ef9c1b45135aaba8ec39733c8ea019fb72e",
+    "data/numerical_scenarios/selection_manifest.json": "2cb31794442ef42be7d155366e2c6fd6691ae1aec14e713edc21a78de7dc7f2a",
+    "data/numerical_scenarios/revision_checks/grid_summary.json": "cd9edbef14b8f104b261580ceaf14378cd741cb6086f0d2bebfd6fbe38b407dc",
+    "validation/numerical_scenarios/rerun_20261020/S2.6/assessment_revision_report.json": "78366c962f065d94cc4306c18c7b3426d852230c2e730cbf70c36ce070534b3c",
+    "data/numerical_scenarios/revision_checks/assessments/run_90557e2d9fa045528eddf70fec1f17cc_1595de060a6dc43533553aa3e97440ee6dad648a356dfa56671280a7878ac196_44fcc52eb5bc4065aee7cde78b39f657.mat": "abadc3241d86e36024f3d32ec5861be2faebde0eb84844ea25b3a6483ae6da26",
+    "data/numerical_scenarios/revision_checks/assessments/run_be88a14b0f1a4a80a12ea40d2e9e18db_59638ce47fc50871a8ccc4fd7145815f9f1b3616be793805f78ccf3a2f369f65_9aa653b407034c4d8edf5f0c9dc35532.mat": "c55acdff40b0c3a0463d33330f3b98b890e07169dba20c2ed560a067c471e1a7",
+    "data/numerical_scenarios/revision_checks/assessments/run_b5125bf7309e446d9ff6146d257d28c0_da65d2fc3dfa2b3192d0df50fd2485ce4fc408077ca0cadc43655ae8caf6ca3a_c5130429d86b41c68b7c9475bde21822.mat": "a134db6a1a169a377020e3fa86da2918ac323563c21ec7820dc93c3f5a40511a",
+    "data/numerical_scenarios/revision_checks/assessments/run_67ce8234939a4f4b81aa86ca7b197b74_065d9bddfd44d2fb5d797c1641f52395f8ecca52391cc5ff660f28c95572da3a_5775c3142f914a2691a647e1c12bc4a6.mat": "2d09b320b001fe617399cbcf26d59ebcdbfa654bec725d626d3587862418426c",
+    "data/numerical_scenarios/revision_checks/assessments/run_3f672e8955914131af6d36a208c67727_e4055271786d3b96fd0135f5dc7f27ce1350e8d14d36ce9e18e9ac10fc998fa3_c1483bfa83be49caa4516860dbb967e1.mat": "e0dcc433a5c56fe66c805f6355d564cbaaa889e30b66249498bfc2742d5ee8fc"
+  },
+  "rows": [
+    {
+      "case_id": "E1",
+      "run_id": "run_90557e2d9fa045528eddf70fec1f17cc",
+      "J_reference": 0.4161859147760021,
+      "J_openocl": 0.41620500909728464,
+      "signed_cost_difference": 1.9094321282553395e-05,
+      "signed_relative_percent": 0.004587930683053093,
+      "capacity_excess": 2.968048256335454e-07,
+      "relaxed_capacity_drop": 4.0497517552751106e-06,
+      "relaxed_comparison_pass": true,
+      "baseline_formula_difference": -6.661338147750939e-16,
+      "assessment_source": "data/numerical_scenarios/revision_checks/assessments/run_90557e2d9fa045528eddf70fec1f17cc_1595de060a6dc43533553aa3e97440ee6dad648a356dfa56671280a7878ac196_44fcc52eb5bc4065aee7cde78b39f657.mat"
+    },
+    {
+      "case_id": "E2",
+      "run_id": "run_be88a14b0f1a4a80a12ea40d2e9e18db",
+      "J_reference": 1.5295111601514726,
+      "J_openocl": 1.5295233613984434,
+      "signed_cost_difference": 1.2201246970766633e-05,
+      "signed_relative_percent": 0.0007977219969783223,
+      "capacity_excess": 7.991060546608253e-07,
+      "relaxed_capacity_drop": 1.2830908360017546e-05,
+      "relaxed_comparison_pass": true,
+      "baseline_formula_difference": -6.661338147750939e-16,
+      "assessment_source": "data/numerical_scenarios/revision_checks/assessments/run_be88a14b0f1a4a80a12ea40d2e9e18db_59638ce47fc50871a8ccc4fd7145815f9f1b3616be793805f78ccf3a2f369f65_9aa653b407034c4d8edf5f0c9dc35532.mat"
+    },
+    {
+      "case_id": "E3",
+      "run_id": "run_b5125bf7309e446d9ff6146d257d28c0",
+      "J_reference": 0.4339810073225392,
+      "J_openocl": 0.4339985163523554,
+      "signed_cost_difference": 1.7509029816231703e-05,
+      "signed_relative_percent": 0.004034515225505897,
+      "capacity_excess": 4.802385158986233e-08,
+      "relaxed_capacity_drop": 6.596586864526799e-07,
+      "relaxed_comparison_pass": true,
+      "baseline_formula_difference": -6.106226635438361e-16,
+      "assessment_source": "data/numerical_scenarios/revision_checks/assessments/run_b5125bf7309e446d9ff6146d257d28c0_da65d2fc3dfa2b3192d0df50fd2485ce4fc408077ca0cadc43655ae8caf6ca3a_c5130429d86b41c68b7c9475bde21822.mat"
+    },
+    {
+      "case_id": "E4",
+      "run_id": "run_67ce8234939a4f4b81aa86ca7b197b74",
+      "J_reference": 1.2688347783424891,
+      "J_openocl": 1.2688310955840425,
+      "signed_cost_difference": -3.6827584466436747e-06,
+      "signed_relative_percent": -0.00029024728116725765,
+      "capacity_excess": 7.702869587733474e-07,
+      "relaxed_capacity_drop": 1.1606263131902494e-05,
+      "relaxed_comparison_pass": true,
+      "baseline_formula_difference": -6.661338147750939e-16,
+      "assessment_source": "data/numerical_scenarios/revision_checks/assessments/run_67ce8234939a4f4b81aa86ca7b197b74_065d9bddfd44d2fb5d797c1641f52395f8ecca52391cc5ff660f28c95572da3a_5775c3142f914a2691a647e1c12bc4a6.mat"
+    },
+    {
+      "case_id": "E5",
+      "run_id": "run_3f672e8955914131af6d36a208c67727",
+      "J_reference": 0.5362331967050167,
+      "J_openocl": 0.5362563615916044,
+      "signed_cost_difference": 2.3164886587712097e-05,
+      "signed_relative_percent": 0.004319927734808847,
+      "capacity_excess": 5.571006997384664e-08,
+      "relaxed_capacity_drop": 7.763109378666755e-07,
+      "relaxed_comparison_pass": true,
+      "baseline_formula_difference": 0.0,
+      "assessment_source": "data/numerical_scenarios/revision_checks/assessments/run_3f672e8955914131af6d36a208c67727_e4055271786d3b96fd0135f5dc7f27ce1350e8d14d36ce9e18e9ac10fc998fa3_c1483bfa83be49caa4516860dbb967e1.mat"
+    }
+  ],
+  "residual_data": {
+    "max_absolute_relative_percent": 0.004587930683053093,
+    "max_capacity_excess": 7.991060546608253e-07,
+    "max_state_discrepancy": 8.57058412018219e-08,
+    "tail_max_q": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "terminal_safe": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "terminal_peaks": [
+      1.7325278667594323e-27,
+      1.4036357308630484e-27,
+      3.7887393324957803e-28,
+      5.143886653316161e-28,
+      3.6529639885422143e-28
+    ],
+    "original_counts": {
+      "records": 35,
+      "numeric_pass": 29,
+      "agreement_pass": 29,
+      "both_pass": 28
+    },
+    "revised_counts": {
+      "records": 35,
+      "numeric_pass": 33,
+      "agreement_pass": 30,
+      "both_pass": 30
+    }
+  },
+  "generated_tex": "latex/main.tex",
+  "macro_comparisons": [
+    {
+      "case_id": "E1",
+      "fields": {
+        "signed_cost_difference": {
+          "expected": 1.9094321282553395e-05,
+          "generated": "1.91e-05",
+          "rounding_half_unit": "5E-8",
+          "significant_digits": 3,
+          "passed": true
+        },
+        "signed_relative_percent": {
+          "expected": 0.004587930683053093,
+          "generated": "4.59e-03",
+          "rounding_half_unit": "0.000005",
+          "significant_digits": 3,
+          "passed": true
+        },
+        "capacity_excess": {
+          "expected": 2.968048256335454e-07,
+          "generated": "2.97e-07",
+          "rounding_half_unit": "5E-10",
+          "significant_digits": 3,
+          "passed": true
+        },
+        "relaxed_capacity_drop": {
+          "expected": 4.0497517552751106e-06,
+          "generated": "4.05e-06",
+          "rounding_half_unit": "5E-9",
+          "significant_digits": 3,
+          "passed": true
+        }
+      },
+      "generated_judgment": "是",
+      "judgment_pass": true,
+      "passed": true
+    },
+    {
+      "case_id": "E2",
+      "fields": {
+        "signed_cost_difference": {
+          "expected": 1.2201246970766633e-05,
+          "generated": "1.22e-05",
+          "rounding_half_unit": "5E-8",
+          "significant_digits": 3,
+          "passed": true
+        },
+        "signed_relative_percent": {
+          "expected": 0.0007977219969783223,
+          "generated": "7.98e-04",
+          "rounding_half_unit": "5E-7",
+          "significant_digits": 3,
+          "passed": true
+        },
+        "capacity_excess": {
+          "expected": 7.991060546608253e-07,
+          "generated": "7.99e-07",
+          "rounding_half_unit": "5E-10",
+          "significant_digits": 3,
+          "passed": true
+        },
+        "relaxed_capacity_drop": {
+          "expected": 1.2830908360017546e-05,
+          "generated": "1.28e-05",
+          "rounding_half_unit": "5E-8",
+          "significant_digits": 3,
+          "passed": true
+        }
+      },
+      "generated_judgment": "是",
+      "judgment_pass": true,
+      "passed": true
+    },
+    {
+      "case_id": "E3",
+      "fields": {
+        "signed_cost_difference": {
+          "expected": 1.7509029816231703e-05,
+          "generated": "1.75e-05",
+          "rounding_half_unit": "5E-8",
+          "significant_digits": 3,
+          "passed": true
+        },
+        "signed_relative_percent": {
+          "expected": 0.004034515225505897,
+          "generated": "4.03e-03",
+          "rounding_half_unit": "0.000005",
+          "significant_digits": 3,
+          "passed": true
+        },
+        "capacity_excess": {
+          "expected": 4.802385158986233e-08,
+          "generated": "4.80e-08",
+          "rounding_half_unit": "5E-11",
+          "significant_digits": 3,
+          "passed": true
+        },
+        "relaxed_capacity_drop": {
+          "expected": 6.596586864526799e-07,
+          "generated": "6.60e-07",
+          "rounding_half_unit": "5E-10",
+          "significant_digits": 3,
+          "passed": true
+        }
+      },
+      "generated_judgment": "是",
+      "judgment_pass": true,
+      "passed": true
+    },
+    {
+      "case_id": "E4",
+      "fields": {
+        "signed_cost_difference": {
+          "expected": -3.6827584466436747e-06,
+          "generated": "-3.68e-06",
+          "rounding_half_unit": "5E-9",
+          "significant_digits": 3,
+          "passed": true
+        },
+        "signed_relative_percent": {
+          "expected": -0.00029024728116725765,
+          "generated": "-2.90e-04",
+          "rounding_half_unit": "5E-7",
+          "significant_digits": 3,
+          "passed": true
+        },
+        "capacity_excess": {
+          "expected": 7.702869587733474e-07,
+          "generated": "7.70e-07",
+          "rounding_half_unit": "5E-10",
+          "significant_digits": 3,
+          "passed": true
+        },
+        "relaxed_capacity_drop": {
+          "expected": 1.1606263131902494e-05,
+          "generated": "1.16e-05",
+          "rounding_half_unit": "5E-8",
+          "significant_digits": 3,
+          "passed": true
+        }
+      },
+      "generated_judgment": "是",
+      "judgment_pass": true,
+      "passed": true
+    },
+    {
+      "case_id": "E5",
+      "fields": {
+        "signed_cost_difference": {
+          "expected": 2.3164886587712097e-05,
+          "generated": "2.32e-05",
+          "rounding_half_unit": "5E-8",
+          "significant_digits": 3,
+          "passed": true
+        },
+        "signed_relative_percent": {
+          "expected": 0.004319927734808847,
+          "generated": "4.32e-03",
+          "rounding_half_unit": "0.000005",
+          "significant_digits": 3,
+          "passed": true
+        },
+        "capacity_excess": {
+          "expected": 5.571006997384664e-08,
+          "generated": "5.57e-08",
+          "rounding_half_unit": "5E-11",
+          "significant_digits": 3,
+          "passed": true
+        },
+        "relaxed_capacity_drop": {
+          "expected": 7.763109378666755e-07,
+          "generated": "7.76e-07",
+          "rounding_half_unit": "5E-10",
+          "significant_digits": 3,
+          "passed": true
+        }
+      },
+      "generated_judgment": "是",
+      "judgment_pass": true,
+      "passed": true
+    }
+  ],
+  "residual_summary_comparison": {
+    "sentence_count": 5,
+    "numbers": {
+      "relative_percent": {
+        "expected": 0.004587930683053093,
+        "generated": "0.00459",
+        "rounding_half_unit": "0.000005",
+        "significant_digits": 3,
+        "passed": true
+      },
+      "capacity_excess": {
+        "expected": 7.991060546608253e-07,
+        "generated": "7.99e-07",
+        "rounding_half_unit": "5E-10",
+        "significant_digits": 3,
+        "passed": true
+      },
+      "state_discrepancy": {
+        "expected": 8.57058412018219e-08,
+        "generated": "8.57e-08",
+        "rounding_half_unit": "5E-11",
+        "significant_digits": 3,
+        "passed": true
+      },
+      "tail_max_q": {
+        "expected": 0,
+        "generated": "0",
+        "rounding_half_unit": "0.5",
+        "significant_digits": 1,
+        "passed": true
+      }
+    },
+    "checks": {
+      "five_sentences": true,
+      "displayed_numbers": true,
+      "tail_zero": true,
+      "terminal_safety": true,
+      "original_counts": true,
+      "revised_counts": true,
+      "criterion_change": true,
+      "stage_anomalies": true,
+      "cost_failures": true
+    },
+    "passed": true
+  },
+  "passed": true,
+  "status": "passed",
+  "generated_tex_sha256": "a2562f318793cf5e55e54e254c59595ff739a46890d8badae68a0895f1ac32ac"
+}

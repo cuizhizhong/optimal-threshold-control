@@ -2039,6 +2039,8 @@ He 等基于日度观测估计时变速率，本文仅引用其无量纲 $\beta$
 \providecommand{\NumFindingTrackingBoundary}{E3、E4、E5 的实际阶段依次为 $1\to 0$、$q_B\to 1\to 0$ 和 $1\to 0$。E3、E5 均从初始时刻采用完全跟踪。E4 的容量退出区间为 $[1.05,1.0875]$。E2、E4 的理论容量退出时刻均落在上述单网格过渡区间内；首个纯完全跟踪单元的起点仍不等同于连续切换点。}
 \providecommand{\NumCheckStatement}{对原始分段常数控制逐区间重积分后，五例最大容量超出量为 $\num{8e-07}$，与配点状态的最大差异为 $\num{8.6e-08}$；末尾 $20$ 个时间单位内最大控制幅值为 $\num{0}$。各例终端状态均通过零控制安全延拓核查。这些浮点检查用于排查截断及离散问题，不是连续可行性的严格证明。}
 \providecommand{\NumOverallFinding}{五例成本相对解析参考的最大差异约为 $0.00459\%$。计算结果支持这五个初值下的阶段顺序及切换位置预测；切换位置的偏差应结合控制区间宽度和过渡单元解释。E4 的离散成本比解析参考低 $\num{3.68e-06}$，重积分轨道有 $\varepsilon_K=\num{7.7e-07}$ 的容量超出；把容量放宽为 $K+\varepsilon_K$ 后，解析最优值下降 $\num{1.16e-05}$，大于该负差。因此该控制的成本仍不低于放宽容量后的解析最优值，负差与容量超出相容，不构成低于解析最优值的连续时间可行控制。}
+\providecommand{\NumErrorTableRows}{E1 & \num{1.91e-05} & \num{4.59e-03} & \num{2.97e-07} & \num{4.05e-06} & 是 \\ E2 & \num{1.22e-05} & \num{7.98e-04} & \num{7.99e-07} & \num{1.28e-05} & 是 \\ E3 & \num{1.75e-05} & \num{4.03e-03} & \num{4.80e-08} & \num{6.60e-07} & 是 \\ E4 & \num{-3.68e-06} & \num{-2.90e-04} & \num{7.70e-07} & \num{1.16e-05} & 是 \\ E5 & \num{2.32e-05} & \num{4.32e-03} & \num{5.57e-08} & \num{7.76e-07} & 是 \\}
+\providecommand{\NumResidualSummary}{五例成本相对解析参考差的绝对值最大为 $\num{0.00459}\%$。重积分最大容量超出为 $\num{7.99e-07}$，与配点状态的最大偏差为 $\num{8.57e-08}$。末段最大控制幅值为 $\num{0}$，各例终端状态均通过零控制安全检查。按求解前预定的原判据，数值接受与理论比较同时通过 28/35；按求解后修订的判据，同时通过 30/35；修订只调整浮点接受尺度，不提供新的收敛证据。未通过的网格记录（E2、E4 在 $n=2000$ 的阶段识别异常；E1、E3、E5 在 $n=2000$ 的成本比较未通过）见补充材料。}
 % END AUTO-GENERATED NUMERICAL RESULTS
 \providecommand{\NumMeshDetails}{}
 
@@ -2057,11 +2059,8 @@ He 等基于日度观测估计时变速率，本文仅引用其无量纲 $\beta$
 
 本节围绕不同初值区域，比较解析最优策略与直接配点输出，
 重点考察等待阶段、容量弧和完全跟踪阶段的出现顺序及其连接位置。
-算例组织借鉴 \citet[第6节]{AvramFreddiGoreac2022} 的区域相关情景设计，
-但使用本文的状态方程、控制成本及
-\NumTheoryRef{def:regions}{分区定义}。
-该文献的有限时域问题包含目标约束，
-本文仅借鉴其几何展示方式，不将其结果作为下述无终端约束截断的等价性依据。
+算例组织借鉴 \citet[第6节]{AvramFreddiGoreac2022} 的区域展示方式，
+但该文含目标约束的有限时域问题不作为本文截断处理的等价性依据。
 全局最优性与几乎处处唯一性分别由
 \NumTheoryRef{thm:verification}{验证定理}和
 \NumTheoryRef{thm:unique-q}{唯一性定理}给出；
@@ -2109,37 +2108,38 @@ $s,i$ 为相对于初始总量的比例，允许 $s_0+i_0<1$；
 对于每个待报告结果，用原始分段常数控制重新积分状态方程，
 检查区间内部的容量峰值、与配点状态的偏差以及终端零控制延拓。
 
-终端延拓检查使用式\eqref{eq:uncontrolled-future-peak}定义的
-无控制未来峰值 $P_0(s(T),i(T))$，其中终端状态由重新积分得到，
-同时检查终点前一段时间内的控制是否已接近零。
-这些是求解后的浮点诊断，不进入问题\eqref{eq:numerical-ocp}。
-它们不单独证明连续时间严格可行性，
-也不将有限时域离散问题与原无穷时域问题视为严格等价。
+固定 $T=300$ 的直接配点加终端检查是一种终端处理，
+不等同于原无穷时域问题。
+终端检查采用式\eqref{eq:uncontrolled-future-peak}中的无控制未来峰值
+$P_0(s(T),i(T))$，终端状态取自重积分轨道，
+并核查末段控制是否为零。
+若该轨道在 $[0,T]$ 上满足 $i\le K$，且 $P_0(s(T),i(T))\le K$，
+则在 $T$ 之后令 $q=0$，由引理\ref{lem:safe-invariant}的安全集正向不变性，
+所得控制对原无穷时域问题可行，其完整成本为 $J_{\mathrm{OCL}}$，
+从而 $J_{\mathrm{OCL}}\ge V(x_0)$。
+若重积分轨道有最大容量超出 $\varepsilon_K>0$，
+且终端满足 $P_0(s(T),i(T))\le K+\varepsilon_K$，
+则同一延拓只保证对容量 $K+\varepsilon_K$ 可行，
+相应结论为 $J_{\mathrm{OCL}}\ge V_{K+\varepsilon_K}(x_0)$；
+这里 $V_{K'}$ 表示容量为 $K'$ 时的值函数。
+这给出表\ref{tab:numerical-errors}中容量放宽对照的依据。
+上述可行性推论以连续轨道满足相应条件为前提，
+重积分及终端检查本身仍是浮点诊断。
+本文没有证明离散有限时域最优值随网格加密收敛到 $V$，
+也不以这些诊断代替该收敛性结论。
 
-阶段和过渡区间首先依据数值控制及容量接近程度识别，
-再与解析事件比较。
-跳跃附近按过渡网格区间报告位置，
-不以首个纯控制单元的起点代替连续切换时刻。
-附加复核分别改变初始猜测、网格、终止时刻及阶段识别阈值；
-网格比较固定 $T$，时域比较固定控制区间宽度，
-以区分离散误差和截断效应。
-正文保留与阶段结构相关的摘要，配置统计和诊断分类见附录\ref{app:numerical-reproducibility}。
-局部求解器的重复收敛及有限样本复核均不替代解析证明。
-
-% 下列宏由实际保存数据生成；未完成时保持为空。
-\NumFindingParagraph{\NumCheckStatement}
-\NumFindingParagraph{\NumRobustnessStatement}
+阶段依据数值控制及容量接近程度识别，切换位置按过渡网格区间报告。
+已有复核改变初始猜测、网格、终止时刻及阶段识别阈值，
+完整配置、判据与诊断结果见补充材料附录\ref{app:numerical-reproducibility}。
 
 \section{不同初值区域下的数值验证}
 \label{sec:numerical-results}
 
 \subsection{代表初值与相平面分区}
 
-选取表\ref{tab:numerical-scenarios}中的五个初值，分别覆盖两种等待区、
-内部立即完全跟踪区以及容量线上内生阈值两侧的状态。
-算例 E1 与 E2 保持 $i_0$ 相同，用来区分两种等待方式；
-算例 E4 与 E5 保持 $i_0=K$，用来检验容量初值是否需要先维持平台。
-算例 E3 补充了 $i_0<K$ 时直接采用完全跟踪的情形。
+表\ref{tab:numerical-scenarios}的五个初值覆盖表\ref{tab:optimal-stages}中的两种等待区、
+立即完全跟踪区及容量线上 $s_B$ 两侧的状态，
+用于检验\NumTheoryRef{thm:verification}{验证定理}给出的阶段结构与成本。
 
 由安全边界和切换条件的数值评价得
 \begin{equation}
@@ -2148,9 +2148,6 @@ $s,i$ 为相对于初始总量的比例，允许 $s_0+i_0<1$；
 \end{equation}
 其中 $(s_B,K)$ 为切换曲线与容量线的交点。
 图\ref{fig:optimal-partition}给出成本分区的理论几何，图\ref{fig:numerical-regions}将 E1--E5 的直接配点轨道与该几何叠加比较。
-两种等待分支之间的边界使用正文定义的自然轨道标号
-$\Phi=\Phi_B$，不是整条竖线 $s=s_B$。
-所有区域均限制在 $s>0$、$0<i\le K$、$s+i\le1$ 的物理域内。
 
 \begin{table}[H]
 \centering
@@ -2172,6 +2169,26 @@ E5 & $(0.50,0.15)$ & $\mathcal T\cap\{i=K\}$ & $1\to0$ & \NumJRefEFive & \NumJOc
 \end{tabular}
 \end{table}
 
+\begin{table}[H]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\caption{主结果的带符号成本差与约束误差。
+$J_{\mathrm{ref}}=V_K(x_0)$ 为解析参考值，相对差为
+$(J_{\mathrm{OCL}}-J_{\mathrm{ref}})/J_{\mathrm{ref}}$。
+按第\ref{sec:numerical-method}节的终端延拓逻辑，
+末列检查成本差是否不小于 $-(V_K-V_{K+\varepsilon_K})$；
+该浮点比较不构成严格连续可行性的证明。}
+\label{tab:numerical-errors}
+\begin{tabular}{@{}crrrrr@{}}
+\toprule
+算例 & $J_{\mathrm{OCL}}-J_{\mathrm{ref}}$ & \shortstack{相对差\\（\%）} & $\varepsilon_K$ & $V_K-V_{K+\varepsilon_K}$ & \shortstack{是否满足\\$J_{\mathrm{OCL}}\ge V_{K+\varepsilon_K}$}\\
+\midrule
+\NumErrorTableRows
+\bottomrule
+\end{tabular}
+\end{table}
+
 \begin{figure}[H]
 \centering
 \NumFigureOrBlank{FigN1_regions.pdf}{4.2cm}
@@ -2185,32 +2202,11 @@ E5 & $(0.50,0.15)$ & $\mathcal T\cap\{i=K\}$ & $1\to0$ & \NumJRefEFive & \NumJOc
 
 \subsection{两种等待区域的对照}
 
-算例 E1 的初值 $(0.75,0.01)$ 属于 $\mathcal W_\Gamma$。
-根据\NumTheoryRef{def:candidate}{反馈构造}，先取 $q=0$，
-沿自然轨道到达 $\Gamma_K$ 后采用完全跟踪，并在进入安全集后解除。
-理论结构为
-\[
- 0\longrightarrow1\longrightarrow0.
-\]
-解析公式给出的完全跟踪起点约为
-\[
- (s_\Gamma,i_\Gamma)
- \approx(\NumSwitchSEOneRef,\NumSwitchIEOneRef),
- \qquad i_\Gamma<K.
-\]
-因此，本例的关键检验是数值优化是否在容量尚未达到时开始完全跟踪，
-以及是否没有出现正长度容量平台。
-
-算例 E2 的初值 $(0.99,0.01)$ 属于 $\mathcal W_K$。
-理论预测先自然达到容量，再采用 $q_B(s)=1-h/s$，
-沿 $i=K$ 运行至 $(s_B,K)$，之后转入完全跟踪并在安全边界解除。
-其结构为
-\[
- 0\longrightarrow q_B(s)\longrightarrow1\longrightarrow0.
-\]
-图\ref{fig:numerical-waiting}并列比较这两种等待方式。
-平台是否出现、完全跟踪开始时的感染比例及切换点的位置，
-共同构成本组情景的比较内容。
+E1 与 E2 保持 $i_0=0.01$ 相同，分别位于 $\mathcal W_\Gamma$ 和 $\mathcal W_K$。
+按表\ref{tab:optimal-stages}及\NumTheoryRef{def:candidate}{反馈构造}，
+两者的差别是等待后是否出现正长度容量弧。
+图\ref{fig:numerical-waiting}检验这一差别，以及完全跟踪的开始位置：
+E1 的解析参考为 $(\NumSwitchSEOneRef,\NumSwitchIEOneRef)$，E2 的参考为 $(s_B,K)$。
 
 \begin{figure}[H]
 \centering
@@ -2222,7 +2218,6 @@ E5 & $(0.50,0.15)$ & $\mathcal T\cap\{i=K\}$ & $1\to0$ & \NumJRefEFive & \NumJOc
 \label{fig:numerical-waiting}
 \end{figure}
 
-% EXPERIMENT_REQUIRED: actual E1/E2 observations and a few useful event values.
 \NumFindingParagraph{\NumFindingWaiting}
 
 不存在容量平台与全时域内不接触容量并非同一命题。
@@ -2231,26 +2226,11 @@ E5 & $(0.50,0.15)$ & $\mathcal T\cap\{i=K\}$ & $1\to0$ & \NumJRefEFive & \NumJOc
 
 \subsection{立即完全跟踪与容量边界初值}
 
-算例 E3 的初值 $(0.50,0.14)$ 位于 $\mathcal T$ 的内部，且 $i_0<K$。
-理论策略从初始正长度阶段起即采用 $q=1$，到达安全集后取 $q=0$。
-本例检验没有初始等待阶段的 $1\to0$ 结构，
-而不是等待感染达到容量后才开始控制。
-
-算例 E4 和 E5 均从容量线出发，但 $s_0$ 分别位于 $s_B$ 两侧：
-\[
- 0.70>s_B,\qquad 0.50<s_B.
-\]
-E4 属于容量等待弧 $\mathcal B$，理论上先采用 $q_B$ 保持容量，
-在 $s=s_B$ 时转为完全跟踪；E5 则属于立即完全跟踪区，
-理论上应直接采用 $q=1$ 并离开容量线。
-因此，两者对应
-\[
- \mathrm{E4}:\quad q_B\to1\to0,
- \qquad
- \mathrm{E5}:\quad 1\to0.
-\]
-这组对照说明，是否维持容量不能仅由 $i_0=K$ 决定，
-还取决于状态在内生切换阈值两侧的位置。
+E3 检验内部初值 $(0.50,0.14)$ 的立即完全跟踪；
+E4、E5 保持 $i_0=K$ 相同，检验 $0.70>s_B$ 与 $0.50<s_B$ 时初始阶段的差别。
+表\ref{tab:optimal-stages}及\NumTheoryRef{def:candidate}{反馈构造}分别给出
+$1\to0$、$q_B\to1\to0$、$1\to0$ 的参考结构，
+图\ref{fig:numerical-boundary-tracking}与保存控制逐一比较。
 
 另一个比较是 E2 与 E4 在容量退出时的状态。
 两例到达该事件的时间不同，但理论上均经过同一状态 $(s_B,K)$；
@@ -2266,28 +2246,17 @@ E4 属于容量等待弧 $\mathcal B$，理论上先采用 $q_B$ 保持容量，
 \label{fig:numerical-boundary-tracking}
 \end{figure}
 
-% EXPERIMENT_REQUIRED: observed initial stages and E2/E4 numerical exit states.
 \NumFindingParagraph{\NumFindingTrackingBoundary}
 
-\subsection{成本对照与结构总结}
+\subsection{成本、约束误差与剩余残差}
 
-表\ref{tab:numerical-scenarios}中的 $J_{\mathrm{ref}}$
-为解析公式的数值评价，$J_{\mathrm{OCL}}$
-为数值优化返回控制按式\eqref{eq:numerical-cost-sum}计算的成本。
-成本接近、阶段顺序一致和切换位置接近是相互补充的比较指标，
-其中任一项都不能单独替代其余指标。
-数值一致性不要求孤立切换瞬间的控制代表值相同。
-
-数值控制允许存在与网格尺度相关的过渡单元，
-故切换误差应与相应网格宽度一并解释。
-配点状态与重积分状态之间的偏差反映动力学离散的一致性，
-并不等同于数值状态与解析最优轨道之间的误差。
-若离散成本略低于解析成本，应同时检查原控制的重积分容量超出 $\varepsilon_K$，
-并与容量放宽为 $K+\varepsilon_K$ 后的解析最优值比较；
+表\ref{tab:numerical-errors}同时报告成本差、重积分容量超出及放宽容量后的值函数下降。
+五例均满足表中的放宽容量成本比较；其中 E4 的负成本差小于容量放宽导致的值函数下降。
 存在容量超出的离散结果不能称为优于解析最优策略的严格可行控制。
+配点与重积分状态的偏差用于诊断动力学离散，
+不等同于数值状态与解析最优轨道之间的误差；切换位置仍应结合过渡网格宽度解释。
 
-% 只允许实际结果驱动；不得从预期结构拼出“识别结构”。
-\NumFindingParagraph{\NumOverallFinding}
+\NumFindingParagraph{\NumResidualSummary}
 \FloatBarrier
 
 \section{\texorpdfstring{时变接触率 $c(t)$：条件性结论}{时变接触率：条件性结论}}
@@ -2777,9 +2746,10 @@ K\le K_{\mathrm{med}}:=
 将其用于具体地区时，需要估计病例需求核、初始病例的未来负担和可用容量；本文的数值算例未进行这一医疗标定。
 
 \ifdefined\TheoryOnly\else
-\section{数值复现说明}
+\section{补充材料 S：数值复现、复核与诊断记录}
 \label{app:numerical-reproducibility}
 
+本附录将在定稿时拆为独立的补充材料文件，本阶段仍保留在主文版本中。
 数值代码位于 \path{matlab/numerical_scenarios/}。
 
 独立解析检查点及其生成程序位于
@@ -2804,14 +2774,25 @@ export_numerical_latex();
 重做后处理不改写原求解的来源信息。
 作图和正文数据导出只读取已保存且来源明确的结果，
 不在缺少结果时以解析参考代替数值优化输出。
-更详细的初猜、网格、时域及阈值复核见
-\path{data/numerical_scenarios/revision_checks/}。
-正文中的数值摘要与所选结果文件保持一一对应。
-完整事件候选、检测区间及主结果诊断见
-\path{data/numerical_scenarios/numerical_checks.json}；
-容差重评与原严格记录见
-\path{validation/numerical_scenarios/tolerance_revision_20261010/}。
+
+\NumFindingParagraph{\NumCheckStatement}
+\NumFindingParagraph{\NumRobustnessStatement}
+\NumFindingParagraph{\NumOverallFinding}
 \NumFindingParagraph{\NumReproducibilityDetails}
+
+正文中的数值摘要与所选结果文件保持一一对应。
+完整记录分别位于：
+\begin{itemize}
+\item 初猜、网格、时域及阶段识别阈值复核：\\
+\path{data/numerical_scenarios/revision_checks/}。
+\item 事件候选、检测区间及主结果诊断：\\
+\path{data/numerical_scenarios/numerical_checks.json}。
+\item 容差重评与原严格记录：\\
+\path{validation/numerical_scenarios/tolerance_revision_20261010/}。
+\item S2 的重跑、原判据重评及逐条对照报告：\\
+\path{validation/numerical_scenarios/rerun_20261020/}；\\
+其中判据计数来源为 \path{S2.6/assessment_revision_report.json}。
+\end{itemize}
 \clearpage
 \fi
 \bibliographystyle{plainnat}

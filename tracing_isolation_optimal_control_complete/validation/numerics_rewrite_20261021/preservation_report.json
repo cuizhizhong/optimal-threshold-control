@@ -1,0 +1,92 @@
+{
+  "base_commit": "89d9cc3751951fd236f304c65ca0ee7fc2e667ef",
+  "checks": [
+    {
+      "name": "existing_protected_file_bytes",
+      "passed": true,
+      "details": {
+        "count": 6605,
+        "changed": []
+      }
+    },
+    {
+      "name": "reference_block_verbatim",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "NumErrorTableRows_defined_once",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "NumResidualSummary_defined_once",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "all_old_result_definitions_and_flags_verbatim",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "all_prose_outside_authorized_ranges_verbatim",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "all_theorem_and_proof_blocks_verbatim",
+      "passed": true,
+      "details": 65
+    },
+    {
+      "name": "five_figure_families_bytes",
+      "passed": true,
+      "details": [
+        "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_optimal_partition.pdf",
+        "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_optimal_partition.png",
+        "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_regions.pdf",
+        "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_regions.png",
+        "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN2_waiting.pdf",
+        "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN2_waiting.png",
+        "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN3_boundary_tracking.pdf",
+        "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN3_boundary_tracking.png",
+        "tracing_isolation_optimal_control_complete/figures/scaling/FigD_magnitude.pdf",
+        "tracing_isolation_optimal_control_complete/figures/scaling/FigD_magnitude.png",
+        "tracing_isolation_optimal_control_complete/validation/figure1_revision_20261021/figure2/before/figures/numerical_scenarios/FigN1_regions.pdf",
+        "tracing_isolation_optimal_control_complete/validation/figure1_revision_20261021/figure2/before/figures/numerical_scenarios/FigN1_regions.png",
+        "tracing_isolation_optimal_control_complete/validation/figure1_revision_20261021/figure2/before/figures/numerical_scenarios/FigN2_waiting.pdf",
+        "tracing_isolation_optimal_control_complete/validation/figure1_revision_20261021/figure2/before/figures/numerical_scenarios/FigN2_waiting.png",
+        "tracing_isolation_optimal_control_complete/validation/figure1_revision_20261021/figure2/before/figures/numerical_scenarios/FigN3_boundary_tracking.pdf",
+        "tracing_isolation_optimal_control_complete/validation/figure1_revision_20261021/figure2/before/figures/numerical_scenarios/FigN3_boundary_tracking.png"
+      ]
+    },
+    {
+      "name": "all_data_except_export_provenance_bytes",
+      "passed": true,
+      "details": 444
+    },
+    {
+      "name": "main_ref_unchanged",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "requested_body_macros_moved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "internal_execution_comments_removed",
+      "passed": true,
+      "details": null
+    }
+  ],
+  "passed": 12,
+  "total": 12,
+  "success": true,
+  "source_sha256": "a2562f318793cf5e55e54e254c59595ff739a46890d8badae68a0895f1ac32ac",
+  "optimizer_calls": 0,
+  "new_ocp_solves": 0,
+  "pushes": 0
+}
