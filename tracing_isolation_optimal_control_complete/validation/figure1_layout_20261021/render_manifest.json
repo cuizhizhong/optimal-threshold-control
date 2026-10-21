@@ -1,0 +1,46 @@
+[
+  {
+    "document": "main",
+    "page": 8,
+    "dpi": 150,
+    "argv": [
+      "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+      "-f",
+      "8",
+      "-l",
+      "8",
+      "-r",
+      "150",
+      "-singlefile",
+      "-png",
+      "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+      "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\figure1_layout_20261021\\rendered_pages_150dpi\\main_page8"
+    ],
+    "exit_code": 0,
+    "pdf_sha256": "f05ac42cc5e5225db12d76411bdac574436959003bd618a263fc48657f0c978c",
+    "png": "validation\\figure1_layout_20261021\\rendered_pages_150dpi\\main_page8.png",
+    "png_sha256": "56c39b69de99219c1ce6209248879f45880f0ba8c312799a9a8b07f2ab4b18d4"
+  },
+  {
+    "document": "theory_only",
+    "page": 7,
+    "dpi": 150,
+    "argv": [
+      "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+      "-f",
+      "7",
+      "-l",
+      "7",
+      "-r",
+      "150",
+      "-singlefile",
+      "-png",
+      "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+      "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\figure1_layout_20261021\\rendered_pages_150dpi\\theory_only_page7"
+    ],
+    "exit_code": 0,
+    "pdf_sha256": "abaa45e2eba1b03caa31f284b6fdd08ae5ae858e957547ac99e45bdaac5bec04",
+    "png": "validation\\figure1_layout_20261021\\rendered_pages_150dpi\\theory_only_page7.png",
+    "png_sha256": "9ee32db8816923959a34adfd521e9be67ca97a4b044c9e8e5fb618352c5f126b"
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "base_commit": "bc4cd3ffbfa48ad894ed3cf0f3f3b4fb3a1da8a1",
+  "success": true,
+  "main_tex_only_authorized_caption_line_deleted": true,
+  "model_proofs_and_generated_blocks_unchanged": true,
+  "old_protected_files_unchanged": 1515,
+  "changed_protected_files": [],
+  "geometry_trajectories_and_costs_identical_to_previous": true,
+  "label_curve_intersections": 0,
+  "label_pair_intersections": 0,
+  "actual_tex_bibtex_processes": 8,
+  "all_tex_exit_zero": true,
+  "final_pages": [
+    41,
+    31
+  ],
+  "final_log_issues": [],
+  "optimizer_calls": 0,
+  "new_ocp_solves": 0,
+  "matlab_calls": 0,
+  "ode_integrations": 0,
+  "actual_150dpi_pages": [
+    {
+      "document": "main",
+      "page": 8,
+      "png_sha256": "56c39b69de99219c1ce6209248879f45880f0ba8c312799a9a8b07f2ab4b18d4",
+      "visually_reviewed": true
+    },
+    {
+      "document": "theory_only",
+      "page": 7,
+      "png_sha256": "9ee32db8816923959a34adfd521e9be67ca97a4b044c9e8e5fb618352c5f126b",
+      "visually_reviewed": true
+    }
+  ],
+  "visual_result": "两稿图页实际目视通过；inset坐标隐藏、缩小10%，T居中，灰色对照段/文字消失，灰框避开sB。"
+}

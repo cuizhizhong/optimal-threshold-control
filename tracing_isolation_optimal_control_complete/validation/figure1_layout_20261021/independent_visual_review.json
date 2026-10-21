@@ -1,0 +1,35 @@
+{
+  "status": "pass",
+  "review_scope": "actual_production_png_plus_read_only_script_and_analytic_json",
+  "paper_page_render_review": "performed_separately_by_parent_after_compilation",
+  "reviewed_sha256": {
+    "figures/numerical_scenarios/FigN1_optimal_partition.png": "4d748a54d27aff3a950788d47f957b010681744699b20c21fd1487854e0b3ad0",
+    "figures/numerical_scenarios/FigN1_optimal_partition.pdf": "9d816caa1a2a3c0a089805064c0566746c340fbe44975ccbbdac1ef76aabef23",
+    "validation/figure1_layout_20261021/make_optimal_partition.py": "b47587a87d25e68dc98a376b0c2aa75338678b000668458130a5bb70587fa4b6"
+  },
+  "checks": {
+    "inset_has_no_coordinate_ticks_or_labels": true,
+    "inset_width_ratio": 0.9,
+    "inset_height_ratio": 0.9,
+    "main_T_direct_centered_without_leader": true,
+    "main_T_anchor": [0.452, 0.139],
+    "independent_T_area_centroid": [0.4518598815942105, 0.13898786076477032],
+    "comparison_segment_absent_in_both_axes": true,
+    "comparison_Chinese_text_absent": true,
+    "zoom_box_top": 0.166,
+    "zoom_box_does_not_cross_s_B_text": true,
+    "labels_visually_clear_of_curves_and_trajectories": true,
+    "visible_text_boxes_in_generator_check": 31,
+    "generator_label_curve_collisions": 0,
+    "generator_label_pair_collisions": 0,
+    "no_further_figure_edit_required": true
+  },
+  "review_actions": {
+    "source_or_figure_edits": 0,
+    "figure_generation_calls": 0,
+    "matlab_calls": 0,
+    "optimizer_calls": 0,
+    "new_ocp_solves": 0,
+    "ode_integrations": 0
+  }
+}
