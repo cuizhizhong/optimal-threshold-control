@@ -376,14 +376,27 @@ E2 初值 $(0.99,0.01)$ 的示例轨道先自然等待至容量线，再沿 $\ma
 \section{预备结果}
 \label{sec:preliminaries}
 
-% G1-INTRO-PRELIMINARIES
-本节先建立状态正性和耗散、安全集及两类控制弧，再证明有限成本轨道入安全集，并给出后文使用的 HJB 边界条件。
-后续构造先处理完全跟踪可达域和成本、切换曲线几何、全域候选及达到性与梯度拼接，再沿任意轨道验证全局最优性；推论\ref{cor:one-dimensional-min}在全局验证之后陈述，不用候选策略族内的极小性替代全控制类比较。
-全局最优性确立后，推论\ref{cor:verification-equality}由沿轨道验证不等式积分得到最优控制的等号条件，引理\ref{lem:no-early-boundary-exit}据此证明容量弧上的延续性质，再由定理\ref{thm:unique-q}完成控制与状态轨道的唯一性证明；上述推论和引理均不依赖定理\ref{thm:unique-q}。
-具体地，端点存在性由命题\ref{prop:reachable}及引理\ref{lem:tracking-region}处理，曲线正则性和横截性由命题\ref{prop:Gamma-geometry}、推论\ref{cor:Gamma-labels}处理，不滑行由引理\ref{lem:strict-crossing}处理，横穿方向与实际分区的衔接由引理\ref{lem:chi-regions}处理；容量和安全时间集合上的导数关系统一使用式\eqref{eq:ac-level-set}的水平集性质，局部 Lipschitz 性和终端处理分别由命题\ref{prop:regularity}及引理\ref{lem:finite-entry}证明。
+本节至第\ref{sec:optimality}节给出定理\ref{thm:main-overview}与命题\ref{prop:main-structure}的完整证明。
+证明采用验证函数方法：先构造候选成本 $U$，再证明任意可行控制的成本都不低于 $U$，并且候选策略恰好取到 $U$。
+论证按以下三步展开。
+\begin{enumerate}
+\item 本节建立后文反复使用的基本性质：解的正性与耗散（第\ref{sec:wellposed}小节），
+自然轨道、安全集及两类控制弧的显式公式（第\ref{sec:constant-problem}、\ref{sec:arcs}小节），
+有限成本轨道在有限时间内进入安全集（第\ref{sec:exit-time}小节），
+以及验证所需的 HJB 方程和容量边界条件（第\ref{sec:HJB}小节）。
+\item 第\ref{sec:candidate-construction}节构造候选策略。
+先确定完全跟踪成本的可达域（命题\ref{prop:reachable}、引理\ref{lem:tracking-region}），
+再建立切换曲线的存在性、单调性与严格横穿（命题\ref{prop:Gamma-geometry}、推论\ref{cor:Gamma-labels}、引理\ref{lem:strict-crossing}与引理\ref{lem:chi-regions}），
+最后定义全域候选反馈与候选成本，并证明其拼接正则性（命题\ref{prop:regularity}）。
+\item 第\ref{sec:optimality}节先证明沿任意可行轨道的验证不等式，再结合引理\ref{lem:finite-entry}得到全局最优性（定理\ref{thm:verification}）。
+随后由验证等号条件（推论\ref{cor:verification-equality}）和容量弧上的延续性质（引理\ref{lem:no-early-boundary-exit}）证明唯一性（定理\ref{thm:unique-q}）；
+这两个中间结果都不依赖唯一性定理本身。
+\end{enumerate}
+第\ref{sec:mechanisms}节中关于一维策略族的比较（推论\ref{cor:one-dimensional-min}）在全局验证之后才陈述，只用于解释机制，不参与上述证明。
 
 \subsection{解的适定性、正性与基本耗散}
 \label{sec:wellposed}
+本小节允许接触率随时间变化，说明控制系统的解全局存在且保持为正，并给出两条贯穿全文的耗散估计；其余小节均取常接触率。
 \begin{theorem}[全局解与正性]
 \label{thm:wellposed}
 设 $c$ 可测且局部本质有界，$c(t)>0$ 几乎处处，$q$ 可测、取值于 $[0,1]$，$s_0,i_0>0$。
@@ -404,10 +417,12 @@ i(t)&=i_0\exp\left[\int_0^t[\beta c(v)(1-q(v))s(v)-\gamma]\dd v\right]>0,
 若 $c$ 全局有界，则 $i(t)\to0$。
 \end{theorem}
 \begin{proof}
-右端关于状态局部 Lipschitz，时间相关的局部界可积，故局部解存在唯一。
-对正性公式积分，并将两方程相加，即得以上关系。
-非负状态被限制在 $s+i\le s_0+i_0$ 的有界三角形内，不发生有限时间爆破，解可延拓至所有有限时间。
-若 $c$ 全局本质有界，记
+系统\eqref{eq:normalized-model}的右端关于状态局部 Lipschitz，且关于时间的局部界可积，因此 Carath\'eodory 意义下的局部解存在且唯一。
+对两个方程的对数导数分别积分，即得正性表示\eqref{eq:s-positive}与\eqref{eq:i-positive}；将两个方程相加，即得\eqref{eq:sum-decay}。
+由此，非负状态始终位于有界三角形 $s+i\le s_0+i_0$ 内，解不会在有限时间内爆破，从而可以延拓到全部有限时间；
+再对\eqref{eq:sum-decay}积分，便得到\eqref{eq:i-integrable}。
+
+下面设 $c$ 全局本质有界，记
 $\bar c =\|c\|_{L^\infty(0,\infty)}$、$M=s_0+i_0$。
 由 $0<s(t),i(t)\le M$ 及状态方程，
 \[
@@ -416,65 +431,65 @@ $\bar c =\|c\|_{L^\infty(0,\infty)}$、$M=s_0+i_0$。
  \le (\beta \bar c M+\gamma)M
  \qquad\text{几乎处处}.
 \]
-由于 $i$ 在每个有限区间上绝对连续，上式说明 $i$ 在整个
-$[0,\infty)$ 上为 Lipschitz 函数，因而一致连续。
-再结合非负性与式\eqref{eq:i-integrable}，得到 $i(t)\to0$。
-最后一条可直接反证：若存在无穷多个 $i(t_n)\ge\varepsilon>0$，一致连续性给出互不相交、长度一致正的区间，
-使 $\int i=\infty$，矛盾。
+由于 $i$ 在每个有限区间上绝对连续，上式说明 $i$ 在整个 $[0,\infty)$ 上为 Lipschitz 函数，因而一致连续。
+若 $i(t)\not\to0$，则存在 $\varepsilon>0$ 及无穷多个时刻 $t_n$ 使 $i(t_n)\ge\varepsilon$；
+由一致连续性，可在这些时刻附近取出互不相交、长度一致为正的区间，在其上 $i\ge\varepsilon/2$。
+于是 $\int_0^\infty i\dd t=\infty$，与\eqref{eq:i-integrable}矛盾，故 $i(t)\to0$。
 \end{proof}
 
 \paragraph{后文使用的实分析事实。}
-若 $v$ 绝对连续，则对每个常数 $\alpha$，有
+后文多次需要在容量时间集合和安全时间集合上比较导数，为此记录两个标准事实。
+第一，若 $v$ 绝对连续，则对每个常数 $\alpha$，有
 \begin{equation}
  v'=0\quad\text{几乎处处于 }\{v=\alpha\}.
  \label{eq:ac-level-set}
 \end{equation}
-特别地，两个绝对连续函数在可测集合上相等，则其导数在该集合上几乎处处相等。
-这是绝对连续函数几乎处处可微与水平集的聚点性质的直接推论\citep[\S222K、\S225C(b)]{Fremlin2001Volume2}。
-若 $F$ 在集合 $E\subset\R^d$ 上相对局部 Lipschitz，$x:[0,T]\to E$ 绝对连续且 $T<\infty$，
-则 $F\circ x$ 绝对连续；可参照 Lipschitz 延拓与复合的标准结论\citep[\S262B(b)、\S262X(l)]{Fremlin2001Volume2}。
-这里的相对局部、向量轨道版本由像集紧性作有限局部化，
-在每段使用 $\sum_k|F(x(b_k))-F(x(a_k))|\le L\sum_k\|x(b_k)-x(a_k)\|$ 即得。
-在 $F$ 具有环境开邻域上的 $C^1$ 局部表达式处，沿轨道使用通常链式法则；
-容量边界和安全时间集仍需下文分别处理，不能用状态空间中的几乎处处可微代替沿轨道论证。
+特别地，若两个绝对连续函数在某个可测集合上相等，则它们的导数在该集合上几乎处处相等。
+这是绝对连续函数几乎处处可微与水平集聚点性质的直接推论\citep[\S222K、\S225C(b)]{Fremlin2001Volume2}。
+第二，若 $F$ 在集合 $E\subset\R^d$ 上相对局部 Lipschitz，$x:[0,T]\to E$ 绝对连续且 $T<\infty$，
+则 $F\circ x$ 绝对连续；这可参照 Lipschitz 延拓与复合的标准结论\citep[\S262B(b)、\S262X(l)]{Fremlin2001Volume2}。
+这里需要的是相对局部、向量值轨道的版本：利用轨道像集的紧性把 $[0,T]$ 分成有限段，
+在每段上使用 $\sum_k|F(x(b_k))-F(x(a_k))|\le L\sum_k\|x(b_k)-x(a_k)\|$ 即得。
+在 $F$ 于某个环境开邻域上具有 $C^1$ 局部表达式的地方，可以沿轨道使用通常的链式法则；
+容量边界与安全边界对应的时间集合则在第\ref{sec:optimality}节中沿轨道分别处理，状态空间中的几乎处处可微性不足以代替这种论证。
 
 
 \subsection{常接触率问题、自然轨道与安全目标集}
 \label{sec:constant-problem}
-本节沿用式\eqref{eq:constants}的参数与式\eqref{eq:value-definition}的物理域。
-此处的下确界没有预先限制控制的切换次数或取值结构。
-相关曲线与候选函数均在第\ref{sec:main-results}节定义的辅助条带 $\Omega$ 中构造，
-实际控制问题取其在 $\Dcal$ 上的限制。
+从本小节起取常接触率，参数如式\eqref{eq:constants}，物理域与值函数如式\eqref{eq:value-definition}。
+值函数中的下确界取遍全部可测可行控制，不预先限定控制的切换次数或取值结构。
+为便于几何参数化，以下曲线与候选函数都在第\ref{sec:main-results}节定义的辅助条带 $\Omega$ 中构造，实际控制问题取其在 $\Dcal$ 上的限制。
 
 \subsubsection{自然传播不变量与峰值}
-$q=0$ 时
+不加控制（$q=0$）时，系统化为
 \begin{equation}
 \dot s=-\beta csi,\qquad \dot i=\beta c(s-h)i.
 \label{eq:q0-system}
 \end{equation}
-对式\eqref{eq:Phi}直接求导得 $\dot\Phi=0$。经过 $(s_0,i_0)$ 的自然轨道为
+对式\eqref{eq:Phi}直接求导可得 $\dot\Phi=0$，因此自然轨道就是 $\Phi$ 的等值线。经过 $(s_0,i_0)$ 的自然轨道为
 \begin{equation}
 i_{\rm nat}(s)=i_0+s_0-s+h\ln\frac{s}{s_0}.
 \label{eq:natural-orbit}
 \end{equation}
-若 $s_0>h$，则自然感染峰值在 $s=h$ 处取得：
+沿自然轨道 $s$ 严格下降，而 $\dot i$ 与 $s-h$ 同号。
+因此，若 $s_0>h$，感染在 $s=h$ 处达到峰值
 \begin{equation}
 i_{\rm pk}=i_0+s_0-h+h\ln\frac h{s_0}.
 \label{eq:natural-peak}
 \end{equation}
-若 $s_0\le h$，感染从初始时刻起不增。
-由上述自然轨道可得概览中的未来峰值公式\eqref{eq:uncontrolled-future-peak}。
+若 $s_0\le h$，感染从初始时刻起即不增。
+两种情形合起来，就是第\ref{sec:main-results}节中的无控制未来峰值公式\eqref{eq:uncontrolled-future-peak}。
 
 \subsubsection{安全集与目标边界}
-记
+为描述安全集的边界，令
 \begin{equation}
 \Phi_A=K+h-h\ln h,\qquad
  a(s)=\Phi_A-s+h\ln s\quad(s\ge h).
 \label{eq:safe-boundary}
 \end{equation}
-安全集 $\Acal$ 已由式\eqref{eq:safe-set}定义。
-由式\eqref{eq:uncontrolled-future-peak}，它在条带内等价于
-$s\le h$ 或 $s>h$ 且 $\Phi\le\Phi_A$ 的几何描述，物理安全状态为 $\Acal\cap\Dcal$。
+$\Phi_A$ 是经过点 $(h,K)$ 的自然轨道的标号，$i=a(s)$ 是这条自然轨道在 $s\ge h$ 部分的方程。
+由式\eqref{eq:uncontrolled-future-peak}，安全集\eqref{eq:safe-set}在条带内恰由满足 $s\le h$，或者 $s>h$ 且 $\Phi\le\Phi_A$ 的点组成；物理安全状态为 $\Acal\cap\Dcal$。
+下面的命题说明，这正是不加控制即可永久满足约束的状态集合。
 
 \begin{proposition}[最大无控制安全集]
 \label{prop:safe-exact}
@@ -482,24 +497,29 @@ $s\le h$ 或 $s>h$ 且 $\Phi\le\Phi_A$ 的几何描述，物理安全状态为 $
 因此 $V=0$ 于 $\Acal\cap\Dcal$，唯一的零成本控制为 $q=0$ 几乎处处。
 \end{proposition}
 \begin{proof}
-由 \eqref{eq:natural-peak} 以及 $s\le h$ 时感染不增，得到安全性的充要条件。
-$q=0$ 的成本为零，非负成本不可能更低；$\beta c>0$ 保证零成本等价于 $q=0$ 几乎处处。
+若 $s\le h$，感染从该点起不增，因此零控制下的最大感染就是当前的 $i$；
+若 $s>h$，最大感染是\eqref{eq:natural-peak}给出的自然峰值。
+两种情形下，零控制永久满足约束都等价于 $P_0(x)\le K$，即 $x\in\Acal$。
+此时零控制的成本为零，而成本非负，所以 $V(x)=0$；又因 $\beta c>0$，成本为零当且仅当 $q=0$ 几乎处处。
 \end{proof}
 
 \subsection{两类控制弧与显式成本}
 \label{sec:arcs}
+候选策略由自然等待、完全跟踪和容量弧三类弧拼接而成。
+本小节先给出两个不变量在一般控制下的导数，再分别写出完全跟踪弧与容量弧的显式解和成本。
+
 \subsubsection{一般控制下的不变量导数}
-直接代入状态方程得
+对任意控制 $q$，将状态方程代入可得
 \begin{equation}
 \boxed{\dot\Phi=-cqi(s-p).}
 \label{eq:Phi-derivative}
 \end{equation}
-定义 $\Psi(s,i)=i-\ell\ln s$，同样得到
+再令 $\Psi(s,i)=i-\ell\ln s$，同样有
 \begin{equation}
 \dot\Psi=\beta c(1-q)i(s-p).
 \label{eq:Psi-derivative}
 \end{equation}
-这两个单调性只在 $s>p$ 的区域按所示方向成立；本稿使用它们时均处于 $s>h>p$。
+因此在 $s>p$ 的区域内，控制只会使 $\Phi$ 不增、$\Psi$ 不减；后文使用这两个单调性时，状态均位于 $s>h>p$。
 
 \begin{lemma}[安全集对控制的前向不变性]
 \label{lem:safe-invariant}
@@ -507,23 +527,24 @@ $q=0$ 的成本为零，非负成本不可能更低；$\beta c>0$ 保证零成�
 从 $\Acal\cap\Dcal$ 出发时相应保持在 $\Acal\cap\Dcal$。
 \end{lemma}
 \begin{proof}
-只要 $s>h$，\eqref{eq:Phi-derivative} 保证 $\Phi$ 不增，故 $i\le a(s)\le K$。
-一旦 $s\le h$，因 $s$ 不增，且 $\dot i\le \beta c(s-h)i\le0$，安全性永久保持。
-物理总量约束由 \eqref{eq:sum-decay} 保持。
+设初值属于 $\Acal$。只要 $s>h$，由\eqref{eq:Phi-derivative}，$\Phi$ 不增，轨道保持在 $\Phi\le\Phi_A$ 一侧，故 $i\le a(s)\le K$。
+一旦 $s\le h$，由于 $s$ 不增且 $\dot i\le \beta c(s-h)i\le0$，此后感染不再增加，安全性永久保持。
+总量约束由\eqref{eq:sum-decay}保持，所以从 $\Acal\cap\Dcal$ 出发的轨道也留在 $\Acal\cap\Dcal$ 中。
 \end{proof}
+因此，一旦进入安全集，任何后续控制都不会破坏约束，而零控制不再产生成本；第\ref{sec:exit-time}小节据此把最优控制问题改写为首次到达问题。
 
 \subsubsection{完全跟踪弧}
-$q=1$ 时
+完全跟踪（$q=1$）时，非隔离感染者不再新增，系统化为
 \begin{equation}
 \dot s=-csi,\qquad \dot i=-\gamma i,
 \label{eq:q1-system}
 \end{equation}
-因此
+由\eqref{eq:Psi-derivative}，此时
 \begin{equation}
 \boxed{\Psi(s,i)=i-\ell\ln s\quad\text{沿 }q=1\text{ 保持不变}.}
 \label{eq:Psi}
 \end{equation}
-由 $(s_a,i_a)$ 到 $(s_b,i_b)$ 的弧满足
+因此，由 $(s_a,i_a)$ 到 $(s_b,i_b)$ 的完全跟踪弧满足
 \begin{align}
 i_b-\ell\ln s_b&=i_a-\ell\ln s_a,
 \label{eq:q1-characteristic}\\
@@ -532,7 +553,7 @@ i(t)&=i_a\e^{-\gamma(t-t_a)},
 s(t)&=s_a\exp[-(i_a-i(t))/\ell].
 \label{eq:q1-s}
 \end{align}
-若终点感染 $i_b>0$，所需时间与成本有限，且
+沿该弧感染以速率 $\gamma$ 指数衰减。只要终点感染 $i_b>0$，所需时间与成本都有限，并且
 \begin{equation}
 \int_{t_a}^{t_b}\beta c\dd t=\frac1h\ln\frac{i_a}{i_b}.
 \label{eq:q1-cost}
@@ -540,26 +561,26 @@ s(t)&=s_a\exp[-(i_a-i(t))/\ell].
 
 \subsubsection{容量弧}
 \label{sec:boundary-arc}
-在 $i=K$ 上，不能向 $i>K$ 运动，故边界允许的瞬时方向对应
+在容量线 $i=K$ 上，可行轨道不能进入 $i>K$，因此边界上允许的瞬时方向对应控制区间
 \begin{equation}
 \mathcal Q_K(s)=\left[\max\{0,1-h/s\},\ 1\right].
 \label{eq:boundary-feasible}
 \end{equation}
-这是边界上内指或切向速度的条件，不是对可测控制在每个孤立时刻的代表值施加限制。
-沿实际可行轨道，状态方程及式\eqref{eq:ac-level-set}的水平集性质共同确定容量时间集合上的几乎处处关系。
-当 $s>h$ 时，唯一切向控制是
+这一条件约束的是边界上的速度方向（指向内侧或与边界相切），而不是可测控制在个别时刻的取值；
+沿实际可行轨道，容量时间集合上的几乎处处关系由状态方程与水平集性质\eqref{eq:ac-level-set}共同确定。
+当 $s>h$ 时，使轨道保持在容量线上的唯一控制是
 \begin{equation}
 \boxed{q_B(s)=1-h/s.}
 \label{eq:qB}
 \end{equation}
-$q>q_B$ 也可行，但会进入容量下方；不能在问题定义中直接排除它。
+取 $q>q_B$ 同样可行，但会使轨道进入容量线下方；这种选择属于可行控制类，不能在问题定义中预先排除。
 沿 $q_B$ 有
 \begin{align}
 \dot i&=0,\label{eq:boundary-i}\\
 \dot s&=-cK(s-p),\label{eq:boundary-s}\\
 s(t)&=p+(s_a-p)\e^{-cK(t-t_a)}.\label{eq:boundary-s-explicit}
 \end{align}
-对 $s_{\rm hi}\ge s_{\rm lo}\ge h$，
+于是，对 $s_{\rm hi}\ge s_{\rm lo}\ge h$，沿容量弧从 $s_{\rm hi}$ 运行到 $s_{\rm lo}$ 所需的时间与成本分别为
 \begin{equation}
 T_B(s_{\rm hi},s_{\rm lo})=\frac1{cK}\ln\frac{s_{\rm hi}-p}{s_{\rm lo}-p},
 \label{eq:boundary-duration}
@@ -571,28 +592,36 @@ C_B(s_{\rm hi},s_{\rm lo})
 -\beta\ln\frac{s_{\rm hi}-p}{s_{\rm lo}-p}\right].
 \label{eq:boundary-cost}
 \end{align}
-这些式子是指定容量策略的成本计算，尚不是其最优性结论。
+这两个公式只是对指定容量策略的计算；容量弧何时出现在最优策略中，由第\ref{sec:candidate-construction}--\ref{sec:optimality}节确定。
 
 \subsection{有限成本可行性与首次到达问题}
 \label{sec:exit-time}
+验证论证需要两个前提：值函数处处有限，以及有限成本的可行轨道最终会进入安全集。
+本小节先给出一个显式的可行比较策略，说明 $V$ 处处有限；
+再证明任何有限成本的可行轨道都在有限时间内进入安全集。
+后者使无穷时域问题可以改写为首次到达问题，从而第\ref{sec:optimality}节只需沿每条竞争轨道积分到它自己的首次到达时刻。
+
 \begin{lemma}[有限成本比较策略]
 \label{lem:finite-feasible}
 对每个 $x_0\in\Dcal$，存在有限成本可行控制，因而 $V(x_0)<\infty$。
 \end{lemma}
 \begin{proof}
-安全初值采用 $q=0$。否则 $s_0>h$、$i_{\rm pk}>K$。
-若 $i_0<K$，自然轨道在到达 $s=h$ 之前首次到达容量，触点记为 $(s_1,K)$，其中 $h<s_1<s_0$。
-其时间有限：在到达 $s=h$ 或容量之前 $i\ge i_0$，所以 $\dot s\le-\beta ci_0s$。
-若始终不到达二者，后一估计会使 $s<h$，矛盾；不安全性又排除了先到 $h$ 而未到容量。
-若 $i_0=K$，取 $s_1=s_0$。
-随后沿容量弧运行至 $(h,K)$，再永久采用 $q=0$。
-容量弧时间与成本由 \eqref{eq:boundary-duration}--\eqref{eq:boundary-cost} 有限。
-全程可行，且总量约束保持。自然触点满足
+若 $x_0$ 安全，取 $q\equiv0$ 即可。
+下面设 $x_0$ 不安全，此时 $s_0>h$ 且 $i_{\rm pk}>K$。
+考虑如下比较策略：先取 $q=0$ 直至感染达到容量，再沿容量弧运行至 $(h,K)$，此后永久取 $q=0$。
+
+先说明第一段在有限时间内到达容量。若 $i_0=K$，取 $s_1=s_0$。
+若 $i_0<K$，在自然轨道到达 $s=h$ 或容量之前，$s>h$ 使感染增加，于是 $i\ge i_0$，从而 $\dot s\le-\beta ci_0s$。
+如果两者都不到达，这一估计将迫使 $s$ 在有限时间内降到 $h$ 以下，矛盾；而初值不安全又排除了先到达 $s=h$ 的情形。
+所以自然轨道在有限时间内首次到达容量，触点记为 $(s_1,K)$，其中 $h<s_1<s_0$；由 $\Phi$ 守恒，触点满足
 \begin{equation}
 K=i_0+s_0-s_1+h\ln\frac{s_1}{s_0}.
 \label{eq:s1}
 \end{equation}
+第二段的时间与成本由\eqref{eq:boundary-duration}--\eqref{eq:boundary-cost}给出，均有限；到达 $(h,K)$ 后状态已位于 $\Acal$，零控制保持安全。
+整条轨道满足 $i\le K$，总量约束由\eqref{eq:sum-decay}保持，所以该控制可行且成本有限。
 \end{proof}
+这一比较策略就是第\ref{sec:scaling}小节中的纯容量填充；那里将把最优策略的成本与它比较。
 
 \begin{lemma}[所有有限成本轨道均在有限时间进入安全集]
 \label{lem:finite-entry}
@@ -601,17 +630,17 @@ $\tau_{\Acal}(x_0,q):=\inf\{t\ge0:x^q(t)\in\Acal\}<\infty$。
 更强地，从 $s_0>h$ 出发时，存在有限 $T_h$ 使 $s(T_h)\le h$。
 \end{lemma}
 \begin{proof}
+若 $s_0\le h$，初值已经安全。下面设 $s_0>h$。
 常接触率下 $J(q)<\infty$ 等价于 $\int_0^\infty q\dd t<\infty$。
-假设 $s_0>h$，但对所有有限 $t$ 都有 $s(t)>h$。
-由正性及状态方程，
+假设对所有有限 $t$ 都有 $s(t)>h$。由正性及状态方程，
 \begin{align*}
 \ln\frac{i(t)}{i_0}
 &=\beta c\int_0^t(s(v)-h)\dd v-\beta c\int_0^t s(v)q(v)\dd v\\
 &\ge-\beta cs_0\int_0^\infty q(v)\dd v.
 \end{align*}
-于是 $i(t)\ge i_0\exp[-\beta cs_0\int_0^\infty q\dd t]>0$，与 \eqref{eq:i-integrable} 矛盾。
-故有限 $T_h$ 存在；可行性给出 $i(T_h)\le K$，所以 $x(T_h)\in\Acal$。
-$s_0\le h$ 时初值已经安全。$\Acal$ 在正状态域相对闭，轨道连续，故有限首次到达时刻确实到达目标集。
+于是 $i(t)\ge i_0\exp[-\beta cs_0\int_0^\infty q\dd t]>0$，即感染有一致的正下界，这与\eqref{eq:i-integrable}矛盾。
+所以存在有限时刻 $T_h$ 使 $s(T_h)\le h$；由可行性，$i(T_h)\le K$，从而 $x(T_h)\in\Acal$。
+最后，$\Acal$ 在正状态域中相对闭，且轨道连续，所以首次到达时刻有限，并且轨道在该时刻确实位于 $\Acal$ 中。
 \end{proof}
 
 \begin{proposition}[无穷时域与首次到达问题等价]
@@ -625,26 +654,26 @@ V(x)=\inf_{q\in\mathcal U_{\Acal}(x)}
 \end{equation}
 \end{proposition}
 \begin{proof}
-任意有限到达控制可接上 $q=0$，形成相同成本的无穷时域可行控制。
-反之，任意有限成本无穷时域控制由引理\ref{lem:finite-entry}可在首次到达时截断，成本不增加。
-无穷成本控制不会降低已知有限的下确界。两个方向给出等式。
+一方面，任一在有限时间内到达 $\Acal$ 的可行控制，在到达后接上 $q=0$，由引理\ref{lem:safe-invariant}仍然可行，且总成本不变；所以右端不小于 $V(x)$。
+另一方面，由引理\ref{lem:finite-entry}，任一有限成本的无穷时域可行控制都在有限时间内到达 $\Acal$；在首次到达时刻截断，成本不增加，所以右端不大于 $V(x)$。
+成本为无穷的控制不影响有限的下确界，两方面合起来即得\eqref{eq:exit-value}。
 \end{proof}
 \begin{remark}[终点与停止付费]
-对不安全初值，首次到达必位于 $i=a(s)$ 的正感染部分，且 $s\ge h$。
-这是目标集约束，不是固定终点或固定终止时间；无需 $i=0$，也无需 $s=h$。
-首次到达后，$q=0$ 是零成本可行延拓。若允许在安全集内继续等待再宣布终止，记录的终止时间可不唯一，
-这不属于控制在几乎处处意义下的非唯一性。
+对不安全初值，首次到达点必位于安全边界 $i=a(s)$ 的正感染部分，且 $s\ge h$。
+因此终端条件是到达目标集，而不是固定终点或固定终止时间；轨道既不需要到达 $i=0$，也不需要到达 $s=h$。
+到达后，$q=0$ 是零成本的可行延拓。
 \end{remark}
 
 \subsection{HJB 方程与验证所需的边界条件}
 \label{sec:HJB}
-记
+为写出 HJB 方程，把控制系统表示为两个向量场的凸组合：
 \begin{align}
 f_0(s,i)&=(-\beta csi,\ \beta c(s-h)i),\label{eq:f0}\\
 f_1(s,i)&=(-csi,\ -\gamma i),\label{eq:f1}\\
 f(x,q)&=(1-q)f_0+qf_1.\label{eq:control-affine}
 \end{align}
-对可微函数 $Z$ 定义含运行成本的 Hamiltonian
+这里 $f_0$ 与 $f_1$ 分别对应自然传播与完全跟踪。
+对可微函数 $Z$，定义含运行成本的 Hamiltonian
 \begin{equation}
 H_Z(x,q)=\nabla Z(x)\cdot f(x,q)+\beta cq
 =H_{0,Z}(x)+q\Sigma_Z(x),
@@ -655,27 +684,25 @@ H_Z(x,q)=\nabla Z(x)\cdot f(x,q)+\beta cq
 H_{0,Z}&=-\beta csiZ_s+\beta c(s-h)iZ_i,\label{eq:H0}\\
 \Sigma_Z&=\beta c-csi[(1-\beta)Z_s+\beta Z_i].\label{eq:switching-function}
 \end{align}
-在不安全区域内部，动态规划在可微点导出
+Hamiltonian 关于 $q$ 仿射，$\Sigma_Z$ 称为切换函数。
+在不安全区域内部，动态规划原理在值函数可微的点给出
 \begin{equation}
 \min_{0\le q\le1}\{\nabla V\cdot f(x,q)+\beta cq\}=0.
 \label{eq:HJB}
 \end{equation}
-目标集上为 $V=0$。在 $i=K,s>h$ 上，若具有适当内侧导数，边界经典形式是
+在目标集上 $V=0$。在容量线 $i=K,\ s>h$ 上，若 $V$ 具有适当的内侧导数，控制区间应换为 $\mathcal Q_K(s)$，相应的经典形式为
 \begin{equation}
 \min_{q\in \mathcal Q_K(s)}\{\nabla V(s,K)\cdot f((s,K),q)+\beta cq\}=0.
 \label{eq:boundary-HJB}
 \end{equation}
-这里不预设 $V(s,K)=0$、$V_i(s,K)=0$ 或 $q=q_B$。
-状态约束 HJB 的边界信息由可行轨道的限制诱导，
-不能等同于另行指定的 Dirichlet 数据；相关黏性解框架可参见
-\citet{Soner1986}。
-该文献在其自身假设下建立的比较与正则性结论，
-不在本文的无折现首次到达问题中直接调用。
-本文不预设 $V$ 的可微性，而是对构造出的 $U$
-证明沿任意可行轨道的积分不等式。
-这一充分性逻辑与 \citet[附录A.1]{MicloSpiroWeibull2022}
-及 \citet[\S5.1.4]{Liberzon2012} 一致，
-但所需的具体分区、非光滑处理及有限时间到达性由本模型单独证明。
+这里没有预设 $V(s,K)=0$、$V_i(s,K)=0$ 或 $q=q_B$：状态约束问题的边界信息来自可行轨道本身，而不是另行给定的 Dirichlet 数据；
+状态约束 HJB 方程的黏性解理论可参见 \citet{Soner1986}。
+
+本文不依赖值函数的正则性或黏性解的比较原理，而采用验证函数方法：
+对第\ref{sec:candidate-construction}节构造的候选函数 $U$，直接证明沿任意可行轨道的积分不等式，再由候选策略取到等号得到最优性。
+这一充分性论证的思路与 \citet[附录A.1]{MicloSpiroWeibull2022} 及 \citet[\S5.1.4]{Liberzon2012} 相同；
+所需的具体分区、非光滑点的处理以及有限时间到达性，则需要针对本模型单独证明。
+最后记录 Hamiltonian 的点态极小元。
 
 \begin{lemma}[仿射 Hamiltonian 的点态极小]
 \label{lem:bangbang}
@@ -684,9 +711,10 @@ H_{0,Z}&=-\beta csiZ_s+\beta c(s-h)iZ_i,\label{eq:H0}\\
 边界上将 $[0,1]$ 换为 $\mathcal Q_K(s)$。
 \end{lemma}
 \begin{proof}
-由 \eqref{eq:H-affine} 关于 $q$ 的仿射性直接得到。
-这只是固定状态与梯度下的结论，不能单独排除奇异弧或证明轨道唯一。
+由\eqref{eq:H-affine}，$H_Z$ 关于 $q$ 仿射，斜率为 $\Sigma_Z$，结论直接成立。
 \end{proof}
+当 $\Sigma_Z=0$ 时，点态极小元不唯一。第\ref{sec:optimality}节将看到，候选函数在容量平台上正属于这种情形；
+因此最优控制的唯一性不能由逐点极小得到，需要沿轨道另行证明。
 
 \section{候选策略的构造}
 \label{sec:candidate-construction}
