@@ -1,0 +1,122 @@
+{
+  "passed": true,
+  "dpi": 150,
+  "final_reviewed_pages": 12,
+  "pages": [
+    {
+      "document": "main",
+      "page": 6,
+      "png_sha256": "cbf5f9d1080b5e09902b3bda359b4a4023608c3955acb3b4b862915a95197c65",
+      "reviewer": "primary",
+      "visual_basis": "实际逐页目视后的相同像素复用",
+      "passed": true
+    },
+    {
+      "document": "main",
+      "page": 7,
+      "png_sha256": "a09ad7ad7d10721985b08cebd4957690f9d86460fd2eebf7266381e0ca608e8d",
+      "reviewer": "primary",
+      "visual_basis": "实际逐页目视后的相同像素复用",
+      "passed": true
+    },
+    {
+      "document": "main",
+      "page": 8,
+      "png_sha256": "4ebe02c3a79a85c05fea75e0648aea4f600ac9007b7c7b0a49bbd8f7a753f703",
+      "reviewer": "primary",
+      "visual_basis": "刻度微调后实际重看最终图页",
+      "passed": true
+    },
+    {
+      "document": "main",
+      "page": 9,
+      "png_sha256": "54f096400b7e86c65ef0c48240c2e47bd6291907344a80584b0cd45ca8410e52",
+      "reviewer": "primary",
+      "visual_basis": "实际逐页目视后的相同像素复用",
+      "passed": true
+    },
+    {
+      "document": "main",
+      "page": 10,
+      "png_sha256": "fdafe2211f74f28479e65aa98d44994ff0d4b828bff9945017ac961ceca1bb9a",
+      "reviewer": "primary",
+      "visual_basis": "实际逐页目视后的相同像素复用",
+      "passed": true
+    },
+    {
+      "document": "main",
+      "page": 11,
+      "png_sha256": "f2e7d37072a3a7f44ea058974971864614f685637d471a6efec89a2c3b6555b7",
+      "reviewer": "primary",
+      "visual_basis": "实际逐页目视后的相同像素复用",
+      "passed": true
+    },
+    {
+      "document": "theory_only",
+      "page": 5,
+      "png_sha256": "846a2a57ca9a784a21c913e4a34875439874e64bfb19d56389f58cbacf41affa",
+      "reviewer": "independent semantic reviewer",
+      "visual_basis": "实际逐页目视后的相同像素复用",
+      "passed": true
+    },
+    {
+      "document": "theory_only",
+      "page": 6,
+      "png_sha256": "5d83bc0448dd84e72cdeb6953d3183c13a7ffd6b6acfbcda5f3317ea13c370bb",
+      "reviewer": "independent semantic reviewer",
+      "visual_basis": "实际逐页目视后的相同像素复用",
+      "passed": true
+    },
+    {
+      "document": "theory_only",
+      "page": 7,
+      "png_sha256": "953d2bbacec2b4b39afd70322f2c2d37fab8d6eece37a60ad5fdde4d820e723f",
+      "reviewer": "independent semantic reviewer",
+      "visual_basis": "刻度微调后实际重看最终图页",
+      "passed": true
+    },
+    {
+      "document": "theory_only",
+      "page": 8,
+      "png_sha256": "c7aac75496e51e30a5c357114fdbb7bbc7b6ebe828fb9618d690b373a33fcdf1",
+      "reviewer": "independent semantic reviewer",
+      "visual_basis": "实际逐页目视后的相同像素复用",
+      "passed": true
+    },
+    {
+      "document": "theory_only",
+      "page": 9,
+      "png_sha256": "e87443f32180dffbb119f5d1124101f2be2c33cd9a3adfe74941950ff594bc7d",
+      "reviewer": "independent semantic reviewer",
+      "visual_basis": "实际逐页目视后的相同像素复用",
+      "passed": true
+    },
+    {
+      "document": "theory_only",
+      "page": 10,
+      "png_sha256": "f2fcfe8ef8cda89d8a5e536c048cd3881e41d2456ec86a631d75d31d46fb3e08",
+      "reviewer": "independent semantic reviewer",
+      "visual_basis": "实际逐页目视后的相同像素复用",
+      "passed": true
+    }
+  ],
+  "first_build_all_12_pages_actually_viewed": true,
+  "final_other_10_pages_png_identical": true,
+  "final_figure_pages_actually_viewed": [
+    [
+      "main",
+      8
+    ],
+    [
+      "theory_only",
+      7
+    ]
+  ],
+  "resolved_issue": "主图y=0.05与inset y=0.125刻度首次150dpi重叠，已把inset纵轴刻度移右，最终38个文字/刻度/轴标签跨轴检查0碰撞，重看图页确认。",
+  "observations": [
+    "第3节只有一个A定义，物理语境取A∩D；Ω/D、P0与主定理衔接完整。",
+    "新图1的数学标签和控制值可读，直接标注避线；内嵌放大图不遮挡关键曲线。",
+    "原5.3删除后，第5.2节安全集命题直接衔接第6节，两页前后公式及引理无缺漏、裁切或留白异常。"
+  ],
+  "scope_note": "未声称目视全部41/31页；本次目视覆盖两稿规定的12个相关页面。"
+}

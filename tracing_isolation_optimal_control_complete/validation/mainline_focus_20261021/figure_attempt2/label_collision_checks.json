@@ -1,0 +1,68 @@
+{
+  "label_curve_intersections": [
+    {
+      "axis": "main",
+      "label": "",
+      "line_index": 7,
+      "line_color": "(0.12, 0.4, 0.68)",
+      "line_style": "-"
+    },
+    {
+      "axis": "main",
+      "label": "",
+      "line_index": 8,
+      "line_color": "(0.12, 0.4, 0.68)",
+      "line_style": "-"
+    },
+    {
+      "axis": "main",
+      "label": "",
+      "line_index": 9,
+      "line_color": "(0.82, 0.36, 0.1)",
+      "line_style": "-"
+    },
+    {
+      "axis": "main",
+      "label": "",
+      "line_index": 10,
+      "line_color": "(0.82, 0.36, 0.1)",
+      "line_style": "-"
+    },
+    {
+      "axis": "main",
+      "label": "",
+      "line_index": 11,
+      "line_color": "(0.82, 0.36, 0.1)",
+      "line_style": "-"
+    },
+    {
+      "axis": "main",
+      "label": "$\\mathcal{W}_{K}$",
+      "line_index": 9,
+      "line_color": "(0.82, 0.36, 0.1)",
+      "line_style": "-"
+    },
+    {
+      "axis": "main",
+      "label": "$\\Gamma_K$",
+      "line_index": 2,
+      "line_color": "k",
+      "line_style": ":"
+    },
+    {
+      "axis": "inset",
+      "label": "",
+      "line_index": 8,
+      "line_color": "(0.12, 0.4, 0.68)",
+      "line_style": "-"
+    },
+    {
+      "axis": "inset",
+      "label": "",
+      "line_index": 11,
+      "line_color": "(0.82, 0.36, 0.1)",
+      "line_style": "-"
+    }
+  ],
+  "method": "display-space text bounding box versus dense visible Line2D samples; annotation leaders excluded"
+}

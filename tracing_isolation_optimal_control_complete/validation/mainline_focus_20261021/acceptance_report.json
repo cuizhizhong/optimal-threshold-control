@@ -1,0 +1,125 @@
+{
+  "base_commit": "84a89431349681b02a82224d86120e63c191f412",
+  "passed": 18,
+  "total": 18,
+  "success": true,
+  "checks": [
+    {
+      "name": "source_and_protected_files",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "actual_notation_checks_28",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "plan_only_C1_C3_and_13_changed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "symbol_table_only_13_changed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "analytic_record_matches_current_outputs_and_sources",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "geometry_and_Theta",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "E1_endpoints_and_rounded_macros",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "E2_three_arc_endpoints",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "3_10_percent_same_denominator_as_text",
+      "passed": true,
+      "details": {
+        "boundary_cost_to_s_B": 0.8156447304621836,
+        "full_tracking_cost": 0.7138664296892894,
+        "optimal_total": 1.5295111601514728,
+        "capacity_until_h_total": 1.5783855039561376,
+        "checkpoint_optimal_cost_error": 4.440892098500626e-16,
+        "saving_percent_relative_to_comparison": 3.0964769812041437,
+        "saving_percent_rounded": "3.10",
+        "comparison_excess_percent_relative_to_optimal": 3.195422503476511,
+        "denominator_note": "正文3.10%以纯容量对照成本为分母；若用最优成本作分母则为3.20%，不能混用。",
+        "main_tex_3_10_percent_present": true
+      }
+    },
+    {
+      "name": "single_figure_print_dimensions",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "plot_labels_ticks_and_axes_do_not_overlap",
+      "passed": true,
+      "details": {
+        "label_curve_intersections": [],
+        "label_pair_intersections": [],
+        "method": "all visible annotation, tick and axis-label text boxes; own-axis dense visible Line2D samples and all cross-axis text pairs; annotation leaders excluded",
+        "visible_text_boxes_checked": 38,
+        "inset_y_tick_side": "right"
+      }
+    },
+    {
+      "name": "Fig2_N2_N3_byte_identical",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "old_two_layer_products_deleted",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "no_matlab_optimizer_OCP_or_ODE",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "final_actual_four_stage_double_build",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "compiled_sources_figures_and_outputs_match",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "actual_final_150dpi_pages",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "required_pages_visually_reviewed",
+      "passed": true,
+      "details": null
+    }
+  ],
+  "optimizer_calls": 0,
+  "new_ocp_solves": 0,
+  "matlab_calls": 0,
+  "ode_integrations": 0,
+  "final_pages": {
+    "main": 41,
+    "theory_only": 31
+  },
+  "retained_tex_builds": 2,
+  "actual_tex_bibtex_processes": 16
+}

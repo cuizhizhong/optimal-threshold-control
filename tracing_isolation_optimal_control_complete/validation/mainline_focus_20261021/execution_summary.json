@@ -1,0 +1,43 @@
+{
+  "base_commit": "84a89431349681b02a82224d86120e63c191f412",
+  "matlab_calls": 0,
+  "optimizer_calls": 0,
+  "new_ocp_solves": 0,
+  "ode_integrations": 0,
+  "plot_attempts": 7,
+  "plot_attempt_note": "几何核对始终通过；第4轮标签框断言失败未覆盖生产图，最终150dpi检查发现跨轴刻度叠压，probe确认并于第7轮仅移inset纵轴刻度到右侧。",
+  "build_attempts": [
+    {
+      "attempt": 1,
+      "tex_bibtex_processes": 8,
+      "all_exit_zero": true,
+      "pages": [
+        41,
+        31
+      ],
+      "status": "superseded_only_by_inset_tick_label_layout"
+    },
+    {
+      "attempt": 2,
+      "tex_bibtex_processes": 8,
+      "all_exit_zero": true,
+      "pages": [
+        41,
+        31
+      ],
+      "status": "final"
+    }
+  ],
+  "rendered_pages_per_build": 12,
+  "final_render_changes_from_first_build": [
+    "main_page8",
+    "theory_only_page7"
+  ],
+  "other_10_pages_png_identical": true,
+  "stop_conditions_triggered": false,
+  "acceptance_thresholds_relaxed": false,
+  "notes": [
+    "D任意控制不变的字面说法不成立；总量约束任意控制保持，可行轨道保持D。",
+    "3.10%沿用正文对照成本分母；若改最优成本分母为3.20%，本文未混用。"
+  ]
+}

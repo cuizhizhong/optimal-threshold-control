@@ -32,7 +32,7 @@
 | 10 | $e$ | 点 $e$（$a(e)=g(e)$，54 处）；正文中的 $\mathrm e$（指数） | 点改为 $s_e$ | 建议 |
 | 11 | $s_K$ | 安全边界与 $i=0$ 的交点；但 $\eta_K,\Gamma_K,\mathcal W_K,E_K$ 中的 $K$ 都表示"容量" | 改为 $s_A$，与 $\Phi_A$ 一致，表示"安全集在 $s$ 轴上的端点" | 建议 |
 | 12 | $C$ | $C=\lVert c\rVert_\infty$（定理 3.1 证明）；医疗附录中的可用容量 $C$；$C_B$（容量弧成本） | 前者改为 $\bar c$；后者改为 $C_{\rm ICU}$；$C_B$ 保留 | 建议 |
-| 13 | 计划附录 B 的 $D_m,\kappa_m,d_m,h_m,B_m,F_m$ | 与 $D$（#4）、医疗核 $\kappa$、配点阶数 $d$ 冲突 | 统一用上限 $\bar q$ 作下标：$h_{\bar q}=h/(1-\bar q)$，不变量 $F_{\bar q}$，包络 $I_{\bar q}(s)$（与 $I_z$、$I_\Gamma$ 同为"感染水平曲线"）；内部常数用 $\varpi_{\bar q},\nu_{\bar q},d_{\bar q}$ 等，写入该节时再定 | 建议 |
+| 13 | 计划附录 B 的 $D_m,\kappa_m,d_m,h_m,B_m,F_m$ | 与 $D$（#4）、医疗核 $\kappa$、配点阶数 $d$ 冲突 | 作者决定（2026-10-21）：受限能力分析随 C3 移出本稿，原 $\bar q$ 下标记号随 C3 移出不再使用 | 不采纳 |
 | 14 | $L$ | 函数空间 $L^1,L^\infty$；Lie 导数 $L_f$；证明中的 $L(s,\psi)$；医疗附录的平均占用时长 $L$ | 证明中的 $L(s,\psi)$ 直接写成 $\ln\Theta(s,\psi+\ell\ln s)$，不再另起名；时长改为 $L_{\rm ICU}$ | 建议 |
 | 15 | $Q$ | 反馈 $Q^*(x)$；边界允许控制区间 $Q_K(s)$；证明中的小矩形 $Q$；时变节的 $Q(t,s,i)$ | 反馈保留 $Q^*$；控制区间改为 $\mathcal Q_K(s)$、$\mathcal Q(t,s,i)$；证明中的矩形改为 $\Pi_0$ | 建议 |
 | 16 | $\sigma$ | 切换映射 $\sigma(z)$；一维策略族参数 $\sigma$（$\mathcal J_D(\sigma)$、$F_{x_0}(\sigma)$、$i_w(\sigma)$） | 族参数改为 $s_c$（开始完全跟踪时的易感比例）；$F_{x_0}$ 改为 $\mathcal J_{x_0}$，与 $\mathcal J_D,\mathcal J_B$ 统一 | 建议 |

@@ -1,0 +1,2 @@
+MERG NOT subset; don't know how to subset; dropped
+{"attempt": 6, "geometry_max_error": 1.1102230246251565e-16, "theta_max_residual": 3.552713678800501e-15, "E2_saving_percent": 3.0964769812041437, "size_cm": [16.50000061713021, 8.0], "optimizer_calls": 0, "ocp_solves": 0, "matlab_calls": 0}

@@ -1,0 +1,12 @@
+[
+  {
+    "path": "figures\\numerical_scenarios\\FigN1_two_layers.pdf",
+    "sha256_before": "f79eec930f0ca8b2e9fca8be2a3545fd969adcc83e89cacb037bd269eeb47226",
+    "authorization": "作者本轮明确要求删除旧两层图产品文件；旧脚本及历史验证不动"
+  },
+  {
+    "path": "figures\\numerical_scenarios\\FigN1_two_layers.png",
+    "sha256_before": "a98ce380adf3f359d94ece02d04bdec25419a168aa69c78a60fcdf96c9fc01a8",
+    "authorization": "作者本轮明确要求删除旧两层图产品文件；旧脚本及历史验证不动"
+  }
+]

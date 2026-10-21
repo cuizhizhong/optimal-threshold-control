@@ -245,7 +245,7 @@ Carath\'eodory 解全程满足式\eqref{eq:capacity}的控制称为可行控制�
 状态约束和成本均不涉及 $s_q,i_q,r$，因此以下只需研究二维系统\eqref{eq:normalized-model}上的最优控制问题。
 控制的启动时刻、切换次数和退出状态不预先指定，由后文的最优性分析确定。
 
-\section{主结果与两层几何}
+\section{主结果与最优分区}
 \label{sec:main-results}
 
 本节及第\ref{sec:constant-problem}--\ref{sec:constant-uniqueness}节固定
@@ -255,16 +255,23 @@ c>0,\quad\gamma>0,\quad0<\beta<1,\quad0<K<1,
 \label{eq:constants}
 \end{equation}
 所以 $h=p+\ell$、$0<p<h$。
-物理可行状态域为
+辅助条带与物理可行状态域分别为
+\[
+\Omega=\{(s,i):s>0,\ 0<i\le K\},\qquad
+\Dcal=\Omega\cap\{s+i\le1\}.
+\]
+式\eqref{eq:sum-decay}保证任意允许控制均保持总量约束 $s+i\le1$，
+而定义\ref{def:admissible}中的可行控制还保持 $i\le K$，因此从 $\Dcal$ 出发的可行轨道始终留在 $\Dcal$。
+以下在 $\Omega$ 上建立几何和候选函数，再限制到 $\Dcal$，即得到物理问题所需的对象。
+物理问题的值函数为
 \begin{equation}
-\Dcal=\{(s,i):s>0,\ 0<i\le K,\ s+i\le1\},\qquad
-V(x)=\inf_{q\in\Uad(x)}J_x(q).
+V(x)=\inf_{q\in\Uad(x)}J_x(q),\qquad x\in\Dcal.
 \label{eq:value-definition}
 \end{equation}
 
 此处的下确界针对定义\ref{def:admissible}中的全部可测可行控制，不预先限制切换次数。
 
-\subsection{约束可行性与成本最优性的区分}
+\subsection{安全集与可行性}
 对 $s>0$、$i>0$，无控制的未来感染峰值为
 \begin{equation}
  P_0(s,i):=\sup_{t\ge0}i^0(t)=
@@ -279,26 +286,17 @@ V(x)=\inf_{q\in\Uad(x)}J_x(q).
 它不由 $s>h$ 时的正感染分支连续外推，且不属于本文正感染主定理的状态域。
 
 
-先从能否保持感染阈值出发定义第一层集合。
-记 $\mathcal C_{\bar q}$ 为所有可测的 $[0,\bar q]$ 值控制，$0\le\bar q\le1$；
-定义该控制类时不预先要求轨道满足 $i\le K$。令
-\begin{align}
- \Acal&=\{x\in\Dcal:P_0(x)\le K\},\label{eq:overview-safe}\\
- \mathcal A^0&=\{x\in\Dcal:i_x^q(t)\le K\ \text{对所有 }t\ge0\text{ 及 }q\in\mathcal C_1\},
- \label{eq:all-control-safe}\\
- \mathcal V_{\bar q}&=\{x\in\Dcal:\text{存在 }q\in\mathcal C_{\bar q},\ i_x^q(t)\le K\ \text{对所有 }t\ge0\}.
- \label{eq:viability-definition}
-\end{align}
-三者分别表示零控制安全集、所有允许控制均安全的初值集和存在可行控制的初值集。
-这种先判定可行性、再比较成本的层级已有研究先例\citep{AvramFreddiGoreac2022,FreddiGoreac2024}。
-本模型满足
+定义安全集
 \begin{equation}
- \mathcal A^0=\Acal=\mathcal V_0,\qquad \mathcal V_1=\Dcal,
- \label{eq:viability-endpoints}
+ \Acal:=\{x\in\Omega:P_0(x)\le K\}.
+ \label{eq:safe-set}
 \end{equation}
-其中 $\mathcal A^0=\Acal$ 见引理\ref{lem:safe-invariant}，可行域的两个端点及 $\bar q<1$ 的包络见命题\ref{prop:restricted-feasibility}。
-因此，完整控制区间下所有物理初值均可行，但可行性本身尚未决定何时付出控制成本。
-第二层才是按最小成本确定的等待区、完全跟踪区和容量平台。
+物理安全状态为 $\Acal\cap\Dcal$；下文涉及实际初值、轨道与值函数时，安全状态均取此交集。
+引理\ref{lem:safe-invariant}表明，$\Acal$ 对任意 $[0,1]$ 值可测控制正向不变。
+另一方面，恒取 $q=1$ 时 $i(t)=i_0\e^{-\gamma t}$，故每个 $x_0\in\Dcal$ 都存在可行控制，
+约束 $i\le K$ 不会使问题无解，问题在于何时付出控制成本。
+\citet{AvramFreddiGoreac2022,FreddiGoreac2024}区分无干预安全集、全控制不变集与可行域；
+在本模型的物理域内，前两类安全状态均为 $\Acal\cap\Dcal$，可行域则为整个 $\Dcal$。
 
 \subsection{全域反馈与阶段结构}
 用零控制自然轨道的标签
@@ -318,7 +316,7 @@ $Q^*(s,i)$ 表示根据当前状态在零控制、容量切向控制与完全跟
 比较范围为全部可测可行控制。
 从同一初值出发的最优状态轨道唯一，最优控制在 $[0,\infty)$ 上几乎处处唯一。
 不安全初值的阶段顺序为 $0\to1\to0$ 或 $0\to q_B(s)\to1\to0$，允许阶段长度为零，
-其中 $q_B(s)=1-h/s$。两类策略均在首次进入 $\Acal$ 后永久取 $q=0$。
+其中 $q_B(s)=1-h/s$。两类策略均在首次进入 $\Acal\cap\Dcal$ 后永久取 $q=0$。
 辅助条带中的非平凡切换曲线 $\Gamma_K$ 及其唯一容量交点 $(s_B,K)$ 由命题\ref{prop:Gamma-geometry}、推论\ref{cor:Gamma-labels}刻画。
 若最优轨道含有正长度容量阶段，则在 $s_B>h$ 处转入完全跟踪，而不继续维持感染阈值至 $s=h$。
 \end{theorem}
@@ -347,19 +345,19 @@ $\mathcal B$ & 已在容量平台，维持至 $s_B$ 后完全跟踪 & $q_B\to1\t
 \end{table}
 容量平台 $\mathcal B$ 仅指 $i=K$ 且 $s>s_B$ 的部分，从中出发时等待段为零；
 临界自然轨道 $\Phi=\Phi_B$ 对应零长度容量段。
-图\ref{fig:two-layer-regions}将约束可行性与成本最优性分别画出。
+图\ref{fig:optimal-partition}给出成本最优分区及两条解析示例轨道。
 \begin{figure}[H]
 \centering
-\includegraphics[width=\linewidth]{numerical_scenarios/FigN1_two_layers.pdf}
-\caption{两层几何，参数为 $\beta=0.5,c=2,\gamma=0.3,K=0.15$。
-(a) 受限能力 $\bar q=0,0.1,0.2,0.4$ 的嵌套可行包络，均按 $0\le i\le K$、$s+i\le1$ 截断；
-$\bar q=0$ 对应安全边界 $\partial\Acal$，容量线上的数字标出各切点 $h_{\bar q}$。
-(b) $q\in[0,1]$ 下的成本最优分区。蓝线为从 E2 初值 $(0.99,0.01)$ 出发的解析最优轨道，
-依次自然等待、沿容量弧到 $s_B$、完全跟踪至 $\partial\Acal$，箭头表示演化方向；
-下方插图放大虚框内 $s\in[0.42,0.60]$、$i\in[0.10,0.16]$ 的切换角区。
+\includegraphics[width=\linewidth]{numerical_scenarios/FigN1_optimal_partition.pdf}
+\caption{成本最优分区，参数为 $\beta=0.5,c=2,\gamma=0.3,K=0.15$。
+E1 初值 $(0.75,0.01)$ 的示例轨道先自然等待至 $\Gamma_K$，再完全跟踪进入安全集，对应 $0\to1\to0$；
+E2 初值 $(0.99,0.01)$ 的示例轨道先自然等待至容量线，再沿 $\mathcal B$ 至 $s_B$，
+最后完全跟踪进入安全集，对应 $0\to q_B\to1\to0$；箭头表示演化方向。
+浅色虚线为维持感染阈值至 $s=h$ 的对照路径；相对该对照路径，E2 最优成本降低约 $3.10\%$。
+左下插图放大同时包含 $s_e$ 与 $s_B$ 的切换角区。
 绿色实线为 $\partial\Acal$，黑色实线为 $\Gamma_K$，黑色点线为 $\Phi=\Phi_B$，黑色虚线为 $i=K$；
-灰色点划线为 $s=h$，灰色虚线为 $s+i=1$。全部曲线与轨道均由解析公式计算。}
-\label{fig:two-layer-regions}
+灰色点划线为 $s=h$，灰色虚线为 $s+i=1$。全部边界与示例轨道均由解析公式计算。}
+\label{fig:optimal-partition}
 \end{figure}
 
 
@@ -424,10 +422,8 @@ $[0,\infty)$ 上为 Lipschitz 函数，因而一致连续。
 \label{sec:constant-problem}
 本节沿用式\eqref{eq:constants}的参数与式\eqref{eq:value-definition}的物理域。
 此处的下确界没有预先限制控制的切换次数或取值结构。
-为方便几何参数化，先在辅助正条带
-$\Omega=\{s>0,\ 0<i\le K\}$ 中定义各曲线和候选函数，再限制到 $\Dcal$。
-超出 $s+i\le1$ 的辅助曲线不是实际允许的状态；实际候选轨道保持 $s+i\le1$，
-这是定理\ref{thm:wellposed}的结论，而非额外假设。
+相关曲线与候选函数均在第\ref{sec:main-results}节定义的辅助条带 $\Omega$ 中构造，
+实际控制问题取其在 $\Dcal$ 上的限制。
 
 \subsection{自然传播不变量与峰值}
 $q=0$ 时
@@ -455,135 +451,19 @@ i_{\rm pk}=i_0+s_0-h+h\ln\frac h{s_0}.
  a(s)=\Phi_A-s+h\ln s\quad(s\ge h).
 \label{eq:safe-boundary}
 \end{equation}
-辅助条带中的安全集及物理安全集分别为
-\begin{equation}
-\widehat{\Acal}=\Omega\cap\{P_0\le K\},\qquad
-\Acal=\Dcal\cap\{P_0\le K\}=\widehat{\Acal}\cap\Dcal.
-\label{eq:safe-set}
-\end{equation}
-以下在辅助几何中使用 $\widehat{\Acal}$，实际控制问题的目标集始终是 $\Acal$。
-由式\eqref{eq:uncontrolled-future-peak}，这等价于条带内
-$s\le h$ 或 $s>h$ 且 $\Phi\le\Phi_A$ 的原有几何描述。
+安全集 $\Acal$ 已由式\eqref{eq:safe-set}定义。
+由式\eqref{eq:uncontrolled-future-peak}，它在条带内等价于
+$s\le h$ 或 $s>h$ 且 $\Phi\le\Phi_A$ 的几何描述，物理安全状态为 $\Acal\cap\Dcal$。
 
 \begin{proposition}[最大无控制安全集]
 \label{prop:safe-exact}
 对 $x\in\Dcal$，$x\in\Acal$ 当且仅当从 $x$ 出发永久取 $q=0$ 时始终有 $i\le K$。
-因此 $V=0$ 于 $\Acal$，唯一的零成本控制为 $q=0$ 几乎处处。
+因此 $V=0$ 于 $\Acal\cap\Dcal$，唯一的零成本控制为 $q=0$ 几乎处处。
 \end{proposition}
 \begin{proof}
 由 \eqref{eq:natural-peak} 以及 $s\le h$ 时感染不增，得到安全性的充要条件。
 $q=0$ 的成本为零，非负成本不可能更低；$\beta c>0$ 保证零成本等价于 $q=0$ 几乎处处。
 \end{proof}
-
-\subsection{受限跟踪能力与可行域}
-\label{sec:restricted-feasibility}
-
-对概览中定义的 $\mathcal V_{\bar q}$，以下只判定约束可行性，不比较可行策略的成本。
-当 $0\le\bar q<1$ 时，定义
-\begin{equation}
- \varpi_{\bar q}=\beta+(1-\beta)\bar q,\qquad
- \nu_{\bar q}=\frac{\beta(1-\bar q)}{\varpi_{\bar q}},\qquad
- d_{\bar q}=\frac{\gamma}{c\varpi_{\bar q}},\qquad
- h_{\bar q}=\frac{h}{1-\bar q}.
- \label{eq:restricted-constants}
-\end{equation}
-于是 $d_{\bar q}=\nu_{\bar q}h_{\bar q}$。
-最大控制轨道与容量线拼接的构造已有先例\citep{AvramFreddiGoreac2022,FreddiGoreac2024}；
-以下包络按系统\eqref{eq:normalized-model}的跟踪流量推导。
-
-\begin{proposition}[受限能力下的约束可行域]
-\label{prop:restricted-feasibility}
-在式\eqref{eq:constants}的参数条件下，若 $0\le\bar q<1$，令
-\begin{equation}
- \mathcal I_{\bar q}(s)=
- \begin{cases}
-  K,&0<s\le h_{\bar q},\\[1mm]
-  K-\nu_{\bar q}(s-h_{\bar q})
-       +d_{\bar q}\ln(s/h_{\bar q}),&s>h_{\bar q}.
- \end{cases}
- \label{eq:restricted-envelope}
-\end{equation}
-则
-\begin{equation}
- \mathcal V_{\bar q}
-   =\Dcal\cap\{(s,i):i\le\mathcal I_{\bar q}(s)\}.
- \label{eq:restricted-viability}
-\end{equation}
-特别地，$\mathcal V_0=\Acal$；若 $\bar q=1$，则 $\mathcal V_1=\Dcal$。
-在容量线的 $s>h$ 部分，切向控制满足
-\begin{equation}
- q_B(s)\le\bar q\quad\Longleftrightarrow\quad s\le h_{\bar q}
- \qquad(\bar q<1).
- \label{eq:restricted-capacity-tangent}
-\end{equation}
-\end{proposition}
-\begin{proof}
-固定 $\bar q<1$。对 $s>0$ 定义
-\[
- F_{\bar q}(s,i)=i+\nu_{\bar q}s-d_{\bar q}\ln s.
-\]
-直接代入状态方程得
-\begin{equation}
- \frac{\dd}{\dd t}F_{\bar q}(s,i)
- =\frac{\beta c(\bar q-q)(s-p)i}{\varpi_{\bar q}}.
- \label{eq:restricted-invariant-derivative}
-\end{equation}
-因此 $q=\bar q$ 时 $F_{\bar q}$ 为不变量。
-此时 $\dot i=\beta c(1-\bar q)(s-h_{\bar q})i$，且 $s$ 严格递减。
-若 $s_0\le h_{\bar q}$，感染自初始时刻起不增。
-若 $s_0>h_{\bar q}$，在首次到达 $s=h_{\bar q}$ 之前 $i\ge i_0$，且
-$\dot s\le-\beta c i_0s$，故该首次到达时刻有限。
-不变量给出此时的感染峰值
-\[
- i_{\rm pk}^{\bar q}
- =i_0+\nu_{\bar q}(s_0-h_{\bar q})
-          -d_{\bar q}\ln(s_0/h_{\bar q}).
-\]
-这证明 $i_0\le\mathcal I_{\bar q}(s_0)$ 时恒取最大控制即能保持约束；
-物理总量约束由式\eqref{eq:sum-decay}保持，因而得到充分性。
-
-反之，设 $s_0>h_{\bar q}$ 且存在可行控制 $q\le\bar q$。
-只要 $s>h_{\bar q}$，便有 $\dot i\ge0$、$i\ge i_0$ 及
-$\dot s\le-\beta c i_0s$，所以首次到达 $s=h_{\bar q}$ 的时刻 $T$ 仍然有限。
-在 $[0,T]$ 上，$s\ge h_{\bar q}\ge h>p$，
-故式\eqref{eq:restricted-invariant-derivative}表明 $F_{\bar q}$ 不减。
-于是
-\[
- i(T)\ge i_0+\nu_{\bar q}(s_0-h_{\bar q})
-                  -d_{\bar q}\ln(s_0/h_{\bar q}),
-\]
-而可行性要求 $i(T)\le K$，即 $i_0\le\mathcal I_{\bar q}(s_0)$。
-$s_0\le h_{\bar q}$ 时必要性只是初值约束 $i_0\le K$。
-
-当 $\bar q=0$ 时，$\nu_0=1$、$d_0=h$、$h_0=h$，
-式\eqref{eq:restricted-viability}恰为 $P_0\le K$，故 $\mathcal V_0=\Acal$。
-当 $\bar q=1$ 时，恒取 $q=1$ 给出 $i(t)=i_0\e^{-\gamma t}\le K$，
-故 $\mathcal V_1=\Dcal$，此时不需要定义有限的 $h_1$。
-最后，由 $q_B(s)=1-h/s$ 直接得到式\eqref{eq:restricted-capacity-tangent}。
-\end{proof}
-
-\begin{remark}[切点、物理截断与退化情形]
-\label{rem:restricted-degeneracies}
-包络在 $s=h_{\bar q}$ 处与 $i=K$ 相切，因为右导数为
-$-\nu_{\bar q}+d_{\bar q}/s$，在切点为零；
-在 $s>h_{\bar q}$ 上该导数严格为负。
-式\eqref{eq:restricted-viability}须与 $s+i\le1$ 相交：
-若 $\mathcal I_{\bar q}(s)\le0$，该截面没有正感染可行初值；
-辅助曲线超出物理域的部分不构成实际边界。
-若 $h_{\bar q}\ge1$，曲线分支在物理域中不出现。
-事实上，较弱的条件 $h_{\bar q}\ge1-K$ 已足以保证
-$\mathcal V_{\bar q}=\Dcal$：当 $s>h_{\bar q}$ 时，
-\[
- \frac{\dd}{\dd s}\bigl[\mathcal I_{\bar q}(s)-(1-s)\bigr]
- =1-\nu_{\bar q}+\frac{d_{\bar q}}s>0,
-\]
-且该差在 $h_{\bar q}$ 处为 $K+h_{\bar q}-1\ge0$。
-因此此时即使辅助曲边存在，也位于物理上界 $i=1-s$ 之上。
-若将状态域扩充到疾病灭绝轴 $i=0$，该轴上的所有物理初值均可行，
-应另行加入，不能用正感染包络在 $\mathcal I_{\bar q}<0$ 的位置排除它们。
-本命题不确定受限控制下的最低成本，也不证明截断反馈
-$\min\{Q^*,\bar q\}$ 的可行性或最优性。
-\end{remark}
 
 \section{两类控制弧与显式成本}
 \label{sec:arcs}
@@ -602,14 +482,13 @@ $\min\{Q^*,\bar q\}$ 的可行性或最优性。
 
 \begin{lemma}[安全集对控制的前向不变性]
 \label{lem:safe-invariant}
-从 $\widehat{\Acal}$ 出发的任意 $[0,1]$ 值可测控制均保持在 $\widehat{\Acal}$；在物理域中相应保持在 $\Acal$。
-此外，$\mathcal A^0=\Acal$。
+从 $\Acal$ 出发的任意 $[0,1]$ 值可测控制均保持在 $\Acal$；
+从 $\Acal\cap\Dcal$ 出发时相应保持在 $\Acal\cap\Dcal$。
 \end{lemma}
 \begin{proof}
 只要 $s>h$，\eqref{eq:Phi-derivative} 保证 $\Phi$ 不增，故 $i\le a(s)\le K$。
 一旦 $s\le h$，因 $s$ 不增，且 $\dot i\le \beta c(s-h)i\le0$，安全性永久保持。
 物理总量约束由 \eqref{eq:sum-decay} 保持。
-这给出 $\Acal\subset\mathcal A^0$；反向包含由零控制属于所有允许控制之一得到。
 \end{proof}
 
 \subsection{完全跟踪弧}
@@ -795,10 +674,10 @@ H_{0,Z}&=-\beta csiZ_s+\beta c(s-h)iZ_i,\label{eq:H0}\\
 
 \begin{proposition}[正感染端点存在的充要条件]
 \label{prop:reachable}
-对 $x=(s,i)\in\Omega\setminus\widehat{\Acal}$，立即取 $q=1$ 能在有限时间进入安全集，当且仅当
+对 $x=(s,i)\in\Omega\setminus\Acal$，立即取 $q=1$ 能在有限时间进入安全集，当且仅当
 \begin{equation}
-x\in\mathcal E:=\{x\in\Omega\setminus\widehat{\Acal}:s\e^{-i/\ell}<s_A\}
-=\{x\in\Omega\setminus\widehat{\Acal}:i>\ell\ln(s/s_A)\}.
+x\in\mathcal E:=\{x\in\Omega\setminus\Acal:s\e^{-i/\ell}<s_A\}
+=\{x\in\Omega\setminus\Acal:i>\ell\ln(s/s_A)\}.
 \label{eq:reachable}
 \end{equation}
 此时唯一首次端点 $(\bar s,\bar i)$ 满足 $h<\bar s<s$、$0<\bar i=a(\bar s)<i$，以及
@@ -1059,7 +938,7 @@ $s_B$ 与 $(s_e,a(s_e))$ 可在物理三角形外，但只是辅助阈值。
 \section{全域候选反馈与候选成本}
 \label{sec:synthesis}
 本节只构造一条可行策略及其成本，不预先宣布它最优。
-对任意不安全 $x=(s,i)\in\Omega\setminus\widehat{\Acal}$，记 $\phi=\Phi(x)>\Phi_A$。
+对任意不安全 $x=(s,i)\in\Omega\setminus\Acal$，记 $\phi=\Phi(x)>\Phi_A$。
 
 若 $\phi\le\Phi_B$，令 $y_\Gamma(\phi)=(\eta,j)$ 为 \eqref{eq:Gamma-hit-map} 的交点。
 当 $s>\eta$ 时，沿自然轨道向未来等待至 $y_\Gamma$；当 $s<\eta$ 时，交点位于过去，立即完全跟踪；
@@ -1081,7 +960,7 @@ K+\eta_K-h\ln\eta_K=\phi.
 \mathcal W_K&=\{\phi>\Phi_B,\ i<K\},\notag\\
 \mathcal B&=\{i=K,\ s>s_B\}.\label{eq:regions}
 \end{align}
-加上 $\Gamma_K$ 与 $\widehat{\Acal}$，这些集合互不重叠并覆盖 $\Omega$。
+加上 $\Gamma_K$ 与 $\Acal$，这些集合互不重叠并覆盖 $\Omega$。
 所有集合均限制在 $s>0,0<i\le K$ 内；实际使用时再与 $\Dcal$ 相交。
 两种自然等待分支的公共边界为
 $\{\Phi=\Phi_B,\ s>s_B,\ i<K\}$，本定义将该界面归入 $\mathcal W_\Gamma$。
@@ -1095,7 +974,7 @@ $\{\Phi=\Phi_B,\ s>s_B,\ i<K\}$，本定义将该界面归入 $\mathcal W_\Gamma
 \begin{lemma}[切换界面两侧与分区的对应]
 \label{lem:chi-regions}
 记 $\phi_\Gamma(s)=\Phi(s,\mathcal I_\Gamma(s))$，$s>s_e$。
-在 $x=(s,i)\in\Omega\setminus\widehat{\Acal}$、$s>s_e$、$\Phi_A<\phi:=\Phi(x)\le\Phi_B$ 时，
+在 $x=(s,i)\in\Omega\setminus\Acal$、$s>s_e$、$\Phi_A<\phi:=\Phi(x)\le\Phi_B$ 时，
 \begin{align}
 x\in\mathcal T&\iff s<\eta_\Gamma(\phi)\iff\chi(s,i)>0,\notag\\
 x\in\mathcal W_\Gamma&\iff s>\eta_\Gamma(\phi)\iff\chi(s,i)<0,\notag\\
@@ -1137,7 +1016,7 @@ s<\eta_\Gamma(\phi)
 由引理\ref{lem:chi-regions}及分区定义，
 \[
 \mathcal W
-=\{x=(s,i)\in\Omega\setminus\widehat{\Acal}:
+=\{x=(s,i)\in\Omega\setminus\Acal:
   i<K,\ s>s_e,\ \chi(s,i)<0\}.
 \]
 事实上，当 $\Phi\le\Phi_B$ 时使用该引理；当 $\Phi>\Phi_B$ 且 $i<K$ 时，
@@ -1238,7 +1117,7 @@ $\Delta_\Theta$ 沿该轨道关于 $s$ 的导数严格为正。
 \begin{equation}
 Q^*(x)=
 \begin{cases}
-0,&x\in\widehat{\Acal}\cup\mathcal W_\Gamma\cup\mathcal W_K,\\
+0,&x\in\Acal\cup\mathcal W_\Gamma\cup\mathcal W_K,\\
 1,&x\in\mathcal T\cup\Gamma_K,\\
 1-h/s,&x\in\mathcal B,
 \end{cases}
@@ -1248,7 +1127,7 @@ Q^*(x)=
 \begin{equation}
 U(x)=
 \begin{cases}
-0,&x\in\widehat{\Acal},\\
+0,&x\in\Acal,\\
 W(x),&x\in\mathcal T\cup\Gamma_K,\\
 W(y_\Gamma(\Phi(x))),&x\in\mathcal W_\Gamma,\\
 C_B(\eta_K(\Phi(x)),s_B)+W(s_B,K),&x\in\mathcal W_K\cup\mathcal B.
@@ -1374,7 +1253,7 @@ H_{0,U}=0,\qquad
 \begin{proposition}[连续性、梯度匹配与相对正则性]
 \label{prop:regularity}
 $U$ 在 $\Omega$ 上连续且相对局部 Lipschitz；在
-$\{s>0,0<i<K\}\setminus\widehat{\Acal}$ 上为 $C^1$。
+$\{s>0,0<i<K\}\setminus\Acal$ 上为 $C^1$。
 非平凡切换界面和两种等待分支的公共界面处，两侧梯度匹配。
 容量边界的内侧梯度在 $s>h$ 存在，平台段为
 \begin{equation}
@@ -2048,7 +1927,7 @@ $s,i$ 为相对于初始总量的比例，允许 $s_0+i_0<1$；
  \label{eq:numerical-sB}
 \end{equation}
 其中 $(s_B,K)$ 为切换曲线与容量线的交点。
-图\ref{fig:two-layer-regions}给出成本分区的理论几何，图\ref{fig:numerical-regions}将 E1--E5 的直接配点轨道与该几何叠加比较。
+图\ref{fig:optimal-partition}给出成本分区的理论几何，图\ref{fig:numerical-regions}将 E1--E5 的直接配点轨道与该几何叠加比较。
 两种等待分支之间的边界使用正文定义的自然轨道标号
 $\Phi=\Phi_B$，不是整条竖线 $s=s_B$。
 所有区域均限制在 $s>0$、$0<i\le K$、$s+i\le1$ 的物理域内。
@@ -2287,6 +2166,7 @@ q_\varepsilon^*(t,s,i)=\proj_{[0,1]}
 
 \section{模型内的机制解释与理论边界}
 \label{sec:limitations}
+本稿的 $q=1$ 代表理想化的完美追踪：所有被接触者均被及时追踪并隔离。
 完全跟踪同时使非隔离感染者的新增项归零、使未隔离易感者继续移出。
 因此从内生阈值开始短时完全跟踪，比始终维持容量直至 $s=h$ 更节省本稿定义的成本。
 这只是既定动力学与成本下的数学结论，不自动适用于含其他健康损失或资源约束的实际决策。
@@ -2296,7 +2176,7 @@ q_\varepsilon^*(t,s,i)=\proj_{[0,1]}
 \label{rem:unproved-extensions}
 任意时变 $c(t)$ 的全域值函数构造、无穷时域终端处理和无条件唯一性未在本稿证明。
 离散网格加密和 $\varepsilon\downarrow0$ 的收敛、时变高峰后的真实安全延拓也未证明。
-受限能力 $\bar q<1$ 的可行域已由命题\ref{prop:restricted-feasibility}给出，其成本最优反馈和验证函数尚未构造。
+跟踪能力受限（$q\le\bar q<1$）时的最优控制未在本稿研究。
 完全跟踪后残余感染生成、隔离者回流、联合控制以及参数不确定的情形仍需另行建立可行域和验证函数。
 特别地，跟踪能力上限为 $\bar q<1$ 时，容量边界还必须满足 $\bar q\ge1-h/s$；
 不能只把本稿的 $1$ 替换成 $\bar q$ 后沿用最优结构定理。

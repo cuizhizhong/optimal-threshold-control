@@ -1,0 +1,94 @@
+{
+  "status": "pass",
+  "reviewer": "independent mainline_semantic_audit subtask",
+  "method": "attempt1 six pages actually inspected; attempt2 page7 actually re-inspected after moving inset y ticks right; other five final pages reused only after actual SHA256 equality check; final AUX labels read separately",
+  "render_dpi": 150,
+  "pdf": {
+    "path": "latex/theory_only.pdf",
+    "sha256": "bd510b9b9010b36ffd2ec2bdba1ee3a35d20f013fe3d49b77972bbb815521c8f",
+    "pages_reported_by_root_build": 31
+  },
+  "source": {
+    "path": "latex/main.tex",
+    "sha256": "32c4174f1f421bad6e20a69dbc4fca33361d568d08c67853b3e98a251a0b6f49"
+  },
+  "aux": {
+    "path": "tmp/mainline_focus_20261021/attempt2/theory_only.aux",
+    "sha256": "d681af63b9722aa897cf502dd678f1350903efe9038a634b8d8c329e18d3b985",
+    "page_map": {
+      "sec:main-results": 5,
+      "eq:safe-set": 6,
+      "tab:optimal-stages": 7,
+      "fig:optimal-partition": 7,
+      "sec:constant-problem": 8,
+      "prop:safe-exact": 9,
+      "sec:arcs": 9,
+      "lem:safe-invariant": 9
+    }
+  },
+  "figure": {
+    "path": "figures/numerical_scenarios/FigN1_optimal_partition.pdf",
+    "sha256": "d8f3273cd7fe11d2f499579ec33b388fad6758b6477fddead7b157a92e95ae05"
+  },
+  "render_comparison": {
+    "path": "validation/mainline_focus_20261021/render_comparison.json",
+    "sha256": "dd00ea98142278523d5a1e719a1b2dfe41c031f64ec2ba0b3448708d967936a1",
+    "newly_reinspected_final_pages": [7],
+    "reused_identical_final_pages": [5, 6, 8, 9, 10]
+  },
+  "pages": [
+    {
+      "page": 5,
+      "path": "validation/mainline_focus_20261021/rendered_pages_150dpi_attempt2/theory_only_page5.png",
+      "sha256": "846a2a57ca9a784a21c913e4a34875439874e64bfb19d56389f58cbacf41affa",
+      "status": "pass",
+      "observation": "第3节标题、常参数范围、Omega与D定义及总量约束/可行性区分正常；段落自然续至第6页，无裁切或公式溢出。"
+    },
+    {
+      "page": 6,
+      "path": "validation/mainline_focus_20261021/rendered_pages_150dpi_attempt2/theory_only_page6.png",
+      "sha256": "5d83bc0448dd84e72cdeb6953d3183c13a7ffd6b6acfbcda5f3317ea13c370bb",
+      "status": "pass",
+      "observation": "安全集唯一的Omega定义、物理A交D、q=1可行性、AFG/FG引用和主定理正常；公式、引用与表前物理范围说明清晰。"
+    },
+    {
+      "page": 7,
+      "path": "validation/mainline_focus_20261021/rendered_pages_150dpi_attempt2/theory_only_page7.png",
+      "sha256": "953d2bbacec2b4b39afd70322f2c2d37fab8d6eece37a60ad5fdde4d820e723f",
+      "status": "pass",
+      "observation": "实际重看最终图页：插图纵刻度现位于右侧，与主图纵刻度清楚分离，跨轴文字碰撞已消除。单幅图1与阶段表完整，E1/E2、控制值、T引线、容量对照路径及连接线正常，无关键曲线遮挡；图注与第4节衔接正常。"
+    },
+    {
+      "page": 8,
+      "path": "validation/mainline_focus_20261021/rendered_pages_150dpi_attempt2/theory_only_page8.png",
+      "sha256": "c7aac75496e51e30a5c357114fdbb7bbc7b6ebe828fb9618d690b373a33fcdf1",
+      "status": "pass",
+      "observation": "适定性证明与实分析事实排版正常；第5节引用第3节的Omega并限制到D，自然轨道与峰值公式完整。"
+    },
+    {
+      "page": 9,
+      "path": "validation/mainline_focus_20261021/rendered_pages_150dpi_attempt2/theory_only_page9.png",
+      "sha256": "e87443f32180dffbb119f5d1124101f2be2c33cd9a3adfe74941950ff594bc7d",
+      "status": "pass",
+      "observation": "第5.2节引用前移安全集定义；命题5.1后直接进入第6节，无遗留第5.3节或断裂；安全集引理的Omega/物理域范围与证明正常。"
+    },
+    {
+      "page": 10,
+      "path": "validation/mainline_focus_20261021/rendered_pages_150dpi_attempt2/theory_only_page10.png",
+      "sha256": "f2fcfe8ef8cda89d8a5e536c048cd3881e41d2456ec86a631d75d31d46fb3e08",
+      "status": "pass",
+      "observation": "容量弧、成本公式与第7节有限成本可行性顺序连贯；编号、分式和积分完整，没有出现删除C3后的空白节或失效引用。"
+    }
+  ],
+  "inspected_pages": 6,
+  "issues": [],
+  "resolved_issues": [
+    {
+      "issue": "attempt1插图左侧纵刻度与主图纵刻度在跨轴位置过近",
+      "review_oversight": "首轮只逐项查看曲线和数学标签，未单独检查跨轴tick文本，遗漏此处问题",
+      "fix": "仅把插图纵刻度移到右侧；最终attempt2图页已实际复查确认分离",
+      "status": "resolved"
+    }
+  ],
+  "limits": "仅实际目视列出的6页，不声称检查全部31页。未执行编译、MATLAB、优化器、OCP或ODE积分。"
+}

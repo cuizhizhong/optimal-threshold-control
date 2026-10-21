@@ -1,0 +1,256 @@
+{
+  "base_commit": "84a89431349681b02a82224d86120e63c191f412",
+  "status": "pass",
+  "passed": 35,
+  "total": 35,
+  "checks": [
+    {
+      "name": "base_capture_matches_author_commit",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "deleted_labels_absent",
+      "passed": true,
+      "details": {
+        "removed_labels": [
+          "eq:all-control-safe",
+          "eq:overview-safe",
+          "eq:restricted-capacity-tangent",
+          "eq:restricted-constants",
+          "eq:restricted-envelope",
+          "eq:restricted-invariant-derivative",
+          "eq:restricted-viability",
+          "eq:viability-definition",
+          "eq:viability-endpoints",
+          "fig:two-layer-regions",
+          "prop:restricted-feasibility",
+          "rem:restricted-degeneracies",
+          "sec:restricted-feasibility"
+        ]
+      }
+    },
+    {
+      "name": "no_dangling_references",
+      "passed": true,
+      "details": {
+        "dangling": []
+      }
+    },
+    {
+      "name": "all_source_labels_unique",
+      "passed": true,
+      "details": {
+        "duplicates": []
+      }
+    },
+    {
+      "name": "retained_labeled_formulas_exact_except_A_rename",
+      "passed": true,
+      "details": {
+        "checked_labels": 107,
+        "changed_labels": [],
+        "explicitly_changed_definition_labels": [
+          "eq:safe-set",
+          "eq:value-definition"
+        ],
+        "added_labels": []
+      }
+    },
+    {
+      "name": "P0_definition_exact",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "disease_extinction_axis_statement_exact",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "retained_theorem_statements_unchanged_except_safe_scope",
+      "passed": true,
+      "details": {
+        "checked_statements": 28,
+        "changed": []
+      }
+    },
+    {
+      "name": "retained_proofs_unchanged_except_safe_invariance_endpoint_removal",
+      "passed": true,
+      "details": {
+        "checked_proofs": 29,
+        "changed": []
+      }
+    },
+    {
+      "name": "safe_exact_proof_unchanged",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "V_zero_restricted_to_physical_safe_states",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "safe_exact_statement_only_physical_scope_clarified",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "safe_invariance_proof_only_deleted_endpoint_sentence",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "two_numerical_auto_blocks_byte_identical",
+      "passed": true,
+      "details": {
+        "blocks": [
+          {
+            "name": "NUMERICAL REFERENCE VALUES",
+            "sha256": "f031a4e1d49c1459ffbb4b6667569ee55abed1984bfca467539806ed4fe8b57a"
+          },
+          {
+            "name": "NUMERICAL RESULTS",
+            "sha256": "f5d75880dc9f78ce63b4fe33c55c5a8f63ecfe10e0bec811441e9a6168b7c531"
+          }
+        ]
+      }
+    },
+    {
+      "name": "model_section_exact",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "all_appendices_exact",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "abstract_exact",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "one_auxiliary_safe_set_definition",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "Omega_defined_before_safe_set",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "stage_table_explicitly_restricted_to_D",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "old_two_layer_and_restricted_symbols_removed",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "bar_q_occurs_only_in_unstudied_extension",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "extension_keeps_boundary_condition_and_non_substitution",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "perfect_tracing_limitation_explicit",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "physical_domain_scope_separates_total_and_capacity",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "safe_lemma_only_forward_invariance",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "single_new_figure_reference",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "saved_data_all_captured_SHA256_unchanged",
+      "passed": true,
+      "details": {
+        "checked_files": 440,
+        "mismatches": []
+      }
+    },
+    {
+      "name": "historical_validation_all_captured_SHA256_unchanged",
+      "passed": true,
+      "details": {
+        "checked_files": 883,
+        "mismatches": []
+      }
+    },
+    {
+      "name": "matlab_sources_all_captured_SHA256_unchanged",
+      "passed": true,
+      "details": {
+        "checked_files": 61,
+        "mismatches": []
+      }
+    },
+    {
+      "name": "other_figures_all_captured_SHA256_unchanged",
+      "passed": true,
+      "details": {
+        "checked_files": 6,
+        "mismatches": []
+      }
+    },
+    {
+      "name": "old_two_layer_outputs_deleted_as_authorized",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "new_single_figure_outputs_exist",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "bibliography_and_theory_wrapper_unchanged",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "tracked_changes_within_authorized_scope",
+      "passed": true,
+      "details": {
+        "changed": [
+          "tracing_isolation_optimal_control_complete/ai/claude_revision_plan/REVISION_PLAN.md",
+          "tracing_isolation_optimal_control_complete/ai/claude_revision_plan/SYMBOL_TABLE.md",
+          "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_two_layers.pdf",
+          "tracing_isolation_optimal_control_complete/figures/numerical_scenarios/FigN1_two_layers.png",
+          "tracing_isolation_optimal_control_complete/latex/main.pdf",
+          "tracing_isolation_optimal_control_complete/latex/main.tex",
+          "tracing_isolation_optimal_control_complete/latex/theory_only.pdf"
+        ],
+        "outside": []
+      }
+    }
+  ],
+  "source_audit_sha256": "3678d11816d0fa326294052cfb686cd1ca612a1a5f3d60231ea89a0bbc94226d",
+  "main_tex_before_SHA256_git_LF": "7d80f52f9081f768e355a0160478985d86334c8611a84ba5f3f41bf86a7a8826",
+  "main_tex_after_SHA256_git_LF": "32c4174f1f421bad6e20a69dbc4fca33361d568d08c67853b3e98a251a0b6f49",
+  "scope": "independent source and saved data audit; no compilation, MATLAB, ODE or OCP execution",
+  "text_comparison": "Git LF canonical bytes; CRLF-to-LF only; mathematical safe-set renaming explicitly recorded"
+}

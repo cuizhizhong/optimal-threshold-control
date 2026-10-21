@@ -1,0 +1,27 @@
+{
+  "base_commit": "84a89431349681b02a82224d86120e63c191f412",
+  "authorized_deleted_products": [
+    {
+      "path": "figures\\numerical_scenarios\\FigN1_two_layers.pdf",
+      "sha256_before": "f79eec930f0ca8b2e9fca8be2a3545fd969adcc83e89cacb037bd269eeb47226",
+      "authorization": "作者本轮明确要求删除旧两层图产品文件；旧脚本及历史验证不动"
+    },
+    {
+      "path": "figures\\numerical_scenarios\\FigN1_two_layers.png",
+      "sha256_before": "a98ce380adf3f359d94ece02d04bdec25419a168aa69c78a60fcdf96c9fc01a8",
+      "authorization": "作者本轮明确要求删除旧两层图产品文件；旧脚本及历史验证不动"
+    }
+  ],
+  "new_products_sha256": {
+    "figures\\numerical_scenarios\\FigN1_optimal_partition.pdf": "d8f3273cd7fe11d2f499579ec33b388fad6758b6477fddead7b157a92e95ae05",
+    "figures\\numerical_scenarios\\FigN1_optimal_partition.png": "eb8a0bdbac16665f2e2565ee8bc640b0335248e235f09d549ecd3b3deb711c18"
+  },
+  "unchanged_numerical_products_sha256": {
+    "figures\\numerical_scenarios\\FigN1_regions.pdf": "2895a76602d8d98bb9a2d6105b7c33399e0ab433d0497ee7dbd0af9990a53b3e",
+    "figures\\numerical_scenarios\\FigN1_regions.png": "3eeca5468e6d09f15f358d8aeb10b2a51c1baf8d276093930b1d9a426ebcf880",
+    "figures\\numerical_scenarios\\FigN2_waiting.pdf": "04141129be11e4492cf53d2027a6c39e41151a01e6315fce4c79cf488adbd1dc",
+    "figures\\numerical_scenarios\\FigN2_waiting.png": "358ff93fcc674da54439c960a6dcdb19e857800bfb2e7dd29bf13b81189df025",
+    "figures\\numerical_scenarios\\FigN3_boundary_tracking.pdf": "f3c3a8773f442ba45e6c839fc3603106938f6a974cf3b163edcd7e6c65c188e4",
+    "figures\\numerical_scenarios\\FigN3_boundary_tracking.png": "d957f5493a0778623d7785e8d4cb3d37ea95c1f6f3f10bc1af8c7269b6d51009"
+  }
+}

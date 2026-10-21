@@ -1,0 +1,8 @@
+{
+  "argv": [
+    "E:/anaconda/python.exe",
+    "ai/claude_revision_plan/checks/verify_new_notation.py"
+  ],
+  "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete",
+  "exit_code": 0
+}
