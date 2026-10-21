@@ -45,8 +45,8 @@
 \newcommand{\ess}{\operatorname*{ess}}
 \newcommand{\argmin}{\operatorname*{arg\,min}}
 \input{generated/scaling_values.tex}
-% 正控制时长在正文中保留到 0.1。
-\newcommand{\Dur}[1]{\num[round-mode=places,round-precision=1]{#1}}
+% 第 8.3 节的正控制时长保留两位小数，使差值与两端取整值一致；摘要与讨论另用一位小数的宏。
+\newcommand{\Dur}[1]{\num[round-mode=places,round-precision=2]{#1}}
 \newif\ifNumResultsVerified
 % 放入导言区，紧接原有 \newif\ifNumResultsVerified 之后。
 % 此处只定义新宏；不得在这里为空定义原本由 providecommand 生成的旧宏。
