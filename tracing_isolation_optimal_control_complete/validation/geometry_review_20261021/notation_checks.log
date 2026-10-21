@@ -1,0 +1,30 @@
+True   h = p + ell
+True   Phi dot = -c q i (s-p)
+True   Psi dot = beta c (1-q) i (s-p)
+True   q_B makes i dot = 0
+True   capacity s dot = -cK(s-p)
+True   C_B closed form
+True   full tracing cost (1/h) ln(i_a/i_b) rate
+True   a'(s) = (h-s)/s
+True   G'(z) = (p-z)/z
+True   sbar_s = ell sbar/(s(sbar-p))
+True   sbar_i = -sbar/(sbar-p)
+True   W_s = (beta/s) Theta(sbar,ibar)
+True   W_i = (1/h)[1/i - Theta(sbar,ibar)]
+True   H_W(x,1) = 0
+True   H_W(x,0) = -(beta c/h) i (s-p) Delta_Theta(s,i)
+True   d/ds ln Theta(s,mathcal I_z) formula
+True   d/ds (g - mathcal I_z) = (s-h)(s+p)/s^2
+True   g(s) = s - h - p + hp/s
+True   waiting H_0,U = 0
+True   waiting Sigma_U = beta c[1 - i(s-p)/(j(eta-p))]
+True   d/dxi[i_nat (xi-p)] = i_nat - g
+True   plateau (1-beta)U_s + beta U_i = beta/(Ks)
+True   plateau Sigma_U = 0
+True   plateau H_0,U = 0
+True   dC_B/deta = beta(eta-h)/(K eta(eta-p))
+True   partial fractions A_1=1/(1-beta), A_2=-beta/(1-beta)
+True   beta h + s - h = s - p
+True   G'(h) = -beta
+ALL OK
+Original symbolic checks: 28/28; additional symbolic checks: 0

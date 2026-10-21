@@ -1,0 +1,80 @@
+{
+  "main": {
+    "sec:main-results": {
+      "number": "3",
+      "page": 6
+    },
+    "thm:main-overview": {
+      "number": "3.1",
+      "page": 7
+    },
+    "tab:optimal-stages": {
+      "number": "1",
+      "page": 8
+    },
+    "fig:two-layer-regions": {
+      "number": "1",
+      "page": 8
+    },
+    "thm:wellposed": {
+      "number": "4.1",
+      "page": 8
+    },
+    "eq:ac-level-set": {
+      "number": "18",
+      "page": 9
+    },
+    "fig:numerical-regions": {
+      "number": "2",
+      "page": 31
+    },
+    "sec:numerical-results": {
+      "number": "17",
+      "page": 30
+    },
+    "lem:safe-invariant": {
+      "number": "6.1",
+      "page": 11
+    },
+    "sec:switching-mechanism": {
+      "number": "15",
+      "page": 28
+    }
+  },
+  "theory_only": {
+    "sec:main-results": {
+      "number": "3",
+      "page": 5
+    },
+    "thm:main-overview": {
+      "number": "3.1",
+      "page": 6
+    },
+    "tab:optimal-stages": {
+      "number": "1",
+      "page": 7
+    },
+    "fig:two-layer-regions": {
+      "number": "1",
+      "page": 7
+    },
+    "thm:wellposed": {
+      "number": "4.1",
+      "page": 7
+    },
+    "eq:ac-level-set": {
+      "number": "18",
+      "page": 8
+    },
+    "fig:numerical-regions": null,
+    "sec:numerical-results": null,
+    "lem:safe-invariant": {
+      "number": "6.1",
+      "page": 10
+    },
+    "sec:switching-mechanism": {
+      "number": "15",
+      "page": 27
+    }
+  }
+}

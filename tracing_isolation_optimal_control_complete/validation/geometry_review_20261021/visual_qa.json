@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-21",
+  "scope": "本轮返修与相邻页，非全文逐页检查",
+  "documents": [
+    {
+      "name": "main",
+      "pages_inspected": [6,7,8,9,11,28,30,31,32],
+      "reviewer": "主任务",
+      "findings": [
+        "常接触率范围已排除第4节，机制节单独明确常率",
+        "Phi及符号角色在主定理前可读，表1五行解释及零长度说明准确",
+        "第31页图2包含E1至E5初始点及轨道，第32页后续时间序列正常",
+        "未发现裁切、重叠、乱码或未解析编号"
+      ],
+      "defects": []
+    },
+    {
+      "name": "theory_only",
+      "pages_inspected": [5,6,7,8,10,27],
+      "reviewer": "c_review_semantics 独立任务",
+      "record": "visual_theory_review.md",
+      "defects": []
+    }
+  ],
+  "render_manifest": "render_manifest.json",
+  "optimizer_calls": 0,
+  "ocp_solves": 0,
+  "new_ode_integrations": 0
+}

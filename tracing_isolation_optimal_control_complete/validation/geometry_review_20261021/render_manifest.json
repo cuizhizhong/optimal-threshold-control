@@ -1,0 +1,305 @@
+{
+  "scope": "C 返修的概览、范围说明、水平集定位和恢复的N1；仅渲染所列页",
+  "documents": [
+    {
+      "name": "main",
+      "pdf_sha256": "dff98b5251f3b70f407ac44afe8b89fc9a3d942e0de95086d1149d62aee11abb",
+      "page_count": 43,
+      "pages": [
+        6,
+        7,
+        8,
+        9,
+        11,
+        28,
+        30,
+        31,
+        32
+      ],
+      "commands": [
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "6",
+            "-l",
+            "6",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\qa\\main_6"
+          ],
+          "exit_code": 0,
+          "png_sha256": "1aef8286a11d615f9a5c4491eadd043223d0eba9c0df0a4b7aa4b793658df302"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "7",
+            "-l",
+            "7",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\qa\\main_7"
+          ],
+          "exit_code": 0,
+          "png_sha256": "f01cee17da3dc67e49e6ef7224d27874c9496e3aab4c935d323047e8c41ffa28"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "8",
+            "-l",
+            "8",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\qa\\main_8"
+          ],
+          "exit_code": 0,
+          "png_sha256": "6420cd8ae42d46c89955a8798d48191c89063407022f767e4797fd966ecaa08c"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "9",
+            "-l",
+            "9",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\qa\\main_9"
+          ],
+          "exit_code": 0,
+          "png_sha256": "70cabab100c8af98c6f7c4549ac40d7b33382840308d593fbc6a63ede6763126"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "11",
+            "-l",
+            "11",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\qa\\main_11"
+          ],
+          "exit_code": 0,
+          "png_sha256": "9bbcd03b1112093abb25995fdbf6509409e62334ee461d24200b04989ac326d4"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "28",
+            "-l",
+            "28",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\qa\\main_28"
+          ],
+          "exit_code": 0,
+          "png_sha256": "e0dc29f6b5b47b7ca26e12d203d5d7dd1057df22ef0e3da896e08f48e6896f8c"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "30",
+            "-l",
+            "30",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\qa\\main_30"
+          ],
+          "exit_code": 0,
+          "png_sha256": "4f91a20d2fcea098b652754e911e60802cf65636941d64f0f01a100ad14d00b2"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "31",
+            "-l",
+            "31",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\qa\\main_31"
+          ],
+          "exit_code": 0,
+          "png_sha256": "d924cc276df13a365343a210a6e394a2b7e266b575fa9f35573d7b9c378b1232"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "32",
+            "-l",
+            "32",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\qa\\main_32"
+          ],
+          "exit_code": 0,
+          "png_sha256": "e471318d3b7a8fc1289462bb3671c3cee1c7ef59850766d4054feab590df1e72"
+        }
+      ],
+      "contact_sheets": [
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\qa\\main_sheet_1.png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\qa\\main_sheet_2.png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\qa\\main_sheet_3.png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\qa\\main_sheet_4.png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\qa\\main_sheet_5.png"
+      ]
+    },
+    {
+      "name": "theory_only",
+      "pdf_sha256": "92c9a289a607deb0d803c8c4dca1c36565e831ff4add58c0df7fbde840b4ae5f",
+      "page_count": 33,
+      "pages": [
+        5,
+        6,
+        7,
+        8,
+        10,
+        27
+      ],
+      "commands": [
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "5",
+            "-l",
+            "5",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\qa\\theory_only_5"
+          ],
+          "exit_code": 0,
+          "png_sha256": "bad39b4f611363c3646e9f5bbece14f37c57a13dfb82832e86ee395c5d14b8d7"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "6",
+            "-l",
+            "6",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\qa\\theory_only_6"
+          ],
+          "exit_code": 0,
+          "png_sha256": "0894e54d02c7ce99581152869ea0350b83b25cbff39d0c50d9e25f959fd585af"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "7",
+            "-l",
+            "7",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\qa\\theory_only_7"
+          ],
+          "exit_code": 0,
+          "png_sha256": "e9ad91afcc4de41f2d56172a99bc4f7d76f2e3b72de83fe7768f340ceebe70fb"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "8",
+            "-l",
+            "8",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\qa\\theory_only_8"
+          ],
+          "exit_code": 0,
+          "png_sha256": "d04fbab8f859485b9aa7dbd02c4e29f50fba570a0233e7662304c064153a270a"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "10",
+            "-l",
+            "10",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\qa\\theory_only_10"
+          ],
+          "exit_code": 0,
+          "png_sha256": "472e454438ee21e750daccea80b965ee3e852f7cb3190057259e24b037961af3"
+        },
+        {
+          "argv": [
+            "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+            "-f",
+            "27",
+            "-l",
+            "27",
+            "-scale-to",
+            "1600",
+            "-png",
+            "-singlefile",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+            "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\qa\\theory_only_27"
+          ],
+          "exit_code": 0,
+          "png_sha256": "cd8725aa650edf0836262f53f8625a8818272c90b0964c139ed4aa527f75befa"
+        }
+      ],
+      "contact_sheets": [
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\qa\\theory_only_sheet_1.png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\qa\\theory_only_sheet_2.png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\qa\\theory_only_sheet_3.png"
+      ]
+    }
+  ]
+}

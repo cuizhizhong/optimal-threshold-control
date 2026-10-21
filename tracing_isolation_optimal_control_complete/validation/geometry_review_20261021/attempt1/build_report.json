@@ -1,0 +1,141 @@
+{
+  "batch": "C_review",
+  "attempt": 1,
+  "started_utc": "2026-10-20T17:42:10.897366+00:00",
+  "source_sha256": {
+    "main.tex": "560af8a739625d0baccd3ae31d6876946a9cc0180fd931db41b6b85b70e61df5",
+    "theory_only.tex": "bc87e137e4cbe11a76dc8b3cb39d45d0ec7de1783bad31dc632335981f149fb5",
+    "references.bib": "9cd8d2b35a15855eb266c2b6ee01d10c6faf2070a276dc1d7d49a3649408e4c9"
+  },
+  "build_directory": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\attempt1",
+  "optimizer_calls": 0,
+  "ocp_solves": 0,
+  "documents": [
+    {
+      "name": "main",
+      "commands": [
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\attempt1",
+            "main.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "log": "main_1.log"
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\bibtex.EXE",
+            "main"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\attempt1",
+          "exit_code": 0,
+          "log": "main_2.log"
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\attempt1",
+            "main.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "log": "main_3.log"
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\attempt1",
+            "main.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "log": "main_4.log"
+        }
+      ],
+      "success": true,
+      "final_log_issues": [],
+      "pages": 43,
+      "pdf_sha256": "dff98b5251f3b70f407ac44afe8b89fc9a3d942e0de95086d1149d62aee11abb",
+      "pdf_title": "感染阈值约束下跟踪隔离的全域最优控制"
+    },
+    {
+      "name": "theory_only",
+      "commands": [
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\attempt1",
+            "theory_only.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "log": "theory_only_1.log"
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\bibtex.EXE",
+            "theory_only"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\attempt1",
+          "exit_code": 0,
+          "log": "theory_only_2.log"
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\attempt1",
+            "theory_only.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "log": "theory_only_3.log"
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\geometry_review_20261021\\attempt1",
+            "theory_only.tex"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0,
+          "log": "theory_only_4.log"
+        }
+      ],
+      "success": true,
+      "final_log_issues": [],
+      "pages": 33,
+      "pdf_sha256": "92c9a289a607deb0d803c8c4dca1c36565e831ff4add58c0df7fbde840b4ae5f",
+      "pdf_title": "感染阈值约束下跟踪隔离的全域最优控制"
+    }
+  ],
+  "success": true,
+  "copied_outputs": [
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+      "sha256": "dff98b5251f3b70f407ac44afe8b89fc9a3d942e0de95086d1149d62aee11abb"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+      "sha256": "92c9a289a607deb0d803c8c4dca1c36565e831ff4add58c0df7fbde840b4ae5f"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.bbl",
+      "sha256": "d1e111673d55c80a251581a6939b846fc61db2a0fc8581a0a1c7a38284c54520"
+    }
+  ],
+  "finished_utc": "2026-10-20T17:42:28.664855+00:00"
+}

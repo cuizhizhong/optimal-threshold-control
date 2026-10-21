@@ -248,7 +248,7 @@ Carath\'eodory 解全程满足式\eqref{eq:capacity}的控制称为可行控制�
 \section{主结果与两层几何}
 \label{sec:main-results}
 
-从本节至第\ref{sec:constant-uniqueness}节固定
+本节及第\ref{sec:constant-problem}--\ref{sec:constant-uniqueness}节固定
 \begin{equation}
 c>0,\quad\gamma>0,\quad0<\beta<1,\quad0<K<1,
 \qquad h=\frac{\gamma}{\beta c},\quad\ell=\frac{\gamma}{c}=\beta h,\quad p=(1-\beta)h,
@@ -296,11 +296,21 @@ V(x)=\inf_{q\in\Uad(x)}J_x(q).
  \mathcal A^0=\Acal=\mathcal V_0,\qquad \mathcal V_1=\Dcal,
  \label{eq:viability-endpoints}
 \end{equation}
-证明见引理\ref{lem:safe-invariant}；受限能力 $\bar q<1$ 的可行包络见命题\ref{prop:restricted-feasibility}。
+其中 $\mathcal A^0=\Acal$ 见引理\ref{lem:safe-invariant}，可行域的两个端点及 $\bar q<1$ 的包络见命题\ref{prop:restricted-feasibility}。
 因此，完整控制区间下所有物理初值均可行，但可行性本身尚未决定何时付出控制成本。
 第二层才是按最小成本确定的等待区、完全跟踪区和容量平台。
 
 \subsection{全域反馈与阶段结构}
+用零控制自然轨道的标签
+\begin{equation}
+\Phi(s,i)=i+s-h\ln s.
+\label{eq:Phi}
+\end{equation}
+区分不同的等待路径。下文的 $\Gamma_K$ 表示转入完全跟踪的非平凡切换曲线，
+$(s_B,K)$ 是它在辅助条带中的唯一容量交点，$\Phi_B:=\Phi(s_B,K)$ 标记经过该点的自然轨道。
+$Q^*(s,i)$ 表示根据当前状态在零控制、容量切向控制与完全跟踪之间选择的分区反馈；
+各曲线及反馈的精确构造分别见第\ref{sec:switching-curve}、\ref{sec:synthesis}节。
+
 \begin{theorem}[常接触率下的全域最优反馈与唯一性]
 \label{thm:main-overview}
 在式\eqref{eq:constants}的条件下，对每个 $x_0\in\Dcal$，存在有限成本最优控制。
@@ -323,18 +333,20 @@ V(x)=\inf_{q\in\Uad(x)}J_x(q).
 \centering
 \caption{完整控制区间下的最优阶段。$0$、$1$ 和 $q_B$ 分别表示零控制、完全跟踪与容量切向控制。}
 \label{tab:optimal-stages}
-\begin{tabular}{@{}lll@{}}
+\begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}Xll@{}}
 \toprule
-初值区域 & 阶段顺序 & 停止付费的状态\\
+初值区域 & 从当前状态开始的策略 & 阶段顺序 & 停止付费的状态\\
 \midrule
-$\Acal$ & 永久 $0$ & 初始已安全\\
-$\mathcal T\cup\Gamma_K$ & $1\to0$ & 首次进入 $\Acal$\\
-$\mathcal W_\Gamma$ & $0\to1\to0$ & 首次进入 $\Acal$\\
-$\mathcal W_K\cup\mathcal B$ & $0\to q_B\to1\to0$ & 首次进入 $\Acal$\\
+$\Acal$ & 初始已安全，保持零控制 & 永久 $0$ & 初始已安全\\
+$\mathcal T\cup\Gamma_K$ & 立即完全跟踪 & $1\to0$ & 首次进入 $\Acal$\\
+$\mathcal W_\Gamma$ & 自然等待至切换曲线，再完全跟踪 & $0\to1\to0$ & 首次进入 $\Acal$\\
+$\mathcal W_K$ & 自然等待至容量线，沿容量弧转入完全跟踪 & $0\to q_B\to1\to0$ & 首次进入 $\Acal$\\
+$\mathcal B$ & 已在容量平台，维持至 $s_B$ 后完全跟踪 & $q_B\to1\to0$ & 首次进入 $\Acal$\\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
-在 $\mathcal B$ 出发时等待段为零；临界自然轨道 $\Phi=\Phi_B$ 对应零长度容量段。
+容量平台 $\mathcal B$ 仅指 $i=K$ 且 $s>s_B$ 的部分，从中出发时等待段为零；
+临界自然轨道 $\Phi=\Phi_B$ 对应零长度容量段。
 图\ref{fig:two-layer-regions}将约束可行性与成本最优性分别画出。
 \begin{figure}[H]
 \centering
@@ -419,12 +431,7 @@ $q=0$ 时
 \dot s=-\beta csi,\qquad \dot i=\beta c(s-h)i.
 \label{eq:q0-system}
 \end{equation}
-定义
-\begin{equation}
-\Phi(s,i)=i+s-h\ln s.
-\label{eq:Phi}
-\end{equation}
-直接求导得 $\dot\Phi=0$。经过 $(s_0,i_0)$ 的自然轨道为
+对式\eqref{eq:Phi}直接求导得 $\dot\Phi=0$。经过 $(s_0,i_0)$ 的自然轨道为
 \begin{equation}
 i_{\rm nat}(s)=i_0+s_0-s+h\ln\frac{s}{s_0}.
 \label{eq:natural-orbit}
@@ -592,14 +599,13 @@ $\min\{Q^*,\bar q\}$ 的可行性或最优性。
 \begin{lemma}[安全集对控制的前向不变性]
 \label{lem:safe-invariant}
 从 $\widehat{\Acal}$ 出发的任意 $[0,1]$ 值可测控制均保持在 $\widehat{\Acal}$；在物理域中相应保持在 $\Acal$。
-此外，$\mathcal A^0=\Acal=\mathcal V_0$，且 $\mathcal V_1=\Dcal$。
+此外，$\mathcal A^0=\Acal$。
 \end{lemma}
 \begin{proof}
 只要 $s>h$，\eqref{eq:Phi-derivative} 保证 $\Phi$ 不增，故 $i\le a(s)\le K$。
 一旦 $s\le h$，因 $s$ 不增，且 $\dot i\le \beta c(s-h)i\le0$，安全性永久保持。
 物理总量约束由 \eqref{eq:sum-decay} 保持。
-这给出 $\Acal\subset\mathcal A^0$；反向包含由零控制属于所有允许控制之一得到，且 $\mathcal V_0=\Acal$。
-恒取 $q=1$ 时 $i(t)=i_0\e^{-\gamma t}\le K$，故 $\mathcal V_1=\Dcal$。
+这给出 $\Acal\subset\mathcal A^0$；反向包含由零控制属于所有允许控制之一得到。
 \end{proof}
 
 \subsection{完全跟踪弧}
@@ -636,7 +642,7 @@ s(t)&=s_a\exp[-(i_a-i(t))/\ell].
 \label{eq:boundary-feasible}
 \end{equation}
 这是边界上内指或切向速度的条件，不是对可测控制在每个孤立时刻的代表值施加限制。
-沿实际可行轨道，状态方程及绝对连续函数的水平集性质共同确定容量时间集合上的几乎处处关系。
+沿实际可行轨道，状态方程及式\eqref{eq:ac-level-set}的水平集性质共同确定容量时间集合上的几乎处处关系。
 当 $s>h$ 时，唯一切向控制是
 \begin{equation}
 \boxed{q_B(s)=1-h/s.}
@@ -1022,7 +1028,7 @@ L_{f_1}\chi&=ci[s\mathcal I_\Gamma'(s)-\ell]>0.\label{eq:strict-crossing}
 \nabla\chi(x)\cdot f(x,q)\ge\delta_*\qquad(x\in O_*,\ 0\le q\le1).
 \]
 轨道在 $O_*$ 内的每个开时间区间上，$v(t)=\chi(x(t))$ 局部绝对连续，且链式法则几乎处处成立。
-绝对连续函数的水平集性质使 $v'=0$ 在 $\{v=0\}$ 上几乎处处成立，
+式\eqref{eq:ac-level-set}的水平集性质使 $v'=0$ 在 $\{v=0\}$ 上几乎处处成立，
 而状态方程在该集合上又给出 $v'\ge\delta_*$，所以这部分时间集合为零测集。
 用可数个 $O_*$ 覆盖 $\Gamma_K$，并使用其开时间原像的可数个连通分支，即得整体零测结论。
 若 $x(t_0)=x_*$，轨道连续性保证它在充分短的 $[t_0,t_0+\varepsilon]$ 内保持于 $O_*$。
@@ -1398,7 +1404,7 @@ U_s(s,K)=\frac{\beta(s-h)}{Ks(s-p)},\qquad U_i(s,K)=\frac \beta{K(s-p)}.
 \]
 因此不能在整条安全边界统一使用
 $\partial_C U=\operatorname{conv}\{0,\nabla W\}$。
-下述验证使用绝对连续函数的零水平集性质，不需要这条广义梯度等式。
+下述验证使用式\eqref{eq:ac-level-set}的零水平集性质，不需要这条广义梯度等式。
 \end{remark}
 
 \subsection{容量 Hamiltonian 与沿任意轨道的链式法则}
@@ -1457,7 +1463,7 @@ Lipschitz 复合的绝对连续性，$u=U\circ x^q$ 在 $[0,T]$ 上绝对连续�
 不将二维状态空间中的零测集自动视为零测度的时间集合；
 容量边界及安全边界仍按下述水平集论证处理。
 
-在时间集合 $E_K=\{t\in[0,T]:i(t)=K\}$ 上，绝对连续函数的水平集性质给出 $\dot i=0$ 几乎处处。
+在时间集合 $E_K=\{t\in[0,T]:i(t)=K\}$ 上，式\eqref{eq:ac-level-set}的水平集性质给出 $\dot i=0$ 几乎处处。
 若同时 $s>h$，状态方程强制 $q=q_B(s)$，进而 $\dot s=-cK(s-p)$。
 对所有 $s>0$ 令 $U_K(s)=U(s,K)$。由命题\ref{prop:regularity}，$U_K$ 局部 Lipschitz，且在 $s>h$ 为 $C^1$，
 所以 $U_K(s(t))$ 在 $[0,T]$ 绝对连续。
@@ -1468,7 +1474,7 @@ $h<s<s_B$ 时，$U_K'=W_s$，残差为 $H_W(x,q_B)=(1-q_B)H_{0,W}>0$。
 在 $s=s_B$ 处残差为零；也可由 $s(t)$ 严格下降知该水平集至多含一个时刻。
 
 在 $E_A=\{t\in[0,T]:x(t)\in\Acal\}$ 上 $u=0$，
-由绝对连续函数的水平集性质得 $u'=0$ 几乎处处，残差为 $\beta cq\ge0$。
+由式\eqref{eq:ac-level-set}的水平集性质得 $u'=0$ 几乎处处，残差为 $\beta cq\ge0$。
 这同时处理安全边界及 $(h,K)$。
 由于 $\{t:i(t)=K,\ s(t)\le h\}\subset E_A$，且不安全状态必有 $s>h$，
 上述三类时间集合确实覆盖全部时刻：
@@ -1643,7 +1649,7 @@ i^q(t)-K
 因此 $i^q=K$ 在 $[t_0,t_0+\delta]$ 上成立。
 
 在任何保持 $i^q=K$ 的时间区间上，
-绝对连续函数的水平集性质与状态方程给出
+式\eqref{eq:ac-level-set}的水平集性质与状态方程给出
 \[
 q(t)=1-\frac{h}{s^q(t)},\qquad
 \dot s^q(t)=-cK(s^q(t)-p)
@@ -1730,7 +1736,7 @@ x^q(t_2)-x^q(t_1)=\int_{t_1}^{t_2}f_0(x^q(v))\dd v;
 
 \emph{容量弧上的延续。}
 在容量时间集合 $\{t<\tau^q:i^q(t)=K,\ s^q(t)>h\}$ 上，
-绝对连续函数的水平集性质及状态方程强制
+式\eqref{eq:ac-level-set}的水平集性质及状态方程强制
 $q=q_B(s^q)$ 几乎处处。
 当最优轨道到达 $(s_*,K)$ 且 $s_*>s_B$ 时，
 引理\ref{lem:no-early-boundary-exit}进一步保证其沿容量弧运行，
@@ -1857,6 +1863,7 @@ i_0+s_0-s_c+h\ln(s_c/s_0),&s_1\le s_c\le s_0.
 
 \section{不变量坐标与切换机制}
 \label{sec:switching-mechanism}
+本节采用式\eqref{eq:constants}的常接触率假设。
 利用不变量坐标组织控制轨道的几何比较，沿用 \citet{Angulo2021} 的方法思路；
 本节恒等式由本文的跟踪动力学重新计算，不将不同目标下的策略直接移植到本问题。
 在 $i>0,s>p$ 上，式\eqref{eq:Phi-derivative}给出
@@ -2037,7 +2044,7 @@ $s,i$ 为相对于初始总量的比例，允许 $s_0+i_0<1$；
  \label{eq:numerical-sB}
 \end{equation}
 其中 $(s_B,K)$ 为切换曲线与容量线的交点。
-图\ref{fig:two-layer-regions}给出各例所属成本分区的理论几何。
+图\ref{fig:two-layer-regions}给出成本分区的理论几何，图\ref{fig:numerical-regions}将 E1--E5 的直接配点轨道与该几何叠加比较。
 两种等待分支之间的边界使用正文定义的自然轨道标号
 $\Phi=\Phi_B$，不是整条竖线 $s=s_B$。
 所有区域均限制在 $s>0$、$0<i\le K$、$s+i\le1$ 的物理域内。
@@ -2062,7 +2069,14 @@ E5 & $(0.50,0.15)$ & $\mathcal T\cap\{i=K\}$ & $1\to0$ & \NumJRefEFive & \NumJOc
 \end{tabular}
 \end{table}
 
-代表初值与成本分区的关系参照图\ref{fig:two-layer-regions}；本节使用表\ref{tab:numerical-scenarios}核对各例的阶段与成本。
+\begin{figure}[H]
+\centering
+\NumFigureOrBlank{FigN1_regions.pdf}{4.2cm}
+\caption{理论分区与直接配点轨道的相平面对照。
+图中叠加 E1--E5 的初始点和 OpenOCL 轨道，并标出安全边界、切换曲线 $\Gamma_K$、
+容量线 $i=K$ 及两种等待区的公共边界。理论曲线与数值轨道采用不同线型或标记。}
+\label{fig:numerical-regions}
+\end{figure}
 
 
 \subsection{两种等待区域的对照}
@@ -2497,7 +2511,7 @@ M_\Pi:=\max\left\{\frac{1}{hi_-},\frac{\beta}{s_-i_-}\right\}.
 端点存在性由命题\ref{prop:reachable}及引理\ref{lem:tracking-region}处理；
 曲线正则性和横截性由命题\ref{prop:Gamma-geometry}、推论\ref{cor:Gamma-labels}处理；
 不滑行由引理\ref{lem:strict-crossing}处理，横穿方向与实际分区的衔接由引理\ref{lem:chi-regions}处理。
-容量和安全时间集合上的导数关系统一使用绝对连续函数的水平集性质。
+容量和安全时间集合上的导数关系统一使用式\eqref{eq:ac-level-set}的水平集性质。
 局部 Lipschitz 性和终端处理分别由命题\ref{prop:regularity}及引理\ref{lem:finite-entry}证明。
 任何一个数值扫描都不被用于证明这些全称命题。
 

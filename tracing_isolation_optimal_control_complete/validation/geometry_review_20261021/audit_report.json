@@ -1,0 +1,187 @@
+{
+  "batch": "C_author_review",
+  "base_commit": "a2909a8a2988ba471180549969852bbcd43075ab",
+  "checks": [
+    {
+      "name": "abstract_unchanged",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "model_section_unchanged",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "constant_scope_excludes_wellposedness",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "mechanism_constant_scope_explicit",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "wellposedness_statement_unchanged",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "all_existing_labelled_math_preserved",
+      "passed": true,
+      "details": {
+        "checked": 118,
+        "changed": []
+      }
+    },
+    {
+      "name": "Phi_definition_once_and_before_overview_theorem",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "overview_symbols_explained",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "table_has_five_explained_regions",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "capacity_platform_not_entire_capacity_line",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "old_N1_restored_once",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "old_N1_inside_numerical_section",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "level_set_references_added",
+      "passed": true,
+      "details": {
+        "requested_occurrences": 8
+      }
+    },
+    {
+      "name": "duplicate_viability_endpoint_proof_removed_from_invariance_lemma",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "C3_section_verbatim",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "regularity_proof_verbatim",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "numerical_generated_content_unchanged",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "no_duplicate_labels",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "references_resolve",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "references.bib_unchanged",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "theory_only.tex_unchanged",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "535_saved_records_code_figures_unchanged",
+      "passed": true,
+      "details": {
+        "count": 535,
+        "changed": []
+      }
+    },
+    {
+      "name": "new_two_layer_figure_unchanged",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "tracked_change_scope",
+      "passed": true,
+      "details": [
+        "tracing_isolation_optimal_control_complete/latex/main.pdf",
+        "tracing_isolation_optimal_control_complete/latex/main.tex",
+        "tracing_isolation_optimal_control_complete/latex/theory_only.pdf",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/README.md",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/attempt1/build_report.json",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/attempt1/main_1.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/attempt1/main_2.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/attempt1/main_3.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/attempt1/main_4.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/attempt1/main_final.blg",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/attempt1/main_final.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/attempt1/theory_only_1.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/attempt1/theory_only_2.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/attempt1/theory_only_3.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/attempt1/theory_only_4.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/attempt1/theory_only_final.blg",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/attempt1/theory_only_final.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/audit_report.json",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/audit_revision.py",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/build_revision.py",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/changed_files.txt",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/notation_checks.log",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/page_map.json",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/read_only_review.md",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/render_manifest.json",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/render_qa.py",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/repository_issue.json",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/staging_paths.json",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/visual_qa.json",
+        "tracing_isolation_optimal_control_complete/validation/geometry_review_20261021/visual_theory_review.md"
+      ]
+    },
+    {
+      "name": "older_validation_records_unchanged",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "compiled_N1_main_only",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "compiled_sources_match_current",
+      "passed": true,
+      "details": null
+    }
+  ],
+  "passed": 27,
+  "total": 27,
+  "success": true,
+  "source_sha256": "560af8a739625d0baccd3ae31d6876946a9cc0180fd931db41b6b85b70e61df5",
+  "optimizer_calls": 0,
+  "ocp_solves": 0,
+  "new_ode_integrations": 0
+}
