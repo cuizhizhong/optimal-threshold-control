@@ -1,0 +1,54 @@
+{
+  "labelled_displays_same_keys": true,
+  "labelled_displays_changed": [],
+  "labelled_display_count": 124,
+  "statements_removed": [],
+  "statements_added": [
+    "lem:verification-principle"
+  ],
+  "statements_changed": [],
+  "statement_count": 76,
+  "unlabelled_displays_only_old": [
+    "J(q)\\ge\\int_0^{\\tau_{\\mathcal A}}\\beta cq(t)\\dd t \\ge U(x_0)-U(x^q(\\tau_{\\mathcal A}))=U(x_0)."
+  ],
+  "unlabelled_displays_only_new": [
+    "J_{x_0}(q)\\ge\\int_0^{\\tau}\\beta cq(t)\\dd t \\ge Z(x_0)-Z(x^q(\\tau))=Z(x_0).",
+    "\\frac{\\dd}{\\dd t}Z(x^q(t))+\\beta cq(t)\\ge0\\qquad\\text{几乎处处于 }(0,\\tau),"
+  ],
+  "proofs_changed": [
+    "thm:unique-q",
+    "thm:verification"
+  ],
+  "proof_count": 30,
+  "forward_refs_in_proofs": [
+    [
+      321,
+      "prop:candidate-attainment"
+    ],
+    [
+      321,
+      "thm:verification"
+    ],
+    [
+      321,
+      "thm:unique-q"
+    ],
+    [
+      335,
+      "cor:optimal-synthesis"
+    ],
+    [
+      335,
+      "prop:Gamma-geometry"
+    ],
+    [
+      335,
+      "cor:Gamma-labels"
+    ],
+    [
+      1289,
+      "eq:Lambda-natural"
+    ]
+  ],
+  "g1_markers_left": 0
+}

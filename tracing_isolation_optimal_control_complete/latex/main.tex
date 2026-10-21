@@ -376,20 +376,24 @@ E2 初值 $(0.99,0.01)$ 的示例轨道先自然等待至容量线，再沿 $\ma
 \section{预备结果}
 \label{sec:preliminaries}
 
-本节至第\ref{sec:optimality}节给出定理\ref{thm:main-overview}与命题\ref{prop:main-structure}的完整证明。
-证明采用验证函数方法：先构造候选成本 $U$，再证明任意可行控制的成本都不低于 $U$，并且候选策略恰好取到 $U$。
-论证按以下三步展开。
+本节至第\ref{sec:uniqueness}节给出定理\ref{thm:main-overview}与命题\ref{prop:main-structure}的完整证明。
+证明采用验证函数方法，组织方式与 \citet[附录A]{MicloSpiroWeibull2022} 一致：
+先陈述验证原理，再构造候选成本，然后逐区检验它满足验证原理的条件。
+论证分为以下四步。
 \begin{enumerate}
 \item 本节建立后文反复使用的基本性质：解的正性与耗散（第\ref{sec:wellposed}小节），
 自然轨道、安全集及两类控制弧的显式公式（第\ref{sec:constant-problem}、\ref{sec:arcs}小节），
 有限成本轨道在有限时间内进入安全集（第\ref{sec:exit-time}小节），
-以及验证所需的 HJB 方程和容量边界条件（第\ref{sec:HJB}小节）。
-\item 第\ref{sec:candidate-construction}节构造候选策略。
+以及 Hamiltonian 与 HJB 方程（第\ref{sec:HJB}小节）；
+最后在第\ref{sec:verification-principle}小节陈述验证原理（引理\ref{lem:verification-principle}）。
+\item 第\ref{sec:candidate-construction}节构造候选策略与候选成本 $U$。
 先确定完全跟踪成本的可达域（命题\ref{prop:reachable}、引理\ref{lem:tracking-region}），
 再建立切换曲线的存在性、单调性与严格横穿（命题\ref{prop:Gamma-geometry}、推论\ref{cor:Gamma-labels}、引理\ref{lem:strict-crossing}与引理\ref{lem:chi-regions}），
-最后定义全域候选反馈与候选成本，并证明其拼接正则性（命题\ref{prop:regularity}）。
-\item 第\ref{sec:optimality}节先证明沿任意可行轨道的验证不等式，再结合引理\ref{lem:finite-entry}得到全局最优性（定理\ref{thm:verification}）。
-随后由验证等号条件（推论\ref{cor:verification-equality}）和容量弧上的延续性质（引理\ref{lem:no-early-boundary-exit}）证明唯一性（定理\ref{thm:unique-q}）；
+最后定义全域候选反馈与候选成本，并证明候选策略的成本恰为 $U$（命题\ref{prop:candidate-attainment}），这就是验证原理的第二个条件。
+\item 第\ref{sec:optimality}节检验验证原理的第一个条件：
+先计算各区的梯度与 Hamiltonian，再证明界面上的拼接正则性（命题\ref{prop:regularity}），
+然后建立沿任意可行轨道的验证不等式（引理\ref{lem:trajectory-verification}），由此得到全局最优性（定理\ref{thm:verification}）。
+\item 第\ref{sec:uniqueness}节证明唯一性：由验证等号条件（推论\ref{cor:verification-equality}）和容量弧上的延续性质（引理\ref{lem:no-early-boundary-exit}）得到定理\ref{thm:unique-q}；
 这两个中间结果都不依赖唯一性定理本身。
 \end{enumerate}
 第\ref{sec:mechanisms}节中关于一维策略族的比较（推论\ref{cor:one-dimensional-min}）在全局验证之后才陈述，只用于解释机制，不参与上述证明。
@@ -599,7 +603,7 @@ C_B(s_{\rm hi},s_{\rm lo})
 验证论证需要两个前提：值函数处处有限，以及有限成本的可行轨道最终会进入安全集。
 本小节先给出一个显式的可行比较策略，说明 $V$ 处处有限；
 再证明任何有限成本的可行轨道都在有限时间内进入安全集。
-后者使无穷时域问题可以改写为首次到达问题，从而第\ref{sec:optimality}节只需沿每条竞争轨道积分到它自己的首次到达时刻。
+后者使无穷时域问题可以改写为首次到达问题，从而第\ref{sec:verification-principle}小节的验证原理只需比较有限成本控制，并沿每条竞争轨道积分到它自己的首次到达时刻。
 
 \begin{lemma}[有限成本比较策略]
 \label{lem:finite-feasible}
@@ -664,7 +668,7 @@ V(x)=\inf_{q\in\mathcal U_{\Acal}(x)}
 到达后，$q=0$ 是零成本的可行延拓。
 \end{remark}
 
-\subsection{HJB 方程与验证所需的边界条件}
+\subsection{Hamiltonian 与 HJB 方程}
 \label{sec:HJB}
 为写出 HJB 方程，把控制系统表示为两个向量场的凸组合：
 \begin{align}
@@ -698,11 +702,8 @@ Hamiltonian 关于 $q$ 仿射，$\Sigma_Z$ 称为切换函数。
 这里没有预设 $V(s,K)=0$、$V_i(s,K)=0$ 或 $q=q_B$：状态约束问题的边界信息来自可行轨道本身，而不是另行给定的 Dirichlet 数据；
 状态约束 HJB 方程的黏性解理论可参见 \citet{Soner1986}。
 
-本文不依赖值函数的正则性或黏性解的比较原理，而采用验证函数方法：
-对第\ref{sec:candidate-construction}节构造的候选函数 $U$，直接证明沿任意可行轨道的积分不等式，再由候选策略取到等号得到最优性。
-这一充分性论证的思路与 \citet[附录A.1]{MicloSpiroWeibull2022} 及 \citet[\S5.1.4]{Liberzon2012} 相同；
-所需的具体分区、非光滑点的处理以及有限时间到达性，则需要针对本模型单独证明。
-最后记录 Hamiltonian 的点态极小元。
+本文不依赖值函数的正则性或黏性解的比较原理，而采用验证函数方法，其原理在第\ref{sec:verification-principle}小节陈述。
+这里先记录 Hamiltonian 的点态极小元。
 
 \begin{lemma}[仿射 Hamiltonian 的点态极小]
 \label{lem:bangbang}
@@ -713,15 +714,64 @@ Hamiltonian 关于 $q$ 仿射，$\Sigma_Z$ 称为切换函数。
 \begin{proof}
 由\eqref{eq:H-affine}，$H_Z$ 关于 $q$ 仿射，斜率为 $\Sigma_Z$，结论直接成立。
 \end{proof}
-当 $\Sigma_Z=0$ 时，点态极小元不唯一。第\ref{sec:optimality}节将看到，候选函数在容量平台上正属于这种情形；
-因此最优控制的唯一性不能由逐点极小得到，需要沿轨道另行证明。
+当 $\Sigma_Z=0$ 时，点态极小元不唯一。第\ref{sec:optimality}节将看到，候选成本在容量平台上正属于这种情形；
+因此最优控制的唯一性不能由逐点极小得到，需要在第\ref{sec:uniqueness}节沿轨道另行证明。
 
-\section{候选策略的构造}
+\subsection{验证原理}
+\label{sec:verification-principle}
+验证函数方法的出发点是下面的比较原理：若一个在安全集上为零的函数沿每条有限成本可行轨道的变化率都不低于负的运行成本，
+它就是值函数的下界；若又有一个可行控制的成本恰好等于它，它就等于值函数。
+这一充分性论证的思路与 \citet[附录A.1]{MicloSpiroWeibull2022} 及 \citet[\S5.1.4]{Liberzon2012} 相同；
+下面的表述只要求沿轨道的绝对连续性，不要求候选函数处处可微。
+
+\begin{lemma}[验证原理]
+\label{lem:verification-principle}
+设函数 $Z:\Dcal\to[0,\infty)$ 在 $\Acal\cap\Dcal$ 上为零，并固定 $x_0\in\Dcal$。
+\begin{enumerate}
+\item[(i)] 若对每个满足 $J_{x_0}(q)<\infty$ 的可行控制 $q\in\Uad(x_0)$，记 $\tau=\tau_{\Acal}(x_0,q)$，
+函数 $t\mapsto Z(x^q(t))$ 在 $[0,\tau]$ 上绝对连续，且
+\[
+\frac{\dd}{\dd t}Z(x^q(t))+\beta cq(t)\ge0\qquad\text{几乎处处于 }(0,\tau),
+\]
+则 $Z(x_0)\le V(x_0)$。
+\item[(ii)] 若存在可行控制 $q^*\in\Uad(x_0)$ 使 $J_{x_0}(q^*)=Z(x_0)$，则 $V(x_0)\le Z(x_0)$。
+\end{enumerate}
+两条同时成立时，$Z(x_0)=V(x_0)=J_{x_0}(q^*)$，即 $q^*$ 为最优控制。
+\end{lemma}
+\begin{proof}
+(i) 若 $x_0\in\Acal$，则 $Z(x_0)=0\le V(x_0)$。下面设 $x_0\notin\Acal$，任取可行控制 $q$。
+若 $J_{x_0}(q)=\infty$，不等式 $J_{x_0}(q)\ge Z(x_0)$ 显然成立。
+若 $J_{x_0}(q)<\infty$，由引理\ref{lem:finite-entry}，$\tau=\tau_{\Acal}(x_0,q)<\infty$ 且 $x^q(\tau)\in\Acal$，于是 $Z(x^q(\tau))=0$。
+由于运行成本非负，并且 $Z\circ x^q$ 在 $[0,\tau]$ 上绝对连续，
+\[
+J_{x_0}(q)\ge\int_0^{\tau}\beta cq(t)\dd t
+\ge Z(x_0)-Z(x^q(\tau))=Z(x_0).
+\]
+第一步只用到首次到达之后的成本非负，不要求竞争控制在进入安全集后关闭控制。
+对 $q$ 取下确界即得 $V(x_0)\ge Z(x_0)$。
+(ii) 由值函数的定义，$V(x_0)\le J_{x_0}(q^*)=Z(x_0)$。
+\end{proof}
+
+\begin{remark}[与已有验证引理的关系]
+\label{rem:verification-principle-msw}
+\citet[附录A.1]{MicloSpiroWeibull2022} 的引理~1 要求候选函数在整个区域上可微并满足 HJ 方程 $H(x,\nabla U(x))=0$，
+且对任意控制策略满足横截条件 $\lim_{t\to\infty}U(x(t))=0$；其引理~2 说明，若沿某个策略的轨道相应的表达式几乎处处不大于零，便有反向不等式。
+引理\ref{lem:verification-principle}的第 (ii) 条对应后者，这里直接用候选策略的成本计算给出；
+第 (i) 条则在两处作了调整，以适应本文的问题。
+第一，可微性换成沿每条有限成本轨道的绝对连续性和几乎处处成立的验证不等式。
+本文的候选成本在不安全内部是 $C^1$ 的，但在安全边界上有折角，在容量线上只取内侧梯度（见命题\ref{prop:regularity}及其后的说明），
+第\ref{sec:optimality}节将沿轨道分别处理轨道停留在这些集合上的时间。
+第二，横截条件换成引理\ref{lem:finite-entry}：只需与有限成本控制比较，而它们都在有限时间内进入安全集，候选成本在那里为零；成本为无穷的控制不影响比较。
+此外，本文比较的是全部可测控制，沿轨道的链式法则使用第\ref{sec:wellposed}小节末的绝对连续函数性质。
+\end{remark}
+
+\section{候选策略与候选成本的构造}
 \label{sec:candidate-construction}
 
-% G1-INTRO-CONSTRUCTION
-本节从完全跟踪成本的有限可达域出发，依次构造切换曲线、全域候选反馈和候选成本。
-随后计算等待分支的梯度并处理拼接正则性，为第\ref{sec:optimality}节沿任意可行轨道的验证准备候选函数。
+本节构造验证原理中的候选成本 $U$ 及其对应的候选策略。
+先确定完全跟踪成本的有限可达域及其导数，再由完全跟踪成本的匹配条件构造切换曲线，最后定义全域候选反馈与候选成本。
+本节末尾的命题\ref{prop:candidate-attainment}说明候选策略的成本恰为 $U(x_0)$，这就是引理\ref{lem:verification-principle}的条件 (ii)；
+条件 (i) 留待第\ref{sec:optimality}节检验。
 
 \subsection{完全跟踪成本的有限可达域及导数}
 \label{sec:q1-value}
@@ -1101,7 +1151,6 @@ $\mathcal T\cup\Gamma_K\subset\mathcal E$。
 在 $\mathcal T$ 中 $\Delta_\Theta<0$，而在 $\Gamma_K$ 上 $\Delta_\Theta=0$。
 从 $\mathcal T\cup\Gamma_K$ 出发取 $q=1$，立即进入或保持在 $\mathcal T$，直到有限时间到达安全集。
 \end{lemma}
-% G1-TRACKING-PROOF-SKETCH
 证明先由同一自然轨道上的不变量比较确定完全跟踪可达性，再以单峰性刻画 $\Delta_\Theta$ 的零集及其在切换点附近的符号。
 结合严格横穿和分区关系，可知完全跟踪弧在到达安全集前不再返回等待区；正安全端点给出有限到达时间。
 完整证明见附录 \ref{app:tracking-region-proof}。
@@ -1186,7 +1235,16 @@ x^*(t)=x_0+\int_0^t f(x^*(v),Q^*(x^*(v)))\dd v.
 纯容量填充仅先作为比较策略保留。
 \end{remark}
 
-\subsection{两种等待分支的统一导数}
+\section{候选成本满足验证条件}
+\label{sec:optimality}
+
+本节检验候选成本 $U$ 满足引理\ref{lem:verification-principle}的条件 (i)：沿每条有限成本可行轨道，$U\circ x^q$ 绝对连续，且验证不等式几乎处处成立。
+先计算两种等待区的梯度和 Hamiltonian（第\ref{sec:verification-details}小节），再证明各分支在界面上的拼接正则性（命题\ref{prop:regularity}），
+然后汇总各区的 Hamiltonian，建立沿任意可行轨道的验证不等式（引理\ref{lem:trajectory-verification}），最后由验证原理得到全局最优性。
+这一步对应 \citet[附录A.2]{MicloSpiroWeibull2022} 中逐区计算 Hamiltonian 并检验 HJ 方程的部分；
+不同之处在于，本文的 $U$ 在安全边界上有折角、在容量线上只有内侧梯度，因此最后一步沿轨道处理这些集合上的时间。
+
+\subsection{等待区的梯度与 Hamiltonian}
 \label{sec:verification-details}
 \begin{lemma}[等待区的梯度]
 \label{lem:waiting-gradient}
@@ -1243,7 +1301,7 @@ H_{0,U}=0,\qquad
 由于当前 $s>\eta$，得到 $i(s-p)<j(\eta-p)$，即所需严格正性。
 \end{proof}
 
-\subsection{内部界面与局部 Lipschitz 性}
+\subsection{界面拼接与局部 Lipschitz 性}
 \begin{proposition}[连续性、梯度匹配与相对正则性]
 \label{prop:regularity}
 $U$ 在 $\Omega$ 上连续且相对局部 Lipschitz；在
@@ -1284,14 +1342,7 @@ $\partial_C U=\operatorname{conv}\{0,\nabla W\}$。
 下述验证使用式\eqref{eq:ac-level-set}的零水平集性质，不需要这条广义梯度等式。
 \end{remark}
 
-\section{全局最优性与唯一性}
-\label{sec:optimality}
-
-% G1-INTRO-VERIFICATION
-本节利用前节候选函数的梯度和正则性，先建立各分区的 Hamiltonian 关系及沿任意轨道的验证不等式。
-再结合有限成本入安全集性质证明全局最优性，并用验证等号条件、容量弧延续和切换曲线横穿逐段确定最优轨道，完成唯一性证明。
-
-\subsection{容量 Hamiltonian 与沿任意轨道的链式法则}
+\subsection{各区的 Hamiltonian 与沿轨道的验证不等式}
 \begin{proposition}[不安全各区的 Hamiltonian]
 \label{prop:all-HJB}
 $U$ 在各不安全分区满足：
@@ -1372,7 +1423,7 @@ $h<s<s_B$ 时，$U_K'=W_s$，残差为 $H_W(x,q_B)=(1-q_B)H_{0,W}>0$。
 且正感染时 $s+i$ 严格下降，实际轨道立即进入斜边内侧。
 \end{proof}
 
-\subsection{全局最优性验证}
+\subsection{全局最优性}
 \label{sec:global-verification}
 \begin{theorem}[常接触率下的全局最优性与达到性]
 \label{thm:verification}
@@ -1387,20 +1438,23 @@ J_{x_0}(q)\ge U(x_0)\quad(\forall q\in\Uad(x_0)),
 所需候选达到性、正则性及终端处理分别由命题\ref{prop:candidate-attainment}、\ref{prop:regularity}和引理\ref{lem:finite-entry}给出。
 \end{theorem}
 \begin{proof}
-命题\ref{prop:candidate-attainment}给出 $J(q^*)=U(x_0)<\infty$，所以 $V\le U$。
-任取竞争控制 $q$。$J(q)=\infty$ 时比较平凡成立。
-若 $J(q)<\infty$，引理\ref{lem:finite-entry}保证其自己的首次入安全集时间 $\tau_{\mathcal A}$ 有限。
-将引理\ref{lem:trajectory-verification}积分至 $\tau_{\mathcal A}$，得到
-\[
-J(q)\ge\int_0^{\tau_{\mathcal A}}\beta cq(t)\dd t
-\ge U(x_0)-U(x^q(\tau_{\mathcal A}))=U(x_0).
-\]
-第一步只用到了后续成本非负，不要求竞争控制进入安全集后关闭控制。
-取下确界得 $V\ge U$，与另一方向合并即得结论。
-候选控制在等待区、平台、完全跟踪区逐段实现验证等号，到达安全集后成本为零。
+在引理\ref{lem:verification-principle}中取 $Z=U$；由定义\ref{def:candidate}，$U$ 在 $\Acal$ 上为零。
+对任一满足 $J_{x_0}(q)<\infty$ 的可行控制 $q$，引理\ref{lem:finite-entry}给出 $\tau_{\Acal}(x_0,q)<\infty$；
+在 $[0,\tau_{\Acal}(x_0,q)]$ 上应用引理\ref{lem:trajectory-verification}，即得条件 (i)。
+命题\ref{prop:candidate-attainment}给出 $J_{x_0}(q^*)=U(x_0)$，即条件 (ii)。
+于是 $U(x_0)=V(x_0)=J_{x_0}(q^*)$；再由值函数的定义，任意 $q\in\Uad(x_0)$ 都满足 $J_{x_0}(q)\ge V(x_0)=U(x_0)$。
 \end{proof}
 
-下面记录验证证明中的等号条件，以用于下一节的唯一性分析。
+\section{最优控制的唯一性}
+\label{sec:uniqueness}
+
+全局最优性确立之后，本节证明最优控制的唯一性。
+验证原理的等号条件确定了最优控制在各分区内必须满足的关系（推论\ref{cor:verification-equality}）。
+由于容量平台上 Hamiltonian 的点态极小集是整个区间（式\eqref{eq:capacity-tie}），这些关系本身还不能确定平台上的控制；
+为此还需要容量弧上的延续性质（引理\ref{lem:no-early-boundary-exit}）和切换曲线的严格横穿（引理\ref{lem:strict-crossing}），
+最后在定理\ref{thm:unique-q}中逐段确定最优轨道。
+
+\subsection{验证等号条件}
 
 \begin{corollary}[验证等号条件]
 \label{cor:verification-equality}
@@ -1476,7 +1530,7 @@ $(\tau^q,\infty)$。
 \end{remark}
 
 
-\subsection{常接触率下控制与轨道的唯一性}
+\subsection{容量弧延续与唯一性定理}
 \label{sec:constant-uniqueness}
 \begin{lemma}[最优轨道在容量弧上的延续]
 \label{lem:no-early-boundary-exit}
@@ -1564,7 +1618,6 @@ $\Phi(s_B,K)=\Phi_B>\Phi_A$，所以 $t_B<\tau^q$。
 \end{theorem}
 
 \begin{proof}
-% G1-UNIQUENESS-ROADMAP
 证明先用推论\ref{cor:verification-equality}的等号条件及引理\ref{lem:waiting-HJB}、命题\ref{prop:all-HJB}确定各分区内的控制。
 随后由引理\ref{lem:no-early-boundary-exit}确定容量弧上的延续，再用引理\ref{lem:strict-crossing}和引理\ref{lem:chi-regions}处理切换曲线。
 最后结合命题\ref{prop:candidate-attainment}、引理\ref{lem:tracking-region}及各段状态方程解的唯一性，依次确定全部阶段和安全延拓。
