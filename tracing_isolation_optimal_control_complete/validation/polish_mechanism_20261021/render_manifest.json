@@ -1,0 +1,298 @@
+{
+  "coverage": {
+    "main": {
+      "3": [
+        6,
+        7,
+        8
+      ],
+      "15": [
+        27,
+        28
+      ],
+      "20": [
+        34,
+        35
+      ],
+      "figure1": 8
+    },
+    "theory_only": {
+      "3": [
+        5,
+        6,
+        7
+      ],
+      "15": [
+        26,
+        27
+      ],
+      "figure1": 7
+    }
+  },
+  "pages": [
+    {
+      "document": "main",
+      "page": 6,
+      "dpi": 150,
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-f",
+        "6",
+        "-l",
+        "6",
+        "-r",
+        "150",
+        "-singlefile",
+        "-png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\polish_mechanism_20261021\\rendered_pages_150dpi\\main_page6"
+      ],
+      "exit_code": 0,
+      "pdf_sha256": "7fdb3e3a45b8e8bd70d3c39b83fa756273c93acc355fe2a484b1efa568e4033d",
+      "png": "validation\\polish_mechanism_20261021\\rendered_pages_150dpi\\main_page6.png",
+      "png_sha256": "5e908d7a0351da7d40371f40a68490e5822654d9f1582d2cd1e302134d4a0d46"
+    },
+    {
+      "document": "main",
+      "page": 7,
+      "dpi": 150,
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-f",
+        "7",
+        "-l",
+        "7",
+        "-r",
+        "150",
+        "-singlefile",
+        "-png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\polish_mechanism_20261021\\rendered_pages_150dpi\\main_page7"
+      ],
+      "exit_code": 0,
+      "pdf_sha256": "7fdb3e3a45b8e8bd70d3c39b83fa756273c93acc355fe2a484b1efa568e4033d",
+      "png": "validation\\polish_mechanism_20261021\\rendered_pages_150dpi\\main_page7.png",
+      "png_sha256": "d8f40a1e8b9105e6af15b974017ba830de3baf5421eb0a71d6b098377dd33aa2"
+    },
+    {
+      "document": "main",
+      "page": 8,
+      "dpi": 150,
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-f",
+        "8",
+        "-l",
+        "8",
+        "-r",
+        "150",
+        "-singlefile",
+        "-png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\polish_mechanism_20261021\\rendered_pages_150dpi\\main_page8"
+      ],
+      "exit_code": 0,
+      "pdf_sha256": "7fdb3e3a45b8e8bd70d3c39b83fa756273c93acc355fe2a484b1efa568e4033d",
+      "png": "validation\\polish_mechanism_20261021\\rendered_pages_150dpi\\main_page8.png",
+      "png_sha256": "24c6d6ae7eccec37bad5b4b0b2f057f190b38b1d623ba6ad4ae82c66c95b0678"
+    },
+    {
+      "document": "main",
+      "page": 27,
+      "dpi": 150,
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-f",
+        "27",
+        "-l",
+        "27",
+        "-r",
+        "150",
+        "-singlefile",
+        "-png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\polish_mechanism_20261021\\rendered_pages_150dpi\\main_page27"
+      ],
+      "exit_code": 0,
+      "pdf_sha256": "7fdb3e3a45b8e8bd70d3c39b83fa756273c93acc355fe2a484b1efa568e4033d",
+      "png": "validation\\polish_mechanism_20261021\\rendered_pages_150dpi\\main_page27.png",
+      "png_sha256": "4d2ed99be14db1fd0d44e5236d53db242903b1969f1c1048f220d70dce87e419"
+    },
+    {
+      "document": "main",
+      "page": 28,
+      "dpi": 150,
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-f",
+        "28",
+        "-l",
+        "28",
+        "-r",
+        "150",
+        "-singlefile",
+        "-png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\polish_mechanism_20261021\\rendered_pages_150dpi\\main_page28"
+      ],
+      "exit_code": 0,
+      "pdf_sha256": "7fdb3e3a45b8e8bd70d3c39b83fa756273c93acc355fe2a484b1efa568e4033d",
+      "png": "validation\\polish_mechanism_20261021\\rendered_pages_150dpi\\main_page28.png",
+      "png_sha256": "ed856fbd9797933adf416234f93a0b4b6fc32f670152fd41ba2ac919605dda74"
+    },
+    {
+      "document": "main",
+      "page": 34,
+      "dpi": 150,
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-f",
+        "34",
+        "-l",
+        "34",
+        "-r",
+        "150",
+        "-singlefile",
+        "-png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\polish_mechanism_20261021\\rendered_pages_150dpi\\main_page34"
+      ],
+      "exit_code": 0,
+      "pdf_sha256": "7fdb3e3a45b8e8bd70d3c39b83fa756273c93acc355fe2a484b1efa568e4033d",
+      "png": "validation\\polish_mechanism_20261021\\rendered_pages_150dpi\\main_page34.png",
+      "png_sha256": "4d4787c3eeae7b1b46ff3c2b218d4598cb1f7dcdb40c160c437ff20d603d03ac"
+    },
+    {
+      "document": "main",
+      "page": 35,
+      "dpi": 150,
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-f",
+        "35",
+        "-l",
+        "35",
+        "-r",
+        "150",
+        "-singlefile",
+        "-png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\polish_mechanism_20261021\\rendered_pages_150dpi\\main_page35"
+      ],
+      "exit_code": 0,
+      "pdf_sha256": "7fdb3e3a45b8e8bd70d3c39b83fa756273c93acc355fe2a484b1efa568e4033d",
+      "png": "validation\\polish_mechanism_20261021\\rendered_pages_150dpi\\main_page35.png",
+      "png_sha256": "25d14b5ab412d456477969f4e9294b5c647db08e7f40e59cfd950c373ad6ded9"
+    },
+    {
+      "document": "theory_only",
+      "page": 5,
+      "dpi": 150,
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-f",
+        "5",
+        "-l",
+        "5",
+        "-r",
+        "150",
+        "-singlefile",
+        "-png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\polish_mechanism_20261021\\rendered_pages_150dpi\\theory_only_page5"
+      ],
+      "exit_code": 0,
+      "pdf_sha256": "8c2a5b926eafd7c937a8e8d507e4b04657266dbe5c8cd9c1e9366ce9c7cde3fc",
+      "png": "validation\\polish_mechanism_20261021\\rendered_pages_150dpi\\theory_only_page5.png",
+      "png_sha256": "7d6f58ccf9421412e8074ce1edcf9d8da04ecf9ea9e784b34d9cacd2edd27cba"
+    },
+    {
+      "document": "theory_only",
+      "page": 6,
+      "dpi": 150,
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-f",
+        "6",
+        "-l",
+        "6",
+        "-r",
+        "150",
+        "-singlefile",
+        "-png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\polish_mechanism_20261021\\rendered_pages_150dpi\\theory_only_page6"
+      ],
+      "exit_code": 0,
+      "pdf_sha256": "8c2a5b926eafd7c937a8e8d507e4b04657266dbe5c8cd9c1e9366ce9c7cde3fc",
+      "png": "validation\\polish_mechanism_20261021\\rendered_pages_150dpi\\theory_only_page6.png",
+      "png_sha256": "7d6b5b3a3a71e300cd033d93a08309274980da1d67955d82539fa33d8c84b7f6"
+    },
+    {
+      "document": "theory_only",
+      "page": 7,
+      "dpi": 150,
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-f",
+        "7",
+        "-l",
+        "7",
+        "-r",
+        "150",
+        "-singlefile",
+        "-png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\polish_mechanism_20261021\\rendered_pages_150dpi\\theory_only_page7"
+      ],
+      "exit_code": 0,
+      "pdf_sha256": "8c2a5b926eafd7c937a8e8d507e4b04657266dbe5c8cd9c1e9366ce9c7cde3fc",
+      "png": "validation\\polish_mechanism_20261021\\rendered_pages_150dpi\\theory_only_page7.png",
+      "png_sha256": "a675071ddc83fbf81d81a9e2d8888b064abca0402bddb753f4707010174e2eb5"
+    },
+    {
+      "document": "theory_only",
+      "page": 26,
+      "dpi": 150,
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-f",
+        "26",
+        "-l",
+        "26",
+        "-r",
+        "150",
+        "-singlefile",
+        "-png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\polish_mechanism_20261021\\rendered_pages_150dpi\\theory_only_page26"
+      ],
+      "exit_code": 0,
+      "pdf_sha256": "8c2a5b926eafd7c937a8e8d507e4b04657266dbe5c8cd9c1e9366ce9c7cde3fc",
+      "png": "validation\\polish_mechanism_20261021\\rendered_pages_150dpi\\theory_only_page26.png",
+      "png_sha256": "846c7cb3dba2670c0991ea1455cf31075148a471947f1dde751ce755010bb131"
+    },
+    {
+      "document": "theory_only",
+      "page": 27,
+      "dpi": 150,
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-f",
+        "27",
+        "-l",
+        "27",
+        "-r",
+        "150",
+        "-singlefile",
+        "-png",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\polish_mechanism_20261021\\rendered_pages_150dpi\\theory_only_page27"
+      ],
+      "exit_code": 0,
+      "pdf_sha256": "8c2a5b926eafd7c937a8e8d507e4b04657266dbe5c8cd9c1e9366ce9c7cde3fc",
+      "png": "validation\\polish_mechanism_20261021\\rendered_pages_150dpi\\theory_only_page27.png",
+      "png_sha256": "5d1596b9922e520d2e141c646ce193b8769df09603a3fc818f46d6792daabe94"
+    }
+  ]
+}

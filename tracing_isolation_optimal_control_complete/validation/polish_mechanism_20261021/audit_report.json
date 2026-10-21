@@ -1,0 +1,60 @@
+{
+  "base_commit": "6b48cc6b0bb4b222415853bf575c8f7ccc48e561",
+  "success": true,
+  "unchanged_section_indices": [
+    0,
+    2,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    16,
+    17,
+    18,
+    19,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27
+  ],
+  "introduction_only_authorized_reference_updates": true,
+  "generated_blocks": [
+    {
+      "name": "NUMERICAL REFERENCE VALUES",
+      "normalized_text_sha256": "c096a9bc9c5b34343d4d0964a0b684a68643c89eca14c85e2c3eb4c93b92112a",
+      "unchanged": true
+    },
+    {
+      "name": "NUMERICAL RESULTS",
+      "normalized_text_sha256": "0ed6620c144128e97306a0eca4966802475e71e74d09f445cda661084b0a13c9",
+      "unchanged": true
+    }
+  ],
+  "preserved_equations_unchanged": true,
+  "undefined_direct_references": [],
+  "old_protected_files_unchanged": 1547,
+  "changed_protected_files": [],
+  "geometry_trajectories_and_costs_unchanged": true,
+  "notation_checks": "28/28",
+  "mechanism_symbolic_checks": "9/9",
+  "actual_tex_bibtex_processes": 8,
+  "final_pages": [
+    42,
+    32
+  ],
+  "final_log_issues": [],
+  "rendered_pages_150dpi": 12,
+  "optimizer_calls": 0,
+  "new_ocp_solves": 0,
+  "matlab_calls": 0
+}

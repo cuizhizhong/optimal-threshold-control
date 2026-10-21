@@ -134,7 +134,7 @@ Freddi 系列工作进一步提供了可行域分析与最优性验证的相关�
 本文的三项结果如下。
 
 第一，在正初值满足 $s_0+i_0\le1$、$i_0\le K$ 的整个物理状态域上构造分区反馈。
-定理\ref{thm:main-overview}给出全域最优反馈及其阶段结构；非平凡切换曲线的单调性、唯一容量交点和横穿性质见第\ref{sec:switching-curve}节。
+定理\ref{thm:main-overview}保证全域最优性与唯一性，命题\ref{prop:main-structure}给出阶段结构；非平凡切换曲线的单调性、唯一容量交点和横穿性质见第\ref{sec:switching-curve}节。
 不安全初值对应两类阶段结构
 $0\to1\to0$ 与 $0\to q_B(s)\to1\to0$，其中 $q_B(s)=1-h/s$，$h=\gamma/(\beta c)$。
 初始等待或容量阶段可以退化，两类策略均在首次进入无控制安全集时停止干预。
@@ -142,7 +142,7 @@ $0\to1\to0$ 与 $0\to q_B(s)\to1\to0$，其中 $q_B(s)=1-h/s$，$h=\gamma/(\beta
 第二，由自然轨道、容量弧和完全跟踪特征线构造候选成本，并对全部可测可行控制完成验证。
 引理\ref{lem:finite-entry}保证每条有限成本可行轨道在有限时间进入安全集，
 定理\ref{thm:verification}将验证不等式积分至该轨道自身的首次到达时刻，得到候选成本与值函数相等。
-结合推论\ref{cor:optimal-synthesis}，当最优轨道含有正长度容量阶段时，
+命题\ref{prop:main-structure}表明，当最优轨道含有正长度容量阶段时，
 它在 $s_B>h$ 处退出容量边界并转入完全跟踪，而不继续维持感染阈值至 $s=h$；
 部分不安全初值在感染达到阈值前开始完全跟踪。
 本模型中 $q=1$ 总使 $\dot i=-\gamma i<0$，因此这里提前开始完全跟踪由成本最小化决定，
@@ -291,11 +291,11 @@ V(x)=\inf_{q\in\Uad(x)}J_x(q),\qquad x\in\Dcal.
  \Acal:=\{x\in\Omega:P_0(x)\le K\}.
  \label{eq:safe-set}
 \end{equation}
-物理安全状态为 $\Acal\cap\Dcal$；下文涉及实际初值、轨道与值函数时，安全状态均取此交集。
+对 $x\in\Dcal$，$x\in\Acal$ 与 $x\in\Acal\cap\Dcal$ 等价，故下文对物理状态直接写 $x\in\Acal$；只在强调集合本身时写 $\Acal\cap\Dcal$。
 引理\ref{lem:safe-invariant}表明，$\Acal$ 对任意 $[0,1]$ 值可测控制正向不变。
 另一方面，恒取 $q=1$ 时 $i(t)=i_0\e^{-\gamma t}$，故每个 $x_0\in\Dcal$ 都存在可行控制，
 约束 $i\le K$ 不会使问题无解，问题在于何时付出控制成本。
-\citet{AvramFreddiGoreac2022,FreddiGoreac2024}区分无干预安全集、全控制不变集与可行域；
+\citet{AvramFreddiGoreac2022}区分无干预安全集、全控制不变集与可行域；\citet{FreddiGoreac2024}亦先研究可行性。
 在本模型的物理域内，前两类安全状态均为 $\Acal\cap\Dcal$，可行域则为整个 $\Dcal$。
 
 \subsection{全域反馈与阶段结构}
@@ -309,20 +309,31 @@ $(s_B,K)$ 是它在辅助条带中的唯一容量交点，$\Phi_B:=\Phi(s_B,K)$ 
 $Q^*(s,i)$ 表示根据当前状态在零控制、容量切向控制与完全跟踪之间选择的分区反馈；
 各曲线及反馈的精确构造分别见第\ref{sec:switching-curve}、\ref{sec:synthesis}节。
 
-\begin{theorem}[常接触率下的全域最优反馈与唯一性]
+\begin{theorem}[常接触率下的全域最优性与唯一性]
 \label{thm:main-overview}
 在式\eqref{eq:constants}的条件下，对每个 $x_0\in\Dcal$，存在有限成本最优控制。
-定义\ref{def:candidate}中的分区反馈 $Q^*$ 实现该最优值，其候选成本满足 $U(x_0)=V(x_0)$，
+定义\ref{def:candidate}中的候选成本满足 $U(x_0)=V(x_0)$，
 比较范围为全部可测可行控制。
 从同一初值出发的最优状态轨道唯一，最优控制在 $[0,\infty)$ 上几乎处处唯一。
-不安全初值的阶段顺序为 $0\to1\to0$ 或 $0\to q_B(s)\to1\to0$，允许阶段长度为零，
-其中 $q_B(s)=1-h/s$。两类策略均在首次进入 $\Acal\cap\Dcal$ 后永久取 $q=0$。
-辅助条带中的非平凡切换曲线 $\Gamma_K$ 及其唯一容量交点 $(s_B,K)$ 由命题\ref{prop:Gamma-geometry}、推论\ref{cor:Gamma-labels}刻画。
-若最优轨道含有正长度容量阶段，则在 $s_B>h$ 处转入完全跟踪，而不继续维持感染阈值至 $s=h$。
 \end{theorem}
 \begin{proof}
-这是后文定理\ref{thm:verification}、定理\ref{thm:unique-q}和推论\ref{cor:optimal-synthesis}的合并陈述。
-后文依次构造几何与候选成本、验证其最优性、再证明唯一性，均不预先使用本概览结论。
+这是后文定理\ref{thm:verification}与定理\ref{thm:unique-q}的合并陈述。
+后文先构造几何与候选成本、验证其最优性，再证明唯一性，均不预先使用本概览结论。
+\end{proof}
+
+\begin{proposition}[最优阶段结构与提前离开容量]
+\label{prop:main-structure}
+在定理\ref{thm:main-overview}的条件下，
+不安全初值的阶段顺序为 $0\to1\to0$ 或 $0\to q_B(s)\to1\to0$，允许阶段长度为零，
+其中 $q_B(s)=1-h/s$。两类策略均在首次进入 $\Acal$ 后永久取 $q=0$。
+辅助条带中的非平凡切换曲线 $\Gamma_K$ 及其唯一容量交点 $(s_B,K)$ 由命题\ref{prop:Gamma-geometry}、推论\ref{cor:Gamma-labels}刻画。
+若最优轨道含有正长度容量阶段，则在 $s_B>h$ 处转入完全跟踪，而不继续维持感染阈值至 $s=h$。
+这一提前退出的边际成本解释见第\ref{sec:switching-mechanism}节。
+\end{proposition}
+\begin{proof}
+阶段顺序和安全后的零控制由推论\ref{cor:optimal-synthesis}给出；
+切换曲线及其唯一容量交点由命题\ref{prop:Gamma-geometry}、推论\ref{cor:Gamma-labels}给出。
+这些后文结果不预先使用本命题。
 \end{proof}
 
 表\ref{tab:optimal-stages}列出阶段顺序；分区的精确定义见第\ref{sec:synthesis}节。
@@ -1753,8 +1764,56 @@ i_0+s_0-s_c+h\ln(s_c/s_0),&s_1\le s_c\le s_0.
  \beta cq\dd t=-\frac{\beta\,\mathrm d\Phi}{i(s-p)}.
  \label{eq:cost-in-Phi}
 \end{equation}
-该式表示沿控制轨道每减少单位 $\Phi$ 所付出的成本为 $\beta/[i(s-p)]$。
-在到达安全集之前有 $s>h>p$，故分母严格为正。
+在开集 $\{i>0,\ s>p\}$ 上记成本微分形式
+\begin{equation}
+ \omega:=-\frac{\beta\,\mathrm d\Phi}{i(s-p)}.
+ \label{eq:cost-one-form}
+\end{equation}
+式\eqref{eq:cost-in-Phi}说明，沿任意控制轨道有 $\beta cq\dd t=\omega$。
+在自然轨道上，以及 $s>h$ 的安全边界 $\partial\Acal$ 上，均有 $\mathrm d\Phi=0$，因此 $\omega=0$。
+直接计算得到成本二形式
+\begin{equation}
+ \mathrm d\omega
+ =\frac{\beta[i-g(s)]}{i^2(s-p)^2}\,\mathrm ds\wedge\mathrm di,
+ \qquad g(s)=\frac{(s-h)(s-p)}s.
+ \label{eq:cost-two-form}
+\end{equation}
+考虑从同一不安全状态出发、均在首次进入 $\Acal$ 时终止的两条策略轨道，其安全端点位于 $s\ge h$ 的边界分支。
+若两条轨道与连接其安全端点的边界弧在 $\{i>0,\ s>p\}$ 内围成分片光滑区域，
+将边界定向为第一条轨道的正向、安全边界上从其终点至第二条轨道终点的方向、以及第二条轨道的反向，
+则由 Green 公式，两条策略的成本差等于该定向区域上 $\mathrm d\omega$ 的积分。
+安全边界弧不贡献成本，因此路线优劣由区域内 $i-g(s)$ 的加权积分决定；曲线 $i=g(s)$ 是二形式变号的分界线。
+
+为把这一比较写成切换位置的边际公式，记
+\begin{equation}
+ \kappa(s,i):=\frac{i-g(s)}{i^2(s-p)^2}.
+ \label{eq:mechanism-kappa}
+\end{equation}
+沿完全跟踪特征线 $i=\mathcal I(s)$，有 $\mathcal I'(s)=\ell/s$，从而
+\begin{equation}
+ \frac{\mathrm d}{\mathrm ds}\Theta(s,\mathcal I(s))
+ =\ell\kappa(s,\mathcal I(s)).
+ \label{eq:theta-characteristic-derivative}
+\end{equation}
+这与引理\ref{lem:unimodal}中式\eqref{eq:theta-log-derivative}的对数导数表达式等价。
+令 $(\bar s,\bar i)$ 为从 $(s_c,\cdot)$ 出发的完全跟踪弧的安全端点，
+对式\eqref{eq:theta-characteristic-derivative}积分，再代入式\eqref{eq:JD-derivative}--\eqref{eq:JB-derivative}，得到
+\begin{align}
+ \mathcal J_B'(s_c)
+ &=-\frac{\beta\ell}{s_c}
+   \int_{\bar s}^{s_c}\kappa(s,\mathcal I(s))\dd s,
+ &&\mathcal I(s_c)=K,
+ \label{eq:JB-curvature-integral}\\
+ \mathcal J_D'(s_c)
+ &=-\frac{\beta(s_c-p)}{s_c}
+   \int_{\bar s}^{s_c}\kappa(s,\mathcal I(s))\dd s,
+ &&\mathcal I(s_c)=i_w(s_c).
+ \label{eq:JD-curvature-integral}
+\end{align}
+两式中的 $\mathcal I$ 分别对应各自的完全跟踪弧。
+因为 $s_c$ 随时间减小，推迟开始完全跟踪的边际成本由后续完全跟踪弧上 $i-g(s)$ 的加权积分决定。
+在上述可行的一维策略比较中，当积分为正时，推迟会增加成本，应立即完全跟踪；当积分为负时，继续自然等待或沿容量运行更省。
+积分为零时得到切换匹配条件，在容量线上即为 $s_B$。
 
 对 $x=(s,i)\in\mathcal E\cap\Dcal$ 且 $i<K$，考虑先沿自然轨道 $x^0(t)$ 免费等待，再完全跟踪至安全集的指定策略。
 当等待时间足够小、轨道仍在 $\mathcal E\cap\{i<K\}$ 时，后续完全跟踪成本为 $W(x^0(t))$，由式\eqref{eq:H0-theta}得
@@ -1768,9 +1827,17 @@ i_0+s_0-s_c+h\ln(s_c/s_0),&s_1\le s_c\le s_0.
 这解释了切换匹配条件的来源；比较的对象仍是指定策略成本 $W$，
 它在全部可测可行控制中的最优性由定理\ref{thm:verification}另行验证。
 
-在容量线上，单位 $\Phi$ 削减量的成本为 $\beta/[K(s-p)]$，随 $s$ 减小而上升。
-这一趋势只是理解容量退出的一条直观线索：完全跟踪时 $i$ 同样下降，也会改变单位成本。
-确定 $s_B$ 仍须使用式\eqref{eq:JB-derivative}的完整成本变分及全局验证，不能仅凭容量线上的单价上升作结论。
+还可据此解释为什么容量段不应持续到 $s=h$。
+当 $s_c\downarrow h$ 时，从 $(s_c,K)$ 出发的完全跟踪弧缩向安全边界上的点 $(h,K)$；
+同时 $\Theta(h,K)=0$，由式\eqref{eq:JB-derivative}有 $\mathcal J_B'(s_c)\to0$。
+将 $\mathcal J_B$ 在 $h$ 处连续延拓为 $C_B(s_1,h)$，则 $h$ 是右导数为零的端点驻点。
+然而，$g'(s)=1-hp/s^2>0$ 对 $s>h$ 成立，且 $g(h)=0<K$。
+因此，当 $s_c$ 足够接近 $h$ 时，整段完全跟踪弧均位于 $i>g(s)$ 一侧，
+由式\eqref{eq:JB-curvature-integral}可得 $\mathcal J_B'(s_c)<0$。
+也就是说，$\mathcal J_B$ 在 $h$ 右侧递减，$h$ 并非极小点；最优轨道应在 $s_B>h$ 处离开容量线。
+这给出推论\ref{cor:one-dimensional-min}的边际成本解释，全局最优性仍由定理\ref{thm:verification}保证。
+例如，E2 中 $\mathcal J_B$ 在 $s_B$ 处的最小值为 $1.529511$，而 $s_c\downarrow h$ 时趋于 $1.578386$，即维持阈值至 $s=h$ 的成本。
+最优策略相对这一对照成本节省约 $3.10\%$，其分母为 $1.578386$。
 
 
 \ifdefined\TheoryOnly\else
@@ -2163,11 +2230,10 @@ q_\varepsilon^*(t,s,i)=\proj_{[0,1]}
 动力学中的 $cq$ 项以及非线性状态约束也不会自动给出整个问题的严格凸性。
 本稿不为此扩展声称全局唯一性。
 
-\section{模型内的机制解释与理论边界}
+\section{模型假设与理论边界}
 \label{sec:limitations}
 本稿的 $q=1$ 代表理想化的完美追踪：所有被接触者均被及时追踪并隔离。
-完全跟踪同时使非隔离感染者的新增项归零、使未隔离易感者继续移出。
-因此从内生阈值开始短时完全跟踪，比始终维持容量直至 $s=h$ 更节省本稿定义的成本。
+提前离开容量由命题\ref{prop:main-structure}给出，第\ref{sec:switching-mechanism}节的边际成本分解说明其来源。
 这只是既定动力学与成本下的数学结论，不自动适用于含其他健康损失或资源约束的实际决策。
 非隔离感染者阈值 $K$、自然感染增长阈值 $h$、以及出现在不变量中的 $p$ 是不同的量；切换点由特征线上的 $\Theta$ 匹配确定。
 

@@ -1,0 +1,57 @@
+{
+  "status": "pass",
+  "dpi": 150,
+  "inspection_method": "用view_image实际依次显示并查看6张最终页图；未仅用文本或自动边界判据代替目视。",
+  "pages_reviewed": 6,
+  "pages": [
+    {
+      "file": "rendered_pages_150dpi/main_page6.png",
+      "sha256": "5e908d7a0351da7d40371f40a68490e5822654d9f1582d2cd1e302134d4a0d46",
+      "actual_visual_inspection": true,
+      "status": "pass",
+      "notes": "逐页实际目视：模型节末尾与第3节开头清楚，常数式及Ω、𝒟无截断、无溢出。"
+    },
+    {
+      "file": "rendered_pages_150dpi/main_page7.png",
+      "sha256": "d8f40a1e8b9105e6af15b974017ba830de3baf5421eb0a71d6b098377dd33aa2",
+      "actual_visual_inspection": true,
+      "status": "pass",
+      "notes": "逐页实际目视：3.1安全集说明及AFG/FG引用清楚；定理3.1和命题3.2完整，证明及引用正常，未跨页截断命题。"
+    },
+    {
+      "file": "rendered_pages_150dpi/main_page8.png",
+      "sha256": "24c6d6ae7eccec37bad5b4b0b2f057f190b38b1d623ba6ad4ae82c66c95b0678",
+      "actual_visual_inspection": true,
+      "status": "pass",
+      "notes": "逐页实际目视：表1完整，图1与图注清楚；s_e空心圆及标注可辨，E1/E2正体，inset顶部收窄，标签不压曲线，框不压s_B。"
+    },
+    {
+      "file": "rendered_pages_150dpi/theory_only_page5.png",
+      "sha256": "7d6f58ccf9421412e8074ce1edcf9d8da04ecf9ea9e784b34d9cacd2edd27cba",
+      "actual_visual_inspection": true,
+      "status": "pass",
+      "notes": "逐页实际目视：第3节开头及Ω、𝒟、常数式正常，与主文对应页一致。"
+    },
+    {
+      "file": "rendered_pages_150dpi/theory_only_page6.png",
+      "sha256": "7d6b5b3a3a71e300cd033d93a08309274980da1d67955d82539fa33d8c84b7f6",
+      "actual_visual_inspection": true,
+      "status": "pass",
+      "notes": "逐页实际目视：定理3.1、命题3.2编号及内容完整，安全集记号和文献引用无悬空显示。"
+    },
+    {
+      "file": "rendered_pages_150dpi/theory_only_page7.png",
+      "sha256": "a675071ddc83fbf81d81a9e2d8888b064abca0402bddb753f4707010174e2eb5",
+      "actual_visual_inspection": true,
+      "status": "pass",
+      "notes": "逐页实际目视：表1与图1完整，s_e、正体E1/E2及控制值标签清楚，插图无坐标、无宽白边，关键曲线不被遮挡。"
+    }
+  ],
+  "source_main_tex_sha256": "b9eff6a3e4036e948e51e64390c5748e90ba6338a1b72294eb3c29896783debf",
+  "main_pdf_sha256": "7fdb3e3a45b8e8bd70d3c39b83fa756273c93acc355fe2a484b1efa568e4033d",
+  "theory_only_pdf_sha256": "8c2a5b926eafd7c937a8e8d507e4b04657266dbe5c8cd9c1e9366ce9c7cde3fc",
+  "findings": [],
+  "matlab_calls": 0,
+  "optimizer_calls": 0,
+  "new_ocp_solves": 0
+}

@@ -1,0 +1,256 @@
+{
+  "status": "analytical_geometry_only",
+  "attempt": 1,
+  "optimizer_calls": 0,
+  "ocp_solves": 0,
+  "ode_integrations": 0,
+  "matlab_calls": 0,
+  "parameters": {
+    "beta": 0.5,
+    "c": 2.0,
+    "gamma": 0.3,
+    "K": 0.15
+  },
+  "measurement": {
+    "linewidth_tex_pt": 469.47049,
+    "width_cm": 16.50000061713021,
+    "height_cm": 8.0,
+    "pdf_width_big_pt": 467.7165529265,
+    "pdf_height_big_pt": 226.7716535433,
+    "insertion_scale": 1.0000000000000546,
+    "tick_font_pt": 8,
+    "label_font_pt": 9,
+    "inset_xlim": [
+      0.42,
+      0.6
+    ],
+    "inset_ylim": [
+      0.1,
+      0.153
+    ],
+    "inset_main_data_bbox": [
+      0.18040883977900551,
+      0.43698342541436463,
+      0.012750000000000001,
+      0.07720125
+    ],
+    "inset_linear_size_relative_to_previous": 1.0,
+    "inset_coordinate_ticks_visible": false,
+    "T_main_anchor": [
+      0.452,
+      0.139
+    ],
+    "T_main_has_leader": false,
+    "comparison_path_visible": false,
+    "zoom_box_top": 0.166,
+    "zoom_box_note": "主图选区框上沿保留0.166以避开s_B；放大图显示上限收至0.153以去掉白边。",
+    "E_labels_upright": true,
+    "s_e_inset_hollow_marker": true
+  },
+  "geometry": {
+    "h": 0.3,
+    "ell": 0.15,
+    "p": 0.15,
+    "s_A": 0.7073030021837696,
+    "s_e": 0.46908414634252626,
+    "z_B": 0.4516637862455485,
+    "s_B": 0.5476951246795451,
+    "Phi_A": 0.8111918412977808,
+    "Phi_B": 0.8783060712821368
+  },
+  "checkpoint_errors": {
+    "h": 0.0,
+    "ell": 0.0,
+    "p": 0.0,
+    "s_A": 1.1102230246251565e-16,
+    "s_e": 1.1102230246251565e-16,
+    "z_B": 0.0,
+    "s_B": 1.1102230246251565e-16,
+    "Phi_A": 0.0,
+    "Phi_B": 1.1102230246251565e-16
+  },
+  "checkpoint_max_absolute_error": 1.1102230246251565e-16,
+  "theta_max_absolute_residual": 3.552713678800501e-15,
+  "s_e_safe_Gamma_intersection": {
+    "point": [
+      0.46908414634252626,
+      0.11501576191910759
+    ],
+    "Gamma_endpoint_point": [
+      0.46908414634252626,
+      0.11501576191910759
+    ],
+    "equation_note": "非平凡切换方程在s=z=s_e处的连续极限为a(s_e)=g(s_e)。",
+    "residuals": {
+      "safe_boundary_equation": 0.0,
+      "Gamma_endpoint_equation_a_minus_g": 9.71445146547012e-17,
+      "Gamma_endpoint_parametrization": 0.0,
+      "Theta_matching_endpoint": 0.0
+    },
+    "maximum_residual": 9.71445146547012e-17
+  },
+  "trajectories": {
+    "E1": {
+      "initial": [
+        0.75,
+        0.01
+      ],
+      "capacity_contact": null,
+      "full_tracking_start": [
+        0.510171685547013,
+        0.13423054471264415
+      ],
+      "release": [
+        0.4593034862478495,
+        0.11847512585123426
+      ],
+      "endpoint_residuals": {
+        "natural_initial_point": 6.418476861114186e-17,
+        "natural_Phi_conservation": 0.0,
+        "natural_end_i": 5.551115123125783e-17,
+        "tracking_Psi_conservation": 5.551115123125783e-17,
+        "tracking_end_on_safe_boundary": 0.0,
+        "switch_on_Gamma_K": 0.0,
+        "switch_Theta_matching": 8.881784197001252e-16
+      },
+      "checkpoint_errors": {
+        "s_full": 2.220446049250313e-16,
+        "i_full": 5.551115123125783e-17,
+        "s_release": 0.0,
+        "i_release": 0.0
+      },
+      "main_tex_rounded_macro_errors": {
+        "s": 4.452986979153195e-09,
+        "i": 4.712644136040112e-09
+      },
+      "all_sampled_points_in_D": true
+    },
+    "E2": {
+      "initial": [
+        0.99,
+        0.01
+      ],
+      "capacity_contact": [
+        0.7775221610386437,
+        0.15
+      ],
+      "full_tracking_start": [
+        0.5476951246795451,
+        0.15
+      ],
+      "release": [
+        0.45166378624554854,
+        0.12108289155035942
+      ],
+      "endpoint_residuals": {
+        "natural_initial_point": 4.5102810375396984e-17,
+        "natural_Phi_conservation": 0.0,
+        "natural_end_i": 8.326672684688674e-17,
+        "tracking_Psi_conservation": 5.551115123125783e-17,
+        "tracking_end_on_safe_boundary": 2.7755575615628914e-17,
+        "capacity_contact_Phi_conservation": 0.0,
+        "capacity_end_s_B": 0.0,
+        "capacity_i_K": 0.0,
+        "release_matches_z_B": 5.551115123125783e-17
+      },
+      "checkpoint_errors": {
+        "s_full": 1.1102230246251565e-16,
+        "i_full": 0.0,
+        "s_release": 5.551115123125783e-17,
+        "i_release": 4.163336342344337e-17
+      },
+      "main_tex_rounded_macro_errors": null,
+      "all_sampled_points_in_D": true
+    }
+  },
+  "E2_analytic_cost": {
+    "boundary_cost_to_s_B": 0.8156447304621836,
+    "full_tracking_cost": 0.7138664296892894,
+    "optimal_total": 1.5295111601514728,
+    "capacity_until_h_total": 1.5783855039561376,
+    "checkpoint_optimal_cost_error": 4.440892098500626e-16,
+    "saving_percent_relative_to_comparison": 3.0964769812041437,
+    "saving_percent_rounded": "3.10",
+    "comparison_excess_percent_relative_to_optimal": 3.195422503476511,
+    "denominator_note": "正文3.10%以纯容量对照成本为分母；若用最优成本作分母则为3.20%，不能混用。",
+    "main_tex_3_10_percent_present": true
+  },
+  "style": {
+    "colors": {
+      "A": [
+        0.95,
+        0.95,
+        0.95
+      ],
+      "WG": [
+        0.89,
+        0.94,
+        0.985
+      ],
+      "WK": [
+        1,
+        0.93,
+        0.85
+      ],
+      "T": [
+        0.95,
+        0.9,
+        0.975
+      ],
+      "safe": [
+        0.2,
+        0.45,
+        0.25
+      ],
+      "physical": [
+        0.6,
+        0.6,
+        0.6
+      ],
+      "E1": [
+        0.12,
+        0.4,
+        0.68
+      ],
+      "E2": [
+        0.82,
+        0.36,
+        0.1
+      ]
+    },
+    "s_h_linestyle": "-.",
+    "s_plus_i_one_linestyle": "--",
+    "no_legend": true
+  },
+  "label_collision_checks": {
+    "label_curve_intersections": [],
+    "label_pair_intersections": [],
+    "method": "all visible annotation, tick and axis-label text boxes; own-axis dense visible Line2D samples and all cross-axis text pairs; annotation leaders excluded",
+    "visible_text_boxes_checked": 32,
+    "inset_coordinate_ticks": "hidden"
+  },
+  "protected_outputs_unchanged": {
+    "figures\\numerical_scenarios\\FigN1_regions.pdf": "2895a76602d8d98bb9a2d6105b7c33399e0ab433d0497ee7dbd0af9990a53b3e",
+    "figures\\numerical_scenarios\\FigN1_regions.png": "3eeca5468e6d09f15f358d8aeb10b2a51c1baf8d276093930b1d9a426ebcf880",
+    "figures\\numerical_scenarios\\FigN2_waiting.pdf": "04141129be11e4492cf53d2027a6c39e41151a01e6315fce4c79cf488adbd1dc",
+    "figures\\numerical_scenarios\\FigN2_waiting.png": "358ff93fcc674da54439c960a6dcdb19e857800bfb2e7dd29bf13b81189df025",
+    "figures\\numerical_scenarios\\FigN3_boundary_tracking.pdf": "f3c3a8773f442ba45e6c839fc3603106938f6a974cf3b163edcd7e6c65c188e4",
+    "figures\\numerical_scenarios\\FigN3_boundary_tracking.png": "d957f5493a0778623d7785e8d4cb3d37ea95c1f6f3f10bc1af8c7269b6d51009"
+  },
+  "sources_sha256": {
+    "validation\\polish_mechanism_20261021\\make_optimal_partition.py": "c8ca3831d207f4f030ee082ebd4db619e35a41fc4f3b0dd7f3075c7b36bcd6d6",
+    "validation\\figure1_layout_20261021\\make_optimal_partition.py": "b47587a87d25e68dc98a376b0c2aa75338678b000668458130a5bb70587fa4b6",
+    "validation\\geometry_proofs_20261021\\make_two_layer_phase.py": "3882e17ebd1a16aabf567c68c0a876dbb2e997b9dc583cffe6670af71b2161bb",
+    "validation\\numerical_scenarios\\scenario_inputs.json": "2db6c37435a78d719c0bbb5b3b70840076e56fbbb0fe0b8b64aaa33cfc0b0488",
+    "validation\\numerical_scenarios\\analytic_checkpoints.json": "d7195c0f65ffeda05e3f133116c3f5472857819bf67b37605f1a9e60a5631deb",
+    "validation\\figure1_revision_20261021\\measure_linewidth_console.log": "513d11628131b531131115f0fb68a838c75aa56df8d5d544edcdc1c05e30b9ac"
+  },
+  "immediately_before_outputs_sha256": {
+    ".pdf": "9d816caa1a2a3c0a089805064c0566746c340fbe44975ccbbdac1ef76aabef23",
+    ".png": "4d748a54d27aff3a950788d47f957b010681744699b20c21fd1487854e0b3ad0"
+  },
+  "outputs_sha256": {
+    "figures\\numerical_scenarios\\FigN1_optimal_partition.pdf": "d2dc673f5a75cd748826a7f84dd0a558f39ee3658fde4dc1488cd9c82713f321",
+    "figures\\numerical_scenarios\\FigN1_optimal_partition.png": "01bd9099192112795c060a6233ec3f79a9af77105565aacb08f37273a8aa4f8f"
+  }
+}

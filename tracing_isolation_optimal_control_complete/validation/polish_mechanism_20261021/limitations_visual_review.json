@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "pages": [
+    {
+      "file": "rendered_pages_150dpi/main_page34.png",
+      "sha256": "4d4787c3eeae7b1b46ff3c2b218d4598cb1f7dcdb40c160c437ff20d603d03ac",
+      "actual_image_viewed": true,
+      "dpi": 150,
+      "passed": true,
+      "notes": "实际显示并查看：第20节标题、理想化完美追踪说明、命题3.2和第15节引用、既定动力学与成本限定均清晰；无溢出或悬空引用。第35页确认第20节在34页完整收尾。"
+    },
+    {
+      "file": "rendered_pages_150dpi/main_page35.png",
+      "sha256": "25d14b5ab412d456477969f4e9294b5c647db08e7f40e59cfd950c373ad6ded9",
+      "actual_image_viewed": true,
+      "dpi": 150,
+      "passed": true,
+      "notes": "实际显示并查看：第20节标题、理想化完美追踪说明、命题3.2和第15节引用、既定动力学与成本限定均清晰；无溢出或悬空引用。第35页确认第20节在34页完整收尾。"
+    }
+  ]
+}

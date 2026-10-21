@@ -1,0 +1,7 @@
+{
+  "label_curve_intersections": [],
+  "label_pair_intersections": [],
+  "method": "all visible annotation, tick and axis-label text boxes; own-axis dense visible Line2D samples and all cross-axis text pairs; annotation leaders excluded",
+  "visible_text_boxes_checked": 32,
+  "inset_coordinate_ticks": "hidden"
+}

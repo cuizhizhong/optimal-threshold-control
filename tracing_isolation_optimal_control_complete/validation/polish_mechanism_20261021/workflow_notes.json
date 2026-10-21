@@ -1,0 +1,11 @@
+{
+  "audit_attempt1": {
+    "exit_code": 1,
+    "cause": "审计脚本将PowerShell 7生成的UTF-8日志按UTF-16读取，发生UnicodeDecodeError；公式和编译检查未失败。"
+  },
+  "repair": "按BOM自动识别UTF-16，否则读取UTF-8-sig；只修复本轮新审计脚本。",
+  "audit_attempt2": {
+    "exit_code": 0
+  },
+  "acceptance_criteria_changed": false
+}

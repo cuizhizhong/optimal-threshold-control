@@ -1,0 +1,333 @@
+{
+  "status": "analytical_identity_and_formula_evaluation_only",
+  "script_sha256": "4c5b54eca1cfe866100af30f18691adacea6d09a1bd5d65ba744df550424a2c6",
+  "inputs_sha256": {
+    "validation\\numerical_scenarios\\scenario_inputs.json": "2db6c37435a78d719c0bbb5b3b70840076e56fbbb0fe0b8b64aaa33cfc0b0488",
+    "validation\\numerical_scenarios\\analytic_checkpoints.json": "d7195c0f65ffeda05e3f133116c3f5472857819bf67b37605f1a9e60a5631deb",
+    "validation\\figure1_layout_20261021\\analytic_checks.json": "1da3de1f7d3791f2ff1d85f19eee1d421677fe628423f235c574eb70bd1cdfc5"
+  },
+  "software_versions": {
+    "sympy": "1.13.2",
+    "scipy": "1.13.1",
+    "numpy": "1.26.4"
+  },
+  "symbolic": {
+    "assumptions": "i>0, s>p, h=p+ell, ell=beta*h; characteristic di/ds=ell/s; logarithms of Theta additionally require s>h",
+    "orientation": "omega=M ds+N di; d(omega)=(N_s-M_i) ds wedge di",
+    "coefficient": "beta*(-h*p + h*s + i*s + p*s - s**2)/(i**2*s*(p - s)**2)",
+    "checks": {
+      "domega_ds_wedge_di_coefficient": {
+        "residual": "0",
+        "passed": true
+      },
+      "characteristic_dTheta_equals_ell_kappa": {
+        "residual": "0",
+        "passed": true
+      },
+      "log_derivative_matches_lem_unimodal": {
+        "residual": "0",
+        "passed": true
+      },
+      "Theta_times_log_derivative_equals_ell_kappa": {
+        "residual": "0",
+        "passed": true
+      },
+      "JD_from_W_gradients_matches_eq_JD_derivative": {
+        "residual": "0",
+        "passed": true
+      },
+      "JB_from_boundary_cost_and_W_matches_eq_JB_derivative": {
+        "residual": "0",
+        "passed": true
+      },
+      "JD_integral_formula_matches_eq_JD_derivative": {
+        "residual": "0",
+        "passed": true
+      },
+      "JB_integral_formula_matches_eq_JB_derivative": {
+        "residual": "0",
+        "passed": true
+      },
+      "g_prime_matches_monotonicity_formula": {
+        "residual": "0",
+        "passed": true
+      }
+    },
+    "passed_count": 9,
+    "total_count": 9
+  },
+  "numerical": {
+    "parameters": {
+      "beta": 0.5,
+      "c": 2.0,
+      "gamma": 0.3,
+      "K": 0.15
+    },
+    "constants": {
+      "h": 0.3,
+      "ell": 0.15,
+      "p": 0.15,
+      "s_A": 0.7073030021837696
+    },
+    "E2_capacity_contact_s1": 0.7775221610386437,
+    "method": "20001-point uniform scan of analytical J_B; sole interior derivative sign change refined by brentq root solving",
+    "root_solver": {
+      "name": "scipy.optimize.brentq (scalar equation root, not optimizer)",
+      "xtol": 1e-14,
+      "rtol": 9e-16,
+      "calls": 20020
+    },
+    "scan": {
+      "range": [
+        0.3,
+        0.7775221610386437
+      ],
+      "sample_count": 20001,
+      "spacing": 2.387610805193452e-05,
+      "h_is_limit_endpoint": true,
+      "grid_minimizer": 0.5476907449307444,
+      "grid_minimum": 1.529511160186332,
+      "grid_minimizer_error_to_expected_sB": 4.379748800631411e-06,
+      "interior_derivative_sign_changes": 1,
+      "all_sc_below_sB_have_negative_derivative": true,
+      "all_sc_above_sB_have_positive_derivative": true
+    },
+    "stationary_root": {
+      "s_B": 0.5476951246795451,
+      "expected_s_B": 0.5476951246795451,
+      "absolute_s_B_error": 0.0,
+      "J_B_prime_residual": 8.108328700385968e-16,
+      "safe_endpoint": [
+        0.45166378624554854,
+        0.12108289155035945
+      ]
+    },
+    "near_h": [
+      {
+        "s_c_minus_h": 0.01,
+        "J_B": 1.5783171241790048,
+        "J_B_prime": -0.019287018391640095,
+        "safe_endpoint": [
+          0.30968393335748157,
+          0.1498469865105843
+        ],
+        "entire_arc_i_minus_g_min": 0.14483870967741935
+      },
+      {
+        "s_c_minus_h": 0.001,
+        "J_B": 1.5783854232086865,
+        "J_B_prime": -0.00024070547902759037,
+        "safe_endpoint": [
+          0.3009966850505323,
+          0.14999834802273004
+        ],
+        "entire_arc_i_minus_g_min": 0.1494983388704319
+      },
+      {
+        "s_c_minus_h": 0.0001,
+        "J_B": 1.5783855038739925,
+        "J_B_prime": -2.4628361131467908e-06,
+        "safe_endpoint": [
+          0.3000999666851715,
+          0.1499999833481354
+        ],
+        "entire_arc_i_minus_g_min": 0.14994998333888704
+      }
+    ],
+    "limit_at_h": {
+      "J_B": 1.5783855039561376,
+      "Theta_h_K": 0.0,
+      "J_B_prime_right_limit": 0,
+      "stationary_but_not_minimum": true
+    },
+    "integral_derivative_checks": [
+      {
+        "branch": "B",
+        "start": [
+          0.31,
+          0.15
+        ],
+        "safe_endpoint": [
+          0.30968393335748157,
+          0.1498469865105843
+        ],
+        "integral_kappa": 0.07971967601877906,
+        "quad_error_estimate": 8.850661983170646e-16,
+        "Theta_delta_plus_ell_integral_residual": 1.734723475976807e-18,
+        "old_derivative_formula": -0.019287018391640095,
+        "integral_derivative_formula": -0.019287018391640095,
+        "absolute_residual": 0.0,
+        "scaled_residual": 0.0
+      },
+      {
+        "branch": "B",
+        "start": [
+          0.4,
+          0.15
+        ],
+        "safe_endpoint": [
+          0.377699957083025,
+          0.1413953353474907
+        ],
+        "integral_kappa": 1.6886874896147834,
+        "quad_error_estimate": 1.8748197323667874e-14,
+        "Theta_delta_plus_ell_integral_residual": 5.551115123125783e-16,
+        "old_derivative_formula": -0.3166289043027726,
+        "integral_derivative_formula": -0.31662890430277185,
+        "absolute_residual": 7.216449660063518e-16,
+        "scaled_residual": 7.216449660063518e-16
+      },
+      {
+        "branch": "B",
+        "start": [
+          0.5476951246795451,
+          0.15
+        ],
+        "safe_endpoint": [
+          0.45166378624554854,
+          0.12108289155035945
+        ],
+        "integral_kappa": -2.9692612539675738e-15,
+        "quad_error_estimate": 5.920635661696471e-15,
+        "Theta_delta_plus_ell_integral_residual": 1.3335676077952613e-15,
+        "old_derivative_formula": -8.108328700385968e-16,
+        "integral_derivative_formula": 4.0660320680755743e-16,
+        "absolute_residual": 1.2174360768461543e-15,
+        "scaled_residual": 1.2174360768461543e-15
+      },
+      {
+        "branch": "B",
+        "start": [
+          0.65,
+          0.15
+        ],
+        "safe_endpoint": [
+          0.4893828906051432,
+          0.1074259241350986
+        ],
+        "integral_kappa": -3.5187252403572815,
+        "quad_error_estimate": 3.906569779174342e-14,
+        "Theta_delta_plus_ell_integral_residual": 1.887379141862766e-15,
+        "old_derivative_formula": 0.40600675850276463,
+        "integral_derivative_formula": 0.40600675850276324,
+        "absolute_residual": 1.3877787807814457e-15,
+        "scaled_residual": 1.3877787807814457e-15
+      },
+      {
+        "branch": "B",
+        "start": [
+          0.7775221610386437,
+          0.15
+        ],
+        "safe_endpoint": [
+          0.5275061614571925,
+          0.09180725987681931
+        ],
+        "integral_kappa": -9.941720396367705,
+        "quad_error_estimate": 1.1037526888432963e-13,
+        "Theta_delta_plus_ell_integral_residual": 2.930988785010413e-14,
+        "old_derivative_formula": 0.9589810645802346,
+        "integral_derivative_formula": 0.9589810645802535,
+        "absolute_residual": 1.887379141862766e-14,
+        "scaled_residual": 1.887379141862766e-14
+      },
+      {
+        "branch": "D",
+        "start": [
+          0.7775221610386437,
+          0.1499999999999999
+        ],
+        "safe_endpoint": [
+          0.5275061614571926,
+          0.09180725987681926
+        ],
+        "integral_kappa": -9.941720396367717,
+        "quad_error_estimate": 1.1037526888432977e-13,
+        "Theta_delta_plus_ell_integral_residual": 2.7755575615628914e-14,
+        "old_derivative_formula": 4.0118791336035295,
+        "integral_derivative_formula": 4.011879133603604,
+        "absolute_residual": 7.460698725481052e-14,
+        "scaled_residual": 1.8596519179728136e-14
+      },
+      {
+        "branch": "D",
+        "start": [
+          0.82,
+          0.12347981913889894
+        ],
+        "safe_endpoint": [
+          0.5749142153482877,
+          0.07021729394545631
+        ],
+        "integral_kappa": -19.52455008081366,
+        "quad_error_estimate": 2.1676605045166287e-13,
+        "Theta_delta_plus_ell_integral_residual": 4.440892098500626e-15,
+        "old_derivative_formula": 7.976493020820203,
+        "integral_derivative_formula": 7.9764930208202145,
+        "absolute_residual": 1.1546319456101628e-14,
+        "scaled_residual": 1.4475433534466168e-15
+      },
+      {
+        "branch": "D",
+        "start": [
+          0.9,
+          0.07140694605870249
+        ],
+        "safe_endpoint": [
+          0.6621388081298346,
+          0.025369013646806632
+        ],
+        "integral_kappa": -111.13075696474841,
+        "quad_error_estimate": 1.2337992512629685e-12,
+        "Theta_delta_plus_ell_integral_residual": 2.4868995751603507e-14,
+        "old_derivative_formula": 46.30448206864524,
+        "integral_derivative_formula": 46.30448206864517,
+        "absolute_residual": 7.105427357601002e-14,
+        "scaled_residual": 1.5345009900051106e-15
+      },
+      {
+        "branch": "D",
+        "start": [
+          0.94,
+          0.04445247964062418
+        ],
+        "safe_endpoint": [
+          0.705031032103966,
+          0.0013067712028599354
+        ],
+        "integral_kappa": -3601.3931017131786,
+        "quad_error_estimate": 3.967195625148317e-11,
+        "Theta_delta_plus_ell_integral_residual": 2.148681232938543e-11,
+        "old_derivative_formula": 1513.3513565709031,
+        "integral_derivative_formula": 1513.3513565709632,
+        "absolute_residual": 6.002665031701326e-11,
+        "scaled_residual": 3.96647150421334e-14
+      }
+    ],
+    "maximum_integral_derivative_residual": 6.002665031701326e-11,
+    "maximum_scaled_integral_derivative_residual": 3.96647150421334e-14,
+    "integral_derivative_acceptance_scaled_residual": 5e-12,
+    "E2_costs": {
+      "optimal": 1.5295111601514724,
+      "hold_to_h": 1.5783855039561376,
+      "saving_percent_denominator_hold_cost": 3.0964769812041717,
+      "hold_excess_percent_denominator_optimal_cost": 3.195422503476541,
+      "checkpoint_cost_error": 0.0,
+      "macro_NumJRefETwo_error": 1.6015147230596938e-07,
+      "macro_NumSBRef_error": 4.6795450847625375e-09,
+      "previous_figure_analytic_cost_errors": {
+        "optimal_total": 4.440892098500626e-16,
+        "capacity_until_h_total": 0.0,
+        "saving_percent_relative_to_comparison": 2.7977620220553945e-14
+      }
+    },
+    "passed": true
+  },
+  "execution_counts": {
+    "MATLAB": 0,
+    "optimizer": 0,
+    "new_OCP_solve": 0,
+    "ODE_solver": 0
+  },
+  "passed": true
+}

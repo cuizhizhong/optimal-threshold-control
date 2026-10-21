@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "actual_pages_reviewed": 12,
+  "dpi": 150,
+  "review_records": [
+    "section3_visual_review.json",
+    "mechanism_visual_review.json",
+    "limitations_visual_review.json"
+  ],
+  "issues": []
+}
