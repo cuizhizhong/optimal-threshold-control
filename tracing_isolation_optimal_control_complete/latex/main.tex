@@ -312,12 +312,13 @@ $Q^*(s,i)$ 表示根据当前状态在零控制、容量切向控制与完全跟
 \begin{theorem}[常接触率下的全域最优性与唯一性]
 \label{thm:main-overview}
 在式\eqref{eq:constants}的条件下，对每个 $x_0\in\Dcal$，存在有限成本最优控制。
-定义\ref{def:candidate}中的候选成本满足 $U(x_0)=V(x_0)$，
-比较范围为全部可测可行控制。
+定义\ref{def:candidate}中的分区反馈 $Q^*$ 实现该最优值：
+沿其闭环轨道 $x^*$，控制 $q^*(t)=Q^*(x^*(t))$（至多有限个切换时刻除外）满足
+$J_{x_0}(q^*)=U(x_0)=V(x_0)$，比较范围为全部可测可行控制。
 从同一初值出发的最优状态轨道唯一，最优控制在 $[0,\infty)$ 上几乎处处唯一。
 \end{theorem}
 \begin{proof}
-这是后文定理\ref{thm:verification}与定理\ref{thm:unique-q}的合并陈述。
+这是后文命题\ref{prop:candidate-attainment}、定理\ref{thm:verification}与定理\ref{thm:unique-q}的合并陈述。
 后文先构造几何与候选成本、验证其最优性，再证明唯一性，均不预先使用本概览结论。
 \end{proof}
 
@@ -1836,7 +1837,7 @@ i_0+s_0-s_c+h\ln(s_c/s_0),&s_1\le s_c\le s_0.
 由式\eqref{eq:JB-curvature-integral}可得 $\mathcal J_B'(s_c)<0$。
 也就是说，$\mathcal J_B$ 在 $h$ 右侧递减，$h$ 并非极小点；最优轨道应在 $s_B>h$ 处离开容量线。
 这给出推论\ref{cor:one-dimensional-min}的边际成本解释，全局最优性仍由定理\ref{thm:verification}保证。
-例如，E2 中 $\mathcal J_B$ 在 $s_B$ 处的最小值为 $1.529511$，而 $s_c\downarrow h$ 时趋于 $1.578386$，即维持阈值至 $s=h$ 的成本。
+例如，对图\ref{fig:optimal-partition}中初值为 $(0.99,0.01)$ 的 E2，$\mathcal J_B$ 在 $s_B$ 处的最小值为 $1.529511$，而 $s_c\downarrow h$ 时趋于 $1.578386$，即维持阈值至 $s=h$ 的成本。
 最优策略相对这一对照成本节省约 $3.10\%$，其分母为 $1.578386$。
 
 
