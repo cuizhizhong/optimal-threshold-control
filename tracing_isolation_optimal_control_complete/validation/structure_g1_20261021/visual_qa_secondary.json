@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-21",
+  "review_method": "实际逐张调用 view_image 检查现有 150 dpi 页面渲染图",
+  "dpi": 150,
+  "pdf_total_pages_observed_in_headers": 45,
+  "scope": "本记录仅对应第 20、25、35、37、38 页的目视检查，不替代其余页面的检查或数学内容审阅。",
+  "pages": [
+    {
+      "page": 20,
+      "image": "rendered_150dpi/page_20.png",
+      "observed_content": "引理 5.17、5.5 内部界面与局部 Lipschitz 性、命题 5.18、注 5.19，以及第 6 节全局最优性与唯一性开头。",
+      "heading_hierarchy": "5.5 小节标题与居中的第 6 节标题层级清楚，第 6 节导读紧随标题，未见标题孤悬。",
+      "equations_and_text": "式 (77)–(79)、长行注释及证明结束符可辨认；公式编号与正文未见碰撞。",
+      "overlap_overflow_or_missing_glyphs_observed": false,
+      "judgment": "通过：未见重叠、越界、截断或缺字。"
+    },
+    {
+      "page": 25,
+      "image": "rendered_150dpi/page_25.png",
+      "observed_content": "唯一性证明续页中的第 3 步和第 4 步、推论 6.8，以及第 7 节机制与量级、7.1 小节开头。",
+      "heading_hierarchy": "第 3 步与第 4 步使用一致的斜体分步标题；推论、证明、第 7 节和 7.1 小节的层级清楚。",
+      "equations_and_text": "唯一性证明续页和结束符正常，推论的 (i)–(iv) 项缩进及换行可读，页底分段公式可辨认。",
+      "overlap_overflow_or_missing_glyphs_observed": false,
+      "judgment": "通过：本页所见唯一性证明分步和章节衔接正常，未见重叠、越界、截断或缺字；第 1、2 步不在本页检查范围。"
+    },
+    {
+      "page": 35,
+      "image": "rendered_150dpi/page_35.png",
+      "observed_content": "图 5 的 E3–E5 子图及图注、8.2.4 成本、约束误差与剩余残差、第 9 节讨论和 9.1 同时控制接触率与跟踪比例时的限制开头。",
+      "heading_hierarchy": "8.2.4、第 9 节与 9.1 的标题层级清楚，第 9 节标题下有小节标题与正文。",
+      "equations_and_text": "六个子图、坐标和图例可辨认，图注与正文有间隔，式 (111) 的积分与编号未见碰撞。",
+      "overlap_overflow_or_missing_glyphs_observed": false,
+      "judgment": "通过：图文和讨论开头排版正常，未见重叠、越界、截断或缺字。"
+    },
+    {
+      "page": 37,
+      "image": "rendered_150dpi/page_37.png",
+      "observed_content": "附录 A 的导数公式末尾、附录 B 容量边界成本积分的逐步计算，以及新增附录 C 完全跟踪分区可达性与不再返回等待区的证明开头。",
+      "heading_hierarchy": "附录 B 与附录 C 均使用同级居中标题，新增附录 C 标题完整，紧接证明正文。",
+      "equations_and_text": "附录 B 的积分和部分分式公式、附录 C 的不等式及导数公式均可辨认，长证明首段没有异常挤压。",
+      "overlap_overflow_or_missing_glyphs_observed": false,
+      "judgment": "通过：新增附录长证明开头正常，未见重叠、越界、截断或缺字。"
+    },
+    {
+      "page": 38,
+      "image": "rendered_150dpi/page_38.png",
+      "observed_content": "新增附录 C 证明续页及结束符，以及附录 D 梯度拼接与相对正则性的详细证明开头。",
+      "heading_hierarchy": "附录 C 证明自然续页并结束；附录 D 标题及导语与证明正文层级清楚。",
+      "equations_and_text": "附录 C 的梯度关系、长段文字和结束符正常；附录 D 的向量公式、坐标变换和积分公式可辨认。",
+      "overlap_overflow_or_missing_glyphs_observed": false,
+      "judgment": "通过：新增附录长证明的续页与结束、后续附录衔接正常，未见重叠、越界、截断或缺字。"
+    }
+  ],
+  "overall_visual_pass": true,
+  "limitations": "目视检查只核对页面外观，不声称验证公式正确性、证明逻辑或文字保全；唯一性证明的第 1、2 步不在本次指定页面范围。"
+}

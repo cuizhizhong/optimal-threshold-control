@@ -407,6 +407,8 @@ run_revision_validation('all', false);
 
 ### 阶段 G：全文定稿（作者审阅）
 
+作者于 2026-10-21 确定的 D1–D7 决定及 G1–G5 分批安排见 [G_DECISIONS.md](G_DECISIONS.md)，具体批次以作者当轮指令为准。
+
 - 正文结构：
   1. 引言
   2. 无回流五仓室模型与二维控制问题

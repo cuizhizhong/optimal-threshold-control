@@ -1,0 +1,227 @@
+{
+  "dpi": 150,
+  "pdf_path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\structure_g1_20261021\\workspace_attempt1\\build\\main.pdf",
+  "pdf_sha256": "152a989716cf2966bcabebe964ccabe07007b4bfaaf928e592a724c317816de3",
+  "pages": [
+    {
+      "page": 1,
+      "reason": "目录起始页（与摘要同页）",
+      "image": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\structure_g1_20261021\\rendered_150dpi\\page_01.png",
+      "image_sha256": "bcaa72f09e3c1cc8802fd6cfa8e484daadbc9360998db1113bcc09e9db8577fc",
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-f",
+        "1",
+        "-l",
+        "1",
+        "-r",
+        "150",
+        "-png",
+        "-singlefile",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\structure_g1_20261021\\workspace_attempt1\\build\\main.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\structure_g1_20261021\\rendered_150dpi\\page_01"
+      ],
+      "exit_code": 0
+    },
+    {
+      "page": 2,
+      "reason": "目录续页",
+      "image": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\structure_g1_20261021\\rendered_150dpi\\page_02.png",
+      "image_sha256": "8b7f39d4aefa9e440ce0e333c09ae5800e501647ef1558102e2f02c948bef57d",
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-f",
+        "2",
+        "-l",
+        "2",
+        "-r",
+        "150",
+        "-png",
+        "-singlefile",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\structure_g1_20261021\\workspace_attempt1\\build\\main.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\structure_g1_20261021\\rendered_150dpi\\page_02"
+      ],
+      "exit_code": 0
+    },
+    {
+      "page": 3,
+      "reason": "目录末页",
+      "image": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\structure_g1_20261021\\rendered_150dpi\\page_03.png",
+      "image_sha256": "abb3e487ad42286752c1cae1d9d8123b174b1fe1d265715e5363664f1156f4d8",
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-f",
+        "3",
+        "-l",
+        "3",
+        "-r",
+        "150",
+        "-png",
+        "-singlefile",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\structure_g1_20261021\\workspace_attempt1\\build\\main.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\structure_g1_20261021\\rendered_150dpi\\page_03"
+      ],
+      "exit_code": 0
+    },
+    {
+      "page": 8,
+      "reason": "第4节开头",
+      "image": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\structure_g1_20261021\\rendered_150dpi\\page_08.png",
+      "image_sha256": "10e3a140dfad9695c82b315440f98109b8dcc6fc4cb98226e38ca6d72f24225c",
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-f",
+        "8",
+        "-l",
+        "8",
+        "-r",
+        "150",
+        "-png",
+        "-singlefile",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\structure_g1_20261021\\workspace_attempt1\\build\\main.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\structure_g1_20261021\\rendered_150dpi\\page_08"
+      ],
+      "exit_code": 0
+    },
+    {
+      "page": 13,
+      "reason": "第5节开头",
+      "image": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\structure_g1_20261021\\rendered_150dpi\\page_13.png",
+      "image_sha256": "fbca72ccab49a924ab619581f7e5c962cbdf884b32fef4010e69e2910975a816",
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-f",
+        "13",
+        "-l",
+        "13",
+        "-r",
+        "150",
+        "-png",
+        "-singlefile",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\structure_g1_20261021\\workspace_attempt1\\build\\main.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\structure_g1_20261021\\rendered_150dpi\\page_13"
+      ],
+      "exit_code": 0
+    },
+    {
+      "page": 20,
+      "reason": "第6节开头",
+      "image": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\structure_g1_20261021\\rendered_150dpi\\page_20.png",
+      "image_sha256": "0a60a1276dcd7fd888bd581b297d65deea579ff3e82b4bec729982b0abd569a1",
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-f",
+        "20",
+        "-l",
+        "20",
+        "-r",
+        "150",
+        "-png",
+        "-singlefile",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\structure_g1_20261021\\workspace_attempt1\\build\\main.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\structure_g1_20261021\\rendered_150dpi\\page_20"
+      ],
+      "exit_code": 0
+    },
+    {
+      "page": 24,
+      "reason": "唯一性定理与证明起页",
+      "image": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\structure_g1_20261021\\rendered_150dpi\\page_24.png",
+      "image_sha256": "2a89fddfea7f641cef9dfbf508ff0e9679b2453fe57d0dcc67f36e8b622d08f8",
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-f",
+        "24",
+        "-l",
+        "24",
+        "-r",
+        "150",
+        "-png",
+        "-singlefile",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\structure_g1_20261021\\workspace_attempt1\\build\\main.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\structure_g1_20261021\\rendered_150dpi\\page_24"
+      ],
+      "exit_code": 0
+    },
+    {
+      "page": 25,
+      "reason": "第7节开头及唯一性证明末页",
+      "image": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\structure_g1_20261021\\rendered_150dpi\\page_25.png",
+      "image_sha256": "199419b5f0298616eeadbfdcfa35c5ef98ecbf6c90e976803c41be53644bdf58",
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-f",
+        "25",
+        "-l",
+        "25",
+        "-r",
+        "150",
+        "-png",
+        "-singlefile",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\structure_g1_20261021\\workspace_attempt1\\build\\main.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\structure_g1_20261021\\rendered_150dpi\\page_25"
+      ],
+      "exit_code": 0
+    },
+    {
+      "page": 35,
+      "reason": "第9节开头",
+      "image": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\structure_g1_20261021\\rendered_150dpi\\page_35.png",
+      "image_sha256": "829fbf6cf09b065e77d6819fb01375f4c2062a34fca6099c37bcb46b81dc759e",
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-f",
+        "35",
+        "-l",
+        "35",
+        "-r",
+        "150",
+        "-png",
+        "-singlefile",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\structure_g1_20261021\\workspace_attempt1\\build\\main.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\structure_g1_20261021\\rendered_150dpi\\page_35"
+      ],
+      "exit_code": 0
+    },
+    {
+      "page": 37,
+      "reason": "新增附录C证明起页",
+      "image": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\structure_g1_20261021\\rendered_150dpi\\page_37.png",
+      "image_sha256": "357aafc037401fbcd575737b06d2c40a5e056e1543cc882f3c94e11d3862dfc2",
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-f",
+        "37",
+        "-l",
+        "37",
+        "-r",
+        "150",
+        "-png",
+        "-singlefile",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\structure_g1_20261021\\workspace_attempt1\\build\\main.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\structure_g1_20261021\\rendered_150dpi\\page_37"
+      ],
+      "exit_code": 0
+    },
+    {
+      "page": 38,
+      "reason": "新增附录C证明末页",
+      "image": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\structure_g1_20261021\\rendered_150dpi\\page_38.png",
+      "image_sha256": "642a8f787d0ad569a9288580f12ae425fbdbc7143dc6ab134f41fff2f7d731d8",
+      "argv": [
+        "C:\\Users\\cui\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.EXE",
+        "-f",
+        "38",
+        "-l",
+        "38",
+        "-r",
+        "150",
+        "-png",
+        "-singlefile",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\structure_g1_20261021\\workspace_attempt1\\build\\main.pdf",
+        "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\structure_g1_20261021\\rendered_150dpi\\page_38"
+      ],
+      "exit_code": 0
+    }
+  ]
+}

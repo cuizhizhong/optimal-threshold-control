@@ -71,14 +71,14 @@ S2 实际新求解 35 次、缓存命中 0 次、求解器成功 35/35；`all,fa
 
 ## 保存数据的图表和正文导出
 
-S2.7 已刷新三图和正文宏，两组生成块及块外文字与重跑前基线完全相同；证据见[本批核对报告](../../validation/numerical_scenarios/rerun_20261020/S2.7/macro_comparison_report.json)。三项导出器回归已通过，实际结果见[本批回归报告](../../validation/numerical_scenarios/rerun_20261020/S2.7/regression_report.json)。本批各步主文实际编译为 37 页；TheoryOnly 最近一次 S1 核对为 29 页。
+S2.7 已刷新三图和正文宏，两组生成块及块外文字与重跑前基线完全相同；证据见[本批核对报告](../../validation/numerical_scenarios/rerun_20261020/S2.7/macro_comparison_report.json)。三项导出器回归已通过，实际结果见[本批回归报告](../../validation/numerical_scenarios/rerun_20261020/S2.7/regression_report.json)。本批各步主文实际编译为 37 页。
 
 `load_selected_numerical_runs` 核对 manifest、五例兼容副本、原始文件 SHA-256、run_id、指纹、provenance 和每个原始字段。`make_numerical_figures` 只读取已选数据，保留三张主图；数值控制用阶梯线、解析跳跃用重复事件时间，相平面保留 `Phi=Phi_B` 边界及物理域阴影。正文保留一张成本表。
 
 `export_numerical_latex` 只更新 `latex/main.tex` 内两组 AUTO-GENERATED 标记块。结果缺失/失败/来源不匹配时刷新开关和文字，尚未运行的数值留空或 `--`。`NumResultsVerified` 与附加协议的 `NumRobustnessComplete` 独立；协议全部尝试不等于一致性通过。五例主结果和附加异常都由实际数据解释。
 
-历史第 10–11 步工作区后处理科学优化调用为 0：12 组 unit、3 项旧失败回归、8 项保存数据回归及 2 项缺失/阻断回归通过，最终重复导出文字不变。三图来源/哈希和 PNG 视觉已检查；main 34 页、TheoryOnly 26 页实际编译成功，最终日志没有上述排版/引用问题。首次复现附录有 11.08316pt 溢出，换段修复并保留首次日志。
+历史第 10–11 步工作区后处理科学优化调用为 0：12 组 unit、3 项旧失败回归、8 项保存数据回归及 2 项缺失/阻断回归通过，最终重复导出文字不变。三图来源/哈希和 PNG 视觉已检查；main 34 页实际编译成功，最终日志没有上述排版/引用问题。首次复现附录有 11.08316pt 溢出，换段修复并保留首次日志。
 
-隔离候选首次因 Windows 长路径展开失败，未进入 MATLAB；第一次干净 MATLAB 保存数据回归因源目录普通 `is_file` 静默漏掉长路径评估文件而报 `No current saved assessment: run_4dfaa3539e6241ae8d3d7cd4028c667a`。原数据完整。源/目标长路径前缀、短目录及 Git `core.longpaths=true` 修复后，候选 `e701f69a1f6a59e3b4456417777b829323566bd0` 初始 status 为空，全部 35 个评估文件复制并核对完整。MATLAB 12 组 unit、9 项保存数据回归通过；all,false 实测缓存 35、科学优化 0、assessment 0，numeric/agreement 各 29、双通过 28、protocol_complete=true、consistency_pass=false。一次 T=1,N=4,d=2 独立 smoke 成功，排除于科学矩阵；候选 main34/TheoryOnly26 页编译通过，最终日志零问题。Python fixture 检查和 6 项测试通过，fixture 字节不变。
+隔离候选首次因 Windows 长路径展开失败，未进入 MATLAB；第一次干净 MATLAB 保存数据回归因源目录普通 `is_file` 静默漏掉长路径评估文件而报 `No current saved assessment: run_4dfaa3539e6241ae8d3d7cd4028c667a`。原数据完整。源/目标长路径前缀、短目录及 Git `core.longpaths=true` 修复后，候选 `e701f69a1f6a59e3b4456417777b829323566bd0` 初始 status 为空，全部 35 个评估文件复制并核对完整。MATLAB 12 组 unit、9 项保存数据回归通过；all,false 实测缓存 35、科学优化 0、assessment 0，numeric/agreement 各 29、双通过 28、protocol_complete=true、consistency_pass=false。一次 T=1,N=4,d=2 独立 smoke 成功，排除于科学矩阵；候选 main34 页编译通过，最终日志零问题。Python fixture 检查和 6 项测试通过，fixture 字节不变。
 
 所有失败日志及 15 类操作异常见 `validation/numerical_scenarios/step1011_operational_anomalies.json`，包括首次溢出、长路径、比较器过严断言、宏参数误判、矢量导出提醒及来源快照刷新。候选 raw/solver/assessment、输入/fixture 字节与原工作区相同；兼容副本只更新选择时间和对应哈希，科学字段/数组相同。三 PNG 再导出存在时间戳和 3/1/0 像素差，逐图视觉未见实际变化。详细执行见 `step1011_results.md`、`step1011_commands.md` 和最终完整性报告。N=16000、T=600及额外初猜未运行，宏中不填这些结果。历史 `run_numerical_scenarios`、`checks/`、`coarse/` 和 `legacy_results/` 仅供追溯，不代替默认矩阵。

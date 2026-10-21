@@ -1,0 +1,8 @@
+{
+  "command": "bundled Python -X utf8 validation/structure_g1_20261021/finalize_g1.py",
+  "exit_code": 1,
+  "error": "OSError: [Errno 22] Invalid argument: E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.bbl",
+  "step": "第二次运行汇总脚本时，重复回写与最终构建相同的main.bbl",
+  "effect": "既有正式PDF已与通过验收的工作区构建一致；git未显示bbl内容变化；没有运行新的编译或数值程序。",
+  "remedy": "写入前先比对，PDF raw相同或bbl统一行尾后相同则跳过回写；再次汇总成功。"
+}

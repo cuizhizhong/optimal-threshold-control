@@ -10,9 +10,9 @@
 
 S2 已统一代码和论文符号，并实际执行 35 次新求解：缓存命中 0 次，求解器成功 35/35；`all,false` 总耗时 2157.5074708 秒，见[本批执行报告](validation/numerical_scenarios/rerun_20261020/S2.4/execution_report.json)。按 `configuration_id` 对应旧记录的[35 项严格比较](validation/numerical_scenarios/rerun_20261020/comparison_report.json)全部通过：成本相对差、控制数组及状态数组最大绝对差均为 0，返回状态、迭代次数、事件、阶段结构和两类旗标均相同。[本批原判据重评](validation/numerical_scenarios/rerun_20261020/S2.6/assessment_revision_report.json)新增 35 份独立评估，原判据 `numeric/agreement/双通过=29/29/28`，修订判据为 `33/30/30`，分母均为 35。粗网格失败继续保留；协议完成不等于所有科学诊断通过。
 
-标签 `pre-code-rename` 指向 `051099fba63cd6d326f2344d2bf4322c1f651282`。旧 35 份 raw、35 份 solver sidecar 和 70 份 assessment 均保留原处且字节不变；当前累计为 70/70/140 份。本次主选择及新旧 run_id 对照见[评阅入口](REVIEW_GUIDE.md)和比较报告；`run_index.json` 只追加。S2.7 已刷新三图和正文导出，两组生成块及块外文字与重跑前基线完全相同，见[逐块核对](validation/numerical_scenarios/rerun_20261020/S2.7/macro_comparison_report.json)。三项导出器回归共 16 项检查（11+3+2）已通过，实际结果见[回归报告](validation/numerical_scenarios/rerun_20261020/S2.7/regression_report.json)；三张 PNG 及主文第 28–30 页已实际渲染目视核对，见[页面与图形检查](validation/numerical_scenarios/rerun_20261020/S2.7/visual_qa.json)。本批各步主文实际编译为 37 页；TheoryOnly 最近一次 S1 核对为 29 页。
+标签 `pre-code-rename` 指向 `051099fba63cd6d326f2344d2bf4322c1f651282`。旧 35 份 raw、35 份 solver sidecar 和 70 份 assessment 均保留原处且字节不变；当前累计为 70/70/140 份。本次主选择及新旧 run_id 对照见[评阅入口](REVIEW_GUIDE.md)和比较报告；`run_index.json` 只追加。S2.7 已刷新三图和正文导出，两组生成块及块外文字与重跑前基线完全相同，见[逐块核对](validation/numerical_scenarios/rerun_20261020/S2.7/macro_comparison_report.json)。三项导出器回归共 16 项检查（11+3+2）已通过，实际结果见[回归报告](validation/numerical_scenarios/rerun_20261020/S2.7/regression_report.json)；三张 PNG 及主文第 28–30 页已实际渲染目视核对，见[页面与图形检查](validation/numerical_scenarios/rerun_20261020/S2.7/visual_qa.json)。本批各步主文实际编译为 37 页。
 
-以下第 6–11 步的执行次数、34/26 页及候选检出结果均为历史记录；不作为本次重跑的执行次数或页数。
+以下第 6–11 步的执行次数、34 页及候选检出结果均为历史记录；不作为本次重跑的执行次数或页数。
 
 第 6–9 步已实际取得默认矩阵的 35/35 个不同配置，35 次科学求解均返回成功。数值接受有两种统计口径，以下并列报告：
 
@@ -29,9 +29,9 @@ S2 已统一代码和论文符号，并实际执行 35 次新求解：缓存命�
 
 `step89_results.md` 另列最细两级的计划建议比较，其通过不覆盖严格网格失败，更不表示所有网格都容量可行。E2/E4 的 $n=2000$ 分别出现 11/8 单元的中间控制块；粗网格容量、成本及结构异常见详细记录。浮点接受、多初猜重复收敛和三个有限网格不替代正文解析证明。
 
-历史第 10–11 步已由保存数据刷新正文宏、三图和一表；该阶段工作区科学优化调用为 0。12 组 MATLAB 单元检查、3 项旧失败清空回归、8 项实数据回归及 2 项附加结果缺失/阻断回归通过；两次最终导出文字相同。三图来源和文件哈希已核对，PNG 已目视检查。主文 34 页、TheoryOnly 26 页实际编译成功，最终日志未发现未定义引用、重复标签、缺图/缺字或溢出。
+历史第 10–11 步已由保存数据刷新正文宏、三图和一表；该阶段工作区科学优化调用为 0。12 组 MATLAB 单元检查、3 项旧失败清空回归、8 项实数据回归及 2 项附加结果缺失/阻断回归通过；两次最终导出文字相同。三图来源和文件哈希已核对，PNG 已目视检查。主文 34 页实际编译成功，最终日志未发现未定义引用、重复标签、缺图/缺字或溢出。
 
-第 11 步的候选快照 `e701f69a1f6a59e3b4456417777b829323566bd0` 起始 Git status 为空。Python fixture 只读检查与 6 项测试通过；MATLAB 12 组 unit、9 项保存数据回归通过，`all,false` 实测可信缓存 35 次、科学优化 0 次、重新评估 0 次，协议完成 true、一致性 false。独立 T=1,N=4,d=2 接口 smoke 成功 1 次，不纳入科学矩阵；候选 main/TheoryOnly 也实际编译为 34/26 页，最终日志零问题。完整性核对通过，保护 93 个文件。N=16000、T=600 和额外初猜未运行，新结果不填入。
+第 11 步的候选快照 `e701f69a1f6a59e3b4456417777b829323566bd0` 起始 Git status 为空。Python fixture 只读检查与 6 项测试通过；MATLAB 12 组 unit、9 项保存数据回归通过，`all,false` 实测可信缓存 35 次、科学优化 0 次、重新评估 0 次，协议完成 true、一致性 false。独立 T=1,N=4,d=2 接口 smoke 成功 1 次，不纳入科学矩阵；候选 main 也实际编译为 34 页，最终日志零问题。完整性核对通过，保护 93 个文件。N=16000、T=600 和额外初猜未运行，新结果不填入。
 
 首次主文 11.08316pt 附录溢出已换段修复；首次候选展开因 Windows 长路径失败，第一次干净 MATLAB 保存数据回归又因长路径 assessment 漏拷贝报 `No current saved assessment: run_4dfaa3539e6241ae8d3d7cd4028c667a`。源/目标复制及 MANIFEST 枚举已修复并核对全部 35 个评估文件，失败日志保留。PNG 时间戳及极少像素存在再导出差异，逐图视觉未见实际变化，不宣称字节一致。全部 15 类操作异常见 `validation/numerical_scenarios/step1011_operational_anomalies.json`；最终结果、精确命令和文件范围见同目录 `step1011_results.md`、`step1011_commands.md`、`CHANGED_FILES_STAGE1011.txt`。
 
@@ -122,13 +122,6 @@ export_numerical_latex();
 
 ## 编译与隔离检出
 
-在本项目目录运行 Windows 的 `.\build.bat` 或 Linux/macOS 的 `bash build.sh`，均执行 XeLaTeX → BibTeX → XeLaTeX → XeLaTeX，输出 `latex/main.pdf`。TheoryOnly 检查在 `latex/` 中执行：
+在本项目目录运行 Windows 的 `.\build.bat` 或 Linux/macOS 的 `bash build.sh`，均执行 XeLaTeX → BibTeX → XeLaTeX → XeLaTeX，输出 `latex/main.pdf`。
 
-```powershell
-xelatex -interaction=nonstopmode -halt-on-error -jobname=theory_only '\def\TheoryOnly{1}\input{main.tex}'
-bibtex theory_only
-xelatex -interaction=nonstopmode -halt-on-error -jobname=theory_only '\def\TheoryOnly{1}\input{main.tex}'
-xelatex -interaction=nonstopmode -halt-on-error -jobname=theory_only '\def\TheoryOnly{1}\input{main.tex}'
-```
-
-上述第 11 步检查均有实际报告，包含输入/fixture、无优化器测试、保存数据后处理、三图/一表、主文/TheoryOnly 编译、日志和页面渲染及独立 smoke。候选基于 Git HEAD 加明确成果文件，复用显式 `OPENOCL_ROOT` 指定且已核对哈希的依赖目录；这项检查验证本机候选源码和数据可检出并运行。候选与原工作区的 35 个 raw/solver、35 个 assessment、输入和 fixture 字节相同，主 TeX 相同；兼容副本只更新选择时间戳及相应哈希，其全部科学字段/数组相同。旧 `clean_checkout_report.json` 仍仅是第 0–2 步历史证据。
+上述第 11 步检查均有实际报告，包含输入/fixture、无优化器测试、保存数据后处理、三图/一表、主文编译、日志和页面渲染及独立 smoke。候选基于 Git HEAD 加明确成果文件，复用显式 `OPENOCL_ROOT` 指定且已核对哈希的依赖目录；这项检查验证本机候选源码和数据可检出并运行。候选与原工作区的 35 个 raw/solver、35 个 assessment、输入和 fixture 字节相同，主 TeX 相同；兼容副本只更新选择时间戳及相应哈希，其全部科学字段/数组相同。旧 `clean_checkout_report.json` 仍仅是第 0–2 步历史证据。

@@ -1,0 +1,951 @@
+{
+  "baseline": "689a627",
+  "passed": true,
+  "errors": [],
+  "normalization": "只折叠段落空白并剥离标题/节标签/注释/proof 包装；正文保全双向匹配且核对字符多重集；公式另作保留全部源空白的逐字核对（统一行尾LF）。",
+  "source_sha256": {
+    "old_git_blob_raw": "a2562f318793cf5e55e54e254c59595ff739a46890d8badae68a0895f1ac32ac",
+    "new_worktree_raw": "13668de1eeb989f2db12677cde35b3e1e48536d4f7a613ac0b3d195e3f2d9633"
+  },
+  "paragraphs": {
+    "old_after_whitelist": 208,
+    "new_after_whitelist": 207,
+    "unexplained_lost": [],
+    "unexplained_added": [],
+    "character_multiset_identical": true
+  },
+  "whitelist_changes": [
+    {
+      "id": "theory-branch-1",
+      "reason": "删除 TheoryOnly 专属分支及条件壳，保留主文分支",
+      "old": "\\ifdefined\\TheoryOnly\n\\begin{center}\\small 常接触率理论校样：由同一份 \\texttt{main.tex} 编译；省略时变讨论和数值图形章节。\\end{center}\n\\fi",
+      "new": "",
+      "deleted_content": "\n\\begin{center}\\small 常接触率理论校样：由同一份 \\texttt{main.tex} 编译；省略时变讨论和数值图形章节。\\end{center}\n"
+    },
+    {
+      "id": "theory-branch-2",
+      "reason": "删除 TheoryOnly 专属分支及条件壳，保留主文分支",
+      "old": "\\ifdefined\\TheoryOnly\\else\n五个代表初值在所报告网格上的直接配点结果支持解析预测的阶段顺序、切换位置和成本。\n\\fi",
+      "new": "\n五个代表初值在所报告网格上的直接配点结果支持解析预测的阶段顺序、切换位置和成本。\n",
+      "deleted_content": ""
+    },
+    {
+      "id": "theory-branch-3",
+      "reason": "删除 TheoryOnly 专属分支及条件壳，保留主文分支",
+      "old": "\\ifdefined\\TheoryOnly\\else\n数值部分使用五类代表初值的已保存直接配点结果，对照不同区域下的阶段次序、切换位置和成本。\n\\fi",
+      "new": "\n数值部分使用五类代表初值的已保存直接配点结果，对照不同区域下的阶段次序、切换位置和成本。\n",
+      "deleted_content": ""
+    },
+    {
+      "id": "theory-branch-4",
+      "reason": "删除 TheoryOnly 专属分支及条件壳，保留主文分支",
+      "old": "\\ifdefined\\TheoryOnly\\else\n% 数值章节已内联；下方两个标记块由数值导出程序定点更新。\n\\providecommand{\\NumFigureRoot}{../figures/numerical_scenarios}\n\\providecommand{\\NumTheoryRef}[2]{#2~\\ref{#1}}\n% BEGIN AUTO-GENERATED NUMERICAL REFERENCE VALUES\n% MATLAB 解析公式评价；不含优化器结果。\n\\providecommand{\\NumJRefEOne}{0.416186}\n\\providecommand{\\NumJRefETwo}{1.529511}\n\\providecommand{\\NumJRefEThree}{0.433981}\n\\providecommand{\\NumJRefEFour}{1.268835}\n\\providecommand{\\NumJRefEFive}{0.536233}\n\\providecommand{\\NumSBRef}{0.54769512}\n\\providecommand{\\NumSwitchSEOneRef}{0.51017169}\n\\providecommand{\\NumSwitchIEOneRef}{0.13423054}\n\\providecommand{\\NumMaxReleaseRef}{7.44746905}\n\\providecommand{\\NumExitETwoTheory}{5.86950254}\n\\providecommand{\\NumExitEFourTheory}{1.08077528}\n% END AUTO-GENERATED NUMERICAL REFERENCE VALUES\n\n% BEGIN AUTO-GENERATED NUMERICAL RESULTS\n% 从 data/numerical_scenarios 的真实结果生成；条件开关由 main.tex 定义。\n\\NumResultsVerifiedtrue\n\\NumRobustnessCompletetrue\n\\renewcommand{\\NumRobustnessStatement}{数值接受及容量控制比较容差于保存求解后调整，取值与原严格记录见复现附录。五例常值 $q=0.7$ 和固定种子随机初猜的阶段一致，成本最大绝对差为 $\\num{6.1e-13}$。在当前接受容差下，最细两级成本与事件区间比较通过 E1、E2、E3、E4、E5。$n=2000$ 的 E2、E4 存在长中间控制块与阶段识别异常。该比较不提供收敛阶。$n=2000$ 的 E1、E3、E5 成本比较仍未通过。E3 的粗网格负成本差小于容量超出所致的解析最优值下降，与容量超出相容。固定步长时域复核五例通过。阈值复核通过。有限样本与浮点诊断不替代解析证明。}\n\\renewcommand{\\NumReproducibilityDetails}{默认协议已记录 35/35 个不同配置，其中 30 个同时通过数值接受与理论比较。协议是否完成与比较是否一致分别记录。本次在保存求解后调整状态及容量接受容差为 $\\num{1e-05}$、容量段控制与 $q_B$ 区间均值的绝对误差容差为 $\\num{0.003}$，并重新评估全部保存结果；成本相对误差容差 $\\num{0.0001}$ 与事件区间判据保持不变。原严格判据及其未通过记录另行保留。按保存求解前预定的原判据（状态容差 $\\num{1e-06}$、容量容差 $\\num{1e-06}$、容量段控制容差 $\\num{0.002}$），数值接受与理论比较分别通过 29/35 与 29/35，同时通过 28/35；修订判据只重新划定浮点接受尺度，不提供新的收敛证据。五例常值 $q=0.7$ 和固定种子随机初猜的阶段一致，成本最大绝对差为 $\\num{6.1e-13}$。在所列接受容差下，固定时域网格复核的最细两级成本与事件区间比较通过 E1、E2、E3、E4、E5。E2、E4 的 $n=2000$ 长中间控制块与阶段识别异常仍保留在配套记录中。该结果只支持所测最细两级的一致性，不给出收敛阶。$n=2000$ 的 E1、E3、E5 成本比较仍未通过。E3 的 $n=2000$ 负成本差为 $\\num{-6.76e-05}$，重积分容量超出 $\\varepsilon_K=\\num{7.83e-06}$；把容量放宽为 $K+\\varepsilon_K$ 后，解析最优值下降 $\\num{1.08e-04}$，大于该负差。因此该负差与容量超出相容，评估记录中的 unresolved-discrepancy 分类按原样保留。固定步长时域复核五例通过。阈值复核通过。全部记录见配套文件；有限样本与浮点诊断不替代解析证明。}\n\\providecommand{\\NumHorizon}{300}\n\\providecommand{\\NumIntervals}{4000}\n\\providecommand{\\NumDegree}{2}\n\\providecommand{\\NumMeshDetails}{按预先指定设置，E2 使用 $n=8000$，E4 使用 $n=8000$；其余算例保留基准网格。图表均采用各例最终保存的结果。}\n\\providecommand{\\NumJOclEOne}{0.416205}\n\\providecommand{\\NumJOclETwo}{1.529523}\n\\providecommand{\\NumJOclEThree}{0.433999}\n\\providecommand{\\NumJOclEFour}{1.268831}\n\\providecommand{\\NumJOclEFive}{0.536256}\n\\providecommand{\\NumExitETwoStart}{5.85000000}\n\\providecommand{\\NumExitETwoEnd}{5.88750000}\n\\providecommand{\\NumExitEFourStart}{1.05000000}\n\\providecommand{\\NumExitEFourEnd}{1.08750000}\n\\providecommand{\\NumNeutralETwoCostDifference}{5.78648240435e-13}\n\\providecommand{\\NumEFourSignedCostDifference}{-3.68275844664e-06}\n\\providecommand{\\NumEFourCapacityExcess}{7.70286958773e-07}\n\\providecommand{\\NumFindingWaiting}{实际控制输出中，E1 和 E2 分别识别出 $0\\to 1\\to 0$ 与 $0\\to q_B\\to 1\\to 0$。E1 的完全跟踪开始区间为 $[6.975,7.05]$。对应端点的感染比例仍低于容量上限。E2 的容量退出区间为 $[5.85,5.8875]$。}\n\\providecommand{\\NumFindingTrackingBoundary}{E3、E4、E5 的实际阶段依次为 $1\\to 0$、$q_B\\to 1\\to 0$ 和 $1\\to 0$。E3、E5 均从初始时刻采用完全跟踪。E4 的容量退出区间为 $[1.05,1.0875]$。E2、E4 的理论容量退出时刻均落在上述单网格过渡区间内；首个纯完全跟踪单元的起点仍不等同于连续切换点。}\n\\providecommand{\\NumCheckStatement}{对原始分段常数控制逐区间重积分后，五例最大容量超出量为 $\\num{8e-07}$，与配点状态的最大差异为 $\\num{8.6e-08}$；末尾 $20$ 个时间单位内最大控制幅值为 $\\num{0}$。各例终端状态均通过零控制安全延拓核查。这些浮点检查用于排查截断及离散问题，不是连续可行性的严格证明。}\n\\providecommand{\\NumOverallFinding}{五例成本相对解析参考的最大差异约为 $0.00459\\%$。计算结果支持这五个初值下的阶段顺序及切换位置预测；切换位置的偏差应结合控制区间宽度和过渡单元解释。E4 的离散成本比解析参考低 $\\num{3.68e-06}$，重积分轨道有 $\\varepsilon_K=\\num{7.7e-07}$ 的容量超出；把容量放宽为 $K+\\varepsilon_K$ 后，解析最优值下降 $\\num{1.16e-05}$，大于该负差。因此该控制的成本仍不低于放宽容量后的解析最优值，负差与容量超出相容，不构成低于解析最优值的连续时间可行控制。}\n\\providecommand{\\NumErrorTableRows}{E1 & \\num{1.91e-05} & \\num{4.59e-03} & \\num{2.97e-07} & \\num{4.05e-06} & 是 \\\\ E2 & \\num{1.22e-05} & \\num{7.98e-04} & \\num{7.99e-07} & \\num{1.28e-05} & 是 \\\\ E3 & \\num{1.75e-05} & \\num{4.03e-03} & \\num{4.80e-08} & \\num{6.60e-07} & 是 \\\\ E4 & \\num{-3.68e-06} & \\num{-2.90e-04} & \\num{7.70e-07} & \\num{1.16e-05} & 是 \\\\ E5 & \\num{2.32e-05} & \\num{4.32e-03} & \\num{5.57e-08} & \\num{7.76e-07} & 是 \\\\}\n\\providecommand{\\NumResidualSummary}{五例成本相对解析参考差的绝对值最大为 $\\num{0.00459}\\%$。重积分最大容量超出为 $\\num{7.99e-07}$，与配点状态的最大偏差为 $\\num{8.57e-08}$。末段最大控制幅值为 $\\num{0}$，各例终端状态均通过零控制安全检查。按求解前预定的原判据，数值接受与理论比较同时通过 28/35；按求解后修订的判据，同时通过 30/35；修订只调整浮点接受尺度，不提供新的收敛证据。未通过的网格记录（E2、E4 在 $n=2000$ 的阶段识别异常；E1、E3、E5 在 $n=2000$ 的成本比较未通过）见补充材料。}\n% END AUTO-GENERATED NUMERICAL RESULTS\n\\providecommand{\\NumMeshDetails}{}\n\n% Missing actual figures remain blank. Never substitute predicted OCP plots.\n\\newcommand{\\NumFigureOrBlank}[2]{%\n  \\IfFileExists{\\NumFigureRoot/#1}{%\n    \\includegraphics[width=0.97\\linewidth]{\\NumFigureRoot/#1}%\n  }{%\n    \\fbox{\\parbox[c][#2][c]{0.93\\linewidth}{\\mbox{}}}%\n  }%\n}\n\\newcommand{\\NumFindingParagraph}[1]{\\par\\smallskip #1\\par\\smallskip}\n\n\\section{数值方法与实验设置}\n\\label{sec:numerical-method}\n\n本节围绕不同初值区域，比较解析最优策略与直接配点输出，\n重点考察等待阶段、容量弧和完全跟踪阶段的出现顺序及其连接位置。\n算例组织借鉴 \\citet[第6节]{AvramFreddiGoreac2022} 的区域展示方式，\n但该文含目标约束的有限时域问题不作为本文截断处理的等价性依据。\n全局最优性与几乎处处唯一性分别由\n\\NumTheoryRef{thm:verification}{验证定理}和\n\\NumTheoryRef{thm:unique-q}{唯一性定理}给出；\n数值实验用于检验这些解析结论的计算一致性。\n\n五个主算例采用相同参数\n\\begin{equation}\n \\beta=0.5,\\qquad c=2,\\qquad\\gamma=0.3,\\qquad K=0.15,\n \\label{eq:numerical-common-parameters}\n\\end{equation}\n仅改变初始状态。\n$s,i$ 为相对于初始总量的比例，允许 $s_0+i_0<1$；\n此时 $h=0.3$、$\\ell=p=0.15$。\n这些参数用于展示理论结构，不作为特定疫情的参数标定。\n\n直接配点处理如下固定时域问题：\n\\begin{equation}\n\\begin{aligned}\n \\min_q\\quad &J_T(q)=\\int_0^T \\beta cq(t)\\,\\mathrm dt,\\\\\n \\text{满足}\\quad\n &\\dot s=-c[\\beta+(1-\\beta)q]si,\\qquad\n \\dot i=[\\beta c(1-q)s-\\gamma]i,\\\\\n &0\\le q\\le1,\\quad 0\\le s\\le1,\\quad0\\le i\\le K,\\\\\n &(s(0),i(0))=(s_0,i_0).\n\\end{aligned}\n\\label{eq:numerical-ocp}\n\\end{equation}\n该问题不增加终端状态约束、终端成本或二次控制正则化，\n也不固定阶段数、切换时刻或容量控制。\n解析策略可用于初始化，但不进入数值优化的目标或额外约束。\n\n计算方法为 MATLAB/OpenOCL 直接配点\\citep{Koenemann2019OpenOCL}，\n通过 CasADi\\citep{Andersson2019CasADi} 构造离散问题，\n由 IPOPT 求解非线性规划\\citep{WachterBiegler2006}。\n基准设置为 $T=\\NumHorizon$、$n=\\NumIntervals$、$d=\\NumDegree$；\n控制在每个网格区间内为常数。\n\\NumMeshDetails\n控制成本在完整求解时域上按实际区间长度计算：\n\\begin{equation}\n J_{\\mathrm{OCL}}=\\beta c\\sum_{k=1}^{n}q_k\\Delta t_k.\n \\label{eq:numerical-cost-sum}\n\\end{equation}\n绘图窗口不作为成本积分范围，求解输出不通过平滑或裁剪替换。\n\n对于每个待报告结果，用原始分段常数控制重新积分状态方程，\n检查区间内部的容量峰值、与配点状态的偏差以及终端零控制延拓。\n\n固定 $T=300$ 的直接配点加终端检查是一种终端处理，\n不等同于原无穷时域问题。\n终端检查采用式\\eqref{eq:uncontrolled-future-peak}中的无控制未来峰值\n$P_0(s(T),i(T))$，终端状态取自重积分轨道，\n并核查末段控制是否为零。\n若该轨道在 $[0,T]$ 上满足 $i\\le K$，且 $P_0(s(T),i(T))\\le K$，\n则在 $T$ 之后令 $q=0$，由引理\\ref{lem:safe-invariant}的安全集正向不变性，\n所得控制对原无穷时域问题可行，其完整成本为 $J_{\\mathrm{OCL}}$，\n从而 $J_{\\mathrm{OCL}}\\ge V(x_0)$。\n若重积分轨道有最大容量超出 $\\varepsilon_K>0$，\n且终端满足 $P_0(s(T),i(T))\\le K+\\varepsilon_K$，\n则同一延拓只保证对容量 $K+\\varepsilon_K$ 可行，\n相应结论为 $J_{\\mathrm{OCL}}\\ge V_{K+\\varepsilon_K}(x_0)$；\n这里 $V_{K'}$ 表示容量为 $K'$ 时的值函数。\n这给出表\\ref{tab:numerical-errors}中容量放宽对照的依据。\n上述可行性推论以连续轨道满足相应条件为前提，\n重积分及终端检查本身仍是浮点诊断。\n本文没有证明离散有限时域最优值随网格加密收敛到 $V$，\n也不以这些诊断代替该收敛性结论。\n\n阶段依据数值控制及容量接近程度识别，切换位置按过渡网格区间报告。\n已有复核改变初始猜测、网格、终止时刻及阶段识别阈值，\n完整配置、判据与诊断结果见补充材料附录\\ref{app:numerical-reproducibility}。\n\n\\section{不同初值区域下的数值验证}\n\\label{sec:numerical-results}\n\n\\subsection{代表初值与相平面分区}\n\n表\\ref{tab:numerical-scenarios}的五个初值覆盖表\\ref{tab:optimal-stages}中的两种等待区、\n立即完全跟踪区及容量线上 $s_B$ 两侧的状态，\n用于检验\\NumTheoryRef{thm:verification}{验证定理}给出的阶段结构与成本。\n\n由安全边界和切换条件的数值评价得\n\\begin{equation}\n s_B\\approx\\NumSBRef,\n \\label{eq:numerical-sB}\n\\end{equation}\n其中 $(s_B,K)$ 为切换曲线与容量线的交点。\n图\\ref{fig:optimal-partition}给出成本分区的理论几何，图\\ref{fig:numerical-regions}将 E1--E5 的直接配点轨道与该几何叠加比较。\n\n\\begin{table}[H]\n\\centering\n\\small\n\\setlength{\\tabcolsep}{4.2pt}\n\\caption{代表初值、理论控制结构与控制成本。$J_{\\mathrm{ref}}$ 为解析公式的数值评价，\n$J_{\\mathrm{OCL}}$ 为直接配点返回控制在完整求解时域内的成本。}\n\\label{tab:numerical-scenarios}\n\\begin{tabular}{@{}clclrr@{}}\n\\toprule\n算例 & $(s_0,i_0)$ & 区域 & 理论结构 & $J_{\\mathrm{ref}}$ & $J_{\\mathrm{OCL}}$\\\\\n\\midrule\nE1 & $(0.75,0.01)$ & $\\mathcal W_\\Gamma$ & $0\\to1\\to0$ & \\NumJRefEOne & \\NumJOclEOne\\\\\nE2 & $(0.99,0.01)$ & $\\mathcal W_K$ & $0\\to q_B\\to1\\to0$ & \\NumJRefETwo & \\NumJOclETwo\\\\\nE3 & $(0.50,0.14)$ & $\\mathcal T$ & $1\\to0$ & \\NumJRefEThree & \\NumJOclEThree\\\\\nE4 & $(0.70,0.15)$ & $\\mathcal B$ & $q_B\\to1\\to0$ & \\NumJRefEFour & \\NumJOclEFour\\\\\nE5 & $(0.50,0.15)$ & $\\mathcal T\\cap\\{i=K\\}$ & $1\\to0$ & \\NumJRefEFive & \\NumJOclEFive\\\\\n\\bottomrule\n\\end{tabular}\n\\end{table}\n\n\\begin{table}[H]\n\\centering\n\\small\n\\setlength{\\tabcolsep}{3pt}\n\\caption{主结果的带符号成本差与约束误差。\n$J_{\\mathrm{ref}}=V_K(x_0)$ 为解析参考值，相对差为\n$(J_{\\mathrm{OCL}}-J_{\\mathrm{ref}})/J_{\\mathrm{ref}}$。\n按第\\ref{sec:numerical-method}节的终端延拓逻辑，\n末列检查成本差是否不小于 $-(V_K-V_{K+\\varepsilon_K})$；\n该浮点比较不构成严格连续可行性的证明。}\n\\label{tab:numerical-errors}\n\\begin{tabular}{@{}crrrrr@{}}\n\\toprule\n算例 & $J_{\\mathrm{OCL}}-J_{\\mathrm{ref}}$ & \\shortstack{相对差\\\\（\\%）} & $\\varepsilon_K$ & $V_K-V_{K+\\varepsilon_K}$ & \\shortstack{是否满足\\\\$J_{\\mathrm{OCL}}\\ge V_{K+\\varepsilon_K}$}\\\\\n\\midrule\n\\NumErrorTableRows\n\\bottomrule\n\\end{tabular}\n\\end{table}\n\n\\begin{figure}[H]\n\\centering\n\\NumFigureOrBlank{FigN1_regions.pdf}{4.2cm}\n\\caption{理论分区与直接配点轨道的相平面对照。\n图中叠加 E1--E5 的初始点和 OpenOCL 轨道，并标出安全边界、切换曲线 $\\Gamma_K$、\n容量线 $i=K$ 及两种等待区的公共边界。理论曲线与数值轨道采用不同线型或标记；\n灰色点划线为 $s=h$，灰色虚线为 $s+i=1$。}\n\\label{fig:numerical-regions}\n\\end{figure}\n\n\n\\subsection{两种等待区域的对照}\n\nE1 与 E2 保持 $i_0=0.01$ 相同，分别位于 $\\mathcal W_\\Gamma$ 和 $\\mathcal W_K$。\n按表\\ref{tab:optimal-stages}及\\NumTheoryRef{def:candidate}{反馈构造}，\n两者的差别是等待后是否出现正长度容量弧。\n图\\ref{fig:numerical-waiting}检验这一差别，以及完全跟踪的开始位置：\nE1 的解析参考为 $(\\NumSwitchSEOneRef,\\NumSwitchIEOneRef)$，E2 的参考为 $(s_B,K)$。\n\n\\begin{figure}[H]\n\\centering\n\\NumFigureOrBlank{FigN2_waiting.pdf}{5.0cm}\n\\caption{两种等待区域下的控制与感染比例：左列为 E1，右列为 E2；\n上排为 $q(t)$，下排为 $i(t)$。\n每幅图比较解析参考与 OpenOCL 结果，数值控制按分段常数形式显示，\n感染图中的水平线表示容量 $K$。}\n\\label{fig:numerical-waiting}\n\\end{figure}\n\n\\NumFindingParagraph{\\NumFindingWaiting}\n\n不存在容量平台与全时域内不接触容量并非同一命题。\n解析策略在安全边界解除后，感染比例可以沿无控制轨道再次上升至 $K$，\n但不超过它；此时 $q=0$，不应将这种后续接触误判为容量控制弧。\n\n\\subsection{立即完全跟踪与容量边界初值}\n\nE3 检验内部初值 $(0.50,0.14)$ 的立即完全跟踪；\nE4、E5 保持 $i_0=K$ 相同，检验 $0.70>s_B$ 与 $0.50<s_B$ 时初始阶段的差别。\n表\\ref{tab:optimal-stages}及\\NumTheoryRef{def:candidate}{反馈构造}分别给出\n$1\\to0$、$q_B\\to1\\to0$、$1\\to0$ 的参考结构，\n图\\ref{fig:numerical-boundary-tracking}与保存控制逐一比较。\n\n另一个比较是 E2 与 E4 在容量退出时的状态。\n两例到达该事件的时间不同，但理论上均经过同一状态 $(s_B,K)$；\n从该点起的后续解析轨道相同。\n因此可以在相平面中比较其数值退出位置，而不要求不同算例的时间序列重合。\n\n\\begin{figure}[H]\n\\centering\n\\NumFigureOrBlank{FigN3_boundary_tracking.pdf}{5.0cm}\n\\caption{立即完全跟踪与容量边界初值的对照。\n从左到右为 E3、E4、E5，上排为 $q(t)$，下排为 $i(t)$。\n解析参考与 OpenOCL 结果的比较重点为初始控制阶段、容量平台是否出现，以及解除位置。}\n\\label{fig:numerical-boundary-tracking}\n\\end{figure}\n\n\\NumFindingParagraph{\\NumFindingTrackingBoundary}\n\n\\subsection{成本、约束误差与剩余残差}\n\n表\\ref{tab:numerical-errors}同时报告成本差、重积分容量超出及放宽容量后的值函数下降。\n五例均满足表中的放宽容量成本比较；其中 E4 的负成本差小于容量放宽导致的值函数下降。\n存在容量超出的离散结果不能称为优于解析最优策略的严格可行控制。\n配点与重积分状态的偏差用于诊断动力学离散，\n不等同于数值状态与解析最优轨道之间的误差；切换位置仍应结合过渡网格宽度解释。\n\n\\NumFindingParagraph{\\NumResidualSummary}\n\\FloatBarrier\n\n\\section{\\texorpdfstring{时变接触率 $c(t)$：条件性结论}{时变接触率：条件性结论}}\n\\label{sec:time-varying}\n现在令 $c(t)>0$ 为给定的可测、局部本质有界函数。\n由于恢复率 $\\gamma$ 不随时间缩放，令 $\\vartheta(t)=\\int_0^t c(v)\\dd v$ 后，\n在该时间变换的值域内仍按几乎处处意义有\n\\[\n\\frac{\\dd i}{\\dd\\vartheta}=\\beta(1-q)si-\\frac{\\gamma}{c(t(\\vartheta))}i.\n\\]\n因此一般不能化为本稿的常系数问题。\n本节仅陈述在另行建立值函数和验证条件后适用的公式与充分条件；\n不声称已经解决任意时变 $c$ 的存在性、全局验证或唯一性。\n\n\\subsection{非自治 HJB 方程}\n对具体定义的时变问题，在值函数 $V(t,s,i)$ 具备所需正则性、动态规划可作微分化的点，\n内部 HJB 的条件性微分形式为\n\\begin{equation}\n\\begin{aligned}\n0=V_t+\\min_{q\\in \\mathcal Q(t,s,i)}\\Big\\{&-c(t)[\\beta+(1-\\beta)q]siV_s\\\\\n&+[\\beta c(t)(1-q)s-\\gamma]iV_i+\\beta c(t)q\\Big\\}.\n\\end{aligned}\n\\label{eq:time-HJB}\n\\end{equation}\n当 $c$ 仅可测时，上式至多按时间几乎处处理解：在相应的 Lebesgue 点和所需值函数导数存在处使用，\n不要求它在每个指定时刻都是经典等式。\n若进一步用于验证，仍须针对每条被比较的轨道建立复合函数的链式法则和沿轨道的几乎处处不等式；\n仅有状态--时间空间中几乎处处的等式，不自动保证它沿任意轨道成立。\n内部取 $\\mathcal Q=[0,1]$；容量边界在上述几乎处处时间意义下的内指或切向速度条件对应\n\\begin{equation}\n\\mathcal Q(t,s,K)=\\left[\\max\\left\\{0,1-\\frac{\\gamma}{\\beta c(t)s}\\right\\},1\\right].\n\\label{eq:time-boundary-set}\n\\end{equation}\n切换系数为\n\\begin{equation}\n\\Sigma(t,s,i)=\\beta c(t)-c(t)si[(1-\\beta)V_s+\\beta V_i].\n\\label{eq:time-switch}\n\\end{equation}\n式 \\eqref{eq:time-boundary-set}--\\eqref{eq:time-switch} 不把时间零测集上的 $c,q$ 代表值作为额外的点态轨道约束。\n若在时间 $t$ 定义无控制安全集，它必须使用从 $t$ 开始的\\emph{完整未来接触率路径}，\n不能仅把常系数安全集中的 $c$ 换成当前 $c(t)$。\n\n\\begin{proposition}[条件性的时变唯一性充分条件]\n\\label{prop:time-conditional}\n对某个已经明确定义的时变问题，假设最优解存在，且已经证明对任意最优轨道的验证等式。\n进一步假设：在所有可能被最优轨道经过的状态--时间点，验证等式使控制几乎处处等于同一单值反馈 $Q(t,x)$；\n该反馈从给定初值生成的可行 Carath\\'eodory 解唯一。\n则最优控制几乎处处唯一。\n\\end{proposition}\n\\begin{proof}\n任意最优控制均须沿自己的轨道满足 $q(t)=Q(t,x(t))$ 几乎处处。\n所有最优状态轨道因此满足同一闭环方程与初值，由闭环唯一性得轨道一致，进而控制几乎处处一致。\n\\end{proof}\n内部 $\\Sigma\\ne0$、容量上受限极小元单值，是控制选择单值的充分途径，\n但仅在一条候选轨道上检查这些性质不足以排除所有其他最优轨道。\n常接触率平台的唯一性反而说明点态单值不是最优控制唯一的必要条件。\n\n\\subsection{有限时域严格凸正则化}\n另取固定 $T<\\infty$ 及明确的终端数据，可研究不同于原无穷时域问题的正则化目标\n\\begin{equation}\nJ_\\varepsilon(q)=\\int_0^T\\left[\\beta c(t)q(t)+\\frac\\varepsilon2q(t)^2\\right]\\dd t,\n\\qquad\\varepsilon>0.\n\\label{eq:regularized-cost}\n\\end{equation}\n\\begin{proposition}[唯一的点态正则化极小元]\n\\label{prop:regularized-pointwise}\n若相应的有限时域值函数 $V_\\varepsilon^T$ 在所考虑的点可微，\n则固定满足上述时间约定的 $(t,s,i)$ 及其值梯度时，Hamiltonian 的内部极小元唯一，形式为\n\\begin{equation}\nq_\\varepsilon^*(t,s,i)=\\proj_{[0,1]}\n\\left(\\frac{c(t)si[(1-\\beta)\\partial_sV_\\varepsilon^T+\\beta\\partial_iV_\\varepsilon^T]-\\beta c(t)}\\varepsilon\\right).\n\\label{eq:projection-feedback}\n\\end{equation}\n容量边界上将投影区间换为 \\eqref{eq:time-boundary-set}。\n\\end{proposition}\n\\begin{proof}\n关于 $q$ 的二阶导数为 $\\varepsilon>0$，无约束一阶条件给出括号中的值，\n加入区间约束后取投影。\n该计算只证明点态严格凸性；只有另行完成验证、达到性和可行闭环唯一性，才能进一步推出整个控制问题的唯一最优解。\n\\end{proof}\n若需控制变化惩罚，可在离散目标中加入相邻控制差的平方，或在连续问题中把 $q$ 作为状态。\n这些都是不同的控制问题，不能不经证明就视为原线性成本问题的等价改写。\n\n\\section{同时控制接触率与跟踪比例时的限制}\n若把 $c$ 也作为控制并允许 $c=0$，而仍仅使用 \\eqref{eq:linear-cost}，\n则 $c=0,q=0$ 给出零成本可行方案，问题退化。\n联合控制需另行定义接触减少和跟踪成本，例如\n\\begin{equation}\n\\int_0^T[\\alpha_c(c_0-c)^2+\\alpha_q q^2+\\alpha_{cq}cq]\\dd t,\n\\label{eq:joint-cost}\n\\end{equation}\n并明确控制约束。\n该示例中的权重须另行保证非负性或所需凸性；即使运行成本严格凸，\n动力学中的 $cq$ 项以及非线性状态约束也不会自动给出整个问题的严格凸性。\n本稿不为此扩展声称全局唯一性。\n\n\\section{模型假设与理论边界}\n\\label{sec:limitations}\n本稿的 $q=1$ 代表理想化的完美追踪：所有被接触者均被及时追踪并隔离。\n提前离开容量由命题\\ref{prop:main-structure}给出，第\\ref{sec:switching-mechanism}节的边际成本分解说明其来源。\n这只是既定动力学与成本下的数学结论，不自动适用于含其他健康损失或资源约束的实际决策。\n非隔离感染者阈值 $K$、自然感染增长阈值 $h$、以及出现在不变量中的 $p$ 是不同的量；切换点由特征线上的 $\\Theta$ 匹配确定。\n\n\\begin{remark}[本稿未完成、且未用于主定理的扩展证明]\n\\label{rem:unproved-extensions}\n任意时变 $c(t)$ 的全域值函数构造、无穷时域终端处理和无条件唯一性未在本稿证明。\n离散网格加密和 $\\varepsilon\\downarrow0$ 的收敛、时变高峰后的真实安全延拓也未证明。\n跟踪能力受限（$q\\le\\bar q<1$）时的最优控制未在本稿研究。\n完全跟踪后残余感染生成、隔离者回流、联合控制以及参数不确定的情形仍需另行建立可行域和验证函数。\n特别地，跟踪能力上限为 $\\bar q<1$ 时，容量边界还必须满足 $\\bar q\\ge1-h/s$；\n不能只把本稿的 $1$ 替换成 $\\bar q$ 后沿用最优结构定理。\n\\end{remark}\n\\fi",
+      "new": "\n% 数值章节已内联；下方两个标记块由数值导出程序定点更新。\n\\providecommand{\\NumFigureRoot}{../figures/numerical_scenarios}\n\\providecommand{\\NumTheoryRef}[2]{#2~\\ref{#1}}\n% BEGIN AUTO-GENERATED NUMERICAL REFERENCE VALUES\n% MATLAB 解析公式评价；不含优化器结果。\n\\providecommand{\\NumJRefEOne}{0.416186}\n\\providecommand{\\NumJRefETwo}{1.529511}\n\\providecommand{\\NumJRefEThree}{0.433981}\n\\providecommand{\\NumJRefEFour}{1.268835}\n\\providecommand{\\NumJRefEFive}{0.536233}\n\\providecommand{\\NumSBRef}{0.54769512}\n\\providecommand{\\NumSwitchSEOneRef}{0.51017169}\n\\providecommand{\\NumSwitchIEOneRef}{0.13423054}\n\\providecommand{\\NumMaxReleaseRef}{7.44746905}\n\\providecommand{\\NumExitETwoTheory}{5.86950254}\n\\providecommand{\\NumExitEFourTheory}{1.08077528}\n% END AUTO-GENERATED NUMERICAL REFERENCE VALUES\n\n% BEGIN AUTO-GENERATED NUMERICAL RESULTS\n% 从 data/numerical_scenarios 的真实结果生成；条件开关由 main.tex 定义。\n\\NumResultsVerifiedtrue\n\\NumRobustnessCompletetrue\n\\renewcommand{\\NumRobustnessStatement}{数值接受及容量控制比较容差于保存求解后调整，取值与原严格记录见复现附录。五例常值 $q=0.7$ 和固定种子随机初猜的阶段一致，成本最大绝对差为 $\\num{6.1e-13}$。在当前接受容差下，最细两级成本与事件区间比较通过 E1、E2、E3、E4、E5。$n=2000$ 的 E2、E4 存在长中间控制块与阶段识别异常。该比较不提供收敛阶。$n=2000$ 的 E1、E3、E5 成本比较仍未通过。E3 的粗网格负成本差小于容量超出所致的解析最优值下降，与容量超出相容。固定步长时域复核五例通过。阈值复核通过。有限样本与浮点诊断不替代解析证明。}\n\\renewcommand{\\NumReproducibilityDetails}{默认协议已记录 35/35 个不同配置，其中 30 个同时通过数值接受与理论比较。协议是否完成与比较是否一致分别记录。本次在保存求解后调整状态及容量接受容差为 $\\num{1e-05}$、容量段控制与 $q_B$ 区间均值的绝对误差容差为 $\\num{0.003}$，并重新评估全部保存结果；成本相对误差容差 $\\num{0.0001}$ 与事件区间判据保持不变。原严格判据及其未通过记录另行保留。按保存求解前预定的原判据（状态容差 $\\num{1e-06}$、容量容差 $\\num{1e-06}$、容量段控制容差 $\\num{0.002}$），数值接受与理论比较分别通过 29/35 与 29/35，同时通过 28/35；修订判据只重新划定浮点接受尺度，不提供新的收敛证据。五例常值 $q=0.7$ 和固定种子随机初猜的阶段一致，成本最大绝对差为 $\\num{6.1e-13}$。在所列接受容差下，固定时域网格复核的最细两级成本与事件区间比较通过 E1、E2、E3、E4、E5。E2、E4 的 $n=2000$ 长中间控制块与阶段识别异常仍保留在配套记录中。该结果只支持所测最细两级的一致性，不给出收敛阶。$n=2000$ 的 E1、E3、E5 成本比较仍未通过。E3 的 $n=2000$ 负成本差为 $\\num{-6.76e-05}$，重积分容量超出 $\\varepsilon_K=\\num{7.83e-06}$；把容量放宽为 $K+\\varepsilon_K$ 后，解析最优值下降 $\\num{1.08e-04}$，大于该负差。因此该负差与容量超出相容，评估记录中的 unresolved-discrepancy 分类按原样保留。固定步长时域复核五例通过。阈值复核通过。全部记录见配套文件；有限样本与浮点诊断不替代解析证明。}\n\\providecommand{\\NumHorizon}{300}\n\\providecommand{\\NumIntervals}{4000}\n\\providecommand{\\NumDegree}{2}\n\\providecommand{\\NumMeshDetails}{按预先指定设置，E2 使用 $n=8000$，E4 使用 $n=8000$；其余算例保留基准网格。图表均采用各例最终保存的结果。}\n\\providecommand{\\NumJOclEOne}{0.416205}\n\\providecommand{\\NumJOclETwo}{1.529523}\n\\providecommand{\\NumJOclEThree}{0.433999}\n\\providecommand{\\NumJOclEFour}{1.268831}\n\\providecommand{\\NumJOclEFive}{0.536256}\n\\providecommand{\\NumExitETwoStart}{5.85000000}\n\\providecommand{\\NumExitETwoEnd}{5.88750000}\n\\providecommand{\\NumExitEFourStart}{1.05000000}\n\\providecommand{\\NumExitEFourEnd}{1.08750000}\n\\providecommand{\\NumNeutralETwoCostDifference}{5.78648240435e-13}\n\\providecommand{\\NumEFourSignedCostDifference}{-3.68275844664e-06}\n\\providecommand{\\NumEFourCapacityExcess}{7.70286958773e-07}\n\\providecommand{\\NumFindingWaiting}{实际控制输出中，E1 和 E2 分别识别出 $0\\to 1\\to 0$ 与 $0\\to q_B\\to 1\\to 0$。E1 的完全跟踪开始区间为 $[6.975,7.05]$。对应端点的感染比例仍低于容量上限。E2 的容量退出区间为 $[5.85,5.8875]$。}\n\\providecommand{\\NumFindingTrackingBoundary}{E3、E4、E5 的实际阶段依次为 $1\\to 0$、$q_B\\to 1\\to 0$ 和 $1\\to 0$。E3、E5 均从初始时刻采用完全跟踪。E4 的容量退出区间为 $[1.05,1.0875]$。E2、E4 的理论容量退出时刻均落在上述单网格过渡区间内；首个纯完全跟踪单元的起点仍不等同于连续切换点。}\n\\providecommand{\\NumCheckStatement}{对原始分段常数控制逐区间重积分后，五例最大容量超出量为 $\\num{8e-07}$，与配点状态的最大差异为 $\\num{8.6e-08}$；末尾 $20$ 个时间单位内最大控制幅值为 $\\num{0}$。各例终端状态均通过零控制安全延拓核查。这些浮点检查用于排查截断及离散问题，不是连续可行性的严格证明。}\n\\providecommand{\\NumOverallFinding}{五例成本相对解析参考的最大差异约为 $0.00459\\%$。计算结果支持这五个初值下的阶段顺序及切换位置预测；切换位置的偏差应结合控制区间宽度和过渡单元解释。E4 的离散成本比解析参考低 $\\num{3.68e-06}$，重积分轨道有 $\\varepsilon_K=\\num{7.7e-07}$ 的容量超出；把容量放宽为 $K+\\varepsilon_K$ 后，解析最优值下降 $\\num{1.16e-05}$，大于该负差。因此该控制的成本仍不低于放宽容量后的解析最优值，负差与容量超出相容，不构成低于解析最优值的连续时间可行控制。}\n\\providecommand{\\NumErrorTableRows}{E1 & \\num{1.91e-05} & \\num{4.59e-03} & \\num{2.97e-07} & \\num{4.05e-06} & 是 \\\\ E2 & \\num{1.22e-05} & \\num{7.98e-04} & \\num{7.99e-07} & \\num{1.28e-05} & 是 \\\\ E3 & \\num{1.75e-05} & \\num{4.03e-03} & \\num{4.80e-08} & \\num{6.60e-07} & 是 \\\\ E4 & \\num{-3.68e-06} & \\num{-2.90e-04} & \\num{7.70e-07} & \\num{1.16e-05} & 是 \\\\ E5 & \\num{2.32e-05} & \\num{4.32e-03} & \\num{5.57e-08} & \\num{7.76e-07} & 是 \\\\}\n\\providecommand{\\NumResidualSummary}{五例成本相对解析参考差的绝对值最大为 $\\num{0.00459}\\%$。重积分最大容量超出为 $\\num{7.99e-07}$，与配点状态的最大偏差为 $\\num{8.57e-08}$。末段最大控制幅值为 $\\num{0}$，各例终端状态均通过零控制安全检查。按求解前预定的原判据，数值接受与理论比较同时通过 28/35；按求解后修订的判据，同时通过 30/35；修订只调整浮点接受尺度，不提供新的收敛证据。未通过的网格记录（E2、E4 在 $n=2000$ 的阶段识别异常；E1、E3、E5 在 $n=2000$ 的成本比较未通过）见补充材料。}\n% END AUTO-GENERATED NUMERICAL RESULTS\n\\providecommand{\\NumMeshDetails}{}\n\n% Missing actual figures remain blank. Never substitute predicted OCP plots.\n\\newcommand{\\NumFigureOrBlank}[2]{%\n  \\IfFileExists{\\NumFigureRoot/#1}{%\n    \\includegraphics[width=0.97\\linewidth]{\\NumFigureRoot/#1}%\n  }{%\n    \\fbox{\\parbox[c][#2][c]{0.93\\linewidth}{\\mbox{}}}%\n  }%\n}\n\\newcommand{\\NumFindingParagraph}[1]{\\par\\smallskip #1\\par\\smallskip}\n\n\\section{数值方法与实验设置}\n\\label{sec:numerical-method}\n\n本节围绕不同初值区域，比较解析最优策略与直接配点输出，\n重点考察等待阶段、容量弧和完全跟踪阶段的出现顺序及其连接位置。\n算例组织借鉴 \\citet[第6节]{AvramFreddiGoreac2022} 的区域展示方式，\n但该文含目标约束的有限时域问题不作为本文截断处理的等价性依据。\n全局最优性与几乎处处唯一性分别由\n\\NumTheoryRef{thm:verification}{验证定理}和\n\\NumTheoryRef{thm:unique-q}{唯一性定理}给出；\n数值实验用于检验这些解析结论的计算一致性。\n\n五个主算例采用相同参数\n\\begin{equation}\n \\beta=0.5,\\qquad c=2,\\qquad\\gamma=0.3,\\qquad K=0.15,\n \\label{eq:numerical-common-parameters}\n\\end{equation}\n仅改变初始状态。\n$s,i$ 为相对于初始总量的比例，允许 $s_0+i_0<1$；\n此时 $h=0.3$、$\\ell=p=0.15$。\n这些参数用于展示理论结构，不作为特定疫情的参数标定。\n\n直接配点处理如下固定时域问题：\n\\begin{equation}\n\\begin{aligned}\n \\min_q\\quad &J_T(q)=\\int_0^T \\beta cq(t)\\,\\mathrm dt,\\\\\n \\text{满足}\\quad\n &\\dot s=-c[\\beta+(1-\\beta)q]si,\\qquad\n \\dot i=[\\beta c(1-q)s-\\gamma]i,\\\\\n &0\\le q\\le1,\\quad 0\\le s\\le1,\\quad0\\le i\\le K,\\\\\n &(s(0),i(0))=(s_0,i_0).\n\\end{aligned}\n\\label{eq:numerical-ocp}\n\\end{equation}\n该问题不增加终端状态约束、终端成本或二次控制正则化，\n也不固定阶段数、切换时刻或容量控制。\n解析策略可用于初始化，但不进入数值优化的目标或额外约束。\n\n计算方法为 MATLAB/OpenOCL 直接配点\\citep{Koenemann2019OpenOCL}，\n通过 CasADi\\citep{Andersson2019CasADi} 构造离散问题，\n由 IPOPT 求解非线性规划\\citep{WachterBiegler2006}。\n基准设置为 $T=\\NumHorizon$、$n=\\NumIntervals$、$d=\\NumDegree$；\n控制在每个网格区间内为常数。\n\\NumMeshDetails\n控制成本在完整求解时域上按实际区间长度计算：\n\\begin{equation}\n J_{\\mathrm{OCL}}=\\beta c\\sum_{k=1}^{n}q_k\\Delta t_k.\n \\label{eq:numerical-cost-sum}\n\\end{equation}\n绘图窗口不作为成本积分范围，求解输出不通过平滑或裁剪替换。\n\n对于每个待报告结果，用原始分段常数控制重新积分状态方程，\n检查区间内部的容量峰值、与配点状态的偏差以及终端零控制延拓。\n\n固定 $T=300$ 的直接配点加终端检查是一种终端处理，\n不等同于原无穷时域问题。\n终端检查采用式\\eqref{eq:uncontrolled-future-peak}中的无控制未来峰值\n$P_0(s(T),i(T))$，终端状态取自重积分轨道，\n并核查末段控制是否为零。\n若该轨道在 $[0,T]$ 上满足 $i\\le K$，且 $P_0(s(T),i(T))\\le K$，\n则在 $T$ 之后令 $q=0$，由引理\\ref{lem:safe-invariant}的安全集正向不变性，\n所得控制对原无穷时域问题可行，其完整成本为 $J_{\\mathrm{OCL}}$，\n从而 $J_{\\mathrm{OCL}}\\ge V(x_0)$。\n若重积分轨道有最大容量超出 $\\varepsilon_K>0$，\n且终端满足 $P_0(s(T),i(T))\\le K+\\varepsilon_K$，\n则同一延拓只保证对容量 $K+\\varepsilon_K$ 可行，\n相应结论为 $J_{\\mathrm{OCL}}\\ge V_{K+\\varepsilon_K}(x_0)$；\n这里 $V_{K'}$ 表示容量为 $K'$ 时的值函数。\n这给出表\\ref{tab:numerical-errors}中容量放宽对照的依据。\n上述可行性推论以连续轨道满足相应条件为前提，\n重积分及终端检查本身仍是浮点诊断。\n本文没有证明离散有限时域最优值随网格加密收敛到 $V$，\n也不以这些诊断代替该收敛性结论。\n\n阶段依据数值控制及容量接近程度识别，切换位置按过渡网格区间报告。\n已有复核改变初始猜测、网格、终止时刻及阶段识别阈值，\n完整配置、判据与诊断结果见补充材料附录\\ref{app:numerical-reproducibility}。\n\n\\section{不同初值区域下的数值验证}\n\\label{sec:numerical-results}\n\n\\subsection{代表初值与相平面分区}\n\n表\\ref{tab:numerical-scenarios}的五个初值覆盖表\\ref{tab:optimal-stages}中的两种等待区、\n立即完全跟踪区及容量线上 $s_B$ 两侧的状态，\n用于检验\\NumTheoryRef{thm:verification}{验证定理}给出的阶段结构与成本。\n\n由安全边界和切换条件的数值评价得\n\\begin{equation}\n s_B\\approx\\NumSBRef,\n \\label{eq:numerical-sB}\n\\end{equation}\n其中 $(s_B,K)$ 为切换曲线与容量线的交点。\n图\\ref{fig:optimal-partition}给出成本分区的理论几何，图\\ref{fig:numerical-regions}将 E1--E5 的直接配点轨道与该几何叠加比较。\n\n\\begin{table}[H]\n\\centering\n\\small\n\\setlength{\\tabcolsep}{4.2pt}\n\\caption{代表初值、理论控制结构与控制成本。$J_{\\mathrm{ref}}$ 为解析公式的数值评价，\n$J_{\\mathrm{OCL}}$ 为直接配点返回控制在完整求解时域内的成本。}\n\\label{tab:numerical-scenarios}\n\\begin{tabular}{@{}clclrr@{}}\n\\toprule\n算例 & $(s_0,i_0)$ & 区域 & 理论结构 & $J_{\\mathrm{ref}}$ & $J_{\\mathrm{OCL}}$\\\\\n\\midrule\nE1 & $(0.75,0.01)$ & $\\mathcal W_\\Gamma$ & $0\\to1\\to0$ & \\NumJRefEOne & \\NumJOclEOne\\\\\nE2 & $(0.99,0.01)$ & $\\mathcal W_K$ & $0\\to q_B\\to1\\to0$ & \\NumJRefETwo & \\NumJOclETwo\\\\\nE3 & $(0.50,0.14)$ & $\\mathcal T$ & $1\\to0$ & \\NumJRefEThree & \\NumJOclEThree\\\\\nE4 & $(0.70,0.15)$ & $\\mathcal B$ & $q_B\\to1\\to0$ & \\NumJRefEFour & \\NumJOclEFour\\\\\nE5 & $(0.50,0.15)$ & $\\mathcal T\\cap\\{i=K\\}$ & $1\\to0$ & \\NumJRefEFive & \\NumJOclEFive\\\\\n\\bottomrule\n\\end{tabular}\n\\end{table}\n\n\\begin{table}[H]\n\\centering\n\\small\n\\setlength{\\tabcolsep}{3pt}\n\\caption{主结果的带符号成本差与约束误差。\n$J_{\\mathrm{ref}}=V_K(x_0)$ 为解析参考值，相对差为\n$(J_{\\mathrm{OCL}}-J_{\\mathrm{ref}})/J_{\\mathrm{ref}}$。\n按第\\ref{sec:numerical-method}节的终端延拓逻辑，\n末列检查成本差是否不小于 $-(V_K-V_{K+\\varepsilon_K})$；\n该浮点比较不构成严格连续可行性的证明。}\n\\label{tab:numerical-errors}\n\\begin{tabular}{@{}crrrrr@{}}\n\\toprule\n算例 & $J_{\\mathrm{OCL}}-J_{\\mathrm{ref}}$ & \\shortstack{相对差\\\\（\\%）} & $\\varepsilon_K$ & $V_K-V_{K+\\varepsilon_K}$ & \\shortstack{是否满足\\\\$J_{\\mathrm{OCL}}\\ge V_{K+\\varepsilon_K}$}\\\\\n\\midrule\n\\NumErrorTableRows\n\\bottomrule\n\\end{tabular}\n\\end{table}\n\n\\begin{figure}[H]\n\\centering\n\\NumFigureOrBlank{FigN1_regions.pdf}{4.2cm}\n\\caption{理论分区与直接配点轨道的相平面对照。\n图中叠加 E1--E5 的初始点和 OpenOCL 轨道，并标出安全边界、切换曲线 $\\Gamma_K$、\n容量线 $i=K$ 及两种等待区的公共边界。理论曲线与数值轨道采用不同线型或标记；\n灰色点划线为 $s=h$，灰色虚线为 $s+i=1$。}\n\\label{fig:numerical-regions}\n\\end{figure}\n\n\n\\subsection{两种等待区域的对照}\n\nE1 与 E2 保持 $i_0=0.01$ 相同，分别位于 $\\mathcal W_\\Gamma$ 和 $\\mathcal W_K$。\n按表\\ref{tab:optimal-stages}及\\NumTheoryRef{def:candidate}{反馈构造}，\n两者的差别是等待后是否出现正长度容量弧。\n图\\ref{fig:numerical-waiting}检验这一差别，以及完全跟踪的开始位置：\nE1 的解析参考为 $(\\NumSwitchSEOneRef,\\NumSwitchIEOneRef)$，E2 的参考为 $(s_B,K)$。\n\n\\begin{figure}[H]\n\\centering\n\\NumFigureOrBlank{FigN2_waiting.pdf}{5.0cm}\n\\caption{两种等待区域下的控制与感染比例：左列为 E1，右列为 E2；\n上排为 $q(t)$，下排为 $i(t)$。\n每幅图比较解析参考与 OpenOCL 结果，数值控制按分段常数形式显示，\n感染图中的水平线表示容量 $K$。}\n\\label{fig:numerical-waiting}\n\\end{figure}\n\n\\NumFindingParagraph{\\NumFindingWaiting}\n\n不存在容量平台与全时域内不接触容量并非同一命题。\n解析策略在安全边界解除后，感染比例可以沿无控制轨道再次上升至 $K$，\n但不超过它；此时 $q=0$，不应将这种后续接触误判为容量控制弧。\n\n\\subsection{立即完全跟踪与容量边界初值}\n\nE3 检验内部初值 $(0.50,0.14)$ 的立即完全跟踪；\nE4、E5 保持 $i_0=K$ 相同，检验 $0.70>s_B$ 与 $0.50<s_B$ 时初始阶段的差别。\n表\\ref{tab:optimal-stages}及\\NumTheoryRef{def:candidate}{反馈构造}分别给出\n$1\\to0$、$q_B\\to1\\to0$、$1\\to0$ 的参考结构，\n图\\ref{fig:numerical-boundary-tracking}与保存控制逐一比较。\n\n另一个比较是 E2 与 E4 在容量退出时的状态。\n两例到达该事件的时间不同，但理论上均经过同一状态 $(s_B,K)$；\n从该点起的后续解析轨道相同。\n因此可以在相平面中比较其数值退出位置，而不要求不同算例的时间序列重合。\n\n\\begin{figure}[H]\n\\centering\n\\NumFigureOrBlank{FigN3_boundary_tracking.pdf}{5.0cm}\n\\caption{立即完全跟踪与容量边界初值的对照。\n从左到右为 E3、E4、E5，上排为 $q(t)$，下排为 $i(t)$。\n解析参考与 OpenOCL 结果的比较重点为初始控制阶段、容量平台是否出现，以及解除位置。}\n\\label{fig:numerical-boundary-tracking}\n\\end{figure}\n\n\\NumFindingParagraph{\\NumFindingTrackingBoundary}\n\n\\subsection{成本、约束误差与剩余残差}\n\n表\\ref{tab:numerical-errors}同时报告成本差、重积分容量超出及放宽容量后的值函数下降。\n五例均满足表中的放宽容量成本比较；其中 E4 的负成本差小于容量放宽导致的值函数下降。\n存在容量超出的离散结果不能称为优于解析最优策略的严格可行控制。\n配点与重积分状态的偏差用于诊断动力学离散，\n不等同于数值状态与解析最优轨道之间的误差；切换位置仍应结合过渡网格宽度解释。\n\n\\NumFindingParagraph{\\NumResidualSummary}\n\\FloatBarrier\n\n\\section{\\texorpdfstring{时变接触率 $c(t)$：条件性结论}{时变接触率：条件性结论}}\n\\label{sec:time-varying}\n现在令 $c(t)>0$ 为给定的可测、局部本质有界函数。\n由于恢复率 $\\gamma$ 不随时间缩放，令 $\\vartheta(t)=\\int_0^t c(v)\\dd v$ 后，\n在该时间变换的值域内仍按几乎处处意义有\n\\[\n\\frac{\\dd i}{\\dd\\vartheta}=\\beta(1-q)si-\\frac{\\gamma}{c(t(\\vartheta))}i.\n\\]\n因此一般不能化为本稿的常系数问题。\n本节仅陈述在另行建立值函数和验证条件后适用的公式与充分条件；\n不声称已经解决任意时变 $c$ 的存在性、全局验证或唯一性。\n\n\\subsection{非自治 HJB 方程}\n对具体定义的时变问题，在值函数 $V(t,s,i)$ 具备所需正则性、动态规划可作微分化的点，\n内部 HJB 的条件性微分形式为\n\\begin{equation}\n\\begin{aligned}\n0=V_t+\\min_{q\\in \\mathcal Q(t,s,i)}\\Big\\{&-c(t)[\\beta+(1-\\beta)q]siV_s\\\\\n&+[\\beta c(t)(1-q)s-\\gamma]iV_i+\\beta c(t)q\\Big\\}.\n\\end{aligned}\n\\label{eq:time-HJB}\n\\end{equation}\n当 $c$ 仅可测时，上式至多按时间几乎处处理解：在相应的 Lebesgue 点和所需值函数导数存在处使用，\n不要求它在每个指定时刻都是经典等式。\n若进一步用于验证，仍须针对每条被比较的轨道建立复合函数的链式法则和沿轨道的几乎处处不等式；\n仅有状态--时间空间中几乎处处的等式，不自动保证它沿任意轨道成立。\n内部取 $\\mathcal Q=[0,1]$；容量边界在上述几乎处处时间意义下的内指或切向速度条件对应\n\\begin{equation}\n\\mathcal Q(t,s,K)=\\left[\\max\\left\\{0,1-\\frac{\\gamma}{\\beta c(t)s}\\right\\},1\\right].\n\\label{eq:time-boundary-set}\n\\end{equation}\n切换系数为\n\\begin{equation}\n\\Sigma(t,s,i)=\\beta c(t)-c(t)si[(1-\\beta)V_s+\\beta V_i].\n\\label{eq:time-switch}\n\\end{equation}\n式 \\eqref{eq:time-boundary-set}--\\eqref{eq:time-switch} 不把时间零测集上的 $c,q$ 代表值作为额外的点态轨道约束。\n若在时间 $t$ 定义无控制安全集，它必须使用从 $t$ 开始的\\emph{完整未来接触率路径}，\n不能仅把常系数安全集中的 $c$ 换成当前 $c(t)$。\n\n\\begin{proposition}[条件性的时变唯一性充分条件]\n\\label{prop:time-conditional}\n对某个已经明确定义的时变问题，假设最优解存在，且已经证明对任意最优轨道的验证等式。\n进一步假设：在所有可能被最优轨道经过的状态--时间点，验证等式使控制几乎处处等于同一单值反馈 $Q(t,x)$；\n该反馈从给定初值生成的可行 Carath\\'eodory 解唯一。\n则最优控制几乎处处唯一。\n\\end{proposition}\n\\begin{proof}\n任意最优控制均须沿自己的轨道满足 $q(t)=Q(t,x(t))$ 几乎处处。\n所有最优状态轨道因此满足同一闭环方程与初值，由闭环唯一性得轨道一致，进而控制几乎处处一致。\n\\end{proof}\n内部 $\\Sigma\\ne0$、容量上受限极小元单值，是控制选择单值的充分途径，\n但仅在一条候选轨道上检查这些性质不足以排除所有其他最优轨道。\n常接触率平台的唯一性反而说明点态单值不是最优控制唯一的必要条件。\n\n\\subsection{有限时域严格凸正则化}\n另取固定 $T<\\infty$ 及明确的终端数据，可研究不同于原无穷时域问题的正则化目标\n\\begin{equation}\nJ_\\varepsilon(q)=\\int_0^T\\left[\\beta c(t)q(t)+\\frac\\varepsilon2q(t)^2\\right]\\dd t,\n\\qquad\\varepsilon>0.\n\\label{eq:regularized-cost}\n\\end{equation}\n\\begin{proposition}[唯一的点态正则化极小元]\n\\label{prop:regularized-pointwise}\n若相应的有限时域值函数 $V_\\varepsilon^T$ 在所考虑的点可微，\n则固定满足上述时间约定的 $(t,s,i)$ 及其值梯度时，Hamiltonian 的内部极小元唯一，形式为\n\\begin{equation}\nq_\\varepsilon^*(t,s,i)=\\proj_{[0,1]}\n\\left(\\frac{c(t)si[(1-\\beta)\\partial_sV_\\varepsilon^T+\\beta\\partial_iV_\\varepsilon^T]-\\beta c(t)}\\varepsilon\\right).\n\\label{eq:projection-feedback}\n\\end{equation}\n容量边界上将投影区间换为 \\eqref{eq:time-boundary-set}。\n\\end{proposition}\n\\begin{proof}\n关于 $q$ 的二阶导数为 $\\varepsilon>0$，无约束一阶条件给出括号中的值，\n加入区间约束后取投影。\n该计算只证明点态严格凸性；只有另行完成验证、达到性和可行闭环唯一性，才能进一步推出整个控制问题的唯一最优解。\n\\end{proof}\n若需控制变化惩罚，可在离散目标中加入相邻控制差的平方，或在连续问题中把 $q$ 作为状态。\n这些都是不同的控制问题，不能不经证明就视为原线性成本问题的等价改写。\n\n\\section{同时控制接触率与跟踪比例时的限制}\n若把 $c$ 也作为控制并允许 $c=0$，而仍仅使用 \\eqref{eq:linear-cost}，\n则 $c=0,q=0$ 给出零成本可行方案，问题退化。\n联合控制需另行定义接触减少和跟踪成本，例如\n\\begin{equation}\n\\int_0^T[\\alpha_c(c_0-c)^2+\\alpha_q q^2+\\alpha_{cq}cq]\\dd t,\n\\label{eq:joint-cost}\n\\end{equation}\n并明确控制约束。\n该示例中的权重须另行保证非负性或所需凸性；即使运行成本严格凸，\n动力学中的 $cq$ 项以及非线性状态约束也不会自动给出整个问题的严格凸性。\n本稿不为此扩展声称全局唯一性。\n\n\\section{模型假设与理论边界}\n\\label{sec:limitations}\n本稿的 $q=1$ 代表理想化的完美追踪：所有被接触者均被及时追踪并隔离。\n提前离开容量由命题\\ref{prop:main-structure}给出，第\\ref{sec:switching-mechanism}节的边际成本分解说明其来源。\n这只是既定动力学与成本下的数学结论，不自动适用于含其他健康损失或资源约束的实际决策。\n非隔离感染者阈值 $K$、自然感染增长阈值 $h$、以及出现在不变量中的 $p$ 是不同的量；切换点由特征线上的 $\\Theta$ 匹配确定。\n\n\\begin{remark}[本稿未完成、且未用于主定理的扩展证明]\n\\label{rem:unproved-extensions}\n任意时变 $c(t)$ 的全域值函数构造、无穷时域终端处理和无条件唯一性未在本稿证明。\n离散网格加密和 $\\varepsilon\\downarrow0$ 的收敛、时变高峰后的真实安全延拓也未证明。\n跟踪能力受限（$q\\le\\bar q<1$）时的最优控制未在本稿研究。\n完全跟踪后残余感染生成、隔离者回流、联合控制以及参数不确定的情形仍需另行建立可行域和验证函数。\n特别地，跟踪能力上限为 $\\bar q<1$ 时，容量边界还必须满足 $\\bar q\\ge1-h/s$；\n不能只把本稿的 $1$ 替换成 $\\bar q$ 后沿用最优结构定理。\n\\end{remark}\n",
+      "deleted_content": ""
+    },
+    {
+      "id": "theory-branch-5",
+      "reason": "删除 TheoryOnly 专属分支及条件壳，保留主文分支",
+      "old": "\\ifdefined\\TheoryOnly\\else\n\\ifNumResultsVerified\n五个代表初值的直接配点结果再现了两种等待方式、内部立即完全跟踪，\n以及容量线上切换阈值两侧的不同初始阶段。\n该比较支持所选算例的结构一致性，不构成全域最优性或唯一性的额外证明。\n\\fi\n\\fi",
+      "new": "\n\\ifNumResultsVerified\n五个代表初值的直接配点结果再现了两种等待方式、内部立即完全跟踪，\n以及容量线上切换阈值两侧的不同初始阶段。\n该比较支持所选算例的结构一致性，不构成全域最优性或唯一性的额外证明。\n\\fi\n",
+      "deleted_content": ""
+    },
+    {
+      "id": "theory-branch-6",
+      "reason": "删除 TheoryOnly 专属分支及条件壳，保留主文分支",
+      "old": "\\ifdefined\\TheoryOnly\\else\n时变接触率仅保留条件性的验证与唯一性讨论。\n严格凸正则化给出的是固定状态和梯度下的唯一点态极小元，不能单凭此推出整个非线性控制问题全局唯一。\n本稿未完成的扩展证明已在注\\ref{rem:unproved-extensions}中列明，不作为常接触率主定理的结论。\n\\fi",
+      "new": "\n时变接触率仅保留条件性的验证与唯一性讨论。\n严格凸正则化给出的是固定状态和梯度下的唯一点态极小元，不能单凭此推出整个非线性控制问题全局唯一。\n本稿未完成的扩展证明已在注\\ref{rem:unproved-extensions}中列明，不作为常接触率主定理的结论。\n",
+      "deleted_content": ""
+    },
+    {
+      "id": "theory-branch-7",
+      "reason": "删除 TheoryOnly 专属分支及条件壳，保留主文分支",
+      "old": "\\ifdefined\\TheoryOnly\\else\n\\section{补充材料 S：数值复现、复核与诊断记录}\n\\label{app:numerical-reproducibility}\n\n本附录将在定稿时拆为独立的补充材料文件，本阶段仍保留在主文版本中。\n数值代码位于 \\path{matlab/numerical_scenarios/}。\n\n独立解析检查点及其生成程序位于\n\\path{validation/numerical_scenarios/}；\n检查点只评价正文中的解析构造，不调用数值优化器。\n具体环境准备及检查点生成命令见该目录和数值目录的说明文件。\n从仓库根目录启动 MATLAB 后运行：\n\\begin{lstlisting}\naddpath(fullfile(pwd, ...\n 'tracing_isolation_optimal_control_complete', ...\n 'matlab', 'numerical_scenarios'));\nrevision_preflight();\nrun_revision_validation('unit', false);\nrun_revision_validation('all', false);\nmake_numerical_figures();\nexport_numerical_latex();\n\\end{lstlisting}\n\n\\texttt{all} 运行预先规定的主算例和附加复核。\n各次求解分别保存初值、参数、网格、初始化、求解状态和原始控制数组，\n并记录求解时的源码指纹与环境信息。\n重做后处理不改写原求解的来源信息。\n作图和正文数据导出只读取已保存且来源明确的结果，\n不在缺少结果时以解析参考代替数值优化输出。\n\n\\NumFindingParagraph{\\NumCheckStatement}\n\\NumFindingParagraph{\\NumRobustnessStatement}\n\\NumFindingParagraph{\\NumOverallFinding}\n\\NumFindingParagraph{\\NumReproducibilityDetails}\n\n正文中的数值摘要与所选结果文件保持一一对应。\n完整记录分别位于：\n\\begin{itemize}\n\\item 初猜、网格、时域及阶段识别阈值复核：\\\\\n\\path{data/numerical_scenarios/revision_checks/}。\n\\item 事件候选、检测区间及主结果诊断：\\\\\n\\path{data/numerical_scenarios/numerical_checks.json}。\n\\item 容差重评与原严格记录：\\\\\n\\path{validation/numerical_scenarios/tolerance_revision_20261010/}。\n\\item S2 的重跑、原判据重评及逐条对照报告：\\\\\n\\path{validation/numerical_scenarios/rerun_20261020/}；\\\\\n其中判据计数来源为 \\path{S2.6/assessment_revision_report.json}。\n\\end{itemize}\n\\clearpage\n\\fi",
+      "new": "\n\\section{补充材料 S：数值复现、复核与诊断记录}\n\\label{app:numerical-reproducibility}\n\n本附录将在定稿时拆为独立的补充材料文件，本阶段仍保留在主文版本中。\n数值代码位于 \\path{matlab/numerical_scenarios/}。\n\n独立解析检查点及其生成程序位于\n\\path{validation/numerical_scenarios/}；\n检查点只评价正文中的解析构造，不调用数值优化器。\n具体环境准备及检查点生成命令见该目录和数值目录的说明文件。\n从仓库根目录启动 MATLAB 后运行：\n\\begin{lstlisting}\naddpath(fullfile(pwd, ...\n 'tracing_isolation_optimal_control_complete', ...\n 'matlab', 'numerical_scenarios'));\nrevision_preflight();\nrun_revision_validation('unit', false);\nrun_revision_validation('all', false);\nmake_numerical_figures();\nexport_numerical_latex();\n\\end{lstlisting}\n\n\\texttt{all} 运行预先规定的主算例和附加复核。\n各次求解分别保存初值、参数、网格、初始化、求解状态和原始控制数组，\n并记录求解时的源码指纹与环境信息。\n重做后处理不改写原求解的来源信息。\n作图和正文数据导出只读取已保存且来源明确的结果，\n不在缺少结果时以解析参考代替数值优化输出。\n\n\\NumFindingParagraph{\\NumCheckStatement}\n\\NumFindingParagraph{\\NumRobustnessStatement}\n\\NumFindingParagraph{\\NumOverallFinding}\n\\NumFindingParagraph{\\NumReproducibilityDetails}\n\n正文中的数值摘要与所选结果文件保持一一对应。\n完整记录分别位于：\n\\begin{itemize}\n\\item 初猜、网格、时域及阶段识别阈值复核：\\\\\n\\path{data/numerical_scenarios/revision_checks/}。\n\\item 事件候选、检测区间及主结果诊断：\\\\\n\\path{data/numerical_scenarios/numerical_checks.json}。\n\\item 容差重评与原严格记录：\\\\\n\\path{validation/numerical_scenarios/tolerance_revision_20261010/}。\n\\item S2 的重跑、原判据重评及逐条对照报告：\\\\\n\\path{validation/numerical_scenarios/rerun_20261020/}；\\\\\n其中判据计数来源为 \\path{S2.6/assessment_revision_report.json}。\n\\end{itemize}\n\\clearpage\n",
+      "deleted_content": ""
+    },
+    {
+      "id": "sec:time-varying",
+      "reason": "整节删除时变接触率条件性结论",
+      "old": "\\section{\\texorpdfstring{时变接触率 $c(t)$：条件性结论}{时变接触率：条件性结论}}\n\\label{sec:time-varying}\n现在令 $c(t)>0$ 为给定的可测、局部本质有界函数。\n由于恢复率 $\\gamma$ 不随时间缩放，令 $\\vartheta(t)=\\int_0^t c(v)\\dd v$ 后，\n在该时间变换的值域内仍按几乎处处意义有\n\\[\n\\frac{\\dd i}{\\dd\\vartheta}=\\beta(1-q)si-\\frac{\\gamma}{c(t(\\vartheta))}i.\n\\]\n因此一般不能化为本稿的常系数问题。\n本节仅陈述在另行建立值函数和验证条件后适用的公式与充分条件；\n不声称已经解决任意时变 $c$ 的存在性、全局验证或唯一性。\n\n\\subsection{非自治 HJB 方程}\n对具体定义的时变问题，在值函数 $V(t,s,i)$ 具备所需正则性、动态规划可作微分化的点，\n内部 HJB 的条件性微分形式为\n\\begin{equation}\n\\begin{aligned}\n0=V_t+\\min_{q\\in \\mathcal Q(t,s,i)}\\Big\\{&-c(t)[\\beta+(1-\\beta)q]siV_s\\\\\n&+[\\beta c(t)(1-q)s-\\gamma]iV_i+\\beta c(t)q\\Big\\}.\n\\end{aligned}\n\\label{eq:time-HJB}\n\\end{equation}\n当 $c$ 仅可测时，上式至多按时间几乎处处理解：在相应的 Lebesgue 点和所需值函数导数存在处使用，\n不要求它在每个指定时刻都是经典等式。\n若进一步用于验证，仍须针对每条被比较的轨道建立复合函数的链式法则和沿轨道的几乎处处不等式；\n仅有状态--时间空间中几乎处处的等式，不自动保证它沿任意轨道成立。\n内部取 $\\mathcal Q=[0,1]$；容量边界在上述几乎处处时间意义下的内指或切向速度条件对应\n\\begin{equation}\n\\mathcal Q(t,s,K)=\\left[\\max\\left\\{0,1-\\frac{\\gamma}{\\beta c(t)s}\\right\\},1\\right].\n\\label{eq:time-boundary-set}\n\\end{equation}\n切换系数为\n\\begin{equation}\n\\Sigma(t,s,i)=\\beta c(t)-c(t)si[(1-\\beta)V_s+\\beta V_i].\n\\label{eq:time-switch}\n\\end{equation}\n式 \\eqref{eq:time-boundary-set}--\\eqref{eq:time-switch} 不把时间零测集上的 $c,q$ 代表值作为额外的点态轨道约束。\n若在时间 $t$ 定义无控制安全集，它必须使用从 $t$ 开始的\\emph{完整未来接触率路径}，\n不能仅把常系数安全集中的 $c$ 换成当前 $c(t)$。\n\n\\begin{proposition}[条件性的时变唯一性充分条件]\n\\label{prop:time-conditional}\n对某个已经明确定义的时变问题，假设最优解存在，且已经证明对任意最优轨道的验证等式。\n进一步假设：在所有可能被最优轨道经过的状态--时间点，验证等式使控制几乎处处等于同一单值反馈 $Q(t,x)$；\n该反馈从给定初值生成的可行 Carath\\'eodory 解唯一。\n则最优控制几乎处处唯一。\n\\end{proposition}\n\\begin{proof}\n任意最优控制均须沿自己的轨道满足 $q(t)=Q(t,x(t))$ 几乎处处。\n所有最优状态轨道因此满足同一闭环方程与初值，由闭环唯一性得轨道一致，进而控制几乎处处一致。\n\\end{proof}\n内部 $\\Sigma\\ne0$、容量上受限极小元单值，是控制选择单值的充分途径，\n但仅在一条候选轨道上检查这些性质不足以排除所有其他最优轨道。\n常接触率平台的唯一性反而说明点态单值不是最优控制唯一的必要条件。\n\n\\subsection{有限时域严格凸正则化}\n另取固定 $T<\\infty$ 及明确的终端数据，可研究不同于原无穷时域问题的正则化目标\n\\begin{equation}\nJ_\\varepsilon(q)=\\int_0^T\\left[\\beta c(t)q(t)+\\frac\\varepsilon2q(t)^2\\right]\\dd t,\n\\qquad\\varepsilon>0.\n\\label{eq:regularized-cost}\n\\end{equation}\n\\begin{proposition}[唯一的点态正则化极小元]\n\\label{prop:regularized-pointwise}\n若相应的有限时域值函数 $V_\\varepsilon^T$ 在所考虑的点可微，\n则固定满足上述时间约定的 $(t,s,i)$ 及其值梯度时，Hamiltonian 的内部极小元唯一，形式为\n\\begin{equation}\nq_\\varepsilon^*(t,s,i)=\\proj_{[0,1]}\n\\left(\\frac{c(t)si[(1-\\beta)\\partial_sV_\\varepsilon^T+\\beta\\partial_iV_\\varepsilon^T]-\\beta c(t)}\\varepsilon\\right).\n\\label{eq:projection-feedback}\n\\end{equation}\n容量边界上将投影区间换为 \\eqref{eq:time-boundary-set}。\n\\end{proposition}\n\\begin{proof}\n关于 $q$ 的二阶导数为 $\\varepsilon>0$，无约束一阶条件给出括号中的值，\n加入区间约束后取投影。\n该计算只证明点态严格凸性；只有另行完成验证、达到性和可行闭环唯一性，才能进一步推出整个控制问题的唯一最优解。\n\\end{proof}\n若需控制变化惩罚，可在离散目标中加入相邻控制差的平方，或在连续问题中把 $q$ 作为状态。\n这些都是不同的控制问题，不能不经证明就视为原线性成本问题的等价改写。\n\n",
+      "new": ""
+    },
+    {
+      "id": "proof-scope-scan",
+      "reason": "删除数值扫描句",
+      "old": "任何一个数值扫描都不被用于证明这些全称命题。",
+      "new": ""
+    },
+    {
+      "id": "proof-scope-last-paragraph",
+      "reason": "删除附录 E 最后校验口径段",
+      "old": "本稿区分解析证明、符号恒等式检查、有限样本数值检查及排版编译检查。\n后面三类检查可发现错误，但均不等价于对所有可行控制的解析证明，也不是形式化证明系统的验证。",
+      "new": ""
+    },
+    {
+      "id": "conclusion-time",
+      "reason": "删除结论时变段",
+      "old": "时变接触率仅保留条件性的验证与唯一性讨论。\n严格凸正则化给出的是固定状态和梯度下的唯一点态极小元，不能单凭此推出整个非线性控制问题全局唯一。\n本稿未完成的扩展证明已在注\\ref{rem:unproved-extensions}中列明，不作为常接触率主定理的结论。",
+      "new": ""
+    },
+    {
+      "id": "G1-INTRO-PRELIMINARIES",
+      "reason": "附录 E 前两段改为新第 4 节证明路线",
+      "old": "常接触率证明的依赖顺序为：\n状态正性和耗散；安全集及有限成本比较策略；有限成本入安全集；\n完全跟踪可达域和成本；切换曲线几何；全域候选及达到性；梯度与拼接正则性；\n沿任意轨道的验证；全局最优性；最后另证唯一性。\n推论\\ref{cor:one-dimensional-min}在全局验证之后陈述，不用候选策略族内的极小性替代全控制类比较。\n全局最优性确立后，推论\\ref{cor:verification-equality}\n由沿轨道验证不等式积分得到最优控制的等号条件。\n引理\\ref{lem:no-early-boundary-exit}据此证明容量弧上的延续性质，\n再由定理\\ref{thm:unique-q}完成控制与状态轨道的唯一性证明。\n上述推论和引理均不依赖定理\\ref{thm:unique-q}。\n\n端点存在性由命题\\ref{prop:reachable}及引理\\ref{lem:tracking-region}处理；\n曲线正则性和横截性由命题\\ref{prop:Gamma-geometry}、推论\\ref{cor:Gamma-labels}处理；\n不滑行由引理\\ref{lem:strict-crossing}处理，横穿方向与实际分区的衔接由引理\\ref{lem:chi-regions}处理。\n容量和安全时间集合上的导数关系统一使用式\\eqref{eq:ac-level-set}的水平集性质。\n局部 Lipschitz 性和终端处理分别由命题\\ref{prop:regularity}及引理\\ref{lem:finite-entry}证明。",
+      "new": "本节先建立状态正性和耗散、安全集及两类控制弧，再证明有限成本轨道入安全集，并给出后文使用的 HJB 边界条件。\n后续构造先处理完全跟踪可达域和成本、切换曲线几何、全域候选及达到性与梯度拼接，再沿任意轨道验证全局最优性；推论\\ref{cor:one-dimensional-min}在全局验证之后陈述，不用候选策略族内的极小性替代全控制类比较。\n全局最优性确立后，推论\\ref{cor:verification-equality}由沿轨道验证不等式积分得到最优控制的等号条件，引理\\ref{lem:no-early-boundary-exit}据此证明容量弧上的延续性质，再由定理\\ref{thm:unique-q}完成控制与状态轨道的唯一性证明；上述推论和引理均不依赖定理\\ref{thm:unique-q}。\n具体地，端点存在性由命题\\ref{prop:reachable}及引理\\ref{lem:tracking-region}处理，曲线正则性和横截性由命题\\ref{prop:Gamma-geometry}、推论\\ref{cor:Gamma-labels}处理，不滑行由引理\\ref{lem:strict-crossing}处理，横穿方向与实际分区的衔接由引理\\ref{lem:chi-regions}处理；容量和安全时间集合上的导数关系统一使用式\\eqref{eq:ac-level-set}的水平集性质，局部 Lipschitz 性和终端处理分别由命题\\ref{prop:regularity}及引理\\ref{lem:finite-entry}证明。"
+    },
+    {
+      "id": "G1-INTRO-CONSTRUCTION",
+      "reason": "新第 5 节导读",
+      "old": "",
+      "new": "本节从完全跟踪成本的有限可达域出发，依次构造切换曲线、全域候选反馈和候选成本。\n随后计算等待分支的梯度并处理拼接正则性，为第\\ref{sec:optimality}节沿任意可行轨道的验证准备候选函数。"
+    },
+    {
+      "id": "G1-INTRO-VERIFICATION",
+      "reason": "新第 6 节导读",
+      "old": "",
+      "new": "本节利用前节候选函数的梯度和正则性，先建立各分区的 Hamiltonian 关系及沿任意轨道的验证不等式。\n再结合有限成本入安全集性质证明全局最优性，并用验证等号条件、容量弧延续和切换曲线横穿逐段确定最优轨道，完成唯一性证明。"
+    },
+    {
+      "id": "G1-TRACKING-PROOF-SKETCH",
+      "reason": "正文引理证明思路及附录指引",
+      "old": "",
+      "new": "证明先由同一自然轨道上的不变量比较确定完全跟踪可达性，再以单峰性刻画 $\\Delta_\\Theta$ 的零集及其在切换点附近的符号。\n结合严格横穿和分区关系，可知完全跟踪弧在到达安全集前不再返回等待区；正安全端点给出有限到达时间。\n完整证明见附录 \\ref{app:tracking-region-proof}。"
+    },
+    {
+      "id": "G1-UNIQUENESS-ROADMAP",
+      "reason": "唯一性证明路线",
+      "old": "",
+      "new": "证明先用推论\\ref{cor:verification-equality}的等号条件及引理\\ref{lem:waiting-HJB}、命题\\ref{prop:all-HJB}确定各分区内的控制。\n随后由引理\\ref{lem:no-early-boundary-exit}确定容量弧上的延续，再用引理\\ref{lem:strict-crossing}和引理\\ref{lem:chi-regions}处理切换曲线。\n最后结合命题\\ref{prop:candidate-attainment}、引理\\ref{lem:tracking-region}及各段状态方程解的唯一性，依次确定全部阶段和安全延拓。"
+    },
+    {
+      "id": "constant-scope",
+      "reason": "对应新第 3–7 节并说明一般时变 c 的适定性",
+      "old": "本节及第\\ref{sec:constant-problem}--\\ref{sec:constant-uniqueness}节固定\n",
+      "new": "预备结果中的适定性定理\\ref{thm:wellposed}对一般 $c(t)$ 成立。\n第\\ref{sec:main-results}--\\ref{sec:mechanisms}节固定"
+    },
+    {
+      "id": "uniqueness-step-1",
+      "reason": "仅增加分步前缀",
+      "old": "\\emph{各分区内的控制选择。}",
+      "new": "\\emph{第 1 步：各分区内的控制选择。}"
+    },
+    {
+      "id": "uniqueness-step-2",
+      "reason": "仅增加分步前缀",
+      "old": "\\emph{容量弧上的延续。}",
+      "new": "\\emph{第 2 步：容量弧上的延续。}"
+    },
+    {
+      "id": "uniqueness-step-3",
+      "reason": "仅增加分步前缀",
+      "old": "\\emph{切换曲线上的行为。}",
+      "new": "\\emph{第 3 步：切换曲线上的行为。}"
+    },
+    {
+      "id": "uniqueness-step-4",
+      "reason": "仅增加分步前缀",
+      "old": "\\emph{各阶段轨道的唯一确定。}",
+      "new": "\\emph{第 4 步：各阶段轨道的唯一确定。}"
+    }
+  ],
+  "structural_headings": {
+    "old": [
+      {
+        "level": "section",
+        "title": "引言",
+        "start": 3523,
+        "end": 3535,
+        "line": 89
+      },
+      {
+        "level": "section",
+        "title": "模型与控制问题",
+        "start": 6452,
+        "end": 6469,
+        "line": 165
+      },
+      {
+        "level": "subsection",
+        "title": "基本模型",
+        "start": 6489,
+        "end": 6506,
+        "line": 168
+      },
+      {
+        "level": "subsection",
+        "title": "二维约化与控制问题",
+        "start": 7774,
+        "end": 7796,
+        "line": 204
+      },
+      {
+        "level": "section",
+        "title": "主结果与最优分区",
+        "start": 9306,
+        "end": 9324,
+        "line": 252
+      },
+      {
+        "level": "subsection",
+        "title": "安全集与可行性",
+        "start": 10060,
+        "end": 10080,
+        "line": 278
+      },
+      {
+        "level": "subsection",
+        "title": "全域反馈与阶段结构",
+        "start": 10878,
+        "end": 10900,
+        "line": 305
+      },
+      {
+        "level": "section",
+        "title": "解的适定性、正性与基本耗散",
+        "start": 13619,
+        "end": 13642,
+        "line": 379
+      },
+      {
+        "level": "section",
+        "title": "常接触率问题、自然轨道与安全目标集",
+        "start": 15478,
+        "end": 15505,
+        "line": 436
+      },
+      {
+        "level": "subsection",
+        "title": "自然传播不变量与峰值",
+        "start": 15706,
+        "end": 15729,
+        "line": 443
+      },
+      {
+        "level": "subsection",
+        "title": "安全集与目标边界",
+        "start": 16203,
+        "end": 16224,
+        "line": 462
+      },
+      {
+        "level": "section",
+        "title": "两类控制弧与显式成本",
+        "start": 16821,
+        "end": 16841,
+        "line": 483
+      },
+      {
+        "level": "subsection",
+        "title": "一般控制下的不变量导数",
+        "start": 16859,
+        "end": 16883,
+        "line": 485
+      },
+      {
+        "level": "subsection",
+        "title": "完全跟踪弧",
+        "start": 17492,
+        "end": 17510,
+        "line": 509
+      },
+      {
+        "level": "subsection",
+        "title": "容量弧",
+        "start": 18074,
+        "end": 18090,
+        "line": 535
+      },
+      {
+        "level": "section",
+        "title": "有限成本可行性与首次到达问题",
+        "start": 19132,
+        "end": 19156,
+        "line": 570
+      },
+      {
+        "level": "section",
+        "title": "HJB 方程与验证所需的边界条件",
+        "start": 21077,
+        "end": 21103,
+        "line": 633
+      },
+      {
+        "level": "section",
+        "title": "完全跟踪成本的有限可达域及导数",
+        "start": 22524,
+        "end": 22549,
+        "line": 685
+      },
+      {
+        "level": "section",
+        "title": "切换曲线的存在、单调性及严格横穿",
+        "start": 25310,
+        "end": 25336,
+        "line": 774
+      },
+      {
+        "level": "section",
+        "title": "全域候选反馈与候选成本",
+        "start": 30853,
+        "end": 30874,
+        "line": 953
+      },
+      {
+        "level": "section",
+        "title": "全域梯度、拼接正则性与验证不等式",
+        "start": 38767,
+        "end": 38793,
+        "line": 1209
+      },
+      {
+        "level": "subsection",
+        "title": "两种等待分支的统一导数",
+        "start": 38827,
+        "end": 38851,
+        "line": 1211
+      },
+      {
+        "level": "subsection",
+        "title": "内部界面与局部 Lipschitz 性",
+        "start": 40479,
+        "end": 40511,
+        "line": 1267
+      },
+      {
+        "level": "subsection",
+        "title": "容量 Hamiltonian 与沿任意轨道的链式法则",
+        "start": 41651,
+        "end": 41690,
+        "line": 1308
+      },
+      {
+        "level": "section",
+        "title": "全局最优性验证",
+        "start": 44272,
+        "end": 44289,
+        "line": 1389
+      },
+      {
+        "level": "section",
+        "title": "常接触率下控制与轨道的唯一性",
+        "start": 47257,
+        "end": 47281,
+        "line": 1493
+      },
+      {
+        "level": "subsection",
+        "title": "一维切换成本与全局结论的关系",
+        "start": 52951,
+        "end": 52978,
+        "line": 1715
+      },
+      {
+        "level": "section",
+        "title": "不变量坐标与切换机制",
+        "start": 54397,
+        "end": 54417,
+        "line": 1762
+      },
+      {
+        "level": "section",
+        "title": "比较基准、小容量渐近与参数量级",
+        "start": 57569,
+        "end": 57594,
+        "line": 1847
+      },
+      {
+        "level": "subsection",
+        "title": "纯容量填充与比较指标",
+        "start": 57616,
+        "end": 57639,
+        "line": 1850
+      },
+      {
+        "level": "subsection",
+        "title": "固定传播概率下的小容量命题",
+        "start": 58975,
+        "end": 59001,
+        "line": 1885
+      },
+      {
+        "level": "subsection",
+        "title": "参数来源与解析扫描",
+        "start": 60912,
+        "end": 60934,
+        "line": 1937
+      },
+      {
+        "level": "section",
+        "title": "数值方法与实验设置",
+        "start": 68260,
+        "end": 68279,
+        "line": 2057
+      },
+      {
+        "level": "section",
+        "title": "不同初值区域下的数值验证",
+        "start": 70429,
+        "end": 70451,
+        "line": 2135
+      },
+      {
+        "level": "subsection",
+        "title": "代表初值与相平面分区",
+        "start": 70483,
+        "end": 70506,
+        "line": 2138
+      },
+      {
+        "level": "subsection",
+        "title": "两种等待区域的对照",
+        "start": 72532,
+        "end": 72554,
+        "line": 2203
+      },
+      {
+        "level": "subsection",
+        "title": "立即完全跟踪与容量边界初值",
+        "start": 73202,
+        "end": 73228,
+        "line": 2227
+      },
+      {
+        "level": "subsection",
+        "title": "成本、约束误差与剩余残差",
+        "start": 73886,
+        "end": 73911,
+        "line": 2251
+      },
+      {
+        "level": "section",
+        "title": "\\texorpdfstring{时变接触率 $c(t)$：条件性结论}{时变接触率：条件性结论}",
+        "start": 74164,
+        "end": 74222,
+        "line": 2262
+      },
+      {
+        "level": "subsection",
+        "title": "非自治 HJB 方程",
+        "start": 74519,
+        "end": 74542,
+        "line": 2274
+      },
+      {
+        "level": "subsection",
+        "title": "有限时域严格凸正则化",
+        "start": 75898,
+        "end": 75921,
+        "line": 2317
+      },
+      {
+        "level": "section",
+        "title": "同时控制接触率与跟踪比例时的限制",
+        "start": 76793,
+        "end": 76819,
+        "line": 2343
+      },
+      {
+        "level": "section",
+        "title": "模型假设与理论边界",
+        "start": 77134,
+        "end": 77153,
+        "line": 2356
+      },
+      {
+        "level": "section",
+        "title": "主要结论",
+        "start": 77771,
+        "end": 77785,
+        "line": 2374
+      },
+      {
+        "level": "section",
+        "title": "完全跟踪成本导数的逐步计算",
+        "start": 78631,
+        "end": 78654,
+        "line": 2404
+      },
+      {
+        "level": "section",
+        "title": "容量边界成本积分的逐步计算",
+        "start": 79371,
+        "end": 79394,
+        "line": 2433
+      },
+      {
+        "level": "section",
+        "title": "小容量渐近的完整推导",
+        "start": 79716,
+        "end": 79736,
+        "line": 2446
+      },
+      {
+        "level": "section",
+        "title": "梯度拼接与相对正则性的详细证明",
+        "start": 82320,
+        "end": 82345,
+        "line": 2530
+      },
+      {
+        "level": "section",
+        "title": "证明依赖与校验口径",
+        "start": 85818,
+        "end": 85837,
+        "line": 2654
+      },
+      {
+        "level": "section",
+        "title": "感染阈值与医疗需求",
+        "start": 86651,
+        "end": 86670,
+        "line": 2678
+      },
+      {
+        "level": "section",
+        "title": "补充材料 S：数值复现、复核与诊断记录",
+        "start": 89048,
+        "end": 89077,
+        "line": 2749
+      }
+    ],
+    "new": [
+      {
+        "level": "section",
+        "title": "引言",
+        "start": 3258,
+        "end": 3270,
+        "line": 85
+      },
+      {
+        "level": "section",
+        "title": "模型与控制问题",
+        "start": 6158,
+        "end": 6175,
+        "line": 161
+      },
+      {
+        "level": "subsection",
+        "title": "基本模型",
+        "start": 6195,
+        "end": 6212,
+        "line": 164
+      },
+      {
+        "level": "subsection",
+        "title": "二维约化与控制问题",
+        "start": 7480,
+        "end": 7502,
+        "line": 200
+      },
+      {
+        "level": "section",
+        "title": "主结果与最优分区",
+        "start": 9012,
+        "end": 9030,
+        "line": 248
+      },
+      {
+        "level": "subsection",
+        "title": "安全集与可行性",
+        "start": 9795,
+        "end": 9815,
+        "line": 275
+      },
+      {
+        "level": "subsection",
+        "title": "全域反馈与阶段结构",
+        "start": 10613,
+        "end": 10635,
+        "line": 302
+      },
+      {
+        "level": "section",
+        "title": "预备结果",
+        "start": 13354,
+        "end": 13368,
+        "line": 376
+      },
+      {
+        "level": "subsection",
+        "title": "解的适定性、正性与基本耗散",
+        "start": 14103,
+        "end": 14129,
+        "line": 385
+      },
+      {
+        "level": "subsection",
+        "title": "常接触率问题、自然轨道与安全目标集",
+        "start": 15965,
+        "end": 15995,
+        "line": 442
+      },
+      {
+        "level": "subsubsection",
+        "title": "自然传播不变量与峰值",
+        "start": 16196,
+        "end": 16222,
+        "line": 449
+      },
+      {
+        "level": "subsubsection",
+        "title": "安全集与目标边界",
+        "start": 16696,
+        "end": 16720,
+        "line": 468
+      },
+      {
+        "level": "subsection",
+        "title": "两类控制弧与显式成本",
+        "start": 17317,
+        "end": 17340,
+        "line": 489
+      },
+      {
+        "level": "subsubsection",
+        "title": "一般控制下的不变量导数",
+        "start": 17358,
+        "end": 17385,
+        "line": 491
+      },
+      {
+        "level": "subsubsection",
+        "title": "完全跟踪弧",
+        "start": 17994,
+        "end": 18015,
+        "line": 515
+      },
+      {
+        "level": "subsubsection",
+        "title": "容量弧",
+        "start": 18579,
+        "end": 18598,
+        "line": 541
+      },
+      {
+        "level": "subsection",
+        "title": "有限成本可行性与首次到达问题",
+        "start": 19640,
+        "end": 19667,
+        "line": 576
+      },
+      {
+        "level": "subsection",
+        "title": "HJB 方程与验证所需的边界条件",
+        "start": 21588,
+        "end": 21617,
+        "line": 639
+      },
+      {
+        "level": "section",
+        "title": "候选策略的构造",
+        "start": 23038,
+        "end": 23055,
+        "line": 691
+      },
+      {
+        "level": "subsection",
+        "title": "完全跟踪成本的有限可达域及导数",
+        "start": 23218,
+        "end": 23246,
+        "line": 698
+      },
+      {
+        "level": "subsection",
+        "title": "切换曲线的存在、单调性及严格横穿",
+        "start": 26007,
+        "end": 26036,
+        "line": 787
+      },
+      {
+        "level": "subsection",
+        "title": "全域候选反馈与候选成本",
+        "start": 31553,
+        "end": 31577,
+        "line": 966
+      },
+      {
+        "level": "subsection",
+        "title": "两种等待分支的统一导数",
+        "start": 37343,
+        "end": 37367,
+        "line": 1161
+      },
+      {
+        "level": "subsection",
+        "title": "内部界面与局部 Lipschitz 性",
+        "start": 39028,
+        "end": 39060,
+        "line": 1218
+      },
+      {
+        "level": "section",
+        "title": "全局最优性与唯一性",
+        "start": 40200,
+        "end": 40219,
+        "line": 1259
+      },
+      {
+        "level": "subsection",
+        "title": "容量 Hamiltonian 与沿任意轨道的链式法则",
+        "start": 40383,
+        "end": 40422,
+        "line": 1266
+      },
+      {
+        "level": "subsection",
+        "title": "全局最优性验证",
+        "start": 43004,
+        "end": 43024,
+        "line": 1347
+      },
+      {
+        "level": "subsection",
+        "title": "常接触率下控制与轨道的唯一性",
+        "start": 45992,
+        "end": 46019,
+        "line": 1451
+      },
+      {
+        "level": "section",
+        "title": "机制与量级",
+        "start": 52038,
+        "end": 52053,
+        "line": 1679
+      },
+      {
+        "level": "subsection",
+        "title": "一维切换成本与全局结论的关系",
+        "start": 52080,
+        "end": 52107,
+        "line": 1684
+      },
+      {
+        "level": "subsection",
+        "title": "不变量坐标与切换机制",
+        "start": 53526,
+        "end": 53549,
+        "line": 1731
+      },
+      {
+        "level": "subsection",
+        "title": "比较基准、小容量渐近与参数量级",
+        "start": 56701,
+        "end": 56729,
+        "line": 1816
+      },
+      {
+        "level": "subsubsection",
+        "title": "纯容量填充与比较指标",
+        "start": 56751,
+        "end": 56777,
+        "line": 1819
+      },
+      {
+        "level": "subsubsection",
+        "title": "固定传播概率下的小容量命题",
+        "start": 58113,
+        "end": 58142,
+        "line": 1854
+      },
+      {
+        "level": "subsubsection",
+        "title": "参数来源与解析扫描",
+        "start": 60053,
+        "end": 60078,
+        "line": 1906
+      },
+      {
+        "level": "section",
+        "title": "数值结果",
+        "start": 62539,
+        "end": 62553,
+        "line": 1967
+      },
+      {
+        "level": "subsection",
+        "title": "数值方法与实验设置",
+        "start": 67417,
+        "end": 67439,
+        "line": 2031
+      },
+      {
+        "level": "subsection",
+        "title": "不同初值区域下的数值验证",
+        "start": 69589,
+        "end": 69614,
+        "line": 2109
+      },
+      {
+        "level": "subsubsection",
+        "title": "代表初值与相平面分区",
+        "start": 69646,
+        "end": 69672,
+        "line": 2112
+      },
+      {
+        "level": "subsubsection",
+        "title": "两种等待区域的对照",
+        "start": 71698,
+        "end": 71723,
+        "line": 2177
+      },
+      {
+        "level": "subsubsection",
+        "title": "立即完全跟踪与容量边界初值",
+        "start": 72371,
+        "end": 72400,
+        "line": 2201
+      },
+      {
+        "level": "subsubsection",
+        "title": "成本、约束误差与剩余残差",
+        "start": 73058,
+        "end": 73086,
+        "line": 2225
+      },
+      {
+        "level": "section",
+        "title": "讨论",
+        "start": 73339,
+        "end": 73351,
+        "line": 2236
+      },
+      {
+        "level": "subsection",
+        "title": "同时控制接触率与跟踪比例时的限制",
+        "start": 73378,
+        "end": 73407,
+        "line": 2241
+      },
+      {
+        "level": "subsection",
+        "title": "模型假设与理论边界",
+        "start": 73722,
+        "end": 73744,
+        "line": 2254
+      },
+      {
+        "level": "section",
+        "title": "结论",
+        "start": 74359,
+        "end": 74371,
+        "line": 2272
+      },
+      {
+        "level": "section",
+        "title": "完全跟踪成本导数的逐步计算",
+        "start": 75023,
+        "end": 75046,
+        "line": 2295
+      },
+      {
+        "level": "section",
+        "title": "容量边界成本积分的逐步计算",
+        "start": 75763,
+        "end": 75786,
+        "line": 2324
+      },
+      {
+        "level": "section",
+        "title": "完全跟踪分区可达性与不再返回等待区的证明",
+        "start": 76108,
+        "end": 76138,
+        "line": 2337
+      },
+      {
+        "level": "section",
+        "title": "梯度拼接与相对正则性的详细证明",
+        "start": 78488,
+        "end": 78513,
+        "line": 2408
+      },
+      {
+        "level": "section",
+        "title": "小容量渐近的完整推导",
+        "start": 81986,
+        "end": 82006,
+        "line": 2532
+      },
+      {
+        "level": "section",
+        "title": "感染阈值与医疗需求",
+        "start": 84590,
+        "end": 84609,
+        "line": 2616
+      },
+      {
+        "level": "section",
+        "title": "补充材料 S：数值复现、复核与诊断记录",
+        "start": 86961,
+        "end": 86990,
+        "line": 2687
+      }
+    ]
+  },
+  "equations": {
+    "old_labels": 129,
+    "new_labels": 124,
+    "removed": [
+      "eq:projection-feedback",
+      "eq:regularized-cost",
+      "eq:time-HJB",
+      "eq:time-boundary-set",
+      "eq:time-switch"
+    ],
+    "added": [],
+    "changed": []
+  },
+  "labels": {
+    "removed": [
+      "app:proof-scope",
+      "eq:projection-feedback",
+      "eq:regularized-cost",
+      "eq:time-HJB",
+      "eq:time-boundary-set",
+      "eq:time-switch",
+      "prop:regularized-pointwise",
+      "prop:time-conditional",
+      "sec:time-varying"
+    ],
+    "added": [
+      "app:tracking-region-proof",
+      "sec:candidate-construction",
+      "sec:discussion",
+      "sec:mechanisms",
+      "sec:numerics",
+      "sec:optimality",
+      "sec:preliminaries"
+    ]
+  },
+  "auto_generated_blocks": [
+    {
+      "name": "NUMERICAL REFERENCE VALUES",
+      "identical": true,
+      "raw_bytes_identical": true,
+      "sha256": "c096a9bc9c5b34343d4d0964a0b684a68643c89eca14c85e2c3eb4c93b92112a"
+    },
+    {
+      "name": "NUMERICAL RESULTS",
+      "identical": true,
+      "raw_bytes_identical": true,
+      "sha256": "30daf6109eb12e4803e90ee6c31c5685a639d8bd64234621633596cc11b8e8c6"
+    }
+  ],
+  "proofs": {
+    "tracking_region_exactly_moved": true,
+    "uniqueness_content_preserved": true,
+    "uniqueness_strict_source_identical_after_authorized_removal": true,
+    "uniqueness_normalized_identical": true,
+    "uniqueness_wrapper_cleanup": "仅移除新增路线包装后位于 proof 开头的额外换行；原有证明内部逐字比较"
+  },
+  "protected_files": {
+    "count": 2474,
+    "changed_or_missing": [],
+    "unexpected_new": [],
+    "initial_snapshot": "protected_files_initial.json"
+  },
+  "optimizer_calls": 0,
+  "new_ocp_solves": 0,
+  "matlab_calls": 0
+}

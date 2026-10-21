@@ -1,0 +1,8 @@
+{
+  "command": "git add --pathspec-from-file=tracing_isolation_optimal_control_complete/validation/structure_g1_20261021/staging_paths.txt",
+  "exit_code": 1,
+  "error": "fatal: pathspec 'tracing_isolation_optimal_control_complete/latex/theory_only.pdf' did not match any files",
+  "reason": "两个删除项已在自包含构建前暂存，从索引删除后再次将其作为git add pathspec导致失败。",
+  "effect": "未意外暂存其他文件；首次提交前核对失败快照另存commit_preflight_initial_failure.json。",
+  "remedy": "完整expected清单仍含删除项；生成staging_add_paths.txt只重加存在文件，随后核对实际索引仍精确包含全部预期删除与修改。"
+}

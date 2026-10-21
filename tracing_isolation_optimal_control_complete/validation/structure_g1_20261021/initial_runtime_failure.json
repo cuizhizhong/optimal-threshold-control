@@ -1,0 +1,9 @@
+{
+  "command": "python -X utf8 tracing_isolation_optimal_control_complete/validation/structure_g1_20261021/build_g1.py --mode workspace",
+  "exit_code": 1,
+  "error": "ModuleNotFoundError: No module named 'pypdf'",
+  "effect": "默认 Anaconda Python 在任何构建开始前退出；改用 load_workspace_dependencies 返回的 bundled Python。",
+  "matlab_calls": 0,
+  "optimizer_calls": 0,
+  "ocp_solves": 0
+}

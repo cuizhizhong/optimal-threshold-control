@@ -1,0 +1,1448 @@
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex)
+ restricted \write18 enabled.
+entering extended mode
+(./main.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+(e:/software/texlive/2026/texmf-dist/tex/latex/ctex/ctexart.cls
+(e:/software/texlive/2026/texmf-dist/tex/latex/ctex/config/ctexbackend.cfg)
+(e:/software/texlive/2026/texmf-dist/tex/latex/l3kernel/expl3.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/l3backend/l3backend-xetex.def))
+Document Class: ctexart 2022/07/14 v2.5.10 Chinese adapter for class article (C
+TEX)
+(e:/software/texlive/2026/texmf-dist/tex/latex/ctex/ctexhook.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/ctex/ctexpatch.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/base/fix-cm.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/base/ts1enc.def))
+(e:/software/texlive/2026/texmf-dist/tex/latex/ctex/config/ctexopts.cfg)
+(e:/software/texlive/2026/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(e:/software/texlive/2026/texmf-dist/tex/latex/base/size11.clo))
+(e:/software/texlive/2026/texmf-dist/tex/latex/ctex/engine/ctex-engine-xetex.de
+f (e:/software/texlive/2026/texmf-dist/tex/xelatex/xecjk/xeCJK.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/l3packages/xtemplate/xtemplate.s
+ty) (e:/software/texlive/2026/texmf-dist/tex/latex/fontspec/fontspec.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/l3packages/xparse/xparse.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/base/fontenc.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+(e:/software/texlive/2026/texmf-dist/tex/xelatex/xecjk/xeCJK.cfg)))
+(e:/software/texlive/2026/texmf-dist/tex/latex/zhnumber/zhnumber.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/zhnumber/zhnumber-utf8.cfg))
+(e:/software/texlive/2026/texmf-dist/tex/latex/ctex/scheme/ctex-scheme-chinese-
+article.def
+(e:/software/texlive/2026/texmf-dist/tex/latex/ctex/config/ctex-name-utf8.cfg))
+
+(e:/software/texlive/2026/texmf-dist/tex/latex/ctex/fontset/ctex-fontset-window
+s.def)) (e:/software/texlive/2026/texmf-dist/tex/latex/ctex/config/ctex.cfg)
+(e:/software/texlive/2026/texmf-dist/tex/latex/geometry/geometry.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/graphics/keyval.sty)
+(e:/software/texlive/2026/texmf-dist/tex/generic/iftex/ifvtex.sty
+(e:/software/texlive/2026/texmf-dist/tex/generic/iftex/iftex.sty)))
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsmath/amstext.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(e:/software/texlive/2026/texmf-dist/tex/latex/amscls/amsthm.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/mathtools/mathtools.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/tools/calc.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/mathtools/mhsetup.sty))
+(e:/software/texlive/2026/texmf-dist/tex/latex/tools/bm.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/graphics/graphicx.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/graphics/graphics.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/graphics/trig.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(e:/software/texlive/2026/texmf-dist/tex/latex/graphics-def/xetex.def)))
+(e:/software/texlive/2026/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/tools/longtable.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/tools/array.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/tools/tabularx.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/multirow/multirow.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/enumitem/enumitem.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/setspace/setspace.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/caption/caption.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/caption/caption3.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/caption/ltcaption.sty))
+(e:/software/texlive/2026/texmf-dist/tex/latex/caption/subcaption.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/float/float.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/placeins/placeins.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/xcolor/xcolor.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(e:/software/texlive/2026/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(e:/software/texlive/2026/texmf-dist/tex/latex/hyperref/hyperref.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)
+(e:/software/texlive/2026/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+ (e:/software/texlive/2026/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+(e:/software/texlive/2026/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(e:/software/texlive/2026/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(e:/software/texlive/2026/texmf-dist/tex/generic/infwarerr/infwarerr.sty)))
+(e:/software/texlive/2026/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/hyperref/nameref.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/refcount/refcount.sty)
+(e:/software/texlive/2026/texmf-dist/tex/generic/gettitlestring/gettitlestring.
+sty (e:/software/texlive/2026/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
+(e:/software/texlive/2026/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(e:/software/texlive/2026/texmf-dist/tex/generic/stringenc/stringenc.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(e:/software/texlive/2026/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/hyperref/puenc.def)
+(e:/software/texlive/2026/texmf-dist/tex/latex/url/url.sty)
+(e:/software/texlive/2026/texmf-dist/tex/generic/bitset/bitset.sty
+(e:/software/texlive/2026/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty)))
+(e:/software/texlive/2026/texmf-dist/tex/latex/hyperref/hxetex.def
+(e:/software/texlive/2026/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.st
+y
+(e:/software/texlive/2026/texmf-dist/tex/generic/uniquecounter/uniquecounter.st
+y))) (e:/software/texlive/2026/texmf-dist/tex/latex/natbib/natbib.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/listings/listings.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/listings/lstpatch.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/listings/lstmisc.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/listings/listings.cfg))
+(e:/software/texlive/2026/texmf-dist/tex/xelatex/xecjk/xeCJK-listings.sty)
+==> First Aid for listings.sty no longer applied!
+    Expected:
+        2024/09/23 1.10c (Carsten Heinz)
+    but found:
+        2025/11/14 1.11b (Carsten Heinz)
+    so I'm assuming it got fixed.
+(e:/software/texlive/2026/texmf-dist/tex/latex/siunitx/siunitx.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/translations/translations.sty))
+(e:/software/texlive/2026/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
+(e:/software/texlive/2026/texmf-dist/tex/latex/lastpage/lastpage.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/lastpage/lastpage2e.sty
+(e:/software/texlive/2026/texmf-dist/tex/latex/lastpage/lastpagemodern.sty) 
+)) (./generated/scaling_values.tex)
+No file main.aux.
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
+
+
+(e:/software/texlive/2026/texmf-dist/tex/latex/translations/translations-basic-
+dictionary-english.trsl)
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(e:/software/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd)
+No file main.toc.
+[1]
+
+Package natbib Warning: Citation `Kretzschmar2020' on page 2 undefined on input
+ line 89.
+
+
+Package natbib Warning: Citation `Zhou2024SPCI' on page 2 undefined on input li
+ne 89.
+
+
+Package natbib Warning: Citation `MicloSpiroWeibull2022' on page 2 undefined on
+ input line 95.
+
+
+Package natbib Warning: Citation `Angulo2021' on page 2 undefined on input line
+ 101.
+
+
+Package natbib Warning: Citation `Angulo2021' on page 2 undefined on input line
+ 104.
+
+
+Package natbib Warning: Citation `Morris2021' on page 2 undefined on input line
+ 105.
+
+
+Package natbib Warning: Citation `AvramFreddiGoreac2022' on page 2 undefined on
+ input line 110.
+
+
+Package natbib Warning: Citation `FreddiGoreac2024' on page 2 undefined on inpu
+t line 113.
+
+
+Package natbib Warning: Citation `FreddiGoreacLiXu2022' on page 2 undefined on 
+input line 114.
+
+
+Package natbib Warning: Citation `Zhou2024SPCI' on page 2 undefined on input li
+ne 120.
+
+
+Package natbib Warning: Citation `Kretzschmar2020' on page 2 undefined on input
+ line 122.
+
+
+LaTeX Warning: Reference `app:medical-capacity' on page 2 undefined on input li
+ne 130.
+
+
+LaTeX Warning: Reference `thm:main-overview' on page 2 undefined on input line 
+137.
+
+
+LaTeX Warning: Reference `prop:main-structure' on page 2 undefined on input lin
+e 137.
+
+
+LaTeX Warning: Reference `sec:switching-curve' on page 2 undefined on input lin
+e 137.
+
+
+LaTeX Warning: Reference `lem:finite-entry' on page 2 undefined on input line 1
+43.
+
+
+LaTeX Warning: Reference `thm:verification' on page 2 undefined on input line 1
+44.
+
+
+LaTeX Warning: Reference `prop:main-structure' on page 2 undefined on input lin
+e 145.
+
+
+LaTeX Warning: Reference `LastPage' on page 2 undefined on input line 150.
+
+[2]
+
+LaTeX Warning: Reference `cor:verification-equality' on page 3 undefined on inp
+ut line 153.
+
+
+LaTeX Warning: Reference `lem:no-early-boundary-exit' on page 3 undefined on in
+put line 153.
+
+
+LaTeX Warning: Reference `thm:unique-q' on page 3 undefined on input line 155.
+
+
+Package natbib Warning: Citation `Zhou2024SPCI' on page 3 undefined on input li
+ne 171.
+
+
+Package natbib Warning: Citation `Zhou2024SPCI' on page 3 undefined on input li
+ne 183.
+
+
+LaTeX Warning: Reference `eq:five-compartment-model' on page 3 undefined on inp
+ut line 202.
+
+
+LaTeX Warning: Reference `LastPage' on page 3 undefined on input line 208.
+
+[3]
+
+LaTeX Warning: Reference `app:medical-capacity' on page 4 undefined on input li
+ne 226.
+
+
+Package natbib Warning: Citation `MicloSpiroWeibull2022' on page 4 undefined on
+ input line 234.
+
+
+LaTeX Warning: Reference `eq:normalized-model' on page 4 undefined on input lin
+e 240.
+
+
+LaTeX Warning: Reference `eq:capacity' on page 4 undefined on input line 241.
+
+
+LaTeX Warning: Reference `eq:normalized-model' on page 4 undefined on input lin
+e 245.
+
+
+LaTeX Warning: Reference `thm:wellposed' on page 4 undefined on input line 251.
+
+
+
+LaTeX Warning: Reference `sec:main-results' on page 4 undefined on input line 2
+52.
+
+
+LaTeX Warning: Reference `sec:mechanisms' on page 4 undefined on input line 252
+.
+
+
+LaTeX Warning: Reference `eq:sum-decay' on page 4 undefined on input line 264.
+
+
+LaTeX Warning: Reference `def:admissible' on page 4 undefined on input line 265
+.
+
+
+LaTeX Warning: Reference `LastPage' on page 4 undefined on input line 271.
+
+[4]
+
+LaTeX Warning: Reference `def:admissible' on page 5 undefined on input line 273
+.
+
+
+LaTeX Warning: Reference `lem:safe-invariant' on page 5 undefined on input line
+ 296.
+
+
+Package natbib Warning: Citation `AvramFreddiGoreac2022' on page 5 undefined on
+ input line 299.
+
+
+Package natbib Warning: Citation `FreddiGoreac2024' on page 5 undefined on inpu
+t line 299.
+
+
+LaTeX Warning: Reference `sec:switching-curve' on page 5 undefined on input lin
+e 311.
+
+
+LaTeX Warning: Reference `sec:synthesis' on page 5 undefined on input line 311.
+
+
+
+LaTeX Warning: Reference `eq:constants' on page 5 undefined on input line 315.
+
+
+LaTeX Warning: Reference `def:candidate' on page 5 undefined on input line 316.
+
+
+
+LaTeX Warning: Reference `prop:candidate-attainment' on page 5 undefined on inp
+ut line 322.
+
+
+LaTeX Warning: Reference `thm:verification' on page 5 undefined on input line 3
+22.
+
+
+LaTeX Warning: Reference `thm:unique-q' on page 5 undefined on input line 322.
+
+
+LaTeX Warning: Reference `thm:main-overview' on page 5 undefined on input line 
+328.
+
+
+LaTeX Warning: Reference `prop:Gamma-geometry' on page 5 undefined on input lin
+e 331.
+
+
+LaTeX Warning: Reference `cor:Gamma-labels' on page 5 undefined on input line 3
+31.
+
+
+LaTeX Warning: Reference `sec:switching-mechanism' on page 5 undefined on input
+ line 333.
+
+
+LaTeX Warning: Reference `cor:optimal-synthesis' on page 5 undefined on input l
+ine 336.
+
+
+LaTeX Warning: Reference `prop:Gamma-geometry' on page 5 undefined on input lin
+e 337.
+
+
+LaTeX Warning: Reference `cor:Gamma-labels' on page 5 undefined on input line 3
+37.
+
+
+LaTeX Warning: Reference `tab:optimal-stages' on page 5 undefined on input line
+ 341.
+
+
+LaTeX Warning: Reference `sec:synthesis' on page 5 undefined on input line 341.
+
+
+
+LaTeX Warning: Reference `LastPage' on page 5 undefined on input line 358.
+
+[5]
+
+LaTeX Warning: Reference `fig:optimal-partition' on page 6 undefined on input l
+ine 361.
+
+
+LaTeX Warning: Reference `cor:one-dimensional-min' on page 6 undefined on input
+ line 381.
+
+
+LaTeX Warning: Reference `cor:verification-equality' on page 6 undefined on inp
+ut line 382.
+
+
+LaTeX Warning: Reference `lem:no-early-boundary-exit' on page 6 undefined on in
+put line 382.
+
+
+LaTeX Warning: Reference `thm:unique-q' on page 6 undefined on input line 382.
+
+
+LaTeX Warning: Reference `thm:unique-q' on page 6 undefined on input line 382.
+
+
+LaTeX Warning: Reference `prop:reachable' on page 6 undefined on input line 383
+.
+
+
+LaTeX Warning: Reference `lem:tracking-region' on page 6 undefined on input lin
+e 383.
+
+
+LaTeX Warning: Reference `prop:Gamma-geometry' on page 6 undefined on input lin
+e 383.
+
+
+LaTeX Warning: Reference `cor:Gamma-labels' on page 6 undefined on input line 3
+83.
+
+
+LaTeX Warning: Reference `lem:strict-crossing' on page 6 undefined on input lin
+e 383.
+
+
+LaTeX Warning: Reference `lem:chi-regions' on page 6 undefined on input line 38
+3.
+
+
+LaTeX Warning: Reference `eq:ac-level-set' on page 6 undefined on input line 38
+3.
+
+
+LaTeX Warning: Reference `prop:regularity' on page 6 undefined on input line 38
+3.
+
+
+LaTeX Warning: Reference `lem:finite-entry' on page 6 undefined on input line 3
+83.
+
+
+LaTeX Warning: Reference `eq:normalized-model' on page 6 undefined on input lin
+e 390.
+
+
+LaTeX Warning: Reference `LastPage' on page 6 undefined on input line 398.
+
+[6]
+
+LaTeX Warning: Reference `eq:i-integrable' on page 7 undefined on input line 42
+1.
+
+
+Package natbib Warning: Citation `Fremlin2001Volume2' on page 7 undefined on in
+put line 433.
+
+
+Package natbib Warning: Citation `Fremlin2001Volume2' on page 7 undefined on in
+put line 435.
+
+
+LaTeX Warning: Reference `eq:constants' on page 7 undefined on input line 444.
+
+
+LaTeX Warning: Reference `eq:value-definition' on page 7 undefined on input lin
+e 444.
+
+
+LaTeX Warning: Reference `sec:main-results' on page 7 undefined on input line 4
+46.
+
+
+LaTeX Warning: Reference `LastPage' on page 7 undefined on input line 454.
+
+[7]
+
+LaTeX Warning: Reference `eq:Phi' on page 8 undefined on input line 455.
+
+
+LaTeX Warning: Reference `eq:uncontrolled-future-peak' on page 8 undefined on i
+nput line 466.
+
+
+LaTeX Warning: Reference `eq:safe-set' on page 8 undefined on input line 475.
+
+
+LaTeX Warning: Reference `eq:uncontrolled-future-peak' on page 8 undefined on i
+nput line 476.
+
+
+LaTeX Warning: Reference `eq:natural-peak' on page 8 undefined on input line 48
+5.
+
+
+LaTeX Warning: Reference `eq:Phi-derivative' on page 8 undefined on input line 
+510.
+
+
+LaTeX Warning: Reference `eq:sum-decay' on page 8 undefined on input line 512.
+
+
+LaTeX Warning: Reference `LastPage' on page 8 undefined on input line 525.
+
+[8]
+
+LaTeX Warning: Reference `eq:ac-level-set' on page 9 undefined on input line 54
+9.
+
+
+LaTeX Warning: Reference `eq:boundary-duration' on page 9 undefined on input li
+ne 589.
+
+
+LaTeX Warning: Reference `eq:boundary-cost' on page 9 undefined on input line 5
+89.
+
+
+LaTeX Warning: Reference `LastPage' on page 9 undefined on input line 591.
+
+[9]
+
+LaTeX Warning: Reference `eq:i-integrable' on page 10 undefined on input line 6
+12.
+
+
+LaTeX Warning: Reference `lem:finite-entry' on page 10 undefined on input line 
+629.
+
+
+LaTeX Warning: Reference `LastPage' on page 10 undefined on input line 657.
+
+[10]
+
+Package natbib Warning: Citation `Soner1986' on page 11 undefined on input line
+ 671.
+
+
+Package natbib Warning: Citation `MicloSpiroWeibull2022' on page 11 undefined o
+n input line 676.
+
+
+Package natbib Warning: Citation `Liberzon2012' on page 11 undefined on input l
+ine 677.
+
+
+LaTeX Warning: Reference `eq:H-affine' on page 11 undefined on input line 687.
+
+
+LaTeX Warning: Reference `sec:optimality' on page 11 undefined on input line 69
+6.
+
+
+LaTeX Warning: Reference `LastPage' on page 11 undefined on input line 730.
+
+[11]
+
+LaTeX Warning: Reference `eq:endpoint-system' on page 12 undefined on input lin
+e 731.
+
+
+LaTeX Warning: Reference `lem:finite-feasible' on page 12 undefined on input li
+ne 744.
+
+
+LaTeX Warning: Reference `eq:Ws' on page 12 undefined on input line 782.
+
+
+LaTeX Warning: Reference `eq:Wi' on page 12 undefined on input line 782.
+
+
+LaTeX Warning: Reference `LastPage' on page 12 undefined on input line 798.
+
+[12]
+
+LaTeX Warning: Reference `eq:q1-backward' on page 13 undefined on input line 80
+2.
+
+
+LaTeX Warning: Reference `lem:unimodal' on page 13 undefined on input line 877.
+
+
+
+LaTeX Warning: Reference `LastPage' on page 13 undefined on input line 881.
+
+[13]
+
+LaTeX Warning: Reference `lem:unimodal' on page 14 undefined on input line 891.
+
+
+
+LaTeX Warning: Reference `eq:Gamma-slope' on page 14 undefined on input line 91
+7.
+
+
+LaTeX Warning: Reference `eq:Gamma-slope' on page 14 undefined on input line 93
+5.
+
+
+LaTeX Warning: Reference `eq:ac-level-set' on page 14 undefined on input line 9
+42.
+
+
+LaTeX Warning: Reference `LastPage' on page 14 undefined on input line 952.
+
+[14]
+
+LaTeX Warning: Reference `eq:Gamma-hit-map' on page 15 undefined on input line 
+971.
+
+
+LaTeX Warning: Reference `prop:regularity' on page 15 undefined on input line 9
+97.
+
+
+LaTeX Warning: Reference `cor:Gamma-labels' on page 15 undefined on input line 
+1017.
+
+
+LaTeX Warning: Reference `def:regions' on page 15 undefined on input line 1026.
+
+
+
+LaTeX Warning: Reference `eq:chi-regions' on page 15 undefined on input line 10
+26.
+
+
+LaTeX Warning: Reference `LastPage' on page 15 undefined on input line 1031.
+
+[15]
+
+LaTeX Warning: Reference `lem:chi-regions' on page 16 undefined on input line 1
+044.
+
+
+LaTeX Warning: Reference `app:tracking-region-proof' on page 16 undefined on in
+put line 1079.
+
+
+LaTeX Warning: Reference `LastPage' on page 16 undefined on input line 1113.
+
+[16]
+
+LaTeX Warning: Reference `eq:candidate-feedback' on page 17 undefined on input 
+line 1115.
+
+
+LaTeX Warning: Reference `eq:boundary-duration' on page 17 undefined on input l
+ine 1124.
+
+
+LaTeX Warning: Reference `lem:tracking-region' on page 17 undefined on input li
+ne 1125.
+
+
+LaTeX Warning: Reference `eq:sum-decay' on page 17 undefined on input line 1126
+.
+
+
+LaTeX Warning: Reference `eq:candidate-U' on page 17 undefined on input line 11
+27.
+
+
+LaTeX Warning: Reference `def:candidate' on page 17 undefined on input line 114
+1.
+
+
+LaTeX Warning: Reference `thm:verification' on page 17 undefined on input line 
+1142.
+
+
+LaTeX Warning: Reference `cor:optimal-synthesis' on page 17 undefined on input 
+line 1143.
+
+
+LaTeX Warning: Reference `eq:Ws' on page 17 undefined on input line 1175.
+
+
+LaTeX Warning: Reference `eq:Wi' on page 17 undefined on input line 1175.
+
+
+LaTeX Warning: Reference `LastPage' on page 17 undefined on input line 1200.
+
+[17]
+
+LaTeX Warning: Reference `eq:waiting-gradient' on page 18 undefined on input li
+ne 1204.
+
+
+LaTeX Warning: Reference `lem:unimodal' on page 18 undefined on input line 1210
+.
+
+
+LaTeX Warning: Reference `eq:Lambda-natural' on page 18 undefined on input line
+ 1214.
+
+
+LaTeX Warning: Reference `eq:waiting-gradient' on page 18 undefined on input li
+ne 1232.
+
+
+LaTeX Warning: Reference `eq:Ws' on page 18 undefined on input line 1232.
+
+
+LaTeX Warning: Reference `eq:Wi' on page 18 undefined on input line 1232.
+
+
+LaTeX Warning: Reference `app:regularity-proof' on page 18 undefined on input l
+ine 1235.
+
+
+LaTeX Warning: Reference `lem:trajectory-verification' on page 18 undefined on 
+input line 1243.
+
+
+LaTeX Warning: Reference `eq:ac-level-set' on page 18 undefined on input line 1
+256.
+
+
+LaTeX Warning: Reference `LastPage' on page 18 undefined on input line 1279.
+
+[18]
+
+LaTeX Warning: Reference `lem:waiting-HJB' on page 19 undefined on input line 1
+288.
+
+
+LaTeX Warning: Reference `lem:tracking-region' on page 19 undefined on input li
+ne 1288.
+
+
+LaTeX Warning: Reference `prop:W-HJB' on page 19 undefined on input line 1288.
+
+
+LaTeX Warning: Reference `eq:capacity-gradient' on page 19 undefined on input l
+ine 1290.
+
+
+LaTeX Warning: Reference `eq:capacity-tie' on page 19 undefined on input line 1
+291.
+
+
+LaTeX Warning: Reference `eq:capacity-tie' on page 19 undefined on input line 1
+295.
+
+
+LaTeX Warning: Reference `eq:HJB-table' on page 19 undefined on input line 1297
+.
+
+
+LaTeX Warning: Reference `prop:regularity' on page 19 undefined on input line 1
+313.
+
+
+LaTeX Warning: Reference `prop:all-HJB' on page 19 undefined on input line 1316
+.
+
+
+LaTeX Warning: Reference `eq:ac-level-set' on page 19 undefined on input line 1
+322.
+
+
+LaTeX Warning: Reference `prop:regularity' on page 19 undefined on input line 1
+324.
+
+
+LaTeX Warning: Reference `eq:boundary-cost' on page 19 undefined on input line 
+1328.
+
+
+LaTeX Warning: Reference `eq:ac-level-set' on page 19 undefined on input line 1
+333.
+
+
+LaTeX Warning: Reference `eq:constants' on page 19 undefined on input line 1351
+.
+
+
+LaTeX Warning: Reference `def:admissible' on page 19 undefined on input line 13
+51.
+
+
+LaTeX Warning: Reference `eq:candidate-U' on page 19 undefined on input line 13
+52.
+
+
+LaTeX Warning: Reference `eq:value-definition' on page 19 undefined on input li
+ne 1352.
+
+
+LaTeX Warning: Reference `LastPage' on page 19 undefined on input line 1357.
+
+[19]
+
+LaTeX Warning: Reference `prop:candidate-attainment' on page 20 undefined on in
+put line 1358.
+
+
+LaTeX Warning: Reference `prop:candidate-attainment' on page 20 undefined on in
+put line 1359.
+
+
+LaTeX Warning: Reference `prop:regularity' on page 20 undefined on input line 1
+359.
+
+
+LaTeX Warning: Reference `lem:finite-entry' on page 20 undefined on input line 
+1359.
+
+
+LaTeX Warning: Reference `prop:candidate-attainment' on page 20 undefined on in
+put line 1362.
+
+
+LaTeX Warning: Reference `lem:finite-entry' on page 20 undefined on input line 
+1364.
+
+
+LaTeX Warning: Reference `lem:trajectory-verification' on page 20 undefined on 
+input line 1365.
+
+
+LaTeX Warning: Reference `thm:verification' on page 20 undefined on input line 
+1379.
+
+
+LaTeX Warning: Reference `lem:finite-entry' on page 20 undefined on input line 
+1411.
+
+
+LaTeX Warning: Reference `lem:trajectory-verification' on page 20 undefined on 
+input line 1413.
+
+
+LaTeX Warning: Reference `thm:verification' on page 20 undefined on input line 
+1425.
+
+
+LaTeX Warning: Reference `eq:verification-gap' on page 20 undefined on input li
+ne 1426.
+
+
+LaTeX Warning: Reference `LastPage' on page 20 undefined on input line 1429.
+
+[20]
+
+LaTeX Warning: Reference `eq:verification-gap' on page 21 undefined on input li
+ne 1429.
+
+
+LaTeX Warning: Reference `eq:verification-equality-conditions' on page 21 undef
+ined on input line 1433.
+
+
+LaTeX Warning: Reference `lem:trajectory-verification' on page 21 undefined on 
+input line 1443.
+
+
+LaTeX Warning: Reference `cor:verification-equality' on page 21 undefined on in
+put line 1445.
+
+
+LaTeX Warning: Reference `thm:verification' on page 21 undefined on input line 
+1455.
+
+
+LaTeX Warning: Reference `cor:verification-equality' on page 21 undefined on in
+put line 1496.
+
+
+LaTeX Warning: Reference `lem:waiting-HJB' on page 21 undefined on input line 1
+497.
+
+
+LaTeX Warning: Reference `eq:ac-level-set' on page 21 undefined on input line 1
+508.
+
+
+LaTeX Warning: Reference `eq:optimal-boundary-continuation' on page 21 undefine
+d on input line 1513.
+
+
+LaTeX Warning: Reference `LastPage' on page 21 undefined on input line 1515.
+
+[21]
+
+LaTeX Warning: Reference `thm:verification' on page 22 undefined on input line 
+1532.
+
+
+LaTeX Warning: Reference `cor:verification-equality' on page 22 undefined on in
+put line 1540.
+
+
+LaTeX Warning: Reference `lem:waiting-HJB' on page 22 undefined on input line 1
+540.
+
+
+LaTeX Warning: Reference `prop:all-HJB' on page 22 undefined on input line 1540
+.
+
+
+LaTeX Warning: Reference `lem:no-early-boundary-exit' on page 22 undefined on i
+nput line 1541.
+
+
+LaTeX Warning: Reference `lem:strict-crossing' on page 22 undefined on input li
+ne 1541.
+
+
+LaTeX Warning: Reference `lem:chi-regions' on page 22 undefined on input line 1
+541.
+
+
+LaTeX Warning: Reference `prop:candidate-attainment' on page 22 undefined on in
+put line 1542.
+
+
+LaTeX Warning: Reference `lem:tracking-region' on page 22 undefined on input li
+ne 1542.
+
+
+LaTeX Warning: Reference `thm:verification' on page 22 undefined on input line 
+1552.
+
+
+LaTeX Warning: Reference `cor:verification-equality' on page 22 undefined on in
+put line 1553.
+
+
+LaTeX Warning: Reference `lem:waiting-HJB' on page 22 undefined on input line 1
+561.
+
+
+LaTeX Warning: Reference `prop:all-HJB' on page 22 undefined on input line 1565
+.
+
+
+LaTeX Warning: Reference `lem:trajectory-verification' on page 22 undefined on 
+input line 1573.
+
+
+LaTeX Warning: Reference `rem:relative-open-control-regions' on page 22 undefin
+ed on input line 1583.
+
+
+LaTeX Warning: Reference `eq:ac-level-set' on page 22 undefined on input line 1
+601.
+
+
+LaTeX Warning: Reference `lem:no-early-boundary-exit' on page 22 undefined on i
+nput line 1604.
+
+
+LaTeX Warning: Reference `LastPage' on page 22 undefined on input line 1607.
+
+[22]
+
+LaTeX Warning: Reference `lem:strict-crossing' on page 23 undefined on input li
+ne 1609.
+
+
+LaTeX Warning: Reference `eq:strict-crossing-time' on page 23 undefined on inpu
+t line 1612.
+
+
+LaTeX Warning: Reference `lem:chi-regions' on page 23 undefined on input line 1
+614.
+
+
+LaTeX Warning: Reference `cor:Gamma-labels' on page 23 undefined on input line 
+1622.
+
+
+LaTeX Warning: Reference `prop:candidate-attainment' on page 23 undefined on in
+put line 1623.
+
+
+LaTeX Warning: Reference `lem:tracking-region' on page 23 undefined on input li
+ne 1628.
+
+
+LaTeX Warning: Reference `thm:verification' on page 23 undefined on input line 
+1642.
+
+
+LaTeX Warning: Reference `thm:unique-q' on page 23 undefined on input line 1642
+.
+
+
+LaTeX Warning: Reference `eq:direct-structure' on page 23 undefined on input li
+ne 1658.
+
+
+LaTeX Warning: Reference `eq:capacity-structure' on page 23 undefined on input 
+line 1659.
+
+
+LaTeX Warning: Reference `def:candidate' on page 23 undefined on input line 166
+6.
+
+
+LaTeX Warning: Reference `prop:candidate-attainment' on page 23 undefined on in
+put line 1667.
+
+
+LaTeX Warning: Reference `thm:verification' on page 23 undefined on input line 
+1668.
+
+
+LaTeX Warning: Reference `thm:unique-q' on page 23 undefined on input line 1669
+.
+
+
+Overfull \hbox (0.89345pt too wide) in paragraph at lines 1666--1676
+[]\TU/SimSun(0)/m/n/10.95 定 义[]给 出 各 分 区 的 候 选 控 制 及 事 件 顺 序，|  命 题[]证 明 其 可 行 
+性 和 有 限 时 间 达 到 性。|  定 理[]证
+
+LaTeX Warning: Reference `LastPage' on page 23 undefined on input line 1699.
+
+[23]
+
+LaTeX Warning: Reference `thm:verification' on page 24 undefined on input line 
+1708.
+
+
+LaTeX Warning: Reference `def:candidate' on page 24 undefined on input line 171
+8.
+
+
+LaTeX Warning: Reference `thm:unique-q' on page 24 undefined on input line 1722
+.
+
+
+LaTeX Warning: Reference `eq:constants' on page 24 undefined on input line 1733
+.
+
+
+Package natbib Warning: Citation `Angulo2021' on page 24 undefined on input lin
+e 1734.
+
+
+LaTeX Warning: Reference `eq:Phi-derivative' on page 24 undefined on input line
+ 1736.
+
+
+LaTeX Warning: Reference `eq:cost-in-Phi' on page 24 undefined on input line 17
+46.
+
+
+LaTeX Warning: Reference `LastPage' on page 24 undefined on input line 1761.
+
+[24]
+
+LaTeX Warning: Reference `lem:unimodal' on page 25 undefined on input line 1772
+.
+
+
+LaTeX Warning: Reference `eq:theta-log-derivative' on page 25 undefined on inpu
+t line 1772.
+
+
+LaTeX Warning: Reference `eq:theta-characteristic-derivative' on page 25 undefi
+ned on input line 1774.
+
+
+LaTeX Warning: Reference `eq:JD-derivative' on page 25 undefined on input line 
+1774.
+
+
+LaTeX Warning: Reference `eq:JB-derivative' on page 25 undefined on input line 
+1774.
+
+
+LaTeX Warning: Reference `eq:H0-theta' on page 25 undefined on input line 1793.
+
+
+
+LaTeX Warning: Reference `thm:verification' on page 25 undefined on input line 
+1802.
+
+
+LaTeX Warning: Reference `eq:JB-derivative' on page 25 undefined on input line 
+1806.
+
+
+LaTeX Warning: Reference `eq:JB-curvature-integral' on page 25 undefined on inp
+ut line 1810.
+
+
+LaTeX Warning: Reference `cor:one-dimensional-min' on page 25 undefined on inpu
+t line 1812.
+
+
+LaTeX Warning: Reference `thm:verification' on page 25 undefined on input line 
+1812.
+
+
+LaTeX Warning: Reference `sec:scaling' on page 25 undefined on input line 1813.
+
+
+
+LaTeX Warning: Reference `LastPage' on page 25 undefined on input line 1831.
+
+[25]
+
+LaTeX Warning: Reference `eq:boundary-cost' on page 26 undefined on input line 
+1834.
+
+
+LaTeX Warning: Reference `eq:q1-cost' on page 26 undefined on input line 1834.
+
+
+LaTeX Warning: Reference `sec:switching-mechanism' on page 26 undefined on inpu
+t line 1849.
+
+
+LaTeX Warning: Reference `eq:small-K-switch' on page 26 undefined on input line
+ 1882.
+
+
+LaTeX Warning: Reference `eq:small-K-time' on page 26 undefined on input line 1
+882.
+
+
+LaTeX Warning: Reference `app:small-capacity-proof' on page 26 undefined on inp
+ut line 1885.
+
+
+LaTeX Warning: Reference `eq:common-capacity-comparison' on page 26 undefined o
+n input line 1896.
+
+
+LaTeX Warning: Reference `LastPage' on page 26 undefined on input line 1898.
+
+[26]
+
+LaTeX Warning: Reference `tab:parameter-sources' on page 27 undefined on input 
+line 1901.
+
+
+LaTeX Warning: Reference `fig:scaling' on page 27 undefined on input line 1904.
+
+
+
+LaTeX Warning: Reference `tab:parameter-sources' on page 27 undefined on input 
+line 1907.
+
+
+Package natbib Warning: Citation `Zhou2024SPCI' on page 27 undefined on input l
+ine 1909.
+
+
+Package natbib Warning: Citation `He2023TDINN' on page 27 undefined on input li
+ne 1913.
+
+
+LaTeX Warning: Reference `fig:scaling' on page 27 undefined on input line 1939.
+
+
+
+Package natbib Warning: Citation `AvramFreddiGoreac2022' on page 27 undefined o
+n input line 2036.
+
+
+LaTeX Warning: Reference `thm:verification' on page 27 undefined on input line 
+2039.
+
+
+LaTeX Warning: Reference `thm:unique-q' on page 27 undefined on input line 2040
+.
+
+
+LaTeX Warning: Reference `LastPage' on page 27 undefined on input line 2042.
+
+[27]
+
+LaTeX Warning: Reference `LastPage' on page 28 undefined on input line 2042.
+
+[28]
+
+Package natbib Warning: Citation `Koenemann2019OpenOCL' on page 29 undefined on
+ input line 2069.
+
+
+Package natbib Warning: Citation `Andersson2019CasADi' on page 29 undefined on 
+input line 2070.
+
+
+Package natbib Warning: Citation `WachterBiegler2006' on page 29 undefined on i
+nput line 2071.
+
+
+LaTeX Warning: Reference `eq:uncontrolled-future-peak' on page 29 undefined on 
+input line 2087.
+
+
+LaTeX Warning: Reference `lem:safe-invariant' on page 29 undefined on input lin
+e 2091.
+
+
+LaTeX Warning: Reference `tab:numerical-errors' on page 29 undefined on input l
+ine 2099.
+
+
+LaTeX Warning: Reference `app:numerical-reproducibility' on page 29 undefined o
+n input line 2107.
+
+
+LaTeX Warning: Reference `tab:numerical-scenarios' on page 29 undefined on inpu
+t line 2114.
+
+
+LaTeX Warning: Reference `tab:optimal-stages' on page 29 undefined on input lin
+e 2114.
+
+
+LaTeX Warning: Reference `thm:verification' on page 29 undefined on input line 
+2116.
+
+
+LaTeX Warning: Reference `LastPage' on page 29 undefined on input line 2118.
+
+[29]
+
+LaTeX Warning: Reference `fig:optimal-partition' on page 30 undefined on input 
+line 2124.
+
+
+LaTeX Warning: Reference `fig:numerical-regions' on page 30 undefined on input 
+line 2124.
+
+
+LaTeX Warning: Reference `sec:numerical-method' on page 30 undefined on input l
+ine 2155.
+
+
+LaTeX Warning: Reference `sec:numerical-method' on page 30 undefined on input l
+ine 2155.
+
+
+LaTeX Warning: Reference `LastPage' on page 30 undefined on input line 2175.
+
+[30]
+
+LaTeX Warning: Reference `tab:optimal-stages' on page 31 undefined on input lin
+e 2180.
+
+
+LaTeX Warning: Reference `def:candidate' on page 31 undefined on input line 218
+0.
+
+
+LaTeX Warning: Reference `fig:numerical-waiting' on page 31 undefined on input 
+line 2182.
+
+
+LaTeX Warning: Reference `LastPage' on page 31 undefined on input line 2194.
+
+[31]
+
+LaTeX Warning: Reference `tab:optimal-stages' on page 32 undefined on input lin
+e 2205.
+
+
+LaTeX Warning: Reference `def:candidate' on page 32 undefined on input line 220
+5.
+
+
+LaTeX Warning: Reference `fig:numerical-boundary-tracking' on page 32 undefined
+ on input line 2207.
+
+
+LaTeX Warning: Reference `LastPage' on page 32 undefined on input line 2222.
+
+[32]
+
+LaTeX Warning: Reference `tab:numerical-errors' on page 33 undefined on input l
+ine 2227.
+
+
+LaTeX Warning: Reference `eq:linear-cost' on page 33 undefined on input line 22
+42.
+
+
+LaTeX Warning: Reference `LastPage' on page 33 undefined on input line 2253.
+
+[33]
+
+LaTeX Warning: Reference `prop:main-structure' on page 34 undefined on input li
+ne 2257.
+
+
+LaTeX Warning: Reference `sec:switching-mechanism' on page 34 undefined on inpu
+t line 2257.
+
+
+LaTeX Warning: Reference `thm:verification' on page 34 undefined on input line 
+2278.
+
+
+LaTeX Warning: Reference `thm:unique-q' on page 34 undefined on input line 2281
+.
+
+
+LaTeX Warning: Reference `eq:endpoint-derivatives' on page 34 undefined on inpu
+t line 2311.
+
+
+LaTeX Warning: Reference `LastPage' on page 34 undefined on input line 2317.
+
+[34]
+
+LaTeX Warning: Reference `eq:boundary-cost' on page 35 undefined on input line 
+2335.
+
+
+LaTeX Warning: Reference `prop:reachable' on page 35 undefined on input line 23
+48.
+
+
+LaTeX Warning: Reference `prop:reachable' on page 35 undefined on input line 23
+53.
+
+
+LaTeX Warning: Reference `lem:unimodal' on page 35 undefined on input line 2359
+.
+
+
+LaTeX Warning: Reference `LastPage' on page 35 undefined on input line 2385.
+
+[35]
+
+LaTeX Warning: Reference `lem:strict-crossing' on page 36 undefined on input li
+ne 2389.
+
+
+LaTeX Warning: Reference `lem:chi-regions' on page 36 undefined on input line 2
+401.
+
+
+LaTeX Warning: Reference `eq:strict-crossing-time' on page 36 undefined on inpu
+t line 2403.
+
+
+LaTeX Warning: Reference `lem:chi-regions' on page 36 undefined on input line 2
+403.
+
+
+LaTeX Warning: Reference `prop:regularity' on page 36 undefined on input line 2
+410.
+
+
+LaTeX Warning: Reference `eq:waiting-gradient' on page 36 undefined on input li
+ne 2415.
+
+
+LaTeX Warning: Reference `LastPage' on page 36 undefined on input line 2456.
+
+[36]
+
+LaTeX Warning: Reference `cor:Gamma-labels' on page 37 undefined on input line 
+2468.
+
+
+LaTeX Warning: Reference `eq:waiting-gradient' on page 37 undefined on input li
+ne 2474.
+
+
+LaTeX Warning: Reference `eq:capacity-gradient' on page 37 undefined on input l
+ine 2474.
+
+
+LaTeX Warning: Reference `eq:boundary-value' on page 37 undefined on input line
+ 2512.
+
+
+LaTeX Warning: Reference `eq:boundary-cost' on page 37 undefined on input line 
+2512.
+
+
+LaTeX Warning: Reference `LastPage' on page 37 undefined on input line 2525.
+
+[37]
+
+LaTeX Warning: Reference `prop:small-capacity' on page 38 undefined on input li
+ne 2534.
+
+
+LaTeX Warning: Reference `eq:small-K-switch' on page 38 undefined on input line
+ 2567.
+
+
+LaTeX Warning: Reference `eq:small-K-cost' on page 38 undefined on input line 2
+581.
+
+
+LaTeX Warning: Reference `LastPage' on page 38 undefined on input line 2599.
+
+[38]
+
+LaTeX Warning: Reference `eq:small-K-time' on page 39 undefined on input line 2
+600.
+
+
+LaTeX Warning: Reference `eq:small-K-relative' on page 39 undefined on input li
+ne 2610.
+
+
+Package natbib Warning: Citation `Zhou2024SPCI' on page 39 undefined on input l
+ine 2623.
+
+
+LaTeX Warning: Reference `eq:medical-total-incidence' on page 39 undefined on i
+nput line 2642.
+
+
+Package natbib Warning: Citation `Baas2021Occupancy' on page 39 undefined on in
+put line 2644.
+
+
+LaTeX Warning: Reference `eq:medical-incidence-bound' on page 39 undefined on i
+nput line 2662.
+
+
+LaTeX Warning: Reference `LastPage' on page 39 undefined on input line 2669.
+
+[39]
+
+LaTeX Warning: Reference `eq:medical-threshold' on page 40 undefined on input l
+ine 2683.
+
+
+LaTeX Warning: Reference `LastPage' on page 40 undefined on input line 2718.
+
+[40]
+
+LaTeX Warning: Reference `LastPage' on page 41 undefined on input line 2734.
+
+[41]
+No file main.bbl.
+
+Package natbib Warning: There were undefined citations.
+
+
+enddocument/afterlastpage (AED): lastpage setting LastPage.
+
+(E:\work\optimal-threshold-control\tracing_isolation_optimal_control_complete\t
+mp\structure_g1_20261021\isolated_attempt1\git_export\tracing_isolation_optimal
+_control_complete\latex\build/main.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+
+Package lastpage Warning: Rerun to get the references right on input line 2738.
+
+
+ )
+(see the transcript file for additional information)
+Output written on E:\work\optimal-threshold-control\tracing_isolation_optimal_c
+ontrol_complete\tmp\structure_g1_20261021\isolated_attempt1\git_export\tracing_
+isolation_optimal_control_complete\latex\build/main.pdf (41 pages).
+Transcript written on E:\work\optimal-threshold-control\tracing_isolation_optim
+al_control_complete\tmp\structure_g1_20261021\isolated_attempt1\git_export\trac
+ing_isolation_optimal_control_complete\latex\build/main.log.

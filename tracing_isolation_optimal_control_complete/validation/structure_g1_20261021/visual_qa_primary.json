@@ -1,0 +1,14 @@
+{
+  "review_method": "主代理实际调用 view_image 逐张查看150 dpi PNG；未以文本提取替代目视",
+  "dpi": 150,
+  "pages": [
+    {"page": 1, "passed": true, "observation": "摘要及目录起始页正常；第1–4节与三级标题缩进、页码对齐可辨，无截字。"},
+    {"page": 2, "passed": true, "observation": "目录列出第4节续项、第5–10节及附录A/B；三层标题层级、点线与页码对齐正常，无重叠。"},
+    {"page": 3, "passed": true, "observation": "目录续列附录C–G，顺序正确，长附录标题完整；其后留白，无裁切。"},
+    {"page": 8, "passed": true, "observation": "第4节标题与证明路线位于图1及图注之后，引用正常解析，无重叠或溢出；本页图形未修改。"},
+    {"page": 13, "passed": true, "observation": "第5节标题、两句导读、5.1小节及命题起始衔接正常；公式编号与正文均在版心内。"},
+    {"page": 24, "passed": true, "observation": "唯一性定理、三句证明路线、第1步及第2步开头正常；行末与数学公式无重叠或截断。"}
+  ],
+  "all_reviewed_passed": true,
+  "other_required_pages": "第20、25、35、37、38页由并行审阅者逐张目视，详见visual_qa_secondary.json。"
+}
