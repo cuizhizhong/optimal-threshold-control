@@ -1,6 +1,6 @@
 # 长时域数值验证与复现
 
-本目录实现同一无终端约束 OCP 的配置、求解、评估和导出。结果仅来自保存的原始输出；执行计划、`expected_region` 和 `expected_structure` 只用于配置或独立比较。第 6–9 步的科学矩阵覆盖 35/35，求解器成功 35/35。按原严格判据，`numeric_pass=29/35`、`agreement_pass=29/35`、双通过 28/35；按 2026-10-10 求解后调整的修订判据（`numerical_cases_config.m` 中的 `cfg.acceptance`），分别为 33/35、30/35，双通过 30/35。导出的复现附录同时写明两种计数。七条原判据未通过记录和原严格网格失败继续保留。
+本目录实现同一无终端约束 OCP 的配置、求解、评估和导出。结果仅来自保存的原始输出；执行计划、`expected_region` 和 `expected_structure` 只用于配置或独立比较。第 6–9 步的科学矩阵覆盖 35/35，求解器成功 35/35。按原严格判据，`numeric_pass=29/35`、`agreement_pass=29/35`、双通过 28/35；按 2026-10-10 求解后调整的修订判据（`numerical_cases_config.m` 中的 `cfg.acceptance`），分别为 33/35、30/35，双通过 30/35。独立补充材料同时写明两种计数。七条原判据未通过记录和原严格网格失败继续保留。
 
 `export_numerical_latex.m` 对“负成本差且重积分容量略超”的记录，额外用解析公式计算把容量放宽为 K+δ 后解析最优值的下降。若下降不小于负差，就在正文中把该负差写为与容量超出相容，否则保留“待查差异”表述。这一比较不调用优化器，也不改写评估记录。
 
@@ -73,9 +73,9 @@ S2 实际新求解 35 次、缓存命中 0 次、求解器成功 35/35；`all,fa
 
 S2.7 已刷新三图和正文宏，两组生成块及块外文字与重跑前基线完全相同；证据见[本批核对报告](../../validation/numerical_scenarios/rerun_20261020/S2.7/macro_comparison_report.json)。三项导出器回归已通过，实际结果见[本批回归报告](../../validation/numerical_scenarios/rerun_20261020/S2.7/regression_report.json)。本批各步主文实际编译为 37 页。
 
-`load_selected_numerical_runs` 核对 manifest、五例兼容副本、原始文件 SHA-256、run_id、指纹、provenance 和每个原始字段。`make_numerical_figures` 只读取已选数据，保留三张主图；数值控制用阶梯线、解析跳跃用重复事件时间，相平面保留 `Phi=Phi_B` 边界及物理域阴影。正文保留一张成本表。
+`load_selected_numerical_runs` 核对 manifest、五例兼容副本、原始文件 SHA-256、run_id、指纹、provenance 和每个原始字段。`make_numerical_figures` 只读取已选数据，保留三张数值图；数值控制用阶梯线、解析跳跃用重复事件时间，相平面保留 `Phi=Phi_B` 边界及物理域阴影。主文数值章节保留成本表与误差表，共 3 图、2 表。
 
-`export_numerical_latex` 只更新 `latex/main.tex` 内两组 AUTO-GENERATED 标记块。结果缺失/失败/来源不匹配时刷新开关和文字，尚未运行的数值留空或 `--`。`NumResultsVerified` 与附加协议的 `NumRobustnessComplete` 独立；协议全部尝试不等于一致性通过。五例主结果和附加异常都由实际数据解释。
+`export_numerical_latex` 更新 `latex/generated/numerical_values.tex` 内两组 AUTO-GENERATED 标记块，并保存导出 provenance。`latex/main.tex` 和 `latex/supplementary.tex` 共同读取该文件，导出器不直接改写两份文稿。结果缺失/失败/来源不匹配时刷新开关和文字，尚未运行的数值留空或 `--`。`NumResultsVerified` 与附加协议的 `NumRobustnessComplete` 独立；协议全部尝试不等于一致性通过。五例主结果和附加异常都由实际数据解释。独立补充材料仅列附加设置、核对结果及判据与残差；完整复现记录、逐条来源、日志和操作异常保留在本目录及 `data/`、`validation/`，不再逐项写入补充材料。
 
 历史第 10–11 步工作区后处理科学优化调用为 0：12 组 unit、3 项旧失败回归、8 项保存数据回归及 2 项缺失/阻断回归通过，最终重复导出文字不变。三图来源/哈希和 PNG 视觉已检查；main 34 页实际编译成功，最终日志没有上述排版/引用问题。首次复现附录有 11.08316pt 溢出，换段修复并保留首次日志。
 

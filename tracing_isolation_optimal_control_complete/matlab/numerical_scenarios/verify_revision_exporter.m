@@ -4,7 +4,8 @@ cfg=numerical_cases_config(); root=tempname; mkdir(root);
 cleanup=onCleanup(@() cleanup_temporary(root)); %#ok<NASGU>
 cfg.paths.data=fullfile(root,'data'); mkdir(cfg.paths.data);
 cfg.paths.latex=fullfile(root,'latex'); mkdir(cfg.paths.latex);
-tex=fullfile(cfg.paths.latex,'main.tex'); tests={};
+mkdir(fullfile(cfg.paths.latex,'generated'));
+tex=fullfile(cfg.paths.latex,'generated','numerical_values.tex'); tests={};
 for scenario={'missing','failed','provenance_changed'}
     write_stale(tex);
     if ~strcmp(scenario{1},'missing'), write_selection(cfg.paths.data,scenario{1}); end

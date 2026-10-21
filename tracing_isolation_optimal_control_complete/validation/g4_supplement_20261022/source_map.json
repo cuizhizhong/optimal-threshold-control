@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "target": "latex/supplementary.tex",
+  "scope": "只读核对保存证据与 SI 的三张表及 E3 三个数值；路径相对于本项目根目录。",
+  "verification_type": "saved_evidence_read_only",
+  "optimizer_calls": 0,
+  "ocp_solves": 0,
+  "assessment_calls": 0,
+  "new_scientific_calculations": 0,
+  "all_checked_claims_match": true,
+  "table_S1": {
+    "label": "tab:supp-settings",
+    "configuration_sources": [
+      {
+        "path": "matlab/numerical_scenarios/revision_validation_config.m",
+        "fields_or_code": [
+          "mainN=[4000 8000 4000 8000 4000]",
+          "add(...,300,mainN(k),struct('type','analytic_reference'),'main')",
+          "struct('type','constant_control','control',0.7)",
+          "struct('type','seeded_random',...)",
+          "for N=[2000 4000 8000]",
+          "for pair=[60 120 300;1600 3200 8000]",
+          "cfg.revision.threshold_control=[5e-4 1e-3 2e-3]",
+          "cfg.revision.threshold_capacity=[1e-5 2e-5 4e-5]",
+          "cfg.revision.default_unique_count=35"
+        ]
+      },
+      {
+        "path": "matlab/numerical_scenarios/numerical_cases_config.m",
+        "fields_or_code": [
+          "cfg.solve.T=300; cfg.solve.N=4000; cfg.solve.d=2",
+          "cfg.check.event_control_threshold=1e-3",
+          "cfg.check.event_capacity_threshold=2e-5"
+        ]
+      }
+    ],
+    "saved_result_crosschecks": [
+      {
+        "path": "data/numerical_scenarios/revision_checks/initialization_summary.json",
+        "fields": "$.rows[*].{case_id,T,N,initialization}",
+        "expected": "10 条；T=300；constant_control 与 seeded_random；各例 N=4000/8000/4000/8000/4000。"
+      },
+      {
+        "path": "data/numerical_scenarios/revision_checks/grid_summary.json",
+        "fields": "$.rows[*].{case_id,T,N,initialization}",
+        "expected": "15 条；五例各有 T=300、N=2000/4000/8000、analytic_reference。"
+      },
+      {
+        "path": "data/numerical_scenarios/revision_checks/horizon_summary.json",
+        "fields": "$.rows[*].{case_id,T,N,initialization}",
+        "expected": "15 条；五例各有 (T,N)=(60,1600)/(120,3200)/(300,8000)、analytic_reference。"
+      },
+      {
+        "path": "data/numerical_scenarios/revision_checks/threshold_summary.json",
+        "fields": "$.rows[*].{case_id,control_threshold,capacity_threshold}",
+        "expected": "45 条；五例各有三个控制阈值与三个容量阈值的全部组合。"
+      }
+    ]
+  },
+  "table_S2": {
+    "label": "tab:supp-comparisons",
+    "sources": [
+      {
+        "path": "data/numerical_scenarios/revision_checks/initialization_summary.json",
+        "fields": "$.case_comparisons[*].{case_id,status,consistency_pass,cost_absolute_difference,event_comparisons}",
+        "observed": "E1--E5 均 status=passed、consistency_pass=true。"
+      },
+      {
+        "path": "data/numerical_scenarios/revision_checks/grid_summary.json",
+        "fields": "$.case_comparisons[*].{case_id,coarse_N,fine_N,cost_comparison_pass,event_comparison_pass}",
+        "observed": "五例 coarse_N=4000、fine_N=8000，cost_comparison_pass 与 event_comparison_pass 均 true。"
+      },
+      {
+        "path": "data/numerical_scenarios/revision_checks/horizon_summary.json",
+        "fields": "$.case_comparisons[*].{case_id,status,consistency_pass,cost_absolute_span,event_comparisons}",
+        "observed": "E1--E5 均 status=passed、consistency_pass=true。"
+      },
+      {
+        "path": "data/numerical_scenarios/revision_checks/threshold_summary.json",
+        "fields": "$.optimizer_calls; $.consistency_pass; $.rows[*].consistency_pass",
+        "observed": "optimizer_calls=0；45 条 rows 的 consistency_pass 均 true。"
+      }
+    ],
+    "coarse_failure_source": {
+      "path": "data/numerical_scenarios/revision_checks/grid_summary.json",
+      "fields": "$.rows[case_id=E1--E5,N=2000].{numeric_pass,agreement_pass,observed_structure,capacity_excess}",
+      "observed": "E2/E4 容量诊断未通过，分别识别为 0 -> 1 -> 0 和 1 -> 0；E1/E3/E5 的 agreement_pass=false。",
+      "cost_failure_explanation": {
+        "path": "latex/generated/numerical_values.tex",
+        "macro": "NumReproducibilityDetails",
+        "text": "n=2000 的 E1、E3、E5 成本比较仍未通过。"
+      }
+    },
+    "solver_success_source": {
+      "path": "validation/numerical_scenarios/rerun_20261020/S2.4/execution_report.json",
+      "fields": "$.solver_calls=35; $.successful_count=35; $.failed_count=0",
+      "note": "这是 S2.4 历史实际执行记录，不是 G4 新增求解。"
+    }
+  },
+  "table_S3": {
+    "label": "tab:supp-tolerances",
+    "path": "validation/numerical_scenarios/rerun_20261020/S2.6/assessment_revision_report.json",
+    "original_tolerances": {
+      "$.original_settings.state_tolerance": 0.000001,
+      "$.original_settings.capacity_tolerance": 0.000001,
+      "$.original_settings.capacity_control_tolerance": 0.002,
+      "$.original_settings.relative_cost_tolerance": 0.0001,
+      "$.original_settings.control_tolerance": 0.000001,
+      "$.original_settings.tail_control_tolerance": 0.000001
+    },
+    "revised_tolerances": {
+      "$.current_settings.state_tolerance": 0.00001,
+      "$.current_settings.capacity_tolerance": 0.00001,
+      "$.current_settings.capacity_control_tolerance": 0.003,
+      "$.current_settings.relative_cost_tolerance": 0.0001,
+      "$.current_settings.control_tolerance": 0.000001,
+      "$.current_settings.tail_control_tolerance": 0.000001
+    },
+    "original_counts": {
+      "$.original_counts.records": 35,
+      "$.original_counts.numeric_pass": 29,
+      "$.original_counts.agreement_pass": 29,
+      "$.original_counts.both_pass": 28
+    },
+    "revised_counts": {
+      "$.current_counts.records": 35,
+      "$.current_counts.numeric_pass": 33,
+      "$.current_counts.agreement_pass": 30,
+      "$.current_counts.both_pass": 30
+    }
+  },
+  "E3_coarse_grid": {
+    "configuration_id": "C20",
+    "current_run_id": "run_72fdd687379e4b0ba7f4defb3eb137e5",
+    "legacy_run_id": "run_be8c0645aca04eb38d172896cee33450",
+    "identity_mapping_source": {
+      "path": "validation/numerical_scenarios/rerun_20261020/comparison_report.json",
+      "fields": "$.rows[configuration_id=C20].{old_run_id,new_run_id}"
+    },
+    "signed_cost_difference": {
+      "path": "data/numerical_scenarios/revision_checks/grid_detailed_summary.csv",
+      "row_filter": "case_id=E3, N=2000",
+      "field": "signed_cost_difference_to_reference",
+      "saved_value": -0.0000675538887330851,
+      "SI_printed": "-6.76e-5",
+      "note": "该历史详细 CSV 使用 legacy_run_id；C20 新旧原始数组与成本已在 S2 比较记录中对照。"
+    },
+    "capacity_excess": {
+      "path": "validation/numerical_scenarios/rerun_20261020/S2.6/assessment_revision_report.json",
+      "field": "$.rows[configuration_id=C20].capacity_excess",
+      "saved_value": 0.000007830067991265732,
+      "SI_printed": "7.83e-6"
+    },
+    "capacity_relaxation_value_drop": {
+      "source_type": "saved_exported_text_not_a_separate_assessment_JSON_scalar",
+      "path": "latex/generated/numerical_values.tex",
+      "macro": "NumReproducibilityDetails",
+      "saved_value_text": "1.08e-04",
+      "SI_printed": "1.08e-4",
+      "pre_G4_committed_source": "671c6cd:tracing_isolation_optimal_control_complete/latex/main.tex, macro NumReproducibilityDetails",
+      "calculation_origin": "matlab/numerical_scenarios/export_numerical_latex.m:706-713, relaxed_capacity_drop: reference.J_reference minus analytic_reference at K+assessment.capacity_excess",
+      "note": "本核对只读取已保存导出值；没有重新调用解析公式、评估器或优化器，也没有声称存在独立 JSON 字段。"
+    },
+    "preserved_assessment_classification": {
+      "path": "validation/numerical_scenarios/rerun_20261020/S2.6/assessment_revision_report.json",
+      "field": "$.rows[configuration_id=C20].current_status",
+      "saved_value": "unresolved_discrepancy",
+      "note": "原分类留在保存记录中；依作者要求不在精简 SI 印出内部字段。"
+    }
+  }
+}

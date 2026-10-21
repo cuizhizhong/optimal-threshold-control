@@ -4,6 +4,7 @@ cfg=numerical_cases_config(); root=tempname; mkdir(root);
 cleanup=onCleanup(@() cleanup_temporary(root)); %#ok<NASGU>
 cfg.paths.data=fullfile(root,'data'); cfg.paths.latex=fullfile(root,'latex');
 mkdir(cfg.paths.data); mkdir(cfg.paths.latex); mkdir(fullfile(cfg.paths.data,'runs'));
+mkdir(fullfile(cfg.paths.latex,'generated'));
 mkdir(fullfile(cfg.paths.data,'revision_checks'));
 spec=numerical_assessment_spec(cfg); entries=struct([]);
 for k=1:5
@@ -39,7 +40,7 @@ for k=1:5
 end
 numerical_write_json(fullfile(cfg.paths.data,'selection_manifest.json'),struct('schema_version',1,'entries',entries));
 numerical_write_json(fullfile(cfg.paths.data,'run_index.json'),struct('schema_version',1,'entries',entries));
-tex=fullfile(cfg.paths.latex,'main.tex'); tests={};
+tex=fullfile(cfg.paths.latex,'generated','numerical_values.tex'); tests={};
 for scenario={'missing_additional_results','blocked_empty_additional_rows'}
     write_stale(tex);
     if strcmp(scenario{1},'blocked_empty_additional_rows')

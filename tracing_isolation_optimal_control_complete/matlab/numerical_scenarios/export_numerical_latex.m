@@ -37,7 +37,7 @@ tab=cell2table(rows,'VariableNames',{'case_id','s0','i0','region','expected_stru
 writetable(tab,fullfile(cfg.paths.data,'scenario_summary.csv'));
 suffix={'One','Two','Three','Four','Five'};
 reference={'% MATLAB 解析公式评价；不含优化器结果。'};
-pending={'% 从 data/numerical_scenarios 的真实结果生成；条件开关由 main.tex 定义。'};
+pending={'% 从 data/numerical_scenarios 的真实结果生成；条件开关由本文件定义。'};
 if verified, pending{end+1}='\NumResultsVerifiedtrue'; else, pending{end+1}='\NumResultsVerifiedfalse'; end
 if robustness.protocol_complete
     pending{end+1}='\NumRobustnessCompletetrue';
@@ -158,15 +158,15 @@ pending{end+1}=macro('NumCheckStatement',checktext);
 pending{end+1}=macro('NumOverallFinding',finding);
 pending{end+1}=macro('NumErrorTableRows',error_table_rows(runs));
 pending{end+1}=macro('NumResidualSummary',residual_summary(cfg,runs,robustness,verified));
-mainPath=fullfile(cfg.paths.latex,'main.tex');
-text=fileread(mainPath);
+valuesPath=fullfile(cfg.paths.latex,'generated','numerical_values.tex');
+text=fileread(valuesPath);
 text=replace_generated_block(text, ...
     '% BEGIN AUTO-GENERATED NUMERICAL REFERENCE VALUES', ...
     '% END AUTO-GENERATED NUMERICAL REFERENCE VALUES',strjoin(reference,newline));
 text=replace_generated_block(text, ...
     '% BEGIN AUTO-GENERATED NUMERICAL RESULTS', ...
     '% END AUTO-GENERATED NUMERICAL RESULTS',strjoin(pending,newline));
-atomic_write(mainPath,text);
+atomic_write(valuesPath,text);
 numerical_export_provenance('export',selectionManifest,cfg.paths.data);
 report=struct('verified',verified,'status',mainVerification.status, ...
     'optimizer_executions',0,'selection_manifest',selectionManifest,'robustness',robustness);
@@ -175,7 +175,7 @@ end
 
 function invalidate_generated_results(cfg)
 % 输入缺失、失败或来源不匹配时不能继承上次生成块中的 true 和通过段落。
-filename=fullfile(cfg.paths.latex,'main.tex');
+filename=fullfile(cfg.paths.latex,'generated','numerical_values.tex');
 text=fileread(filename);
 body={'% 当前选定结果不可用；本块不包含新优化结果。', ...
     '\NumResultsVerifiedfalse','\NumRobustnessCompletefalse', ...
@@ -456,7 +456,7 @@ details=sprintf(['默认协议已记录 %d/%d 个不同配置，其中 %d 个同
     '协议是否完成与比较是否一致分别记录。'],out.recorded_configuration_count, ...
     out.expected_configuration_count,out.numeric_and_agreement_pass_count);
 if isfield(cfg,'acceptance') && strcmp(cfg.acceptance.revision_timing,'post_solve')
-    text='数值接受及容量控制比较容差于保存求解后调整，取值与原严格记录见复现附录。';
+    text='数值接受及容量控制比较容差于保存求解后调整，取值与原严格记录见补充材料。';
     details=[details sprintf(['本次在保存求解后调整状态及容量接受容差为 $\\num{%.3g}$、' ...
         '容量段控制与 $q_B$ 区间均值的绝对误差容差为 $\\num{%.3g}$，并重新评估全部保存结果；' ...
         '成本相对误差容差 $\\num{%.3g}$ 与事件区间判据保持不变。原严格判据及其未通过记录另行保留。'], ...

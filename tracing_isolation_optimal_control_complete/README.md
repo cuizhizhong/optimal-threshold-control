@@ -4,6 +4,8 @@
 
 本轮修订的对照材料、实际结果、最终正文和复现边界见[评阅入口](REVIEW_GUIDE.md)。
 
+当前论文交付入口为[主文 PDF](latex/main.pdf)（43 页）与[独立补充材料 PDF](latex/supplementary.pdf)（2 页），对应源码为 `latex/main.tex`、`latex/supplementary.tex`。主文保留核心结果与证明附录，共 5 图、4 表，其中数值章节为 3 图、2 表；补充材料仅含附加数值设置、附加核对结果、误差判据与残差说明三小节。完整复现记录、逐条评估、日志和数据来源继续保存在仓库。G4 两份文稿已从新隔离目录完整编译，最终日志无诊断；45 页均已逐页目视检查，导出回归 16/16、符号检查 28/28、保护检查 19 项通过。Windows `build.bat` 已实际运行并退出 0，Linux/macOS `build.sh` 仅作静态检查；优化器调用、新增 OCP 求解、重新评估和图形导出均为 0 次。实际命令和验收记录见[本批报告](validation/g4_supplement_20261022/README.md)。
+
 按作者最新决定，当前论文只研究无回流五仓室模型的最优控制；有回流问题的数值研究留作后续独立工作。第二节已按“仓室与流量—完整模型—前两式解耦—二维最优控制问题”重写，移除回流参数、五维值函数及独立等价命题。当前执行计划更新为 v5；本轮修改与验证见 [模型节返修报告](validation/model_no_return_revision_20261020/README.md)。第三批此前的模型初稿与编译记录保留为[历史报告](validation/model_a1_20261020/README.md)。
 
 ## 当前结果与限制
@@ -21,7 +23,7 @@ S2 已统一代码和论文符号，并实际执行 35 次新求解：缓存命�
 | 原严格判据（求解前预定；状态/容量容差 1e-6，容量段控制 2e-3） | 29/35 | 29/35 | 28/35 |
 | 修订判据（2026-10-10 求解后调整；状态/容量容差 1e-5，容量段控制 3e-3） | 33/35 | 30/35 | 30/35 |
 
-修订判据是对同一批保存数据的后验重评，只用于说明浮点误差尺度，不提供新的收敛证据；成本相对误差容差 1e-4 和事件判据未变，详见 `validation/numerical_scenarios/tolerance_revision_20261010/README.md`。正文复现附录采用修订判据，并同时写明原判据计数。第 6–11 步的历史报告保留原判据计数，不能读成修订判据的统计。
+修订判据是对同一批保存数据的后验重评，只用于说明浮点误差尺度，不提供新的收敛证据；成本相对误差容差 1e-4 和事件判据未变，详见 `validation/numerical_scenarios/tolerance_revision_20261010/README.md`。当前独立补充材料采用修订判据，并同时写明原判据计数。第 6–11 步的历史报告保留原判据计数，不能读成修订判据的统计。
 
 五例预定主结果在两种口径下均通过这两组浮点诊断；初猜组和固定步长时域组通过。原严格网格组为 `failed`、`consistency_pass=false`；修订判据下最细两级（$n=4000/8000$）的成本与事件比较五例均实际执行并通过。原判据下七条至少一项诊断失败的记录全部保留。第 8–9 步新增求解为 30 次、缓存引用为 10 次，主批的另 5 次求解见 `step67_main_report.json`。
 
@@ -82,12 +84,14 @@ S1 按 `SYMBOL_TABLE.md` 的指定范围完成以下 20 条改名；旧记号仅
 ## 文件与来源
 
 - `latex/main.tex`、`main.pdf`、`references.bib`：主文源文件、实际编译稿及文献库。
+- `latex/supplementary.tex`、`supplementary.pdf`：独立补充材料源码与编译稿；阅读主文后按需查阅三节附加证据。
+- `latex/generated/numerical_values.tex`：主文和补充材料共用的数值导出宏；`generated/scaling_values.tex` 为解析量级宏。
 - `matlab/numerical_scenarios/`：配置、求解、独立评估、调度、三张图和正文宏导出。
 - `validation/numerical_scenarios/`：共享输入、独立 Python 解析 fixture、验证入口、执行日志和状态。
 - `data/numerical_scenarios/runs/`：不可覆盖的原始记录及 `*.solver.json`。
 - `data/numerical_scenarios/run_index.json`、`selection_manifest.json`：全部尝试索引与五例预定主选择。
 - `data/numerical_scenarios/revision_checks/`：评估 sidecar、批次请求/报告及初猜、网格、时域、阈值摘要。
-- `figures/numerical_scenarios/`：`FigN1_regions`、`FigN2_waiting`、`FigN3_boundary_tracking` 的 PDF/PNG。正文保留这三张主图和一个成本主表。
+- `figures/numerical_scenarios/`：`FigN1_regions`、`FigN2_waiting`、`FigN3_boundary_tracking` 的 PDF/PNG，以及主结果节的 `FigN1_optimal_partition`；数值章节保留三图、成本表和误差表，另有 `figures/scaling/FigD_magnitude` 量级图。
 - `validation/numerical_scenarios/rerun_20261020/comparison_report.json`：C01–C35 的新旧 run_id、原始文件与评估来源、逐项差值及严格验收结果。
 - `validation/numerical_scenarios/rerun_20261020/S2.6/assessment_revision_report.json`：本次 35 个新 run 的原判据与修订判据对照。
 - `MANIFEST.txt`：复现文件清单；`archive/first_version/` 与 `legacy_results/` 仅用于历史追溯。
@@ -122,6 +126,6 @@ export_numerical_latex();
 
 ## 编译与隔离检出
 
-在本项目目录运行 Windows 的 `.\build.bat` 或 Linux/macOS 的 `bash build.sh`，均执行 XeLaTeX → BibTeX → XeLaTeX → XeLaTeX，输出 `latex/main.pdf`。
+在本项目目录运行 Windows 的 `.\build.bat` 或 Linux/macOS 的 `bash build.sh`，依次编译 `latex/main.tex` 和 `latex/supplementary.tex`。每份文稿执行 XeLaTeX → BibTeX（仅在首轮 `.aux` 含文献库时）→ XeLaTeX → XeLaTeX，输出 `latex/main.pdf` 与 `latex/supplementary.pdf`。两份文稿各自独立编译，共享宏通过 `generated/numerical_values.tex` 读取；补充材料不依赖主文 `.aux`。
 
 上述第 11 步检查均有实际报告，包含输入/fixture、无优化器测试、保存数据后处理、三图/一表、主文编译、日志和页面渲染及独立 smoke。候选基于 Git HEAD 加明确成果文件，复用显式 `OPENOCL_ROOT` 指定且已核对哈希的依赖目录；这项检查验证本机候选源码和数据可检出并运行。候选与原工作区的 35 个 raw/solver、35 个 assessment、输入和 fixture 字节相同，主 TeX 相同；兼容副本只更新选择时间戳及相应哈希，其全部科学字段/数组相同。旧 `clean_checkout_report.json` 仍仅是第 0–2 步历史证据。

@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "build.bat"
+  ],
+  "cwd": "E:\\work\\optimal-threshold-control\\tmp\\g4_20261022\\attempt3",
+  "exit_code": 0,
+  "documents": {
+    "main": {
+      "pages": 43,
+      "sha256": "b05532ee1636917faaccc3f5ec67e6b40fdad3484d5356abca10fddf6a00f4f6",
+      "diagnostics": []
+    },
+    "supplementary": {
+      "pages": 2,
+      "sha256": "f8d0dff70525fafc1b5e258ca5861f205483697dbaf24b6a06ac817c26fed708",
+      "diagnostics": []
+    }
+  },
+  "success": true
+}

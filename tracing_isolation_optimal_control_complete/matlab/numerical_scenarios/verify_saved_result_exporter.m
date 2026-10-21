@@ -1,10 +1,12 @@
 function report=verify_saved_result_exporter()
 % 复制已有数据到临时目录做导出回归；修改仅为故障注入，不作为科学证据。
-cfg=numerical_cases_config(); source=cfg.paths.data; sourceTex=fullfile(cfg.paths.latex,'main.tex'); root=tempname; mkdir(root);
+cfg=numerical_cases_config(); source=cfg.paths.data;
+sourceTex=fullfile(cfg.paths.latex,'generated','numerical_values.tex'); root=tempname; mkdir(root);
 cleanup=onCleanup(@() cleanup_temporary(root)); %#ok<NASGU>
 cfg.paths.data=fullfile(root,'data'); cfg.paths.latex=fullfile(root,'latex'); mkdir(cfg.paths.latex);
+mkdir(fullfile(cfg.paths.latex,'generated'));
 copyfile(source,cfg.paths.data);
-tex=fullfile(cfg.paths.latex,'main.tex'); copyfile(sourceTex,tex);
+tex=fullfile(cfg.paths.latex,'generated','numerical_values.tex'); copyfile(sourceTex,tex);
 before=fileread(tex); report1=export_numerical_latex(cfg); first=fileread(tex);
 report2=export_numerical_latex(cfg); second=fileread(tex);
 assert(strcmp(first,second),'Saved-data re-export changed LaTeX bytes.');
@@ -36,7 +38,7 @@ else
         contains(details,'最细两级的成本与事件比较未执行'));
 end
 if isfield(cfg,'acceptance') && strcmp(cfg.acceptance.revision_timing,'post_solve')
-    assert(contains(brief,'于保存求解后调整') && contains(brief,'原严格记录见复现附录') && ...
+    assert(contains(brief,'于保存求解后调整') && contains(brief,'原严格记录见补充材料') && ...
         contains(details,'在保存求解后调整') && contains(details,'重新评估') && ...
         contains(details,'原严格判据及其未通过记录另行保留'));
 end

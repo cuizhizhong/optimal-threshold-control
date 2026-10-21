@@ -1,0 +1,132 @@
+{
+  "attempt": 3,
+  "work_directory": "E:\\work\\optimal-threshold-control\\tmp\\g4_20261022\\attempt3",
+  "input_sha256": {
+    "latex\\main.tex": "0eb072109a14c743c81158e8a43870740f3525927759065c35e22f6aaf43f53c",
+    "latex\\references.bib": "e84bbdef4ffa590f6d7f1a36d1e92481a7cf515cab90bcf41d28f1410ae25fff",
+    "latex\\supplementary.tex": "9e3e707a0d6188899118d29c202e5c281c9958a3aa18b7ad9574a52f27e76916",
+    "figures\\numerical_scenarios\\FigN1_optimal_partition.pdf": "ca86d4850da4b02467b6eb37a2ceb5dcd911b23c9418bd459ded1c27f075aadf",
+    "figures\\numerical_scenarios\\FigN1_optimal_partition.png": "b121a7e8a38a9487cade5c085607a572b99ae0a5067fb883d6aba0e5fecc7e01",
+    "figures\\numerical_scenarios\\FigN1_regions.pdf": "2895a76602d8d98bb9a2d6105b7c33399e0ab433d0497ee7dbd0af9990a53b3e",
+    "figures\\numerical_scenarios\\FigN1_regions.png": "3eeca5468e6d09f15f358d8aeb10b2a51c1baf8d276093930b1d9a426ebcf880",
+    "figures\\numerical_scenarios\\FigN2_waiting.pdf": "04141129be11e4492cf53d2027a6c39e41151a01e6315fce4c79cf488adbd1dc",
+    "figures\\numerical_scenarios\\FigN2_waiting.png": "358ff93fcc674da54439c960a6dcdb19e857800bfb2e7dd29bf13b81189df025",
+    "figures\\numerical_scenarios\\FigN3_boundary_tracking.pdf": "f3c3a8773f442ba45e6c839fc3603106938f6a974cf3b163edcd7e6c65c188e4",
+    "figures\\numerical_scenarios\\FigN3_boundary_tracking.png": "d957f5493a0778623d7785e8d4cb3d37ea95c1f6f3f10bc1af8c7269b6d51009",
+    "figures\\scaling\\FigD_magnitude.pdf": "182ccccde70a3d9c024c8cd6fe677120be8a8a75d99bf908ce032c1afc822fb5",
+    "figures\\scaling\\FigD_magnitude.png": "012d0099156ea319afb751ea4b2678edf0502c16bd8294f0d1033f96c8fae65d",
+    "latex\\generated\\.gitattributes": "be0e92be1d993dd1bc253e5ba2d12e96bfecb0cd77cd2a6b81161386dcc393ce",
+    "latex\\generated\\numerical_values.tex": "593fe8bb834dc1145bcea7dece4da576b9f352b52ded35aa170779e80822916c",
+    "latex\\generated\\scaling_values.tex": "ef4d6488864b89fb35a1d45cbbaadc0de0933b023ced432d1c8bb874d4321258"
+  },
+  "commands": [
+    {
+      "argv": [
+        "xelatex",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-recorder",
+        "main.tex"
+      ],
+      "cwd": "E:\\work\\optimal-threshold-control\\tmp\\g4_20261022\\attempt3\\latex",
+      "exit_code": 0,
+      "stdout": "main_xelatex1.stdout.log"
+    },
+    {
+      "argv": [
+        "bibtex",
+        "main"
+      ],
+      "cwd": "E:\\work\\optimal-threshold-control\\tmp\\g4_20261022\\attempt3\\latex",
+      "exit_code": 0,
+      "stdout": "main_bibtex.stdout.log"
+    },
+    {
+      "argv": [
+        "xelatex",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-recorder",
+        "main.tex"
+      ],
+      "cwd": "E:\\work\\optimal-threshold-control\\tmp\\g4_20261022\\attempt3\\latex",
+      "exit_code": 0,
+      "stdout": "main_xelatex2.stdout.log"
+    },
+    {
+      "argv": [
+        "xelatex",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-recorder",
+        "main.tex"
+      ],
+      "cwd": "E:\\work\\optimal-threshold-control\\tmp\\g4_20261022\\attempt3\\latex",
+      "exit_code": 0,
+      "stdout": "main_xelatex3.stdout.log"
+    },
+    {
+      "argv": [
+        "xelatex",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-recorder",
+        "main.tex"
+      ],
+      "cwd": "E:\\work\\optimal-threshold-control\\tmp\\g4_20261022\\attempt3\\latex",
+      "exit_code": 0,
+      "stdout": "main_xelatex4.stdout.log"
+    },
+    {
+      "argv": [
+        "xelatex",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-recorder",
+        "supplementary.tex"
+      ],
+      "cwd": "E:\\work\\optimal-threshold-control\\tmp\\g4_20261022\\attempt3\\latex",
+      "exit_code": 0,
+      "stdout": "supplementary_xelatex1.stdout.log"
+    },
+    {
+      "argv": [
+        "xelatex",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-recorder",
+        "supplementary.tex"
+      ],
+      "cwd": "E:\\work\\optimal-threshold-control\\tmp\\g4_20261022\\attempt3\\latex",
+      "exit_code": 0,
+      "stdout": "supplementary_xelatex2.stdout.log"
+    },
+    {
+      "argv": [
+        "xelatex",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-recorder",
+        "supplementary.tex"
+      ],
+      "cwd": "E:\\work\\optimal-threshold-control\\tmp\\g4_20261022\\attempt3\\latex",
+      "exit_code": 0,
+      "stdout": "supplementary_xelatex3.stdout.log"
+    }
+  ],
+  "documents": {
+    "main": {
+      "pages": 43,
+      "pdf_sha256": "6ef79ea5418e824e53c95668cf8e55d3af88a9acad16b70a967bf3649bad96c0",
+      "diagnostics": []
+    },
+    "supplementary": {
+      "pages": 2,
+      "pdf_sha256": "c7744211bd478416f0a3e82ed8bc3735446e316145dc8144e757b729adcfa4cd",
+      "diagnostics": []
+    }
+  },
+  "optimizer_calls": 0,
+  "new_ocp_solves": 0,
+  "success": true
+}

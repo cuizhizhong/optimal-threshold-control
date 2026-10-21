@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "dpi": 100,
+  "source": "render_manifest.json",
+  "main": {
+    "pages": 43,
+    "viewed_pages": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43],
+    "reviewers": {"review_g3": "1-22", "review_g2": "23-43", "root": [1,35]},
+    "findings": [],
+    "nonblocking_observations": ["结论末句跨第36-37页，续行后接附录A；与G3版相同的版面现象，不影响阅读。"]
+  },
+  "supplementary": {
+    "pages": 2,
+    "viewed_pages": [1,2],
+    "reviewers": ["review_g2", "root"],
+    "sections": 3,
+    "tables": 3,
+    "findings": []
+  },
+  "checks": ["公式与符号显示", "表格边界与换行", "图形清晰及标注", "裁切与重叠", "页眉页码", "章节与附录衔接", "首尾页面与参考文献"],
+  "method": "将每页PNG通过view_image实际显示后目视检查；未以文本提取代替页面检查。"
+}

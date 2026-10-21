@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "baseline_head": "671c6cda42dcb0d0cc6c7b116bf715ada89664c6",
+  "outputs": {
+    "main": {
+      "path": "latex\\main.pdf",
+      "sha256": "b05532ee1636917faaccc3f5ec67e6b40fdad3484d5356abca10fddf6a00f4f6",
+      "pages": 43
+    },
+    "supplementary": {
+      "path": "latex\\supplementary.pdf",
+      "sha256": "f8d0dff70525fafc1b5e258ca5861f205483697dbaf24b6a06ac817c26fed708",
+      "pages": 2
+    }
+  },
+  "exporter_regressions": 16,
+  "symbolic_checks": 28,
+  "protected_checks": 19,
+  "protected_sentence_unchanged": true,
+  "visual_pages": 45,
+  "optimizer_calls": 0,
+  "new_ocp_solves": 0,
+  "assessment_calls": 0,
+  "figure_exports": 0,
+  "pushed": false
+}

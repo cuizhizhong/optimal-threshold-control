@@ -1,0 +1,240 @@
+{
+  "dpi": 100,
+  "documents": {
+    "main": {
+      "pdf_sha256": "b05532ee1636917faaccc3f5ec67e6b40fdad3484d5356abca10fddf6a00f4f6",
+      "pages": 43
+    },
+    "supplementary": {
+      "pdf_sha256": "f8d0dff70525fafc1b5e258ca5861f205483697dbaf24b6a06ac817c26fed708",
+      "pages": 2
+    }
+  },
+  "pages": [
+    {
+      "document": "main",
+      "page": 1,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-01.png"
+    },
+    {
+      "document": "main",
+      "page": 2,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-02.png"
+    },
+    {
+      "document": "main",
+      "page": 3,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-03.png"
+    },
+    {
+      "document": "main",
+      "page": 4,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-04.png"
+    },
+    {
+      "document": "main",
+      "page": 5,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-05.png"
+    },
+    {
+      "document": "main",
+      "page": 6,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-06.png"
+    },
+    {
+      "document": "main",
+      "page": 7,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-07.png"
+    },
+    {
+      "document": "main",
+      "page": 8,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-08.png"
+    },
+    {
+      "document": "main",
+      "page": 9,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-09.png"
+    },
+    {
+      "document": "main",
+      "page": 10,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-10.png"
+    },
+    {
+      "document": "main",
+      "page": 11,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-11.png"
+    },
+    {
+      "document": "main",
+      "page": 12,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-12.png"
+    },
+    {
+      "document": "main",
+      "page": 13,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-13.png"
+    },
+    {
+      "document": "main",
+      "page": 14,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-14.png"
+    },
+    {
+      "document": "main",
+      "page": 15,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-15.png"
+    },
+    {
+      "document": "main",
+      "page": 16,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-16.png"
+    },
+    {
+      "document": "main",
+      "page": 17,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-17.png"
+    },
+    {
+      "document": "main",
+      "page": 18,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-18.png"
+    },
+    {
+      "document": "main",
+      "page": 19,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-19.png"
+    },
+    {
+      "document": "main",
+      "page": 20,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-20.png"
+    },
+    {
+      "document": "main",
+      "page": 21,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-21.png"
+    },
+    {
+      "document": "main",
+      "page": 22,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-22.png"
+    },
+    {
+      "document": "main",
+      "page": 23,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-23.png"
+    },
+    {
+      "document": "main",
+      "page": 24,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-24.png"
+    },
+    {
+      "document": "main",
+      "page": 25,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-25.png"
+    },
+    {
+      "document": "main",
+      "page": 26,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-26.png"
+    },
+    {
+      "document": "main",
+      "page": 27,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-27.png"
+    },
+    {
+      "document": "main",
+      "page": 28,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-28.png"
+    },
+    {
+      "document": "main",
+      "page": 29,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-29.png"
+    },
+    {
+      "document": "main",
+      "page": 30,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-30.png"
+    },
+    {
+      "document": "main",
+      "page": 31,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-31.png"
+    },
+    {
+      "document": "main",
+      "page": 32,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-32.png"
+    },
+    {
+      "document": "main",
+      "page": 33,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-33.png"
+    },
+    {
+      "document": "main",
+      "page": 34,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-34.png"
+    },
+    {
+      "document": "main",
+      "page": 35,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-35.png"
+    },
+    {
+      "document": "main",
+      "page": 36,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-36.png"
+    },
+    {
+      "document": "main",
+      "page": 37,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-37.png"
+    },
+    {
+      "document": "main",
+      "page": 38,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-38.png"
+    },
+    {
+      "document": "main",
+      "page": 39,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-39.png"
+    },
+    {
+      "document": "main",
+      "page": 40,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-40.png"
+    },
+    {
+      "document": "main",
+      "page": 41,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-41.png"
+    },
+    {
+      "document": "main",
+      "page": 42,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-42.png"
+    },
+    {
+      "document": "main",
+      "page": 43,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\main-43.png"
+    },
+    {
+      "document": "supplementary",
+      "page": 1,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\supplementary-01.png"
+    },
+    {
+      "document": "supplementary",
+      "page": 2,
+      "image": "C:\\Users\\cui\\.codex\\visualizations\\2026\\10\\21\\01a15f20-6595-7c43-b6ef-10a1c1081eca\\tmp\\pdfs\\g4-final\\supplementary-02.png"
+    }
+  ]
+}

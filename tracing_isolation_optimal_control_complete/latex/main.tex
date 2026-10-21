@@ -1,6 +1,3 @@
-% Mathematical clarification of the constant-contact-rate theory.
-% Merge base: cuizhizhong/optimal-threshold-control@f33f8b591cefb8226e2c4196d739b841c368fb47
-% Base main.tex Git blob: 51aaa6b923b92f22a7039b42bab713cf46264530
 % Compile from this directory with XeLaTeX + BibTeX.
 \documentclass[11pt,a4paper,UTF8]{ctexart}
 \usepackage[a4paper,margin=2.25cm]{geometry}
@@ -18,7 +15,7 @@
 \setlist{nosep,leftmargin=2.4em}
 \captionsetup{font=small,labelfont=bf}
 \hypersetup{colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,
- urlcolor=blue!55!black,pdftitle={感染阈值约束下跟踪隔离的全域最优控制},pdfauthor={Technical report}}
+ urlcolor=blue!55!black,pdftitle={感染阈值约束下跟踪隔离的全域最优控制},pdfauthor={}}
 \setlength{\headheight}{14pt}
 \pagestyle{fancy}\fancyhf{}
 \fancyhead[L]{感染阈值约束下跟踪隔离的全域最优控制}
@@ -47,19 +44,12 @@
 \input{generated/scaling_values.tex}
 % 第 8.3 节的正控制时长保留两位小数，使差值与两端取整值一致；摘要与讨论另用一位小数的宏。
 \newcommand{\Dur}[1]{\num[round-mode=places,round-precision=2]{#1}}
-\newif\ifNumResultsVerified
-% 放入导言区，紧接原有 \newif\ifNumResultsVerified 之后。
-% 此处只定义新宏；不得在这里为空定义原本由 providecommand 生成的旧宏。
-\newif\ifNumRobustnessComplete
-\NumRobustnessCompletefalse
-\newcommand{\NumRobustnessStatement}{}
-\newcommand{\NumReproducibilityDetails}{}
-
+\input{generated/numerical_values.tex}
 
 \lstset{basicstyle=\ttfamily\small,frame=single,breaklines=true,columns=fullflexible,showstringspaces=false}
 \title{\bfseries 感染阈值约束下跟踪隔离的全域最优控制}
-\author{技术分析报告}
-\date{2026年9月19日}
+\author{}
+\date{}
 \begin{document}
 \maketitle
 
@@ -2002,53 +1992,10 @@ He 等基于日度观测估计时变速率，本文仅引用其无量纲 $\beta$
 
 
 
-% 数值章节已内联；下方两个标记块由数值导出程序定点更新。
+% 数值数据由导言区加载的共享生成文件提供。
 \providecommand{\NumFigureRoot}{../figures/numerical_scenarios}
 \providecommand{\NumTheoryRef}[2]{#2~\ref{#1}}
-% BEGIN AUTO-GENERATED NUMERICAL REFERENCE VALUES
-% MATLAB 解析公式评价；不含优化器结果。
-\providecommand{\NumJRefEOne}{0.416186}
-\providecommand{\NumJRefETwo}{1.529511}
-\providecommand{\NumJRefEThree}{0.433981}
-\providecommand{\NumJRefEFour}{1.268835}
-\providecommand{\NumJRefEFive}{0.536233}
-\providecommand{\NumSBRef}{0.54769512}
-\providecommand{\NumSwitchSEOneRef}{0.51017169}
-\providecommand{\NumSwitchIEOneRef}{0.13423054}
-\providecommand{\NumMaxReleaseRef}{7.44746905}
-\providecommand{\NumExitETwoTheory}{5.86950254}
-\providecommand{\NumExitEFourTheory}{1.08077528}
-% END AUTO-GENERATED NUMERICAL REFERENCE VALUES
 
-% BEGIN AUTO-GENERATED NUMERICAL RESULTS
-% 从 data/numerical_scenarios 的真实结果生成；条件开关由 main.tex 定义。
-\NumResultsVerifiedtrue
-\NumRobustnessCompletetrue
-\renewcommand{\NumRobustnessStatement}{数值接受及容量控制比较容差于保存求解后调整，取值与原严格记录见复现附录。五例常值 $q=0.7$ 和固定种子随机初猜的阶段一致，成本最大绝对差为 $\num{6.1e-13}$。在当前接受容差下，最细两级成本与事件区间比较通过 E1、E2、E3、E4、E5。$n=2000$ 的 E2、E4 存在长中间控制块与阶段识别异常。该比较不提供收敛阶。$n=2000$ 的 E1、E3、E5 成本比较仍未通过。E3 的粗网格负成本差小于容量超出所致的解析最优值下降，与容量超出相容。固定步长时域复核五例通过。阈值复核通过。有限样本与浮点诊断不替代解析证明。}
-\renewcommand{\NumReproducibilityDetails}{默认协议已记录 35/35 个不同配置，其中 30 个同时通过数值接受与理论比较。协议是否完成与比较是否一致分别记录。本次在保存求解后调整状态及容量接受容差为 $\num{1e-05}$、容量段控制与 $q_B$ 区间均值的绝对误差容差为 $\num{0.003}$，并重新评估全部保存结果；成本相对误差容差 $\num{0.0001}$ 与事件区间判据保持不变。原严格判据及其未通过记录另行保留。按保存求解前预定的原判据（状态容差 $\num{1e-06}$、容量容差 $\num{1e-06}$、容量段控制容差 $\num{0.002}$），数值接受与理论比较分别通过 29/35 与 29/35，同时通过 28/35；修订判据只重新划定浮点接受尺度，不提供新的收敛证据。五例常值 $q=0.7$ 和固定种子随机初猜的阶段一致，成本最大绝对差为 $\num{6.1e-13}$。在所列接受容差下，固定时域网格复核的最细两级成本与事件区间比较通过 E1、E2、E3、E4、E5。E2、E4 的 $n=2000$ 长中间控制块与阶段识别异常仍保留在配套记录中。该结果只支持所测最细两级的一致性，不给出收敛阶。$n=2000$ 的 E1、E3、E5 成本比较仍未通过。E3 的 $n=2000$ 负成本差为 $\num{-6.76e-05}$，重积分容量超出 $\varepsilon_K=\num{7.83e-06}$；把容量放宽为 $K+\varepsilon_K$ 后，解析最优值下降 $\num{1.08e-04}$，大于该负差。因此该负差与容量超出相容，评估记录中的 unresolved-discrepancy 分类按原样保留。固定步长时域复核五例通过。阈值复核通过。全部记录见配套文件；有限样本与浮点诊断不替代解析证明。}
-\providecommand{\NumHorizon}{300}
-\providecommand{\NumIntervals}{4000}
-\providecommand{\NumDegree}{2}
-\providecommand{\NumMeshDetails}{按预先指定设置，E2 使用 $n=8000$，E4 使用 $n=8000$；其余算例保留基准网格。图表均采用各例最终保存的结果。}
-\providecommand{\NumJOclEOne}{0.416205}
-\providecommand{\NumJOclETwo}{1.529523}
-\providecommand{\NumJOclEThree}{0.433999}
-\providecommand{\NumJOclEFour}{1.268831}
-\providecommand{\NumJOclEFive}{0.536256}
-\providecommand{\NumExitETwoStart}{5.85000000}
-\providecommand{\NumExitETwoEnd}{5.88750000}
-\providecommand{\NumExitEFourStart}{1.05000000}
-\providecommand{\NumExitEFourEnd}{1.08750000}
-\providecommand{\NumNeutralETwoCostDifference}{5.78648240435e-13}
-\providecommand{\NumEFourSignedCostDifference}{-3.68275844664e-06}
-\providecommand{\NumEFourCapacityExcess}{7.70286958773e-07}
-\providecommand{\NumFindingWaiting}{实际控制输出中，E1 和 E2 分别识别出 $0\to 1\to 0$ 与 $0\to q_B\to 1\to 0$。E1 的完全跟踪开始区间为 $[6.975,7.05]$。对应端点的感染比例仍低于容量上限。E2 的容量退出区间为 $[5.85,5.8875]$。}
-\providecommand{\NumFindingTrackingBoundary}{E3、E4、E5 的实际阶段依次为 $1\to 0$、$q_B\to 1\to 0$ 和 $1\to 0$。E3、E5 均从初始时刻采用完全跟踪。E4 的容量退出区间为 $[1.05,1.0875]$。E2、E4 的理论容量退出时刻均落在上述单网格过渡区间内；首个纯完全跟踪单元的起点仍不等同于连续切换点。}
-\providecommand{\NumCheckStatement}{对原始分段常数控制逐区间重积分后，五例最大容量超出量为 $\num{8e-07}$，与配点状态的最大差异为 $\num{8.6e-08}$；末尾 $20$ 个时间单位内最大控制幅值为 $\num{0}$。各例终端状态均通过零控制安全延拓核查。这些浮点检查用于排查截断及离散问题，不是连续可行性的严格证明。}
-\providecommand{\NumOverallFinding}{五例成本相对解析参考的最大差异约为 $0.00459\%$。计算结果支持这五个初值下的阶段顺序及切换位置预测；切换位置的偏差应结合控制区间宽度和过渡单元解释。E4 的离散成本比解析参考低 $\num{3.68e-06}$，重积分轨道有 $\varepsilon_K=\num{7.7e-07}$ 的容量超出；把容量放宽为 $K+\varepsilon_K$ 后，解析最优值下降 $\num{1.16e-05}$，大于该负差。因此该控制的成本仍不低于放宽容量后的解析最优值，负差与容量超出相容，不构成低于解析最优值的连续时间可行控制。}
-\providecommand{\NumErrorTableRows}{E1 & \num{1.91e-05} & \num{4.59e-05} & \num{2.97e-07} & \num{4.05e-06} & 是 \\ E2 & \num{1.22e-05} & \num{7.98e-06} & \num{7.99e-07} & \num{1.28e-05} & 是 \\ E3 & \num{1.75e-05} & \num{4.03e-05} & \num{4.80e-08} & \num{6.60e-07} & 是 \\ E4 & \num{-3.68e-06} & \num{-2.90e-06} & \num{7.70e-07} & \num{1.16e-05} & 是 \\ E5 & \num{2.32e-05} & \num{4.32e-05} & \num{5.57e-08} & \num{7.76e-07} & 是 \\}
-\providecommand{\NumResidualSummary}{五例成本相对解析参考差的绝对值最大为 $\num{0.00459}\%$。重积分最大容量超出为 $\num{7.99e-07}$，与配点状态的最大偏差为 $\num{8.57e-08}$。末段最大控制幅值为 $\num{0}$，各例终端状态均通过零控制安全检查。按求解前预定的原判据，数值接受与理论比较同时通过 28/35；按求解后修订的判据，同时通过 30/35；修订只调整浮点接受尺度，不提供新的收敛证据。未通过的网格记录（E2、E4 在 $n=2000$ 的阶段识别异常；E1、E3、E5 在 $n=2000$ 的成本比较未通过）见补充材料。}
-% END AUTO-GENERATED NUMERICAL RESULTS
 \providecommand{\NumMeshDetails}{}
 
 % Missing actual figures remain blank. Never substitute predicted OCP plots.
@@ -2123,7 +2070,7 @@ $s,i$ 为相对于初始总量的比例，允许 $s_0+i_0<1$；
 
 阶段依据数值控制及容量接近程度识别，切换位置按过渡网格区间报告。
 已有复核改变初始猜测、网格、终止时刻及阶段识别阈值，
-完整配置、判据与诊断结果见补充材料附录\ref{app:numerical-reproducibility}。
+附加数值设置、核对结果与误差判据见补充材料 S1--S3。
 
 \subsection{不同初值区域下的数值验证}
 \label{sec:numerical-results}
@@ -2690,55 +2637,6 @@ K\le K_{\mathrm{med}}:=
 该估计对整个轨道使用统一的流入上界，因而偏保守；若 $K_{\mathrm{med}}<i_0$，只说明这一充分条件不适用于当前初值。
 条件\eqref{eq:medical-threshold}约束的是模型中的平均需求；用于具体地区时，还需要估计病例需求核、初始病例的未来负担和可用容量。
 
-
-\section{补充材料 S：数值复现、复核与诊断记录}
-\label{app:numerical-reproducibility}
-
-本附录将在定稿时拆为独立的补充材料文件，本阶段仍保留在主文版本中。
-数值代码位于 \path{matlab/numerical_scenarios/}。
-
-独立解析检查点及其生成程序位于
-\path{validation/numerical_scenarios/}；
-检查点只评价正文中的解析构造，不调用数值优化器。
-具体环境准备及检查点生成命令见该目录和数值目录的说明文件。
-从仓库根目录启动 MATLAB 后运行：
-\begin{lstlisting}
-addpath(fullfile(pwd, ...
- 'tracing_isolation_optimal_control_complete', ...
- 'matlab', 'numerical_scenarios'));
-revision_preflight();
-run_revision_validation('unit', false);
-run_revision_validation('all', false);
-make_numerical_figures();
-export_numerical_latex();
-\end{lstlisting}
-
-\texttt{all} 运行预先规定的主算例和附加复核。
-各次求解分别保存初值、参数、网格、初始化、求解状态和原始控制数组，
-并记录求解时的源码指纹与环境信息。
-重做后处理不改写原求解的来源信息。
-作图和正文数据导出只读取已保存且来源明确的结果，
-不在缺少结果时以解析参考代替数值优化输出。
-
-\NumFindingParagraph{\NumCheckStatement}
-\NumFindingParagraph{\NumRobustnessStatement}
-\NumFindingParagraph{\NumOverallFinding}
-\NumFindingParagraph{\NumReproducibilityDetails}
-
-正文中的数值摘要与所选结果文件保持一一对应。
-完整记录分别位于：
-\begin{itemize}
-\item 初猜、网格、时域及阶段识别阈值复核：\\
-\path{data/numerical_scenarios/revision_checks/}。
-\item 事件候选、检测区间及主结果诊断：\\
-\path{data/numerical_scenarios/numerical_checks.json}。
-\item 容差重评与原严格记录：\\
-\path{validation/numerical_scenarios/tolerance_revision_20261010/}。
-\item S2 的重跑、原判据重评及逐条对照报告：\\
-\path{validation/numerical_scenarios/rerun_20261020/}；\\
-其中判据计数来源为 \path{S2.6/assessment_revision_report.json}。
-\end{itemize}
-\clearpage
 
 \bibliographystyle{plainnat}
 \bibliography{references}
