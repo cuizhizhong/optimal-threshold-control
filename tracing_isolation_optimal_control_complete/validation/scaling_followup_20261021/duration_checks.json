@@ -1,0 +1,224 @@
+{
+  "status": "passed",
+  "precision_decimal_digits": 80,
+  "optimizer_calls": 0,
+  "matlab_calls": 0,
+  "new_ocp_solves": 0,
+  "ode_solves": 0,
+  "numeric_display_checks": [
+    {
+      "quantity": "DtimeDeltaE",
+      "actual": "2.536302",
+      "reference": "2.536302",
+      "passed": true
+    },
+    {
+      "quantity": "DtimeReductionE",
+      "actual": "53.17",
+      "reference": "53.17",
+      "passed": true
+    },
+    {
+      "quantity": "DtimeDeltaZ",
+      "actual": "8.263905",
+      "reference": "8.263905",
+      "passed": true
+    },
+    {
+      "quantity": "DtimeReductionZ",
+      "actual": "25.41",
+      "reference": "25.41",
+      "passed": true
+    },
+    {
+      "quantity": "DtimeLimitZ",
+      "actual": "24.343",
+      "reference": "24.343",
+      "passed": true
+    },
+    {
+      "quantity": "DabstractSavingZ",
+      "actual": "0.34",
+      "reference": "0.34",
+      "passed": true
+    },
+    {
+      "quantity": "DabstractTimeFillZ",
+      "actual": "32.5",
+      "reference": "32.5",
+      "passed": true
+    },
+    {
+      "quantity": "DabstractTimeOptZ",
+      "actual": "24.3",
+      "reference": "24.3",
+      "passed": true
+    },
+    {
+      "quantity": "DtimeDeltaZBrief",
+      "actual": "8.26",
+      "reference": "8.26",
+      "passed": true
+    },
+    {
+      "quantity": "DtimeLimitZBrief",
+      "actual": "24.3",
+      "reference": "24.3",
+      "passed": true
+    }
+  ],
+  "figure_d_reference_checks": [
+    {
+      "beta": "0.5",
+      "c": "2.0",
+      "gamma": "0.3",
+      "K": "0.01",
+      "direct_tail_value": "5.7781427560740562073305605140045279853877107974965112777874789999953119433221155",
+      "scaled_value": "0.86672141341110843109958407710067919780815661962447669166812184999929679149831732",
+      "actual_rounded": "0.8667",
+      "reference_rounded": "0.8667",
+      "passed": true
+    },
+    {
+      "beta": "0.5",
+      "c": "2.0",
+      "gamma": "0.3",
+      "K": "0.001",
+      "direct_tail_value": "6.5584000394568221824326085967708469141239916673885658033257951360542667528117749",
+      "scaled_value": "0.98376000591852332736489128951562703711859875010828487049886927040814001292176623",
+      "actual_rounded": "0.9838",
+      "reference_rounded": "0.9838",
+      "passed": true
+    },
+    {
+      "beta": "0.5",
+      "c": "2.0",
+      "gamma": "0.3",
+      "K": "0.0001",
+      "direct_tail_value": "6.6555848413498689593550583039842347874532234504198640020960722691952953201021941",
+      "scaled_value": "0.99833772620248034390325874559763521811798351756297960031441084037929429801532911",
+      "actual_rounded": "0.9983",
+      "reference_rounded": "0.9983",
+      "passed": true
+    }
+  ],
+  "old_macro_preservation": {
+    "count": 17,
+    "checks": [
+      {
+        "macro": "DfillE",
+        "historical_value": "1.578386",
+        "new_value": "1.578386",
+        "passed": true
+      },
+      {
+        "macro": "DoptE",
+        "historical_value": "1.529511",
+        "new_value": "1.529511",
+        "passed": true
+      },
+      {
+        "macro": "DdeltaE",
+        "historical_value": "0.048874",
+        "new_value": "0.048874",
+        "passed": true
+      },
+      {
+        "macro": "DtimeFillE",
+        "historical_value": "4.770479",
+        "new_value": "4.770479",
+        "passed": true
+      },
+      {
+        "macro": "DtimeOptE",
+        "historical_value": "2.234177",
+        "new_value": "2.234177",
+        "passed": true
+      },
+      {
+        "macro": "DsbE",
+        "historical_value": "0.547695",
+        "new_value": "0.547695",
+        "passed": true
+      },
+      {
+        "macro": "DreleaseE",
+        "historical_value": "0.451664",
+        "new_value": "0.451664",
+        "passed": true
+      },
+      {
+        "macro": "DsavingE",
+        "historical_value": "3.096477",
+        "new_value": "3.096477",
+        "passed": true
+      },
+      {
+        "macro": "DfillZ",
+        "historical_value": "16.874737",
+        "new_value": "16.874737",
+        "passed": true
+      },
+      {
+        "macro": "DoptZ",
+        "historical_value": "16.816902",
+        "new_value": "16.816902",
+        "passed": true
+      },
+      {
+        "macro": "DdeltaZ",
+        "historical_value": "0.057835",
+        "new_value": "0.057835",
+        "passed": true
+      },
+      {
+        "macro": "DtimeFillZ",
+        "historical_value": "32.524198",
+        "new_value": "32.524198",
+        "passed": true
+      },
+      {
+        "macro": "DtimeOptZ",
+        "historical_value": "24.260293",
+        "new_value": "24.260293",
+        "passed": true
+      },
+      {
+        "macro": "DsbZ",
+        "historical_value": "0.260205",
+        "new_value": "0.260205",
+        "passed": true
+      },
+      {
+        "macro": "DreleaseZ",
+        "historical_value": "0.245414",
+        "new_value": "0.245414",
+        "passed": true
+      },
+      {
+        "macro": "DsavingZ",
+        "historical_value": "0.342732",
+        "new_value": "0.342732",
+        "passed": true
+      },
+      {
+        "macro": "DsmallBetaError",
+        "historical_value": "6.40",
+        "new_value": "6.40",
+        "passed": true
+      }
+    ],
+    "historical_file_unchanged": true,
+    "historical_sha256": "5f41c094410d9b23cc6fb0d4cfb9b9a244cabf4a2382259337213c904496c9f4"
+  },
+  "high_precision_residual_maxima": {
+    "scalar_relative": "1.7403892209991405772227797298507780402864931364154259778717244525337224535043338e-78",
+    "endpoint_relative": "0.0",
+    "theta_relative": "4.9337486374318848689951326559943688956082619269484615334363930957506115281738475e-79",
+    "direct_tail_formula_relative": "6.1144748070737034701221729497366110244717776017737343790451025545627236887624606e-80",
+    "natural_entry_absolute": "3.6238805429854923583698223301240690339002992251891744703392310398809246000208549e-82"
+  },
+  "high_precision_residual_tolerance": "1.0e-65",
+  "check_count": 30,
+  "checks_passed": 30
+}

@@ -45,6 +45,7 @@
 \newcommand{\proj}{\operatorname{Proj}}
 \newcommand{\ess}{\operatorname*{ess}}
 \newcommand{\argmin}{\operatorname*{arg\,min}}
+\input{generated/scaling_values.tex}
 % 在 TheoryOnly 跳过数值输入时也保持条件命令已定义。
 \newif\ifNumResultsVerified
 % 放入导言区，紧接原有 \newif\ifNumResultsVerified 之后。
@@ -75,9 +76,9 @@
 当容量阶段具有正长度时，最优轨道在 $s_B>h=\gamma/(\beta c)$ 处离开容量边界，转入完全跟踪。
 因此，始终维持感染阈值直至自然感染增长阈值 $s=h$ 并非最低成本的选择。
 最后，由验证等号条件与分段轨道分析，证明最优状态轨道唯一，最优控制在全时间轴上几乎处处唯一。
-% BEGIN D ABSTRACT
-固定传播概率的小容量展开进一步表明，在共同容量入口的初值族下，提前退出的绝对成本节省为 $K^2$ 阶，相对纯容量填充的节省为 $K^3$ 阶。
-% END D ABSTRACT
+固定传播概率的小容量展开表明，在共同容量入口的初值族下，提前离开容量的成本节省是高阶小量，绝对为 $K^2$ 阶、相对为 $K^3$ 阶；
+但它以短时完全跟踪替代纯容量填充末端漫长的低强度维持，使正控制时长缩短，缩短量趋于不随 $K$ 消失的 $1/(\beta\gamma)$。
+在取自西安拟合参数、$K=0.01$ 的情景中，成本低 $\DabstractSavingZ\%$，正控制时长由 $\DabstractTimeFillZ$ 日缩短至 $\DabstractTimeOptZ$ 日。
 \ifdefined\TheoryOnly\else
 五个代表初值在所报告网格上的直接配点结果支持解析预测的阶段顺序、切换位置和成本。
 \fi
@@ -1840,14 +1841,11 @@ i_0+s_0-s_c+h\ln(s_c/s_0),&s_1\le s_c\le s_0.
 由式\eqref{eq:JB-curvature-integral}可得 $\mathcal J_B'(s_c)<0$。
 也就是说，$\mathcal J_B$ 在 $h$ 右侧递减，$h$ 并非极小点；最优轨道应在 $s_B>h$ 处离开容量线。
 这给出推论\ref{cor:one-dimensional-min}的边际成本解释，全局最优性仍由定理\ref{thm:verification}保证。
-例如，对图\ref{fig:optimal-partition}中初值为 $(0.99,0.01)$ 的 E2，$\mathcal J_B$ 在 $s_B$ 处的最小值为 $1.529511$，而 $s_c\downarrow h$ 时趋于 $1.578386$，即维持阈值至 $s=h$ 的成本。
-最优策略相对这一对照成本节省约 $3.10\%$，其分母为 $1.578386$。
+该比较的数值示例见第\ref{sec:scaling}节。
 
 
-% BEGIN D MAIN
 \section{比较基准、小容量渐近与参数量级}
 \label{sec:scaling}
-\input{../validation/scaling_asymptotics_20261021/computed_values.tex}
 
 \subsection{纯容量填充与比较指标}
 取同一组常参数、物理初值和容量约束。设自然轨道有首次容量触点 $(s_1,K)$，
@@ -1879,7 +1877,7 @@ i_0+s_0-s_c+h\ln(s_c/s_0),&s_1\le s_c\le s_0.
 
 例如，原有 E2 的参数为 $\beta=0.5,c=2,\gamma=0.3,K=0.15$，初值为 $(0.99,0.01)$。
 解析公式给出 $J_{\rm fill}=\DfillE$、$J^*=\DoptE$、$\Delta J=\DdeltaE$，
-相对节省为 $\DsavingE\%$，与前节的 $3.10\%$ 是同一比较。
+相对节省为 $\DsavingE\%$，即第\ref{sec:switching-mechanism}节所述提前退出的成本节省。
 相应的 $T_{+,\rm fill}=\DtimeFillE$、$T_+^*=\DtimeOptE$，容量退出位置为
 $h=0.3$ 与 $s_B=\DsbE$，最优解除位置为 $\bar s_B=\DreleaseE$。
 这里的时间单位与参数速率的单位对应；该算例是数学示例。
@@ -1916,9 +1914,18 @@ $h=0.3$ 与 $s_B=\DsbE$，最优解除位置为 $\bar s_B=\DreleaseE$。
 不声称对 $\beta\downarrow0$ 一致。
 \end{proposition}
 完整证明见附录\ref{app:small-capacity-proof}。
-绝对节省为 $K^2$ 阶，而纯填充成本为 $K^{-1}$ 阶，故相对节省为 $K^3$ 阶。
-时长差趋于正常数的同时，两者时长均为 $K^{-1}$ 阶，因而 $T_+^*/T_{+,\rm fill}\to1$。
-这不意味着成本最优策略同时最小化正控制时长。
+绝对成本节省为 $K^2$ 阶，而纯填充成本为 $K^{-1}$ 阶，故相对成本节省为 $K^3$ 阶。
+这一高阶小量不意味着时长效应也随 $K$ 消失：正控制时长差趋于正常数 $1/(\beta\gamma)$。
+纯容量填充接近 $s=h$ 时，$q_B(s)\to0$，需要很长的低强度维持尾段；
+最优策略提前离开容量，以短时完全跟踪替代该尾段，因此成本差与时长差有不同量级。
+例如，E2 的正控制时长由 $\DtimeFillE$ 缩短至 $\DtimeOptE$，
+差为 $\DtimeDeltaE$，以纯填充时长为分母缩短 $\DtimeReductionE\%$；
+西安来源情景中，相应时长由 $\DtimeFillZ$ 日缩短至 $\DtimeOptZ$ 日，
+差为 $\DtimeDeltaZ$ 日，缩短 $\DtimeReductionZ\%$。
+小 $\beta$ 时，时长差向 $1/(\beta\gamma)$ 的收敛可能很慢：
+西安参数下时长差的极限为 $\DtimeLimitZ$ 日，而 $K=0.01$ 时实际仅为 $\DtimeDeltaZBrief$ 日。
+有限 $K$ 的时长差应直接用式\eqref{eq:common-capacity-comparison}的公共尾段公式计算，不能直接用极限替代。
+正控制时长不是本文的优化目标，成本最优策略并不同时最小化正控制时长。
 
 首项用于说明标度，在小 $\beta$ 下不能直接当作有限 $K$ 的准确估计。
 附录的进一步展开给出 $\Delta J$ 首项的相对修正尺度为 $K/(\beta^2h)$。
@@ -1972,10 +1979,12 @@ He 等基于日度观测估计时变速率，本文仅引用其无量纲 $\beta$
 不以双精度总成本相减识别 $K^2$ 项。
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\linewidth]{../validation/scaling_asymptotics_20261021/magnitude.pdf}
+\includegraphics{scaling/FigD_magnitude.pdf}
 \caption{固定 $\beta c$ 与 $\gamma$ 的无回流解析量级扫描。
 四幅图分别给出提前退出容量的距离、绝对成本节省、以纯填充成本为分母的相对节省，
-以及正控制时长比。比较使用相同参数、初值和容量；曲线仅表示所述解析模型，未新增配点求解。}
+以及无量纲正控制时长差 $\beta\gamma(T_{+,\rm fill}-T_+^*)$，(d)中水平线 $y=1$ 表示 $K\downarrow0$ 的极限。
+每个格点的时长差均由公共尾段公式直接计算。$\beta=0.13,K=0.15$ 一组因 $s_1<s_B$ 未画出。
+比较使用相同参数、初值和容量；曲线仅表示所述解析模型，未新增配点求解。}
 \label{fig:scaling}
 \end{figure}
 
@@ -1985,7 +1994,6 @@ He 等基于日度观测估计时变速率，本文仅引用其无量纲 $\beta$
 相对节省为 $\DsavingZ\%$，正控制时长为 $\DtimeFillZ$ 日与 $\DtimeOptZ$ 日。
 该容量和初值属于本文的情景设定，不能解释为西安实际容量、实际初始感染比例或原文时变拟合的复现。
 
-% END D MAIN
 \ifdefined\TheoryOnly\else
 % 数值章节已内联；下方两个标记块由数值导出程序定点更新。
 \providecommand{\NumFigureRoot}{../figures/numerical_scenarios}
@@ -2466,7 +2474,6 @@ A_1=\frac1{1-\beta},\qquad A_2=-\frac \beta{1-\beta}.
 \]
 代回并积分即得 \eqref{eq:boundary-cost}。
 
-% BEGIN D APPENDIX
 \section{小容量渐近的完整推导}
 \label{app:small-capacity-proof}
 \begin{proof}[命题\ref{prop:small-capacity}的证明]
@@ -2551,7 +2558,6 @@ $h\Delta J=v^2/(24\beta^2)+O(v^3)=k^2/(24\beta^4)+O(k^3)$，
 故 $T_+^*/T_{+,\rm fill}\to1$。命题得证。
 \end{proof}
 
-% END D APPENDIX
 \section{梯度拼接与相对正则性的详细证明}
 \label{app:regularity-proof}
 本附录给出命题\ref{prop:regularity}的完整证明，所用分区与候选成本均已在正文定义。

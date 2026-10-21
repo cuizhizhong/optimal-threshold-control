@@ -1,0 +1,49 @@
+{
+  "base_commit": "9a67992248f41dada8c02b2e1851fc87ffa54f4f",
+  "events": [
+    {
+      "event": "figure_attempt1",
+      "accepted": false,
+      "reason": "log-axis locator returned tick text outside the drawing window and corner tick separation was insufficient",
+      "resolution": "retain failed JSON; use actually drawn tick range and increase spacing; zero collisions under unchanged Figure 1 density standard"
+    },
+    {
+      "event": "isolated_attempt1",
+      "accepted": false,
+      "actual_commands": 4,
+      "exit_codes_all_zero": true,
+      "final_diagnostic": "LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.",
+      "resolution": "a second fresh two-directory copy generated its own references, then independently passed both full four-stage builds; no aux/bbl imported from original project"
+    },
+    {
+      "event": "isolated_attempt2",
+      "accepted": true,
+      "initial_root_entries": [
+        "figures",
+        "latex"
+      ],
+      "reference_initialization_commands": 8,
+      "strict_final_commands": 8,
+      "final_diagnostics": [],
+      "pages": [
+        46,
+        36
+      ],
+      "original_project_inputs": 0
+    },
+    {
+      "event": "new_figure_script_final_blank_line_cleanup",
+      "mathematical_change": false,
+      "executed_source_snapshot": "figure_attempt3/figure_followup_executed.py.raw",
+      "executed_sha256": "ff9cfd0cddecba13ef849b6f8382ca955f2132214bd08eef959a09ad907d32a1",
+      "current_sha256": "39e099849fcd324d3cb158681bb02fd454c083501c3a10082a2e6ad4e1c4f69e",
+      "note": "Only extra final blank line removed after execution; original figure_checks.json execution hash retained; graph and all numerical data unchanged."
+    }
+  ],
+  "matlab_calls": 0,
+  "optimizer_calls": 0,
+  "new_ocp_solves": 0,
+  "ode_solves": 0,
+  "pushes": 0,
+  "author_review_required": true
+}

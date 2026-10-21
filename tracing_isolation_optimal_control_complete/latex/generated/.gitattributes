@@ -1,0 +1,2 @@
+# 使本批宏源的原始字节与构建指纹一致。
+scaling_values.tex -text

@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "dpi": 150,
+  "reviewed_page_count": 12,
+  "documents": [
+    {"name": "main", "reviewed_pages": [1, 27, 28, 29, 30, 31], "review_record": "visual_main_review.md", "status": "passed"},
+    {"name": "theory_only", "reviewed_pages": [1, 26, 27, 28, 29, 30], "review_record": "visual_theory_review.md", "status": "passed"}
+  ],
+  "scope": "abstract page, end of section 15, all section 16 pages and Figure 2; only listed pages visually reviewed",
+  "root_direct_checks": ["FigD_magnitude.png", "main page 1", "main page 29"],
+  "matlab_calls": 0,
+  "optimizer_calls": 0,
+  "ocp_solves": 0
+}

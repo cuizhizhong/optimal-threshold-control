@@ -1,0 +1,28 @@
+{
+  "source_report": "workspace_attempt1/build_report.json",
+  "pushes": 0,
+  "success": true,
+  "files": [
+    {
+      "native_copy_failure": null,
+      "name": "main.pdf",
+      "method": "Copy-Item",
+      "previous_sha256": "d22a53577340a0945465b57488296f5855514ae0ab3601fedf36cae9b05be2d5",
+      "sha256": "2f8f7e767e4315fe295aa08de2165919a92d941b0c4ccab4811ca18db17a9f00"
+    },
+    {
+      "native_copy_failure": null,
+      "name": "theory_only.pdf",
+      "method": "Copy-Item",
+      "previous_sha256": "5214fe74bdd32d6f165998acdda8259724086073fd4bf974474bfb9876e80756",
+      "sha256": "3efc896fc03f0dbf62bd7d203c91b883dbb3a9e62caab322d9096e169e7b39b5"
+    },
+    {
+      "native_copy_failure": null,
+      "name": "main.bbl",
+      "method": "already_identical",
+      "previous_sha256": "b136350e9823a3b01b35e852fb9984c86a068c7810cbae8f9a49d7b837db90e4",
+      "sha256": "b136350e9823a3b01b35e852fb9984c86a068c7810cbae8f9a49d7b837db90e4"
+    }
+  ]
+}

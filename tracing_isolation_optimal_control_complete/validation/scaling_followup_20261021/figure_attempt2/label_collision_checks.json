@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "label_curve_intersections": [],
+  "label_pair_intersections": [],
+  "legend_box_curve_intersections": [],
+  "visible_text_boxes_checked": 51,
+  "method": "Figure 1 standard: visible annotation/tick/axis-label text boxes versus own-axis visible Line2D curves; 2001 samples/segment for <=3-point lines, otherwise 9; all cross-axis text pairs; additionally all global-legend texts and its outer box versus all curves",
+  "subpanel_labels": "outside upper-left of each plotting window",
+  "global_legend_count": 1
+}

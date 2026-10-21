@@ -1,0 +1,131 @@
+{
+  "passed": 23,
+  "total": 23,
+  "checks": [
+    {
+      "name": "80_decimal_digit_duration_checks",
+      "passed": true,
+      "details": 30
+    },
+    {
+      "name": "figure_high_precision_checks",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "620_scan_rows_one_mask",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "all_51_text_boxes_and_single_legend_clear",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "native_figure_size_and_fonts",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "reference_line_and_no_english_footnote",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "independent_scope_review",
+      "passed": true,
+      "details": 25
+    },
+    {
+      "name": "full_preservation_audit",
+      "passed": true,
+      "details": 12
+    },
+    {
+      "name": "28_original_symbolic_checks",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "workspace_actual_four_stage_pair",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "workspace_final_logs_and_pages",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "workspace_current_source_and_figure_hashes",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "workspace_measured_linewidth_matches_figure",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "isolated_actual_four_stage_pair",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "isolated_final_logs_and_pages",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "isolated_current_source_and_figure_hashes",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "isolated_measured_linewidth_matches_figure",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "isolated_initial_only_latex_and_figures_without_aux",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "isolated_reference_stabilization_explicit",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "all_page_text_identical_between_actual_builds",
+      "passed": true,
+      "details": {
+        "main": true,
+        "theory_only": true
+      }
+    },
+    {
+      "name": "formal_pdf_delivery_matches_build",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "12_final_pages_rendered_at150dpi_and_visually_reviewed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "matlab_optimizer_ocp_ode_all_zero",
+      "passed": true,
+      "details": null
+    }
+  ],
+  "success": true,
+  "matlab_calls": 0,
+  "optimizer_calls": 0,
+  "new_ocp_solves": 0,
+  "ode_solves": 0,
+  "author_review_required": true,
+  "pushes": 0
+}

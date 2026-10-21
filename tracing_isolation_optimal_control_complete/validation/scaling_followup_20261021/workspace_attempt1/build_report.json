@@ -1,0 +1,145 @@
+{
+  "mode": "workspace",
+  "attempt": 1,
+  "started_utc": "2026-10-21T06:09:23.124096+00:00",
+  "documents": [
+    {
+      "name": "main",
+      "commands": [
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-recorder",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_followup_20261021\\workspace_attempt1",
+            "-jobname=main",
+            "\\AtBeginDocument{\\typeout{SCALING_LINEWIDTH_PT=\\the\\linewidth}}\\input{main.tex}"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\bibtex.EXE",
+            "main"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_followup_20261021\\workspace_attempt1",
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-recorder",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_followup_20261021\\workspace_attempt1",
+            "-jobname=main",
+            "\\AtBeginDocument{\\typeout{SCALING_LINEWIDTH_PT=\\the\\linewidth}}\\input{main.tex}"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-recorder",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_followup_20261021\\workspace_attempt1",
+            "-jobname=main",
+            "\\AtBeginDocument{\\typeout{SCALING_LINEWIDTH_PT=\\the\\linewidth}}\\input{main.tex}"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0
+        }
+      ],
+      "success": true,
+      "final_diagnostics": [],
+      "pages": 46,
+      "pdf_sha256": "2f8f7e767e4315fe295aa08de2165919a92d941b0c4ccab4811ca18db17a9f00",
+      "input_count": 153,
+      "forbidden_project_inputs": [],
+      "linewidth_tex_pt": 469.47049
+    },
+    {
+      "name": "theory_only",
+      "commands": [
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-recorder",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_followup_20261021\\workspace_attempt1",
+            "-jobname=theory_only",
+            "\\AtBeginDocument{\\typeout{SCALING_LINEWIDTH_PT=\\the\\linewidth}}\\input{theory_only.tex}"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\bibtex.EXE",
+            "theory_only"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_followup_20261021\\workspace_attempt1",
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-recorder",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_followup_20261021\\workspace_attempt1",
+            "-jobname=theory_only",
+            "\\AtBeginDocument{\\typeout{SCALING_LINEWIDTH_PT=\\the\\linewidth}}\\input{theory_only.tex}"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-recorder",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_followup_20261021\\workspace_attempt1",
+            "-jobname=theory_only",
+            "\\AtBeginDocument{\\typeout{SCALING_LINEWIDTH_PT=\\the\\linewidth}}\\input{theory_only.tex}"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex",
+          "exit_code": 0
+        }
+      ],
+      "success": true,
+      "final_diagnostics": [],
+      "pages": 36,
+      "pdf_sha256": "3efc896fc03f0dbf62bd7d203c91b883dbb3a9e62caab322d9096e169e7b39b5",
+      "input_count": 151,
+      "forbidden_project_inputs": [],
+      "linewidth_tex_pt": 469.47049
+    }
+  ],
+  "success": true,
+  "matlab_calls": 0,
+  "optimizer_calls": 0,
+  "ocp_solves": 0,
+  "project_directory": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete",
+  "build_directory": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_followup_20261021\\workspace_attempt1",
+  "source_sha256": {
+    "latex/main.tex": "f4b6d723e2e0b1677b3a1d21673791c71d374df486e27eea4098a42ed9c40a61",
+    "latex/references.bib": "e84bbdef4ffa590f6d7f1a36d1e92481a7cf515cab90bcf41d28f1410ae25fff",
+    "latex/theory_only.tex": "bc87e137e4cbe11a76dc8b3cb39d45d0ec7de1783bad31dc632335981f149fb5",
+    "latex/generated/scaling_values.tex": "ef4d6488864b89fb35a1d45cbbaadc0de0933b023ced432d1c8bb874d4321258"
+  },
+  "figure_sha256": "182ccccde70a3d9c024c8cd6fe677120be8a8a75d99bf908ce032c1afc822fb5",
+  "search_environment": {
+    "TEXINPUTS": null,
+    "BIBINPUTS": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex;",
+    "BSTINPUTS": null,
+    "TEXMFOUTPUT": null
+  },
+  "finished_utc": "2026-10-21T06:09:44.446190+00:00"
+}

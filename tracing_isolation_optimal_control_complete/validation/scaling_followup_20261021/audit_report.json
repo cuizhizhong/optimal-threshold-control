@@ -1,0 +1,82 @@
+{
+  "batch": "D_followup",
+  "checks": [
+    {
+      "name": "existing_file_bytes_unchanged",
+      "passed": true,
+      "details": {
+        "count": 6730,
+        "changed": []
+      }
+    },
+    {
+      "name": "both_generated_numerical_blocks_verbatim",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "all_theorems_and_proofs_verbatim",
+      "passed": true,
+      "details": {
+        "count": 65,
+        "changed": []
+      }
+    },
+    {
+      "name": "all_existing_equation_blocks_verbatim",
+      "passed": true,
+      "details": {
+        "count": 112,
+        "changed": []
+      }
+    },
+    {
+      "name": "all_17_original_D_macro_values_unchanged",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "no_validation_dependency_in_entrypoints",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "macro_input_in_preamble",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "six_D_markers_removed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "new_scaling_figure_without_insertion_scaling",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "old_15_E2_example_removed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "duration_not_optimization_objective",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "main_branch_unchanged",
+      "passed": true,
+      "details": null
+    }
+  ],
+  "passed": 12,
+  "total": 12,
+  "success": true,
+  "source_sha256": "f4b6d723e2e0b1677b3a1d21673791c71d374df486e27eea4098a42ed9c40a61",
+  "matlab_calls": 0,
+  "optimizer_calls": 0,
+  "ocp_solves": 0,
+  "ode_integrations": 0
+}

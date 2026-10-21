@@ -1,0 +1,53 @@
+{
+  "status": "failed",
+  "label_curve_intersections": [],
+  "label_pair_intersections": [
+    {
+      "location_a": "a",
+      "location_b": "a",
+      "label_a": "$\\mathdefault{10^{-4}}$",
+      "label_b": "$\\mathdefault{10^{-4}}$"
+    },
+    {
+      "location_a": "a",
+      "location_b": "b",
+      "label_a": "$\\mathdefault{10^{0}}$",
+      "label_b": "$\\mathdefault{10^{-8}}$"
+    },
+    {
+      "location_a": "a",
+      "location_b": "c",
+      "label_a": "$\\mathdefault{10^{-6}}$",
+      "label_b": "$\\mathdefault{10^{0}}$"
+    },
+    {
+      "location_a": "a",
+      "location_b": "c",
+      "label_a": "$\\mathdefault{10^{-5}}$",
+      "label_b": "$\\mathdefault{10^{2}}$"
+    },
+    {
+      "location_a": "b",
+      "location_b": "b",
+      "label_a": "$\\mathdefault{10^{-4}}$",
+      "label_b": "$\\mathdefault{10^{-8}}$"
+    },
+    {
+      "location_a": "c",
+      "location_b": "c",
+      "label_a": "$\\mathdefault{10^{-4}}$",
+      "label_b": "$\\mathdefault{10^{-12}}$"
+    },
+    {
+      "location_a": "d",
+      "location_b": "d",
+      "label_a": "$\\mathdefault{10^{-4}}$",
+      "label_b": "0.0"
+    }
+  ],
+  "legend_box_curve_intersections": [],
+  "visible_text_boxes_checked": 75,
+  "method": "Figure 1 standard: visible annotation/tick/axis-label text boxes versus own-axis visible Line2D curves; 2001 samples/segment for <=3-point lines, otherwise 9; all cross-axis text pairs; additionally all global-legend texts and its outer box versus all curves",
+  "subpanel_labels": "outside upper-left of each plotting window",
+  "global_legend_count": 1
+}

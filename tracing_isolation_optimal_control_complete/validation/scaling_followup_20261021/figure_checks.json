@@ -1,0 +1,271 @@
+{
+  "status": "passed",
+  "precision_decimal_digits": 80,
+  "matlab_calls": 0,
+  "optimizer_calls": 0,
+  "new_ocp_solves": 0,
+  "ode_solves": 0,
+  "attempt": 3,
+  "scan_rows": 620,
+  "masks": [
+    {
+      "beta": "0.13",
+      "K": "0.15",
+      "reason": "natural_entry_before_s_B"
+    }
+  ],
+  "all_duration_differences": "direct 80-digit common-capacity-tail formula; no subtraction of total durations",
+  "original_abc_grid_mask_data_checks": [
+    {
+      "beta": ".13",
+      "field": "beta",
+      "identical": true
+    },
+    {
+      "beta": ".13",
+      "field": "K",
+      "identical": true
+    },
+    {
+      "beta": ".13",
+      "field": "comparable",
+      "identical": true
+    },
+    {
+      "beta": ".13",
+      "field": "exit_gap",
+      "identical": true
+    },
+    {
+      "beta": ".13",
+      "field": "Delta_J",
+      "identical": true
+    },
+    {
+      "beta": ".13",
+      "field": "relative_saving",
+      "identical": true
+    },
+    {
+      "beta": ".155",
+      "field": "beta",
+      "identical": true
+    },
+    {
+      "beta": ".155",
+      "field": "K",
+      "identical": true
+    },
+    {
+      "beta": ".155",
+      "field": "comparable",
+      "identical": true
+    },
+    {
+      "beta": ".155",
+      "field": "exit_gap",
+      "identical": true
+    },
+    {
+      "beta": ".155",
+      "field": "Delta_J",
+      "identical": true
+    },
+    {
+      "beta": ".155",
+      "field": "relative_saving",
+      "identical": true
+    },
+    {
+      "beta": ".25",
+      "field": "beta",
+      "identical": true
+    },
+    {
+      "beta": ".25",
+      "field": "K",
+      "identical": true
+    },
+    {
+      "beta": ".25",
+      "field": "comparable",
+      "identical": true
+    },
+    {
+      "beta": ".25",
+      "field": "exit_gap",
+      "identical": true
+    },
+    {
+      "beta": ".25",
+      "field": "Delta_J",
+      "identical": true
+    },
+    {
+      "beta": ".25",
+      "field": "relative_saving",
+      "identical": true
+    },
+    {
+      "beta": ".5",
+      "field": "beta",
+      "identical": true
+    },
+    {
+      "beta": ".5",
+      "field": "K",
+      "identical": true
+    },
+    {
+      "beta": ".5",
+      "field": "comparable",
+      "identical": true
+    },
+    {
+      "beta": ".5",
+      "field": "exit_gap",
+      "identical": true
+    },
+    {
+      "beta": ".5",
+      "field": "Delta_J",
+      "identical": true
+    },
+    {
+      "beta": ".5",
+      "field": "relative_saving",
+      "identical": true
+    },
+    {
+      "beta": ".8",
+      "field": "beta",
+      "identical": true
+    },
+    {
+      "beta": ".8",
+      "field": "K",
+      "identical": true
+    },
+    {
+      "beta": ".8",
+      "field": "comparable",
+      "identical": true
+    },
+    {
+      "beta": ".8",
+      "field": "exit_gap",
+      "identical": true
+    },
+    {
+      "beta": ".8",
+      "field": "Delta_J",
+      "identical": true
+    },
+    {
+      "beta": ".8",
+      "field": "relative_saving",
+      "identical": true
+    }
+  ],
+  "normalized_duration_reference_checks": [
+    {
+      "beta": ".5",
+      "c": "2",
+      "gamma": ".3",
+      "K": ".01",
+      "direct_common_tail_Delta_T": "5.77814275607405620733056051400452798538771079749651127778747899999531194",
+      "normalized_time_difference": "0.866721413411108431099584077100679197808156619624476691668121849999296791",
+      "expected_rounded_4dp": "0.8667",
+      "actual_rounded_4dp": "0.8667",
+      "passed": true
+    },
+    {
+      "beta": ".5",
+      "c": "2",
+      "gamma": ".3",
+      "K": ".001",
+      "direct_common_tail_Delta_T": "6.55840003945682218243260859677084691412399166738856580332579513605426675",
+      "normalized_time_difference": "0.983760005918523327364891289515627037118598750108284870498869270408140013",
+      "expected_rounded_4dp": "0.9838",
+      "actual_rounded_4dp": "0.9838",
+      "passed": true
+    },
+    {
+      "beta": ".5",
+      "c": "2",
+      "gamma": ".3",
+      "K": ".0001",
+      "direct_common_tail_Delta_T": "6.65558484134986895935505830398423478745322345041986400209607226919529532",
+      "normalized_time_difference": "0.998337726202480343903258745597635218117983517562979600314410840379294298",
+      "expected_rounded_4dp": "0.9983",
+      "actual_rounded_4dp": "0.9983",
+      "passed": true
+    }
+  ],
+  "high_precision_residual_maxima": {
+    "scalar_relative": "1.3872295056930556454477378278903707981216019742816448436996826180795837e-75",
+    "endpoint_relative": "5.66784835657555012061751293079033279984406525933790728498804463715491629e-81",
+    "theta_relative": "8.36945094713071238781033293930326809022093834146235814400673606563335575e-78",
+    "cost_difference_relative": "5.68888589831095438642683220414611875553627120178885414381466032331083972e-73"
+  },
+  "measurement": {
+    "linewidth_tex_pt": 469.47049,
+    "width_cm": 16.50000061713021,
+    "height_cm": 12.8,
+    "pdf_width_big_pt": 467.7165529265,
+    "pdf_height_big_pt": 362.8346456693,
+    "insertion_scale": 1,
+    "tick_font_pt": 8,
+    "label_font_pt": 9,
+    "font_family": "Times New Roman / STIXGeneral",
+    "math_font": "stix",
+    "global_legend_count": 1,
+    "reference_line_y": 1,
+    "english_footnote_present": false
+  },
+  "label_collision_checks": {
+    "status": "passed",
+    "label_curve_intersections": [],
+    "label_pair_intersections": [],
+    "legend_box_curve_intersections": [],
+    "visible_text_boxes_checked": 51,
+    "method": "Figure 1 standard: visible annotation/tick/axis-label text boxes versus own-axis visible Line2D curves; 2001 samples/segment for <=3-point lines, otherwise 9; all cross-axis text pairs; additionally all global-legend texts and its outer box versus all curves",
+    "subpanel_labels": "outside upper-left of each plotting window",
+    "global_legend_count": 1
+  },
+  "protected_files_sha256": {
+    "validation\\scaling_asymptotics_20261021\\analytic_scan.py": "456ffa0d6b8f19417847519f4a3cae371940f1452b77c86e935fda2ed6530bf4",
+    "validation\\scaling_asymptotics_20261021\\figure_data.json": "65a63630e908d75c563a372f67400e81c8a14709275b4bf2bac395a2d38298a5",
+    "validation\\scaling_asymptotics_20261021\\magnitude.pdf": "814b6dd2c02372bba1ce15cc40d7b13b85d49f03fcf639e191be67c7391e4ce5",
+    "validation\\scaling_asymptotics_20261021\\magnitude.png": "9f8eb667b23b54a393ad553627418a35434647ab6d377f1faace3578ba1c9214",
+    "figures\\numerical_scenarios\\FigN1_optimal_partition.pdf": "ca86d4850da4b02467b6eb37a2ceb5dcd911b23c9418bd459ded1c27f075aadf",
+    "figures\\numerical_scenarios\\FigN1_optimal_partition.png": "b121a7e8a38a9487cade5c085607a572b99ae0a5067fb883d6aba0e5fecc7e01",
+    "figures\\numerical_scenarios\\FigN1_regions.pdf": "2895a76602d8d98bb9a2d6105b7c33399e0ab433d0497ee7dbd0af9990a53b3e",
+    "figures\\numerical_scenarios\\FigN1_regions.png": "3eeca5468e6d09f15f358d8aeb10b2a51c1baf8d276093930b1d9a426ebcf880",
+    "figures\\numerical_scenarios\\FigN2_waiting.pdf": "04141129be11e4492cf53d2027a6c39e41151a01e6315fce4c79cf488adbd1dc",
+    "figures\\numerical_scenarios\\FigN2_waiting.png": "358ff93fcc674da54439c960a6dcdb19e857800bfb2e7dd29bf13b81189df025",
+    "figures\\numerical_scenarios\\FigN3_boundary_tracking.pdf": "f3c3a8773f442ba45e6c839fc3603106938f6a974cf3b163edcd7e6c65c188e4",
+    "figures\\numerical_scenarios\\FigN3_boundary_tracking.png": "d957f5493a0778623d7785e8d4cb3d37ea95c1f6f3f10bc1af8c7269b6d51009"
+  },
+  "sources_sha256": {
+    "validation\\scaling_followup_20261021\\figure_followup.py": "ff9cfd0cddecba13ef849b6f8382ca955f2132214bd08eef959a09ad907d32a1",
+    "validation\\scaling_asymptotics_20261021\\analytic_scan.py": "456ffa0d6b8f19417847519f4a3cae371940f1452b77c86e935fda2ed6530bf4",
+    "validation\\scaling_asymptotics_20261021\\figure_data.json": "65a63630e908d75c563a372f67400e81c8a14709275b4bf2bac395a2d38298a5",
+    "validation\\figure1_revision_20261021\\measure_linewidth_console.log": "513d11628131b531131115f0fb68a838c75aa56df8d5d544edcdc1c05e30b9ac"
+  },
+  "pdf_render_visual_review": {
+    "status": "passed",
+    "dpi": 150,
+    "path": "figure_attempt3/pdf_render_150dpi.png",
+    "sha256": "e076e919bea6ca705140a79e8a53f7e0f3c6bcd429ce2524d3454fe4873ad16a",
+    "identical_to_visually_reviewed_attempt2": true,
+    "observations": "Four panels readable; labels outside curves; global legend above panels; dashed y=1 reference visible; no English footnote or clipping"
+  },
+  "embedded_pdf_fonts": [
+    "TimesNewRomanPSMT",
+    "TimesNewRomanPS-BoldMT",
+    "STIXGeneral-Regular",
+    "STIXGeneral-Italic"
+  ],
+  "pdf_font_check_log": "figure_attempt3/pdffonts.txt"
+}

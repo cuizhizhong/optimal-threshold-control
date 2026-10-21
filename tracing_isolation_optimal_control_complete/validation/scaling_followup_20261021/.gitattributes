@@ -1,0 +1,4 @@
+# 保留本批记录的原始字节；文本检查时将CR视作CRLF行尾。
+* -text
+*.pdf binary
+*.png binary

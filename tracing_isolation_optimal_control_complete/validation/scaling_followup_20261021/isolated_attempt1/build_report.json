@@ -1,0 +1,103 @@
+{
+  "mode": "isolated",
+  "attempt": 1,
+  "started_utc": "2026-10-21T06:10:37.704063+00:00",
+  "documents": [
+    {
+      "name": "main",
+      "commands": [
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-recorder",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_followup_20261021\\isolated_attempt1\\latex\\build",
+            "-jobname=main",
+            "\\AtBeginDocument{\\typeout{SCALING_LINEWIDTH_PT=\\the\\linewidth}}\\input{main.tex}"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_followup_20261021\\isolated_attempt1\\latex",
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\bibtex.EXE",
+            "main"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_followup_20261021\\isolated_attempt1\\latex\\build",
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-recorder",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_followup_20261021\\isolated_attempt1\\latex\\build",
+            "-jobname=main",
+            "\\AtBeginDocument{\\typeout{SCALING_LINEWIDTH_PT=\\the\\linewidth}}\\input{main.tex}"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_followup_20261021\\isolated_attempt1\\latex",
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "E:\\software\\texlive\\2026\\bin\\windows\\xelatex.EXE",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "-recorder",
+            "-output-directory=E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_followup_20261021\\isolated_attempt1\\latex\\build",
+            "-jobname=main",
+            "\\AtBeginDocument{\\typeout{SCALING_LINEWIDTH_PT=\\the\\linewidth}}\\input{main.tex}"
+          ],
+          "cwd": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_followup_20261021\\isolated_attempt1\\latex",
+          "exit_code": 0
+        }
+      ],
+      "success": false,
+      "final_diagnostics": [
+        "LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right."
+      ]
+    }
+  ],
+  "success": false,
+  "matlab_calls": 0,
+  "optimizer_calls": 0,
+  "ocp_solves": 0,
+  "initial_root_entries": [
+    "figures",
+    "latex"
+  ],
+  "copied_files": {
+    "latex/main.tex": "f4b6d723e2e0b1677b3a1d21673791c71d374df486e27eea4098a42ed9c40a61",
+    "latex/references.bib": "e84bbdef4ffa590f6d7f1a36d1e92481a7cf515cab90bcf41d28f1410ae25fff",
+    "latex/theory_only.tex": "bc87e137e4cbe11a76dc8b3cb39d45d0ec7de1783bad31dc632335981f149fb5",
+    "figures/numerical_scenarios/FigN1_optimal_partition.pdf": "ca86d4850da4b02467b6eb37a2ceb5dcd911b23c9418bd459ded1c27f075aadf",
+    "figures/numerical_scenarios/FigN1_optimal_partition.png": "b121a7e8a38a9487cade5c085607a572b99ae0a5067fb883d6aba0e5fecc7e01",
+    "figures/numerical_scenarios/FigN1_regions.pdf": "2895a76602d8d98bb9a2d6105b7c33399e0ab433d0497ee7dbd0af9990a53b3e",
+    "figures/numerical_scenarios/FigN1_regions.png": "3eeca5468e6d09f15f358d8aeb10b2a51c1baf8d276093930b1d9a426ebcf880",
+    "figures/numerical_scenarios/FigN2_waiting.pdf": "04141129be11e4492cf53d2027a6c39e41151a01e6315fce4c79cf488adbd1dc",
+    "figures/numerical_scenarios/FigN2_waiting.png": "358ff93fcc674da54439c960a6dcdb19e857800bfb2e7dd29bf13b81189df025",
+    "figures/numerical_scenarios/FigN3_boundary_tracking.pdf": "f3c3a8773f442ba45e6c839fc3603106938f6a974cf3b163edcd7e6c65c188e4",
+    "figures/numerical_scenarios/FigN3_boundary_tracking.png": "d957f5493a0778623d7785e8d4cb3d37ea95c1f6f3f10bc1af8c7269b6d51009",
+    "figures/scaling/FigD_magnitude.pdf": "182ccccde70a3d9c024c8cd6fe677120be8a8a75d99bf908ce032c1afc822fb5",
+    "figures/scaling/FigD_magnitude.png": "012d0099156ea319afb751ea4b2678edf0502c16bd8294f0d1033f96c8fae65d",
+    "latex/generated/scaling_values.tex": "ef4d6488864b89fb35a1d45cbbaadc0de0933b023ced432d1c8bb874d4321258"
+  },
+  "project_directory": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_followup_20261021\\isolated_attempt1",
+  "build_directory": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_followup_20261021\\isolated_attempt1\\latex\\build",
+  "source_sha256": {
+    "latex/main.tex": "f4b6d723e2e0b1677b3a1d21673791c71d374df486e27eea4098a42ed9c40a61",
+    "latex/references.bib": "e84bbdef4ffa590f6d7f1a36d1e92481a7cf515cab90bcf41d28f1410ae25fff",
+    "latex/theory_only.tex": "bc87e137e4cbe11a76dc8b3cb39d45d0ec7de1783bad31dc632335981f149fb5",
+    "latex/generated/scaling_values.tex": "ef4d6488864b89fb35a1d45cbbaadc0de0933b023ced432d1c8bb874d4321258"
+  },
+  "figure_sha256": "182ccccde70a3d9c024c8cd6fe677120be8a8a75d99bf908ce032c1afc822fb5",
+  "search_environment": {
+    "TEXINPUTS": null,
+    "BIBINPUTS": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp\\scaling_followup_20261021\\isolated_attempt1\\latex;",
+    "BSTINPUTS": null,
+    "TEXMFOUTPUT": null
+  },
+  "failure": "最终日志未通过验收：['LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.']"
+}
