@@ -1876,7 +1876,7 @@ i_0+s_0-s_c+h\ln(s_c/s_0),&s_1\le s_c\le s_0.
 相对节省为 $\DsavingE\%$，即第\ref{sec:switching-mechanism}节所述提前退出的成本节省。
 相应的 $T_{+,\rm fill}=\Dur{\DtimeFillE}$、$T_+^*=\Dur{\DtimeOptE}$，容量退出位置为
 $h=0.3$ 与 $s_B=\DsbE$，最优解除位置为 $\bar s_B=\DreleaseE$。
-时间单位与速率参数的单位一致。
+时长单位为速率参数单位的倒数。
 
 \subsubsection{固定传播概率下的小容量命题}
 \begin{proposition}[小容量的成本与时长标度]
@@ -2241,7 +2241,7 @@ E4 的成本差为负，但其绝对值小于容量放宽导致的值函数下�
 这一反馈在全部可测可行控制中全局最优（定理\ref{thm:verification}）；容量平台上 Hamiltonian 的点态极小元虽不唯一，最优状态轨道仍唯一，最优控制几乎处处唯一（定理\ref{thm:unique-q}）。
 
 本文的主要定性结论是最优轨道提前离开阈值：含容量阶段时，它在 $s_B>h$ 处转入完全跟踪，而不是维持阈值直至自然感染增长阈值 $s=h$。
-其来源是跟踪隔离对两条流量的不同作用：完全跟踪在阻止新感染的同时让社区易感者继续减少，用一段短时完全跟踪替代纯容量填充末端漫长的低强度维持更省（第\ref{sec:switching-mechanism}节）。
+其来源是跟踪隔离对两条流量的不同作用：完全跟踪在阻止新的非隔离感染者生成的同时让社区易感者继续减少，用一段短时完全跟踪替代纯容量填充末端漫长的低强度维持更省（第\ref{sec:switching-mechanism}节）。
 这一效应在成本上是高阶小量，在时长上却不随容量消失：在西安参数情景中，成本低 $\DabstractSavingZ\%$，正控制时长由 $\DabstractTimeFillZ$ 日缩短至 $\DabstractTimeOptZ$ 日（第\ref{sec:scaling}节）。
 五个代表初值的直接配点计算再现了解析预测的阶段顺序、切换位置和成本（第\ref{sec:numerics}节）。
 
