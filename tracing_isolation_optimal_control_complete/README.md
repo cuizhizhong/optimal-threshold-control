@@ -1,10 +1,10 @@
 # 感染阈值约束下追踪隔离的全域最优控制
 
-本目录保存论文定稿、MATLAB/OpenOCL 数值轨道和复现脚本。2026 年 11 月 18 日的[投稿包](../output/optimal_threshold_control_submission_20261118.zip)包含主文、补充材料、各自的源文件以及图表复现输入。11 月 17 日的[第二轮审查记录](validation/deep_review_20261117/README.md)和[第一轮整合报告](validation/chatgpt_integration_20261117/README.md)记录此前两轮修订。
+本目录保存论文定稿、MATLAB/OpenOCL 数值轨道和复现脚本。2026 年 11 月 18 日的[投稿包](../output/optimal_threshold_control_submission_20261118_v2.zip)包含主文、补充材料、各自的源文件以及图表复现输入。11 月 17 日的[第二轮审查记录](validation/deep_review_20261117/README.md)和[第一轮整合报告](validation/chatgpt_integration_20261117/README.md)记录此前两轮修订。
 
 本轮修订的对照材料、实际结果、最终正文和复现边界见[评阅入口](REVIEW_GUIDE.md)。
 
-当前论文入口为[主文 PDF](latex/main.pdf)与[补充材料 PDF](latex/supplementary.pdf)，对应源码为 `latex/main.tex` 和 `latex/supplementary.tex`。主文八节给出模型、最优策略、全局验证、唯一性证明及数值结果。图 3 标出 E2 离开容量线、停止新增追踪和随后达到感染峰值的时刻。表 4 比较两种策略的成本、追踪开启时长和新增隔离易感比例。补充材料五节给出主结果精度、容量退出区间、15 组网格误差、初猜与时域比较以及接受判据。
+当前论文入口为[主文 PDF](latex/main.pdf)与[补充材料 PDF](latex/supplementary.pdf)，对应源码为 `latex/main.tex` 和 `latex/supplementary.tex`。主文八节给出模型、最优策略、全局验证、唯一性证明及数值结果。图 3 标出 E2 离开容量线、停止新增追踪和随后达到感染峰值的时刻。表 4 比较两种策略的成本、追踪实施时长和新增隔离的易感者比例（占总人口）。补充材料五节给出主结果精度、容量退出区间、15 组网格误差、初猜与时域比较以及接受判据。
 
 在本目录运行以下命令，分别核对补充网格表、表 4 和主文图 5。
 

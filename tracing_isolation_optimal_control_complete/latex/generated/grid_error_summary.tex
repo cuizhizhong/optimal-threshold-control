@@ -2,7 +2,7 @@
 \begin{table}[htbp]
 \centering\small
 \setlength{\tabcolsep}{5pt}
-\caption{容量阶段算例的网格误差（$T=300$，$\Delta t=T/n$）。$\delta J=J_{\mathrm{OCL}}-J_{\mathrm{ref}}$，其余误差定义见正文；全部五个算例的逐网格数值见补充材料。}
+\caption{具有容量维持阶段的算例在各网格下的误差（$T=300$，$\Delta t=T/n$）。$\delta J=J_{\mathrm{OCL}}-J_{\mathrm{ref}}$，其余误差定义见正文。全部五个算例的逐网格数值见补充材料。}
 \label{tab:grid-errors-capacity}
 \begin{tabular}{@{}crrrrr@{}}
 \toprule
@@ -19,6 +19,6 @@ E4 & 8000 & $\num{-3.683e-06}$ & $\num{7.703e-07}$ & $0.0375$ & $\num{4.125e-09}
 \end{tabular}
 \par\smallskip
 \begin{minipage}{0.98\linewidth}\footnotesize
-$w_{\max}$ 是保存记录中返回的原始事件区间的最大宽度；它不是切换时刻误差的上界。$^{\dagger}$ 表示容量进入或退出事件未被识别，并出现过长过渡区间；相应宽度不表示已准确定位容量切换。
+$^{\dagger}$ 表示容量进入或退出事件未被识别，并出现过长的过渡区间。
 \end{minipage}
 \end{table}

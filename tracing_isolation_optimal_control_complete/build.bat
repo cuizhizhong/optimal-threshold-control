@@ -12,12 +12,12 @@ endlocal
 exit /b 0
 
 :build
-xelatex -interaction=nonstopmode -halt-on-error "%~1.tex" || exit /b 1
+xelatex -no-pdf -interaction=nonstopmode -halt-on-error "%~1.tex" || exit /b 1
 findstr /L /C:"\bibdata" "%~1.aux" >nul
 if not errorlevel 1 (
     bibtex "%~1" || exit /b 1
 )
-xelatex -interaction=nonstopmode -halt-on-error "%~1.tex" || exit /b 1
+xelatex -no-pdf -interaction=nonstopmode -halt-on-error "%~1.tex" || exit /b 1
 xelatex -interaction=nonstopmode -halt-on-error "%~1.tex" || exit /b 1
 exit /b 0
 

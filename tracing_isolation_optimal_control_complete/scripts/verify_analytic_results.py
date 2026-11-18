@@ -245,7 +245,7 @@ def verify_comparison_table(latex_dir, examples):
     body = table.split(r"\midrule", 1)[1].split(r"\bottomrule", 1)[0].replace(r"\addlinespace", "")
     scenarios = {"E2": "mathematical_example", "西安文献参数情景": "literature_parameter_illustration"}
     policies = {
-        "纯容量填充": ("J_fill", "T_fill", "fill_population_fraction"),
+        "维持上限至 $s=h$": ("J_fill", "T_fill", "fill_population_fraction"),
         "最优追踪": ("J_star", "T_star", "optimal_population_fraction"),
     }
     indexed_examples = {example["label"]: example for example in examples}

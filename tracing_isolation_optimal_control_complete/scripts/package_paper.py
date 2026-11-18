@@ -13,12 +13,12 @@ from zipfile import ZIP_DEFLATED, ZipFile
 
 
 PROJECT = Path(__file__).resolve().parents[1]
-PACKAGE = "optimal_threshold_control_submission_20261118"
+PACKAGE = "optimal_threshold_control_submission_20261118_v2"
 OUTPUT = PROJECT.parent / "output" / f"{PACKAGE}.zip"
 
 README = """# 感染阈值约束下追踪隔离的全域最优控制
 
-2026 年 11 月 18 日投稿稿件。主文与补充材料分别为 [主文 PDF](latex/main.pdf) 和 [补充材料 PDF](latex/supplementary.pdf)。两份文稿的 LaTeX 源码、参考文献和表格宏在同一目录。保留解压后的目录结构，从本文件所在目录运行下列命令。
+2026 年 11 月 18 日投稿稿件，第二版。主文与补充材料分别为 [主文 PDF](latex/main.pdf) 和 [补充材料 PDF](latex/supplementary.pdf)。两份文稿的 LaTeX 源码、参考文献和表格宏在同一目录。保留解压后的目录结构，从本文件所在目录运行下列命令。
 
 ## 编译
 
@@ -32,7 +32,7 @@ python scripts/verify_analytic_results.py --output reproduction/table4.json
 python reproducibility/scaling/figure_followup.py --reproduce-dir reproduction/figure5
 ```
 
-表 4 的成本、追踪开启时长和新增隔离易感比例共用各情景的初值和自然容量入口。核对脚本读取稿件列值与排版精度，逐项比较两种策略。随稿生成的同一份计算结果见 [解析复核记录](data/analytic_verification.json)。
+表 4 的成本、追踪实施时长和新增隔离的易感者比例（占总人口）共用各情景的初值和自然容量入口。核对脚本读取稿件列值与排版精度，逐项比较两种策略。随稿生成的同一份计算结果见 [解析复核记录](data/analytic_verification.json)。
 
 图 5 的[正式作图数据](reproducibility/scaling/figure_data.json)与[绘图脚本](reproducibility/scaling/figure_followup.py)位于同一目录。脚本从解析方程重建五组参数、共 620 点的容量网格，域内 619 点用于作图。面板 (d) 绘制从同一切换点出发的两条尾段的时长差乘以 βγ，即 βγ(T₊,fill − T₊*)，横虚线为 1。程序比对四个面板的完整数据，将再生 PDF、PNG、曲线 JSON 和版面检查写入 `reproduction/figure5/`。`reproducibility/scaling/scan.csv` 保存逐点解析扫描，包括绝对时长差 `Delta_T`。
 
