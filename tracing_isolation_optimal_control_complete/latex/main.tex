@@ -299,6 +299,27 @@ $P_0(\bar s,\bar i)=K$。停控后 $\dot i=\beta c(s-h)i$；由第\ref{sec:const
 \end{table}
 当感染比例在某个时间区间 $[t_1,t_2]$（$t_1<t_2$）内始终等于 $K$ 时，称这一阶段为容量维持阶段，相应的轨道段称为容量弧。
 记 $\mathcal B=\{(s,K):s>s_B\}$。初值位于 $\mathcal B\cap\Dcal$ 时，最优策略先维持 $i=K$，直至 $s$ 降至 $s_B$。沿临界自然轨道 $\Phi=\Phi_B$ 到达 $(s_B,K)$ 时，立即转入完全追踪。
+
+\figref{fig:optimal-partition}以 E1 和 E2 展示\tabref{tab:optimal-stages}中的两种等待路径。
+沿 E2，轨道先在 $s=s_B\approx\DsbE$ 处离开容量线，追踪强度升至 $q=1$。
+当 $s=\bar s_B\approx\DreleaseE$、$i\approx0.121083$ 时，轨道首次进入安全集，追踪强度降至 $q=0$。
+此后感染沿自然轨道回升，在 $s=h=0.3$ 时再次达到 $K=0.15$，这也是停控后的峰值。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{numerical_scenarios/FigN1_optimal_partition.pdf}
+\caption{成本最优分区，参数为 $\beta=0.5,c=2,\gamma=0.3,K=0.15$。
+E1 从 $(0.75,0.01)$ 自然等待至 $\Gamma_K$，随后完全追踪至安全集（$0\to1\to0$）。
+E2 从 $(0.99,0.01)$ 自然等待至容量线，沿容量弧至 $(s_B,K)$，再完全追踪至安全集（$0\to q_B\to1\to0$）。
+箭头表示演化方向，两条轨道均画至首次进入安全集，停控后的自然传播段未画出。
+左下插图放大了完全追踪弧、安全边界与切换曲线的相对位置，切换曲线的端点性质见第\ref{sec:switching-curve}节。
+绿色实线为 $\partial\Acal$，黑色实线为 $\Gamma_K$，黑色点线为 $\Phi=\Phi_B$，黑色虚线为 $i=K$。
+灰色点划线为 $s=h$，灰色虚线为 $s+i=1$。全部边界与示例轨道均由解析公式计算。}
+\label{fig:optimal-partition}
+\end{figure}
+
+下面由 $s+i\le1$ 判定物理初值何时全部安全，以及何时存在含容量弧的最优轨道。
+
 \begin{proposition}[物理域中的参数分类]\label{prop:physical-parameter-regimes}
 在式\eqref{eq:constants}的条件下，
 \[
@@ -329,23 +350,6 @@ $s_*\in(s_B,1-K)$；初值 $(s_*,K)$ 属于 $\mathcal B\cap\Dcal$，
 由上述主结果及后文的容量弧方程，该阶段的持续时间为
 $\frac1{cK}\ln[(s_*-p)/(s_B-p)]>0$，故充分性也成立。
 \end{proof}
-
-\figref{fig:optimal-partition}以两条解析轨道说明分区。沿 E2，轨道在 $s_B\approx\DsbE$ 处离开容量线并加强至 $q=1$，
-在 $\bar s_B\approx\DreleaseE$ 处停止新增追踪（此时 $i\approx0.121083$），
-随后在 $s=h=0.3$ 时达到停控后的感染峰值 $K=0.15$。
-\begin{figure}[H]
-\centering
-\includegraphics[width=\linewidth]{numerical_scenarios/FigN1_optimal_partition.pdf}
-\caption{成本最优分区，参数为 $\beta=0.5,c=2,\gamma=0.3,K=0.15$。
-E1 初值 $(0.75,0.01)$ 的示例轨道先自然等待至 $\Gamma_K$，再完全追踪进入安全集，对应 $0\to1\to0$；
-E2 初值 $(0.99,0.01)$ 先自然等待至容量线，在 $s_B$ 转入完全追踪，再于安全边界停止新增追踪；
-两条示例轨道均画至首次进入安全集，箭头表示演化方向。
-左下图放大了切换曲线靠近安全边界和容量线的部分。当 $s\downarrow s_e$ 时，切换曲线趋于安全边界上的点 $(s_e,a(s_e))$。曲线在 $(s_B,K)$ 与容量线相交（第\ref{sec:switching-curve}节）。
-绿色实线为 $\partial\Acal$，黑色实线为 $\Gamma_K$，黑色点线为 $\Phi=\Phi_B$，黑色虚线为 $i=K$；
-灰色点划线为 $s=h$，灰色虚线为 $s+i=1$。全部边界与示例轨道均由解析公式计算。}
-\label{fig:optimal-partition}
-\end{figure}
-
 
 \section{轨道几何与最优反馈构造}
 \label{sec:preliminaries}
@@ -649,11 +653,29 @@ H_W(x,0)&=\frac{\beta c}{h}i(s-p)[\Theta(s,i)-\Theta(\bar s,\bar i)]
  [\Theta(s,i)-\Theta(\bar s,\bar i)].
  \label{eq:waiting-marginal-cost}
 \end{equation}
-右端为正时，继续等待会增加后续完全追踪成本；为负时，短暂等待会降低该成本；
-为零时，得到构造切换曲线的匹配条件。
-这是对两种局部选择的比较，后文再证明所构造策略在全部可行控制中最优。
-容量线上 $s>h$ 时自然等待不可行，那里应比较容量切向延续，见式\eqref{eq:JB-derivative}。
-下一小节据此研究非平凡匹配曲线。
+右端为正时，短暂等待会增加后续完全追踪成本；为负时，短暂等待会降低该成本。
+
+在容量线 $i=K$ 上，若 $s>h$，自然等待会使感染比例超过上限。
+此时可沿容量弧维持 $i=K$，也可立即转入完全追踪。在同一状态下，完全追踪的即时强度成本较高，
+但非隔离感染者开始减少，社区易感者也比沿容量弧减少得更快。
+
+取 $(s,K)\in\mathcal E\cap\Dcal$，其中 $s>h$。记 $s_\tau$ 为沿容量弧运行 $\tau$ 后的易感比例。
+取 $\tau\ge0$ 充分小，使 $(s_\tau,K)$ 仍在 $\mathcal E\cap\Dcal$ 内。
+若此时转入完全追踪直至首次进入安全集，总成本为 $C_B(s,s_\tau)+W(s_\tau,K)$，其中 $\tau=0$ 对应立即完全追踪。
+由容量弧方程\eqref{eq:boundary-s}和命题\ref{prop:W-HJB}，该总成本在 $\tau=0$ 处的右导数为
+\begin{align}
+ \beta c q_B(s)-cK(s-p)W_s(s,K)
+ &=H_W((s,K),q_B(s))\notag\\
+ &=(1-q_B(s))H_W((s,K),0)\notag\\
+ &=-\frac{\beta cK(s-p)}s\,\Delta_\Theta(s,K).
+ \label{eq:capacity-marginal-cost}
+\end{align}
+左端第一项是维持容量的即时追踪成本，第二项是后续完全追踪成本 $W$ 的变化率。
+因 $\beta cK(s-p)/s>0$，当 $\Delta_\Theta(s,K)<0$ 时，推迟切换会增加总成本；
+当 $\Delta_\Theta(s,K)>0$ 时，短暂维持容量会降低总成本。
+
+因此，在容量线下自然等待和在容量线上维持 $i=K$ 这两种情形中，延迟切换的一阶成本变化都在 $\Delta_\Theta=0$ 时消失。
+下一小节由这一候选匹配条件构造非平凡切换曲线。所构造策略在全部可测可行控制中的全局最优性与唯一性分别在第\ref{sec:optimality}、\ref{sec:uniqueness}节证明。
 
 \subsection{切换曲线的存在、单调性及严格横穿}
 \label{sec:switching-curve}
@@ -886,57 +908,14 @@ x\in\Gamma_K&\iff s=\eta_\Gamma(\phi)\iff\chi(s,i)=0.
 $s<s_B$、$\Phi(x)<\Phi_B$，从而 $x\in\mathcal T$，不必另加 $\Phi(x)\le\Phi_B$。
 若 $h<s\le s_e$，不安全状态同样属于 $\mathcal T$，但不在该区域使用 $\mathcal I_\Gamma$ 或 $\chi$。
 \end{lemma}
-\begin{proof}
-由推论\ref{cor:Gamma-labels}，$\phi_\Gamma$ 严格递增，且 $\phi_\Gamma(\eta_\Gamma(\phi))=\phi$。
-因此
-\[
-s<\eta_\Gamma(\phi)
-\iff \phi>\phi_\Gamma(s)
-\iff i>\mathcal I_\Gamma(s)
-\iff \chi(s,i)>0.
-\]
-反向的严格不等式及等号情形同理；结合定义\ref{def:regions}即得\eqref{eq:chi-regions}。
-
-其次，若只知道 $\chi(s,i)>0$，则 $\mathcal I_\Gamma(s)<i\le K=\mathcal I_\Gamma(s_B)$，由 $\mathcal I_\Gamma$ 严格递增得 $s<s_B$。
-又 $s>s_e>h$，而 $s-h\ln s$ 在 $s>h$ 上严格递增，所以
-\[
-\Phi(x)=i+s-h\ln s\le K+s-h\ln s<\Phi_B.
-\]
-于是第一条结论的适用条件 $\Phi(x)\le\Phi_B$ 自动成立。
-最后，若 $h<s\le s_e$，则
-\[
-\Phi_A<\Phi(x)\le K+s_e-h\ln s_e<\Phi_B,
-\qquad s\le s_e<\eta_\Gamma(\Phi(x)),
-\]
-故 $x\in\mathcal T$。
-\end{proof}
+\emph{证明思路。}在 $s>s_e$ 时，$\phi_\Gamma$ 随 $s$ 严格递增。
+因此，在引理给定的 $\phi$ 范围内，比较 $s$ 与同一自然轨道上的切换坐标 $\eta_\Gamma(\phi)$，等价于比较 $i$ 与 $\mathcal I_\Gamma(s)$。完整证明见附录\ref{app:tracking-region-proof}。
 
 \begin{paperremark}[控制分区的相对开放性]
 \label{rem:relative-open-control-regions}
-这里记录控制分区的一个拓扑性质，它将在唯一性证明（定理\ref{thm:unique-q}）中用到。
 记 $\mathcal W:=\mathcal W_\Gamma\cup\mathcal W_K$。
-由引理\ref{lem:chi-regions}及分区定义，
-\[
-\mathcal W
-=\{x=(s,i)\in\Omega\setminus\Acal:
-  i<K,\ s>s_e,\ \chi(s,i)<0\}.
-\]
-事实上，当 $\Phi\le\Phi_B$ 时直接使用该引理；当 $\Phi>\Phi_B$ 且 $i<K$ 时，$s\ge\eta_K(\Phi)>s_B$，故 $\mathcal I_\Gamma(s)>K>i$。
-反向包含按 $\Phi\le\Phi_B$ 与 $\Phi>\Phi_B$ 分类即得。
-由于安全集在 $\Omega$ 中相对闭，上式表明 $\mathcal W$ 在 $\Omega$ 中相对开。
-
-完全追踪区中实际上有 $\Phi<\Phi_B$：若 $\Phi=\Phi_B$，则 $i\le K$ 与 $s>h$ 给出
-\[
-s-h\ln s\ge s_B-h\ln s_B,
-\]
-从而 $s\ge s_B=\eta_\Gamma(\Phi_B)$，与 $\mathcal T$ 的定义矛盾。
-因此 $\mathcal T$ 也可以由连续的严格不等式
-\[
-s>h,\qquad \Phi_A<\Phi<\Phi_B,\qquad
-s<\eta_\Gamma(\Phi)
-\]
-在 $\Omega$ 中刻画，故同样相对开。
-把这些集合限制到 $\Dcal$ 后，相对开放性仍然成立。
+$\mathcal W$ 与 $\mathcal T$ 在 $\Omega$ 中均为相对开集，其与 $\Dcal$ 的交在 $\Dcal$ 中也相对开。
+定理\ref{thm:unique-q}的证明将用这一性质刻画轨道处于这两个分区的时间集合。详细证明见附录\ref{app:tracking-region-proof}。
 \end{paperremark}
 
 为使完全追踪区上的候选成本取为 $W$，还需要确认从该区出发的完全追踪确实在有限时间内到达安全集，且途中不会进入等待区。
@@ -1610,9 +1589,9 @@ $(\eta_K(\Phi(x_0)),K)$。初值位于 $\mathcal B$ 时直接从容量弧开始�
 \section{提前退出机制与小容量标度}
 \label{sec:mechanisms}
 
-本节以已证明的最优反馈为基础，解释容量退出为何发生在 $s_B>h$，再比较提前退出带来的成本与时长变化。
-转入完全追踪会提高即时强度成本，但在相同状态下也会加快社区易感者的减少并使非隔离感染者衰减。
-切换位置由新增的即时投入与后续追踪成本的减少共同决定。
+第\ref{sec:q1-value}节由自然等待和容量延续的局部成本比较得到了候选切换条件。
+本节将总成本写成切换位置的函数，并用已证明的最优反馈确定其唯一极小点。
+随后说明，为何稍早转入完全追踪就能严格改进维持上限直至 $s=h$ 的基准策略，并在两种策略具有相同容量入口时比较成本、追踪实施时长及其小容量标度。
 
 \subsection{以切换位置比较成本}
 \label{sec:one-dimensional}
@@ -1643,8 +1622,10 @@ i_0+s_0-s_c+h\ln(s_c/s_0),&s_1\le s_c\le s_0.
 \mathcal J_B'(s_c)&=\frac{\beta}{s_c}
 [\Theta(\bar s,\bar i)-\Theta(s_c,K)].\label{eq:JB-derivative}
 \end{align}
-沿参考路径，$s_c$ 随时间减小。因此，上述导数为负时，稍晚转入完全追踪会增加总成本；导数为正时，稍晚切换会降低总成本。
-两式的驻点条件均为切换曲线的匹配条件。
+这两个导数以切换位置 $s_c$ 为变量。沿参考路径，$s_c$ 随时间减小；
+在容量分支上，将 $\mathcal J_B'(s_c)$ 乘以 $\dot s_c=-cK(s_c-p)<0$，即得到式\eqref{eq:capacity-marginal-cost}中关于延续时间的导数。
+因此，关于 $s_c$ 的导数为负时，稍晚切换会增加总成本；导数为正时，稍晚切换会降低总成本。
+两个分支的内部驻点均满足 $\Delta_\Theta=0$。下面借助全局最优性和唯一性确定整个策略族的唯一全局极小点。
 
 \begin{papercorollary}[切换位置的唯一极小点]
 \label{cor:one-dimensional-min}
@@ -1660,10 +1641,9 @@ i_0+s_0-s_c+h\ln(s_c/s_0),&s_1\le s_c\le s_0.
 
 \subsection{提前离开容量线的边际机制}
 \label{sec:switching-mechanism}
-式\eqref{eq:waiting-marginal-cost}已解释自然等待与立即完全追踪的局部比较。
-当 $i=K$ 且 $s>h$ 时，若继续取 $q=0$，则 $\dot i=\beta c(s-h)K>0$，感染比例将超过上限。
-因此，下面用 $\mathcal J_B'$ 比较继续维持 $i=K$ 与转入完全追踪的成本。
-为判断其符号，在 $i>0,s>p$ 上记
+式\eqref{eq:waiting-marginal-cost}与\eqref{eq:capacity-marginal-cost}分别给出了自然等待和容量延续的一阶成本比较。
+为说明在 $s_c=h$ 的右邻域内稍早切换为何能降低总成本，下面将 $\mathcal J_B'$ 写成沿完全追踪弧的积分，并判断其符号。
+在 $i>0,s>p$ 上记
 \begin{equation}
  \kappa(s,i):=\frac{i-g(s)}{i^2(s-p)^2},
  \qquad g(s)=\frac{(s-h)(s-p)}s.
@@ -2129,12 +2109,60 @@ A_1=\frac1{1-\beta},\qquad A_2=-\frac \beta{1-\beta}.
 \]
 代回并积分即得 \eqref{eq:boundary-cost}。
 
-\section{完全追踪分区可达性与不再返回等待区的证明}
+\section{控制分区的几何性质与完全追踪可达性}
 \label{app:tracking-region-proof}
 
+先证明引理\ref{lem:chi-regions}的分区判据，再由该判据证明注\ref{rem:relative-open-control-regions}的相对开放性。
+最后证明引理\ref{lem:tracking-region}，即从完全追踪分区出发的完全追踪弧在有限时间内到达安全集，途中不会返回等待区。
 
+\begin{proof}[引理\ref{lem:chi-regions}的证明]
+由推论\ref{cor:Gamma-labels}，$\phi_\Gamma$ 严格递增，且 $\phi_\Gamma(\eta_\Gamma(\phi))=\phi$。
+因此
+\[
+s<\eta_\Gamma(\phi)
+\iff \phi>\phi_\Gamma(s)
+\iff i>\mathcal I_\Gamma(s)
+\iff \chi(s,i)>0.
+\]
+反向的严格不等式及等号情形同理；结合定义\ref{def:regions}即得\eqref{eq:chi-regions}。
 
-\begin{proof}
+其次，若只知道 $\chi(s,i)>0$，则 $\mathcal I_\Gamma(s)<i\le K=\mathcal I_\Gamma(s_B)$，由 $\mathcal I_\Gamma$ 严格递增得 $s<s_B$。
+又 $s>s_e>h$，而 $s-h\ln s$ 在 $s>h$ 上严格递增，所以
+\[
+\Phi(x)=i+s-h\ln s\le K+s-h\ln s<\Phi_B.
+\]
+于是第一条结论的适用条件 $\Phi(x)\le\Phi_B$ 自动成立。
+最后，对 $h<s\le s_e$ 的不安全状态，有 $\Phi_A<\Phi(x)\le K+s_e-h\ln s_e<\Phi_B$。
+又因 $s\le s_e<\eta_\Gamma(\Phi(x))$，由定义\ref{def:regions}得 $x\in\mathcal T$。
+\end{proof}
+
+\begin{proof}[注\ref{rem:relative-open-control-regions}中相对开放性的证明]
+记 $\mathcal W:=\mathcal W_\Gamma\cup\mathcal W_K$。
+由引理\ref{lem:chi-regions}及分区定义，
+\[
+\mathcal W
+=\{x=(s,i)\in\Omega\setminus\Acal:
+  i<K,\ s>s_e,\ \chi(s,i)<0\}.
+\]
+事实上，当 $\Phi\le\Phi_B$ 时直接使用该引理；当 $\Phi>\Phi_B$ 且 $i<K$ 时，$s\ge\eta_K(\Phi)>s_B$，故 $\mathcal I_\Gamma(s)>K>i$。
+反向包含按 $\Phi\le\Phi_B$ 与 $\Phi>\Phi_B$ 分类即得。
+由于安全集在 $\Omega$ 中相对闭，上式表明 $\mathcal W$ 在 $\Omega$ 中相对开。
+
+完全追踪区中实际上有 $\Phi<\Phi_B$：若 $\Phi=\Phi_B$，则 $i\le K$ 与 $s>h$ 给出
+\[
+s-h\ln s\ge s_B-h\ln s_B,
+\]
+从而 $s\ge s_B=\eta_\Gamma(\Phi_B)$，与 $\mathcal T$ 的定义矛盾。
+因此 $\mathcal T$ 也可以由连续的严格不等式
+\[
+s>h,\qquad \Phi_A<\Phi<\Phi_B,\qquad
+s<\eta_\Gamma(\Phi)
+\]
+在 $\Omega$ 中刻画，故同样相对开。
+把这些集合限制到 $\Dcal$ 后，相对开放性仍然成立。
+\end{proof}
+
+\begin{proof}[引理\ref{lem:tracking-region}的证明]
 $\Gamma_K$ 上的切换点由正安全端点反向生成，且其感染坐标不超过 $K$，故属于 $\mathcal E$。
 对 $x\in\mathcal T$，在同一自然轨道上 $s<\eta$，且
 \[
