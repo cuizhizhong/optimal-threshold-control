@@ -1,35 +1,19 @@
-% Compile from this directory with XeLaTeX + BibTeX.
-\documentclass[11pt,a4paper,UTF8]{ctexart}
-\usepackage[a4paper,margin=2.25cm]{geometry}
-\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
-\usepackage{graphicx}
-\usepackage{booktabs,longtable,array,tabularx,multirow}
-\usepackage{enumitem,setspace,caption,subcaption,float,placeins,xcolor}
-\usepackage{hyperref}
-\usepackage[numbers,sort&compress]{natbib}
-\usepackage{listings,siunitx,fancyhdr}
+%!TEX program = xelatex
+% 编译顺序：XeLaTeX → Biber → XeLaTeX → XeLaTeX。
+\documentclass[lang=cn,a4paper,newtx]{elegantpaper}
+\DeclareFontFamilySubstitution{OT1}{\rmdefault}{qtm}
+\DeclareFontFamilySubstitution{OT1}{\sfdefault}{qhv}
+\usepackage{tabularx,float,siunitx}
 \graphicspath{{../figures/}}
-\setstretch{1.16}
-\setlength{\parindent}{2em}
-\setlength{\parskip}{0.18em}
-\setlist{nosep,leftmargin=2.4em}
-\captionsetup{font=small,labelfont=bf}
-\hypersetup{colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,
- urlcolor=blue!55!black,pdftitle={感染阈值约束下追踪隔离的全域最优控制},pdfauthor={}}
-\setlength{\headheight}{14pt}
-\pagestyle{fancy}\fancyhf{}
-\fancyhead[L]{感染阈值约束下追踪隔离的全域最优控制}
-\fancyhead[R]{\thepage}
-\renewcommand{\headrulewidth}{0.4pt}
-\newtheorem{theorem}{定理}[section]
-\newtheorem{proposition}[theorem]{命题}
-\newtheorem{lemma}[theorem]{引理}
-\newtheorem{corollary}[theorem]{推论}
-\newtheorem{assumption}[theorem]{假设}
+\hypersetup{pdftitle={感染阈值约束下追踪隔离的全域最优控制},pdfauthor={}}
+\addbibresource[location=local]{reference.bib}
+
+% 定义、推论和注与定理共用节内编号，以保留正文的交叉引用。
+\theoremstyle{plain}
+\newtheorem{papercorollary}[theorem]{推论}
 \theoremstyle{definition}
-\newtheorem{definition}[theorem]{定义}
-\newtheorem{remark}[theorem]{注}
-\newtheorem{example}[theorem]{例}
+\newtheorem{paperdefinition}[theorem]{定义}
+\newtheorem{paperremark}[theorem]{注}
 \newcommand{\R}{\mathbb R}
 \newcommand{\Acal}{\mathcal A}
 \newcommand{\Dcal}{\mathcal D}
@@ -46,8 +30,7 @@
 \newcommand{\Dur}[1]{\num[round-mode=places,round-precision=2]{#1}}
 \input{generated/numerical_values.tex}
 
-\lstset{basicstyle=\ttfamily\small,frame=single,breaklines=true,columns=fullflexible,showstringspaces=false}
-\title{\bfseries 感染阈值约束下追踪隔离的全域最优控制}
+\title{感染阈值约束下追踪隔离的全域最优控制}
 \author{}
 \date{}
 \begin{document}
@@ -61,33 +44,33 @@
 通过沿任意可行轨道的验证，证明该反馈在全部可测可行控制中全局最优，最优状态轨道唯一、控制几乎处处唯一。
 固定 $\beta,c,\gamma$，设 $K\downarrow0$ 时自然轨道首次达到 $i=K$ 的易感比例 $s_1(K)$ 趋于严格大于 $h$ 的常数。与维持感染上限直至 $s=h$ 的基准策略相比，绝对与相对成本节省分别为 $K^2$ 阶和 $K^3$ 阶，追踪实施时长的绝对缩短量趋于 $1/(\beta\gamma)$，相对缩短比例为 $K$ 阶。
 五个代表初值的数值算例展示了所给解析策略的阶段结构与切换位置。
+\keywords{接触追踪；最优控制；状态约束；HJB 验证；切换曲线；小容量渐近}
 \end{abstract}
-\noindent\textbf{关键词：} 接触追踪；最优控制；状态约束；HJB 验证；切换曲线；小容量渐近
 
 \section{引言}
 \label{sec:introduction}
 
 当社区非隔离感染比例必须始终不超过上限 $K$ 时，接触追踪应何时启动、维持多大强度，又可以在何时停止？本文以整个干预期间的累计追踪强度衡量成本，比较满足感染上限的追踪策略。
 
-\citet[式(2.1)--(2.2)、(3.1)]{Zhou2024SPCI}考虑了被追踪的接触者按感染状态进入隔离仓室的模型，分析一次加强干预的启动时间与强度如何影响感染峰值和非隔离感染持续时间。
+\textcite[式(2.1)--(2.2)、(3.1)]{Zhou2024SPCI}考虑了被追踪的接触者按感染状态进入隔离仓室的模型，分析一次加强干预的启动时间与强度如何影响感染峰值和非隔离感染持续时间。
 本文沿用其中的二维社区传播系统，固定接触率 $c$，允许追踪比例 $q$ 在 $[0,1]$ 内随时间可测变化。
 由追踪移出社区的接触者既有感染者，也有未感染的易感者。取 $q=1$ 时，非隔离感染者的新增流入为零，社区易感者仍持续减少。
-\citet{Pollinger2023}研究了追踪和社会疏离的联合优化，说明有效追踪可以降低维持同等传播水平所需的社会疏离成本。本文只调节追踪比例，考察在容量线 $i=K$ 上维持当前感染水平和转入完全追踪这两种选择的后续成本。
+\textcite{Pollinger2023}研究了追踪和社会疏离的联合优化，说明有效追踪可以降低维持同等传播水平所需的社会疏离成本。本文只调节追踪比例，考察在容量线 $i=K$ 上维持当前感染水平和转入完全追踪这两种选择的后续成本。
 
 标准 SIR 模型的容量约束控制提供了一个直接基准。
-\citet{MicloSpiroWeibull2022}以感染比例上限表示 ICU 约束，最小化无限时域内传播率低于自然水平的线性代价，
+\textcite{MicloSpiroWeibull2022}以感染比例上限表示 ICU 约束，最小化无限时域内传播率低于自然水平的线性代价，
 并在其控制类中通过候选函数的 Hamilton--Jacobi 验证得到解析策略：先保持自然传播，必要时沿感染上限运行，直至易感比例降到自然感染增长阈值。
-退出目标的改变也会改变阶段结构：\citet{Angulo2021}以尽快进入可恢复自然传播的安全区为目标，得到容量阶段后的末段加强干预（final push）；
+退出目标的改变也会改变阶段结构：\textcite{Angulo2021}以尽快进入可恢复自然传播的安全区为目标，得到容量阶段后的末段加强干预（final push）；
 其有效时长从暴发起点计至最后干预时刻，区别于本文的累计强度成本。
-在干预能力不足的情形，该文还允许感染达到上限前启动干预\citep[图3b]{Angulo2021}。
-\citet{Morris2021}在给定干预持续时间下最小化感染峰值，也得到维持感染水平后再加强抑制的结构。
+在干预能力不足的情形，该文还允许感染达到上限前启动干预\parencite[图3b]{Angulo2021}。
+\textcite{Morris2021}在给定干预持续时间下最小化感染峰值，也得到维持感染水平后再加强抑制的结构。
 本文由追踪对两类人群流量的作用和累计强度成本确定容量阶段的退出位置。
 
 相关工作也建立了可行域与最优性分析的方法基础。
-\citet{AvramFreddiGoreac2022}在带 ICU 约束和终端群体免疫目标的有限时域问题中，
+\textcite{AvramFreddiGoreac2022}在带 ICU 约束和终端群体免疫目标的有限时域问题中，
 区分无干预安全集、全控制不变集与可行域，并在相应假设下证明最优控制几乎处处唯一（其定理5.6与注5.7(2)）。
-\citet{FreddiGoreac2024}研究受限控制的可行性、无限时域优化及其有限时域近似；
-\citet{FreddiGoreacLiXu2022}针对状态依赖成本构造候选函数并进行 Hamilton--Jacobi 验证。
+\textcite{FreddiGoreac2024}研究受限控制的可行性、无限时域优化及其有限时域近似；
+\textcite{FreddiGoreacLiXu2022}针对状态依赖成本构造候选函数并进行 Hamilton--Jacobi 验证。
 本文沿用分区构造与充分性验证的思路，但必须针对追踪状态方程重新建立切换几何、边界验证和无限时域的终端处理。
 
 本文固定 $c,\gamma>0$、$0<\beta<1$ 和 $0<K<1$，以 $q\in[0,1]$ 为唯一控制，
@@ -126,7 +109,7 @@
 接触率记为 $c(t)$，每次接触的传播概率为 $\beta$，接触者中被追踪并隔离的比例为 $q(t)$。
 被追踪的接触者若已感染则进入 $I_q$，若未感染则进入 $S_q$；未被追踪的新感染者进入 $I$。
 非隔离感染者与隔离感染者分别以速率 $\gamma$ 和 $\delta_q$ 移出。
-沿用 \citet{Zhou2024SPCI} 的社区传播与接触追踪结构，得到五仓室模型
+沿用 \textcite{Zhou2024SPCI} 的社区传播与接触追踪结构，得到五仓室模型
 \begin{equation}
 \begin{cases}
 \dot S=-\dfrac{c(t)[\beta+(1-\beta)q(t)]}{N}SI,\\[.4em]
@@ -138,7 +121,7 @@
 \label{eq:five-compartment-model}
 \end{equation}
 
-$R$ 聚合了退出传播过程的住院者与康复者。将 \citet[式(2.1)]{Zhou2024SPCI} 中的住院与康复仓室合并后，
+$R$ 聚合了退出传播过程的住院者与康复者。将 \textcite[式(2.1)]{Zhou2024SPCI} 中的住院与康复仓室合并后，
 其流入为 $(\delta_I+\gamma_I)I+\delta_q I_q$，故这里取 $\gamma=\delta_I+\gamma_I$，
 其中 $\delta_I$ 和 $\gamma_I$ 分别为非隔离感染者的诊断率与自然恢复率。
 相应地，$I+I_q$ 不包含已移入 $R$ 的住院者。
@@ -191,17 +174,17 @@ $K$ 约束仍参与社区传播的感染者比例；其与医疗容量的联系�
 本文用按追踪覆盖比例计量的累计投入作为简化成本，$J$ 取值于 $[0,+\infty]$。
 由于 $\beta c$ 是固定正数，最小化 $J$ 等价于最小化 $\int_0^\infty q(t)\dd t$；系数 $\beta c$ 只确定成本尺度。
 记自然传播系数 $b_0=\beta c$、非隔离感染生成项中的有效传播系数 $b=\beta c(1-q)$，
-则 $\beta cq=b_0-b=[b_0-b]_+$ 是该系数相对自然水平的削减量，与 \citet{MicloSpiroWeibull2022} 的线性代价同形。
+则 $\beta cq=b_0-b=[b_0-b]_+$ 是该系数相对自然水平的削减量，与 \textcite{MicloSpiroWeibull2022} 的线性代价同形。
 $J$ 衡量整个干预期间的累计追踪强度。按无回流假设，$\dot s_q=(1-\beta)cqsi\ge0$。
 一旦 $s_q(t_0)>0$，就有 $\int_{t_0}^{\infty}s_q(t)\dd t=\infty$。因此，即使 $J$ 有限，易感者的累计隔离人日仍可能为无穷。
 
-\begin{definition}[可行控制]
+\begin{paperdefinition}[可行控制]
 \label{def:admissible}
 给定初值 $x_0=(s_0,i_0)$，其中 $s_0,i_0>0$、$s_0+i_0\le1$、$i_0\le K$。
 所有 Lebesgue 可测的 $q:[0,\infty)\to[0,1]$ 中，使系统\eqref{eq:normalized-model}的
 Carath\'eodory 解（轨道绝对连续，状态方程几乎处处成立）全程满足式\eqref{eq:capacity}的控制称为可行控制，记其全体为 $\Uad(x_0)$。
 控制按几乎处处相等识别；最优控制唯一是指任意两个最优控制在 $[0,\infty)$ 上几乎处处相等。
-\end{definition}
+\end{paperdefinition}
 
 状态约束和成本均不涉及 $s_q,i_q,r$，因此以下只需研究二维系统\eqref{eq:normalized-model}上的最优控制问题。
 控制的启动时刻、切换次数和退出状态不预先指定，由后文的最优性分析确定。
@@ -266,7 +249,6 @@ $Q^*(s,i)$ 表示根据当前状态在零控制、容量切向控制与完全追
 记 $U(x)$ 为从 $x$ 出发执行所构造反馈的总成本；与对全部可行控制取下确界的 $V(x)$ 相比，证明的目标是建立 $U=V$。
 这里“全域”指覆盖每一个允许的物理初值，“全局最优”指与全部可测可行控制比较。
 
-\newpage
 \begin{theorem}[常接触率下的全域最优性与唯一性]
 \label{thm:main-overview}
 在式\eqref{eq:constants}的条件下，对每个 $x_0\in\Dcal$，存在有限成本最优控制。
@@ -297,7 +279,7 @@ $P_0(\bar s,\bar i)=K$。停控后 $\dot i=\beta c(s-h)i$；由第\ref{sec:const
 轨道在有限时间内经过 $(h,K)$，此后感染下降。
 \end{proof}
 
-表\ref{tab:optimal-stages}列出阶段顺序；分区的精确定义见第\ref{sec:synthesis}节。
+\tabref{tab:optimal-stages}列出阶段顺序；分区的精确定义见第\ref{sec:synthesis}节。
 表中集合均与物理域 $\Dcal$ 取交，超出物理三角形的辅助切换点不对应可实现的阶段。
 \begin{table}[H]
 \centering\small
@@ -348,7 +330,7 @@ $s_*\in(s_B,1-K)$；初值 $(s_*,K)$ 属于 $\mathcal B\cap\Dcal$，
 $\frac1{cK}\ln[(s_*-p)/(s_B-p)]>0$，故充分性也成立。
 \end{proof}
 
-图\ref{fig:optimal-partition}以两条解析轨道说明分区。沿 E2，轨道在 $s_B\approx\DsbE$ 处离开容量线并加强至 $q=1$，
+\figref{fig:optimal-partition}以两条解析轨道说明分区。沿 E2，轨道在 $s_B\approx\DsbE$ 处离开容量线并加强至 $q=1$，
 在 $\bar s_B\approx\DreleaseE$ 处停止新增追踪（此时 $i\approx0.121083$），
 随后在 $s=h=0.3$ 时达到停控后的感染峰值 $K=0.15$。
 \begin{figure}[H]
@@ -546,7 +528,7 @@ Hamiltonian 关于 $q$ 仿射，其中 $\Sigma_Z$ 是 $q$ 的系数，称为切�
 \min_{q\in \mathcal Q_K(s)}\{\nabla V(s,K)\cdot f((s,K),q)+\beta cq\}=0.
 \label{eq:boundary-HJB}
 \end{equation}
-容量线上的边界条件由可行方向确定。状态约束 HJB 方程的黏性解理论见 \citet{Soner1986}。
+容量线上的边界条件由可行方向确定。状态约束 HJB 方程的黏性解理论见 \textcite{Soner1986}。
 
 本文不依赖值函数的正则性或黏性解的比较原理，而采用验证函数方法，其原理在第\ref{sec:verification-principle}小节陈述。
 这里先记录 Hamiltonian 的点态极小元。
@@ -606,7 +588,7 @@ x\in\mathcal E:=\{x\in\Omega\setminus\Acal:s\e^{-i/\ell}<s_A\}
 完全追踪期间 $\dot i=-\gamma i<0$，从不安全初值到达安全边界需要一定时间，故到达时 $i<K$。因此首次安全端点满足 $\bar s>h$。
 \end{proof}
 
-\begin{definition}[指定完全追踪策略的成本]
+\begin{paperdefinition}[指定完全追踪策略的成本]
 \label{def:W}
 在 $\mathcal E$ 上定义
 \begin{equation}
@@ -615,7 +597,7 @@ W(s,i)=\frac1h\ln\frac{i}{\bar i(s,i)}.
 \end{equation}
 在不安全但不属于 $\mathcal E$ 的点，将\emph{立即完全追踪直至安全集这一指定方案}的成本记为 $+\infty$。
 原问题仍有有限成本比较策略，见引理\ref{lem:finite-feasible}。
-\end{definition}
+\end{paperdefinition}
 由式\eqref{eq:q1-cost}，$W$ 就是从 $x$ 出发立即完全追踪直至安全端点的成本。
 端点由\eqref{eq:endpoint-root}唯一确定；该式左端关于 $\bar s$ 的导数为 $p/\bar s-1<0$，所以由隐函数定理，端点映射在 $\mathcal E$ 内光滑。
 隐式求导得到
@@ -785,7 +767,7 @@ F_z=G'(z)\left[\frac1{a(z)}-\frac1{j(z)}\right]-B(z)<0,
 这就证明了图像的完整定义域、端点行为及单射性。
 \end{proof}
 
-\begin{corollary}[切换曲线的容量截断与 $\Phi$ 的取值]
+\begin{papercorollary}[切换曲线的容量截断与 $\Phi$ 的取值]
 \label{cor:Gamma-labels}
 存在唯一 $s_B>s_e$ 满足 $\mathcal I_\Gamma(s_B)=K$，且 $K<g(s_B)$。
 令
@@ -802,7 +784,7 @@ y_\Gamma(\phi)=(\eta_\Gamma(\phi),j_\Gamma(\phi))\in\Gamma_\infty,
 \end{equation}
 当 $\phi\le\Phi_B$ 时 $j_\Gamma(\phi)\le K$；当 $\phi>\Phi_B$ 时 $j_\Gamma(\phi)>K$。
 自然轨道与 $\Gamma_\infty$、容量线与 $\Gamma_\infty$ 均至多相交一次，且相交横截。
-\end{corollary}
+\end{papercorollary}
 \begin{proof}
 由于 $a(s_e)<K$，而 $\mathcal I_\Gamma$ 严格递增并趋于无穷（式\eqref{eq:Gamma-slope}），曲线与容量线恰好相交一次；
 $K<g(s_B)$ 来自非平凡根严格位于峰点之后（引理\ref{lem:unimodal}）。
@@ -849,10 +831,10 @@ L_{f_1}\chi&=ci[s\mathcal I_\Gamma'(s)-\ell]>0.\label{eq:strict-crossing}
 因此轨道从切换曲线出发后立即进入正侧。
 \end{proof}
 
-\begin{remark}[辅助几何与物理域]
+\begin{paperremark}[辅助几何与物理域]
 完整切换曲线与条带的交集是 $\Gamma_K=\Gamma_\infty\cap\Omega$，再与 $\Dcal$ 取交即得到物理轨道可达的部分。
 特别地，若 $s_B+K>1$，辅助交点 $(s_B,K)$ 位于物理三角形之外。
-\end{remark}
+\end{paperremark}
 
 \subsection{全域候选反馈与候选成本}
 \label{sec:synthesis}
@@ -872,7 +854,7 @@ K+\eta_K-h\ln\eta_K=\phi.
 此时策略先自然等待到容量，再沿容量弧运行到 $s_B$，最后完全追踪至安全集。
 下面把这些情形对应的状态集合正式定义为分区。
 
-\begin{definition}[分区]
+\begin{paperdefinition}[分区]
 \label{def:regions}
 在不安全辅助条带中定义
 \begin{align}
@@ -886,7 +868,7 @@ K+\eta_K-h\ln\eta_K=\phi.
 两种自然等待分支的公共边界为
 $\{\Phi=\Phi_B,\ s>s_B,\ i<K\}$，本定义将该界面归入 $\mathcal W_\Gamma$。
 两侧均取 $q=0$，相应成本及其梯度在该界面上匹配（命题\ref{prop:regularity}）。
-\end{definition}
+\end{paperdefinition}
 
 在 $s>s_e$ 的部分，完全追踪区与等待区正好位于切换曲线的两侧，可以用函数 $\chi=i-\mathcal I_\Gamma(s)$ 的符号来区分。
 
@@ -929,7 +911,7 @@ s<\eta_\Gamma(\phi)
 故 $x\in\mathcal T$。
 \end{proof}
 
-\begin{remark}[控制分区的相对开放性]
+\begin{paperremark}[控制分区的相对开放性]
 \label{rem:relative-open-control-regions}
 这里记录控制分区的一个拓扑性质，它将在唯一性证明（定理\ref{thm:unique-q}）中用到。
 记 $\mathcal W:=\mathcal W_\Gamma\cup\mathcal W_K$。
@@ -955,7 +937,7 @@ s<\eta_\Gamma(\Phi)
 \]
 在 $\Omega$ 中刻画，故同样相对开。
 把这些集合限制到 $\Dcal$ 后，相对开放性仍然成立。
-\end{remark}
+\end{paperremark}
 
 为使完全追踪区上的候选成本取为 $W$，还需要确认从该区出发的完全追踪确实在有限时间内到达安全集，且途中不会进入等待区。
 
@@ -971,7 +953,7 @@ $\mathcal T\cup\Gamma_K\subset\mathcal E$。
 
 现在可以写出候选反馈与候选成本：每个分区上的反馈取相应阶段的控制，候选成本取从该状态出发执行候选策略的总成本。
 
-\begin{definition}[候选反馈和成本]
+\begin{paperdefinition}[候选反馈和成本]
 \label{def:candidate}
 在 $\Omega$ 上定义
 \begin{equation}
@@ -999,7 +981,7 @@ C_B(\eta_K(\Phi(x)),s_B)+W(s_B,K),&x\in\mathcal W_K\cup\mathcal B.
 U(s,K)=C_B(s,s_B)+W(s_B,K),\qquad s\ge s_B.
 \label{eq:boundary-value}
 \end{equation}
-\end{definition}
+\end{paperdefinition}
 
 \begin{proposition}[候选策略的可行性与总成本]
 \label{prop:candidate-attainment}
@@ -1111,16 +1093,16 @@ V(x)=\inf_{q\in\mathcal U_{\Acal}(x)}
 另一方面，由引理\ref{lem:finite-entry}，任一有限成本的无穷时域可行控制都在有限时间内到达 $\Acal$；在首次到达时刻截断，成本不增加，所以右端不大于 $V(x)$。
 成本为无穷的控制不影响有限的下确界，两方面合起来即得\eqref{eq:exit-value}。
 \end{proof}
-\begin{remark}[首次进入安全集后的零控制]
+\begin{paperremark}[首次进入安全集后的零控制]
 从不安全初值出发，轨道首次进入安全集时满足 $i=a(s)>0$、$s\ge h$。
 该点和到达时间由轨道决定，从该点起取 $q=0$ 即得到零成本的可行延拓。
-\end{remark}
+\end{paperremark}
 
 \subsection{验证原理}
 \label{sec:verification-principle}
 验证函数方法的出发点是下面的比较原理：若一个在安全集上为零的函数沿每条有限成本可行轨道的变化率都不低于负的运行成本，
 它就是值函数的下界；若又有一个可行控制的成本恰好等于它，它就等于值函数。
-这一充分性论证的思路与 \citet[附录A.1]{MicloSpiroWeibull2022} 及 \citet[\S5.1.4]{Liberzon2012} 相同；
+这一充分性论证的思路与 \textcite[附录A.1]{MicloSpiroWeibull2022} 及 \textcite[\S5.1.4]{Liberzon2012} 相同；
 下面的表述只要求沿轨道的绝对连续性，不要求候选函数处处可微。
 
 \begin{lemma}[验证原理]
@@ -1151,13 +1133,13 @@ J_{x_0}(q)\ge\int_0^{\tau}\beta cq(t)\dd t
 (ii) 由值函数的定义，$V(x_0)\le J_{x_0}(q^*)=Z(x_0)$。
 \end{proof}
 
-\begin{remark}[验证的正则性与终端条件]
+\begin{paperremark}[验证的正则性与终端条件]
 \label{rem:verification-principle-msw}
-与 \citet[附录A.1]{MicloSpiroWeibull2022} 的验证引理相比，本文使用沿每条有限成本轨道的绝对连续性，
+与 \textcite[附录A.1]{MicloSpiroWeibull2022} 的验证引理相比，本文使用沿每条有限成本轨道的绝对连续性，
 以允许候选函数在安全边界处有折角；容量边界上的时间集合需要单独处理。
 无限时域尾项则由引理\ref{lem:finite-entry}替代：每条有限成本竞争轨道均在有限时间进入候选函数为零的安全集。
 沿轨道的复合与水平集性质见附录\ref{app:wellposed}。
-\end{remark}
+\end{paperremark}
 
 \subsection{等待区的梯度与 Hamiltonian}
 \label{sec:verification-details}
@@ -1247,7 +1229,7 @@ U_s(s,K)=\frac{\beta(s-h)}{Ks(s-p)},\qquad U_i(s,K)=\frac \beta{K(s-p)}.
 其中 $U_s(s,K)$ 是容量迹 $s\mapsto U(s,K)$ 的导数，$U_i(s,K)$ 取内侧导数。
 沿容量时间集合的链式法则将在引理\ref{lem:trajectory-verification}中单独建立。
 
-\begin{remark}[安全边界的外侧梯度]
+\begin{paperremark}[安全边界的外侧梯度]
 \label{rem:safe-gradient}
 在安全边界的正感染内点，当 $h<s<s_e$ 时，外侧梯度由完全追踪区的梯度取极限；
 当 $s_e<s<s_A$ 时，不安全的一侧是内部切换等待分支，其梯度极限为
@@ -1256,7 +1238,7 @@ U_s(s,K)=\frac{\beta(s-h)}{Ks(s-p)},\qquad U_i(s,K)=\frac \beta{K(s-p)}.
 \frac{\beta}{a(s_e)(s_e-p)}\nabla\Phi(s,a(s)).
 \]
 轨道停留在安全集中的时间由水平集性质\eqref{eq:ac-level-set}统一处理。
-\end{remark}
+\end{paperremark}
 
 \subsection{各区的 Hamiltonian 与沿轨道的验证不等式}
 把以上结果汇总，便得到候选成本在每个不安全分区上的 Hamiltonian。
@@ -1372,7 +1354,7 @@ J_{x_0}(q)\ge\int_0^\tau\beta cq(t)\dd t
 \subsection{验证不等式的取等条件}
 对有限成本的可行控制，验证不等式中的成本差可分解为两项非负积分。两项同时为零给出最优性的充要条件。
 
-\begin{corollary}[成本差分解与最优性条件]
+\begin{papercorollary}[成本差分解与最优性条件]
 \label{cor:verification-equality}
 在定理\ref{thm:verification}的条件下，固定 $x_0\in\Dcal$。
 对任意满足 $J_{x_0}(q)<\infty$ 的可行控制 $q\in\Uad(x_0)$，记
@@ -1403,7 +1385,7 @@ q(t)=0 & \text{几乎处处于 }(\tau^q,\infty).
 \label{eq:verification-equality-conditions}
 \end{equation}
 当 $x_0\in\Acal$ 时，取 $\tau^q=0$，并将第一个积分理解为零。
-\end{corollary}
+\end{papercorollary}
 
 \begin{proof}
 先证明恒等式\eqref{eq:verification-gap}。
@@ -1426,7 +1408,7 @@ q(t)=0 & \text{几乎处处于 }(\tau^q,\infty).
 这正是\eqref{eq:verification-equality-conditions}。
 \end{proof}
 
-\begin{remark}[等号条件与唯一性]
+\begin{paperremark}[等号条件与唯一性]
 \label{rem:verification-equality-uniqueness}
 在 $U$ 可微的不安全内部，由普通链式法则，
 \[
@@ -1435,7 +1417,7 @@ q(t)=0 & \text{几乎处处于 }(\tau^q,\infty).
 几乎处处成立；结合命题\ref{prop:all-HJB}，等号条件 $\rho^q=0$ 意味着 $q(t)$ 取 $H_U(x^q(t),\cdot)$ 的点态极小元。
 在容量线和安全边界上，$\rho^q$ 由引理\ref{lem:trajectory-verification}中沿轨道的导数计算给出。
 对有限成本可行控制，式\eqref{eq:verification-equality-conditions}是最优性的充要条件。当 $i=K$ 且 $s>s_B$ 时，区间 $[q_B(s),1]$ 中的控制均使该点的 Hamiltonian 取到最小值。最优轨道从此处如何延续，由引理\ref{lem:no-early-boundary-exit}确定。
-\end{remark}
+\end{paperremark}
 
 
 \subsection{容量弧延续与唯一性定理}
@@ -1593,7 +1575,7 @@ x^q(t_2)-x^q(t_1)=\int_{t_1}^{t_2}f_0(x^q(v))\dd v;
 
 把唯一性定理与候选策略的构造结合起来，可以按初值所在的分区写出最优策略。
 
-\begin{corollary}[最优策略的分区表述]
+\begin{papercorollary}[最优策略的分区表述]
 \label{cor:optimal-synthesis}
 在定理\ref{thm:verification}和定理\ref{thm:unique-q}的条件下，
 固定 $x_0\in\Dcal$。
@@ -1615,7 +1597,7 @@ $(\eta_K(\Phi(x_0)),K)$。初值位于 $\mathcal B$ 时直接从容量弧开始�
 或式\eqref{eq:capacity-structure}的结构。
 最优轨道经历容量维持阶段，当且仅当 $x_0\in\mathcal W_K\cup\mathcal B$。
 对满足 $\Phi(x_0)=\Phi_B$ 的不安全初值，轨道到达 $(s_B,K)$ 时立即转入完全追踪。
-\end{corollary}
+\end{papercorollary}
 
 \begin{proof}
 定义\ref{def:candidate}给出各分区的候选控制及事件顺序，命题\ref{prop:candidate-attainment}证明了它们的可行性和有限时间达到性。
@@ -1664,12 +1646,12 @@ i_0+s_0-s_c+h\ln(s_c/s_0),&s_1\le s_c\le s_0.
 沿参考路径，$s_c$ 随时间减小。因此，上述导数为负时，稍晚转入完全追踪会增加总成本；导数为正时，稍晚切换会降低总成本。
 两式的驻点条件均为切换曲线的匹配条件。
 
-\begin{corollary}[切换位置的唯一极小点]
+\begin{papercorollary}[切换位置的唯一极小点]
 \label{cor:one-dimensional-min}
 将两类成本合并为 $\mathcal J_{x_0}(s_c)$，在不能有限时间完全追踪至安全集的点置为 $+\infty$，
 并在 $s_c=h$ 置为 $C_B(s_1,h)$。则 $\mathcal J_{x_0}$ 在 $[h,s_0]$ 上有唯一全局极小点，
 最小值为 $V(x_0)$；极小点可以是 $s_0$，但不是 $h$。
-\end{corollary}
+\end{papercorollary}
 \begin{proof}
 最优反馈给出的策略属于这个族，故最小值为 $V(x_0)$。不同的 $s_c$ 在不同时间首次开始完全追踪，
 在较早切换之后的一段时间内，一个控制取 $1$，另一个仍取 $0$ 或 $q_B<1$，故定理\ref{thm:unique-q}保证极小点唯一。
@@ -1787,7 +1769,8 @@ i_0+s_0-s_c+h\ln(s_c/s_0),&s_1\le s_c\le s_0.
 当 $s_1(K)\to s_1^\circ>h$ 时，基准策略的成本与追踪实施时长均为 $K^{-1}$ 阶，
 所以 $K^2$ 阶的绝对成本节省对应 $K^3$ 阶的相对节省，而趋于 $1/(\beta\gamma)$ 的绝对时长差对应 $K$ 阶的相对缩短。
 若入口趋于 $h$，相对节省的标度可以改变。取临界初值 $(s_0(K),i_0(K))=(s_B(K),K)$。由于 $s_B(K)\to h<1$，该初值在 $K$ 充分小时物理可行。
-此时共同入口为 $s_1(K)=s_B(K)\to h$。将式\eqref{eq:small-K-switch}代入容量弧公式\eqref{eq:boundary-duration}和\eqref{eq:boundary-cost}，得到 $J_{\rm fill}\sim K/(2\beta^2h^2)$，而 $T_{+,\rm fill}\to1/(\beta\gamma)$。
+此时共同入口为 $s_1(K)=s_B(K)\to h$。切换点的局部展开不依赖于容量入口 $s_1(K)$。由附录\ref{app:small-capacity-proof}的式\eqref{eq:small-K-inverse}得 $s_B-h=K/\beta+O(K^2)$。
+将这一展开代入容量弧公式\eqref{eq:boundary-duration}和\eqref{eq:boundary-cost}，得到 $J_{\rm fill}\sim K/(2\beta^2h^2)$，而 $T_{+,\rm fill}\to1/(\beta\gamma)$。
 
 接近 $s=h$ 时，基准策略以趋于零的强度 $q_B(s)$ 维持 $i=K$。
 最优策略以较短的完全追踪段替代这一低强度尾段。有限容量下的成本与时长比较见第\ref{sec:numerical-magnitudes}节。
@@ -1804,7 +1787,7 @@ i_0+s_0-s_c+h\ln(s_c/s_0),&s_1\le s_c\le s_0.
 
 本节通过五个代表初值，展示自然等待、容量维持和完全追踪的连接方式，
 并比较解析反馈与直接配点得到的控制及状态轨道。
-算例组织借鉴 \citet[第6节]{AvramFreddiGoreac2022} 的区域展示方式。
+算例组织借鉴 \textcite[第6节]{AvramFreddiGoreac2022} 的区域展示方式。
 
 五例共用参数
 \begin{equation}
@@ -1821,8 +1804,8 @@ i_0+s_0-s_c+h\ln(s_c/s_0),&s_1\le s_c\le s_0.
  \label{eq:numerical-ocp}
 \end{equation}
 计算不预设阶段数、切换时刻或容量控制，也不添加终端状态约束、终端成本或控制正则化；解析策略用于主结果的初猜。
-采用 MATLAB/OpenOCL 直接配点\citep{Koenemann2019OpenOCL}，
-由 CasADi\citep{Andersson2019CasADi} 构造离散问题，并用 IPOPT 求解\citep{WachterBiegler2006}。
+采用 MATLAB/OpenOCL 直接配点\parencite{Koenemann2019OpenOCL}，
+由 CasADi\parencite{Andersson2019CasADi} 构造离散问题，并用 IPOPT 求解\parencite{WachterBiegler2006}。
 取 $T=\NumHorizon$、配点阶数 $d=\NumDegree$，控制逐区间常值；
 E1、E3、E5 采用 $n=\NumIntervals$ 个区间，E2、E4 采用 $n=8000$ 个区间。
 成本按完整时域中的实际控制计算，即 $J_{\mathrm{OCL}}=\beta c\sum_{k=1}^nq_k\Delta t_k$。
@@ -1836,7 +1819,7 @@ E1、E3、E5 采用 $n=\NumIntervals$ 个区间，E2、E4 采用 $n=8000$ 个区
 
 \subsubsection{代表初值与相平面分区}
 
-表\ref{tab:numerical-scenarios}的五个初值覆盖表\ref{tab:optimal-stages}中的两种等待区、
+\tabref{tab:numerical-scenarios}的五个初值覆盖\tabref{tab:optimal-stages}中的两种等待区、
 立即完全追踪区及容量线上 $s_B$ 两侧的状态，
 用于展示\NumTheoryRef{thm:verification}{验证定理}给出的阶段结构与成本。
 
@@ -1846,7 +1829,7 @@ E1、E3、E5 采用 $n=\NumIntervals$ 个区间，E2、E4 采用 $n=8000$ 个区
  \label{eq:numerical-sB}
 \end{equation}
 其中 $(s_B,K)$ 为切换曲线与容量线的交点。
-图\ref{fig:optimal-partition}给出成本分区的理论几何，图\ref{fig:numerical-regions}将 E1--E5 的直接配点轨道与该几何叠加比较。
+\figref{fig:optimal-partition}给出成本分区的理论几何，\figref{fig:numerical-regions}将 E1--E5 的直接配点轨道与该几何叠加比较。
 
 \begin{table}[H]
 \centering
@@ -1886,9 +1869,9 @@ E4 的数值成本与解析值之差约为 $\num[round-mode=figures,round-precis
 \subsubsection{两种等待区域的对照}
 
 E1 与 E2 保持 $i_0=0.01$ 相同，分别位于 $\mathcal W_\Gamma$ 和 $\mathcal W_K$。
-按表\ref{tab:optimal-stages}及\NumTheoryRef{def:candidate}{反馈构造}，
+按\tabref{tab:optimal-stages}及\NumTheoryRef{def:candidate}{反馈构造}，
 自然等待结束后，E1 直接转入完全追踪，E2 先经历容量维持阶段。
-图\ref{fig:numerical-waiting}检验这一差别，以及完全追踪的开始位置：
+\figref{fig:numerical-waiting}检验这一差别，以及完全追踪的开始位置：
 E1 的解析参考为 $(\NumSwitchSEOneRef,\NumSwitchIEOneRef)$，E2 的参考为 $(s_B,K)$。
 
 \begin{figure}[!htbp]
@@ -1913,9 +1896,9 @@ E2 则先将感染比例维持在上限，再转入完全追踪。
 
 E3 检验内部初值 $(0.50,0.14)$ 的立即完全追踪；
 E4、E5 保持 $i_0=K$ 相同，检验 $0.70>s_B$ 与 $0.50<s_B$ 时初始阶段的差别。
-表\ref{tab:optimal-stages}及\NumTheoryRef{def:candidate}{反馈构造}分别给出
+\tabref{tab:optimal-stages}及\NumTheoryRef{def:candidate}{反馈构造}分别给出
 $1\to0$、$q_B\to1\to0$、$1\to0$ 的参考结构，
-图\ref{fig:numerical-boundary-tracking}与保存控制逐一比较。
+\figref{fig:numerical-boundary-tracking}与保存控制逐一比较。
 
 E2 和 E4 的解析轨道都在 $(s_B,K)$ 转入完全追踪。对保存的分段常值控制逐区间重积分，
 E2 的过渡单元为 $[5.8500,5.8875]$，其两端的 $s$ 从 $0.55003$ 降至 $0.54460$；
@@ -1942,7 +1925,7 @@ E3 与 E5 从初始时刻开始完全追踪；E4 先维持容量，再转入完�
 
 \subsubsection{共同容量入口下的两种策略}
 
-表\ref{tab:parameter-sources}列出用于比较的参数及其来源。
+\tabref{tab:parameter-sources}列出用于比较的参数及其来源。
 E2 的时长以模型时间单位计，式\eqref{eq:numerical-common-parameters}中接触率 $c=2$ 和移出率 $\gamma=0.3$ 的单位均为该时间单位的倒数。西安文献参数情景的时长以日计。
 
 \begin{table}[htbp]
@@ -1953,10 +1936,10 @@ E2 的时长以模型时间单位计，式\eqref{eq:numerical-common-parameters}
 \toprule
 来源 & 参数 & 在本文中的取值与用途\\
 \midrule
-数学算例 E2 & $\beta=0.5,\ c=2,\ \gamma=0.3$ & $K=0.15$，$(s_0,i_0)=(0.99,0.01)$，与表\ref{tab:numerical-scenarios}一致。\\
-Zhou 等西安拟合\citep[表1]{Zhou2024SPCI} & $\beta=0.13675,\ c_0=10.1317$，$\gamma=0.1998+0.1006$ & 固定 $c=c_0$、$\gamma=\delta_I+\gamma_I=0.3004$；另设 $K=0.01$、$(s_0,i_0)=(0.9999,0.0001)$。原文常规阶段 $q_0=0.4624$，本文以 $q=0$ 表示停止新增追踪。\\
-Zhou 等模拟示例\citep[图6、图12]{Zhou2024SPCI} & $\beta=0.155,\ c=10,\ \gamma=0.3504$ & 检查小传播概率下成本差渐近首项的精度。\\
-He 等六地估计\citep[表1]{He2023TDINN} & $\beta\in[0.1281,0.2544]$ & 作为传播概率扫描的量级参照。\\
+数学算例 E2 & $\beta=0.5,\ c=2,\ \gamma=0.3$ & $K=0.15$，$(s_0,i_0)=(0.99,0.01)$，与\tabref{tab:numerical-scenarios}一致。\\
+Zhou 等西安拟合\parencite[表1]{Zhou2024SPCI} & $\beta=0.13675,\ c_0=10.1317$，$\gamma=0.1998+0.1006$ & 固定 $c=c_0$、$\gamma=\delta_I+\gamma_I=0.3004$；另设 $K=0.01$、$(s_0,i_0)=(0.9999,0.0001)$。原文常规阶段 $q_0=0.4624$，本文以 $q=0$ 表示停止新增追踪。\\
+Zhou 等模拟示例\parencite[图6、图12]{Zhou2024SPCI} & $\beta=0.155,\ c=10,\ \gamma=0.3504$ & 检查小传播概率下成本差渐近首项的精度。\\
+He 等六地估计\parencite[表1]{He2023TDINN} & $\beta\in[0.1281,0.2544]$ & 作为传播概率扫描的量级参照。\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -2001,7 +1984,7 @@ E2 & 维持上限至 $s=h$ & \DfillE & \Dur{\DtimeFillE} & $13.14\%$\\
 这组参数下时长差的小容量极限为 $\Dur{\DtimeLimitZ}$ 日，高于 $K=0.01$ 时的 $\Dur{\DtimeDeltaZ}$ 日。
 
 \subsubsection{传播概率与感染上限对收益的影响}
-图\ref{fig:scaling}固定 $\beta c=1$、$\gamma=0.3$，使 $h=0.3$，并随 $\beta$ 取 $c=1/\beta$。
+\figref{fig:scaling}固定 $\beta c=1$、$\gamma=0.3$，使 $h=0.3$，并随 $\beta$ 取 $c=1/\beta$。
 在固定初值 $(0.9999,0.0001)$ 下，取 $\beta\in\{0.13,0.155,0.25,0.5,0.8\}$、
 $10^{-4}\le K\le0.15$，共计620组参数。除 $\beta=0.13,K=0.15$ 一组外，其余均满足共同入口条件 $s_1\ge s_B$。
 图中各点按式\eqref{eq:common-capacity-comparison}以80位精度求值，成本差直接取两条尾段的成本之差。
@@ -2009,7 +1992,7 @@ $10^{-4}\le K\le0.15$，共计620组参数。除 $\beta=0.13,K=0.15$ 一组外�
 
 \begin{figure}[H]
 \centering
-\includegraphics{scaling/FigD_magnitude.pdf}
+\includegraphics[width=\linewidth]{scaling/FigD_magnitude.pdf}
 \caption{固定 $\beta c$ 与 $\gamma$ 时共同容量入口下的策略比较。
 (a) 容量退出位置与 $h$ 的距离，(b) 绝对成本节省，
 (c) 相对成本节省，(d) 无量纲时长差 $\beta\gamma(T_{+,\rm fill}-T_+^*)$。
@@ -2019,7 +2002,7 @@ $10^{-4}\le K\le0.15$，共计620组参数。除 $\beta=0.13,K=0.15$ 一组外�
 
 较小的传播概率会影响渐近式在有限 $K$ 下的精度。附录\ref{app:small-capacity-proof}表明，
 $\Delta J$ 首项的相对修正尺度为 $K/(\beta^2h)$。
-在表\ref{tab:parameter-sources}的 Zhou 等模拟参数下，即使取 $K=10^{-4}$，
+在\tabref{tab:parameter-sources}的 Zhou 等模拟参数下，即使取 $K=10^{-4}$，
 解析成本差与渐近首项的差仍约为该首项的 $\DsmallBetaError\%$。
 
 
@@ -2038,10 +2021,10 @@ $\Delta J$ 首项的相对修正尺度为 $K/(\beta^2h)$。
 
 \subsection{模型假设与适用范围}
 \label{sec:limitations}
-隔离易感者不回流使 $(s,i)$ 构成闭合系统。在西安文献参数情景中，两种策略的追踪实施时长相差 $\Dur{\DtimeDeltaZ}$ 日，新增隔离的易感者占总人口的比例却很接近（表\ref{tab:quarantined-susceptibles}）。
+隔离易感者不回流使 $(s,i)$ 构成闭合系统。在西安文献参数情景中，两种策略的追踪实施时长相差 $\Dur{\DtimeDeltaZ}$ 日，新增隔离的易感者占总人口的比例却很接近（\tabref{tab:quarantined-susceptibles}）。
 这些易感者在停止新增追踪后仍留在隔离仓室。若允许他们在隔离期满后回到社区，就需重新计算停控后的感染峰值和安全边界。
 
-本模型将 $q=1$ 视为即时完成全部追踪。检测和通知之间的延迟会影响追踪效果\citep{Kretzschmar2020}。此外，$K$ 约束的是社区非隔离感染比例；将它与可用床位联系起来，需要给出病例从感染到占用医疗资源的过程（附录\ref{app:medical-capacity}）。
+本模型将 $q=1$ 视为即时完成全部追踪。检测和通知之间的延迟会影响追踪效果\parencite{Kretzschmar2020}。此外，$K$ 约束的是社区非隔离感染比例；将它与可用床位联系起来，需要给出病例从感染到占用医疗资源的过程（附录\ref{app:medical-capacity}）。
 
 \subsection{后续问题}
 \label{sec:open-problems}
@@ -2095,9 +2078,9 @@ $i(u)\ge i(t)\e^{-\gamma(u-t)}$。在 $u\in[t,\infty)$ 上积分并用\eqref{eq:
  \label{eq:ac-level-set}
 \end{equation}
 特别地，若两个绝对连续函数在某个可测集合上相等，则它们的导数在该集合上几乎处处相等。
-这是绝对连续函数几乎处处可微与水平集聚点性质的直接推论\citep[\S222K、\S225C(b)]{Fremlin2001Volume2}。
+这是绝对连续函数几乎处处可微与水平集聚点性质的直接推论\parencite[\S222K、\S225C(b)]{Fremlin2001Volume2}。
 第二，若 $F$ 在集合 $E\subset\R^d$ 上相对局部 Lipschitz，$x:[0,T]\to E$ 绝对连续且 $T<\infty$，
-则 $F\circ x$ 绝对连续；这可参照 Lipschitz 延拓与复合的标准结论\citep[\S262B(b)、\S262X(l)]{Fremlin2001Volume2}。
+则 $F\circ x$ 绝对连续；这可参照 Lipschitz 延拓与复合的标准结论\parencite[\S262B(b)、\S262X(l)]{Fremlin2001Volume2}。
 这里需要的是相对局部、向量值轨道的版本：利用轨道像集的紧性把 $[0,T]$ 分成有限段，
 在每段上使用 $\sum_k|F(x(b_k))-F(x(a_k))|\le L\sum_k\|x(b_k)-x(a_k)\|$ 即得。
 若 $F$ 在轨道经过的点附近有 $C^1$ 的局部延拓，可对 $F\circ x$ 使用通常的链式法则。
@@ -2350,7 +2333,7 @@ M_\Pi:=\max\left\{\frac{1}{hi_-},\frac{\beta}{s_-i_-}\right\}.
 \label{app:green-mechanism}
 
 本附录给出第\ref{sec:switching-mechanism}节边际成本公式的几何解释。
-用不变量坐标比较控制轨道的思路见 \citet{Angulo2021}；以下各式由本文的追踪动力学计算。
+用不变量坐标比较控制轨道的思路见 \textcite{Angulo2021}；以下各式由本文的追踪动力学计算。
 在 $i>0,s>p$ 上，式\eqref{eq:Phi-derivative}给出
 \begin{equation}
  \beta cq\dd t=-\frac{\beta\,\mathrm d\Phi}{i(s-p)}.
@@ -2494,7 +2477,7 @@ $h\Delta J=v^2/(24\beta^2)+O(v^3)=k^2/(24\beta^4)+O(k^3)$，
 本附录在正文状态方程之外补充病例流量与医疗需求的联系，给出由可用容量确定 $K$ 的一个充分条件。
 这一解释采用额外的医疗需求假设，不改变二维系统、控制类和主定理。
 
-按追踪隔离模型的仓室解释\citep{Zhou2024SPCI}，新感染者分别进入非隔离和隔离感染状态，
+按追踪隔离模型的仓室解释\parencite{Zhou2024SPCI}，新感染者分别进入非隔离和隔离感染状态，
 其人数流入率为
 \[
 \Lambda_{\mathrm u}(t)=N\beta c(1-q(t))s(t)i(t),\qquad
@@ -2515,7 +2498,7 @@ $q=1$ 时进入非隔离感染状态的新增流入为零，进入隔离感染�
 \end{equation}
 虽然 $q$ 在式\eqref{eq:medical-total-incidence}中直接消去，状态 $s,i$ 仍依赖于控制。
 
-医疗占用取决于病例流入及其后续停留过程\citep{Baas2021Occupancy}。
+医疗占用取决于病例流入及其后续停留过程\parencite{Baas2021Occupancy}。
 设非负可测函数 $\kappa_{\rm ICU}(\theta)$ 表示一例新感染者在感染后第 $\theta$ 个时间单位所需的平均 ICU 床位数，
 并假定它对两类病例、不同感染时点及所比较的控制共同适用。
 允许 $\kappa_{\rm ICU}$ 包含感染至入院的延迟，并设
@@ -2556,11 +2539,5 @@ K\le K_{\mathrm{med}}:=
 条件\eqref{eq:medical-threshold}约束的是模型中的平均需求；用于具体地区时，还需要估计病例需求核、初始病例的未来负担和可用容量。
 
 
-\begingroup
-\small
-\setstretch{1}
-\setlength{\bibsep}{3pt}
-\bibliographystyle{plainnat}
-\bibliography{references}
-\endgroup
+\printbibliography[heading=bibintoc,title=\ebibname]
 \end{document}

@@ -8,6 +8,9 @@
 # 保留正式 PDF、参考文献 bbl 和验证目录内的日志。
 /tracing_isolation_optimal_control_complete/latex/*.aux
 /tracing_isolation_optimal_control_complete/latex/*.blg
+/tracing_isolation_optimal_control_complete/latex/*.bcf
+/tracing_isolation_optimal_control_complete/latex/*.run.xml
+/tracing_isolation_optimal_control_complete/latex/supplementary.bbl
 /tracing_isolation_optimal_control_complete/latex/*.log
 /tracing_isolation_optimal_control_complete/latex/*.out
 /tracing_isolation_optimal_control_complete/latex/*.toc

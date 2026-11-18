@@ -1,6 +1,6 @@
 # 感染阈值约束下追踪隔离的全域最优控制
 
-本目录保存论文定稿、MATLAB/OpenOCL 数值轨道和复现脚本。2026 年 11 月 18 日的[第三版投稿包](../output/optimal_threshold_control_submission_20261118_v3.zip)包含主文、补充材料、各自的源文件以及图表复现输入。11 月 17 日的[第二轮审查记录](validation/deep_review_20261117/README.md)和[第一轮整合报告](validation/chatgpt_integration_20261117/README.md)记录此前两轮修订。
+本目录保存采用 ElegantPaper 排版的主文、补充材料、MATLAB/OpenOCL 数值轨道和复现脚本。2026 年 11 月 18 日的[第三版投稿包](../output/optimal_threshold_control_submission_20261118_v3.zip)保存更换模板前的稿件及复现输入。11 月 17 日的[第二轮审查记录](validation/deep_review_20261117/README.md)和[第一轮整合报告](validation/chatgpt_integration_20261117/README.md)记录此前两轮修订。
 
 本轮修订的对照材料、实际结果、最终正文和复现边界见[评阅入口](REVIEW_GUIDE.md)。
 
@@ -95,7 +95,7 @@ S1 按 `SYMBOL_TABLE.md` 的指定范围完成以下 20 条改名；旧记号仅
 
 ## 文件与来源
 
-- `latex/main.tex`、`main.pdf`、`references.bib`：主文源文件、实际编译稿及文献库。
+- `latex/main.tex`、`main.pdf`、`reference.bib`：主文源文件、实际编译稿及文献库。
 - `latex/supplementary.tex`、`supplementary.pdf`：独立补充材料源码与编译稿；阅读主文后按需查阅五节数值证据。
 - `latex/generated/numerical_values.tex`：主文和补充材料共用的数值导出宏；`generated/scaling_values.tex` 为解析量级宏。
 - `matlab/numerical_scenarios/`：配置、求解、独立评估、调度、三张图和正文宏导出。
@@ -138,6 +138,6 @@ export_numerical_latex();
 
 ## 编译与隔离检出
 
-在本项目目录运行 Windows 的 `.\build.bat` 或 Linux/macOS 的 `bash build.sh`，依次编译 `latex/main.tex` 和 `latex/supplementary.tex`。每份文稿执行 XeLaTeX → BibTeX（仅在首轮 `.aux` 含文献库时）→ XeLaTeX → XeLaTeX，输出 `latex/main.pdf` 与 `latex/supplementary.pdf`。两份文稿各自独立编译，共享宏通过 `generated/numerical_values.tex` 读取；补充材料不依赖主文 `.aux`。
+在本项目目录运行 Windows 的 `.\build.bat` 或 Linux/macOS 的 `bash build.sh`，依次编译 `latex/main.tex` 和 `latex/supplementary.tex`。每份文稿执行 XeLaTeX → Biber → XeLaTeX → XeLaTeX，输出 `latex/main.pdf` 与 `latex/supplementary.pdf`。两份文稿共用 `latex/elegantpaper.cls` 和 `latex/generated/numerical_values.tex`，各自独立编译。
 
 上述第 11 步检查均有实际报告，包含输入/fixture、无优化器测试、保存数据后处理、三图/一表、主文编译、日志和页面渲染及独立 smoke。候选基于 Git HEAD 加明确成果文件，复用显式 `OPENOCL_ROOT` 指定且已核对哈希的依赖目录；这项检查验证本机候选源码和数据可检出并运行。候选与原工作区的 35 个 raw/solver、35 个 assessment、输入和 fixture 字节相同，主 TeX 相同；兼容副本只更新选择时间戳及相应哈希，其全部科学字段/数组相同。旧 `clean_checkout_report.json` 仍仅是第 0–2 步历史证据。

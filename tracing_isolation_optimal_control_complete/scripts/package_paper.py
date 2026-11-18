@@ -13,16 +13,16 @@ from zipfile import ZIP_DEFLATED, ZipFile
 
 
 PROJECT = Path(__file__).resolve().parents[1]
-PACKAGE = "optimal_threshold_control_submission_20261118_v3"
+PACKAGE = "optimal_threshold_control_submission_20261118_v3_elegantpaper"
 OUTPUT = PROJECT.parent / "output" / f"{PACKAGE}.zip"
 
 README = """# 感染阈值约束下追踪隔离的全域最优控制
 
-2026 年 11 月 18 日投稿稿件，第三版。主文与补充材料分别为 [主文 PDF](latex/main.pdf) 和 [补充材料 PDF](latex/supplementary.pdf)。两份文稿的 LaTeX 源码、参考文献和表格宏在同一目录。保留解压后的目录结构，从本文件所在目录运行下列命令。
+第三版修订稿采用 ElegantPaper 排版。两份文稿的 LaTeX 源码、模板类、文献库和表格宏位于 `latex/`。[主文 PDF](latex/main.pdf) 和 [补充材料 PDF](latex/supplementary.pdf) 可直接阅读。保留解压后的目录结构，从本文件所在目录运行下列命令。
 
 ## 编译
 
-Windows 运行 `.\\build.bat`，Linux 或 macOS 运行 `bash build.sh`。需要 XeLaTeX、BibTeX、ctex 及中文字体。主文和补充材料分别输出到 `latex/main.pdf` 和 `latex/supplementary.pdf`。
+Windows 运行 `.\\build.bat`，Linux 或 macOS 运行 `bash build.sh`。两份文稿均按 XeLaTeX → Biber → XeLaTeX → XeLaTeX 编译，需安装 ctex、newtx、biblatex 及中文字体。主文和补充材料分别输出到 `latex/main.pdf` 和 `latex/supplementary.pdf`。
 
 ## 核对表 4 和重绘图 5
 
@@ -52,7 +52,8 @@ def manuscript_files() -> dict[str, str]:
     """包内路径映射到项目中的实际输入，所有正文图表都从当前工作区读取。"""
     paths = {
         "build.bat", "build.sh",
-        "latex/main.tex", "latex/main.pdf", "latex/main.bbl", "latex/references.bib",
+        "latex/main.tex", "latex/main.pdf", "latex/main.bbl", "latex/reference.bib",
+        "latex/elegantpaper.cls", "latex/ElegantPaper-LICENSE.txt",
         "latex/supplementary.tex", "latex/supplementary.pdf",
         "scripts/build_grid_error_table.py", "scripts/verify_analytic_results.py",
         "data/revision_grid_error_audit.json", "data/revision_grid_errors.csv",

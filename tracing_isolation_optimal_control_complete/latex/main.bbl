@@ -1,140 +1,742 @@
-\begin{thebibliography}{17}
-\providecommand{\natexlab}[1]{#1}
-\providecommand{\url}[1]{\texttt{#1}}
-\expandafter\ifx\csname urlstyle\endcsname\relax
-  \providecommand{\doi}[1]{doi: #1}\else
-  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
 
-\bibitem[Andersson et~al.(2019)Andersson, Gillis, Horn, Rawlings, and
-  Diehl]{Andersson2019CasADi}
-Joel A.~E. Andersson, Joris Gillis, Greg Horn, James~B. Rawlings, and Moritz
-  Diehl.
-\newblock {CasADi} -- a software framework for nonlinear optimization and
-  optimal control.
-\newblock \emph{Mathematical Programming Computation}, 11\penalty0
-  (1):\penalty0 1--36, 2019.
-\newblock \doi{10.1007/s12532-018-0139-4}.
 
-\bibitem[Angulo et~al.(2021)Angulo, Casta{\~n}os, Moreno-Morton,
-  Velasco-Hern{\'a}ndez, and Moreno]{Angulo2021}
-Marco~Tulio Angulo, Fernando Casta{\~n}os, Rodrigo Moreno-Morton, Jorge~X.
-  Velasco-Hern{\'a}ndez, and Jaime~A. Moreno.
-\newblock A simple criterion to design optimal non-pharmaceutical interventions
-  for mitigating epidemic outbreaks.
-\newblock \emph{Journal of the Royal Society Interface}, 18:\penalty0 20200803,
-  2021.
-\newblock \doi{10.1098/rsif.2020.0803}.
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{Andersson2019CasADi}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=09710eddb25e528b0d0bae5a6fd11eb9}{%
+           family={Andersson},
+           familyi={A\bibinitperiod},
+           given={Joel\bibnamedelimb A.\bibnamedelimi E.},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=2ffda07362b7874e2f74f66dc2a225ac}{%
+           family={Gillis},
+           familyi={G\bibinitperiod},
+           given={Joris},
+           giveni={J\bibinitperiod}}}%
+        {{hash=0fa126623a6142cf731907bb8a8df131}{%
+           family={Horn},
+           familyi={H\bibinitperiod},
+           given={Greg},
+           giveni={G\bibinitperiod}}}%
+        {{hash=a28ab6b1da316879310a82410e4e8dc4}{%
+           family={Rawlings},
+           familyi={R\bibinitperiod},
+           given={James\bibnamedelima B.},
+           giveni={J\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=ec732fd9120f390fd38c8132a3079900}{%
+           family={Diehl},
+           familyi={D\bibinitperiod},
+           given={Moritz},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{b04d0d55940f67bd98ae0c9236807a4e}
+      \strng{fullhash}{d4ec04d8cc225f8dfb9d40f7c454951a}
+      \strng{fullhashraw}{d4ec04d8cc225f8dfb9d40f7c454951a}
+      \strng{bibnamehash}{b04d0d55940f67bd98ae0c9236807a4e}
+      \strng{authorbibnamehash}{b04d0d55940f67bd98ae0c9236807a4e}
+      \strng{authornamehash}{b04d0d55940f67bd98ae0c9236807a4e}
+      \strng{authorfullhash}{d4ec04d8cc225f8dfb9d40f7c454951a}
+      \strng{authorfullhashraw}{d4ec04d8cc225f8dfb9d40f7c454951a}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematical Programming Computation}
+      \field{number}{1}
+      \field{title}{{CasADi} -- A software framework for nonlinear optimization and optimal control}
+      \field{volume}{11}
+      \field{year}{2019}
+      \field{pages}{1\bibrangedash 36}
+      \range{pages}{36}
+      \verb{doi}
+      \verb 10.1007/s12532-018-0139-4
+      \endverb
+    \endentry
+    \entry{Angulo2021}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=85ed25fbe47e06bde8383553c285d2eb}{%
+           family={Angulo},
+           familyi={A\bibinitperiod},
+           given={Marco\bibnamedelima Tulio},
+           giveni={M\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=7ac2e7ed6d59c3f94a4f9b0f92d57a70}{%
+           family={Castaños},
+           familyi={C\bibinitperiod},
+           given={Fernando},
+           giveni={F\bibinitperiod}}}%
+        {{hash=43163178a5c240d6d56d92cbafa68a0f}{%
+           family={Moreno-Morton},
+           familyi={M\bibinithyphendelim M\bibinitperiod},
+           given={Rodrigo},
+           giveni={R\bibinitperiod}}}%
+        {{hash=c4c589f08819ba68b0e40d9451e8687b}{%
+           family={Velasco-Hernández},
+           familyi={V\bibinithyphendelim H\bibinitperiod},
+           given={Jorge\bibnamedelima X.},
+           giveni={J\bibinitperiod\bibinitdelim X\bibinitperiod}}}%
+        {{hash=e637bb960b5ad02032fc31e010124ee1}{%
+           family={Moreno},
+           familyi={M\bibinitperiod},
+           given={Jaime\bibnamedelima A.},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{fefec52ba31e46bdc898781be3c375b1}
+      \strng{fullhash}{f9e63fd82b8368ecbbfe893486cfe4bc}
+      \strng{fullhashraw}{f9e63fd82b8368ecbbfe893486cfe4bc}
+      \strng{bibnamehash}{fefec52ba31e46bdc898781be3c375b1}
+      \strng{authorbibnamehash}{fefec52ba31e46bdc898781be3c375b1}
+      \strng{authornamehash}{fefec52ba31e46bdc898781be3c375b1}
+      \strng{authorfullhash}{f9e63fd82b8368ecbbfe893486cfe4bc}
+      \strng{authorfullhashraw}{f9e63fd82b8368ecbbfe893486cfe4bc}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the Royal Society Interface}
+      \field{title}{A simple criterion to design optimal non-pharmaceutical interventions for mitigating epidemic outbreaks}
+      \field{volume}{18}
+      \field{year}{2021}
+      \field{pages}{20200803}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1098/rsif.2020.0803
+      \endverb
+    \endentry
+    \entry{AvramFreddiGoreac2022}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=8a8de214fd2bf39c2fa8889ba2caf97b}{%
+           family={Avram},
+           familyi={A\bibinitperiod},
+           given={Florin},
+           giveni={F\bibinitperiod}}}%
+        {{hash=65842ed11976ade01b4a57f1be0682bb}{%
+           family={Freddi},
+           familyi={F\bibinitperiod},
+           given={Lorenzo},
+           giveni={L\bibinitperiod}}}%
+        {{hash=4c59d6ac178e0ac2a0b306f6af1a2a20}{%
+           family={Goreac},
+           familyi={G\bibinitperiod},
+           given={Dan},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{0c87b55ba7e32a6fd18420562c979228}
+      \strng{fullhash}{0c87b55ba7e32a6fd18420562c979228}
+      \strng{fullhashraw}{0c87b55ba7e32a6fd18420562c979228}
+      \strng{bibnamehash}{0c87b55ba7e32a6fd18420562c979228}
+      \strng{authorbibnamehash}{0c87b55ba7e32a6fd18420562c979228}
+      \strng{authornamehash}{0c87b55ba7e32a6fd18420562c979228}
+      \strng{authorfullhash}{0c87b55ba7e32a6fd18420562c979228}
+      \strng{authorfullhashraw}{0c87b55ba7e32a6fd18420562c979228}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Applied Mathematics and Computation}
+      \field{title}{Optimal control of a {SIR} epidemic with {ICU} constraints and target objectives}
+      \field{volume}{418}
+      \field{year}{2022}
+      \field{pages}{126816}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1016/j.amc.2021.126816
+      \endverb
+    \endentry
+    \entry{Baas2021Occupancy}{article}{}{}
+      \name{author}{7}{}{%
+        {{hash=752c2fd7fb15a90d20f64b0e8a73a923}{%
+           family={Baas},
+           familyi={B\bibinitperiod},
+           given={Stef},
+           giveni={S\bibinitperiod}}}%
+        {{hash=2c2b825ae6d6c4d6dd31668216f08d25}{%
+           family={Dijkstra},
+           familyi={D\bibinitperiod},
+           given={Sander},
+           giveni={S\bibinitperiod}}}%
+        {{hash=6572dd7d9c7762921daddb9ed0205fbb}{%
+           family={Braaksma},
+           familyi={B\bibinitperiod},
+           given={Aleida},
+           giveni={A\bibinitperiod}}}%
+        {{hash=71c64e759763874a9213395dcb28e24c}{%
+           family={{van Rooij}},
+           familyi={v\bibinitperiod},
+           given={Plom},
+           giveni={P\bibinitperiod}}}%
+        {{hash=62dab10d23d2096fffb49d38a897c5df}{%
+           family={Snijders},
+           familyi={S\bibinitperiod},
+           given={Fieke\bibnamedelima J.},
+           giveni={F\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=5fcd1407fe535fc28d808f4db9599a0b}{%
+           family={Tiemessen},
+           familyi={T\bibinitperiod},
+           given={Lars},
+           giveni={L\bibinitperiod}}}%
+        {{hash=9192aa3dab34bb916e2f908ac4a90224}{%
+           family={Boucherie},
+           familyi={B\bibinitperiod},
+           given={Richard\bibnamedelima J.},
+           giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{ae2b5e3b4d4abdd3e2cb9ec68df4a01e}
+      \strng{fullhash}{c87b0af880c6cec6813db9be583c42ed}
+      \strng{fullhashraw}{c87b0af880c6cec6813db9be583c42ed}
+      \strng{bibnamehash}{ae2b5e3b4d4abdd3e2cb9ec68df4a01e}
+      \strng{authorbibnamehash}{ae2b5e3b4d4abdd3e2cb9ec68df4a01e}
+      \strng{authornamehash}{ae2b5e3b4d4abdd3e2cb9ec68df4a01e}
+      \strng{authorfullhash}{c87b0af880c6cec6813db9be583c42ed}
+      \strng{authorfullhashraw}{c87b0af880c6cec6813db9be583c42ed}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Health Care Management Science}
+      \field{title}{Real-time forecasting of {COVID-19} bed occupancy in wards and Intensive Care Units}
+      \field{volume}{24}
+      \field{year}{2021}
+      \field{pages}{402\bibrangedash 419}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.1007/s10729-021-09553-5
+      \endverb
+    \endentry
+    \entry{FreddiGoreac2024}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=65842ed11976ade01b4a57f1be0682bb}{%
+           family={Freddi},
+           familyi={F\bibinitperiod},
+           given={Lorenzo},
+           giveni={L\bibinitperiod}}}%
+        {{hash=4c59d6ac178e0ac2a0b306f6af1a2a20}{%
+           family={Goreac},
+           familyi={G\bibinitperiod},
+           given={Dan},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{7e6110b750050ce6ffb1cdd05091fa35}
+      \strng{fullhash}{7e6110b750050ce6ffb1cdd05091fa35}
+      \strng{fullhashraw}{7e6110b750050ce6ffb1cdd05091fa35}
+      \strng{bibnamehash}{7e6110b750050ce6ffb1cdd05091fa35}
+      \strng{authorbibnamehash}{7e6110b750050ce6ffb1cdd05091fa35}
+      \strng{authornamehash}{7e6110b750050ce6ffb1cdd05091fa35}
+      \strng{authorfullhash}{7e6110b750050ce6ffb1cdd05091fa35}
+      \strng{authorfullhashraw}{7e6110b750050ce6ffb1cdd05091fa35}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Convex Analysis}
+      \field{number}{2}
+      \field{title}{Infinite Horizon Optimal Control of a {SIR} Epidemic Under an {ICU} Constraint}
+      \field{volume}{31}
+      \field{year}{2024}
+      \field{pages}{525\bibrangedash 562}
+      \range{pages}{38}
+      \verb{doi}
+      \verb 10.68381/jca31028
+      \endverb
+    \endentry
+    \entry{FreddiGoreacLiXu2022}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=65842ed11976ade01b4a57f1be0682bb}{%
+           family={Freddi},
+           familyi={F\bibinitperiod},
+           given={Lorenzo},
+           giveni={L\bibinitperiod}}}%
+        {{hash=4c59d6ac178e0ac2a0b306f6af1a2a20}{%
+           family={Goreac},
+           familyi={G\bibinitperiod},
+           given={Dan},
+           giveni={D\bibinitperiod}}}%
+        {{hash=afcb7582f3cdb950d62d38fe1bb25cbb}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Juan},
+           giveni={J\bibinitperiod}}}%
+        {{hash=cf54d5ab33d33ea7dc086cbee9cda2f1}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Boxiang},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{41bd43e3e9c9e9a2f6fe1830cc27c2a3}
+      \strng{fullhash}{890bdc5e101b14bed11069468a81bf56}
+      \strng{fullhashraw}{890bdc5e101b14bed11069468a81bf56}
+      \strng{bibnamehash}{41bd43e3e9c9e9a2f6fe1830cc27c2a3}
+      \strng{authorbibnamehash}{41bd43e3e9c9e9a2f6fe1830cc27c2a3}
+      \strng{authornamehash}{41bd43e3e9c9e9a2f6fe1830cc27c2a3}
+      \strng{authorfullhash}{890bdc5e101b14bed11069468a81bf56}
+      \strng{authorfullhashraw}{890bdc5e101b14bed11069468a81bf56}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Applied Mathematics \& Optimization}
+      \field{title}{{SIR} Epidemics with State-Dependent Costs and {ICU} Constraints: A {Hamilton--Jacobi} Verification Argument and Dual {LP} Algorithms}
+      \field{volume}{86}
+      \field{year}{2022}
+      \field{pages}{23}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1007/s00245-022-09884-x
+      \endverb
+    \endentry
+    \entry{Fremlin2001Volume2}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=83364f4ea6bd5f698cb83aefe476a012}{%
+           family={Fremlin},
+           familyi={F\bibinitperiod},
+           given={David\bibnamedelima H.},
+           giveni={D\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Colchester}%
+      }
+      \list{publisher}{1}{%
+        {Torres Fremlin}%
+      }
+      \strng{namehash}{83364f4ea6bd5f698cb83aefe476a012}
+      \strng{fullhash}{83364f4ea6bd5f698cb83aefe476a012}
+      \strng{fullhashraw}{83364f4ea6bd5f698cb83aefe476a012}
+      \strng{bibnamehash}{83364f4ea6bd5f698cb83aefe476a012}
+      \strng{authorbibnamehash}{83364f4ea6bd5f698cb83aefe476a012}
+      \strng{authornamehash}{83364f4ea6bd5f698cb83aefe476a012}
+      \strng{authorfullhash}{83364f4ea6bd5f698cb83aefe476a012}
+      \strng{authorfullhashraw}{83364f4ea6bd5f698cb83aefe476a012}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Measure Theory, Volume 2: Broad Foundations}
+      \field{year}{2001}
+      \verb{urlraw}
+      \verb https://www1.essex.ac.uk/maths/people/fremlin/mt.htm
+      \endverb
+      \verb{url}
+      \verb https://www1.essex.ac.uk/maths/people/fremlin/mt.htm
+      \endverb
+    \endentry
+    \entry{He2023TDINN}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=5589b5d22c878e2298d194683a914023}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Mengqi},
+           giveni={M\bibinitperiod}}}%
+        {{hash=5efd044141ce43defca910f254c488e9}{%
+           family={Tang},
+           familyi={T\bibinitperiod},
+           given={Sanyi},
+           giveni={S\bibinitperiod}}}%
+        {{hash=652da3382d264a5b1d24fb5fcd26fac5}{%
+           family={Xiao},
+           familyi={X\bibinitperiod},
+           given={Yanni},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{7e0176be60d0f46ab79c4f34a8361c4c}
+      \strng{fullhash}{7e0176be60d0f46ab79c4f34a8361c4c}
+      \strng{fullhashraw}{7e0176be60d0f46ab79c4f34a8361c4c}
+      \strng{bibnamehash}{7e0176be60d0f46ab79c4f34a8361c4c}
+      \strng{authorbibnamehash}{7e0176be60d0f46ab79c4f34a8361c4c}
+      \strng{authornamehash}{7e0176be60d0f46ab79c4f34a8361c4c}
+      \strng{authorfullhash}{7e0176be60d0f46ab79c4f34a8361c4c}
+      \strng{authorfullhashraw}{7e0176be60d0f46ab79c4f34a8361c4c}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{PLOS Computational Biology}
+      \field{number}{10}
+      \field{title}{Combining the dynamic model and deep neural networks to identify the intensity of interventions during COVID-19 pandemic}
+      \field{volume}{19}
+      \field{year}{2023}
+      \field{pages}{e1011535}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1371/journal.pcbi.1011535
+      \endverb
+    \endentry
+    \entry{Koenemann2019OpenOCL}{misc}{}{}
+      \name{author}{4}{}{%
+        {{hash=4a05d89b20a613febc351ab75a831c84}{%
+           family={Koenemann},
+           familyi={K\bibinitperiod},
+           given={Jonas},
+           giveni={J\bibinitperiod}}}%
+        {{hash=a2fb0bb830b9ad037bb9f5ad3b608bc7}{%
+           family={Licitra},
+           familyi={L\bibinitperiod},
+           given={Giovanni},
+           giveni={G\bibinitperiod}}}%
+        {{hash=00652faa5e0eebdceaf839291f9a8fd1}{%
+           family={Alp},
+           familyi={A\bibinitperiod},
+           given={Mustafa},
+           giveni={M\bibinitperiod}}}%
+        {{hash=ec732fd9120f390fd38c8132a3079900}{%
+           family={Diehl},
+           familyi={D\bibinitperiod},
+           given={Moritz},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{f0a5e13075ab5e9f547f0bce9a4d9294}
+      \strng{fullhash}{0e2f6e6468e157b35049ac87b8f1fb21}
+      \strng{fullhashraw}{0e2f6e6468e157b35049ac87b8f1fb21}
+      \strng{bibnamehash}{f0a5e13075ab5e9f547f0bce9a4d9294}
+      \strng{authorbibnamehash}{f0a5e13075ab5e9f547f0bce9a4d9294}
+      \strng{authornamehash}{f0a5e13075ab5e9f547f0bce9a4d9294}
+      \strng{authorfullhash}{0e2f6e6468e157b35049ac87b8f1fb21}
+      \strng{authorfullhashraw}{0e2f6e6468e157b35049ac87b8f1fb21}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{6}
+      \field{note}{Robotics Science and Systems, workshop submission, extended abstract}
+      \field{title}{{OpenOCL} -- Open Optimal Control Library}
+      \field{year}{2019}
+      \verb{urlraw}
+      \verb https://openocl.github.io/publications/
+      \endverb
+      \verb{url}
+      \verb https://openocl.github.io/publications/
+      \endverb
+    \endentry
+    \entry{Kretzschmar2020}{article}{}{}
+      \name{author}{6}{}{%
+        {{hash=aa8edd1b623e5e77a57159775185c7d3}{%
+           family={Kretzschmar},
+           familyi={K\bibinitperiod},
+           given={Mirjam\bibnamedelima E.},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=9a3cb21a4d9b9850d9080a1544cd1381}{%
+           family={Rozhnova},
+           familyi={R\bibinitperiod},
+           given={Ganna},
+           giveni={G\bibinitperiod}}}%
+        {{hash=2c5b6ec37728064147d61ddef7348e69}{%
+           family={Bootsma},
+           familyi={B\bibinitperiod},
+           given={Martin\bibnamedelimb C.\bibnamedelimi J.},
+           giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=a6a1e0211a4432a721b278b95cde3503}{%
+           family={{van Boven}},
+           familyi={v\bibinitperiod},
+           given={Michiel},
+           giveni={M\bibinitperiod}}}%
+        {{hash=29ce2b930967c64905611749ed73e7d7}{%
+           family={{van de Wijgert}},
+           familyi={v\bibinitperiod},
+           given={Janneke\bibnamedelimb H.\bibnamedelimi H.\bibnamedelimi M.},
+           giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=d16f70f3dc751c88701b54932c7bbedc}{%
+           family={Bonten},
+           familyi={B\bibinitperiod},
+           given={Marc\bibnamedelimb J.\bibnamedelimi M.},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{e9f33f87442a2253d015724d47a104d2}
+      \strng{fullhash}{edd28a7f1b4d67d8873722ffaacc7e26}
+      \strng{fullhashraw}{edd28a7f1b4d67d8873722ffaacc7e26}
+      \strng{bibnamehash}{e9f33f87442a2253d015724d47a104d2}
+      \strng{authorbibnamehash}{e9f33f87442a2253d015724d47a104d2}
+      \strng{authornamehash}{e9f33f87442a2253d015724d47a104d2}
+      \strng{authorfullhash}{edd28a7f1b4d67d8873722ffaacc7e26}
+      \strng{authorfullhashraw}{edd28a7f1b4d67d8873722ffaacc7e26}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Lancet Public Health}
+      \field{number}{8}
+      \field{title}{Impact of delays on effectiveness of contact tracing strategies for {COVID-19}: a modelling study}
+      \field{volume}{5}
+      \field{year}{2020}
+      \field{pages}{e452\bibrangedash e459}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1016/S2468-2667(20)30157-2
+      \endverb
+    \endentry
+    \entry{Liberzon2012}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=c31eb151d9042c2fb3e8423c824ac9b7}{%
+           family={Liberzon},
+           familyi={L\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Princeton University Press}%
+      }
+      \strng{namehash}{c31eb151d9042c2fb3e8423c824ac9b7}
+      \strng{fullhash}{c31eb151d9042c2fb3e8423c824ac9b7}
+      \strng{fullhashraw}{c31eb151d9042c2fb3e8423c824ac9b7}
+      \strng{bibnamehash}{c31eb151d9042c2fb3e8423c824ac9b7}
+      \strng{authorbibnamehash}{c31eb151d9042c2fb3e8423c824ac9b7}
+      \strng{authornamehash}{c31eb151d9042c2fb3e8423c824ac9b7}
+      \strng{authorfullhash}{c31eb151d9042c2fb3e8423c824ac9b7}
+      \strng{authorfullhashraw}{c31eb151d9042c2fb3e8423c824ac9b7}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Calculus of Variations and Optimal Control Theory: A Concise Introduction}
+      \field{year}{2012}
+    \endentry
+    \entry{MicloSpiroWeibull2022}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=9190a314cabf5b24a81da0764112fa59}{%
+           family={Miclo},
+           familyi={M\bibinitperiod},
+           given={Laurent},
+           giveni={L\bibinitperiod}}}%
+        {{hash=5ada9b3c5c79561ab6c184156fe8b6f1}{%
+           family={Spiro},
+           familyi={S\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+        {{hash=6c37345b072015c18047efbd85431a82}{%
+           family={Weibull},
+           familyi={W\bibinitperiod},
+           given={Jörgen},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{fd4463c16080992c4aa92296d7476625}
+      \strng{fullhash}{fd4463c16080992c4aa92296d7476625}
+      \strng{fullhashraw}{fd4463c16080992c4aa92296d7476625}
+      \strng{bibnamehash}{fd4463c16080992c4aa92296d7476625}
+      \strng{authorbibnamehash}{fd4463c16080992c4aa92296d7476625}
+      \strng{authornamehash}{fd4463c16080992c4aa92296d7476625}
+      \strng{authorfullhash}{fd4463c16080992c4aa92296d7476625}
+      \strng{authorfullhashraw}{fd4463c16080992c4aa92296d7476625}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Mathematical Economics}
+      \field{title}{Optimal epidemic suppression under an {ICU} constraint: An analytical solution}
+      \field{volume}{101}
+      \field{year}{2022}
+      \field{pages}{102669}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1016/j.jmateco.2022.102669
+      \endverb
+    \endentry
+    \entry{Morris2021}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=adbea86622ff74720075041e97c3b413}{%
+           family={Morris},
+           familyi={M\bibinitperiod},
+           given={Dylan\bibnamedelima H.},
+           giveni={D\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=e1626c8697c237e12668b6f466511ff1}{%
+           family={Rossine},
+           familyi={R\bibinitperiod},
+           given={Fernando\bibnamedelima W.},
+           giveni={F\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=6228bff0e5426977ad4727b758b6be76}{%
+           family={Plotkin},
+           familyi={P\bibinitperiod},
+           given={Joshua\bibnamedelima B.},
+           giveni={J\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=8700288be2f5e0367ad64b03843c096d}{%
+           family={Levin},
+           familyi={L\bibinitperiod},
+           given={Simon\bibnamedelima A.},
+           giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{296798ddcc4745947eea67631f12a16d}
+      \strng{fullhash}{ad0222d722d3404eb268db0962a574a8}
+      \strng{fullhashraw}{ad0222d722d3404eb268db0962a574a8}
+      \strng{bibnamehash}{296798ddcc4745947eea67631f12a16d}
+      \strng{authorbibnamehash}{296798ddcc4745947eea67631f12a16d}
+      \strng{authornamehash}{296798ddcc4745947eea67631f12a16d}
+      \strng{authorfullhash}{ad0222d722d3404eb268db0962a574a8}
+      \strng{authorfullhashraw}{ad0222d722d3404eb268db0962a574a8}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Communications Physics}
+      \field{title}{Optimal, near-optimal, and robust epidemic control}
+      \field{volume}{4}
+      \field{year}{2021}
+      \field{pages}{78}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1038/s42005-021-00570-y
+      \endverb
+    \endentry
+    \entry{Pollinger2023}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=187c90ec296e9d0e86e9091524017262}{%
+           family={Pollinger},
+           familyi={P\bibinitperiod},
+           given={Stefan},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{187c90ec296e9d0e86e9091524017262}
+      \strng{fullhash}{187c90ec296e9d0e86e9091524017262}
+      \strng{fullhashraw}{187c90ec296e9d0e86e9091524017262}
+      \strng{bibnamehash}{187c90ec296e9d0e86e9091524017262}
+      \strng{authorbibnamehash}{187c90ec296e9d0e86e9091524017262}
+      \strng{authornamehash}{187c90ec296e9d0e86e9091524017262}
+      \strng{authorfullhash}{187c90ec296e9d0e86e9091524017262}
+      \strng{authorfullhashraw}{187c90ec296e9d0e86e9091524017262}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Economic Journal}
+      \field{number}{654}
+      \field{title}{Optimal Contact Tracing and Social Distancing Policies to Suppress a New Infectious Disease}
+      \field{volume}{133}
+      \field{year}{2023}
+      \field{pages}{2483\bibrangedash 2503}
+      \range{pages}{21}
+      \verb{doi}
+      \verb 10.1093/ej/uead024
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1093/ej/uead024
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1093/ej/uead024
+      \endverb
+    \endentry
+    \entry{Soner1986}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=8de09a5bb3b27b0ee35d25eafa2f2125}{%
+           family={Soner},
+           familyi={S\bibinitperiod},
+           given={Halil\bibnamedelima Mete},
+           giveni={H\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{8de09a5bb3b27b0ee35d25eafa2f2125}
+      \strng{fullhash}{8de09a5bb3b27b0ee35d25eafa2f2125}
+      \strng{fullhashraw}{8de09a5bb3b27b0ee35d25eafa2f2125}
+      \strng{bibnamehash}{8de09a5bb3b27b0ee35d25eafa2f2125}
+      \strng{authorbibnamehash}{8de09a5bb3b27b0ee35d25eafa2f2125}
+      \strng{authornamehash}{8de09a5bb3b27b0ee35d25eafa2f2125}
+      \strng{authorfullhash}{8de09a5bb3b27b0ee35d25eafa2f2125}
+      \strng{authorfullhashraw}{8de09a5bb3b27b0ee35d25eafa2f2125}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{SIAM Journal on Control and Optimization}
+      \field{number}{3}
+      \field{title}{Optimal control with state-space constraint. I}
+      \field{volume}{24}
+      \field{year}{1986}
+      \field{pages}{552\bibrangedash 561}
+      \range{pages}{10}
+    \endentry
+    \entry{WachterBiegler2006}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=dc724f071bd0fcc1e9eabf5f96209481}{%
+           family={Wächter},
+           familyi={W\bibinitperiod},
+           given={Andreas},
+           giveni={A\bibinitperiod}}}%
+        {{hash=b4cf951e494c45f4de462df04ec3b5df}{%
+           family={Biegler},
+           familyi={B\bibinitperiod},
+           given={Lorenz\bibnamedelima T.},
+           giveni={L\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+      }
+      \strng{namehash}{842d46b1a24346d113a0e8274fa09dd0}
+      \strng{fullhash}{842d46b1a24346d113a0e8274fa09dd0}
+      \strng{fullhashraw}{842d46b1a24346d113a0e8274fa09dd0}
+      \strng{bibnamehash}{842d46b1a24346d113a0e8274fa09dd0}
+      \strng{authorbibnamehash}{842d46b1a24346d113a0e8274fa09dd0}
+      \strng{authornamehash}{842d46b1a24346d113a0e8274fa09dd0}
+      \strng{authorfullhash}{842d46b1a24346d113a0e8274fa09dd0}
+      \strng{authorfullhashraw}{842d46b1a24346d113a0e8274fa09dd0}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematical Programming}
+      \field{number}{1}
+      \field{title}{On the implementation of a primal-dual interior point filter line search algorithm for large-scale nonlinear programming}
+      \field{volume}{106}
+      \field{year}{2006}
+      \field{pages}{25\bibrangedash 57}
+      \range{pages}{33}
+      \verb{doi}
+      \verb 10.1007/s10107-004-0559-y
+      \endverb
+    \endentry
+    \entry{Zhou2024SPCI}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=bf8821420565328b3085cef67e44b2af}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Hao},
+           giveni={H\bibinitperiod}}}%
+        {{hash=c7e1e67d7158f9c5cac28d298e5ac559}{%
+           family={Sha},
+           familyi={S\bibinitperiod},
+           given={He},
+           giveni={H\bibinitperiod}}}%
+        {{hash=27f42153ebc615f1f1011ce5848fd701}{%
+           family={Cheke},
+           familyi={C\bibinitperiod},
+           given={Robert\bibnamedelima A.},
+           giveni={R\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=5efd044141ce43defca910f254c488e9}{%
+           family={Tang},
+           familyi={T\bibinitperiod},
+           given={Sanyi},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{9644136b9cc255447d781d15df788789}
+      \strng{fullhash}{a5ef5c6d5383860b5fdd6e6812cd7536}
+      \strng{fullhashraw}{a5ef5c6d5383860b5fdd6e6812cd7536}
+      \strng{bibnamehash}{9644136b9cc255447d781d15df788789}
+      \strng{authorbibnamehash}{9644136b9cc255447d781d15df788789}
+      \strng{authornamehash}{9644136b9cc255447d781d15df788789}
+      \strng{authorfullhash}{a5ef5c6d5383860b5fdd6e6812cd7536}
+      \strng{authorfullhashraw}{a5ef5c6d5383860b5fdd6e6812cd7536}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Mathematical Biology}
+      \field{title}{Model analysis and data validation of structured prevention and control interruptions of emerging infectious diseases}
+      \field{volume}{88}
+      \field{year}{2024}
+      \field{pages}{62}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1007/s00285-024-02083-y
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
 
-\bibitem[Avram et~al.(2022)Avram, Freddi, and Goreac]{AvramFreddiGoreac2022}
-Florin Avram, Lorenzo Freddi, and Dan Goreac.
-\newblock Optimal control of a {SIR} epidemic with {ICU} constraints and target
-  objectives.
-\newblock \emph{Applied Mathematics and Computation}, 418:\penalty0 126816,
-  2022.
-\newblock \doi{10.1016/j.amc.2021.126816}.
-
-\bibitem[Baas et~al.(2021)Baas, Dijkstra, Braaksma, {van Rooij}, Snijders,
-  Tiemessen, and Boucherie]{Baas2021Occupancy}
-Stef Baas, Sander Dijkstra, Aleida Braaksma, Plom {van Rooij}, Fieke~J.
-  Snijders, Lars Tiemessen, and Richard~J. Boucherie.
-\newblock Real-time forecasting of {COVID-19} bed occupancy in wards and
-  intensive care units.
-\newblock \emph{Health Care Management Science}, 24:\penalty0 402--419, 2021.
-\newblock \doi{10.1007/s10729-021-09553-5}.
-
-\bibitem[Freddi and Goreac(2024)]{FreddiGoreac2024}
-Lorenzo Freddi and Dan Goreac.
-\newblock Infinite horizon optimal control of a {SIR} epidemic under an {ICU}
-  constraint.
-\newblock \emph{Journal of Convex Analysis}, 31\penalty0 (2):\penalty0
-  525--562, 2024.
-\newblock \doi{10.68381/jca31028}.
-
-\bibitem[Freddi et~al.(2022)Freddi, Goreac, Li, and Xu]{FreddiGoreacLiXu2022}
-Lorenzo Freddi, Dan Goreac, Juan Li, and Boxiang Xu.
-\newblock {SIR} epidemics with state-dependent costs and {ICU} constraints: A
-  {Hamilton--Jacobi} verification argument and dual {LP} algorithms.
-\newblock \emph{Applied Mathematics \& Optimization}, 86:\penalty0 23, 2022.
-\newblock \doi{10.1007/s00245-022-09884-x}.
-
-\bibitem[Fremlin(2001)]{Fremlin2001Volume2}
-David~H. Fremlin.
-\newblock \emph{Measure Theory, Volume 2: Broad Foundations}.
-\newblock Torres Fremlin, Colchester, 2001.
-\newblock URL \url{https://www1.essex.ac.uk/maths/people/fremlin/mt.htm}.
-
-\bibitem[He et~al.(2023)He, Tang, and Xiao]{He2023TDINN}
-Mengqi He, Sanyi Tang, and Yanni Xiao.
-\newblock Combining the dynamic model and deep neural networks to identify the
-  intensity of interventions during covid-19 pandemic.
-\newblock \emph{PLOS Computational Biology}, 19\penalty0 (10):\penalty0
-  e1011535, 2023.
-\newblock \doi{10.1371/journal.pcbi.1011535}.
-
-\bibitem[Koenemann et~al.(2019)Koenemann, Licitra, Alp, and
-  Diehl]{Koenemann2019OpenOCL}
-Jonas Koenemann, Giovanni Licitra, Mustafa Alp, and Moritz Diehl.
-\newblock {OpenOCL} -- open optimal control library, June 2019.
-\newblock URL \url{https://openocl.github.io/publications/}.
-\newblock Robotics Science and Systems, workshop submission, extended abstract.
-
-\bibitem[Kretzschmar et~al.(2020)Kretzschmar, Rozhnova, Bootsma, {van Boven},
-  {van de Wijgert}, and Bonten]{Kretzschmar2020}
-Mirjam~E. Kretzschmar, Ganna Rozhnova, Martin C.~J. Bootsma, Michiel {van
-  Boven}, Janneke H. H.~M. {van de Wijgert}, and Marc J.~M. Bonten.
-\newblock Impact of delays on effectiveness of contact tracing strategies for
-  {COVID-19}: a modelling study.
-\newblock \emph{The Lancet Public Health}, 5\penalty0 (8):\penalty0 e452--e459,
-  2020.
-\newblock \doi{10.1016/S2468-2667(20)30157-2}.
-
-\bibitem[Liberzon(2012)]{Liberzon2012}
-Daniel Liberzon.
-\newblock \emph{Calculus of Variations and Optimal Control Theory: A Concise
-  Introduction}.
-\newblock Princeton University Press, 2012.
-
-\bibitem[Miclo et~al.(2022)Miclo, Spiro, and Weibull]{MicloSpiroWeibull2022}
-Laurent Miclo, Daniel Spiro, and J{\"o}rgen Weibull.
-\newblock Optimal epidemic suppression under an {ICU} constraint: An analytical
-  solution.
-\newblock \emph{Journal of Mathematical Economics}, 101:\penalty0 102669, 2022.
-\newblock \doi{10.1016/j.jmateco.2022.102669}.
-
-\bibitem[Morris et~al.(2021)Morris, Rossine, Plotkin, and Levin]{Morris2021}
-Dylan~H. Morris, Fernando~W. Rossine, Joshua~B. Plotkin, and Simon~A. Levin.
-\newblock Optimal, near-optimal, and robust epidemic control.
-\newblock \emph{Communications Physics}, 4:\penalty0 78, 2021.
-\newblock \doi{10.1038/s42005-021-00570-y}.
-
-\bibitem[Pollinger(2023)]{Pollinger2023}
-Stefan Pollinger.
-\newblock Optimal contact tracing and social distancing policies to suppress a
-  new infectious disease.
-\newblock \emph{The Economic Journal}, 133\penalty0 (654):\penalty0 2483--2503,
-  2023.
-\newblock \doi{10.1093/ej/uead024}.
-\newblock URL \url{https://doi.org/10.1093/ej/uead024}.
-
-\bibitem[Soner(1986)]{Soner1986}
-Halil~Mete Soner.
-\newblock Optimal control with state-space constraint. i.
-\newblock \emph{SIAM Journal on Control and Optimization}, 24\penalty0
-  (3):\penalty0 552--561, 1986.
-
-\bibitem[W{\"a}chter and Biegler(2006)]{WachterBiegler2006}
-Andreas W{\"a}chter and Lorenz~T. Biegler.
-\newblock On the implementation of a primal-dual interior point filter line
-  search algorithm for large-scale nonlinear programming.
-\newblock \emph{Mathematical Programming}, 106\penalty0 (1):\penalty0 25--57,
-  2006.
-\newblock \doi{10.1007/s10107-004-0559-y}.
-
-\bibitem[Zhou et~al.(2024)Zhou, Sha, Cheke, and Tang]{Zhou2024SPCI}
-Hao Zhou, He~Sha, Robert~A. Cheke, and Sanyi Tang.
-\newblock Model analysis and data validation of structured prevention and
-  control interruptions of emerging infectious diseases.
-\newblock \emph{Journal of Mathematical Biology}, 88:\penalty0 62, 2024.
-\newblock \doi{10.1007/s00285-024-02083-y}.
-
-\end{thebibliography}

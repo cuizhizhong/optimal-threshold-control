@@ -1,25 +1,14 @@
-% Compile independently from this directory with XeLaTeX (two passes).
-\documentclass[11pt,a4paper,UTF8]{ctexart}
-\usepackage[a4paper,margin=2.25cm]{geometry}
-\usepackage{amsmath,amssymb,booktabs,array,tabularx}
-\usepackage{setspace,caption,float,siunitx,fancyhdr,xcolor,hyperref}
-\setstretch{1.16}
-\setlength{\parindent}{2em}
-\setlength{\parskip}{0.18em}
-\captionsetup{font=small,labelfont=bf}
-\hypersetup{colorlinks=true,linkcolor=blue!55!black,urlcolor=blue!55!black,
-  pdftitle={感染阈值约束下追踪隔离的全域最优控制：补充材料},pdfauthor={}}
-\setlength{\headheight}{14pt}
-\pagestyle{fancy}\fancyhf{}
-\fancyhead[L]{感染阈值约束下追踪隔离的全域最优控制：补充材料}
-\fancyhead[R]{\thepage}
-\renewcommand{\headrulewidth}{0.4pt}
+%!TEX program = xelatex
+\PassOptionsToPackage{noOT1}{newtxmath}
+\documentclass[lang=cn,a4paper,newtx]{elegantpaper}
+\usepackage{tabularx,float,siunitx}
+\hypersetup{pdftitle={感染阈值约束下追踪隔离的全域最优控制：补充材料},pdfauthor={}}
 \renewcommand{\thepage}{S\arabic{page}}
 \renewcommand{\thesection}{S\arabic{section}}
 \renewcommand{\thetable}{S\arabic{table}}
 \renewcommand{\theequation}{S\arabic{equation}}
 \input{generated/numerical_values.tex}
-\title{\bfseries 感染阈值约束下追踪隔离的全域最优控制\\[0.4em]\large 补充材料}
+\title{感染阈值约束下追踪隔离的全域最优控制\\[0.4em]\large 补充材料}
 \author{}
 \date{}
 \begin{document}
@@ -44,7 +33,7 @@
 \]
 控制逐区间常值，配点阶数为 $d=\NumDegree$。
 主结果采用时域 $T=\NumHorizon$；E1、E3、E5 的区间数为 $n=\NumIntervals$，E2、E4 为 $n=8000$。
-附加复核设置见表\ref{tab:supp-settings}。
+附加复核设置见\tabref{tab:supp-settings}。
 
 \begin{table}[H]
 \centering\small
@@ -122,7 +111,7 @@ $(J_{\mathrm{OCL}}-J_{\mathrm{ref}})/J_{\mathrm{ref}}$。
 \end{tabular}
 \end{table}
 
-表\ref{tab:numerical-errors}中的五例均满足放宽容量后的成本比较。
+\tabref{tab:numerical-errors}中的五例均满足放宽容量后的成本比较。
 将 E4 的上限放宽为 $K+\varepsilon_K$ 后，解析最优值下降 $\num{1.16e-5}$，
 超过该例负成本差的绝对值 $|\delta J|=\num{3.68e-6}$。
 五例成本相对差的绝对值最大为 $\num{0.00459}\%$，重积分容量超出最大为 $\num{7.99e-7}$，
@@ -139,7 +128,7 @@ $\num[round-mode=places,round-precision=4]{\NumExitEFourTheory}$，均落在相�
 \section{实际网格误差}
 \label{sec:supp-grid-errors}
 
-表\ref{tab:grid-errors-all}列出全部 15 组网格结果，误差定义见式\eqref{eq:supp-errors}。
+\tabref{tab:grid-errors-all}列出全部 15 组网格结果，误差定义见式\eqref{eq:supp-errors}。
 对每组网格，$w_{\max}$ 为事件识别程序返回的候选区间的最大宽度。计算时取两个端点均有限的区间，包括未通过宽度检查的区间。
 初始事件或恰在网格节点发生的直接跳变可记为零宽。严格的切换时刻误差界还需另行估计。
 
@@ -153,7 +142,7 @@ E2 从 $n=4000$ 加密至 $n=8000$ 时，成本差从 $\num{7.22e-6}$ 增至 $\n
 \section{初猜、时域与阶段识别复核}
 \label{sec:supp-results}
 
-求解器在 35 个不同配置下均返回成功。表\ref{tab:supp-comparisons}汇总附加比较结果，
+求解器在 35 个不同配置下均返回成功。\tabref{tab:supp-comparisons}汇总附加比较结果，
 各项通过情况按第\ref{sec:supp-errors}节所列判据评定。
 
 \begin{table}[H]
@@ -165,7 +154,7 @@ E2 从 $n=4000$ 加密至 $n=8000$ 时，成本差从 $\num{7.22e-6}$ 增至 $\n
 比较 & 保存结果\\
 \midrule
 常值与随机初猜 & 五例的阶段顺序与成本比较均通过；不同初猜所得成本的最大绝对差为 $\num{6.1e-13}$。\\
-最细两级网格 & 修订判据下，$n=4000,8000$ 的成本与事件区间比较五例均通过。实际误差见表\ref{tab:grid-errors-all}。\\
+最细两级网格 & 修订判据下，$n=4000,8000$ 的成本与事件区间比较五例均通过。实际误差见\tabref{tab:grid-errors-all}。\\
 固定步长时域 & 三个时域下，五例的成本与事件比较均通过。\\
 识别阈值 & 45 次阶段与事件识别比较均通过。\\
 \bottomrule
@@ -209,7 +198,7 @@ E3 在 $n=2000$ 时的成本差为 $\num{-6.76e-5}$，重积分容量超出为 $
 超过该负成本差的绝对值。
 
 对同一批 35 个求解配置，按原判据有 28 个同时通过数值检查与理论比较，
-按事后修订的判据有 30 个同时通过。调整的两项容差见表\ref{tab:supp-tolerances}，
+按事后修订的判据有 30 个同时通过。调整的两项容差见\tabref{tab:supp-tolerances}，
 成本与切换事件的比较判据保持原值。
 
 逐网格表由随附的 \path{scripts/build_grid_error_table.py} 从保存摘要生成，

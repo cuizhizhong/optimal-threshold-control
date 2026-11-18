@@ -1,6 +1,6 @@
 # 修订评阅入口
 
-2026 年 11 月 18 日的[第三版投稿包](../output/optimal_threshold_control_submission_20261118_v3.zip)收录当前主文、补充材料、作图数据和核对脚本。11 月 17 日的[证明与符号审查记录](validation/deep_review_20261117/README.md)与[第一轮整合报告](validation/chatgpt_integration_20261117/README.md)保留当时的评价。此前的数值重跑和符号修订按批次保留。
+当前主文与补充材料采用 ElegantPaper 排版。2026 年 11 月 18 日的[第三版投稿包](../output/optimal_threshold_control_submission_20261118_v3.zip)收录更换模板前的文稿、作图数据和核对脚本。11 月 17 日的[证明与符号审查记录](validation/deep_review_20261117/README.md)与[第一轮整合报告](validation/chatgpt_integration_20261117/README.md)保留当时的评价。此前的数值重跑和符号修订按批次保留。
 
 ## 建议阅读顺序
 
@@ -8,7 +8,7 @@
 2. [补充材料 PDF](latex/supplementary.pdf)与[源码](latex/supplementary.tex)分五节给出主结果误差、E2 和 E4 的数值退出区间、15 组网格数值、粗网格异常和接受判据。
 3. [表 4 复核脚本](scripts/verify_analytic_results.py)核对两种策略的成本、追踪实施时长和新增隔离的易感者比例（占总人口）。[图 5 作图数据](validation/scaling_followup_20261021/figure_data.json)记录四个面板，面板 (d) 使用归一化的时长差。复现命令见[项目说明](README.md)与投稿包内说明。早期编译与验证范围见[11 月 17 日检查记录](validation/chatgpt_integration_20261117/integration_verification.json)、[分批计划](ai/claude_revision_plan/REVISION_PLAN.md)与[G4 实际报告](validation/g4_supplement_20261022/README.md)。
 4. 按需查[S2 执行记录](validation/numerical_scenarios/rerun_20261020/S2.4/README.md)、[35 项新旧比较](validation/numerical_scenarios/rerun_20261020/comparison_report.json)、[原判据对照](validation/numerical_scenarios/rerun_20261020/S2.6/assessment_revision_report.json)和[执行状态](validation/numerical_scenarios/REVISION_STATUS.md)。历史[第8–9步实际结果](validation/numerical_scenarios/step89_results.md)、[第10–11步交付记录](validation/numerical_scenarios/step1011_results.md)与[历史执行计划](ai/codex_revision_plan/CODEX_EXECUTION_PLAN.md)保留对应批次口径；`latex_snippets/` 仅作原始修订片段对照。S2.7 的生成块核对、导出器回归及 S1 符号核对分别见[宏核对](validation/numerical_scenarios/rerun_20261020/S2.7/macro_comparison_report.json)、[回归记录](validation/numerical_scenarios/rerun_20261020/S2.7/regression_report.json)、[符号报告](validation/notation_s1_20261020/README.md)。
-5. [MATLAB 复现说明](matlab/numerical_scenarios/README.md)、[验证说明](validation/numerical_scenarios/README.md)及[实际命令](validation/numerical_scenarios/step1011_commands.md)：核对算法、来源、缓存和运行范围。Windows 运行 `.\build.bat`、Linux/macOS 运行 `bash build.sh`，均分别编译主文与补充材料；每份执行 XeLaTeX → BibTeX（首轮 `.aux` 含文献库时）→ XeLaTeX → XeLaTeX。
+5. [MATLAB 复现说明](matlab/numerical_scenarios/README.md)、[验证说明](validation/numerical_scenarios/README.md)及[实际命令](validation/numerical_scenarios/step1011_commands.md)：核对算法、来源、缓存和运行范围。Windows 运行 `.\build.bat`、Linux/macOS 运行 `bash build.sh`，两份文稿各按 XeLaTeX → Biber → XeLaTeX → XeLaTeX 编译。
 
 ## 需要重点评阅的结论边界
 
