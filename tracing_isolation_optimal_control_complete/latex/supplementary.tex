@@ -140,9 +140,8 @@ $\num[round-mode=places,round-precision=4]{\NumExitEFourTheory}$，均落在相�
 \label{sec:supp-grid-errors}
 
 表\ref{tab:grid-errors-all}列出全部 15 组网格结果，误差定义见式\eqref{eq:supp-errors}。
-$w_{\max}$ 为各个已识别事件对应时间区间的最大宽度，反映当前网格定位切换时刻的时间分辨率。
-严格的切换时刻误差界还需另行估计。初始事件或恰落在网格节点上的直接跳变可记为零宽，
-未识别的事件单独标记。
+对每组网格，$w_{\max}$ 为事件识别程序返回的候选区间的最大宽度。计算时取两个端点均有限的区间，包括未通过宽度检查的区间。
+初始事件或恰在网格节点发生的直接跳变可记为零宽。严格的切换时刻误差界还需另行估计。
 
 \input{generated/grid_error_table.tex}
 

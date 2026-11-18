@@ -13,12 +13,12 @@ from zipfile import ZIP_DEFLATED, ZipFile
 
 
 PROJECT = Path(__file__).resolve().parents[1]
-PACKAGE = "optimal_threshold_control_submission_20261118_v2"
+PACKAGE = "optimal_threshold_control_submission_20261118_v3"
 OUTPUT = PROJECT.parent / "output" / f"{PACKAGE}.zip"
 
 README = """# 感染阈值约束下追踪隔离的全域最优控制
 
-2026 年 11 月 18 日投稿稿件，第二版。主文与补充材料分别为 [主文 PDF](latex/main.pdf) 和 [补充材料 PDF](latex/supplementary.pdf)。两份文稿的 LaTeX 源码、参考文献和表格宏在同一目录。保留解压后的目录结构，从本文件所在目录运行下列命令。
+2026 年 11 月 18 日投稿稿件，第三版。主文与补充材料分别为 [主文 PDF](latex/main.pdf) 和 [补充材料 PDF](latex/supplementary.pdf)。两份文稿的 LaTeX 源码、参考文献和表格宏在同一目录。保留解压后的目录结构，从本文件所在目录运行下列命令。
 
 ## 编译
 
@@ -38,7 +38,7 @@ python reproducibility/scaling/figure_followup.py --reproduce-dir reproduction/f
 
 ## 数值轨道和补充表
 
-图 2–4 所用的五个主例保存在 `data/numerical_scenarios/E1.mat` 至 `E5.mat`，选取记录在同目录的 `selection_manifest.json`。使用 MATLAB 在解压根目录运行 `addpath(fullfile(pwd,'matlab','numerical_scenarios')); make_numerical_figures('waiting')` 可用保存的主例重绘带三个事件标记的图 3。E2、E4 的容量退出区间见补充材料 S2。`python scripts/build_grid_error_table.py` 从保存的摘要重建补充表 S3 的 15 行网格误差结果。各组求解的汇总数据位于 `data/numerical_scenarios/revision_checks/`。
+图 2–4 所用的五个主例保存在 `data/numerical_scenarios/E1.mat` 至 `E5.mat`，选取记录在同目录的 `selection_manifest.json`。使用 MATLAB 在解压根目录运行 `addpath(fullfile(pwd,'matlab','numerical_scenarios')); make_numerical_figures('waiting')` 可用保存的主例重绘图 3。三个标记对应 E2 解析最优轨道的三个事件。E2、E4 的容量退出区间见补充材料 S2。`python scripts/build_grid_error_table.py` 从保存的摘要重建补充表 S3 的 15 行网格误差结果。各组求解的汇总数据位于 `data/numerical_scenarios/revision_checks/`。
 
 `PACKAGE_PROVENANCE.json` 记录每份文件在项目中的来源或生成命令。`MANIFEST.sha256` 给出其余全部文件的 SHA-256 校验值。
 """

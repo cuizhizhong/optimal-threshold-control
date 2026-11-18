@@ -9,8 +9,8 @@ Definitions checked against matlab/numerical_scenarios/assess_numerical_case.m:
   delta_J = J_openocl - J_reference;
   epsilon_K = max(0, max_t i_reintegrated(t) - K);
   epsilon_x = max_{node k, component j} |x_reintegrated_j(t_k)-x_collocation_j(t_k)|.
-The reported event widths are the original identification intervals. They are
-not confidence intervals, and do not bound the error in the true event time.
+The reported maximum is taken over finite candidate intervals in each saved
+event summary, including candidates that failed the transition-width check.
 """
 
 from __future__ import annotations
@@ -176,7 +176,7 @@ def table_tex(rows: list[dict], compact: bool) -> str:
                                 tex_sci(r['state_discrepancy']))) + r"\\")
     out += [r"\bottomrule",r"\end{tabular}",r"\par\smallskip",
             r"\begin{minipage}{0.98\linewidth}\footnotesize",
-            r"$^{\dagger}$ 表示容量进入或退出事件未被识别，并出现过长的过渡区间。",
+            r"标 $^{\dagger}$ 的两行均未检出容量维持阶段的起止时刻。完全追踪的起始候选区间在 E2、E4 中分别跨越 11 和 8 个网格单元，均超过允许的 2 个单元。",
             r"\end{minipage}",r"\end{table}",""]
     return "\n".join(out)
 
