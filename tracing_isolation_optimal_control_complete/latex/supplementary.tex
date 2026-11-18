@@ -2,42 +2,34 @@
 \PassOptionsToPackage{noOT1}{newtxmath}
 \documentclass[lang=cn,a4paper,newtx]{elegantpaper}
 \usepackage{tabularx,float,siunitx}
-\hypersetup{pdftitle={感染阈值约束下追踪隔离的全域最优控制：补充材料},pdfauthor={}}
+\hypersetup{pdftitle={感染比例上限下的追踪隔离：全域最优反馈与切换条件（补充材料）},pdfauthor={}}
 \renewcommand{\thepage}{S\arabic{page}}
 \renewcommand{\thesection}{S\arabic{section}}
 \renewcommand{\thetable}{S\arabic{table}}
 \renewcommand{\theequation}{S\arabic{equation}}
 \input{generated/numerical_values.tex}
-\title{感染阈值约束下追踪隔离的全域最优控制\\[0.4em]\large 补充材料}
+\title{感染比例上限下的追踪隔离：全域最优反馈与切换条件\\[0.4em]\large 补充材料}
 \author{}
 \date{}
 \begin{document}
 \maketitle
 
-\section{数值设置与数据来源}
+\section{配点设置与初值}
 \label{sec:supp-settings}
 
-本材料给出正文 E1--E5 的计算设置、主结果精度与逐网格比较。
-各表使用同一批数值控制和评估记录，分别报告求解器状态、数值检查结果及与解析策略的比较。
-
-五例均取 $\beta=0.5$、$c=2$、$\gamma=0.3$、$K=0.15$，
-其中 $K$ 为社区非隔离感染比例上限，$q\in[0,1]$ 为追踪比例。
-记 $x=(s,i)$、$h=\gamma/(\beta c)=0.3$。在 $i=K$ 且 $s>h$ 时，
-控制 $q_B(s)=1-h/s$ 可维持 $i=K$。
-五个初值依次为
+正文的五个算例 E1--E5 在有限时域上用直接配点法求追踪比例，再与无限时域的解析反馈比较。五例均取 $\beta=0.5$、$c=2$、$\gamma=0.3$、$K=0.15$。状态 $x=(s,i)$ 中，$s$ 为社区易感比例，$i$ 为社区非隔离感染比例，上限为 $K$。控制 $q\in[0,1]$ 为追踪比例。记 $h=\gamma/(\beta c)=0.3$，则在 $i=K$ 且 $s>h$ 时，$q_B(s)=1-h/s$ 恰好维持容量。
+为比较等待、维持容量和立即完全追踪三种情形，取初值
 \[
 \begin{aligned}
 \mathrm{E1}:&(0.75,0.01), &\mathrm{E2}:&(0.99,0.01), &\mathrm{E3}:&(0.50,0.14),\\
 \mathrm{E4}:&(0.70,0.15), &\mathrm{E5}:&(0.50,0.15).
 \end{aligned}
 \]
-控制逐区间常值，配点阶数为 $d=\NumDegree$。
-主结果采用时域 $T=\NumHorizon$；E1、E3、E5 的区间数为 $n=\NumIntervals$，E2、E4 为 $n=8000$。
-附加复核设置见\tabref{tab:supp-settings}。
+将时域 $[0,T]$ 划分为 $n$ 个等长区间，每个区间各取一个常值控制，配点阶数为 $d=\NumDegree$。在给定初值和状态约束下最小化 $\int_0^T\beta cq(t)\,\mathrm dt$，终点状态自由。正文五例均取 $T=\NumHorizon$。E1、E3、E5 的主网格为 $n=\NumIntervals$，E2、E4 为 $n=8000$。其余计算分别改变初猜、网格或时域（\tabref{tab:supp-settings}）。
 
 \begin{table}[H]
 \centering\small
-\caption{主结果与附加复核的设置。各组均覆盖 E1--E5。}
+\caption{E1--E5 的主网格与比较设置。$T$ 以模型时间单位计，$n$ 为等长区间数。主网格在 E1、E3、E5 取 $n=\NumIntervals$，在 E2、E4 取 $n=8000$。}
 \label{tab:supp-settings}
 \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{2.0cm}>{\raggedright\arraybackslash}p{3.4cm}>{\raggedright\arraybackslash}X@{}}
 \toprule
@@ -52,29 +44,23 @@
 \end{tabularx}
 \end{table}
 
-去除主结果、网格和时域组之间的重叠，共有 35 个不同求解配置；
-阈值组另对已保存结果作 $5\times3\times3=45$ 次阶段识别。
-基准控制识别阈值为 $10^{-3}$，容量识别阈值为 $2\times10^{-5}$；
-二者用于辨认控制阶段，与检验容量超出的接受容差分开设置。
+扣除各组重合的配置，共有 35 个不同的求解配置。控制识别阈值 $10^{-3}$ 用于判断区间控制是否接近 $0$ 或 $1$，容量识别阈值 $2\times10^{-5}$ 用于判断区间两端的感染比例是否都接近 $K$。改变这两个阈值，对保存的五组主结果共作 $5\times3\times3=45$ 次阶段识别。轨道是否超过容量另按第\ref{sec:supp-errors}节的容差检验。
 
 \clearpage
-\section{主结果精度与终点后的感染峰值}
+\section{成本差、重积分误差与终点延拓}
 \label{sec:supp-main-errors}
 
-记 $J_{\mathrm{ref}}$ 为解析反馈成本，$J_{\mathrm{OCL}}$ 为保存数值控制的成本，
-$\delta J=J_{\mathrm{OCL}}-J_{\mathrm{ref}}$。
-以原始分段常数控制重新积分得到 $x_{\mathrm{re}}=(s_{\mathrm{re}},i_{\mathrm{re}})$，
-等距网格节点记为 $t_j=jT/n$。其数值峰值与配点状态 $x_{\mathrm{col}}$ 用于定义
+在五例主网格上，以解析最优成本 $J_{\mathrm{ref}}$ 为分母，数值成本相对差的绝对值最大约为 $\num{0.00459}\%$。记配点所得分段常值控制的成本为 $J_{\mathrm{OCL}}$，带符号差为 $\delta J=J_{\mathrm{OCL}}-J_{\mathrm{ref}}$。
+为检验这些控制在节点之间是否仍满足感染上限，从同一初值出发，逐区间用原控制重新积分得到 $x_{\mathrm{re}}=(s_{\mathrm{re}},i_{\mathrm{re}})$。记 $x_{\mathrm{col}}$ 为配点状态，$t_j=jT/n$ 为网格节点。用全时域容量超出量和最大节点偏差分别衡量两种误差，
 \begin{equation}
 \varepsilon_K=\max\{0,\max_{0\le t\le T}i_{\mathrm{re}}(t)-K\},\qquad
 \varepsilon_x=\max_{0\le j\le n}
 \|x_{\mathrm{re}}(t_j)-x_{\mathrm{col}}(t_j)\|_\infty.
 \label{eq:supp-errors}
 \end{equation}
-计算峰值时逐区间检查两端的感染比例。当 $q<1$ 且区间内出现
-$s=\gamma/[\beta c(1-q)]$ 时，还检查该处的感染比例。当 $q=1$ 时，感染比例严格下降。
+每个常控制区间都检查两端的感染比例。若 $q<1$ 且 $s$ 在区间内经过 $\gamma/[\beta c(1-q)]$，还须检查该处的 $i$，因为此时 $\dot i=0$。若 $q=1$，则 $i$ 严格下降，区间最大值在左端。
 
-若从时刻 $T$ 起停止新增追踪，则从终点状态 $(s,i)$ 出发的未来感染峰值为
+为判断 $T$ 之后能否停止新增追踪，还要检查零控制延拓的感染峰值。从终点状态 $(s,i)$ 出发，取 $q=0$ 时的未来感染峰值为
 \begin{equation}
 P_0(s,i)=
 \begin{cases}
@@ -83,24 +69,15 @@ i+s-h-h\ln(s/h),&s>h
 \end{cases}.
 \label{eq:supp-safe-peak}
 \end{equation}
-将重积分终点 $x_{\mathrm{re}}(T)$ 代入式\eqref{eq:supp-safe-peak}，按给定容差与 $K$ 比较。
+将重积分终点 $x_{\mathrm{re}}(T)$ 代入式\eqref{eq:supp-safe-peak}，得到 $T$ 之后的数值峰值，再与 $K$ 比较。
 
-记 $V_{K'}(x_0)$ 为感染阈值 $K'$ 下原无限时域问题的最优值。
-若所得控制的连续轨道在整个 $[0,T]$ 上满足 $i\le K$，且 $P_0(x(T))\le K$，
-则在 $T$ 之后取 $q=0$ 得到原无限时域问题的可行控制，因而其完整成本满足
-$J_{\mathrm{OCL}}\ge V_K(x_0)$。
-若整个 $[0,T]$ 上满足 $i\le K+\varepsilon_K$，且 $P_0(x(T))\le K+\varepsilon_K$，
-同理可得 $J_{\mathrm{OCL}}\ge V_{K+\varepsilon_K}(x_0)$。
-这两个成本下界以连续轨道满足相应上限为条件。下表通过浮点重积分和式\eqref{eq:supp-safe-peak}检验这些条件。
+记 $V_{K'}(x_0)$ 为上限 $K'$ 下的无限时域最优值。若连续轨道在 $[0,T]$ 上满足 $i\le K$ 且 $P_0(x(T))\le K$，则 $T$ 后取 $q=0$ 给出原问题的可行控制，延拓后成本仍为 $J_{\mathrm{OCL}}$，故 $J_{\mathrm{OCL}}\ge V_K(x_0)$。若这两个峰值均不超过放宽的上限 $K+\varepsilon_K$，同理有 $J_{\mathrm{OCL}}\ge V_{K+\varepsilon_K}(x_0)$。表中的连续时段峰值由浮点重积分估计。
 
 \begin{table}[H]
 \centering
 \small
 \setlength{\tabcolsep}{3pt}
-\caption{正文所选主结果的带符号成本差与约束误差。
-$J_{\mathrm{ref}}=V_K(x_0)$ 为容量 $K$ 下的解析参考值，相对差为
-$(J_{\mathrm{OCL}}-J_{\mathrm{ref}})/J_{\mathrm{ref}}$。
-末列比较数值成本与放宽容量后的解析最优值。}
+\caption{五例主网格的成本差与容量超出量。$J_{\mathrm{ref}}=V_K(x_0)$，相对差以 $(J_{\mathrm{OCL}}-J_{\mathrm{ref}})/J_{\mathrm{ref}}$ 的比值列出。$\varepsilon_K$ 是重积分感染峰值高于 $K=0.15$ 的部分。末两列给出将上限放宽至 $K+\varepsilon_K$ 后解析成本的下降量，以及数值成本是否大于或等于该下界。}
 \label{tab:numerical-errors}
 \begin{tabular}{@{}crrrrr@{}}
 \toprule
@@ -111,71 +88,54 @@ $(J_{\mathrm{OCL}}-J_{\mathrm{ref}})/J_{\mathrm{ref}}$。
 \end{tabular}
 \end{table}
 
-\tabref{tab:numerical-errors}中的五例均满足放宽容量后的成本比较。
-将 E4 的上限放宽为 $K+\varepsilon_K$ 后，解析最优值下降 $\num{1.16e-5}$，
-超过该例负成本差的绝对值 $|\delta J|=\num{3.68e-6}$。
-五例成本相对差的绝对值最大为 $\num{0.00459}\%$，重积分容量超出最大为 $\num{7.99e-7}$，
-节点状态偏差最大为 $\num{8.57e-8}$。五例的末段控制均为零，从重积分终点起取 $q=0$ 时，
-未来感染峰值均在给定容差内满足上限。
+\tabref{tab:numerical-errors}中只有 E4 的数值成本略低于 $V_K(x_0)$。该例的重积分峰值也略高于 $K$。将上限放宽至 $K+\varepsilon_K$，解析最优值下降 $\num{1.16e-5}$，大于 $|\delta J|=\num{3.68e-6}$。按各例的实测超出量放宽上限后，五例数值成本均高于相应的解析最优值。
+在五组主结果中，容量超出量最大为 $\num{7.99e-7}$，节点状态偏差最大为 $\num{8.57e-8}$。最后 20 个模型时间单位内，五例的控制均为零。从各自重积分终点开始零控制延拓，未来峰值均在给定容差内满足上限。
 
-在分段常值的数值控制中，E1 开始完全追踪的时刻定位于 $[6.975,7.05]$，
-E2、E4 离开容量线的时刻分别定位于 $[5.85,5.8875]$ 和 $[1.05,1.0875]$。
-后两例的理论退出时刻分别约为
-$\num[round-mode=places,round-precision=4]{\NumExitETwoTheory}$ 与
-$\num[round-mode=places,round-precision=4]{\NumExitEFourTheory}$，均落在相应区间内。
+在数值控制中，E1 开始完全追踪的过渡区间为 $[6.975,7.05]$。E2、E4 离开容量线的过渡区间分别为 $[5.85,5.8875]$ 和 $[1.05,1.0875]$。重积分所得区间两端的易感比例，E2 从 $0.55003$ 降至 $0.54460$，E4 从 $0.55138$ 降至 $0.54680$，均跨过解析切换位置 $s_B\approx\NumSBRef$。两例的解析退出时刻 $\num[round-mode=places,round-precision=4]{\NumExitETwoTheory}$ 和 $\num[round-mode=places,round-precision=4]{\NumExitEFourTheory}$ 也各自落在相应区间内。
 
 \clearpage
-\section{实际网格误差}
+\section{三种网格下的成本、状态与切换区间}
 \label{sec:supp-grid-errors}
 
-\tabref{tab:grid-errors-all}列出全部 15 组网格结果，误差定义见式\eqref{eq:supp-errors}。
-对每组网格，$w_{\max}$ 为事件识别程序返回的候选区间的最大宽度。计算时取两个端点均有限的区间，包括未通过宽度检查的区间。
-初始事件或恰在网格节点发生的直接跳变可记为零宽。严格的切换时刻误差界还需另行估计。
+固定 $T=300$，将区间数从 $2000$ 加密到 $4000$、再到 $8000$，E1、E3、E5 的成本差绝对值逐次减小，各项误差并未同步下降（\tabref{tab:grid-errors-all}）。例如 E3 的容量超出量从 $n=4000$ 时的 $\num{4.80e-8}$ 增至 $n=8000$ 时的 $\num{3.40e-7}$。E2 在同两级网格上的成本差从 $\num{7.22e-6}$ 增至 $\num{1.22e-5}$，容量超出量和节点状态偏差却都减小。
+
+表中 15 组结果的状态误差按式\eqref{eq:supp-errors}计算。为给出切换定位的时间分辨率，$w_{\max}$ 取全部候选切换区间中两端有限者的最大宽度，超过接受宽度的区间也一并计入。初始时刻即切换，或在网格节点直接跳变，对应零宽区间。$w_{\max}$ 描述数值过渡所跨的时段，连续切换时刻的严格误差界还需另行估计。
 
 \input{generated/grid_error_table.tex}
-
-E1、E3、E5 的成本差绝对值在这三种网格中减小，但容量超出不必同步单调。
-例如 E3 的容量超出在 $n=4000$ 时为 $\num{4.80e-8}$，在 $n=8000$ 时为 $\num{3.40e-7}$。
-E2 从 $n=4000$ 加密至 $n=8000$ 时，成本差从 $\num{7.22e-6}$ 增至 $\num{1.22e-5}$，
-同时容量超出与节点状态偏差减小。
 
 \section{初猜、时域与阶段识别复核}
 \label{sec:supp-results}
 
-求解器在 35 个不同配置下均返回成功。\tabref{tab:supp-comparisons}汇总附加比较结果，
-各项通过情况按第\ref{sec:supp-errors}节所列判据评定。
+35 个配置下求解器均报告成功。更换主网格的初猜后，五例的控制阶段顺序相同。固定步长改变时域，也都通过成本和切换区间比较。各组复核结果见\tabref{tab:supp-comparisons}。状态与容量是否满足数值接受容差、控制与解析策略是否一致，按第\ref{sec:supp-errors}节分别判定。
 
 \begin{table}[H]
 \centering\small
-\caption{附加比较的结果摘要。}
+\caption{E1--E5 对初猜、网格、时域和阶段识别阈值的敏感性。时域以模型时间单位计。前三行比较不同求解配置，末行在各例同一组控制和状态上重复识别。}
 \label{tab:supp-comparisons}
 \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{2.4cm}>{\raggedright\arraybackslash}X@{}}
 \toprule
-比较 & 保存结果\\
+比较 & 结果\\
 \midrule
-常值与随机初猜 & 五例的阶段顺序与成本比较均通过；不同初猜所得成本的最大绝对差为 $\num{6.1e-13}$。\\
-最细两级网格 & 修订判据下，$n=4000,8000$ 的成本与事件区间比较五例均通过。实际误差见\tabref{tab:grid-errors-all}。\\
-固定步长时域 & 三个时域下，五例的成本与事件比较均通过。\\
-识别阈值 & 45 次阶段与事件识别比较均通过。\\
+常值与随机初猜 & 五例与解析初猜所得阶段顺序一致。与各自主网格解析初猜结果相比，成本的最大绝对差为 $\num{6.1e-13}$。\\
+最细两级网格 & 按修订判据，五例在 $n=4000,8000$ 两级间均通过成本和切换区间比较（\tabref{tab:grid-errors-all}）。\\
+固定步长的三个时域 & 取步长 $0.0375$，在 $T=60,120,300$ 间比较，五例均通过成本和切换事件检验。\\
+识别阈值 & 对五组主结果各取九组阈值，45 次阶段与切换事件比较均通过。\\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-在 $n=2000$ 时，E2、E4 的重积分感染峰值超过上限，阶段识别也未定位这两例容量维持阶段的起止时刻。
-E1、E3、E5 的成本相对误差均超过规定容差。
+在最粗的 $n=2000$ 网格上，E2、E4 的重积分感染峰值高出 $K$ 的量超过容量接受容差，且未能识别出容量维持阶段的起止时刻。E1、E3、E5 则因 $|\delta J|/J_{\mathrm{ref}}$ 超过成本相对误差容差而未通过成本比较。
 
-\clearpage
 \section{接受判据与后验重评}
 \label{sec:supp-errors}
 
-数值检查包括重积分所得感染峰值、节点状态偏差、初始条件、控制取值范围、末段控制，
-以及由式\eqref{eq:supp-safe-peak}求得的停控后感染峰值。
-与解析策略比较的量包括成本、阶段顺序、切换时刻所在的区间，
-以及容量维持阶段内数值控制与 $q_B$ 在相应区间上的平均值之差。
+同一批 35 个已保存结果，按求解前确定的判据有 28 个同时通过数值检查和解析比较，按事后调整的判据有 30 个同时通过（\tabref{tab:supp-tolerances}）。后验重评保持控制、状态和成本记录不变，考察通过数对状态与容量容差、容量维持阶段控制误差容差的依赖。
+
+数值检查核对初始条件、控制与状态取值范围，比较重积分所得容量超出量、节点状态偏差、末段控制及停控后的感染峰值（式\eqref{eq:supp-safe-peak}）。与解析策略比较时，检查成本相对差、阶段顺序和切换区间。对每个须识别的切换事件，候选区间至多允许跨两个过渡单元。解析时刻到该区间的距离须在一个邻近最大步长以内，比较时的附加时间容差为 $10^{-10}$。在容量维持阶段，将每个单元的常值控制与沿重积分轨道计算的 $q_B(s)$ 在该单元的时间平均值比较。
 
 \begin{table}[H]
 \centering\small
-\caption{原判据与事后修订的判据。通过数量均以 35 个不同求解配置为分母。}
+\caption{对同一批结果应用两套容差后的通过数。前两行给出调整的接受容差，成本与切换事件的比较沿用原判据。各通过数以 35 个不同求解配置为分母。}
 \label{tab:supp-tolerances}
 \begin{tabular}{@{}lcc@{}}
 \toprule
@@ -193,15 +153,7 @@ E1、E3、E5 的成本相对误差均超过规定容差。
 \end{tabular}
 \end{table}
 
-E3 在 $n=2000$ 时的成本差为 $\num{-6.76e-5}$，重积分容量超出为 $\varepsilon_K=\num{7.83e-6}$。
-将容量放宽为 $K+\varepsilon_K$ 后，解析最优值下降 $\num{1.08e-4}$，
-超过该负成本差的绝对值。
+E3 的粗网格结果说明两组判据为何要分别报告。当 $n=2000$ 时，$\varepsilon_K=\num{7.83e-6}$ 在修订后的容量容差内，但成本差 $\delta J=\num{-6.76e-5}$ 的绝对值相对于 $J_{\mathrm{ref}}$ 仍超过成本容差。若将上限放宽到 $K+\varepsilon_K$，解析最优值下降 $\num{1.08e-4}$，大于这一次负成本差的绝对值。
 
-对同一批 35 个求解配置，按原判据有 28 个同时通过数值检查与理论比较，
-按事后修订的判据有 30 个同时通过。调整的两项容差见\tabref{tab:supp-tolerances}，
-成本与切换事件的比较判据保持原值。
-
-逐网格表由随附的 \path{scripts/build_grid_error_table.py} 从保存摘要生成，
-数值及来源运行标识记录于 \path{data/revision_grid_errors.csv}。
-完整命令、配置与数据来源索引见项目根目录的 \path{README.md}。
+逐网格表由 \path{scripts/build_grid_error_table.py} 根据保存的求解摘要生成。各项数值和对应的运行标识见 \path{data/revision_grid_errors.csv}，命令、配置和数据索引见项目根目录的 \path{README.md}。
 \end{document}
