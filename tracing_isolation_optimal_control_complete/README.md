@@ -1,10 +1,22 @@
-# 感染阈值约束下跟踪隔离的全域最优控制
+# 感染阈值约束下追踪隔离的全域最优控制
 
-本目录保存当前论文、MATLAB/OpenOCL 数值求解与复现记录。当前分批执行依据为 `ai/claude_revision_plan/START_HERE_CODEX.md` 与 `ai/claude_revision_plan/REVISION_PLAN.md`；`ai/codex_revision_plan/CODEX_EXECUTION_PLAN.md` 保留历史计划；其中的阈值、预期结构和建议结论不作为已完成实验的结果。
+本目录保存论文定稿、MATLAB/OpenOCL 数值轨道和复现脚本。2026 年 11 月 18 日的[投稿包](../output/optimal_threshold_control_submission_20261118.zip)包含主文、补充材料、各自的源文件以及图表复现输入。11 月 17 日的[第二轮审查记录](validation/deep_review_20261117/README.md)和[第一轮整合报告](validation/chatgpt_integration_20261117/README.md)记录此前两轮修订。
 
 本轮修订的对照材料、实际结果、最终正文和复现边界见[评阅入口](REVIEW_GUIDE.md)。
 
-当前论文交付入口为[主文 PDF](latex/main.pdf)（43 页）与[独立补充材料 PDF](latex/supplementary.pdf)（2 页），对应源码为 `latex/main.tex`、`latex/supplementary.tex`。主文保留核心结果与证明附录，共 5 图、4 表，其中数值章节为 3 图、2 表；补充材料仅含附加数值设置、附加核对结果、误差判据与残差说明三小节。完整复现记录、逐条评估、日志和数据来源继续保存在仓库。G4 两份文稿已从新隔离目录完整编译，最终日志无诊断；45 页均已逐页目视检查，导出回归 16/16、符号检查 28/28、保护检查 19 项通过。Windows `build.bat` 已实际运行并退出 0，Linux/macOS `build.sh` 仅作静态检查；优化器调用、新增 OCP 求解、重新评估和图形导出均为 0 次。实际命令和验收记录见[本批报告](validation/g4_supplement_20261022/README.md)。
+当前论文入口为[主文 PDF](latex/main.pdf)与[补充材料 PDF](latex/supplementary.pdf)，对应源码为 `latex/main.tex` 和 `latex/supplementary.tex`。主文八节给出模型、最优策略、全局验证、唯一性证明及数值结果。图 3 标出 E2 离开容量线、停止新增追踪和随后达到感染峰值的时刻。表 4 比较两种策略的成本、追踪开启时长和新增隔离易感比例。补充材料五节给出主结果精度、容量退出区间、15 组网格误差、初猜与时域比较以及接受判据。
+
+在本目录运行以下命令，分别核对补充网格表、表 4 和主文图 5。
+
+```powershell
+python scripts/build_grid_error_table.py
+python scripts/verify_analytic_results.py --output reproduction/table4.json
+python validation/scaling_followup_20261021/figure_followup.py --reproduce-dir reproduction/figure5
+```
+
+第一个命令从保存的摘要重建网格表。第二个命令使用 `mpmath`，以 110 位精度从每个情景的初值计算容量入口，核对表 4 各项。第三个命令使用 `mpmath`、NumPy 和 Matplotlib，重算图 5 的 620 个参数点，逐项比对[定稿作图数据](validation/scaling_followup_20261021/figure_data.json)，并输出图件。投稿包内的绘图脚本和定稿数据在 `reproducibility/scaling/`。网格详细摘要与简表的 15 对历史运行标识见[核对记录](validation/chatgpt_integration_20261117/run_identity_crosswalk.json)。
+
+历史分批依据保留在 `ai/claude_revision_plan/START_HERE_CODEX.md`、`ai/claude_revision_plan/REVISION_PLAN.md` 与 `ai/codex_revision_plan/CODEX_EXECUTION_PLAN.md`；其中的阈值、预期结构和建议结论不作为已完成实验结果。G4 的 43+2 页文稿及当时的编译、回归记录见[历史报告](validation/g4_supplement_20261022/README.md)，不作为本轮检查结果。
 
 按作者最新决定，当前论文只研究无回流五仓室模型的最优控制；有回流问题的数值研究留作后续独立工作。第二节已按“仓室与流量—完整模型—前两式解耦—二维最优控制问题”重写，移除回流参数、五维值函数及独立等价命题。当前执行计划更新为 v5；本轮修改与验证见 [模型节返修报告](validation/model_no_return_revision_20261020/README.md)。第三批此前的模型初稿与编译记录保留为[历史报告](validation/model_a1_20261020/README.md)。
 
@@ -84,14 +96,14 @@ S1 按 `SYMBOL_TABLE.md` 的指定范围完成以下 20 条改名；旧记号仅
 ## 文件与来源
 
 - `latex/main.tex`、`main.pdf`、`references.bib`：主文源文件、实际编译稿及文献库。
-- `latex/supplementary.tex`、`supplementary.pdf`：独立补充材料源码与编译稿；阅读主文后按需查阅三节附加证据。
+- `latex/supplementary.tex`、`supplementary.pdf`：独立补充材料源码与编译稿；阅读主文后按需查阅五节数值证据。
 - `latex/generated/numerical_values.tex`：主文和补充材料共用的数值导出宏；`generated/scaling_values.tex` 为解析量级宏。
 - `matlab/numerical_scenarios/`：配置、求解、独立评估、调度、三张图和正文宏导出。
 - `validation/numerical_scenarios/`：共享输入、独立 Python 解析 fixture、验证入口、执行日志和状态。
 - `data/numerical_scenarios/runs/`：不可覆盖的原始记录及 `*.solver.json`。
 - `data/numerical_scenarios/run_index.json`、`selection_manifest.json`：全部尝试索引与五例预定主选择。
 - `data/numerical_scenarios/revision_checks/`：评估 sidecar、批次请求/报告及初猜、网格、时域、阈值摘要。
-- `figures/numerical_scenarios/`：`FigN1_regions`、`FigN2_waiting`、`FigN3_boundary_tracking` 的 PDF/PNG，以及主结果节的 `FigN1_optimal_partition`；数值章节保留三图、成本表和误差表，另有 `figures/scaling/FigD_magnitude` 量级图。
+- `figures/numerical_scenarios/`：`FigN1_regions`、`FigN2_waiting`、`FigN3_boundary_tracking` 的 PDF/PNG，以及主结果节的 `FigN1_optimal_partition`；数值章节保留三图与成本表，详细误差表在补充材料，另有 `figures/scaling/FigD_magnitude` 量级图。
 - `validation/numerical_scenarios/rerun_20261020/comparison_report.json`：C01–C35 的新旧 run_id、原始文件与评估来源、逐项差值及严格验收结果。
 - `validation/numerical_scenarios/rerun_20261020/S2.6/assessment_revision_report.json`：本次 35 个新 run 的原判据与修订判据对照。
 - `MANIFEST.txt`：复现文件清单；`archive/first_version/` 与 `legacy_results/` 仅用于历史追溯。

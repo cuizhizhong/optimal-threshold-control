@@ -1,3 +1,4 @@
+% Compile independently from this directory with XeLaTeX (two passes).
 \documentclass[11pt,a4paper,UTF8]{ctexart}
 \usepackage[a4paper,margin=2.25cm]{geometry}
 \usepackage{amsmath,amssymb,booktabs,array,tabularx}
@@ -7,10 +8,10 @@
 \setlength{\parskip}{0.18em}
 \captionsetup{font=small,labelfont=bf}
 \hypersetup{colorlinks=true,linkcolor=blue!55!black,urlcolor=blue!55!black,
-  pdftitle={感染阈值约束下跟踪隔离的全域最优控制：补充材料},pdfauthor={}}
+  pdftitle={感染阈值约束下追踪隔离的全域最优控制：补充材料},pdfauthor={}}
 \setlength{\headheight}{14pt}
 \pagestyle{fancy}\fancyhf{}
-\fancyhead[L]{感染阈值约束下跟踪隔离的全域最优控制：补充材料}
+\fancyhead[L]{感染阈值约束下追踪隔离的全域最优控制：补充材料}
 \fancyhead[R]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\thepage}{S\arabic{page}}
@@ -18,18 +19,31 @@
 \renewcommand{\thetable}{S\arabic{table}}
 \renewcommand{\theequation}{S\arabic{equation}}
 \input{generated/numerical_values.tex}
-\title{\bfseries 感染阈值约束下跟踪隔离的全域最优控制\\[0.4em]\large 补充材料}
+\title{\bfseries 感染阈值约束下追踪隔离的全域最优控制\\[0.4em]\large 补充材料}
 \author{}
 \date{}
 \begin{document}
 \maketitle
 
-\section{附加数值设置}
+\section{数值设置与数据来源}
 \label{sec:supp-settings}
 
-本材料整理正文 E1--E5 的已保存数值记录。参数固定为
-$\beta=0.5$、$c=2$、$\gamma=0.3$、$K=0.15$，控制逐区间常值，配点阶数为 $d=\NumDegree$。
-主结果采用 $T=\NumHorizon$，E1、E3、E5 的区间数为 $n=\NumIntervals$，E2、E4 为 $n=8000$。
+本材料给出正文 E1--E5 的计算设置、主结果精度与逐网格比较。
+所有数值来自同一批保存控制和评估记录；未更改原始控制、状态或求解器输出。
+求解器返回成功、数值接受检查和与解析参考的一致性比较分别报告。
+
+五例均取 $\beta=0.5$、$c=2$、$\gamma=0.3$、$K=0.15$，
+其中 $K$ 为社区非隔离感染比例上限，$q\in[0,1]$ 为追踪比例。
+令 $x=(s,i)$、$h=\gamma/(\beta c)=0.3$；容量切向控制为 $q_B(s)=1-h/s$。
+五个初值依次为
+\[
+\begin{aligned}
+\mathrm{E1}:&(0.75,0.01), &\mathrm{E2}:&(0.99,0.01), &\mathrm{E3}:&(0.50,0.14),\\
+\mathrm{E4}:&(0.70,0.15), &\mathrm{E5}:&(0.50,0.15).
+\end{aligned}
+\]
+控制逐区间常值，配点阶数为 $d=\NumDegree$。
+主结果采用时域 $T=\NumHorizon$；E1、E3、E5 的区间数为 $n=\NumIntervals$，E2、E4 为 $n=8000$。
 附加复核设置见表\ref{tab:supp-settings}。
 
 \begin{table}[H]
@@ -49,41 +63,138 @@ $\beta=0.5$、$c=2$、$\gamma=0.3$、$K=0.15$，控制逐区间常值，配点�
 \end{tabularx}
 \end{table}
 
-去除主结果、网格和时域组之间的重叠，共有 35 个不同求解配置；阈值组另对已保存结果作 $5\times3\times3=45$ 次识别。
-基准识别阈值分别为 $10^{-3}$ 与 $2\times10^{-5}$，二者与容量接受容差分开设置。
+去除主结果、网格和时域组之间的重叠，共有 35 个不同求解配置；
+阈值组另对已保存结果作 $5\times3\times3=45$ 次阶段识别。
+基准控制识别阈值为 $10^{-3}$，容量识别阈值为 $2\times10^{-5}$；
+二者用于辨认控制阶段，与检验容量超出的接受容差分开设置。
 
-\section{附加核对结果}
+\clearpage
+\section{主结果精度与终端延拓}
+\label{sec:supp-main-errors}
+
+记 $J_{\mathrm{ref}}$ 为解析反馈成本，$J_{\mathrm{OCL}}$ 为保存数值控制的成本，
+$\delta J=J_{\mathrm{OCL}}-J_{\mathrm{ref}}$。
+以原始分段常数控制重新积分得到 $x_{\mathrm{re}}=(s_{\mathrm{re}},i_{\mathrm{re}})$，
+等距网格节点记为 $t_j=jT/n$。其数值峰值与配点状态 $x_{\mathrm{col}}$ 用于定义
+\begin{equation}
+\varepsilon_K=\max\{0,\max_{0\le t\le T}i_{\mathrm{re}}(t)-K\},\qquad
+\varepsilon_x=\max_{0\le j\le n}
+\|x_{\mathrm{re}}(t_j)-x_{\mathrm{col}}(t_j)\|_\infty.
+\label{eq:supp-errors}
+\end{equation}
+这里峰值由保存的逐区间重积分评估计算：除区间端点外，当 $q<1$ 时，
+还检查满足 $s=\gamma/[\beta c(1-q)]$ 的区间内部感染极值；
+$q=1$ 时感染严格衰减。
+因此容量检查不限于配点节点，但仍是浮点数值诊断。
+
+终端零控制延拓使用无控制未来峰值
+\begin{equation}
+P_0(s,i)=
+\begin{cases}
+i,&s\le h,\\
+i+s-h-h\ln(s/h),&s>h,
+\end{cases}
+\label{eq:supp-safe-peak}
+\end{equation}
+检查重积分终点在接受容差内是否满足 $P_0\le K$。
+这项检查关注停止新增追踪后是否仍满足感染上限，不要求终点感染已经消失。
+
+记 $V_{K'}(x_0)$ 为感染阈值 $K'$ 下原无限时域问题的最优值。
+若重积分轨道在 $[0,T]$ 上满足 $i\le K$，且终端满足 $P_0\le K$，
+则在 $T$ 之后接续 $q=0$ 得到原无限时域问题的可行控制，因而其完整成本满足
+$J_{\mathrm{OCL}}\ge V_K(x_0)$。
+若轨道的容量超出为 $\varepsilon_K>0$，且终端满足 $P_0\le K+\varepsilon_K$，
+同一延拓只对放宽后的容量可行，相应地有 $J_{\mathrm{OCL}}\ge V_{K+\varepsilon_K}(x_0)$。
+这两个不等式要求相应的连续轨道条件成立；浮点重积分用于数值诊断，不能代替严格可行性证明。
+
+\begin{table}[H]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\caption{正文所选主结果的带符号成本差与约束误差。
+$J_{\mathrm{ref}}=V_K(x_0)$ 为容量 $K$ 下的解析参考值，相对差为
+$(J_{\mathrm{OCL}}-J_{\mathrm{ref}})/J_{\mathrm{ref}}$。
+末列比较数值成本与放宽容量后的解析最优值。}
+\label{tab:numerical-errors}
+\begin{tabular}{@{}crrrrr@{}}
+\toprule
+算例 & $J_{\mathrm{OCL}}-J_{\mathrm{ref}}$ & 相对差 & $\varepsilon_K$ & $V_K-V_{K+\varepsilon_K}$ & \shortstack{是否满足\\$J_{\mathrm{OCL}}\ge V_{K+\varepsilon_K}$}\\
+\midrule
+\NumErrorTableRows
+\bottomrule
+\end{tabular}
+\end{table}
+
+表\ref{tab:numerical-errors}中的五例均满足放宽容量后的成本比较。
+E4 的成本差为负，但其绝对值小于容量放宽导致的值函数下降，因此与容量超出相容，
+没有给出原阈值 $K$ 下优于解析最优策略的可行控制。
+五例成本相对差的绝对值最大为 $\num{0.00459}\%$，重积分容量超出最大为 $\num{7.99e-7}$，
+节点状态偏差最大为 $\num{8.57e-8}$；末段控制为零，终端通过所列容差下的零控制安全检查。
+
+主结果的阶段识别给出：E1 的完全追踪开始区间为 $[6.975,7.05]$；
+E2、E4 的容量退出区间分别为 $[5.85,5.8875]$ 与 $[1.05,1.0875]$。
+后两例的理论退出时刻分别约为
+$\num[round-mode=places,round-precision=4]{\NumExitETwoTheory}$ 与
+$\num[round-mode=places,round-precision=4]{\NumExitEFourTheory}$，均落在相应区间内。
+这些区间描述分段常值控制的过渡位置，首个纯完全追踪单元的起点不等同于连续时间切换点。
+
+\clearpage
+\section{实际网格误差}
+\label{sec:supp-grid-errors}
+
+表\ref{tab:grid-errors-all}列出全部 15 组网格结果；误差定义见式\eqref{eq:supp-errors}。
+$w_{\max}$ 是保存事件识别记录中返回的原始区间的最大宽度。
+初始事件或恰落在网格节点上的直接跳变可以返回零宽区间，
+零宽并不表示连续时间切换已被精确计算。
+若理论要求的事件未被识别，则另作标记，不把缺失区间当作零误差。
+区间宽度反映数值控制的阶段定位分辨率，并非切换时刻的置信区间或严格误差界。
+
+\input{generated/grid_error_table.tex}
+
+E1、E3、E5 的成本差绝对值在这三种网格中减小，但容量超出不必同步单调。
+例如 E3 的容量超出在 $n=4000$ 时为 $\num{4.80e-8}$，在 $n=8000$ 时为 $\num{3.40e-7}$。
+E2 从 $n=4000$ 加密至 $n=8000$ 时，成本差从 $\num{7.22e-6}$ 增至 $\num{1.22e-5}$，
+同时容量超出与节点状态偏差减小。
+这些结果需要分别从成本、约束和状态误差判断，不能据三个网格宣称统一收敛阶。
+
+\section{初猜、时域与阶段识别复核}
 \label{sec:supp-results}
 
-35 个不同配置的求解器均返回成功，附加比较汇总于表\ref{tab:supp-comparisons}。
+35 个不同配置的求解器均返回成功，但这不意味着每个配置均通过后续检查。
+附加比较汇总于表\ref{tab:supp-comparisons}；其中“通过”均指在第\ref{sec:supp-errors}节所列判据下，
+保存记录中的相应检查为真。
 
 \begin{table}[H]
 \centering\small
-\caption{附加比较的结果摘要。误差判据见 S3。}
+\caption{附加比较的结果摘要。}
 \label{tab:supp-comparisons}
-\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}X@{}}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{2.4cm}>{\raggedright\arraybackslash}X@{}}
 \toprule
 比较 & 保存结果\\
 \midrule
-常值与随机初猜 & 五例的阶段顺序与成本比较均通过。\\
-最细两级网格 & 修订判据下，$n=4000,8000$ 的成本与事件区间比较五例均通过。\\
+常值与随机初猜 & 五例的阶段顺序与成本比较均通过；不同初猜所得成本的最大绝对差为 $\num{6.1e-13}$。\\
+最细两级网格 & 修订判据下，$n=4000,8000$ 的成本与事件区间比较五例均通过。实际误差见表\ref{tab:grid-errors-all}。\\
 固定步长时域 & 三个时域下，五例的成本与事件比较均通过。\\
 识别阈值 & 45 次阶段与事件识别比较均通过。\\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-粗网格 $n=2000$ 的 E2、E4 存在容量超出与阶段识别异常，E1、E3、E5 的成本比较仍未通过。
+粗网格 $n=2000$ 的异常仍予保留：E2、E4 存在较大的容量超出，
+阶段识别未能恢复解析预测的容量进入或退出事件，并给出较长的过渡区间；
+E1、E3、E5 的成本相对误差仍超过既定容差。
+因此，所测细网格之间的一致性不能替代对粗网格问题的披露，也不能推广为全部初值的数值保证。
 
-\section{误差判据与残差说明}
+\section{接受判据与后验重评}
 \label{sec:supp-errors}
 
-数值接受检查原控制重积分的容量峰值、状态偏差、控制界、末段控制及终端零控制延拓；
+数值接受检查原控制重积分的容量峰值、节点状态偏差、初始条件、控制界、末段控制及终端零控制延拓；
 理论比较检查成本、阶段结构、切换事件区间及容量段控制与 $q_B$ 区间均值的差。
+终端零控制延拓采用第\ref{sec:supp-main-errors}节的未来峰值检查。
 
 \begin{table}[H]
 \centering\small
-\caption{原判据与保存求解后的修订判据。}
+\caption{原判据与保存求解后的修订判据。通过数量均以 35 个不同求解配置为分母。}
 \label{tab:supp-tolerances}
 \begin{tabular}{@{}lcc@{}}
 \toprule
@@ -102,9 +213,16 @@ $\beta=0.5$、$c=2$、$\gamma=0.3$、$K=0.15$，控制逐区间常值，配点�
 \end{table}
 
 E3 在 $n=2000$ 时的成本差为 $\num{-6.76e-5}$，重积分容量超出为 $\varepsilon_K=\num{7.83e-6}$。
-将容量放宽为 $K+\varepsilon_K$ 后，解析最优值下降 $\num{1.08e-4}$，大于该负成本差的绝对值，因此该负差与容量超出相容。
+将容量放宽为 $K+\varepsilon_K$ 后，解析最优值下降 $\num{1.08e-4}$，
+大于该负成本差的绝对值，因此该负差与容量超出相容。
+这不使原阈值 $K$ 下的轨道变为严格可行；保存评估中的异常分类也未据此删除。
 
-修订判据是对保存数据的后验重评，未新增求解，成本与事件判据未变；这些比较不提供网格收敛阶。
+表\ref{tab:supp-tolerances}中的修订发生于历史求解保存之后，属于对同一批数据的后验重评；
+成本与事件比较判据未变。原判据下同时通过 $28/35$，修订判据下同时通过 $30/35$，
+两个数字分别报告，不把后者解释为新增独立实验或新增收敛证据。
+有限样本的一致性与浮点残差均不能替代正文对全部可测可行控制的解析证明。
 
+逐网格表由随附的 \path{scripts/build_grid_error_table.py} 从保存摘要生成，
+数值及来源运行标识记录于 \path{data/revision_grid_errors.csv}。
 完整命令、配置与数据来源索引见项目根目录的 \path{README.md}。
 \end{document}

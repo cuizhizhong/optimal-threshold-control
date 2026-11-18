@@ -1,0 +1,22 @@
+{
+  "build_command": "cmd /c build.bat",
+  "fresh_staging_directory": "E:\\work\\optimal-threshold-control\\tmp\\i1117",
+  "exit_code": 0,
+  "documents": {
+    "main": {
+      "pages": 43,
+      "source_sha256": "2c16cc80115b54e959c89eabe079bbe3b63c7ac4aadd386e792e5f44f4dd7527",
+      "extracted_text_matches_reviewed_pdf_on_every_page": true,
+      "final_log_diagnostics": []
+    },
+    "supplementary": {
+      "pages": 4,
+      "source_sha256": "5198333dd033f643d6b3b266b62d7a9d55fc8e9dba5d78a36ff346e9e1657a05",
+      "extracted_text_matches_reviewed_pdf_on_every_page": true,
+      "final_log_diagnostics": []
+    }
+  },
+  "published_pdfs_identical_to_visually_reviewed_files": true,
+  "new_optimization_solves": 0,
+  "new_ode_reintegrations": 0
+}

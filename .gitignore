@@ -1,0 +1,15 @@
+# 临时检出、打包暂存和渲染图可由正式源码重新生成。
+/tmp/
+/output/
+/tracing_isolation_optimal_control_complete/tmp/
+**/__pycache__/
+*.py[cod]
+
+# 保留正式 PDF、参考文献 bbl 和验证目录内的日志。
+/tracing_isolation_optimal_control_complete/latex/*.aux
+/tracing_isolation_optimal_control_complete/latex/*.blg
+/tracing_isolation_optimal_control_complete/latex/*.log
+/tracing_isolation_optimal_control_complete/latex/*.out
+/tracing_isolation_optimal_control_complete/latex/*.toc
+/tracing_isolation_optimal_control_complete/latex/*.xdv
+*.synctex.gz

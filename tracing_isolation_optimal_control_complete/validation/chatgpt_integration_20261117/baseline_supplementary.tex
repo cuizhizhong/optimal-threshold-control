@@ -1,0 +1,110 @@
+\documentclass[11pt,a4paper,UTF8]{ctexart}
+\usepackage[a4paper,margin=2.25cm]{geometry}
+\usepackage{amsmath,amssymb,booktabs,array,tabularx}
+\usepackage{setspace,caption,float,siunitx,fancyhdr,xcolor,hyperref}
+\setstretch{1.16}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.18em}
+\captionsetup{font=small,labelfont=bf}
+\hypersetup{colorlinks=true,linkcolor=blue!55!black,urlcolor=blue!55!black,
+  pdftitle={感染阈值约束下跟踪隔离的全域最优控制：补充材料},pdfauthor={}}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{感染阈值约束下跟踪隔离的全域最优控制：补充材料}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\thepage}{S\arabic{page}}
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\theequation}{S\arabic{equation}}
+\input{generated/numerical_values.tex}
+\title{\bfseries 感染阈值约束下跟踪隔离的全域最优控制\\[0.4em]\large 补充材料}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+
+\section{附加数值设置}
+\label{sec:supp-settings}
+
+本材料整理正文 E1--E5 的已保存数值记录。参数固定为
+$\beta=0.5$、$c=2$、$\gamma=0.3$、$K=0.15$，控制逐区间常值，配点阶数为 $d=\NumDegree$。
+主结果采用 $T=\NumHorizon$，E1、E3、E5 的区间数为 $n=\NumIntervals$，E2、E4 为 $n=8000$。
+附加复核设置见表\ref{tab:supp-settings}。
+
+\begin{table}[H]
+\centering\small
+\caption{主结果与附加复核的设置。各组均覆盖 E1--E5。}
+\label{tab:supp-settings}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{2.0cm}>{\raggedright\arraybackslash}p{3.4cm}>{\raggedright\arraybackslash}X@{}}
+\toprule
+组别 & 时域与区间数 & 初猜或识别设置\\
+\midrule
+主结果 & $T=300$，各例主网格 & 解析参考初猜\\
+初猜复核 & $T=300$，各例主网格 & 常值 $q=0.7$；固定种子随机初猜\\
+网格复核 & $T=300$，$n=2000,4000,8000$ & 解析参考初猜\\
+时域复核 & $(60,1600)$、$(120,3200)$、$(300,8000)$ & 按 $(T,n)$ 列出；解析参考初猜，步长均为 $0.0375$\\
+识别阈值复核 & 五例已选主结果，保持控制与状态不变 & 控制阈值 $\{5\!\times\!10^{-4},10^{-3},2\!\times\!10^{-3}\}$；容量阈值 $\{10^{-5},2\!\times\!10^{-5},4\!\times\!10^{-5}\}$\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+去除主结果、网格和时域组之间的重叠，共有 35 个不同求解配置；阈值组另对已保存结果作 $5\times3\times3=45$ 次识别。
+基准识别阈值分别为 $10^{-3}$ 与 $2\times10^{-5}$，二者与容量接受容差分开设置。
+
+\section{附加核对结果}
+\label{sec:supp-results}
+
+35 个不同配置的求解器均返回成功，附加比较汇总于表\ref{tab:supp-comparisons}。
+
+\begin{table}[H]
+\centering\small
+\caption{附加比较的结果摘要。误差判据见 S3。}
+\label{tab:supp-comparisons}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}X@{}}
+\toprule
+比较 & 保存结果\\
+\midrule
+常值与随机初猜 & 五例的阶段顺序与成本比较均通过。\\
+最细两级网格 & 修订判据下，$n=4000,8000$ 的成本与事件区间比较五例均通过。\\
+固定步长时域 & 三个时域下，五例的成本与事件比较均通过。\\
+识别阈值 & 45 次阶段与事件识别比较均通过。\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+粗网格 $n=2000$ 的 E2、E4 存在容量超出与阶段识别异常，E1、E3、E5 的成本比较仍未通过。
+
+\section{误差判据与残差说明}
+\label{sec:supp-errors}
+
+数值接受检查原控制重积分的容量峰值、状态偏差、控制界、末段控制及终端零控制延拓；
+理论比较检查成本、阶段结构、切换事件区间及容量段控制与 $q_B$ 区间均值的差。
+
+\begin{table}[H]
+\centering\small
+\caption{原判据与保存求解后的修订判据。}
+\label{tab:supp-tolerances}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+量 & 原判据 & 修订判据\\
+\midrule
+状态与容量接受容差 & $10^{-6}$ & $10^{-5}$\\
+容量段控制绝对误差容差 & $2\times10^{-3}$ & $3\times10^{-3}$\\
+成本相对误差容差 & $10^{-4}$ & $10^{-4}$\\
+控制界与末段控制容差 & $10^{-6}$ & $10^{-6}$\\
+\midrule
+数值接受通过 & $29/35$ & $33/35$\\
+理论比较通过 & $29/35$ & $30/35$\\
+两组同时通过 & $28/35$ & $30/35$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+E3 在 $n=2000$ 时的成本差为 $\num{-6.76e-5}$，重积分容量超出为 $\varepsilon_K=\num{7.83e-6}$。
+将容量放宽为 $K+\varepsilon_K$ 后，解析最优值下降 $\num{1.08e-4}$，大于该负成本差的绝对值，因此该负差与容量超出相容。
+
+修订判据是对保存数据的后验重评，未新增求解，成本与事件判据未变；这些比较不提供网格收敛阶。
+
+完整命令、配置与数据来源索引见项目根目录的 \path{README.md}。
+\end{document}

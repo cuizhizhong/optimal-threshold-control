@@ -1,0 +1,128 @@
+--- integrated-v1/main.tex
++++ reviewed/main.tex
+@@ -406,6 +406,8 @@
+ \label{eq:natural-orbit}
+ \end{equation}
+ 沿自然轨道 $s$ 严格下降，而 $\dot i$ 与 $s-h$ 同号。
++当 $s\ge h$ 时，$i(t)\ge i_0>0$，因而 $\dot s\le-\beta ci_0s$；
++所以 $s_0>h$ 时轨道在有限时间内到达 $s=h$。
+ 因此，若 $s_0>h$，感染在 $s=h$ 处达到峰值
+ \begin{equation}
+ i_{\rm pk}=i_0+s_0-h+h\ln\frac h{s_0}.
+@@ -1382,11 +1384,17 @@
+ 所需候选达到性、正则性及终端处理分别由命题\ref{prop:candidate-attainment}、\ref{prop:regularity}和引理\ref{lem:finite-entry}给出。
+ \end{theorem}
+ \begin{proof}
+-在引理\ref{lem:verification-principle}中取 $Z=U$；由定义\ref{def:candidate}，$U$ 在 $\Acal$ 上为零。
+-对任一满足 $J_{x_0}(q)<\infty$ 的可行控制 $q$，引理\ref{lem:finite-entry}给出 $\tau_{\Acal}(x_0,q)<\infty$；
+-在 $[0,\tau_{\Acal}(x_0,q)]$ 上应用引理\ref{lem:trajectory-verification}，即得条件 (i)。
+-命题\ref{prop:candidate-attainment}给出 $J_{x_0}(q^*)=U(x_0)$，即条件 (ii)。
+-于是 $U(x_0)=V(x_0)=J_{x_0}(q^*)$；再由值函数的定义，任意 $q\in\Uad(x_0)$ 都满足 $J_{x_0}(q)\ge V(x_0)=U(x_0)$。
++这是引理\ref{lem:verification-principle}在 $Z=U$ 时的具体应用。
++任取 $q\in\Uad(x_0)$。若 $J_{x_0}(q)=\infty$，所需比较显然成立。
++否则令 $\tau=\tau_{\Acal}(x_0,q)$。由引理\ref{lem:finite-entry}，$\tau<\infty$ 且 $U(x^q(\tau))=0$；
++引理\ref{lem:trajectory-verification}保证 $U\circ x^q$ 在 $[0,\tau]$ 上绝对连续，故
++\[
++J_{x_0}(q)\ge\int_0^\tau\beta cq(t)\dd t
++\ge U(x_0)-U(x^q(\tau))=U(x_0).
++\]
++当 $x_0\in\Acal$ 时，$\tau=0$，同一比较仍成立。
++另一方面，命题\ref{prop:candidate-attainment}给出可行控制 $q^*$，其成本满足 $J_{x_0}(q^*)=U(x_0)$。
++对所有可行控制取下确界，即得 $V(x_0)=U(x_0)=J_{x_0}(q^*)$。
+ \end{proof}
+ 
+ \section{最优控制的唯一性}
+@@ -1615,7 +1623,8 @@
+ \emph{第 4 步：各阶段轨道的唯一确定。}
+ 现在按时间顺序把各段拼接起来。
+ 在自然等待阶段，$q=0$ 几乎处处，因而状态方程解的唯一性确定轨道，直至它首次到达切换曲线或容量边界；两种等待分支的公共界面不改变这一向量场。
+-首次事件的唯一性由推论\ref{cor:Gamma-labels}和相应触点的定义给出，其有限时间可达性已在命题\ref{prop:candidate-attainment}中证明。
++在首次离开等待区之前，该最优轨道与候选轨道具有相同初值，并满足同一自然流方程，因此两者在这一时段重合。
++首次事件的位置由推论\ref{cor:Gamma-labels}和相应触点的定义唯一确定，到达时间也与候选轨道相同；其有限性由命题\ref{prop:candidate-attainment}给出。
+ 若轨道到达容量平台，第 2 步确定其唯一的容量弧延续；若到达切换曲线，第 3 步说明它立即进入完全追踪区。
+ 
+ 在完全追踪区，$q=1$ 几乎处处；由引理\ref{lem:tracking-region}及状态方程解的唯一性，轨道被唯一确定至首次到达 $\Acal$，且此前不会返回等待区。
+@@ -1690,7 +1699,9 @@
+ \label{eq:JB}
+ \end{align}
+ 第一类在达到容量前转入完全追踪，第二类先沿容量线运行一段；两式中的初始自然等待均不产生成本。
+-令 $(\bar s,\bar i)$ 为相应完全追踪弧的安全端点。由 $i_w'=(h-s_c)/s_c$、$W$ 的梯度和容量弧成本，得到
++令 $(\bar s,\bar i)$ 为相应完全追踪弧的安全端点。
++在自然等待分支上，$i_w'(s_c)=(h-s_c)/s_c$；在容量分支上，$i_w(s_c)=K$，其导数为零。
++分别结合 $W$ 的梯度和容量弧成本，得到以下导数，它们在对应有限可达分支的内部成立：
+ \begin{align}
+ \mathcal J_D'(s_c)&=\frac{s_c-p}{hs_c}
+ [\Theta(\bar s,\bar i)-\Theta(s_c,i_w(s_c))],\label{eq:JD-derivative}\\
+@@ -2202,13 +2213,18 @@
+ 
+ 
+ \begin{proof}
+-非平凡切换点由正安全端点反向生成，故属于 $\mathcal E$。
++$\Gamma_K$ 上的切换点由正安全端点反向生成，且其感染坐标不超过 $K$，故属于 $\mathcal E$。
+ 对 $x\in\mathcal T$，在同一自然轨道上 $s<\eta$，且
+ \[
+ \Psi(s,i)=\phi-s+p\ln s>\phi-\eta+p\ln\eta=\Psi(y_\Gamma)>-\ell\ln s_A,
+ \]
+ 因为 $s\mapsto-s+p\ln s$ 在 $s>h$ 严格下降。由命题\ref{prop:reachable}知 $x\in\mathcal E$。
+-从 $x$ 到 $y_\Gamma$ 之间的自然轨道段仍在 $\mathcal E$ 和容量以下。
++对连接 $x$ 与 $y_\Gamma=(\eta,j_\Gamma(\phi))$ 的自然轨道段，令 $i_{\rm nat}(\xi)=\phi-\xi+h\ln\xi$。任意 $\xi\in[s,\eta]$ 都满足
++\[
++0<j_\Gamma(\phi)\le i_{\rm nat}(\xi)\le i\le K,\qquad
++\Psi(\xi,i_{\rm nat}(\xi))\ge\Psi(y_\Gamma)>-\ell\ln s_A.
++\]
++因此整段均在 $\mathcal E$ 内且满足容量约束；该段沿正时间的方向是从 $y_\Gamma$ 到 $x$。
+ 
+ 为确定 $\Delta_\Theta$ 的符号，先说明其零集。
+ 任取 $x=(s,i)\in\mathcal E$，记其安全端点的易感坐标为 $z=\bar s(x)$。
+@@ -2418,7 +2434,7 @@
+ 考虑从同一不安全状态出发、均在首次进入 $\Acal$ 时终止的两条策略轨道，其安全端点位于 $s\ge h$ 的边界分支。
+ 若两条轨道与连接其安全端点的边界弧在 $\{i>0,\ s>p\}$ 内围成分片光滑区域，
+ 将边界定向为第一条轨道的正向、安全边界上从其终点至第二条轨道终点的方向、以及第二条轨道的反向，
+-则由 Green 公式，两条策略的成本差等于该定向区域上 $\mathrm d\omega$ 的积分。
++则由 Green 公式，第一条策略的成本减去第二条策略的成本，等于该定向区域上 $\mathrm d\omega$ 的积分。
+ 安全边界弧不贡献成本，因此路线优劣由区域内 $i-g(s)$ 的加权积分决定；曲线 $i=g(s)$ 是二形式变号的分界线。
+ 
+ 式\eqref{eq:mechanism-kappa}中的 $\kappa$ 恰好是上述二形式去掉正常数 $\beta$ 后的系数。
+@@ -2563,11 +2579,11 @@
+ 虽然 $q$ 在式\eqref{eq:medical-total-incidence}中直接消去，状态 $s,i$ 仍依赖于控制。
+ 
+ 医疗占用取决于病例流入及其后续停留过程\citep{Baas2021Occupancy}。
+-设非负可测函数 $\kappa(\theta)$ 表示一例新感染者在感染后第 $\theta$ 个时间单位所需的平均 ICU 床位数，
++设非负可测函数 $\kappa_{\rm ICU}(\theta)$ 表示一例新感染者在感染后第 $\theta$ 个时间单位所需的平均 ICU 床位数，
+ 并假定它对两类病例、不同感染时点及所比较的控制共同适用。
+-允许 $\kappa$ 包含感染至入院的延迟，并设
+-\begin{equation}
+-\int_0^\infty\kappa(\theta)\dd \theta=\pi_{\mathrm{ICU}}L_{\rm ICU}<\infty,
++允许 $\kappa_{\rm ICU}$ 包含感染至入院的延迟，并设
++\begin{equation}
++\int_0^\infty\kappa_{\rm ICU}(\theta)\dd \theta=\pi_{\mathrm{ICU}}L_{\rm ICU}<\infty,
+ \qquad 0<\pi_{\mathrm{ICU}}\le1,\quad L_{\rm ICU}>0,
+ \label{eq:medical-demand-kernel}
+ \end{equation}
+@@ -2577,13 +2593,13 @@
+ 该项包括初始病例以后才发生的入院，以及已退出传播状态但仍需救治者的后续占用。
+ 在这些假设下，不受容量拒收限制的平均需求为
+ \begin{equation}
+-D_{\rm ICU}(t)=D_{{\rm ICU},0}(t)+\int_0^t\kappa(t-u)\Lambda(u)\dd u.
++D_{\rm ICU}(t)=D_{{\rm ICU},0}(t)+\int_0^t\kappa_{\rm ICU}(t-u)\Lambda(u)\dd u.
+ \label{eq:medical-demand}
+ \end{equation}
+ 由非负性与式\eqref{eq:medical-incidence-bound}，有
+ \begin{equation}
+ \begin{aligned}
+-D_{\rm ICU}(t)&\le D_{\mathrm{ICU,init}}+N\beta c\,s_0K\int_0^t\kappa(\theta)\dd \theta\\
++D_{\rm ICU}(t)&\le D_{\mathrm{ICU,init}}+N\beta c\,s_0K\int_0^t\kappa_{\rm ICU}(\theta)\dd \theta\\
+ &\le D_{\mathrm{ICU,init}}+N\beta c\,s_0K\pi_{\mathrm{ICU}}L_{\rm ICU}.
+ \end{aligned}
+ \label{eq:medical-demand-bound}
+@@ -2604,8 +2620,9 @@
+ 
+ 
+ \begingroup
++\small
+ \setstretch{1}
+-\setlength{\bibsep}{4pt}
++\setlength{\bibsep}{3pt}
+ \bibliographystyle{plainnat}
+ \bibliography{references}
+ \endgroup

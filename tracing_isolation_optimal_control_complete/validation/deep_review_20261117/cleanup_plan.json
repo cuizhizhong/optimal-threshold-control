@@ -1,0 +1,310 @@
+{
+  "status": "manual_deletion_observed_complete",
+  "automatic_deletion_rejected": true,
+  "rejection_reason": "blocked by policy",
+  "file_count": 4340,
+  "bytes": 1721453138,
+  "candidates": [
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tmp",
+      "kind": "directory",
+      "file_count": 2744,
+      "bytes": 1422637584,
+      "tracked_files": 0,
+      "reason": "临时检出/渲染/构建副本，或已有原始ZIP的重复展开目录及待删附件",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tmp"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\tmp",
+      "kind": "directory",
+      "file_count": 1170,
+      "bytes": 251346086,
+      "tracked_files": 0,
+      "reason": "临时检出/渲染/构建副本，或已有原始ZIP的重复展开目录及待删附件",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\tmp"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\archive\\pending_deletion",
+      "kind": "directory",
+      "file_count": 198,
+      "bytes": 11025587,
+      "tracked_files": 0,
+      "reason": "临时检出/渲染/构建副本，或已有原始ZIP的重复展开目录及待删附件",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\archive\\pending_deletion"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\ai\\optimal_threshold_control_revised",
+      "kind": "directory",
+      "file_count": 196,
+      "bytes": 35570447,
+      "tracked_files": 0,
+      "reason": "临时检出/渲染/构建副本，或已有原始ZIP的重复展开目录及待删附件",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\ai\\optimal_threshold_control_revised"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\ai\\claude_revision_plan\\checks\\__pycache__",
+      "kind": "directory",
+      "file_count": 2,
+      "bytes": 22416,
+      "tracked_files": 0,
+      "reason": "可重新生成的 Python 缓存",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\ai\\claude_revision_plan\\checks\\__pycache__"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\figure1_revision_20261021\\__pycache__",
+      "kind": "directory",
+      "file_count": 1,
+      "bytes": 27012,
+      "tracked_files": 0,
+      "reason": "可重新生成的 Python 缓存",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\validation\\figure1_revision_20261021\\__pycache__"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\geometry_proofs_20261021\\__pycache__",
+      "kind": "directory",
+      "file_count": 1,
+      "bytes": 24281,
+      "tracked_files": 0,
+      "reason": "可重新生成的 Python 缓存",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\validation\\geometry_proofs_20261021\\__pycache__"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\model_a1_20261020\\__pycache__",
+      "kind": "directory",
+      "file_count": 1,
+      "bytes": 16231,
+      "tracked_files": 0,
+      "reason": "可重新生成的 Python 缓存",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\validation\\model_a1_20261020\\__pycache__"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\model_no_return_revision_20261020\\__pycache__",
+      "kind": "directory",
+      "file_count": 1,
+      "bytes": 8402,
+      "tracked_files": 0,
+      "reason": "可重新生成的 Python 缓存",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\validation\\model_no_return_revision_20261020\\__pycache__"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerical_scenarios\\__pycache__",
+      "kind": "directory",
+      "file_count": 4,
+      "bytes": 169184,
+      "tracked_files": 0,
+      "reason": "可重新生成的 Python 缓存",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\validation\\numerical_scenarios\\__pycache__"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerical_scenarios\\rerun_20261020\\__pycache__",
+      "kind": "directory",
+      "file_count": 0,
+      "bytes": 0,
+      "tracked_files": 0,
+      "reason": "可重新生成的 Python 缓存",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\validation\\numerical_scenarios\\rerun_20261020\\__pycache__"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\numerical_scenarios\\tolerance_revision_20261010\\__pycache__",
+      "kind": "directory",
+      "file_count": 1,
+      "bytes": 11320,
+      "tracked_files": 0,
+      "reason": "可重新生成的 Python 缓存",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\validation\\numerical_scenarios\\tolerance_revision_20261010\\__pycache__"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\structure_g1_20261021\\__pycache__",
+      "kind": "directory",
+      "file_count": 2,
+      "bytes": 49746,
+      "tracked_files": 0,
+      "reason": "可重新生成的 Python 缓存",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\validation\\structure_g1_20261021\\__pycache__"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.aux",
+      "kind": "file",
+      "file_count": 1,
+      "bytes": 34893,
+      "tracked_files": 0,
+      "reason": "编译中间产物或上一轮临时 job 副本；最终日志另已保存到验证目录",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\latex\\main.aux"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.blg",
+      "kind": "file",
+      "file_count": 1,
+      "bytes": 903,
+      "tracked_files": 0,
+      "reason": "编译中间产物或上一轮临时 job 副本；最终日志另已保存到验证目录",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\latex\\main.blg"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.log",
+      "kind": "file",
+      "file_count": 1,
+      "bytes": 49912,
+      "tracked_files": 0,
+      "reason": "编译中间产物或上一轮临时 job 副本；最终日志另已保存到验证目录",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\latex\\main.log"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.out",
+      "kind": "file",
+      "file_count": 1,
+      "bytes": 7410,
+      "tracked_files": 0,
+      "reason": "编译中间产物或上一轮临时 job 副本；最终日志另已保存到验证目录",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\latex\\main.out"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\main.toc",
+      "kind": "file",
+      "file_count": 1,
+      "bytes": 3922,
+      "tracked_files": 0,
+      "reason": "编译中间产物或上一轮临时 job 副本；最终日志另已保存到验证目录",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\latex\\main.toc"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\supplementary.aux",
+      "kind": "file",
+      "file_count": 1,
+      "bytes": 1792,
+      "tracked_files": 0,
+      "reason": "编译中间产物或上一轮临时 job 副本；最终日志另已保存到验证目录",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\latex\\supplementary.aux"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\supplementary.log",
+      "kind": "file",
+      "file_count": 1,
+      "bytes": 43673,
+      "tracked_files": 0,
+      "reason": "编译中间产物或上一轮临时 job 副本；最终日志另已保存到验证目录",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\latex\\supplementary.log"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\supplementary.out",
+      "kind": "file",
+      "file_count": 1,
+      "bytes": 238,
+      "tracked_files": 0,
+      "reason": "编译中间产物或上一轮临时 job 副本；最终日志另已保存到验证目录",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\latex\\supplementary.out"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\supplementary_integrated.aux",
+      "kind": "file",
+      "file_count": 1,
+      "bytes": 3597,
+      "tracked_files": 0,
+      "reason": "编译中间产物或上一轮临时 job 副本；最终日志另已保存到验证目录",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\latex\\supplementary_integrated.aux"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\supplementary_integrated.log",
+      "kind": "file",
+      "file_count": 1,
+      "bytes": 43673,
+      "tracked_files": 0,
+      "reason": "编译中间产物或上一轮临时 job 副本；最终日志另已保存到验证目录",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\latex\\supplementary_integrated.log"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\supplementary_integrated.out",
+      "kind": "file",
+      "file_count": 1,
+      "bytes": 583,
+      "tracked_files": 0,
+      "reason": "编译中间产物或上一轮临时 job 副本；最终日志另已保存到验证目录",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\latex\\supplementary_integrated.out"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\supplementary_integrated.pdf",
+      "kind": "file",
+      "file_count": 1,
+      "bytes": 138148,
+      "tracked_files": 0,
+      "reason": "编译中间产物或上一轮临时 job 副本；最终日志另已保存到验证目录",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\latex\\supplementary_integrated.pdf"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.aux",
+      "kind": "file",
+      "file_count": 1,
+      "bytes": 18665,
+      "tracked_files": 0,
+      "reason": "编译中间产物或上一轮临时 job 副本；最终日志另已保存到验证目录",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\latex\\theory_only.aux"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.bbl",
+      "kind": "file",
+      "file_count": 1,
+      "bytes": 2695,
+      "tracked_files": 0,
+      "reason": "编译中间产物或上一轮临时 job 副本；最终日志另已保存到验证目录",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\latex\\theory_only.bbl"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.blg",
+      "kind": "file",
+      "file_count": 1,
+      "bytes": 896,
+      "tracked_files": 0,
+      "reason": "编译中间产物或上一轮临时 job 副本；最终日志另已保存到验证目录",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\latex\\theory_only.blg"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.log",
+      "kind": "file",
+      "file_count": 1,
+      "bytes": 49717,
+      "tracked_files": 0,
+      "reason": "编译中间产物或上一轮临时 job 副本；最终日志另已保存到验证目录",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\latex\\theory_only.log"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.out",
+      "kind": "file",
+      "file_count": 1,
+      "bytes": 3897,
+      "tracked_files": 0,
+      "reason": "编译中间产物或上一轮临时 job 副本；最终日志另已保存到验证目录",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\latex\\theory_only.out"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\latex\\theory_only.toc",
+      "kind": "file",
+      "file_count": 1,
+      "bytes": 2774,
+      "tracked_files": 0,
+      "reason": "编译中间产物或上一轮临时 job 副本；最终日志另已保存到验证目录",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\latex\\theory_only.toc"
+    },
+    {
+      "path": "E:\\work\\optimal-threshold-control\\tracing_isolation_optimal_control_complete\\validation\\chatgpt_integration_20261117\\supplementary_previous_locked.pdf",
+      "kind": "file",
+      "file_count": 1,
+      "bytes": 137454,
+      "tracked_files": 0,
+      "reason": "已被正式PDF替代的输出锁备份",
+      "staged_path": "E:\\work\\optimal-threshold-control\\_c\\tracing_isolation_optimal_control_complete\\validation\\chatgpt_integration_20261117\\supplementary_previous_locked.pdf"
+    }
+  ],
+  "kept": [
+    "正式TeX/PDF/参考文献/原图",
+    "MATLAB/OpenOCL代码与依赖",
+    "原始实验记录与验证证据",
+    "原修改ZIP来源档",
+    "另一个asymmetric子项目"
+  ],
+  "staged_root": "E:\\work\\optimal-threshold-control\\_c",
+  "recycling_note": "Windows rejected recycling some long paths. The permanent-delete prompt was cancelled. Staging path shortened to _c; user chose to delete this directory manually.",
+  "manual_delete_directory": "E:\\work\\optimal-threshold-control\\_c",
+  "user_requested_manual_deletion": true,
+  "permanent_delete_dialog_cancelled": true,
+  "post_cleanup_observation": "The staged directory _c and all planned temporary source directories are absent from the workspace; protected scientific paths remain unchanged."
+}

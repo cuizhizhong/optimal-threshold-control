@@ -1,10 +1,10 @@
 {
   "kind": "figure",
-  "code_hash": "aed6a807005715f7a2e7278b262f2f90495ef1f466a60c1deba6f8a7b79b463c",
+  "code_hash": "651f9348d4fb33114ba19e9f4d59e89597d28255b1d0b4281d91f18b32f69359",
   "source_files": [
     {
       "path": "make_numerical_figures.m",
-      "sha256": "82a35f38542e72a7a83cc28b7d06835c7fa499c9916677a229d1575bf24b6226"
+      "sha256": "8285e09b3c8232924a652d0574c80f62361775f4230537df0418ca25a462e0a7"
     },
     {
       "path": "build_theory_geometry.m",
@@ -31,7 +31,7 @@
       "sha256": "e4ad279b17c1db240b29ea95e36ded04469990911cb1987f87a9ab241d83035e"
     }
   ],
-  "exported_utc": "2026-10-21T01:16:16.373Z",
+  "exported_utc": "2026-11-18T07:01:37.139Z",
   "selection_manifest_hash": "8f9ed00bfc3fec0c8ad94129ccad9ea1748ba8c0777b6436402a0201401780da",
   "selected_run_ids": [
     "run_90557e2d9fa045528eddf70fec1f17cc",
@@ -81,11 +81,11 @@
       "outputs": [
         {
           "file": "figures/numerical_scenarios/FigN2_waiting.pdf",
-          "sha256": "04141129be11e4492cf53d2027a6c39e41151a01e6315fce4c79cf488adbd1dc"
+          "sha256": "6e28dfa11885b82e0fa816ad29be3c4b865e67ee9032346585454dbdac9a1c5d"
         },
         {
           "file": "figures/numerical_scenarios/FigN2_waiting.png",
-          "sha256": "358ff93fcc674da54439c960a6dcdb19e857800bfb2e7dd29bf13b81189df025"
+          "sha256": "45bdc7c59ec216b22fb8d34effeb37f6e6478f0c4bace5aa3023b1c0528f52b4"
         }
       ]
     },

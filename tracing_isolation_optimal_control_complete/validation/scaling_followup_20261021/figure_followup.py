@@ -1,8 +1,8 @@
-"""D 后续：80 位公共尾段解析量与按正文实测宽度绘制的量级图。
+"""由两策略从容量切换点出发的成本和时长差计算图 5 的四个面板。
 
 底稿：validation/scaling_asymptotics_20261021/analytic_scan.py。
 本脚本复制其解析函数，不导入或调用旧脚本，不改写旧验证记录。
-运行：python validation/scaling_followup_20261021/figure_followup.py --attempt 1
+定稿复现使用 --reproduce-dir 指定输出目录，--attempt 保留早期逐轮核查方式。
 """
 from __future__ import annotations
 
@@ -80,7 +80,7 @@ def geometry(beta, c, gamma, K):
     log_infection_ratio = -mp.log1p(-h * A / K)
     W = log_infection_ratio / h
     T_full = log_infection_ratio / gamma
-    # 只减去公共容量尾段，且整个消去过程均在 80 位进行。
+    # 从 (s_B,K) 分别计算容量弧和完全追踪弧的成本、时长，避免相减两个总量。
     tail_cost = beta / (K * (1 - beta)) * (mp.log1p(u) - beta * mp.log1p(u / beta))
     Delta_J = tail_cost - W
     Delta_T = mp.log1p(u / beta) / (c * K) - T_full
@@ -124,7 +124,7 @@ def compare(beta, c, gamma, K, s0, i0):
     public = {key: value for key, value in P.items() if not callable(value)}
     public.update(s0=s0, i0=i0, s1=s1)
     if s1 is None or s1 < P["s_B"]:
-        # 无公共容量尾段时，不把尾段差冒充从该初值出发的最优成本差。
+        # 自然轨道无法到达共同容量入口时，从切换点算出的差值不适用于该初值。
         COUNTS["masked_cases"] += 1
         public.update(comparable=False, mask_reason="natural_entry_before_s_B" if s1 else "initial_state_safe",
                       Delta_J=None, Delta_T=None, J_fill=None, J_star=None,
@@ -272,7 +272,6 @@ def make_figure(scan, attempt):
                         ncol=5, frameon=False, handlelength=1.6, columnspacing=1.7)
     label_checks = collision_checks(fig, axes, legend)
     plain_json(attempt / "label_collision_checks.json", label_checks)
-    plain_json(OUT / "label_collision_checks.json", label_checks)
     fig.savefig(attempt / "layout_preview.png", dpi=150)
     assert label_checks["status"] == "passed", label_checks
     # 不用 bbox_inches='tight'，从而保留实测正文宽度与 8/9 pt 字号。
@@ -293,23 +292,48 @@ def make_figure(scan, attempt):
     return data, label_checks, measurement
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--attempt", type=int, required=True)
-    args = parser.parse_args()
-    attempt = OUT / f"figure_attempt{args.attempt}"
-    attempt.mkdir(exist_ok=False)
-    protected = [BASE, OLD_DATA, BASE.with_name("magnitude.pdf"), BASE.with_name("magnitude.png")]
-    protected += [p for p in (PROJECT / "figures/numerical_scenarios").iterdir()
-                  if p.stem.startswith(("FigN1_regions", "FigN2", "FigN3", "FigN1_optimal_partition"))]
-    before = {str(p.relative_to(PROJECT)): sha(p) for p in protected}
+def figure_scan():
     K_grid = sorted({mp.mpf(mp.nstr(mp.power(mp.mpf("1500"), mp.mpf(j) / 120) / 10000, 40))
                      for j in range(121)} | {dec(v) for v in [".0001", ".001", ".01", ".05", ".15"]})
     scan = [compare(beta, 1 / dec(beta), ".3", K, ".9999", ".0001")
             for beta in [".13", ".155", ".25", ".5", ".8"] for K in K_grid]
     for row in scan:
         row["normalized_time_difference"] = row["beta"] * row["gamma"] * row["Delta_T"] if row["comparable"] else None
+    return scan
+
+
+def reproduce(output_dir):
+    if output_dir.resolve() in (OUT, OUTPUT.parent):
+        raise ValueError("请选择独立输出目录，以保留随稿数据和正式图件")
+    expected = json.loads((OUT / "figure_data.json").read_text(encoding="utf-8"))
+    output_dir.mkdir(parents=True, exist_ok=True)
+    scan = figure_scan()
+    data, _, _ = make_figure(scan, output_dir)
+    if data != expected:
+        raise ValueError("所得曲线、容量网格、筛选标记或面板定义与正式数据有差异")
+    plain_json(output_dir / "figure_data.json", data)
+    plotted = sum(row["comparable"] for row in scan)
+    print(f"图 5 的数据核对通过，{len(scan)} 组参数中有 {plotted} 组满足共同入口条件。")
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    modes = parser.add_mutually_exclusive_group(required=True)
+    modes.add_argument("--reproduce-dir", type=Path, help="从解析公式重建定稿图并核对作图数据")
+    modes.add_argument("--attempt", type=int, help="在原研究目录执行历史逐轮核查")
+    args = parser.parse_args()
+    if args.reproduce_dir is not None:
+        reproduce(args.reproduce_dir)
+        return
+    attempt = OUT / f"figure_attempt{args.attempt}"
+    attempt.mkdir(exist_ok=False)
+    protected = [BASE, OLD_DATA, BASE.with_name("magnitude.pdf"), BASE.with_name("magnitude.png")]
+    protected += [p for p in (PROJECT / "figures/numerical_scenarios").iterdir()
+                  if p.stem.startswith(("FigN1_regions", "FigN2", "FigN3", "FigN1_optimal_partition"))]
+    before = {str(p.relative_to(PROJECT)): sha(p) for p in protected}
+    scan = figure_scan()
     data, label_checks, measurement = make_figure(scan, attempt)
+    plain_json(OUT / "label_collision_checks.json", label_checks)
     old = json.loads(OLD_DATA.read_text(encoding="utf-8"))
     unchanged = []
     for previous, current in zip(old["curve_data"], data["curve_data"]):

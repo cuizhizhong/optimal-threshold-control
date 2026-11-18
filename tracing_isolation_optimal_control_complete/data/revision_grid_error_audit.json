@@ -1,0 +1,143 @@
+{
+  "source_commit": "09140ec16983fa98f1103b873fc03706ff7dd627",
+  "source": "data\\numerical_scenarios\\revision_checks\\grid_detailed_summary.csv",
+  "source_sha256": "9c8fa5fe9d61403ed0d95866efe232ee8130798f4db28499f4421c360d8be236",
+  "row_count": 15,
+  "new_optimization_solves": 0,
+  "new_ode_reintegrations": 0,
+  "numeric_fields_agree_with_compact_summary": true,
+  "checked_compact_numeric_fields": [
+    "J_openocl",
+    "capacity_excess",
+    "state_discrepancy"
+  ],
+  "checked_compact_metadata_fields": [
+    "configuration_id",
+    "observed_structure"
+  ],
+  "checked_compact_event_fields": [
+    "status",
+    "interval"
+  ],
+  "historical_id_differences": [
+    {
+      "case_id": "E1",
+      "N": 4000,
+      "detailed_run_id": "run_1fe903238ec8428ebe33758d0860ba94",
+      "compact_run_id": "run_90557e2d9fa045528eddf70fec1f17cc",
+      "numeric_fields_match": true
+    },
+    {
+      "case_id": "E2",
+      "N": 8000,
+      "detailed_run_id": "run_95f03cda21434451998723ad26c1a1b9",
+      "compact_run_id": "run_be88a14b0f1a4a80a12ea40d2e9e18db",
+      "numeric_fields_match": true
+    },
+    {
+      "case_id": "E3",
+      "N": 4000,
+      "detailed_run_id": "run_bd09cff659c14ab7960b447ff0f4f0b0",
+      "compact_run_id": "run_b5125bf7309e446d9ff6146d257d28c0",
+      "numeric_fields_match": true
+    },
+    {
+      "case_id": "E4",
+      "N": 8000,
+      "detailed_run_id": "run_139836e6273441e7bef91b3cce70193f",
+      "compact_run_id": "run_67ce8234939a4f4b81aa86ca7b197b74",
+      "numeric_fields_match": true
+    },
+    {
+      "case_id": "E5",
+      "N": 4000,
+      "detailed_run_id": "run_a07493968ce542b2b057ce11232f695c",
+      "compact_run_id": "run_3f672e8955914131af6d36a208c67727",
+      "numeric_fields_match": true
+    },
+    {
+      "case_id": "E1",
+      "N": 2000,
+      "detailed_run_id": "run_91fb58bb25ea47d29212281a89b7e3bb",
+      "compact_run_id": "run_044a0f7dc8284bfcb0ceaf2f3e470857",
+      "numeric_fields_match": true
+    },
+    {
+      "case_id": "E1",
+      "N": 8000,
+      "detailed_run_id": "run_30ba0304ab67442db4b06441eee8c2c2",
+      "compact_run_id": "run_cea753c3ddb94614ba8f3d69ee0cccf1",
+      "numeric_fields_match": true
+    },
+    {
+      "case_id": "E2",
+      "N": 2000,
+      "detailed_run_id": "run_23330a48e0454d94b7522ecfdc6c93ec",
+      "compact_run_id": "run_8d919c79b5184492bd815d3e5895fe8a",
+      "numeric_fields_match": true
+    },
+    {
+      "case_id": "E2",
+      "N": 4000,
+      "detailed_run_id": "run_b9f75da0ecd04d8288f7624bc7a44e49",
+      "compact_run_id": "run_5e80500e48bf41e697aca3af60c8f073",
+      "numeric_fields_match": true
+    },
+    {
+      "case_id": "E3",
+      "N": 2000,
+      "detailed_run_id": "run_be8c0645aca04eb38d172896cee33450",
+      "compact_run_id": "run_72fdd687379e4b0ba7f4defb3eb137e5",
+      "numeric_fields_match": true
+    },
+    {
+      "case_id": "E3",
+      "N": 8000,
+      "detailed_run_id": "run_2c79e1d8828f49a99532a0130b717305",
+      "compact_run_id": "run_315e2268d0aa4b1caeda3520790bd459",
+      "numeric_fields_match": true
+    },
+    {
+      "case_id": "E4",
+      "N": 2000,
+      "detailed_run_id": "run_70efe89f465f49298d3823770cc82ae0",
+      "compact_run_id": "run_473244c3f6cf403e96d8063710303058",
+      "numeric_fields_match": true
+    },
+    {
+      "case_id": "E4",
+      "N": 4000,
+      "detailed_run_id": "run_fb6d128aedb84204ba5d18ed3afb5828",
+      "compact_run_id": "run_14d3a97486e24f1685e112f897bd39d0",
+      "numeric_fields_match": true
+    },
+    {
+      "case_id": "E5",
+      "N": 2000,
+      "detailed_run_id": "run_135928be76eb447ba619aeac74710e77",
+      "compact_run_id": "run_c3c6be627e2a4996a1efb2f59a1ee71d",
+      "numeric_fields_match": true
+    },
+    {
+      "case_id": "E5",
+      "N": 8000,
+      "detailed_run_id": "run_bed1c525aeff4468bda80a9d09ebd92f",
+      "compact_run_id": "run_9213c1280be242c0ba693ceecf2f59ad",
+      "numeric_fields_match": true
+    }
+  ],
+  "id_policy": "Preserve source-run identity from detailed summary; do not rewrite old IDs. Detailed and compact summaries refer to distinct saved runs. Agreement of the listed summary fields is not evidence of additional independent experiments.",
+  "raw_array_crosswalk_report": "validation/chatgpt_integration_20261117/run_identity_crosswalk.json",
+  "anomalous_rows": [
+    {
+      "case_id": "E2",
+      "N": 2000,
+      "missing_events": "capacity_enter;capacity_exit"
+    },
+    {
+      "case_id": "E4",
+      "N": 2000,
+      "missing_events": "capacity_enter;capacity_exit"
+    }
+  ]
+}

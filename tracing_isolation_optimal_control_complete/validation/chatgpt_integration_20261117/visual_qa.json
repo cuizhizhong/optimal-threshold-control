@@ -1,0 +1,75 @@
+{
+  "documents": {
+    "main": {
+      "pages_checked": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43
+      ],
+      "enlarged_pages": [
+        5,
+        6,
+        13,
+        16,
+        29,
+        31
+      ]
+    },
+    "supplementary": {
+      "pages_checked": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "enlarged_pages": [
+        2,
+        3
+      ]
+    }
+  },
+  "renderer": "Poppler pdftoppm, scale-to 1300",
+  "method": "All pages checked on four-page contact sheets, selected dense pages checked at full render size",
+  "findings": [],
+  "result": "passed"
+}

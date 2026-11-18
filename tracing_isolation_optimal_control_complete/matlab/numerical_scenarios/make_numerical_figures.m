@@ -1,10 +1,16 @@
-function make_numerical_figures()
+function make_numerical_figures(group)
 % 只读取已保存结果。求解器输出不平滑、不截断，也不替换为参考轨道。
+if nargin>0, validatestring(group,{'waiting'}); end
 cfg=numerical_cases_config();
 [r,manifest]=load_selected_numerical_runs(cfg.paths.data);
-p=cfg.parameters; g=build_theory_geometry(p);
 if ~isfolder(cfg.paths.figures), mkdir(cfg.paths.figures); end
 set(groot,'defaultFigureVisible','off');
+if nargin>0
+    timepanels(r,[1 2],18,'FigN2_waiting',cfg);
+    record_figure_outputs(r,manifest,cfg);
+    return
+end
+p=cfg.parameters; g=build_theory_geometry(p);
 colors=[0.12 .40 .68;.82 .36 .10;.48 .31 .64;.68 .52 .02;.68 .24 .37];
 % 图 1 的样式集中设置：主曲线、辅助线以及仅作背景的低饱和度区域色。
 mainWidth=1.8; auxiliaryWidth=1.2;
@@ -100,6 +106,19 @@ for j=1:n
     plot(ax,rr.t_state,rr.i_state,'Color',[.12 .40 .68],'LineWidth',1.3);
     plot(ax,ref.t,ref.i,'k--','LineWidth',1.15);
     yline(ax,rr.parameters.K,':','Color',[.5 .5 .5],'LineWidth',1);
+    if ids(j)==2
+        % 停控后的自然轨道为 i=a(s)，按易感比例从释放点积分至自然峰值。
+        release=ref.events.release_state;
+        toPeak=integral(@(s) 1./(par.beta*par.c*s.*g.a(s)),g.h,release(1), ...
+            'AbsTol',1e-11,'RelTol',1e-11);
+        times=[ref.events.capacity_end,ref.events.release,ref.events.release+toPeak];
+        levels=[par.K,release(2),par.K];
+        markers={'o','s','d'};
+        for k=1:numel(times)
+            plot(ax,times(k),levels(k),'Marker',markers{k},'MarkerSize',5.5, ...
+                'MarkerEdgeColor',[.16 .16 .16],'MarkerFaceColor','w','LineWidth',1.1);
+        end
+    end
     xlim(ax,[0 tmax]); ylim(ax,[0 .163]);
     xlabel(ax,'$t$','Interpreter','latex'); ylabel(ax,'$i(t)$','Interpreter','latex'); style(ax);
 end

@@ -1,12 +1,12 @@
 # 修订评阅入口
 
-本分支保留历史五批修订（第0–11步），并新增 S1 论文符号定稿及 S2 代码符号统一、35 次实际重跑的源码、正文、编译产物和实际实验记录。评阅时以保存数据和执行报告为依据；执行计划、预期结构和 LaTeX 模板片段不属于已完成实验的结果。
+2026 年 11 月 18 日的[投稿包](../output/optimal_threshold_control_submission_20261118.zip)收录当前主文、补充材料、作图数据和核对脚本。11 月 17 日的[证明与符号审查记录](validation/deep_review_20261117/README.md)与[第一轮整合报告](validation/chatgpt_integration_20261117/README.md)保留当时的评价。此前的数值重跑和符号修订按批次保留。
 
 ## 建议阅读顺序
 
-1. [主文 PDF](latex/main.pdf)与[主文源码](latex/main.tex)：先读模型、全域最优策略、量级与核心数值结果，再按需查主文证明附录。当前保留 5 图、4 表，其中数值章节为 3 图、2 表。
-2. [独立补充材料 PDF](latex/supplementary.pdf)与[源码](latex/supplementary.tex)：仅含附加数值设置、附加核对结果、误差判据与残差说明三小节。完整复现记录留在仓库。
-3. [当前分批入口](ai/claude_revision_plan/START_HERE_CODEX.md)、[当前计划](ai/claude_revision_plan/REVISION_PLAN.md)与[G4 作者决定](ai/claude_revision_plan/G_DECISIONS.md)：核对本批范围。G4 主文 43 页、补充材料 2 页，均从新隔离目录完整编译且最终日志无诊断，45 页已逐页目视检查；导出回归 16/16、符号检查 28/28、保护检查 19 项通过。Windows `build.bat` 实际运行退出 0，`build.sh` 仅静态检查；优化器调用、新增 OCP 求解、重新评估和图形导出均为 0 次，详见[G4 实际报告](validation/g4_supplement_20261022/README.md)。历史 G1 主文为 45 页，见[G1 验证记录](validation/structure_g1_20261021/README.md)；历史 S2 各步主文实际编译为 37 页。
+1. [主文 PDF](latex/main.pdf)与[主文源码](latex/main.tex)按八节组织。命题 6.2 和附录 G 给出固定参数下的小容量标度及其证明。图 3 区分容量退出、停控和停控后的感染峰值。表 4 报告从同一情景初值出发的两种策略。
+2. [补充材料 PDF](latex/supplementary.pdf)与[源码](latex/supplementary.tex)分五节给出主结果误差、E2 和 E4 的数值退出区间、15 组网格数值、粗网格异常和接受判据。
+3. [表 4 复核脚本](scripts/verify_analytic_results.py)核对两种策略的成本、追踪开启时长和新增隔离易感比例。[图 5 作图数据](validation/scaling_followup_20261021/figure_data.json)记录四个面板，面板 (d) 使用归一化的时长差。复现命令见[项目说明](README.md)与投稿包内说明。早期编译与验证范围见[11 月 17 日检查记录](validation/chatgpt_integration_20261117/integration_verification.json)、[分批计划](ai/claude_revision_plan/REVISION_PLAN.md)与[G4 实际报告](validation/g4_supplement_20261022/README.md)。
 4. 按需查[S2 执行记录](validation/numerical_scenarios/rerun_20261020/S2.4/README.md)、[35 项新旧比较](validation/numerical_scenarios/rerun_20261020/comparison_report.json)、[原判据对照](validation/numerical_scenarios/rerun_20261020/S2.6/assessment_revision_report.json)和[执行状态](validation/numerical_scenarios/REVISION_STATUS.md)。历史[第8–9步实际结果](validation/numerical_scenarios/step89_results.md)、[第10–11步交付记录](validation/numerical_scenarios/step1011_results.md)与[历史执行计划](ai/codex_revision_plan/CODEX_EXECUTION_PLAN.md)保留对应批次口径；`latex_snippets/` 仅作原始修订片段对照。S2.7 的生成块核对、导出器回归及 S1 符号核对分别见[宏核对](validation/numerical_scenarios/rerun_20261020/S2.7/macro_comparison_report.json)、[回归记录](validation/numerical_scenarios/rerun_20261020/S2.7/regression_report.json)、[符号报告](validation/notation_s1_20261020/README.md)。
 5. [MATLAB 复现说明](matlab/numerical_scenarios/README.md)、[验证说明](validation/numerical_scenarios/README.md)及[实际命令](validation/numerical_scenarios/step1011_commands.md)：核对算法、来源、缓存和运行范围。Windows 运行 `.\build.bat`、Linux/macOS 运行 `bash build.sh`，均分别编译主文与补充材料；每份执行 XeLaTeX → BibTeX（首轮 `.aux` 含文献库时）→ XeLaTeX → XeLaTeX。
 

@@ -1,0 +1,29 @@
+{
+  "documents": {
+    "main": {
+      "label_count": 210,
+      "duplicate_labels": [],
+      "undefined_references": [],
+      "undefined_citations": [],
+      "environment_nesting_passed": true,
+      "pages": 43,
+      "final_log_diagnostics": [],
+      "source_sha256": "2c16cc80115b54e959c89eabe079bbe3b63c7ac4aadd386e792e5f44f4dd7527",
+      "pdf_sha256": "5854cb56d88b2867cae9dbd6a56c986df118cd2799d36da225928e15b0e4040f"
+    },
+    "supplementary": {
+      "label_count": 12,
+      "duplicate_labels": [],
+      "undefined_references": [],
+      "undefined_citations": [],
+      "environment_nesting_passed": true,
+      "pages": 4,
+      "final_log_diagnostics": [],
+      "source_sha256": "5198333dd033f643d6b3b266b62d7a9d55fc8e9dba5d78a36ff346e9e1657a05",
+      "pdf_sha256": "880d01aa00775b1d80009b5df069157c8ebf12e6b18165848f0a050de02b5270"
+    }
+  },
+  "protected_scientific_files_changed": 0,
+  "grid_rows": 15,
+  "unit_tests": 9
+}
